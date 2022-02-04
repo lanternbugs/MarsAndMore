@@ -9,7 +9,7 @@ import SwiftUI
 
 struct MainView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @State private var currentTab = 0
+    @AppStorage("currentTab") private var currentTab: Int = 0
     var body: some View {
         VStack {
             TabView(selection: $currentTab) {
