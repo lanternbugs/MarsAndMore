@@ -1,0 +1,1117 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 55;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		7606E27B27AB159600C72FAB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E27A27AB14DA00C72FAB /* MainView.swift */; };
+		7606E28127AB18A900C72FAB /* MarsRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28027AB18A900C72FAB /* MarsRoom.swift */; };
+		7606E28227AB18A900C72FAB /* MarsRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28027AB18A900C72FAB /* MarsRoom.swift */; };
+		7606E28427AB18BF00C72FAB /* ChartRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28327AB18BF00C72FAB /* ChartRoom.swift */; };
+		7606E28527AB18BF00C72FAB /* ChartRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28327AB18BF00C72FAB /* ChartRoom.swift */; };
+		7606E28827AB38A000C72FAB /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28727AB38A000C72FAB /* AstrobotInterface.swift */; };
+		7606E28927AB38A000C72FAB /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28727AB38A000C72FAB /* AstrobotInterface.swift */; };
+		7606E28D27AB394500C72FAB /* AstroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28C27AB394500C72FAB /* AstroData.swift */; };
+		7606E28E27AB394500C72FAB /* AstroData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28C27AB394500C72FAB /* AstroData.swift */; };
+		7606E29027AB408400C72FAB /* AstrobotInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28F27AB408400C72FAB /* AstrobotInterface+Extensions.swift */; };
+		7606E29127AB408400C72FAB /* AstrobotInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28F27AB408400C72FAB /* AstrobotInterface+Extensions.swift */; };
+		7606E29427AB4B6F00C72FAB /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E29327AB4B6F00C72FAB /* Double+Extensions.swift */; };
+		7606E29527AB4B6F00C72FAB /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E29327AB4B6F00C72FAB /* Double+Extensions.swift */; };
+		7606E29727AB54E300C72FAB /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E29627AB54E300C72FAB /* ChartView.swift */; };
+		7606E29827AB54E300C72FAB /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E29627AB54E300C72FAB /* ChartView.swift */; };
+		761DEE6C279B9EB200A71938 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE6B279B9EB200A71938 /* Tests_iOS.swift */; };
+		761DEE6E279B9EB200A71938 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE6D279B9EB200A71938 /* Tests_iOSLaunchTests.swift */; };
+		761DEE78279B9EB200A71938 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE77279B9EB200A71938 /* Tests_macOS.swift */; };
+		761DEE7A279B9EB200A71938 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE79279B9EB200A71938 /* Tests_macOSLaunchTests.swift */; };
+		761DEE7B279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE50279B9EB100A71938 /* MarsAndMore.xcdatamodeld */; };
+		761DEE7C279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE50279B9EB100A71938 /* MarsAndMore.xcdatamodeld */; };
+		761DEE7D279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE52279B9EB100A71938 /* MarsAndMoreApp.swift */; };
+		761DEE7E279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE52279B9EB100A71938 /* MarsAndMoreApp.swift */; };
+		761DEE7F279B9EB200A71938 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE53279B9EB100A71938 /* ContentView.swift */; };
+		761DEE80279B9EB200A71938 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE53279B9EB100A71938 /* ContentView.swift */; };
+		761DEE81279B9EB200A71938 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE54279B9EB100A71938 /* Persistence.swift */; };
+		761DEE82279B9EB200A71938 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE54279B9EB100A71938 /* Persistence.swift */; };
+		761DEE83279B9EB200A71938 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 761DEE55279B9EB200A71938 /* Assets.xcassets */; };
+		761DEE84279B9EB200A71938 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 761DEE55279B9EB200A71938 /* Assets.xcassets */; };
+		761DEEB1279B9EF900A71938 /* AdapterToEphemeris.m in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE95279B9EF900A71938 /* AdapterToEphemeris.m */; };
+		761DEEB2279B9EF900A71938 /* AdapterToEphemeris.m in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE95279B9EF900A71938 /* AdapterToEphemeris.m */; };
+		761DEEB3279B9EF900A71938 /* swemmoon.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE99279B9EF900A71938 /* swemmoon.c */; };
+		761DEEB4279B9EF900A71938 /* swemmoon.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE99279B9EF900A71938 /* swemmoon.c */; };
+		761DEEB5279B9EF900A71938 /* sedeltat.txt.inactive in Resources */ = {isa = PBXBuildFile; fileRef = 761DEE9C279B9EF900A71938 /* sedeltat.txt.inactive */; };
+		761DEEB6279B9EF900A71938 /* sedeltat.txt.inactive in Resources */ = {isa = PBXBuildFile; fileRef = 761DEE9C279B9EF900A71938 /* sedeltat.txt.inactive */; };
+		761DEEB7279B9EF900A71938 /* swehel.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE9F279B9EF900A71938 /* swehel.c */; };
+		761DEEB8279B9EF900A71938 /* swehel.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE9F279B9EF900A71938 /* swehel.c */; };
+		761DEEB9279B9EF900A71938 /* seorbel.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761DEEA0279B9EF900A71938 /* seorbel.txt */; };
+		761DEEBA279B9EF900A71938 /* seorbel.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761DEEA0279B9EF900A71938 /* seorbel.txt */; };
+		761DEEBB279B9EF900A71938 /* swepdate.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEA2279B9EF900A71938 /* swepdate.c */; };
+		761DEEBC279B9EF900A71938 /* swepdate.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEA2279B9EF900A71938 /* swepdate.c */; };
+		761DEEBD279B9EF900A71938 /* swepcalc.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEA4279B9EF900A71938 /* swepcalc.c */; };
+		761DEEBE279B9EF900A71938 /* swepcalc.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEA4279B9EF900A71938 /* swepcalc.c */; };
+		761DEEBF279B9EF900A71938 /* seleapsec.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761DEEA5279B9EF900A71938 /* seleapsec.txt */; };
+		761DEEC0279B9EF900A71938 /* seleapsec.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761DEEA5279B9EF900A71938 /* seleapsec.txt */; };
+		761DEEC1279B9EF900A71938 /* swehouse.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEA7279B9EF900A71938 /* swehouse.c */; };
+		761DEEC2279B9EF900A71938 /* swehouse.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEA7279B9EF900A71938 /* swehouse.c */; };
+		761DEEC3279B9EF900A71938 /* swecl.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEA8279B9EF900A71938 /* swecl.c */; };
+		761DEEC4279B9EF900A71938 /* swecl.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEA8279B9EF900A71938 /* swecl.c */; };
+		761DEEC5279B9EF900A71938 /* sweph.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAA279B9EF900A71938 /* sweph.c */; };
+		761DEEC6279B9EF900A71938 /* sweph.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAA279B9EF900A71938 /* sweph.c */; };
+		761DEEC7279B9EF900A71938 /* swedate.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAB279B9EF900A71938 /* swedate.c */; };
+		761DEEC8279B9EF900A71938 /* swedate.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAB279B9EF900A71938 /* swedate.c */; };
+		761DEEC9279B9EF900A71938 /* swemplan.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAC279B9EF900A71938 /* swemplan.c */; };
+		761DEECA279B9EF900A71938 /* swemplan.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAC279B9EF900A71938 /* swemplan.c */; };
+		761DEECB279B9EF900A71938 /* swephlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAD279B9EF900A71938 /* swephlib.c */; };
+		761DEECC279B9EF900A71938 /* swephlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAD279B9EF900A71938 /* swephlib.c */; };
+		761DEECD279B9EF900A71938 /* swejpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAE279B9EF900A71938 /* swejpl.c */; };
+		761DEECE279B9EF900A71938 /* swejpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAE279B9EF900A71938 /* swejpl.c */; };
+		761DEECF279B9EF900A71938 /* sefstars.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761DEEAF279B9EF900A71938 /* sefstars.txt */; };
+		761DEED0279B9EF900A71938 /* sefstars.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761DEEAF279B9EF900A71938 /* sefstars.txt */; };
+		762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */; };
+		762D4A6927AB986A00EA59E8 /* AstroButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6827AB986A00EA59E8 /* AstroButtons.swift */; };
+		764EF76027ACA6E0008A15F1 /* mars-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75427ACA6E0008A15F1 /* mars-taurus.txt */; };
+		764EF76127ACA6E0008A15F1 /* mars-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75527ACA6E0008A15F1 /* mars-libra.txt */; };
+		764EF76227ACA6E0008A15F1 /* mars-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75627ACA6E0008A15F1 /* mars-capricorn.txt */; };
+		764EF76327ACA6E0008A15F1 /* mars-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75727ACA6E0008A15F1 /* mars-aquarius.txt */; };
+		764EF76427ACA6E0008A15F1 /* mars-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75827ACA6E0008A15F1 /* mars-pisces.txt */; };
+		764EF76527ACA6E0008A15F1 /* mars-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75927ACA6E0008A15F1 /* mars-sagitarius.txt */; };
+		764EF76627ACA6E0008A15F1 /* mars-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75A27ACA6E0008A15F1 /* mars-virgo.txt */; };
+		764EF76727ACA6E0008A15F1 /* mars-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75B27ACA6E0008A15F1 /* mars-aries.txt */; };
+		764EF76827ACA6E0008A15F1 /* mars-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75C27ACA6E0008A15F1 /* mars-cancer.txt */; };
+		764EF76927ACA6E0008A15F1 /* mars-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75D27ACA6E0008A15F1 /* mars-leo.txt */; };
+		764EF76A27ACA6E0008A15F1 /* mars-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75E27ACA6E0008A15F1 /* mars-scorpio.txt */; };
+		764EF76B27ACA6E0008A15F1 /* mars-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75F27ACA6E0008A15F1 /* mars-gemini.txt */; };
+		764EF76D27ACA897008A15F1 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EF76C27ACA897008A15F1 /* ReadingView.swift */; };
+		764EF76E27ACA897008A15F1 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EF76C27ACA897008A15F1 /* ReadingView.swift */; };
+		76620A9B27AC79D8009094DC /* AstroReadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9A27AC79D8009094DC /* AstroReadingModel.swift */; };
+		76620A9D27AC7C51009094DC /* ReadingState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* ReadingState+Extensions.swift */; };
+		76620A9E27AC7C51009094DC /* ReadingState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* ReadingState+Extensions.swift */; };
+		76B34ED427AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */; };
+		76B34ED527AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */; };
+		76BEF3F627ACB0AB001C9AD0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E27A27AB14DA00C72FAB /* MainView.swift */; };
+		76BEF3F727ACB0EF001C9AD0 /* AstroReadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9A27AC79D8009094DC /* AstroReadingModel.swift */; };
+		76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6827AB986A00EA59E8 /* AstroButtons.swift */; };
+		76BEF3F927ACB1E2001C9AD0 /* PlanetsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */; };
+		76BEF3FA27ACB4B8001C9AD0 /* mars-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75727ACA6E0008A15F1 /* mars-aquarius.txt */; };
+		76BEF3FB27ACB4B8001C9AD0 /* mars-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75B27ACA6E0008A15F1 /* mars-aries.txt */; };
+		76BEF3FC27ACB4B8001C9AD0 /* mars-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75C27ACA6E0008A15F1 /* mars-cancer.txt */; };
+		76BEF3FD27ACB4B8001C9AD0 /* mars-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75627ACA6E0008A15F1 /* mars-capricorn.txt */; };
+		76BEF3FE27ACB4B8001C9AD0 /* mars-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75F27ACA6E0008A15F1 /* mars-gemini.txt */; };
+		76BEF3FF27ACB4B8001C9AD0 /* mars-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75D27ACA6E0008A15F1 /* mars-leo.txt */; };
+		76BEF40027ACB4B8001C9AD0 /* mars-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75527ACA6E0008A15F1 /* mars-libra.txt */; };
+		76BEF40127ACB4B8001C9AD0 /* mars-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75827ACA6E0008A15F1 /* mars-pisces.txt */; };
+		76BEF40227ACB4B8001C9AD0 /* mars-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75927ACA6E0008A15F1 /* mars-sagitarius.txt */; };
+		76BEF40327ACB4B8001C9AD0 /* mars-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75E27ACA6E0008A15F1 /* mars-scorpio.txt */; };
+		76BEF40427ACB4B8001C9AD0 /* mars-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75427ACA6E0008A15F1 /* mars-taurus.txt */; };
+		76BEF40527ACB4B8001C9AD0 /* mars-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75A27ACA6E0008A15F1 /* mars-virgo.txt */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		761DEE68279B9EB200A71938 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 761DEE4B279B9EB000A71938 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 761DEE59279B9EB200A71938;
+			remoteInfo = "MarsAndMore (iOS)";
+		};
+		761DEE74279B9EB200A71938 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 761DEE4B279B9EB000A71938 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 761DEE5F279B9EB200A71938;
+			remoteInfo = "MarsAndMore (macOS)";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		7606E27A27AB14DA00C72FAB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		7606E28027AB18A900C72FAB /* MarsRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoom.swift; sourceTree = "<group>"; };
+		7606E28327AB18BF00C72FAB /* ChartRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartRoom.swift; sourceTree = "<group>"; };
+		7606E28727AB38A000C72FAB /* AstrobotInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrobotInterface.swift; sourceTree = "<group>"; };
+		7606E28C27AB394500C72FAB /* AstroData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroData.swift; sourceTree = "<group>"; };
+		7606E28F27AB408400C72FAB /* AstrobotInterface+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AstrobotInterface+Extensions.swift"; sourceTree = "<group>"; };
+		7606E29227AB47CC00C72FAB /* AdapterToEphemeris.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AdapterToEphemeris.h; sourceTree = "<group>"; };
+		7606E29327AB4B6F00C72FAB /* Double+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		7606E29627AB54E300C72FAB /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
+		761DEE51279B9EB100A71938 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
+		761DEE52279B9EB100A71938 /* MarsAndMoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsAndMoreApp.swift; sourceTree = "<group>"; };
+		761DEE53279B9EB100A71938 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		761DEE54279B9EB100A71938 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
+		761DEE55279B9EB200A71938 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		761DEE5A279B9EB200A71938 /* MarsAndMore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsAndMore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		761DEE60279B9EB200A71938 /* MarsAndMore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsAndMore.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		761DEE62279B9EB200A71938 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
+		761DEE67279B9EB200A71938 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		761DEE6B279B9EB200A71938 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
+		761DEE6D279B9EB200A71938 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
+		761DEE73279B9EB200A71938 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		761DEE77279B9EB200A71938 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
+		761DEE79279B9EB200A71938 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
+		761DEE93279B9EF900A71938 /* MarsAndMore-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MarsAndMore-Bridging-Header.h"; sourceTree = "<group>"; };
+		761DEE95279B9EF900A71938 /* AdapterToEphemeris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdapterToEphemeris.m; sourceTree = "<group>"; };
+		761DEE97279B9EF900A71938 /* swemptab.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swemptab.h; sourceTree = "<group>"; };
+		761DEE98279B9EF900A71938 /* swepcalc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swepcalc.h; sourceTree = "<group>"; };
+		761DEE99279B9EF900A71938 /* swemmoon.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swemmoon.c; sourceTree = "<group>"; };
+		761DEE9A279B9EF900A71938 /* swehouse.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swehouse.h; sourceTree = "<group>"; };
+		761DEE9B279B9EF900A71938 /* swephexp.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swephexp.h; sourceTree = "<group>"; };
+		761DEE9C279B9EF900A71938 /* sedeltat.txt.inactive */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sedeltat.txt.inactive; sourceTree = "<group>"; };
+		761DEE9D279B9EF900A71938 /* sweph.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweph.h; sourceTree = "<group>"; };
+		761DEE9E279B9EF900A71938 /* swedate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swedate.h; sourceTree = "<group>"; };
+		761DEE9F279B9EF900A71938 /* swehel.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swehel.c; sourceTree = "<group>"; };
+		761DEEA0279B9EF900A71938 /* seorbel.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seorbel.txt; sourceTree = "<group>"; };
+		761DEEA1279B9EF900A71938 /* swejpl.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swejpl.h; sourceTree = "<group>"; };
+		761DEEA2279B9EF900A71938 /* swepdate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swepdate.c; sourceTree = "<group>"; };
+		761DEEA3279B9EF900A71938 /* swephlib.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swephlib.h; sourceTree = "<group>"; };
+		761DEEA4279B9EF900A71938 /* swepcalc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swepcalc.c; sourceTree = "<group>"; };
+		761DEEA5279B9EF900A71938 /* seleapsec.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seleapsec.txt; sourceTree = "<group>"; };
+		761DEEA6279B9EF900A71938 /* swedll.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swedll.h; sourceTree = "<group>"; };
+		761DEEA7279B9EF900A71938 /* swehouse.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swehouse.c; sourceTree = "<group>"; };
+		761DEEA8279B9EF900A71938 /* swecl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swecl.c; sourceTree = "<group>"; };
+		761DEEA9279B9EF900A71938 /* swenut2000a.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = swenut2000a.h; sourceTree = "<group>"; };
+		761DEEAA279B9EF900A71938 /* sweph.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = sweph.c; sourceTree = "<group>"; };
+		761DEEAB279B9EF900A71938 /* swedate.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swedate.c; sourceTree = "<group>"; };
+		761DEEAC279B9EF900A71938 /* swemplan.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swemplan.c; sourceTree = "<group>"; };
+		761DEEAD279B9EF900A71938 /* swephlib.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swephlib.c; sourceTree = "<group>"; };
+		761DEEAE279B9EF900A71938 /* swejpl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swejpl.c; sourceTree = "<group>"; };
+		761DEEAF279B9EF900A71938 /* sefstars.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sefstars.txt; sourceTree = "<group>"; };
+		761DEEB0279B9EF900A71938 /* sweodef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweodef.h; sourceTree = "<group>"; };
+		762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsEntry.swift; sourceTree = "<group>"; };
+		762D4A6827AB986A00EA59E8 /* AstroButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroButtons.swift; sourceTree = "<group>"; };
+		764EF75427ACA6E0008A15F1 /* mars-taurus.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-taurus.txt"; sourceTree = "<group>"; };
+		764EF75527ACA6E0008A15F1 /* mars-libra.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-libra.txt"; sourceTree = "<group>"; };
+		764EF75627ACA6E0008A15F1 /* mars-capricorn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-capricorn.txt"; sourceTree = "<group>"; };
+		764EF75727ACA6E0008A15F1 /* mars-aquarius.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-aquarius.txt"; sourceTree = "<group>"; };
+		764EF75827ACA6E0008A15F1 /* mars-pisces.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-pisces.txt"; sourceTree = "<group>"; };
+		764EF75927ACA6E0008A15F1 /* mars-sagitarius.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-sagitarius.txt"; sourceTree = "<group>"; };
+		764EF75A27ACA6E0008A15F1 /* mars-virgo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-virgo.txt"; sourceTree = "<group>"; };
+		764EF75B27ACA6E0008A15F1 /* mars-aries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-aries.txt"; sourceTree = "<group>"; };
+		764EF75C27ACA6E0008A15F1 /* mars-cancer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-cancer.txt"; sourceTree = "<group>"; };
+		764EF75D27ACA6E0008A15F1 /* mars-leo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-leo.txt"; sourceTree = "<group>"; };
+		764EF75E27ACA6E0008A15F1 /* mars-scorpio.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-scorpio.txt"; sourceTree = "<group>"; };
+		764EF75F27ACA6E0008A15F1 /* mars-gemini.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-gemini.txt"; sourceTree = "<group>"; };
+		764EF76C27ACA897008A15F1 /* ReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
+		76620A9A27AC79D8009094DC /* AstroReadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroReadingModel.swift; sourceTree = "<group>"; };
+		76620A9C27AC7C51009094DC /* ReadingState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReadingState+Extensions.swift"; sourceTree = "<group>"; };
+		76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlanetsEntry.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		761DEE57279B9EB200A71938 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		761DEE5D279B9EB200A71938 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		761DEE64279B9EB200A71938 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		761DEE70279B9EB200A71938 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		7606E28627AB388700C72FAB /* Astrobot */ = {
+			isa = PBXGroup;
+			children = (
+				76620A9427AC78FC009094DC /* Adapter */,
+				7606E28B27AB390500C72FAB /* Models */,
+				7606E28A27AB38D600C72FAB /* Extensions */,
+				7606E28727AB38A000C72FAB /* AstrobotInterface.swift */,
+			);
+			path = "\U0010Astrobot";
+			sourceTree = "<group>";
+		};
+		7606E28A27AB38D600C72FAB /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7606E28F27AB408400C72FAB /* AstrobotInterface+Extensions.swift */,
+				7606E29327AB4B6F00C72FAB /* Double+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7606E28B27AB390500C72FAB /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7606E28C27AB394500C72FAB /* AstroData.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		761DEE4A279B9EB000A71938 = {
+			isa = PBXGroup;
+			children = (
+				761DEE4F279B9EB100A71938 /* AstrologyApp */,
+				761DEE61279B9EB200A71938 /* macOS */,
+				761DEE6A279B9EB200A71938 /* Tests iOS */,
+				761DEE76279B9EB200A71938 /* Tests macOS */,
+				761DEE5B279B9EB200A71938 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		761DEE4F279B9EB100A71938 /* AstrologyApp */ = {
+			isa = PBXGroup;
+			children = (
+				761DEE96279B9EF900A71938 /* ephemeris */,
+				7606E28627AB388700C72FAB /* Astrobot */,
+				76620A9527AC793C009094DC /* Readings */,
+				761DEE52279B9EB100A71938 /* MarsAndMoreApp.swift */,
+				76620A9F27AC801C009094DC /* Views */,
+				761DEE53279B9EB100A71938 /* ContentView.swift */,
+				761DEE54279B9EB100A71938 /* Persistence.swift */,
+				761DEE55279B9EB200A71938 /* Assets.xcassets */,
+				761DEE50279B9EB100A71938 /* MarsAndMore.xcdatamodeld */,
+				761DEE93279B9EF900A71938 /* MarsAndMore-Bridging-Header.h */,
+			);
+			path = AstrologyApp;
+			sourceTree = "<group>";
+		};
+		761DEE5B279B9EB200A71938 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				761DEE5A279B9EB200A71938 /* MarsAndMore.app */,
+				761DEE60279B9EB200A71938 /* MarsAndMore.app */,
+				761DEE67279B9EB200A71938 /* Tests iOS.xctest */,
+				761DEE73279B9EB200A71938 /* Tests macOS.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		761DEE61279B9EB200A71938 /* macOS */ = {
+			isa = PBXGroup;
+			children = (
+				761DEE62279B9EB200A71938 /* macOS.entitlements */,
+			);
+			path = macOS;
+			sourceTree = "<group>";
+		};
+		761DEE6A279B9EB200A71938 /* Tests iOS */ = {
+			isa = PBXGroup;
+			children = (
+				761DEE6B279B9EB200A71938 /* Tests_iOS.swift */,
+				761DEE6D279B9EB200A71938 /* Tests_iOSLaunchTests.swift */,
+			);
+			path = "Tests iOS";
+			sourceTree = "<group>";
+		};
+		761DEE76279B9EB200A71938 /* Tests macOS */ = {
+			isa = PBXGroup;
+			children = (
+				761DEE77279B9EB200A71938 /* Tests_macOS.swift */,
+				761DEE79279B9EB200A71938 /* Tests_macOSLaunchTests.swift */,
+			);
+			path = "Tests macOS";
+			sourceTree = "<group>";
+		};
+		761DEE96279B9EF900A71938 /* ephemeris */ = {
+			isa = PBXGroup;
+			children = (
+				761DEE97279B9EF900A71938 /* swemptab.h */,
+				761DEE98279B9EF900A71938 /* swepcalc.h */,
+				761DEE99279B9EF900A71938 /* swemmoon.c */,
+				761DEE9A279B9EF900A71938 /* swehouse.h */,
+				761DEE9B279B9EF900A71938 /* swephexp.h */,
+				761DEE9C279B9EF900A71938 /* sedeltat.txt.inactive */,
+				761DEE9D279B9EF900A71938 /* sweph.h */,
+				761DEE9E279B9EF900A71938 /* swedate.h */,
+				761DEE9F279B9EF900A71938 /* swehel.c */,
+				761DEEA0279B9EF900A71938 /* seorbel.txt */,
+				761DEEA1279B9EF900A71938 /* swejpl.h */,
+				761DEEA2279B9EF900A71938 /* swepdate.c */,
+				761DEEA3279B9EF900A71938 /* swephlib.h */,
+				761DEEA4279B9EF900A71938 /* swepcalc.c */,
+				761DEEA5279B9EF900A71938 /* seleapsec.txt */,
+				761DEEA6279B9EF900A71938 /* swedll.h */,
+				761DEEA7279B9EF900A71938 /* swehouse.c */,
+				761DEEA8279B9EF900A71938 /* swecl.c */,
+				761DEEA9279B9EF900A71938 /* swenut2000a.h */,
+				761DEEAA279B9EF900A71938 /* sweph.c */,
+				761DEEAB279B9EF900A71938 /* swedate.c */,
+				761DEEAC279B9EF900A71938 /* swemplan.c */,
+				761DEEAD279B9EF900A71938 /* swephlib.c */,
+				761DEEAE279B9EF900A71938 /* swejpl.c */,
+				761DEEAF279B9EF900A71938 /* sefstars.txt */,
+				761DEEB0279B9EF900A71938 /* sweodef.h */,
+			);
+			path = ephemeris;
+			sourceTree = "<group>";
+		};
+		762D4A6527AB962E00EA59E8 /* components */ = {
+			isa = PBXGroup;
+			children = (
+				762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */,
+				76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */,
+				762D4A6827AB986A00EA59E8 /* AstroButtons.swift */,
+			);
+			path = components;
+			sourceTree = "<group>";
+		};
+		76620A9427AC78FC009094DC /* Adapter */ = {
+			isa = PBXGroup;
+			children = (
+				7606E29227AB47CC00C72FAB /* AdapterToEphemeris.h */,
+				761DEE95279B9EF900A71938 /* AdapterToEphemeris.m */,
+			);
+			path = Adapter;
+			sourceTree = "<group>";
+		};
+		76620A9527AC793C009094DC /* Readings */ = {
+			isa = PBXGroup;
+			children = (
+				76620A9927AC7996009094DC /* Extensions */,
+				76620A9627AC7951009094DC /* MarsData */,
+				76620A9A27AC79D8009094DC /* AstroReadingModel.swift */,
+			);
+			path = Readings;
+			sourceTree = "<group>";
+		};
+		76620A9627AC7951009094DC /* MarsData */ = {
+			isa = PBXGroup;
+			children = (
+				764EF75727ACA6E0008A15F1 /* mars-aquarius.txt */,
+				764EF75B27ACA6E0008A15F1 /* mars-aries.txt */,
+				764EF75C27ACA6E0008A15F1 /* mars-cancer.txt */,
+				764EF75627ACA6E0008A15F1 /* mars-capricorn.txt */,
+				764EF75F27ACA6E0008A15F1 /* mars-gemini.txt */,
+				764EF75D27ACA6E0008A15F1 /* mars-leo.txt */,
+				764EF75527ACA6E0008A15F1 /* mars-libra.txt */,
+				764EF75827ACA6E0008A15F1 /* mars-pisces.txt */,
+				764EF75927ACA6E0008A15F1 /* mars-sagitarius.txt */,
+				764EF75E27ACA6E0008A15F1 /* mars-scorpio.txt */,
+				764EF75427ACA6E0008A15F1 /* mars-taurus.txt */,
+				764EF75A27ACA6E0008A15F1 /* mars-virgo.txt */,
+			);
+			path = MarsData;
+			sourceTree = "<group>";
+		};
+		76620A9927AC7996009094DC /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				76620A9C27AC7C51009094DC /* ReadingState+Extensions.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		76620A9F27AC801C009094DC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				762D4A6527AB962E00EA59E8 /* components */,
+				7606E27A27AB14DA00C72FAB /* MainView.swift */,
+				7606E28027AB18A900C72FAB /* MarsRoom.swift */,
+				7606E28327AB18BF00C72FAB /* ChartRoom.swift */,
+				7606E29627AB54E300C72FAB /* ChartView.swift */,
+				764EF76C27ACA897008A15F1 /* ReadingView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		761DEE59279B9EB200A71938 /* MarsAndMore (iOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 761DEE87279B9EB200A71938 /* Build configuration list for PBXNativeTarget "MarsAndMore (iOS)" */;
+			buildPhases = (
+				761DEE56279B9EB200A71938 /* Sources */,
+				761DEE57279B9EB200A71938 /* Frameworks */,
+				761DEE58279B9EB200A71938 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MarsAndMore (iOS)";
+			productName = "MarsAndMore (iOS)";
+			productReference = 761DEE5A279B9EB200A71938 /* MarsAndMore.app */;
+			productType = "com.apple.product-type.application";
+		};
+		761DEE5F279B9EB200A71938 /* MarsAndMore (macOS) */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 761DEE8A279B9EB200A71938 /* Build configuration list for PBXNativeTarget "MarsAndMore (macOS)" */;
+			buildPhases = (
+				761DEE5C279B9EB200A71938 /* Sources */,
+				761DEE5D279B9EB200A71938 /* Frameworks */,
+				761DEE5E279B9EB200A71938 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "MarsAndMore (macOS)";
+			productName = "MarsAndMore (macOS)";
+			productReference = 761DEE60279B9EB200A71938 /* MarsAndMore.app */;
+			productType = "com.apple.product-type.application";
+		};
+		761DEE66279B9EB200A71938 /* Tests iOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 761DEE8D279B9EB200A71938 /* Build configuration list for PBXNativeTarget "Tests iOS" */;
+			buildPhases = (
+				761DEE63279B9EB200A71938 /* Sources */,
+				761DEE64279B9EB200A71938 /* Frameworks */,
+				761DEE65279B9EB200A71938 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				761DEE69279B9EB200A71938 /* PBXTargetDependency */,
+			);
+			name = "Tests iOS";
+			productName = "Tests iOS";
+			productReference = 761DEE67279B9EB200A71938 /* Tests iOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+		761DEE72279B9EB200A71938 /* Tests macOS */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 761DEE90279B9EB200A71938 /* Build configuration list for PBXNativeTarget "Tests macOS" */;
+			buildPhases = (
+				761DEE6F279B9EB200A71938 /* Sources */,
+				761DEE70279B9EB200A71938 /* Frameworks */,
+				761DEE71279B9EB200A71938 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				761DEE75279B9EB200A71938 /* PBXTargetDependency */,
+			);
+			name = "Tests macOS";
+			productName = "Tests macOS";
+			productReference = 761DEE73279B9EB200A71938 /* Tests macOS.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		761DEE4B279B9EB000A71938 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				BuildIndependentTargetsInParallel = 1;
+				LastSwiftUpdateCheck = 1310;
+				LastUpgradeCheck = 1310;
+				TargetAttributes = {
+					761DEE59279B9EB200A71938 = {
+						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1310;
+					};
+					761DEE5F279B9EB200A71938 = {
+						CreatedOnToolsVersion = 13.1;
+						LastSwiftMigration = 1310;
+					};
+					761DEE66279B9EB200A71938 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 761DEE59279B9EB200A71938;
+					};
+					761DEE72279B9EB200A71938 = {
+						CreatedOnToolsVersion = 13.1;
+						TestTargetID = 761DEE5F279B9EB200A71938;
+					};
+				};
+			};
+			buildConfigurationList = 761DEE4E279B9EB000A71938 /* Build configuration list for PBXProject "MarsAndMore" */;
+			compatibilityVersion = "Xcode 13.0";
+			developmentRegion = en;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 761DEE4A279B9EB000A71938;
+			productRefGroup = 761DEE5B279B9EB200A71938 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				761DEE59279B9EB200A71938 /* MarsAndMore (iOS) */,
+				761DEE5F279B9EB200A71938 /* MarsAndMore (macOS) */,
+				761DEE66279B9EB200A71938 /* Tests iOS */,
+				761DEE72279B9EB200A71938 /* Tests macOS */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		761DEE58279B9EB200A71938 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				764EF76B27ACA6E0008A15F1 /* mars-gemini.txt in Resources */,
+				761DEEBF279B9EF900A71938 /* seleapsec.txt in Resources */,
+				764EF76827ACA6E0008A15F1 /* mars-cancer.txt in Resources */,
+				764EF76327ACA6E0008A15F1 /* mars-aquarius.txt in Resources */,
+				764EF76927ACA6E0008A15F1 /* mars-leo.txt in Resources */,
+				764EF76227ACA6E0008A15F1 /* mars-capricorn.txt in Resources */,
+				764EF76627ACA6E0008A15F1 /* mars-virgo.txt in Resources */,
+				764EF76127ACA6E0008A15F1 /* mars-libra.txt in Resources */,
+				764EF76427ACA6E0008A15F1 /* mars-pisces.txt in Resources */,
+				764EF76727ACA6E0008A15F1 /* mars-aries.txt in Resources */,
+				764EF76027ACA6E0008A15F1 /* mars-taurus.txt in Resources */,
+				761DEEB5279B9EF900A71938 /* sedeltat.txt.inactive in Resources */,
+				761DEEB9279B9EF900A71938 /* seorbel.txt in Resources */,
+				761DEE83279B9EB200A71938 /* Assets.xcassets in Resources */,
+				764EF76A27ACA6E0008A15F1 /* mars-scorpio.txt in Resources */,
+				761DEECF279B9EF900A71938 /* sefstars.txt in Resources */,
+				764EF76527ACA6E0008A15F1 /* mars-sagitarius.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		761DEE5E279B9EB200A71938 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76BEF3FA27ACB4B8001C9AD0 /* mars-aquarius.txt in Resources */,
+				76BEF3FB27ACB4B8001C9AD0 /* mars-aries.txt in Resources */,
+				76BEF3FC27ACB4B8001C9AD0 /* mars-cancer.txt in Resources */,
+				76BEF3FD27ACB4B8001C9AD0 /* mars-capricorn.txt in Resources */,
+				76BEF3FE27ACB4B8001C9AD0 /* mars-gemini.txt in Resources */,
+				76BEF3FF27ACB4B8001C9AD0 /* mars-leo.txt in Resources */,
+				76BEF40027ACB4B8001C9AD0 /* mars-libra.txt in Resources */,
+				76BEF40127ACB4B8001C9AD0 /* mars-pisces.txt in Resources */,
+				76BEF40227ACB4B8001C9AD0 /* mars-sagitarius.txt in Resources */,
+				76BEF40327ACB4B8001C9AD0 /* mars-scorpio.txt in Resources */,
+				76BEF40427ACB4B8001C9AD0 /* mars-taurus.txt in Resources */,
+				76BEF40527ACB4B8001C9AD0 /* mars-virgo.txt in Resources */,
+				761DEEC0279B9EF900A71938 /* seleapsec.txt in Resources */,
+				761DEEB6279B9EF900A71938 /* sedeltat.txt.inactive in Resources */,
+				761DEEBA279B9EF900A71938 /* seorbel.txt in Resources */,
+				761DEE84279B9EB200A71938 /* Assets.xcassets in Resources */,
+				761DEED0279B9EF900A71938 /* sefstars.txt in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		761DEE65279B9EB200A71938 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		761DEE71279B9EB200A71938 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		761DEE56279B9EB200A71938 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				7606E27B27AB159600C72FAB /* MainView.swift in Sources */,
+				761DEEC1279B9EF900A71938 /* swehouse.c in Sources */,
+				761DEEBB279B9EF900A71938 /* swepdate.c in Sources */,
+				761DEEC3279B9EF900A71938 /* swecl.c in Sources */,
+				761DEEC5279B9EF900A71938 /* sweph.c in Sources */,
+				7606E28D27AB394500C72FAB /* AstroData.swift in Sources */,
+				7606E28827AB38A000C72FAB /* AstrobotInterface.swift in Sources */,
+				761DEEB7279B9EF900A71938 /* swehel.c in Sources */,
+				761DEECB279B9EF900A71938 /* swephlib.c in Sources */,
+				764EF76D27ACA897008A15F1 /* ReadingView.swift in Sources */,
+				7606E28127AB18A900C72FAB /* MarsRoom.swift in Sources */,
+				7606E28427AB18BF00C72FAB /* ChartRoom.swift in Sources */,
+				761DEEB1279B9EF900A71938 /* AdapterToEphemeris.m in Sources */,
+				762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */,
+				761DEEC9279B9EF900A71938 /* swemplan.c in Sources */,
+				761DEE7B279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */,
+				761DEE81279B9EB200A71938 /* Persistence.swift in Sources */,
+				761DEE7D279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */,
+				761DEEC7279B9EF900A71938 /* swedate.c in Sources */,
+				761DEEB3279B9EF900A71938 /* swemmoon.c in Sources */,
+				761DEEBD279B9EF900A71938 /* swepcalc.c in Sources */,
+				7606E29027AB408400C72FAB /* AstrobotInterface+Extensions.swift in Sources */,
+				7606E29427AB4B6F00C72FAB /* Double+Extensions.swift in Sources */,
+				761DEECD279B9EF900A71938 /* swejpl.c in Sources */,
+				762D4A6927AB986A00EA59E8 /* AstroButtons.swift in Sources */,
+				76B34ED427AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,
+				761DEE7F279B9EB200A71938 /* ContentView.swift in Sources */,
+				76620A9B27AC79D8009094DC /* AstroReadingModel.swift in Sources */,
+				76620A9D27AC7C51009094DC /* ReadingState+Extensions.swift in Sources */,
+				7606E29727AB54E300C72FAB /* ChartView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		761DEE5C279B9EB200A71938 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				76BEF3F927ACB1E2001C9AD0 /* PlanetsEntry.swift in Sources */,
+				76BEF3F727ACB0EF001C9AD0 /* AstroReadingModel.swift in Sources */,
+				76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */,
+				76BEF3F627ACB0AB001C9AD0 /* MainView.swift in Sources */,
+				761DEEC2279B9EF900A71938 /* swehouse.c in Sources */,
+				7606E28E27AB394500C72FAB /* AstroData.swift in Sources */,
+				7606E28527AB18BF00C72FAB /* ChartRoom.swift in Sources */,
+				764EF76E27ACA897008A15F1 /* ReadingView.swift in Sources */,
+				761DEEBC279B9EF900A71938 /* swepdate.c in Sources */,
+				761DEEC4279B9EF900A71938 /* swecl.c in Sources */,
+				7606E29127AB408400C72FAB /* AstrobotInterface+Extensions.swift in Sources */,
+				7606E29827AB54E300C72FAB /* ChartView.swift in Sources */,
+				76B34ED527AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,
+				761DEEC6279B9EF900A71938 /* sweph.c in Sources */,
+				761DEEB8279B9EF900A71938 /* swehel.c in Sources */,
+				761DEECC279B9EF900A71938 /* swephlib.c in Sources */,
+				761DEEB2279B9EF900A71938 /* AdapterToEphemeris.m in Sources */,
+				7606E28927AB38A000C72FAB /* AstrobotInterface.swift in Sources */,
+				761DEECA279B9EF900A71938 /* swemplan.c in Sources */,
+				761DEE7C279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */,
+				761DEE82279B9EB200A71938 /* Persistence.swift in Sources */,
+				761DEE7E279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */,
+				761DEEC8279B9EF900A71938 /* swedate.c in Sources */,
+				7606E28227AB18A900C72FAB /* MarsRoom.swift in Sources */,
+				761DEEB4279B9EF900A71938 /* swemmoon.c in Sources */,
+				761DEEBE279B9EF900A71938 /* swepcalc.c in Sources */,
+				761DEECE279B9EF900A71938 /* swejpl.c in Sources */,
+				7606E29527AB4B6F00C72FAB /* Double+Extensions.swift in Sources */,
+				76620A9E27AC7C51009094DC /* ReadingState+Extensions.swift in Sources */,
+				761DEE80279B9EB200A71938 /* ContentView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		761DEE63279B9EB200A71938 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				761DEE6E279B9EB200A71938 /* Tests_iOSLaunchTests.swift in Sources */,
+				761DEE6C279B9EB200A71938 /* Tests_iOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		761DEE6F279B9EB200A71938 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				761DEE7A279B9EB200A71938 /* Tests_macOSLaunchTests.swift in Sources */,
+				761DEE78279B9EB200A71938 /* Tests_macOS.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		761DEE69279B9EB200A71938 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 761DEE59279B9EB200A71938 /* MarsAndMore (iOS) */;
+			targetProxy = 761DEE68279B9EB200A71938 /* PBXContainerItemProxy */;
+		};
+		761DEE75279B9EB200A71938 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 761DEE5F279B9EB200A71938 /* MarsAndMore (macOS) */;
+			targetProxy = 761DEE74279B9EB200A71938 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin XCBuildConfiguration section */
+		761DEE85279B9EB200A71938 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
+				MTL_FAST_MATH = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		761DEE86279B9EB200A71938 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_ANALYZER_NUMBER_OBJECT_CONVERSION = YES_AGGRESSIVE;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++17";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_ENABLE_OBJC_WEAK = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_QUOTED_INCLUDE_IN_FRAMEWORK_HEADER = YES;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
+				CLANG_WARN_UNGUARDED_AVAILABILITY = YES_AGGRESSIVE;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu11;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				MTL_FAST_MATH = YES;
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
+			};
+			name = Release;
+		};
+		761DEE88279B9EB200A71938 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
+				PRODUCT_NAME = MarsAndMore;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AstrologyApp/MarsAndMore-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		761DEE89279B9EB200A71938 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
+				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
+				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
+				PRODUCT_NAME = MarsAndMore;
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AstrologyApp/MarsAndMore-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		761DEE8B279B9EB200A71938 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
+				PRODUCT_NAME = MarsAndMore;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AstrologyApp/MarsAndMore-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Debug;
+		};
+		761DEE8C279B9EB200A71938 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				CLANG_ENABLE_MODULES = YES;
+				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				ENABLE_HARDENED_RUNTIME = YES;
+				ENABLE_PREVIEWS = YES;
+				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 11.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
+				PRODUCT_NAME = MarsAndMore;
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = YES;
+				SWIFT_OBJC_BRIDGING_HEADER = "AstrologyApp/MarsAndMore-Bridging-Header.h";
+				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		761DEE8E279B9EB200A71938 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mike.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "MarsAndMore (iOS)";
+			};
+			name = Debug;
+		};
+		761DEE8F279B9EB200A71938 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mike.Tests-iOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = iphoneos;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = "MarsAndMore (iOS)";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		761DEE91279B9EB200A71938 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mike.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "MarsAndMore (macOS)";
+			};
+			name = Debug;
+		};
+		761DEE92279B9EB200A71938 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
+				CODE_SIGN_STYLE = Automatic;
+				COMBINE_HIDPI_IMAGES = YES;
+				CURRENT_PROJECT_VERSION = 1;
+				GENERATE_INFOPLIST_FILE = YES;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/../Frameworks",
+					"@loader_path/../Frameworks",
+				);
+				MACOSX_DEPLOYMENT_TARGET = 12.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "mike.Tests-macOS";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SDKROOT = macosx;
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TEST_TARGET_NAME = "MarsAndMore (macOS)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		761DEE4E279B9EB000A71938 /* Build configuration list for PBXProject "MarsAndMore" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				761DEE85279B9EB200A71938 /* Debug */,
+				761DEE86279B9EB200A71938 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		761DEE87279B9EB200A71938 /* Build configuration list for PBXNativeTarget "MarsAndMore (iOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				761DEE88279B9EB200A71938 /* Debug */,
+				761DEE89279B9EB200A71938 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		761DEE8A279B9EB200A71938 /* Build configuration list for PBXNativeTarget "MarsAndMore (macOS)" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				761DEE8B279B9EB200A71938 /* Debug */,
+				761DEE8C279B9EB200A71938 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		761DEE8D279B9EB200A71938 /* Build configuration list for PBXNativeTarget "Tests iOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				761DEE8E279B9EB200A71938 /* Debug */,
+				761DEE8F279B9EB200A71938 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		761DEE90279B9EB200A71938 /* Build configuration list for PBXNativeTarget "Tests macOS" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				761DEE91279B9EB200A71938 /* Debug */,
+				761DEE92279B9EB200A71938 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		761DEE50279B9EB100A71938 /* MarsAndMore.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				761DEE51279B9EB100A71938 /* Shared.xcdatamodel */,
+			);
+			currentVersion = 761DEE51279B9EB100A71938 /* Shared.xcdatamodel */;
+			path = MarsAndMore.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
+	};
+	rootObject = 761DEE4B279B9EB000A71938 /* Project object */;
+}
