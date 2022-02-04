@@ -11,7 +11,7 @@ struct AstroButtons: View, AstrobotInterface {
     
     @Binding var data: [PlanetRow]
     var body: some View {
-        HStack {
+        HStack(alignment: .top) {
             Spacer()
             Button(action: planets) {
                 Text("Planets")

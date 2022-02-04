@@ -15,6 +15,8 @@ struct ChartView: View {
         
             VStack {
                 AstroButtons(data: $data)
+                Divider()
+                       .padding([.top, .bottom], 3)
                 ScrollView {
                     LazyVStack {
                         ForEach($data, id:\.id)
