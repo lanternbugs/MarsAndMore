@@ -13,29 +13,38 @@ struct FeaturedPlanetsEntry: View {
     let venusData: PlanetCell
     var body: some View {
         HStack {
+#if os(macOS)
             Spacer()
+#endif
             Button(action: {
                 state = .Reading(planet: marsData.planet, sign: marsData.sign)
             }) {
-                HStack {
-                    Text("\(marsData.planet.getName())")
-                }
+                Text("\(marsData.planet.getName())")
                 
-            }
+            }.layoutPriority(1)
             Text(" \(marsData.degree) ")
+#if os(iOS)
+            UIDevice.isIPhone ? Text(" \(marsData.sign.getNameShort())") : Text(" \(marsData.sign.getName())")
+#else
             Text(" \(marsData.sign.getName())")
-            Spacer()
+#endif
+            
+            
             Button(action: {
                 state = .Reading(planet: venusData.planet, sign: venusData.sign)
             }) {
-                HStack {
-                    Text("\(venusData.planet.getName())")
-                }
+                Text("\(venusData.planet.getName())")
                 
-            }
+            }.layoutPriority(1)
             Text(" \(venusData.degree) ")
+#if os(iOS)
+            UIDevice.isIPhone ? Text(" \(venusData.sign.getNameShort())") : Text(" \(venusData.sign.getName())")
+#else
             Text(" \(venusData.sign.getName())")
+#endif
+#if os(macOS)
             Spacer()
+#endif
         }
     }
 }
