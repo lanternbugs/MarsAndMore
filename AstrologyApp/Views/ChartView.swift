@@ -16,7 +16,7 @@ struct ChartView: View {
             VStack {
                 AstroButtons(data: $data)
                 ScrollView {
-                    VStack {
+                    LazyVStack {
                         ForEach($data, id:\.id)
                         { $planetRow in
                             PlanetsEntry(data: planetRow, state: $state)
@@ -24,14 +24,7 @@ struct ChartView: View {
                     }
                 }
                 
-            }
-#if os(iOS)
-            .frame(width: UIScreen.main.bounds.size.width * 2.7 / 4.0, alignment: .leading)
-#elseif os(macOS)
-        
-#endif
-            
-        
+            }.padding(.vertical)
     } // end body
 }
 

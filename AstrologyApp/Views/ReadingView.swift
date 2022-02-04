@@ -22,7 +22,7 @@ struct ReadingView: View {
                     Text("\(entry.text)")
                 }
             }
-        }
+        }.padding(.vertical)
     }
 }
 

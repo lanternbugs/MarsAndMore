@@ -31,7 +31,7 @@ struct ChartRoom: View {
                             
                         }
                         VStack() {
-                            Text("Now").padding(0).lineLimit(1)
+                            Text("Time Now").padding(0).lineLimit(1)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 
                             
