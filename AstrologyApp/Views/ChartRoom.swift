@@ -21,7 +21,12 @@ struct ChartRoom: View {
                 Divider()
                        .padding([.leading, .trailing], 3)
                 NamesView()
-            }
+            }.background(Image("night-sky", bundle: nil)
+                            .resizable()
+                            .aspectRatio(1 / 1, contentMode: .fill)
+                            .edgesIgnoringSafeArea(.all)
+                            .saturation(0.5)
+                            .opacity(0.2))
         }
     }
 }
