@@ -17,18 +17,24 @@ struct MainView: View {
                     .tabItem {
                         Text("Mars Room")
                     }
-                    .tag(0)
+                    
                     .onAppear() {
-                        self.currentTab = 0
+#if os(iOS)
+                        currentTab = 0
+#endif
                     }
+                    .tag(0)
                 ChartRoom()
                     .tabItem {
                     Text("Chart Room")
                 }
-                .tag(1)
+                
                 .onAppear() {
-                    self.currentTab = 1
+#if os(iOS)
+                    currentTab = 1
+#endif
                 }
+                .tag(1)
             }
         }
     }
