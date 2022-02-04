@@ -18,39 +18,11 @@ struct ChartRoom: View {
         default:
             HStack {
                 ChartView(data: $planetData, state: $readingState)
-                ScrollView {
-                    VStack {
-                        HStack {
-                            Spacer()
-                            Text("Name").font(Font.headline.weight(.semibold))
-                            Spacer()
-                            Button(action: addName) {
-                                Text("+").font(Font.title.weight(.bold))
-                            }
-                            Spacer()
-                            
-                        }
-                        VStack() {
-                            Text("Time Now").padding(0).lineLimit(1)
-                                .frame(maxWidth: .infinity, alignment: .leading)
-                                
-                            
-                        }
-                    }
-#if os(iOS)
-                    .frame(width: UIScreen.main.bounds.size.width / 3.7)
-#elseif os(macOS)
-        
-#endif
-                       
-                    
-                }
+                Divider()
+                       .padding([.leading, .trailing], 3)
+                NamesView()
             }
         }
-    }
-    
-    func addName() {
-        
     }
 }
 
