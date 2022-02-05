@@ -91,6 +91,30 @@
 		76620A9B27AC79D8009094DC /* AstroReadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9A27AC79D8009094DC /* AstroReadingModel.swift */; };
 		76620A9D27AC7C51009094DC /* ReadingState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* ReadingState+Extensions.swift */; };
 		76620A9E27AC7C51009094DC /* ReadingState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* ReadingState+Extensions.swift */; };
+		76AF1D5227AE1E7400CB4E97 /* venus-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4627AE1E7400CB4E97 /* venus-scorpio.txt */; };
+		76AF1D5327AE1E7400CB4E97 /* venus-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4627AE1E7400CB4E97 /* venus-scorpio.txt */; };
+		76AF1D5427AE1E7400CB4E97 /* venus-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4727AE1E7400CB4E97 /* venus-taurus.txt */; };
+		76AF1D5527AE1E7400CB4E97 /* venus-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4727AE1E7400CB4E97 /* venus-taurus.txt */; };
+		76AF1D5627AE1E7400CB4E97 /* venus-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4827AE1E7400CB4E97 /* venus-leo.txt */; };
+		76AF1D5727AE1E7400CB4E97 /* venus-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4827AE1E7400CB4E97 /* venus-leo.txt */; };
+		76AF1D5827AE1E7400CB4E97 /* venus-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4927AE1E7400CB4E97 /* venus-aquarius.txt */; };
+		76AF1D5927AE1E7400CB4E97 /* venus-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4927AE1E7400CB4E97 /* venus-aquarius.txt */; };
+		76AF1D5A27AE1E7400CB4E97 /* venus-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4A27AE1E7400CB4E97 /* venus-virgo.txt */; };
+		76AF1D5B27AE1E7400CB4E97 /* venus-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4A27AE1E7400CB4E97 /* venus-virgo.txt */; };
+		76AF1D5C27AE1E7400CB4E97 /* venus-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4B27AE1E7400CB4E97 /* venus-sagitarius.txt */; };
+		76AF1D5D27AE1E7400CB4E97 /* venus-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4B27AE1E7400CB4E97 /* venus-sagitarius.txt */; };
+		76AF1D5E27AE1E7400CB4E97 /* venus-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4C27AE1E7400CB4E97 /* venus-cancer.txt */; };
+		76AF1D5F27AE1E7400CB4E97 /* venus-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4C27AE1E7400CB4E97 /* venus-cancer.txt */; };
+		76AF1D6027AE1E7400CB4E97 /* venus-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4D27AE1E7400CB4E97 /* venus-libra.txt */; };
+		76AF1D6127AE1E7400CB4E97 /* venus-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4D27AE1E7400CB4E97 /* venus-libra.txt */; };
+		76AF1D6227AE1E7400CB4E97 /* venus-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4E27AE1E7400CB4E97 /* venus-aries.txt */; };
+		76AF1D6327AE1E7400CB4E97 /* venus-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4E27AE1E7400CB4E97 /* venus-aries.txt */; };
+		76AF1D6427AE1E7400CB4E97 /* venus-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4F27AE1E7400CB4E97 /* venus-gemini.txt */; };
+		76AF1D6527AE1E7400CB4E97 /* venus-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4F27AE1E7400CB4E97 /* venus-gemini.txt */; };
+		76AF1D6627AE1E7400CB4E97 /* venus-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D5027AE1E7400CB4E97 /* venus-pisces.txt */; };
+		76AF1D6727AE1E7400CB4E97 /* venus-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D5027AE1E7400CB4E97 /* venus-pisces.txt */; };
+		76AF1D6827AE1E7400CB4E97 /* venus-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D5127AE1E7400CB4E97 /* venus-capricorn.txt */; };
+		76AF1D6927AE1E7400CB4E97 /* venus-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D5127AE1E7400CB4E97 /* venus-capricorn.txt */; };
 		76B34ED427AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */; };
 		76B34ED527AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */; };
 		76BEF3F627ACB0AB001C9AD0 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E27A27AB14DA00C72FAB /* MainView.swift */; };
@@ -199,6 +223,18 @@
 		764EF76C27ACA897008A15F1 /* ReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
 		76620A9A27AC79D8009094DC /* AstroReadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroReadingModel.swift; sourceTree = "<group>"; };
 		76620A9C27AC7C51009094DC /* ReadingState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReadingState+Extensions.swift"; sourceTree = "<group>"; };
+		76AF1D4627AE1E7400CB4E97 /* venus-scorpio.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-scorpio.txt"; sourceTree = "<group>"; };
+		76AF1D4727AE1E7400CB4E97 /* venus-taurus.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-taurus.txt"; sourceTree = "<group>"; };
+		76AF1D4827AE1E7400CB4E97 /* venus-leo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-leo.txt"; sourceTree = "<group>"; };
+		76AF1D4927AE1E7400CB4E97 /* venus-aquarius.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-aquarius.txt"; sourceTree = "<group>"; };
+		76AF1D4A27AE1E7400CB4E97 /* venus-virgo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-virgo.txt"; sourceTree = "<group>"; };
+		76AF1D4B27AE1E7400CB4E97 /* venus-sagitarius.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-sagitarius.txt"; sourceTree = "<group>"; };
+		76AF1D4C27AE1E7400CB4E97 /* venus-cancer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-cancer.txt"; sourceTree = "<group>"; };
+		76AF1D4D27AE1E7400CB4E97 /* venus-libra.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-libra.txt"; sourceTree = "<group>"; };
+		76AF1D4E27AE1E7400CB4E97 /* venus-aries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-aries.txt"; sourceTree = "<group>"; };
+		76AF1D4F27AE1E7400CB4E97 /* venus-gemini.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-gemini.txt"; sourceTree = "<group>"; };
+		76AF1D5027AE1E7400CB4E97 /* venus-pisces.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-pisces.txt"; sourceTree = "<group>"; };
+		76AF1D5127AE1E7400CB4E97 /* venus-capricorn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-capricorn.txt"; sourceTree = "<group>"; };
 		76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlanetsEntry.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -390,6 +426,7 @@
 		76620A9527AC793C009094DC /* Readings */ = {
 			isa = PBXGroup;
 			children = (
+				76AF1D4527AE1E7400CB4E97 /* VenusData */,
 				76620A9927AC7996009094DC /* Extensions */,
 				76620A9627AC7951009094DC /* MarsData */,
 				76620A9A27AC79D8009094DC /* AstroReadingModel.swift */,
@@ -437,6 +474,25 @@
 				7618A97327ADB6AA008C6508 /* NamesView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		76AF1D4527AE1E7400CB4E97 /* VenusData */ = {
+			isa = PBXGroup;
+			children = (
+				76AF1D4627AE1E7400CB4E97 /* venus-scorpio.txt */,
+				76AF1D4727AE1E7400CB4E97 /* venus-taurus.txt */,
+				76AF1D4827AE1E7400CB4E97 /* venus-leo.txt */,
+				76AF1D4927AE1E7400CB4E97 /* venus-aquarius.txt */,
+				76AF1D4A27AE1E7400CB4E97 /* venus-virgo.txt */,
+				76AF1D4B27AE1E7400CB4E97 /* venus-sagitarius.txt */,
+				76AF1D4C27AE1E7400CB4E97 /* venus-cancer.txt */,
+				76AF1D4D27AE1E7400CB4E97 /* venus-libra.txt */,
+				76AF1D4E27AE1E7400CB4E97 /* venus-aries.txt */,
+				76AF1D4F27AE1E7400CB4E97 /* venus-gemini.txt */,
+				76AF1D5027AE1E7400CB4E97 /* venus-pisces.txt */,
+				76AF1D5127AE1E7400CB4E97 /* venus-capricorn.txt */,
+			);
+			path = VenusData;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -566,21 +622,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76AF1D5E27AE1E7400CB4E97 /* venus-cancer.txt in Resources */,
 				764EF76B27ACA6E0008A15F1 /* mars-gemini.txt in Resources */,
 				761DEEBF279B9EF900A71938 /* seleapsec.txt in Resources */,
+				76AF1D5A27AE1E7400CB4E97 /* venus-virgo.txt in Resources */,
 				764EF76827ACA6E0008A15F1 /* mars-cancer.txt in Resources */,
 				764EF76327ACA6E0008A15F1 /* mars-aquarius.txt in Resources */,
+				76AF1D6027AE1E7400CB4E97 /* venus-libra.txt in Resources */,
+				76AF1D6427AE1E7400CB4E97 /* venus-gemini.txt in Resources */,
+				76AF1D6227AE1E7400CB4E97 /* venus-aries.txt in Resources */,
+				76AF1D5227AE1E7400CB4E97 /* venus-scorpio.txt in Resources */,
 				764EF76927ACA6E0008A15F1 /* mars-leo.txt in Resources */,
 				764EF76227ACA6E0008A15F1 /* mars-capricorn.txt in Resources */,
+				76AF1D6827AE1E7400CB4E97 /* venus-capricorn.txt in Resources */,
+				76AF1D5C27AE1E7400CB4E97 /* venus-sagitarius.txt in Resources */,
 				764EF76627ACA6E0008A15F1 /* mars-virgo.txt in Resources */,
 				764EF76127ACA6E0008A15F1 /* mars-libra.txt in Resources */,
 				764EF76427ACA6E0008A15F1 /* mars-pisces.txt in Resources */,
 				764EF76727ACA6E0008A15F1 /* mars-aries.txt in Resources */,
 				764EF76027ACA6E0008A15F1 /* mars-taurus.txt in Resources */,
+				76AF1D5427AE1E7400CB4E97 /* venus-taurus.txt in Resources */,
+				76AF1D6627AE1E7400CB4E97 /* venus-pisces.txt in Resources */,
+				76AF1D5827AE1E7400CB4E97 /* venus-aquarius.txt in Resources */,
 				761DEEB5279B9EF900A71938 /* sedeltat.txt.inactive in Resources */,
 				761DEEB9279B9EF900A71938 /* seorbel.txt in Resources */,
 				761DEE83279B9EB200A71938 /* Assets.xcassets in Resources */,
 				764EF76A27ACA6E0008A15F1 /* mars-scorpio.txt in Resources */,
+				76AF1D5627AE1E7400CB4E97 /* venus-leo.txt in Resources */,
 				761DEECF279B9EF900A71938 /* sefstars.txt in Resources */,
 				764EF76527ACA6E0008A15F1 /* mars-sagitarius.txt in Resources */,
 			);
@@ -590,21 +658,33 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76AF1D5F27AE1E7400CB4E97 /* venus-cancer.txt in Resources */,
 				76BEF3FA27ACB4B8001C9AD0 /* mars-aquarius.txt in Resources */,
 				76BEF3FB27ACB4B8001C9AD0 /* mars-aries.txt in Resources */,
+				76AF1D5B27AE1E7400CB4E97 /* venus-virgo.txt in Resources */,
 				76BEF3FC27ACB4B8001C9AD0 /* mars-cancer.txt in Resources */,
 				76BEF3FD27ACB4B8001C9AD0 /* mars-capricorn.txt in Resources */,
+				76AF1D6127AE1E7400CB4E97 /* venus-libra.txt in Resources */,
+				76AF1D6527AE1E7400CB4E97 /* venus-gemini.txt in Resources */,
+				76AF1D6327AE1E7400CB4E97 /* venus-aries.txt in Resources */,
+				76AF1D5327AE1E7400CB4E97 /* venus-scorpio.txt in Resources */,
 				76BEF3FE27ACB4B8001C9AD0 /* mars-gemini.txt in Resources */,
 				76BEF3FF27ACB4B8001C9AD0 /* mars-leo.txt in Resources */,
+				76AF1D6927AE1E7400CB4E97 /* venus-capricorn.txt in Resources */,
+				76AF1D5D27AE1E7400CB4E97 /* venus-sagitarius.txt in Resources */,
 				76BEF40027ACB4B8001C9AD0 /* mars-libra.txt in Resources */,
 				76BEF40127ACB4B8001C9AD0 /* mars-pisces.txt in Resources */,
 				76BEF40227ACB4B8001C9AD0 /* mars-sagitarius.txt in Resources */,
 				76BEF40327ACB4B8001C9AD0 /* mars-scorpio.txt in Resources */,
 				76BEF40427ACB4B8001C9AD0 /* mars-taurus.txt in Resources */,
+				76AF1D5527AE1E7400CB4E97 /* venus-taurus.txt in Resources */,
+				76AF1D6727AE1E7400CB4E97 /* venus-pisces.txt in Resources */,
+				76AF1D5927AE1E7400CB4E97 /* venus-aquarius.txt in Resources */,
 				76BEF40527ACB4B8001C9AD0 /* mars-virgo.txt in Resources */,
 				761DEEC0279B9EF900A71938 /* seleapsec.txt in Resources */,
 				761DEEB6279B9EF900A71938 /* sedeltat.txt.inactive in Resources */,
 				761DEEBA279B9EF900A71938 /* seorbel.txt in Resources */,
+				76AF1D5727AE1E7400CB4E97 /* venus-leo.txt in Resources */,
 				761DEE84279B9EB200A71938 /* Assets.xcassets in Resources */,
 				761DEED0279B9EF900A71938 /* sefstars.txt in Resources */,
 			);
