@@ -296,7 +296,6 @@
 			isa = PBXGroup;
 			children = (
 				7679FF6F27AF184F007911C9 /* Astrobot */,
-				761DEE96279B9EF900A71938 /* ephemeris */,
 				76620A9527AC793C009094DC /* Readings */,
 				761DEE52279B9EB100A71938 /* MarsAndMoreApp.swift */,
 				76620A9F27AC801C009094DC /* Views */,
@@ -447,8 +446,9 @@
 			isa = PBXGroup;
 			children = (
 				7679FF7027AF184F007911C9 /* AstrobotInterface.swift */,
-				7679FF7127AF184F007911C9 /* Models */,
+				761DEE96279B9EF900A71938 /* ephemeris */,
 				7679FF7327AF184F007911C9 /* Adapter */,
+				7679FF7127AF184F007911C9 /* Models */,
 				7679FF7627AF184F007911C9 /* Extensions */,
 			);
 			path = Astrobot;
