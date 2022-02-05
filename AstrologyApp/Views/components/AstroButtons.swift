@@ -9,7 +9,8 @@ import SwiftUI
 
 struct AstroButtons: View, AstrobotInterface {
     
-    @Binding var data: [PlanetRow]
+    
+    @Binding var data: [DisplayPlanetRow]
     var body: some View {
         HStack(alignment: .top) {
             Spacer()
@@ -31,7 +32,9 @@ struct AstroButtons: View, AstrobotInterface {
 extension AstroButtons {
     func planets()
     {
-        data.append(getPlanets(id: data.count))
+        let row = getPlanets()
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count)
+        data.append(displayRow)
     }
     
     func aspects()
@@ -44,7 +47,7 @@ extension AstroButtons {
     }
 }
 struct AstroButtons_Previews: PreviewProvider {
-    @State static var row = [PlanetRow(id: 0)]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0)]
     static var previews: some View {
         AstroButtons(data: $row)
     }

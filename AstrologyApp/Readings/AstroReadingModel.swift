@@ -19,3 +19,7 @@ struct ReadingEntry {
 protocol AstroReading {
     func getReading()-> [ReadingEntry]
 }
+
+protocol AstrobotReadingInterface: AstrobotBaseInterface  {
+    func getPlanet()->ReadingState
+}

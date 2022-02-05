@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ChartRoom: View {
     @State var readingState: ReadingState = .Chart
-    @State var planetData: [PlanetRow] = Array<PlanetRow>()
+    @State var planetData: [DisplayPlanetRow] = Array<DisplayPlanetRow>()
     @ViewBuilder
     var body: some View {
         switch(readingState) {

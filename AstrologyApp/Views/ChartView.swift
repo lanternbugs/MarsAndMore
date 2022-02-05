@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ChartView: View {
-    @Binding var data: [PlanetRow]
+    @Binding var data: [DisplayPlanetRow]
     @Binding var state: ReadingState
     
     var body: some View {
@@ -32,7 +32,7 @@ struct ChartView: View {
 
 struct ChartView_Previews: PreviewProvider {
     @State static var state: ReadingState = .Chart
-    @State static var row = [PlanetRow(id: 0)]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0)]
     static var previews: some View {
         ChartView(data: $row, state: $state)
     }
