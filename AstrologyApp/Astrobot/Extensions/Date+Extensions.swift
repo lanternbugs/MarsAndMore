@@ -20,21 +20,11 @@ extension Date {
        let hour = formatter.string(from: self)
         formatter.dateFormat = "mm"
         let minute = formatter.string(from: self)
-        if let y = Int32(year), let m = Int32(month), let d = Int32(day), let h = Int32(convertToTwentyFourHours(h: hour)), let min = Int32(minute) {
+        if let y = Int32(year), let m = Int32(month), let d = Int32(day), let h = Int32(hour.convertToTwentyFourHours()), let min = Int32(minute) {
             return Double(adapter.getSweJulianDay(y, m, d, Double(h + min / 60)))
         }
         return Double(adapter.getSweJulianDay(1970, 1, 1, 0))
     }
     
-    func convertToTwentyFourHours(h: String)->String
-    {
-        if h.contains("PM") {
-            let hour = h.replacingOccurrences(of: "PM", with: "")
-            if let intHour = Int(hour)
-            {
-                return String(intHour + 12)
-            }
-        }
-        return h.replacingOccurrences(of: "AM", with: "")
-    }
+    
 }

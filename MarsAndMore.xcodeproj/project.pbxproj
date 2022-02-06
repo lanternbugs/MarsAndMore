@@ -135,6 +135,8 @@
 		76BEF40327ACB4B8001C9AD0 /* mars-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75E27ACA6E0008A15F1 /* mars-scorpio.txt */; };
 		76BEF40427ACB4B8001C9AD0 /* mars-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75427ACA6E0008A15F1 /* mars-taurus.txt */; };
 		76BEF40527ACB4B8001C9AD0 /* mars-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75A27ACA6E0008A15F1 /* mars-virgo.txt */; };
+		76EBE03627AF9ED20010CB62 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBE03527AF9ED20010CB62 /* String+Extensions.swift */; };
+		76EBE03727AF9ED20010CB62 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBE03527AF9ED20010CB62 /* String+Extensions.swift */; };
 		76F5BDC427AF43F30075FCEC /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */; };
 		76F5BDC527AF43F30075FCEC /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
@@ -241,6 +243,7 @@
 		76AF1D5027AE1E7400CB4E97 /* venus-pisces.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-pisces.txt"; sourceTree = "<group>"; };
 		76AF1D5127AE1E7400CB4E97 /* venus-capricorn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-capricorn.txt"; sourceTree = "<group>"; };
 		76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlanetsEntry.swift; sourceTree = "<group>"; };
+		76EBE03527AF9ED20010CB62 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -480,6 +483,7 @@
 				7679FF7727AF184F007911C9 /* AstrobotInterface+Extensions.swift */,
 				7679FF7827AF184F007911C9 /* Double+Extensions.swift */,
 				76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */,
+				76EBE03527AF9ED20010CB62 /* String+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -734,6 +738,7 @@
 				7679FF7D27AF1850007911C9 /* AdapterToEphemeris.m in Sources */,
 				7679FF7B27AF184F007911C9 /* AstroData.swift in Sources */,
 				7679FF7927AF184F007911C9 /* AstrobotInterface.swift in Sources */,
+				76EBE03627AF9ED20010CB62 /* String+Extensions.swift in Sources */,
 				762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */,
 				761DEEC9279B9EF900A71938 /* swemplan.c in Sources */,
 				761DEE7B279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */,
@@ -775,6 +780,7 @@
 				7679FF7E27AF1850007911C9 /* AdapterToEphemeris.m in Sources */,
 				7679FF7C27AF184F007911C9 /* AstroData.swift in Sources */,
 				7679FF7A27AF184F007911C9 /* AstrobotInterface.swift in Sources */,
+				76EBE03727AF9ED20010CB62 /* String+Extensions.swift in Sources */,
 				76B34ED527AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,
 				761DEEC6279B9EF900A71938 /* sweph.c in Sources */,
 				761DEEB8279B9EF900A71938 /* swehel.c in Sources */,
