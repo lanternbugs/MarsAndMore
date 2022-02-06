@@ -32,7 +32,7 @@ struct AstroButtons: View, AstrobotInterface {
 extension AstroButtons {
     func planets()
     {
-        let row = getPlanets()
+        let row = getPlanets(time: Date().getAstroTime())
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count)
         data.append(displayRow)
     }

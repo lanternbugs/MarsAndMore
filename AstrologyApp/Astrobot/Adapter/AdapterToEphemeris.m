@@ -12,24 +12,18 @@
 
 @implementation AdapterToEphemeris
 
--(double) getPlanetDegree:(int) type
+-(double) getPlanetDegree:(double) astroTime : (int) type
 {
-    
-    time_t rawtime;
-    struct tm * ptm;
-    time ( &rawtime );
-    ptm = gmtime ( &rawtime );
-    double thetime= (double) (ptm->tm_hour+(double)ptm->tm_min/60);
-    int day=ptm->tm_mday;
-    int month=ptm->tm_mon+1;
-    int year=ptm->tm_year+1900;
-    double astro_time=swe_julday(year, month, day, thetime, 1);
-
     double xxx[6], *xx=xxx;
     char serr[999], *serr2=serr;
         
-    swe_calc_ut(astro_time,  type, 0, xx, serr2);
+    swe_calc_ut(astroTime,  type, 0, xx, serr2);
     return xxx[0];
+}
+
+-(double) getSweJulianDay:(int) year : (int) month : (int) day : (int) time
+{
+    return swe_julday(year, month, day, time, 1);
 }
 
 @end

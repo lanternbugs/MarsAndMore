@@ -7,7 +7,7 @@
 
 import Foundation
 protocol AstrobotBaseInterface {
-    func getPlanets()->PlanetRow
+    func getPlanets(time: Double)->PlanetRow
 }
 
 protocol AstrobotInterface: AstrobotBaseInterface {

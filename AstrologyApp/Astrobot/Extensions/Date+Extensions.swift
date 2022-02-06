@@ -17,7 +17,7 @@ extension Date {
        let month = formatter.string(from: self)
        formatter.dateFormat = "dd"
        let day = formatter.string(from: self)
-       let time: Int32 = 0
+       let time: Int32 = 0 // double thetime= (double) (ptm->tm_hour+(double)ptm->tm_min/60);
        print(year, month, day) // 2018 12 24
         if let y = Int32(year), let m = Int32(month), let d = Int32(day) {
             return Double(adapter.getSweJulianDay(y, m, d, time))
