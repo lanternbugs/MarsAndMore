@@ -135,6 +135,8 @@
 		76BEF40327ACB4B8001C9AD0 /* mars-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75E27ACA6E0008A15F1 /* mars-scorpio.txt */; };
 		76BEF40427ACB4B8001C9AD0 /* mars-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75427ACA6E0008A15F1 /* mars-taurus.txt */; };
 		76BEF40527ACB4B8001C9AD0 /* mars-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75A27ACA6E0008A15F1 /* mars-virgo.txt */; };
+		76F5BDC427AF43F30075FCEC /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */; };
+		76F5BDC527AF43F30075FCEC /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -239,6 +241,7 @@
 		76AF1D5027AE1E7400CB4E97 /* venus-pisces.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-pisces.txt"; sourceTree = "<group>"; };
 		76AF1D5127AE1E7400CB4E97 /* venus-capricorn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-capricorn.txt"; sourceTree = "<group>"; };
 		76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlanetsEntry.swift; sourceTree = "<group>"; };
+		76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -476,6 +479,7 @@
 			children = (
 				7679FF7727AF184F007911C9 /* AstrobotInterface+Extensions.swift */,
 				7679FF7827AF184F007911C9 /* Double+Extensions.swift */,
+				76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -740,6 +744,7 @@
 				761DEEB3279B9EF900A71938 /* swemmoon.c in Sources */,
 				761DEEBD279B9EF900A71938 /* swepcalc.c in Sources */,
 				761DEECD279B9EF900A71938 /* swejpl.c in Sources */,
+				76F5BDC427AF43F30075FCEC /* Date+Extensions.swift in Sources */,
 				762D4A6927AB986A00EA59E8 /* AstroButtons.swift in Sources */,
 				7618A97427ADB6AA008C6508 /* NamesView.swift in Sources */,
 				76B34ED427AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,
@@ -780,6 +785,7 @@
 				761DEE82279B9EB200A71938 /* Persistence.swift in Sources */,
 				761DEE7E279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */,
 				761DEEC8279B9EF900A71938 /* swedate.c in Sources */,
+				76F5BDC527AF43F30075FCEC /* Date+Extensions.swift in Sources */,
 				7606E28227AB18A900C72FAB /* MarsRoom.swift in Sources */,
 				761DEEB4279B9EF900A71938 /* swemmoon.c in Sources */,
 				7618A97527ADB6AA008C6508 /* NamesView.swift in Sources */,
