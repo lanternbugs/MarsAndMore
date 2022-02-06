@@ -14,11 +14,10 @@
 
 -(double) getPlanetDegree:(double) astroTime : (int) type
 {
-    double xxx[6], *xx=xxx;
-    char serr[999], *serr2=serr;
-        
-    swe_calc_ut(astroTime,  type, 0, xx, serr2);
-    return xxx[0];
+    double xx[6];
+    char serr[999];
+    swe_calc_ut(astroTime,  type, 0, xx, serr);
+    return xx[0];
 }
 
 -(double) getSweJulianDay:(int) year : (int) month : (int) day : (double) time
