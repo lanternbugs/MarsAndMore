@@ -14,3 +14,9 @@ protocol AstrobotInterface: AstrobotBaseInterface {
     func getTransits()->PlanetRow
     func getAspects()->PlanetRow
 }
+
+protocol AstroRowCell {
+    var type: PlanetFetchType {
+        get
+    }
+}
