@@ -21,7 +21,7 @@
     return xxx[0];
 }
 
--(double) getSweJulianDay:(int) year : (int) month : (int) day : (int) time
+-(double) getSweJulianDay:(int) year : (int) month : (int) day : (double) time
 {
     return swe_julday(year, month, day, time, 1);
 }

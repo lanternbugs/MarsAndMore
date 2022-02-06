@@ -11,7 +11,7 @@
 
 @interface AdapterToEphemeris: NSObject
 -(double) getPlanetDegree:(double) astroTime : (int) type;
--(double) getSweJulianDay:(int) year : (int) month : (int) day : (int) time;
+-(double) getSweJulianDay:(int) year : (int) month : (int) day : (double) time;
 @end
 
 #endif /* AdapterToEphemeris_h */

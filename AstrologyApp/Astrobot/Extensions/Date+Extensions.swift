@@ -8,7 +8,6 @@
 import Foundation
 extension Date {
     func getAstroTime()->Double {
-        print("getting astro time)")
         let adapter = AdapterToEphemeris()
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy"
@@ -17,11 +16,25 @@ extension Date {
        let month = formatter.string(from: self)
        formatter.dateFormat = "dd"
        let day = formatter.string(from: self)
-       let time: Int32 = 0 // double thetime= (double) (ptm->tm_hour+(double)ptm->tm_min/60);
-       print(year, month, day) // 2018 12 24
-        if let y = Int32(year), let m = Int32(month), let d = Int32(day) {
-            return Double(adapter.getSweJulianDay(y, m, d, time))
+        formatter.dateFormat = "hha"
+       let hour = formatter.string(from: self)
+        formatter.dateFormat = "mm"
+        let minute = formatter.string(from: self)
+        if let y = Int32(year), let m = Int32(month), let d = Int32(day), let h = Int32(convertToTwentyFourHours(h: hour)), let min = Int32(minute) {
+            return Double(adapter.getSweJulianDay(y, m, d, Double(h + min / 60)))
         }
-        return 0 // planets now
+        return Double(adapter.getSweJulianDay(1970, 1, 1, 0))
+    }
+    
+    func convertToTwentyFourHours(h: String)->String
+    {
+        if h.contains("PM") {
+            let hour = h.replacingOccurrences(of: "PM", with: "")
+            if let intHour = Int(hour)
+            {
+                return String(intHour + 12)
+            }
+        }
+        return h.replacingOccurrences(of: "AM", with: "")
     }
 }
