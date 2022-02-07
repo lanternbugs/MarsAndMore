@@ -12,6 +12,7 @@ struct MarsRoom: View, AstrobotReadingInterface {
     @State var planetChoice: Planets = Planets.Mars
     @State private var marsData: ReadingState = .Entry
     @State private var venusData: ReadingState = .Entry
+    @State private var sunData: ReadingState = .Entry
     @State private var readingInitialized = false
     let defaultReadingMessage = "Pick a date and select go for an Evengeline Adams Mars Reading"
     
@@ -28,6 +29,10 @@ struct MarsRoom: View, AstrobotReadingInterface {
                 Button(action: pickedDate) {
                     Text("Go").font(.title)
                 }
+            }
+            if case .Reading(let planet, let sign) = sunData
+            {
+                Text("\(planet.getName()) in \(sign.getName())").font(.headline)
             }
             Picker(selection: $planetChoice, label: Text("Choice")) {
                 Text("Mars").tag(Planets.Mars)
@@ -57,6 +62,7 @@ extension MarsRoom {
    private func pickedDate()  {
         marsData = getPlanet(type: .Mars, time: birthdate.getAstroTime())
         venusData = getPlanet(type: .Venus, time: birthdate.getAstroTime())
+        sunData = getPlanet(type: .Sun, time: birthdate.getAstroTime())
        readingInitialized = true
     }
 }
