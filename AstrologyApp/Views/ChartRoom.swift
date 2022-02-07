@@ -18,7 +18,8 @@ struct ChartRoom: View {
                 Button(action: {
                     readingState = .Chart
                 }) {
-                    Text("Done")
+                    Text("Done").font(.title2)
+                        .frame(maxWidth: .infinity, alignment: .leading)
                 }
                 ReadingView(state: $readingState)
             }
