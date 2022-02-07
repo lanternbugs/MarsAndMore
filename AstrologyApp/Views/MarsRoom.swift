@@ -14,7 +14,6 @@ struct MarsRoom: View, AstrobotReadingInterface {
     @State private var venusData: ReadingState = .Entry
     @State private var sunData: ReadingState = .Entry
     @State private var readingInitialized = false
-    let defaultReadingMessage = "Pick a date and select go for an Evengeline Adams Mars Reading"
     
     @ViewBuilder
     var body: some View {
@@ -33,6 +32,8 @@ struct MarsRoom: View, AstrobotReadingInterface {
             if case .Reading(let planet, let sign) = sunData
             {
                 Text("\(planet.getName()) in \(sign.getName())").font(.headline)
+            } else {
+                Text("Sun").font(.headline)
             }
             Picker(selection: $planetChoice, label: Text("Choice")) {
                 Text("Mars").tag(Planets.Mars)
@@ -47,10 +48,11 @@ struct MarsRoom: View, AstrobotReadingInterface {
                 case .Venus:
                     ReadingView(state: $venusData)
                 default:
-                    Text("Error, there is no reading for this planet")
+                    Text("Error, there is no reading for this planet ")
                 }
             } else {
-                Text(defaultReadingMessage)
+                DefaultReadingContent()
+                
             }
             Spacer()
             
