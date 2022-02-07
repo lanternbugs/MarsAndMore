@@ -141,6 +141,8 @@
 		76BEF40327ACB4B8001C9AD0 /* mars-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75E27ACA6E0008A15F1 /* mars-scorpio.txt */; };
 		76BEF40427ACB4B8001C9AD0 /* mars-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75427ACA6E0008A15F1 /* mars-taurus.txt */; };
 		76BEF40527ACB4B8001C9AD0 /* mars-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75A27ACA6E0008A15F1 /* mars-virgo.txt */; };
+		76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */; };
+		76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */; };
 		76EBE03627AF9ED20010CB62 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBE03527AF9ED20010CB62 /* String+Extensions.swift */; };
 		76EBE03727AF9ED20010CB62 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBE03527AF9ED20010CB62 /* String+Extensions.swift */; };
 		76F5BDC427AF43F30075FCEC /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */; };
@@ -252,6 +254,7 @@
 		76AF1D5027AE1E7400CB4E97 /* venus-pisces.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-pisces.txt"; sourceTree = "<group>"; };
 		76AF1D5127AE1E7400CB4E97 /* venus-capricorn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-capricorn.txt"; sourceTree = "<group>"; };
 		76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlanetsEntry.swift; sourceTree = "<group>"; };
+		76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReadingContent.swift; sourceTree = "<group>"; };
 		76EBE03527AF9ED20010CB62 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -400,6 +403,7 @@
 				76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */,
 				762D4A6827AB986A00EA59E8 /* AstroButtons.swift */,
 				76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */,
+				76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -739,6 +743,7 @@
 				7617DAB627AFA8A70064B98E /* AstroModels.swift in Sources */,
 				761DEEC1279B9EF900A71938 /* swehouse.c in Sources */,
 				761DEEBB279B9EF900A71938 /* swepdate.c in Sources */,
+				76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
 				761DEEC3279B9EF900A71938 /* swecl.c in Sources */,
 				761DEEC5279B9EF900A71938 /* sweph.c in Sources */,
 				761DEEB7279B9EF900A71938 /* swehel.c in Sources */,
@@ -784,6 +789,7 @@
 				7617DAB727AFA8A70064B98E /* AstroModels.swift in Sources */,
 				76BEF3F727ACB0EF001C9AD0 /* AstroReadingModel.swift in Sources */,
 				76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */,
+				76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
 				76BEF3F627ACB0AB001C9AD0 /* MainView.swift in Sources */,
 				761DEEC2279B9EF900A71938 /* swehouse.c in Sources */,
 				7606E28527AB18BF00C72FAB /* ChartRoom.swift in Sources */,
