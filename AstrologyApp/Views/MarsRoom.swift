@@ -9,7 +9,7 @@ import SwiftUI
 struct MarsRoom: View, AstrobotReadingInterface {
     
     @State private var birthdate = Date(timeIntervalSince1970: 0)
-    @State private var planetChoice = 0
+    @State var planetChoice: Planets = Planets.Mars
     @State private var marsData: ReadingState = .Entry
     @State private var venusData: ReadingState = .Entry
     @State private var readingInitialized = false
@@ -30,16 +30,19 @@ struct MarsRoom: View, AstrobotReadingInterface {
                 }
             }
             Picker(selection: $planetChoice, label: Text("Choice")) {
-                Text("Mars").tag(0)
+                Text("Mars").tag(Planets.Mars)
 
-                Text("Venus").tag(1)
+                Text("Venus").tag(Planets.Venus)
 
             }.background(Color.white).pickerStyle(SegmentedPickerStyle())
             if readingInitialized {
-                if planetChoice == 0 {
+                switch(planetChoice) {
+                case .Mars:
                     ReadingView(state: $marsData)
-                } else {
+                case .Venus:
                     ReadingView(state: $venusData)
+                default:
+                    Text("Error, there is no reading for this planet")
                 }
             } else {
                 Text(defaultReadingMessage)
