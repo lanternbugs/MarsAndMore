@@ -14,7 +14,15 @@ struct ChartRoom: View {
     var body: some View {
         switch(readingState) {
         case .Reading:
-            ReadingView(state: $readingState)
+            VStack {
+                Button(action: {
+                    readingState = .Chart
+                }) {
+                    Text("Done")
+                }
+                ReadingView(state: $readingState)
+            }
+            
         default:
             HStack {
                 ChartView(data: $planetData, state: $readingState)

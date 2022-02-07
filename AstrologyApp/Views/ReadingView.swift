@@ -13,11 +13,6 @@ struct ReadingView: View {
         let reading = state.getReading()
         ScrollView() {
             VStack {
-                Button(action: {
-                    state = .Chart
-                }) {
-                    Text("Done")
-                }
                 ForEach(reading, id: \.id) { entry in
                     Text("\(entry.text)")
                 }
