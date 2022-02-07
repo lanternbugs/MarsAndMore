@@ -9,13 +9,20 @@ import SwiftUI
 
 struct ReadingView: View {
     @Binding var state: ReadingState
+    @ViewBuilder
     var body: some View {
         let reading = state.getReading()
         ScrollView() {
             VStack {
+                if case .Reading(let planet, let sign) = state
+                {
+                    Text("\(planet.getName()) in \(sign.getName())").padding()
+                }
+                
                 ForEach(reading, id: \.id) { entry in
                     Text("\(entry.text)")
                 }
+                ReadingCreditsView()
             }
         }.padding(.vertical)
     }
