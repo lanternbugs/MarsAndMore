@@ -7,7 +7,7 @@
 
 import Foundation
 class BirthDateManager: ObservableObject {
-    var cityInfo: CityInfo?
+    @Published var cityInfo: CityInfo?
     init() {
         DispatchQueue.global().async { [weak self] in
             let decoder = JSONDecoder()
@@ -17,7 +17,10 @@ class BirthDateManager: ObservableObject {
             }
             if let data = cities.data(using: .utf8) {
                 do {
-                    try self?.cityInfo = decoder.decode(CityInfo.self, from: data)
+                    let cityData = try decoder.decode(CityInfo.self, from: data)
+                    DispatchQueue.main.async { [weak self] in
+                        self?.cityInfo = cityData
+                    }
                 } catch {
                     print(error)
                 }
