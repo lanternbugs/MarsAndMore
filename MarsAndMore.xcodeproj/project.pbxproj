@@ -101,6 +101,10 @@
 		7679FF8027AF1850007911C9 /* AstrobotInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7727AF184F007911C9 /* AstrobotInterface+Extensions.swift */; };
 		7679FF8127AF1850007911C9 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7827AF184F007911C9 /* Double+Extensions.swift */; };
 		7679FF8227AF1850007911C9 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7827AF184F007911C9 /* Double+Extensions.swift */; };
+		76860B8F27B224E400533BD2 /* NameDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B8E27B224E400533BD2 /* NameDataView.swift */; };
+		76860B9027B224E400533BD2 /* NameDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B8E27B224E400533BD2 /* NameDataView.swift */; };
+		76860B9227B2264D00533BD2 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B9127B2264D00533BD2 /* DoneView.swift */; };
+		76860B9327B2264D00533BD2 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B9127B2264D00533BD2 /* DoneView.swift */; };
 		7688E0B027AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688E0AF27AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift */; };
 		7688E0B127AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688E0AF27AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift */; };
 		76AB623127B0A9CF00FEFBD4 /* ReadingCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */; };
@@ -250,6 +254,8 @@
 		7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdapterToEphemeris.m; sourceTree = "<group>"; };
 		7679FF7727AF184F007911C9 /* AstrobotInterface+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AstrobotInterface+Extensions.swift"; sourceTree = "<group>"; };
 		7679FF7827AF184F007911C9 /* Double+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		76860B8E27B224E400533BD2 /* NameDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameDataView.swift; sourceTree = "<group>"; };
+		76860B9127B2264D00533BD2 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		7688E0AF27AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AstrobotReadingInterface+Extensions.swift"; sourceTree = "<group>"; };
 		76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingCredits.swift; sourceTree = "<group>"; };
 		76AF1D4627AE1E7400CB4E97 /* venus-scorpio.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-scorpio.txt"; sourceTree = "<group>"; };
@@ -417,6 +423,7 @@
 				762D4A6827AB986A00EA59E8 /* AstroButtons.swift */,
 				76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */,
 				76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */,
+				76860B9127B2264D00533BD2 /* DoneView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -498,6 +505,7 @@
 				764EF76C27ACA897008A15F1 /* ReadingView.swift */,
 				7618A97327ADB6AA008C6508 /* NamesView.swift */,
 				76DAC8A627B2016700852872 /* CitiesView.swift */,
+				76860B8E27B224E400533BD2 /* NameDataView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -783,6 +791,7 @@
 			files = (
 				7606E27B27AB159600C72FAB /* MainView.swift in Sources */,
 				7617DAB627AFA8A70064B98E /* AstroModels.swift in Sources */,
+				76860B9227B2264D00533BD2 /* DoneView.swift in Sources */,
 				761DEEC1279B9EF900A71938 /* swehouse.c in Sources */,
 				761DEEBB279B9EF900A71938 /* swepdate.c in Sources */,
 				76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
@@ -803,6 +812,7 @@
 				76EBE03627AF9ED20010CB62 /* String+Extensions.swift in Sources */,
 				762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */,
 				761DEEC9279B9EF900A71938 /* swemplan.c in Sources */,
+				76860B8F27B224E400533BD2 /* NameDataView.swift in Sources */,
 				761DEE7B279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */,
 				761DEE81279B9EB200A71938 /* Persistence.swift in Sources */,
 				761DEE7D279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */,
@@ -832,6 +842,7 @@
 			files = (
 				76BEF3F927ACB1E2001C9AD0 /* PlanetsEntry.swift in Sources */,
 				7617DAB727AFA8A70064B98E /* AstroModels.swift in Sources */,
+				76860B9327B2264D00533BD2 /* DoneView.swift in Sources */,
 				76BEF3F727ACB0EF001C9AD0 /* AstroReadingModel.swift in Sources */,
 				76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */,
 				76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
@@ -852,6 +863,7 @@
 				76EBE03727AF9ED20010CB62 /* String+Extensions.swift in Sources */,
 				76B34ED527AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,
 				761DEEC6279B9EF900A71938 /* sweph.c in Sources */,
+				76860B9027B224E400533BD2 /* NameDataView.swift in Sources */,
 				761DEEB8279B9EF900A71938 /* swehel.c in Sources */,
 				761DEECC279B9EF900A71938 /* swephlib.c in Sources */,
 				761DEECA279B9EF900A71938 /* swemplan.c in Sources */,

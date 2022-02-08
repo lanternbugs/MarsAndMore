@@ -15,30 +15,35 @@ struct ChartRoom: View {
         switch(readingState) {
         case .Reading:
             VStack {
-                Button(action: {
-                    readingState = .Chart
-                }) {
-                    Text("Done").font(.title2)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                }
+                DoneView(readingState: $readingState, newReadingState: .Chart)
                 ReadingView(state: $readingState)
             }
             
-        default:
-            NavigationView {
-                HStack {
-                    ChartView(data: $planetData, state: $readingState)
-                    Divider()
-                           .padding([.leading, .trailing], 3)
-                    NamesView()
-                }.navigationBarTitle("Chart Room")
-                .background(Image("night-sky", bundle: nil)
-                                .resizable()
-                                .aspectRatio(1 / 1, contentMode: .fill)
-                                .edgesIgnoringSafeArea(.all)
-                                .saturation(0.5)
-                            .opacity(0.2))
+        case .Cities:
+            VStack {
+                DoneView(readingState: $readingState, newReadingState: .Names)
+                CitiesView()
             }
+             
+        case .Names:
+            VStack {
+                DoneView(readingState: $readingState, newReadingState: .Chart)
+                NameDataView(state: $readingState)
+            }
+            
+        default:
+            HStack {
+                ChartView(data: $planetData, state: $readingState)
+                Divider()
+                       .padding([.leading, .trailing], 3)
+                NamesView(state: $readingState)
+            }
+            .background(Image("night-sky", bundle: nil)
+                            .resizable()
+                            .aspectRatio(1 / 1, contentMode: .fill)
+                            .edgesIgnoringSafeArea(.all)
+                            .saturation(0.5)
+                        .opacity(0.2))
         }
     }
 }
