@@ -25,17 +25,20 @@ struct ChartRoom: View {
             }
             
         default:
-            HStack {
-                ChartView(data: $planetData, state: $readingState)
-                Divider()
-                       .padding([.leading, .trailing], 3)
-                NamesView()
-            }.background(Image("night-sky", bundle: nil)
-                            .resizable()
-                            .aspectRatio(1 / 1, contentMode: .fill)
-                            .edgesIgnoringSafeArea(.all)
-                            .saturation(0.5)
+            NavigationView {
+                HStack {
+                    ChartView(data: $planetData, state: $readingState)
+                    Divider()
+                           .padding([.leading, .trailing], 3)
+                    NamesView()
+                }.navigationBarTitle("Chart Room")
+                .background(Image("night-sky", bundle: nil)
+                                .resizable()
+                                .aspectRatio(1 / 1, contentMode: .fill)
+                                .edgesIgnoringSafeArea(.all)
+                                .saturation(0.5)
                             .opacity(0.2))
+            }
         }
     }
 }
