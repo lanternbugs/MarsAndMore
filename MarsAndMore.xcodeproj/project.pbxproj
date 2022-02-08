@@ -91,8 +91,8 @@
 		764EF76D27ACA897008A15F1 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EF76C27ACA897008A15F1 /* ReadingView.swift */; };
 		764EF76E27ACA897008A15F1 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EF76C27ACA897008A15F1 /* ReadingView.swift */; };
 		76620A9B27AC79D8009094DC /* AstroReadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9A27AC79D8009094DC /* AstroReadingModel.swift */; };
-		76620A9D27AC7C51009094DC /* ReadingState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* ReadingState+Extensions.swift */; };
-		76620A9E27AC7C51009094DC /* ReadingState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* ReadingState+Extensions.swift */; };
+		76620A9D27AC7C51009094DC /* RomeState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* RomeState+Extensions.swift */; };
+		76620A9E27AC7C51009094DC /* RomeState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* RomeState+Extensions.swift */; };
 		7679FF7927AF184F007911C9 /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
 		7679FF7A27AF184F007911C9 /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
 		7679FF7D27AF1850007911C9 /* AdapterToEphemeris.m in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */; };
@@ -248,7 +248,7 @@
 		764EF75F27ACA6E0008A15F1 /* mars-gemini.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-gemini.txt"; sourceTree = "<group>"; };
 		764EF76C27ACA897008A15F1 /* ReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
 		76620A9A27AC79D8009094DC /* AstroReadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroReadingModel.swift; sourceTree = "<group>"; };
-		76620A9C27AC7C51009094DC /* ReadingState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ReadingState+Extensions.swift"; sourceTree = "<group>"; };
+		76620A9C27AC7C51009094DC /* RomeState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RomeState+Extensions.swift"; sourceTree = "<group>"; };
 		7679FF7027AF184F007911C9 /* AstrobotInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstrobotInterface.swift; sourceTree = "<group>"; };
 		7679FF7427AF184F007911C9 /* AdapterToEphemeris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdapterToEphemeris.h; sourceTree = "<group>"; };
 		7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdapterToEphemeris.m; sourceTree = "<group>"; };
@@ -487,7 +487,7 @@
 		76620A9927AC7996009094DC /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				76620A9C27AC7C51009094DC /* ReadingState+Extensions.swift */,
+				76620A9C27AC7C51009094DC /* RomeState+Extensions.swift */,
 				7688E0AF27AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift */,
 			);
 			path = Extensions;
@@ -831,7 +831,7 @@
 				761DEE7F279B9EB200A71938 /* ContentView.swift in Sources */,
 				76620A9B27AC79D8009094DC /* AstroReadingModel.swift in Sources */,
 				760A35D027ACEA0700BCFE81 /* UIDevice+Extensions.swift in Sources */,
-				76620A9D27AC7C51009094DC /* ReadingState+Extensions.swift in Sources */,
+				76620A9D27AC7C51009094DC /* RomeState+Extensions.swift in Sources */,
 				7606E29727AB54E300C72FAB /* ChartView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -882,7 +882,7 @@
 				761DEEBE279B9EF900A71938 /* swepcalc.c in Sources */,
 				761DEECE279B9EF900A71938 /* swejpl.c in Sources */,
 				760A35D127ACEA0700BCFE81 /* UIDevice+Extensions.swift in Sources */,
-				76620A9E27AC7C51009094DC /* ReadingState+Extensions.swift in Sources */,
+				76620A9E27AC7C51009094DC /* RomeState+Extensions.swift in Sources */,
 				761DEE80279B9EB200A71938 /* ContentView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ReadingState {
+enum RoomState {
     case Entry
     case Chart
     case Names
@@ -23,5 +23,5 @@ protocol AstroReading {
 }
 
 protocol AstrobotReadingInterface: AstrobotBaseInterface  {
-    func getPlanet(type: Planets, time: Double)->ReadingState
+    func getPlanet(type: Planets, time: Double)->RoomState
 }

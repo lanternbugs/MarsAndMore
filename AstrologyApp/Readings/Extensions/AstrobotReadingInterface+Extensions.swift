@@ -8,7 +8,7 @@
 import Foundation
 
 extension AstrobotReadingInterface {
-    func getPlanet(type: Planets, time: Double)->ReadingState
+    func getPlanet(type: Planets, time: Double)->RoomState
     {
         let data = getPlanets(time: time)
         if let planets  =  data.planets as? [PlanetCell]
@@ -22,11 +22,11 @@ extension AstrobotReadingInterface {
                 }
             }
             if planet.count == 0 {
-                return ReadingState.Entry
+                return RoomState.Entry
             }
-            return ReadingState.Reading(planet: planet[0].planet, sign: planet[0].sign)
+            return RoomState.Reading(planet: planet[0].planet, sign: planet[0].sign)
         }
         
-        return ReadingState.Entry
+        return RoomState.Entry
     }
 }

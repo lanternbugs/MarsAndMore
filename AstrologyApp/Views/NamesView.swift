@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NamesView: View {
-    @Binding var state: ReadingState
+    @Binding var state: RoomState
     var body: some View {
         
             VStack {
@@ -50,7 +50,7 @@ struct NamesView: View {
 }
 
 struct NamesView_Previews: PreviewProvider {
-    @State static var state: ReadingState = .Chart
+    @State static var state: RoomState = .Chart
     static var previews: some View {
         NamesView(state: $state)
     }

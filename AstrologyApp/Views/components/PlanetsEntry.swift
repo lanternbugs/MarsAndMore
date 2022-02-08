@@ -9,7 +9,7 @@ import SwiftUI
 
 struct PlanetsEntry: View {
     let data: DisplayPlanetRow
-    @Binding var state: ReadingState
+    @Binding var state: RoomState
     
     var venusData: PlanetCell? {
         nil
@@ -61,7 +61,7 @@ extension PlanetsEntry {
 
 
 struct PlanetsEntry_Previews: PreviewProvider {
-    @State static var state: ReadingState = .Chart
+    @State static var state: RoomState = .Chart
     static var previews: some View {
         let row = DisplayPlanetRow(planets: [], id: 0)
         PlanetsEntry(data: row, state: $state)

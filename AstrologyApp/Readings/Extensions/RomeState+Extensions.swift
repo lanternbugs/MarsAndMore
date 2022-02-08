@@ -1,12 +1,12 @@
 //
-//  ReadingState+Extensions.swift
+//  RoomState+Extensions.swift
 //  MarsAndMore
 //
 //  Created by Michael Adams on 2/3/22.
 //
 
 import Foundation
-extension ReadingState: AstroReading {
+extension RoomState: AstroReading {
     func getReading()-> [ReadingEntry] {
         switch(self) {
         case .Reading(let planet, let sign):

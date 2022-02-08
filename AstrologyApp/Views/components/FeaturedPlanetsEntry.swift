@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct FeaturedPlanetsEntry: View {
-    @Binding var state: ReadingState
+    @Binding var state: RoomState
     let marsData: PlanetCell
     let venusData: PlanetCell
     var body: some View {
@@ -50,7 +50,7 @@ struct FeaturedPlanetsEntry: View {
 }
 
 struct FeaturedPlanetsEntry_Previews: PreviewProvider {
-    @State static var state: ReadingState = .Chart
+    @State static var state: RoomState = .Chart
     static var previews: some View {
         let mars = PlanetCell(type: PlanetFetchType.planets, planet: Planets.Mars, sign: Signs.Scorpio, degree: "0")
         let venus = PlanetCell(type: PlanetFetchType.planets, planet: Planets.Venus, sign: Signs.Scorpio, degree: "0")

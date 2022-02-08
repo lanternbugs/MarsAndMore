@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct DoneView: View {
-    @Binding var readingState: ReadingState
-    let newReadingState: ReadingState
+    @Binding var readingState: RoomState
+    let newReadingState: RoomState
     var body: some View {
         Button(action: {
             readingState = newReadingState
@@ -21,7 +21,7 @@ struct DoneView: View {
 }
 
 struct DoneView_Previews: PreviewProvider {
-    @State static var readingState:ReadingState = .Chart
+    @State static var readingState:RoomState = .Chart
     static var previews: some View {
         DoneView(readingState: $readingState, newReadingState: .Chart)
     }

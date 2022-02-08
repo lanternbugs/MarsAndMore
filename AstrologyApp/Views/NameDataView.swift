@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct NameDataView: View {
-    @Binding var state: ReadingState
+    @Binding var state: RoomState
     var body: some View {
         Button(action: {
             state = .Cities
@@ -20,7 +20,7 @@ struct NameDataView: View {
 }
 
 struct NameDataView_Previews: PreviewProvider {
-    @State static var state: ReadingState = .Cities
+    @State static var state: RoomState = .Cities
     static var previews: some View {
         NameDataView(state: $state)
     }
