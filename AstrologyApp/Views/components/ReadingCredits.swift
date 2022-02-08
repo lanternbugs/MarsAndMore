@@ -23,7 +23,12 @@ struct ReadingCreditsView: View {
 extension ReadingCreditsView {
     func openWikipediaLink()->Void {
         if let url = URL(string: "https://en.wikipedia.org/wiki/Evangeline_Adams") {
+#if os(iOS)
             UIApplication.shared.open(url)
+#elseif os(macOS)
+            
+#endif
+           
         }
     }
 }
