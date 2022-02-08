@@ -14,8 +14,13 @@ struct DoneView: View {
         Button(action: {
             readingState = newReadingState
         }) {
-            Text("Done").font(.title2)
-                .frame(maxWidth: .infinity, alignment: .leading)
+            HStack(alignment: .center) {
+                Text("<\(newReadingState.getName())")
+                    .font(.title2)
+                    .frame(minWidth: 20, alignment: .bottom).padding(0)
+                Spacer()
+            }.padding(.vertical)
+            
         }
     }
 }

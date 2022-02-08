@@ -7,6 +7,20 @@
 
 import Foundation
 extension RoomState: AstroReading {
+    func getName()->String {
+        switch(self) {
+        case.Entry:
+            return "Entry"
+        case .Chart:
+            return "Chart Room"
+        case .Cities:
+            return "Cities"
+        case .Names:
+            return "Add/Edit Name"
+        case .Reading:
+            return "Reading"
+        }
+    }
     func getReading()-> [ReadingEntry] {
         switch(self) {
         case .Reading(let planet, let sign):
