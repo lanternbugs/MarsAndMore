@@ -11,6 +11,7 @@ struct City: Codable {
     var country: String
     var latitude: String
     var longitude: String
+    var id: Int
 }
 
 struct CityInfo: Codable {
