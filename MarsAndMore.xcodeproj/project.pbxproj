@@ -72,8 +72,8 @@
 		762D4A6927AB986A00EA59E8 /* AstroButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6827AB986A00EA59E8 /* AstroButtons.swift */; };
 		763CFC0627B1E4C4004A73B8 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 763CFC0527B1E4C4004A73B8 /* cities.json */; };
 		763CFC0727B1E4C4004A73B8 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 763CFC0527B1E4C4004A73B8 /* cities.json */; };
-		763CFC0927B1E4E8004A73B8 /* BirthDateManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0827B1E4E8004A73B8 /* BirthDateManger.swift */; };
-		763CFC0A27B1E4E8004A73B8 /* BirthDateManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0827B1E4E8004A73B8 /* BirthDateManger.swift */; };
+		763CFC0927B1E4E8004A73B8 /* BirthDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0827B1E4E8004A73B8 /* BirthDataManger.swift */; };
+		763CFC0A27B1E4E8004A73B8 /* BirthDataManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0827B1E4E8004A73B8 /* BirthDataManger.swift */; };
 		763CFC0D27B1E535004A73B8 /* BirthDateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0C27B1E535004A73B8 /* BirthDateModels.swift */; };
 		763CFC0E27B1E535004A73B8 /* BirthDateModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0C27B1E535004A73B8 /* BirthDateModels.swift */; };
 		764EF76027ACA6E0008A15F1 /* mars-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75427ACA6E0008A15F1 /* mars-taurus.txt */; };
@@ -232,7 +232,7 @@
 		762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsEntry.swift; sourceTree = "<group>"; };
 		762D4A6827AB986A00EA59E8 /* AstroButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroButtons.swift; sourceTree = "<group>"; };
 		763CFC0527B1E4C4004A73B8 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
-		763CFC0827B1E4E8004A73B8 /* BirthDateManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDateManger.swift; sourceTree = "<group>"; };
+		763CFC0827B1E4E8004A73B8 /* BirthDataManger.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDataManger.swift; sourceTree = "<group>"; };
 		763CFC0C27B1E535004A73B8 /* BirthDateModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDateModels.swift; sourceTree = "<group>"; };
 		764EF75427ACA6E0008A15F1 /* mars-taurus.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-taurus.txt"; sourceTree = "<group>"; };
 		764EF75527ACA6E0008A15F1 /* mars-libra.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-libra.txt"; sourceTree = "<group>"; };
@@ -433,7 +433,7 @@
 			children = (
 				763CFC0B27B1E4FD004A73B8 /* Models */,
 				763CFC0427B1E4C4004A73B8 /* Data */,
-				763CFC0827B1E4E8004A73B8 /* BirthDateManger.swift */,
+				763CFC0827B1E4E8004A73B8 /* BirthDataManger.swift */,
 			);
 			path = BirthDateManger;
 			sourceTree = "<group>";
@@ -818,7 +818,7 @@
 				761DEE7D279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */,
 				7679FF7F27AF1850007911C9 /* AstrobotInterface+Extensions.swift in Sources */,
 				7617DAB927AFA9320064B98E /* Planets+Extensions.swift in Sources */,
-				763CFC0927B1E4E8004A73B8 /* BirthDateManger.swift in Sources */,
+				763CFC0927B1E4E8004A73B8 /* BirthDataManger.swift in Sources */,
 				761DEEC7279B9EF900A71938 /* swedate.c in Sources */,
 				761DEEB3279B9EF900A71938 /* swemmoon.c in Sources */,
 				761DEEBD279B9EF900A71938 /* swepcalc.c in Sources */,
@@ -869,7 +869,7 @@
 				761DEECA279B9EF900A71938 /* swemplan.c in Sources */,
 				7679FF8027AF1850007911C9 /* AstrobotInterface+Extensions.swift in Sources */,
 				7617DABA27AFA9320064B98E /* Planets+Extensions.swift in Sources */,
-				763CFC0A27B1E4E8004A73B8 /* BirthDateManger.swift in Sources */,
+				763CFC0A27B1E4E8004A73B8 /* BirthDataManger.swift in Sources */,
 				761DEE7C279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */,
 				761DEE82279B9EB200A71938 /* Persistence.swift in Sources */,
 				761DEE7E279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */,
