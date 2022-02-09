@@ -12,6 +12,10 @@
 */
 
 import Foundation
+enum BuildType: Error {
+    case birthData(data: BirthData)
+    case buildError(error: String)
+}
 struct City: Codable {
     var city: String
     var country: String
@@ -22,4 +26,13 @@ struct City: Codable {
 
 struct CityInfo: Codable {
     var cities: [City]
+}
+struct BirthDate {
+    let birthdate: Date
+    let exactTime: Bool
+}
+struct BirthData {
+    let name: String
+    let birthdate: BirthDate
+    let city: CityInfo
 }

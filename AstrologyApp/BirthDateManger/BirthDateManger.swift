@@ -12,8 +12,11 @@
 */
 
 import Foundation
-class BirthDateManager: ObservableObject {
+class BirthDataManager: ObservableObject {
+    @Published var birthDates = [BirthData]()
     @Published var cityInfo: CityInfo?
+    var builder = BirthDataBuilder()
+    
     init() {
         DispatchQueue.global().async { [weak self] in
             let decoder = JSONDecoder()
@@ -45,4 +48,21 @@ class BirthDateManager: ObservableObject {
         }
         return "none"
     }
+}
+
+struct BirthDataBuilder {
+    
+    
+    func addNameDate(_ name: String,  birthdate: BirthDate) {
+        
+    }
+    
+    func addCity(_ city: CityInfo) {
+        
+    }
+    
+    func build()->BuildType {
+        return .buildError(error: "no data")
+    }
+    
 }
