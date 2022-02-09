@@ -15,12 +15,42 @@ import SwiftUI
 
 struct NameDataView: View {
     @Binding var state: RoomState
+    @State var name = ""
+    @State var exactTime = false
+    @State private var birthdate = Date(timeIntervalSince1970: 0)
+    @ViewBuilder
     var body: some View {
-        Button(action: {
-            state = .Cities
-        }) {
-            Text("Cities").font(.title2)
-                .frame(maxWidth: .infinity, alignment: .leading)
+        VStack {
+            HStack {
+                Text("Input Name:").font(.headline)
+                TextField("Name", text: $name)
+            }
+            if !exactTime {
+                DatePicker(
+                  "Birthdate",
+                  selection: $birthdate,
+                  displayedComponents: .date
+                ).datePickerStyle(DefaultDatePickerStyle())
+            } else {
+                DatePicker(
+                  "Birthdate",
+                  selection: $birthdate,
+                  displayedComponents: [.date, .hourAndMinute]
+                ).datePickerStyle(DefaultDatePickerStyle())
+            }
+            Toggle("Exact Time", isOn: $exactTime)
+            if exactTime {
+                Text("Local time used. Adjust time as needed.").font(.headline)
+                HStack {
+                    Text("Add a birth city to calculate Acendent").font(.subheadline)
+                    Button(action: {
+                        state = .Cities
+                    }) {
+                        Text("+City")
+                    }
+                }
+            }
+            Spacer()
         }
     }
 }
