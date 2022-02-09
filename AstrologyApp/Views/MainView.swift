@@ -23,22 +23,10 @@ struct MainView: View {
                     .tabItem {
                         Text("Mars Room")
                     }
-                    
-                    .onAppear() {
-#if os(iOS)
-                        currentTab = 0
-#endif
-                    }
                     .tag(0)
                 ChartRoom()
                     .tabItem {
                     Text("Chart Room")
-                }
-                
-                .onAppear() {
-#if os(iOS)
-                    currentTab = 1
-#endif
                 }
                 .tag(1)
             }
