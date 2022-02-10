@@ -27,12 +27,19 @@ struct City: Codable {
 struct CityInfo: Codable {
     var cities: [City]
 }
-struct BirthDate {
-    let birthdate: Date
+struct CalendarDate {
+    let birthDate: Date
     let exactTime: Bool
+}
+struct BirthDate {
+    let year: Int
+    let month: Int
+    let day: Int
 }
 struct BirthData {
     let name: String
-    let birthdate: BirthDate
+    let birthDate: BirthDate
+    let birthTime: Date?
     let city: CityInfo?
+    
 }

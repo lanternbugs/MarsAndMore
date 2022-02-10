@@ -53,7 +53,8 @@ class BirthDataManager: ObservableObject {
 struct BirthDataBuilder {
     
     
-    func addNameDate(_ name: String,  birthdate: BirthDate) {
+    func addNameDate(_ name: String,  birthdate: CalendarDate
+    ) {
         
     }
     
