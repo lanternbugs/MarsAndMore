@@ -34,5 +34,5 @@ struct BirthDate {
 struct BirthData {
     let name: String
     let birthdate: BirthDate
-    let city: CityInfo
+    let city: CityInfo?
 }
