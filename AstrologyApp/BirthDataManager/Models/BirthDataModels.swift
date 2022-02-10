@@ -36,10 +36,14 @@ struct BirthDate {
     let month: Int
     let day: Int
 }
+struct LocationData {
+    let latitude: String
+    let longitude: String
+}
 struct BirthData {
     let name: String
     let birthDate: BirthDate
     let birthTime: Date?
-    let city: City?
+    let location: LocationData?
     
 }
