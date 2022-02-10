@@ -17,7 +17,7 @@ enum BuildType: Error {
     case buildError(error: String)
 }
 struct City: Codable {
-    var city: String
+    var name: String
     var country: String
     var latitude: String
     var longitude: String
@@ -40,6 +40,6 @@ struct BirthData {
     let name: String
     let birthDate: BirthDate
     let birthTime: Date?
-    let city: CityInfo?
+    let city: City?
     
 }
