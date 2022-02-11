@@ -16,12 +16,16 @@ enum BuildType: Error {
     case birthData(data: BirthData)
     case buildError(error: String)
 }
+
 struct City: Codable {
     var name: String
     var country: String
     var latitude: String
     var longitude: String
     var id: Int
+    enum CodingKeys: String, CodingKey {
+        case name = "city", country, latitude, longitude, id
+    }
 }
 
 struct CityInfo: Codable {
