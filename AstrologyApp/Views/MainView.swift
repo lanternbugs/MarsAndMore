@@ -25,7 +25,7 @@ struct MainView: View {
                         Text("Mars Room")
                     }
                     .tag(0)
-                ChartRoom()
+                ChartTab()
                     .tabItem {
                     Text("Chart Room")
                     }
