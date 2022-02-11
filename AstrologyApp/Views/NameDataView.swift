@@ -14,10 +14,11 @@
 import SwiftUI
 
 struct NameDataView: View {
+    @EnvironmentObject private var manager: BirthDataManager
     @Binding var state: RoomState
-    @State var name = ""
-    @State var exactTime = false
-    @State private var birthdate = Date(timeIntervalSince1970: 0)
+    @Binding var name: String
+    @Binding var birthdate: Date
+    @Binding var exactTime: Bool
     @ViewBuilder
     var body: some View {
         VStack {
@@ -50,6 +51,14 @@ struct NameDataView: View {
                     }
                 }
             }
+            if exactTime  {
+                if let city = manager.builder.cityData {
+                    HStack {
+                        Text("\(city.name)").padding()
+                        Spacer()
+                    }
+                }
+            }
             Spacer()
         }
     }
@@ -57,7 +66,10 @@ struct NameDataView: View {
 
 struct NameDataView_Previews: PreviewProvider {
     @State static var state: RoomState = .Cities
+    @State static var name: String = "Tom"
+    @State static var date: Date = Date()
+    @State static var exactTime: Bool = false
     static var previews: some View {
-        NameDataView(state: $state)
+        NameDataView(state: $state, name: $name, birthdate: $date, exactTime: $exactTime)
     }
 }

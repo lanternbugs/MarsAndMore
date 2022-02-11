@@ -14,10 +14,11 @@
 import SwiftUI
 
 struct CitiesView: View {
-    @EnvironmentObject var citiesData:BirthDataManager
+    @EnvironmentObject var manager:BirthDataManager
     @State private var city = ""
+    @Binding var state: RoomState
     var displayCities: [City] {
-        if let  cities = citiesData.cityInfo?.cities
+        if let  cities = manager.cityInfo?.cities
         {
             let data = cities.filter {
                 if cities.isEmpty {
@@ -43,7 +44,12 @@ struct CitiesView: View {
                     Spacer()
                     Text("\(city.country)").frame(maxWidth: .infinity, alignment: .leading)
                     Spacer()
-                }
+                }.gesture(TapGesture().onEnded {
+                    withAnimation(.easeIn, {
+                        manager.builder.addCity(city)
+                        state = .Names
+                    })}
+                )
             }
         }
         
@@ -51,7 +57,8 @@ struct CitiesView: View {
 }
 
 struct CitiesView_Previews: PreviewProvider {
+    @State static var roomState: RoomState = .Cities
     static var previews: some View {
-        CitiesView()
+        CitiesView(state: $roomState)
     }
 }
