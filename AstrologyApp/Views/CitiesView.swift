@@ -14,7 +14,7 @@
 import SwiftUI
 
 struct CitiesView: View {
-    @ObservedObject var citiesData = BirthDateManager()
+    @EnvironmentObject var citiesData:BirthDataManager
     @State private var city = ""
     var displayCities: [City] {
         if let  cities = citiesData.cityInfo?.cities
@@ -23,7 +23,7 @@ struct CitiesView: View {
                 if cities.isEmpty {
                     return true
                 }
-                return $0.city.lowercased().hasPrefix(city.lowercased())
+                return $0.name.lowercased().hasPrefix(city.lowercased())
             }
             return data
         }
@@ -39,7 +39,7 @@ struct CitiesView: View {
                 city in
                 HStack {
                     Spacer()
-                    Text("\(city.city)").frame(maxWidth: .infinity, alignment: .leading)
+                    Text("\(city.name)").frame(maxWidth: .infinity, alignment: .leading)
                     Spacer()
                     Text("\(city.country)").frame(maxWidth: .infinity, alignment: .leading)
                     Spacer()

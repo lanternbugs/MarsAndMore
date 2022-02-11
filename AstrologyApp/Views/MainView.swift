@@ -16,6 +16,7 @@ import SwiftUI
 struct MainView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("currentTab") private var currentTab: Int = 0
+    @StateObject var birthDataManager = BirthDataManager()
     var body: some View {
         VStack {
             TabView(selection: $currentTab) {
@@ -27,12 +28,14 @@ struct MainView: View {
                 ChartRoom()
                     .tabItem {
                     Text("Chart Room")
-                }
+                    }
                 .tag(1)
+                .environmentObject(birthDataManager)
             }
         }
     }
 }
+
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
