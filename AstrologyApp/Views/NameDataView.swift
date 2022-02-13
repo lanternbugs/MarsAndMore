@@ -19,6 +19,7 @@ struct NameDataView: View {
     @Binding var name: String
     @Binding var birthdate: Date
     @Binding var exactTime: Bool
+    @State var birthDataError: String?
     @ViewBuilder
     var body: some View {
         VStack {
@@ -59,7 +60,40 @@ struct NameDataView: View {
                     }
                 }
             }
+            if let error = birthDataError {
+                HStack {
+                    Text(error)
+                    Spacer()
+                }
+            }
+            
+            Button(action: {
+                submitBirthData()
+            }) {
+                Text("Submit Birth Data")
+            }
+            
             Spacer()
+        }
+    }
+}
+
+extension NameDataView {
+    func submitBirthData()->Void {
+        manager.builder.addNameDate(name, birthdate: CalendarDate(birthDate: birthdate, exactTime: exactTime))
+        do {
+            let birthData = try manager.builder.build()
+            manager.birthDates.append(birthData)
+            name = ""
+            state = .Chart
+        } catch BuildErrors.NoName(let mes) {
+            birthDataError = mes
+        } catch BuildErrors.DuplicateName(let mes) {
+            birthDataError = mes
+        } catch BuildErrors.MissingDependency(let mes) {
+            birthDataError = mes
+        } catch {
+            birthDataError = "there was an unknown error"
         }
     }
 }

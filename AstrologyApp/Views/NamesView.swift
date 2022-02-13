@@ -15,6 +15,7 @@ import SwiftUI
 
 struct NamesView: View {
     @Binding var state: RoomState
+    @EnvironmentObject var manager: BirthDataManager
     var body: some View {
         
             VStack {
@@ -34,6 +35,10 @@ struct NamesView: View {
                 VStack() {
                     Text("Time Now").padding(0).lineLimit(1)
                         .frame(maxWidth: .infinity, alignment: .leading)
+                    ForEach(manager.birthDates, id: \.id) {
+                        nameDateInfo in
+                        Text(nameDateInfo.name)
+                    }
                     
                     
                 }
