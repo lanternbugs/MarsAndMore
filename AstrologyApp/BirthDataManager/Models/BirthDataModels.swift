@@ -12,9 +12,10 @@
 */
 
 import Foundation
-enum BuildType: Error {
-    case birthData(data: BirthData)
-    case buildError(error: String)
+enum BuildErrors: Error {
+    case NoName(mess: String)
+    case DuplicateName(mess: String)
+    case MissingDependency(mess: String)
 }
 
 struct City: Codable {
@@ -49,5 +50,11 @@ struct BirthData {
     let birthDate: BirthDate
     let birthTime: Date?
     let location: LocationData?
+    let id: Int
     
+}
+
+protocol ManagerBuilderInterface: AnyObject {
+    func checkIfNameExist(_ name: String)->Bool
+    func getNextId()->Int
 }
