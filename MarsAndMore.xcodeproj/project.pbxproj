@@ -323,7 +323,7 @@
 		761DEE4A279B9EB000A71938 = {
 			isa = PBXGroup;
 			children = (
-				761DEE4F279B9EB100A71938 /* AstrologyApp */,
+				761DEE4F279B9EB100A71938 /* AstroApp */,
 				761DEE61279B9EB200A71938 /* macOS */,
 				761DEE6A279B9EB200A71938 /* Tests iOS */,
 				761DEE76279B9EB200A71938 /* Tests macOS */,
@@ -331,7 +331,7 @@
 			);
 			sourceTree = "<group>";
 		};
-		761DEE4F279B9EB100A71938 /* AstrologyApp */ = {
+		761DEE4F279B9EB100A71938 /* AstroApp */ = {
 			isa = PBXGroup;
 			children = (
 				763CFC0327B1E4C4004A73B8 /* BirthDataManager */,
@@ -345,7 +345,7 @@
 				761DEE50279B9EB100A71938 /* MarsAndMore.xcdatamodeld */,
 				761DEE93279B9EF900A71938 /* MarsAndMore-Bridging-Header.h */,
 			);
-			path = AstrologyApp;
+			path = AstroApp;
 			sourceTree = "<group>";
 		};
 		761DEE5B279B9EB200A71938 /* Products */ = {
