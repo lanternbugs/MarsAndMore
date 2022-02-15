@@ -37,9 +37,9 @@ struct CalendarDate {
     let exactTime: Bool
 }
 struct BirthDate {
-    let year: Int
-    let month: Int
-    let day: Int
+    let year: Int32
+    let month: Int32
+    let day: Int32
 }
 struct LocationData {
     let latitude: String

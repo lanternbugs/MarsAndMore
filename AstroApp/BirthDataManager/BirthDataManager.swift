@@ -15,6 +15,7 @@ import Foundation
 class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var birthDates = [BirthData]()
     @Published var cityInfo: CityInfo?
+    @Published var selectedName: Int?
     let builder = BirthDataBuilder()
     
     init() {
@@ -109,7 +110,7 @@ class BirthDataBuilder {
         let month = formatter.string(from: date.birthDate)
        formatter.dateFormat = "dd"
         let day = formatter.string(from: date.birthDate)
-        guard let y = Int(year), let m = Int(month), let d = Int(day) else {
+        guard let y = Int32(year), let m = Int32(month), let d = Int32(day) else {
             throw BuildErrors.MissingDependency(mess: genericError)
         }
         let id = manager.getNextId()

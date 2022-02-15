@@ -33,11 +33,28 @@ struct NamesView: View {
                        .padding([.top, .bottom], 3)
                 ScrollView {
                 VStack() {
-                    Text("Time Now").padding(0).lineLimit(1)
-                        .frame(maxWidth: .infinity, alignment: .leading)
+                    if manager.selectedName == nil{
+                        Text("Time Now").padding(0).lineLimit(1)
+                            .frame(maxWidth: .infinity, alignment: .leading).foregroundColor(Color.black)
+                            .background(Color.green)
+                    } else {
+                        Text("Time Now").padding(0).lineLimit(1)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
                     ForEach(manager.birthDates, id: \.id) {
                         nameDateInfo in
-                        Text(nameDateInfo.name)
+                        if manager.selectedName == nameDateInfo.id {
+                            Text(nameDateInfo.name).foregroundColor(Color.black)
+                                .background(Color.green)
+                                .gesture(TapGesture().onEnded({
+                                tappedName(with: nameDateInfo.id)
+                            }))
+                        } else {
+                            Text(nameDateInfo.name).gesture(TapGesture().onEnded({
+                                tappedName(with: nameDateInfo.id)
+                            }))
+                        }
+                        
                     }
                     
                     
@@ -55,10 +72,23 @@ struct NamesView: View {
         
     }
     
+}
+
+extension NamesView {
+    func tappedName(with id: Int)->Void {
+        if let currentSelection = manager.selectedName  {
+            manager.selectedName = currentSelection == id ? nil : id
+        } else {
+            manager.selectedName = id
+
+        }
+    }
+    
     func addName() {
         state = .Names
     }
 }
+
 
 struct NamesView_Previews: PreviewProvider {
     @State static var state: RoomState = .Chart

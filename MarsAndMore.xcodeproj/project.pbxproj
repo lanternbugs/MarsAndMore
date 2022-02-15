@@ -92,6 +92,8 @@
 		764EF76B27ACA6E0008A15F1 /* mars-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75F27ACA6E0008A15F1 /* mars-gemini.txt */; };
 		764EF76D27ACA897008A15F1 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EF76C27ACA897008A15F1 /* ReadingView.swift */; };
 		764EF76E27ACA897008A15F1 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EF76C27ACA897008A15F1 /* ReadingView.swift */; };
+		765D83C827BAFBDC00EE1CD9 /* BirthData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */; };
+		765D83C927BAFBDC00EE1CD9 /* BirthData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */; };
 		76620A9B27AC79D8009094DC /* AstroReadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9A27AC79D8009094DC /* AstroReadingModel.swift */; };
 		76620A9D27AC7C51009094DC /* RoomState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */; };
 		76620A9E27AC7C51009094DC /* RoomState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */; };
@@ -250,6 +252,7 @@
 		764EF75E27ACA6E0008A15F1 /* mars-scorpio.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-scorpio.txt"; sourceTree = "<group>"; };
 		764EF75F27ACA6E0008A15F1 /* mars-gemini.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-gemini.txt"; sourceTree = "<group>"; };
 		764EF76C27ACA897008A15F1 /* ReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
+		765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirthData+Extensions.swift"; sourceTree = "<group>"; };
 		76620A9A27AC79D8009094DC /* AstroReadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroReadingModel.swift; sourceTree = "<group>"; };
 		76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomState+Extensions.swift"; sourceTree = "<group>"; };
 		7679FF7027AF184F007911C9 /* AstrobotInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstrobotInterface.swift; sourceTree = "<group>"; };
@@ -552,6 +555,7 @@
 				76EBE03527AF9ED20010CB62 /* String+Extensions.swift */,
 				7617DAB227AFA6530064B98E /* Signs+Extensions.swift */,
 				7617DAB827AFA9320064B98E /* Planets+Extensions.swift */,
+				765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -822,6 +826,7 @@
 				761DEE7D279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */,
 				7679FF7F27AF1850007911C9 /* AstrobotInterface+Extensions.swift in Sources */,
 				7635723727B6FC7D00C2E5A6 /* ChartTab.swift in Sources */,
+				765D83C827BAFBDC00EE1CD9 /* BirthData+Extensions.swift in Sources */,
 				7617DAB927AFA9320064B98E /* Planets+Extensions.swift in Sources */,
 				763CFC0927B1E4E8004A73B8 /* BirthDataManager.swift in Sources */,
 				761DEEC7279B9EF900A71938 /* swedate.c in Sources */,
@@ -874,6 +879,7 @@
 				761DEECA279B9EF900A71938 /* swemplan.c in Sources */,
 				7679FF8027AF1850007911C9 /* AstrobotInterface+Extensions.swift in Sources */,
 				7635723827B6FC7D00C2E5A6 /* ChartTab.swift in Sources */,
+				765D83C927BAFBDC00EE1CD9 /* BirthData+Extensions.swift in Sources */,
 				7617DABA27AFA9320064B98E /* Planets+Extensions.swift in Sources */,
 				763CFC0A27B1E4E8004A73B8 /* BirthDataManager.swift in Sources */,
 				761DEE7C279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */,
@@ -1064,7 +1070,7 @@
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "AstrologyApp/MarsAndMore-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AstroApp/MarsAndMore-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1097,7 +1103,7 @@
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "AstrologyApp/MarsAndMore-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AstroApp/MarsAndMore-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
