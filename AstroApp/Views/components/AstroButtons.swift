@@ -15,7 +15,7 @@ import SwiftUI
 
 struct AstroButtons: View, AstrobotInterface {
     
-    
+    @EnvironmentObject private var manager: BirthDataManager
     @Binding var data: [DisplayPlanetRow]
     var body: some View {
         HStack(alignment: .top) {
@@ -38,7 +38,7 @@ struct AstroButtons: View, AstrobotInterface {
 extension AstroButtons {
     func planets()
     {
-        let row = getPlanets(time: Date().getAstroTime())
+        let row = getPlanets(time: getTime())
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count)
         data.append(displayRow)
     }
@@ -50,6 +50,19 @@ extension AstroButtons {
     func transits()
     {
         
+    }
+    
+    func getTime()->Double {
+        if let index = manager.selectedName {
+            let data = manager.birthDates.first {
+                $0.id == index
+            }
+            guard let data = data else {
+                return Date().getAstroTime()
+            }
+            return data.getAstroTime()
+        }
+        return Date().getAstroTime()
     }
 }
 struct AstroButtons_Previews: PreviewProvider {
