@@ -38,4 +38,21 @@ extension Planets {
     
         }
     }
+    
+    func getNatalOrb()->Double
+    {
+        switch(self) {
+        case .Sun, .Moon:
+            return 8.0
+        case .Mars, .Venus, .Mercury:
+            return 6.0
+        default:
+            return 5.0
+        }
+    }
+    
+    func getTransitOrb()->Double
+    {
+        return 1.0
+    }
 }

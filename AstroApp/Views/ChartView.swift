@@ -27,7 +27,12 @@ struct ChartView: View {
                     LazyVStack {
                         ForEach($data, id:\.id)
                         { $planetRow in
-                            PlanetsEntry(data: planetRow, state: $state)
+                            if planetRow.planets.first is TransitCell {
+                                AspectsEntry(data: planetRow)
+                            } else {
+                                PlanetsEntry(data: planetRow, state: $state)
+                            }
+                            
                         }
                     }
                 }

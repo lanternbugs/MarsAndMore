@@ -45,13 +45,17 @@ extension AstroButtons {
     
     func aspects()
     {
-        
+        getAspectTransitData(type: .Aspects)
     }
     func transits()
     {
-        
+        getAspectTransitData(type: .Transits)
     }
-    
+    func getAspectTransitData(type: PlanetFetchType) {
+        let row = getAspects(time: getTime(), type: type)
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count)
+        data.append(displayRow)
+    }
     func getTime()->Double {
         if let index = manager.selectedName {
             let data = manager.birthDates.first {

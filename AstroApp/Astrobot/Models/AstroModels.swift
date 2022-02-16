@@ -21,8 +21,17 @@ enum Signs: Int {
     Aquarius, Pisces, None
 }
 
+enum Aspects: Double, CaseIterable {
+    case Trine = 120, Conjunction = 0, Sextile = 60, Square = 90, Opposition = 180
+}
+
 enum PlanetFetchType {
-    case planets, aspects, transits
+    case Planets, Aspects, Transits
+}
+
+struct TransitingPlanet {
+    let planet: Planets
+    let degree: Double
 }
 
 struct PlanetCell: AstroRowCell {
@@ -33,12 +42,21 @@ struct PlanetCell: AstroRowCell {
     
     
 }
+
+struct TransitCell: AstroRowCell {
+    let type: PlanetFetchType
+    let planet: Planets
+    let planet2: Planets
+    let degree: String
+    let aspect: Aspects
+}
+
 struct PlanetRow {
     var planets = Array<AstroRowCell>()
 }
 
 struct DisplayPlanetRow {
-    let planets: [AstroRowCell]
+    var planets: [AstroRowCell]
     let id: Int
     
 }

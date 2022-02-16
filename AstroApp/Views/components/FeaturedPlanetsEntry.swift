@@ -58,8 +58,8 @@ struct FeaturedPlanetsEntry: View {
 struct FeaturedPlanetsEntry_Previews: PreviewProvider {
     @State static var state: RoomState = .Chart
     static var previews: some View {
-        let mars = PlanetCell(type: PlanetFetchType.planets, planet: Planets.Mars, sign: Signs.Scorpio, degree: "0")
-        let venus = PlanetCell(type: PlanetFetchType.planets, planet: Planets.Venus, sign: Signs.Scorpio, degree: "0")
+        let mars = PlanetCell(type: PlanetFetchType.Planets, planet: Planets.Mars, sign: Signs.Scorpio, degree: "0")
+        let venus = PlanetCell(type: PlanetFetchType.Planets, planet: Planets.Venus, sign: Signs.Scorpio, degree: "0")
         FeaturedPlanetsEntry(state: $state, marsData: mars, venusData: venus)
     }
 }

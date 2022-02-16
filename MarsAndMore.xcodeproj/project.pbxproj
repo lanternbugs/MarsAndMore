@@ -72,6 +72,10 @@
 		762D4A6927AB986A00EA59E8 /* AstroButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6827AB986A00EA59E8 /* AstroButtons.swift */; };
 		7635723727B6FC7D00C2E5A6 /* ChartTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7635723627B6FC7D00C2E5A6 /* ChartTab.swift */; };
 		7635723827B6FC7D00C2E5A6 /* ChartTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7635723627B6FC7D00C2E5A6 /* ChartTab.swift */; };
+		763B3F9D27BDB00C007A2690 /* AspectsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B3F9C27BDB00C007A2690 /* AspectsEntry.swift */; };
+		763B3F9E27BDB00C007A2690 /* AspectsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B3F9C27BDB00C007A2690 /* AspectsEntry.swift */; };
+		763B3FA027BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B3F9F27BDB2BA007A2690 /* Aspects+Extensions.swift */; };
+		763B3FA127BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B3F9F27BDB2BA007A2690 /* Aspects+Extensions.swift */; };
 		763CFC0627B1E4C4004A73B8 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 763CFC0527B1E4C4004A73B8 /* cities.json */; };
 		763CFC0727B1E4C4004A73B8 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 763CFC0527B1E4C4004A73B8 /* cities.json */; };
 		763CFC0927B1E4E8004A73B8 /* BirthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0827B1E4E8004A73B8 /* BirthDataManager.swift */; };
@@ -236,6 +240,8 @@
 		762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsEntry.swift; sourceTree = "<group>"; };
 		762D4A6827AB986A00EA59E8 /* AstroButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroButtons.swift; sourceTree = "<group>"; };
 		7635723627B6FC7D00C2E5A6 /* ChartTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTab.swift; sourceTree = "<group>"; };
+		763B3F9C27BDB00C007A2690 /* AspectsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectsEntry.swift; sourceTree = "<group>"; };
+		763B3F9F27BDB2BA007A2690 /* Aspects+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Aspects+Extensions.swift"; sourceTree = "<group>"; };
 		763CFC0527B1E4C4004A73B8 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		763CFC0827B1E4E8004A73B8 /* BirthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDataManager.swift; sourceTree = "<group>"; };
 		763CFC0C27B1E535004A73B8 /* BirthDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDataModels.swift; sourceTree = "<group>"; };
@@ -425,6 +431,7 @@
 			isa = PBXGroup;
 			children = (
 				762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */,
+				763B3F9C27BDB00C007A2690 /* AspectsEntry.swift */,
 				76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */,
 				762D4A6827AB986A00EA59E8 /* AstroButtons.swift */,
 				76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */,
@@ -556,6 +563,7 @@
 				7617DAB227AFA6530064B98E /* Signs+Extensions.swift */,
 				7617DAB827AFA9320064B98E /* Planets+Extensions.swift */,
 				765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */,
+				763B3F9F27BDB2BA007A2690 /* Aspects+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -798,6 +806,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7606E27B27AB159600C72FAB /* MainView.swift in Sources */,
+				763B3FA027BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */,
 				7617DAB627AFA8A70064B98E /* AstroModels.swift in Sources */,
 				76860B9227B2264D00533BD2 /* DoneView.swift in Sources */,
 				761DEEC1279B9EF900A71938 /* swehouse.c in Sources */,
@@ -813,6 +822,7 @@
 				7606E28127AB18A900C72FAB /* MarsRoom.swift in Sources */,
 				7679FF8127AF1850007911C9 /* Double+Extensions.swift in Sources */,
 				7606E28427AB18BF00C72FAB /* ChartRoom.swift in Sources */,
+				763B3F9D27BDB00C007A2690 /* AspectsEntry.swift in Sources */,
 				7688E0B027AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift in Sources */,
 				7679FF7D27AF1850007911C9 /* AdapterToEphemeris.m in Sources */,
 				7679FF7927AF184F007911C9 /* AstrobotInterface.swift in Sources */,
@@ -851,6 +861,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				76BEF3F927ACB1E2001C9AD0 /* PlanetsEntry.swift in Sources */,
+				763B3FA127BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */,
 				7617DAB727AFA8A70064B98E /* AstroModels.swift in Sources */,
 				76860B9327B2264D00533BD2 /* DoneView.swift in Sources */,
 				76BEF3F727ACB0EF001C9AD0 /* AstroReadingModel.swift in Sources */,
@@ -866,6 +877,7 @@
 				761DEEC4279B9EF900A71938 /* swecl.c in Sources */,
 				7679FF8227AF1850007911C9 /* Double+Extensions.swift in Sources */,
 				7606E29827AB54E300C72FAB /* ChartView.swift in Sources */,
+				763B3F9E27BDB00C007A2690 /* AspectsEntry.swift in Sources */,
 				7688E0B127AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift in Sources */,
 				7679FF7E27AF1850007911C9 /* AdapterToEphemeris.m in Sources */,
 				7679FF7A27AF184F007911C9 /* AstrobotInterface.swift in Sources */,

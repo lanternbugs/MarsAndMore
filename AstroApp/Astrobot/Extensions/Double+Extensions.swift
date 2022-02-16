@@ -41,4 +41,14 @@ extension Double {
         
         return "\(num)° \(minute)'"
     }
+    
+    func getTransitDegree(with degree2: Double, for aspect: Aspects)->String
+    {
+        var degree = abs(self - degree2)
+        if degree > 180 {
+            degree = 360 - degree
+        }
+        return abs(aspect.rawValue - degree).getAstroDegree()
+    }
+    
 }
