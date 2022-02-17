@@ -16,7 +16,7 @@ import SwiftUI
 struct MainView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("currentTab") private var currentTab: Int = 0
-    @StateObject var birthDataManager = BirthDataManager()
+    @StateObject private var birthDataManager = BirthDataManager()
     var body: some View {
         VStack {
             TabView(selection: $currentTab) {

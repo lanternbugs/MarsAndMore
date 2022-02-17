@@ -9,9 +9,10 @@ import SwiftUI
 
 struct ChartTab: View {
     @State private var roomState: RoomState = .Chart
-    @State var name: String = ""
-    @State var date: Date = Date(timeIntervalSince1970: 0)
-    @State var exactTime: Bool = false
+    @State private var name: String = ""
+    @State private var date: Date = Date(timeIntervalSince1970: 0)
+    @State private var exactTime: Bool = false
+    @State private var data: [DisplayPlanetRow] = Array<DisplayPlanetRow>()
     @ViewBuilder
     var body: some View {
         switch(roomState) {
@@ -35,7 +36,7 @@ struct ChartTab: View {
             }
             
         default:
-            ChartRoom(readingState: $roomState)
+            ChartRoom(readingState: $roomState, planetData: $data)
             
         }
     }

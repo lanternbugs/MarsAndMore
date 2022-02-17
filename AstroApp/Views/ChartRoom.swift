@@ -15,7 +15,7 @@ import SwiftUI
 
 struct ChartRoom: View {
     @Binding var readingState: RoomState
-    @State private var planetData: [DisplayPlanetRow] = Array<DisplayPlanetRow>()
+    @Binding var planetData: [DisplayPlanetRow]
     
     var body: some View {
         HStack {
@@ -36,7 +36,8 @@ struct ChartRoom: View {
 
 struct ChartRoom_Previews: PreviewProvider {
     @State static var state: RoomState = .Chart
+    @State static var data: [DisplayPlanetRow] = Array<DisplayPlanetRow>()
     static var previews: some View {
-        ChartRoom(readingState: $state)
+        ChartRoom(readingState: $state, planetData: $data)
     }
 }
