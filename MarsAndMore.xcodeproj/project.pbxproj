@@ -1146,7 +1146,7 @@
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "AstrologyApp/MarsAndMore-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AstroApp/MarsAndMore-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 			};
@@ -1176,7 +1176,7 @@
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = macosx;
 				SWIFT_EMIT_LOC_STRINGS = YES;
-				SWIFT_OBJC_BRIDGING_HEADER = "AstrologyApp/MarsAndMore-Bridging-Header.h";
+				SWIFT_OBJC_BRIDGING_HEADER = "AstroApp/MarsAndMore-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
