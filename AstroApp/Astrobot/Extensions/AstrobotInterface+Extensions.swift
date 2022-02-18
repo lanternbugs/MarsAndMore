@@ -17,18 +17,33 @@ extension AstrobotBaseInterface {
     {
         var row = PlanetRow()
         let adapter = AdapterToEphemeris()
+        let interval: Double = 0.2
         for type in Planets.allCases
         {
             let val = adapter.getPlanetDegree(time, Int32(type.rawValue))
-            row.planets.append(getPlanetData(type, degree: Double(val)))
+            let pastVal = adapter.getPlanetDegree(time - interval, Int32(type.rawValue))
+            let retro = checkRetrograde(val: val, past: pastVal)
+            row.planets.append(getPlanetData(type, degree: Double(val), retrograde: retro))
         }
         return row
     }
     
-    func getPlanetData(_ type: Planets, degree: Double) ->PlanetCell
+    func getPlanetData(_ type: Planets, degree: Double, retrograde: Bool) ->PlanetCell
     {
         
-        return  PlanetCell(type: PlanetFetchType.Planets, planet: type, sign: degree.getAstroSign(), degree: degree.getAstroDegree())
+        return  PlanetCell(type: PlanetFetchType.Planets, planet: type, sign: degree.getAstroSign(), degree: degree.getAstroDegree(), retrograde: retrograde)
+    }
+    
+    func checkRetrograde(val: Double, past: Double)->Bool
+    {
+        let duration  = val - past
+        if duration > 180 {
+            return true // this much it wrapped, aries to pisces
+        }
+        else if duration < 0 {
+            return true
+        }
+        return false
     }
 }
 

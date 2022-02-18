@@ -46,7 +46,8 @@ extension PlanetsEntry {
     func rowFromPlanets(row: [PlanetCell])->String {
         var rowString = ""
         for val in row {
-            rowString += val.planet.getName() + " " + val.degree + " " + val.sign.getNameShort() + " "
+            rowString += val.planet.getName() + " " + val.degree + " " + val.sign.getNameShort()
+            rowString += val.retrograde ? " R " : " "
         }
         return rowString
     }

@@ -39,6 +39,7 @@ struct PlanetCell: AstroRowCell {
     let planet: Planets
     let sign: Signs
     let degree: String
+    let retrograde: Bool
     
     
 }

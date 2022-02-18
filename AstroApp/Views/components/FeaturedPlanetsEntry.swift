@@ -35,6 +35,9 @@ struct FeaturedPlanetsEntry: View {
             Text(" \(marsData.sign.getName())")
 #endif
             
+            if marsData.retrograde {
+                Text(" R ")
+            }
             
             Button(action: {
                 state = .Reading(planet: venusData.planet, sign: venusData.sign)
@@ -48,6 +51,9 @@ struct FeaturedPlanetsEntry: View {
 #else
             Text(" \(venusData.sign.getName())")
 #endif
+            if venusData.retrograde {
+                Text(" R ")
+            }
 #if os(macOS)
             Spacer()
 #endif
@@ -58,8 +64,8 @@ struct FeaturedPlanetsEntry: View {
 struct FeaturedPlanetsEntry_Previews: PreviewProvider {
     @State static var state: RoomState = .Chart
     static var previews: some View {
-        let mars = PlanetCell(type: PlanetFetchType.Planets, planet: Planets.Mars, sign: Signs.Scorpio, degree: "0")
-        let venus = PlanetCell(type: PlanetFetchType.Planets, planet: Planets.Venus, sign: Signs.Scorpio, degree: "0")
+        let mars = PlanetCell(type: PlanetFetchType.Planets, planet: Planets.Mars, sign: Signs.Scorpio, degree: "0", retrograde: false)
+        let venus = PlanetCell(type: PlanetFetchType.Planets, planet: Planets.Venus, sign: Signs.Scorpio, degree: "0", retrograde: false)
         FeaturedPlanetsEntry(state: $state, marsData: mars, venusData: venus)
     }
 }
