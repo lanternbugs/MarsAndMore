@@ -34,23 +34,21 @@ struct NamesView: View {
                 ScrollView {
                 VStack() {
                     if manager.selectedName == nil{
-                        Text("Time Now").padding(0).lineLimit(1)
-                            .frame(maxWidth: .infinity, alignment: .leading).foregroundColor(Color.black)
-                            .background(Color.green)
+                        Text("Time Now").padding([.trailing, .leading]).lineLimit(1)
+                            .selectedNameColor()
                     } else {
                         Text("Time Now").padding(0).lineLimit(1)
-                            .frame(maxWidth: .infinity, alignment: .leading)
                     }
                     ForEach(manager.birthDates, id: \.id) {
                         nameDateInfo in
                         if manager.selectedName == nameDateInfo.id {
-                            Text(nameDateInfo.name).foregroundColor(Color.black)
-                                .background(Color.green)
+                            Text(nameDateInfo.name).namesStyle()
+                                .selectedNameColor()
                                 .gesture(TapGesture().onEnded({
                                 tappedName(with: nameDateInfo.id)
                             }))
                         } else {
-                            Text(nameDateInfo.name).gesture(TapGesture().onEnded({
+                            Text(nameDateInfo.name).namesStyle().gesture(TapGesture().onEnded({
                                 tappedName(with: nameDateInfo.id)
                             }))
                         }
