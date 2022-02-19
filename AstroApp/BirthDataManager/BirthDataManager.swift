@@ -64,6 +64,14 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     func getNextId() -> Int {
         return birthDates.count
     }
+    
+    func getCurrentName()->String
+    {
+        if let index = selectedName {
+            return birthDates[index].name
+        }
+        return "Now"
+    }
 }
 
 class BirthDataBuilder {
