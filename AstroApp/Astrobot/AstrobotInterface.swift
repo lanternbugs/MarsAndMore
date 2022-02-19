@@ -21,7 +21,6 @@ protocol AstrobotInterface: AstrobotBaseInterface {
 }
 
 protocol AstroRowCell {
-    var type: PlanetFetchType {
-        get
-    }
+    var planet: Planets {get}
+    var degree: String { get}
 }

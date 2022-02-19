@@ -25,7 +25,7 @@ enum Aspects: Double, CaseIterable {
     case Trine = 120, Conjunction = 0, Sextile = 60, Square = 90, Opposition = 180
 }
 
-enum PlanetFetchType {
+enum PlanetFetchType: String {
     case Planets, Aspects, Transits
 }
 
@@ -35,17 +35,15 @@ struct TransitingPlanet {
 }
 
 struct PlanetCell: AstroRowCell {
-    let type: PlanetFetchType
     let planet: Planets
-    let sign: Signs
     let degree: String
+    let sign: Signs
     let retrograde: Bool
     
     
 }
 
 struct TransitCell: AstroRowCell {
-    let type: PlanetFetchType
     let planet: Planets
     let planet2: Planets
     let degree: String
@@ -59,6 +57,8 @@ struct PlanetRow {
 struct DisplayPlanetRow {
     var planets: [AstroRowCell]
     let id: Int
+    let type: PlanetFetchType
+    let name: String
     
 }
 

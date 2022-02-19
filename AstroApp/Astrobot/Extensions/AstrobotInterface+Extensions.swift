@@ -31,7 +31,7 @@ extension AstrobotBaseInterface {
     func getPlanetData(_ type: Planets, degree: Double, retrograde: Bool) ->PlanetCell
     {
         
-        return  PlanetCell(type: PlanetFetchType.Planets, planet: type, sign: degree.getAstroSign(), degree: degree.getAstroDegree(), retrograde: retrograde)
+        return  PlanetCell(planet: type, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: retrograde)
     }
     
     func checkRetrograde(val: Double, past: Double)->Bool
@@ -68,7 +68,7 @@ extension AstrobotInterface {
                     continue
                 }
                 else if let aspect = getAspect(planet1: $0, planet2: planet2, type: type) {
-                    transits.append(TransitCell(type: type, planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect))
+                    transits.append(TransitCell(planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect))
                 }
             }
             return transits
