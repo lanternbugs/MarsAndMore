@@ -9,7 +9,7 @@ import SwiftUI
 
 struct NamesTextModifier: ViewModifier {
     func body(content: Content) -> some View {
-        content.padding([.leading, .trailing])
+        content.padding(.trailing)
             .lineLimit(1)
                 .frame(maxWidth: .infinity, alignment: .leading)
     }

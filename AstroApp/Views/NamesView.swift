@@ -36,8 +36,9 @@ struct NamesView: View {
                     if manager.selectedName == nil{
                         Text("Time Now").padding([.trailing, .leading]).lineLimit(1)
                             .selectedNameColor()
+                            .padding(.bottom)
                     } else {
-                        Text("Time Now").padding(0).lineLimit(1)
+                        Text("Time Now").padding(.bottom).lineLimit(1)
                     }
                     ForEach(manager.birthDates, id: \.id) {
                         nameDateInfo in
