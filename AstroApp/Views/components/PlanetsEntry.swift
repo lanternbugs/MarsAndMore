@@ -70,7 +70,7 @@ extension PlanetsEntry {
 struct PlanetsEntry_Previews: PreviewProvider {
     @State static var state: RoomState = .Chart
     static var previews: some View {
-        let row = DisplayPlanetRow(planets: [], id: 0)
+        let row = DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike")
         PlanetsEntry(data: row, state: $state)
     }
 }

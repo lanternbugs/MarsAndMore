@@ -39,7 +39,7 @@ extension AstroButtons {
     func planets()
     {
         let row = getPlanets(time: getTime())
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count)
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets, name: manager.getCurrentName())
         data.append(displayRow)
     }
     
@@ -53,7 +53,7 @@ extension AstroButtons {
     }
     func getAspectTransitData(type: PlanetFetchType) {
         let row = getAspects(time: getTime(), type: type)
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count)
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: type, name: manager.getCurrentName())
         data.append(displayRow)
     }
     func getTime()->Double {
@@ -70,7 +70,7 @@ extension AstroButtons {
     }
 }
 struct AstroButtons_Previews: PreviewProvider {
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0)]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike")]
     static var previews: some View {
         AstroButtons(data: $row)
     }

@@ -16,6 +16,7 @@ import SwiftUI
 struct ChartView: View {
     @Binding var data: [DisplayPlanetRow]
     @Binding var state: RoomState
+    @EnvironmentObject var manager:BirthDataManager
     
     var body: some View {
         
@@ -27,10 +28,16 @@ struct ChartView: View {
                     LazyVStack {
                         ForEach($data, id:\.id)
                         { $planetRow in
-                            if planetRow.planets.first is TransitCell {
-                                AspectsEntry(data: planetRow)
-                            } else {
-                                PlanetsEntry(data: planetRow, state: $state)
+                            
+                            
+                            VStack {
+                                Text("\(planetRow.type.rawValue)  \(planetRow.name)").padding(.top).font(.headline)
+                                switch(planetRow.type) {
+                                case .Planets:
+                                    PlanetsEntry(data: planetRow, state: $state)
+                                default:
+                                    AspectsEntry(data: planetRow)
+                                }
                             }
                             
                         }
@@ -43,7 +50,7 @@ struct ChartView: View {
 
 struct ChartView_Previews: PreviewProvider {
     @State static var state: RoomState = .Chart
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0)]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike")]
     static var previews: some View {
         ChartView(data: $row, state: $state)
     }
