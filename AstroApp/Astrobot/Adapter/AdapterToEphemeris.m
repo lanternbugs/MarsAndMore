@@ -23,11 +23,6 @@
 {
     double xx[6];
     char serr[999];
-    char sentpath[500];
-    NSString *path = [[NSBundle mainBundle] resourcePath];
-    const char *ephe = [path UTF8String];
-    sprintf(sentpath, "%s", ephe);
-    swe_set_ephe_path(sentpath);
     swe_calc_ut(astroTime,  type, 0, xx, serr);
     return xx[0];
 }
@@ -35,6 +30,18 @@
 -(double) getSweJulianDay:(int) year : (int) month : (int) day : (double) time
 {
     return swe_julday(year, month, day, time, 1);
+}
+
+-(id) init
+{
+    self = [super init];
+    if(self) {
+        NSString *path = [[NSBundle mainBundle] resourcePath];
+        const char *ephe = [path UTF8String];
+        sprintf(ephepath, "%s", ephe);
+        swe_set_ephe_path(ephepath);
+    }
+    return self;
 }
 
 @end

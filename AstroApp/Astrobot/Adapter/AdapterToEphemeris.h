@@ -16,6 +16,9 @@
 #import <Foundation/Foundation.h>
 
 @interface AdapterToEphemeris: NSObject
+{
+    char ephepath[500];
+}
 -(double) getPlanetDegree:(double) astroTime : (int) type;
 -(double) getSweJulianDay:(int) year : (int) month : (int) day : (double) time;
 @end
