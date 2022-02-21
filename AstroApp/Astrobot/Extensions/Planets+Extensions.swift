@@ -35,6 +35,8 @@ extension Planets {
             return "Nepune"
         case .Pluto:
             return "Pluto"
+        case .Chiron:
+            return "Chiron"
     
         }
     }
