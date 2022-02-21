@@ -68,6 +68,28 @@
 		761DEECE279B9EF900A71938 /* swejpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAE279B9EF900A71938 /* swejpl.c */; };
 		761DEECF279B9EF900A71938 /* sefstars.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761DEEAF279B9EF900A71938 /* sefstars.txt */; };
 		761DEED0279B9EF900A71938 /* sefstars.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761DEEAF279B9EF900A71938 /* sefstars.txt */; };
+		7624283A27C334DE0002F5B3 /* seas_00.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762427D927C334DD0002F5B3 /* seas_00.se1 */; };
+		7624283B27C334DE0002F5B3 /* seas_00.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762427D927C334DD0002F5B3 /* seas_00.se1 */; };
+		7624283E27C334DE0002F5B3 /* seas_06.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762427DB27C334DD0002F5B3 /* seas_06.se1 */; };
+		7624283F27C334DE0002F5B3 /* seas_06.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762427DB27C334DD0002F5B3 /* seas_06.se1 */; };
+		7624284027C334DE0002F5B3 /* seas_12.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762427DC27C334DD0002F5B3 /* seas_12.se1 */; };
+		7624284127C334DE0002F5B3 /* seas_12.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762427DC27C334DD0002F5B3 /* seas_12.se1 */; };
+		7624285027C334DE0002F5B3 /* seas_48.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762427E427C334DD0002F5B3 /* seas_48.se1 */; };
+		7624285127C334DE0002F5B3 /* seas_48.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762427E427C334DD0002F5B3 /* seas_48.se1 */; };
+		7624285627C334DE0002F5B3 /* seasnam2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 762427E727C334DD0002F5B3 /* seasnam2.txt */; };
+		7624285727C334DE0002F5B3 /* seasnam2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 762427E727C334DD0002F5B3 /* seasnam2.txt */; };
+		7624287927C340830002F5B3 /* seasnam.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7624287827C340830002F5B3 /* seasnam.txt */; };
+		7624287A27C340830002F5B3 /* seasnam.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7624287827C340830002F5B3 /* seasnam.txt */; };
+		762428A427C341C70002F5B3 /* seas_42.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 7624289B27C341C60002F5B3 /* seas_42.se1 */; };
+		762428A527C341C70002F5B3 /* seas_42.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 7624289B27C341C60002F5B3 /* seas_42.se1 */; };
+		762428A627C341C70002F5B3 /* seas_30.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 7624289C27C341C60002F5B3 /* seas_30.se1 */; };
+		762428A727C341C70002F5B3 /* seas_30.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 7624289C27C341C60002F5B3 /* seas_30.se1 */; };
+		762428A827C341C70002F5B3 /* seas_36.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 7624289D27C341C60002F5B3 /* seas_36.se1 */; };
+		762428A927C341C70002F5B3 /* seas_36.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 7624289D27C341C60002F5B3 /* seas_36.se1 */; };
+		762428B227C342F20002F5B3 /* seas_24.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762428AF27C342F20002F5B3 /* seas_24.se1 */; };
+		762428B327C342F20002F5B3 /* seas_24.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762428AF27C342F20002F5B3 /* seas_24.se1 */; };
+		762428CD27C343950002F5B3 /* seas_18.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762428CC27C343950002F5B3 /* seas_18.se1 */; };
+		762428CE27C343950002F5B3 /* seas_18.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762428CC27C343950002F5B3 /* seas_18.se1 */; };
 		762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */; };
 		762D4A6927AB986A00EA59E8 /* AstroButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6827AB986A00EA59E8 /* AstroButtons.swift */; };
 		7635723727B6FC7D00C2E5A6 /* ChartTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7635723627B6FC7D00C2E5A6 /* ChartTab.swift */; };
@@ -243,6 +265,17 @@
 		761DEEAE279B9EF900A71938 /* swejpl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swejpl.c; sourceTree = "<group>"; };
 		761DEEAF279B9EF900A71938 /* sefstars.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sefstars.txt; sourceTree = "<group>"; };
 		761DEEB0279B9EF900A71938 /* sweodef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweodef.h; sourceTree = "<group>"; };
+		762427D927C334DD0002F5B3 /* seas_00.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_00.se1; sourceTree = "<group>"; };
+		762427DB27C334DD0002F5B3 /* seas_06.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_06.se1; sourceTree = "<group>"; };
+		762427DC27C334DD0002F5B3 /* seas_12.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_12.se1; sourceTree = "<group>"; };
+		762427E427C334DD0002F5B3 /* seas_48.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_48.se1; sourceTree = "<group>"; };
+		762427E727C334DD0002F5B3 /* seasnam2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seasnam2.txt; sourceTree = "<group>"; };
+		7624287827C340830002F5B3 /* seasnam.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = seasnam.txt; sourceTree = "<group>"; };
+		7624289B27C341C60002F5B3 /* seas_42.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_42.se1; sourceTree = "<group>"; };
+		7624289C27C341C60002F5B3 /* seas_30.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_30.se1; sourceTree = "<group>"; };
+		7624289D27C341C60002F5B3 /* seas_36.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_36.se1; sourceTree = "<group>"; };
+		762428AF27C342F20002F5B3 /* seas_24.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_24.se1; sourceTree = "<group>"; };
+		762428CC27C343950002F5B3 /* seas_18.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_18.se1; sourceTree = "<group>"; };
 		762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsEntry.swift; sourceTree = "<group>"; };
 		762D4A6827AB986A00EA59E8 /* AstroButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroButtons.swift; sourceTree = "<group>"; };
 		7635723627B6FC7D00C2E5A6 /* ChartTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTab.swift; sourceTree = "<group>"; };
@@ -437,6 +470,24 @@
 			path = ephemeris;
 			sourceTree = "<group>";
 		};
+		762427B427C334DD0002F5B3 /* ephe */ = {
+			isa = PBXGroup;
+			children = (
+				762428CC27C343950002F5B3 /* seas_18.se1 */,
+				762428AF27C342F20002F5B3 /* seas_24.se1 */,
+				7624289C27C341C60002F5B3 /* seas_30.se1 */,
+				7624289D27C341C60002F5B3 /* seas_36.se1 */,
+				7624289B27C341C60002F5B3 /* seas_42.se1 */,
+				7624287827C340830002F5B3 /* seasnam.txt */,
+				762427D927C334DD0002F5B3 /* seas_00.se1 */,
+				762427DB27C334DD0002F5B3 /* seas_06.se1 */,
+				762427DC27C334DD0002F5B3 /* seas_12.se1 */,
+				762427E427C334DD0002F5B3 /* seas_48.se1 */,
+				762427E727C334DD0002F5B3 /* seasnam2.txt */,
+			);
+			path = ephe;
+			sourceTree = "<group>";
+		};
 		762D4A6527AB962E00EA59E8 /* components */ = {
 			isa = PBXGroup;
 			children = (
@@ -539,6 +590,7 @@
 		7679FF6F27AF184F007911C9 /* Astrobot */ = {
 			isa = PBXGroup;
 			children = (
+				762427B427C334DD0002F5B3 /* ephe */,
 				7679FF7027AF184F007911C9 /* AstrobotInterface.swift */,
 				761DEE96279B9EF900A71938 /* ephemeris */,
 				7679FF7327AF184F007911C9 /* Adapter */,
@@ -730,9 +782,11 @@
 				764EF76B27ACA6E0008A15F1 /* mars-gemini.txt in Resources */,
 				761DEEBF279B9EF900A71938 /* seleapsec.txt in Resources */,
 				76AF1D5A27AE1E7400CB4E97 /* venus-virgo.txt in Resources */,
+				7624287927C340830002F5B3 /* seasnam.txt in Resources */,
 				764EF76827ACA6E0008A15F1 /* mars-cancer.txt in Resources */,
 				764EF76327ACA6E0008A15F1 /* mars-aquarius.txt in Resources */,
 				763CFC0627B1E4C4004A73B8 /* cities.json in Resources */,
+				7624285627C334DE0002F5B3 /* seasnam2.txt in Resources */,
 				76AF1D6027AE1E7400CB4E97 /* venus-libra.txt in Resources */,
 				76AF1D6427AE1E7400CB4E97 /* venus-gemini.txt in Resources */,
 				76AF1D6227AE1E7400CB4E97 /* venus-aries.txt in Resources */,
@@ -741,20 +795,29 @@
 				764EF76227ACA6E0008A15F1 /* mars-capricorn.txt in Resources */,
 				76AF1D6827AE1E7400CB4E97 /* venus-capricorn.txt in Resources */,
 				76AF1D5C27AE1E7400CB4E97 /* venus-sagitarius.txt in Resources */,
+				762428A627C341C70002F5B3 /* seas_30.se1 in Resources */,
+				7624284027C334DE0002F5B3 /* seas_12.se1 in Resources */,
 				764EF76627ACA6E0008A15F1 /* mars-virgo.txt in Resources */,
 				764EF76127ACA6E0008A15F1 /* mars-libra.txt in Resources */,
 				764EF76427ACA6E0008A15F1 /* mars-pisces.txt in Resources */,
 				764EF76727ACA6E0008A15F1 /* mars-aries.txt in Resources */,
+				762428CD27C343950002F5B3 /* seas_18.se1 in Resources */,
 				764EF76027ACA6E0008A15F1 /* mars-taurus.txt in Resources */,
 				76AF1D5427AE1E7400CB4E97 /* venus-taurus.txt in Resources */,
 				76AF1D6627AE1E7400CB4E97 /* venus-pisces.txt in Resources */,
 				76AF1D5827AE1E7400CB4E97 /* venus-aquarius.txt in Resources */,
 				761DEEB5279B9EF900A71938 /* sedeltat.txt.inactive in Resources */,
+				762428B227C342F20002F5B3 /* seas_24.se1 in Resources */,
 				761DEEB9279B9EF900A71938 /* seorbel.txt in Resources */,
+				7624283A27C334DE0002F5B3 /* seas_00.se1 in Resources */,
 				761DEE83279B9EB200A71938 /* Assets.xcassets in Resources */,
 				764EF76A27ACA6E0008A15F1 /* mars-scorpio.txt in Resources */,
+				762428A427C341C70002F5B3 /* seas_42.se1 in Resources */,
+				7624283E27C334DE0002F5B3 /* seas_06.se1 in Resources */,
 				76AF1D5627AE1E7400CB4E97 /* venus-leo.txt in Resources */,
+				7624285027C334DE0002F5B3 /* seas_48.se1 in Resources */,
 				761DEECF279B9EF900A71938 /* sefstars.txt in Resources */,
+				762428A827C341C70002F5B3 /* seas_36.se1 in Resources */,
 				764EF76527ACA6E0008A15F1 /* mars-sagitarius.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -767,9 +830,11 @@
 				76BEF3FA27ACB4B8001C9AD0 /* mars-aquarius.txt in Resources */,
 				76BEF3FB27ACB4B8001C9AD0 /* mars-aries.txt in Resources */,
 				76AF1D5B27AE1E7400CB4E97 /* venus-virgo.txt in Resources */,
+				7624287A27C340830002F5B3 /* seasnam.txt in Resources */,
 				76BEF3FC27ACB4B8001C9AD0 /* mars-cancer.txt in Resources */,
 				76BEF3FD27ACB4B8001C9AD0 /* mars-capricorn.txt in Resources */,
 				763CFC0727B1E4C4004A73B8 /* cities.json in Resources */,
+				7624285727C334DE0002F5B3 /* seasnam2.txt in Resources */,
 				76AF1D6127AE1E7400CB4E97 /* venus-libra.txt in Resources */,
 				76AF1D6527AE1E7400CB4E97 /* venus-gemini.txt in Resources */,
 				76AF1D6327AE1E7400CB4E97 /* venus-aries.txt in Resources */,
@@ -778,20 +843,29 @@
 				76BEF3FF27ACB4B8001C9AD0 /* mars-leo.txt in Resources */,
 				76AF1D6927AE1E7400CB4E97 /* venus-capricorn.txt in Resources */,
 				76AF1D5D27AE1E7400CB4E97 /* venus-sagitarius.txt in Resources */,
+				762428A727C341C70002F5B3 /* seas_30.se1 in Resources */,
+				7624284127C334DE0002F5B3 /* seas_12.se1 in Resources */,
 				76BEF40027ACB4B8001C9AD0 /* mars-libra.txt in Resources */,
 				76BEF40127ACB4B8001C9AD0 /* mars-pisces.txt in Resources */,
 				76BEF40227ACB4B8001C9AD0 /* mars-sagitarius.txt in Resources */,
 				76BEF40327ACB4B8001C9AD0 /* mars-scorpio.txt in Resources */,
+				762428CE27C343950002F5B3 /* seas_18.se1 in Resources */,
 				76BEF40427ACB4B8001C9AD0 /* mars-taurus.txt in Resources */,
 				76AF1D5527AE1E7400CB4E97 /* venus-taurus.txt in Resources */,
 				76AF1D6727AE1E7400CB4E97 /* venus-pisces.txt in Resources */,
 				76AF1D5927AE1E7400CB4E97 /* venus-aquarius.txt in Resources */,
 				76BEF40527ACB4B8001C9AD0 /* mars-virgo.txt in Resources */,
+				762428B327C342F20002F5B3 /* seas_24.se1 in Resources */,
 				761DEEC0279B9EF900A71938 /* seleapsec.txt in Resources */,
+				7624283B27C334DE0002F5B3 /* seas_00.se1 in Resources */,
 				761DEEB6279B9EF900A71938 /* sedeltat.txt.inactive in Resources */,
 				761DEEBA279B9EF900A71938 /* seorbel.txt in Resources */,
+				762428A527C341C70002F5B3 /* seas_42.se1 in Resources */,
+				7624283F27C334DE0002F5B3 /* seas_06.se1 in Resources */,
 				76AF1D5727AE1E7400CB4E97 /* venus-leo.txt in Resources */,
+				7624285127C334DE0002F5B3 /* seas_48.se1 in Resources */,
 				761DEE84279B9EB200A71938 /* Assets.xcassets in Resources */,
+				762428A927C341C70002F5B3 /* seas_36.se1 in Resources */,
 				761DEED0279B9EF900A71938 /* sefstars.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
