@@ -17,6 +17,7 @@ struct MainView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("currentTab") private var currentTab: Int = 0
     @StateObject private var birthDataManager = BirthDataManager()
+    @State private var roomState: RoomState = .Chart
     var body: some View {
         VStack {
             TabView(selection: $currentTab) {
@@ -31,6 +32,7 @@ struct MainView: View {
                     }
                 .tag(1)
                 .environmentObject(birthDataManager)
+                .environment(\.roomState, $roomState)
             }
         }
     }

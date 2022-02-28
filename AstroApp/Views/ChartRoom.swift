@@ -14,15 +14,15 @@
 import SwiftUI
 
 struct ChartRoom: View {
-    @Binding var readingState: RoomState
+    @Environment(\.roomState) private var readingState
     @Binding var planetData: [DisplayPlanetRow]
     
     var body: some View {
         HStack {
-            ChartView(data: $planetData, state: $readingState)
+            ChartView(data: $planetData)
             Divider()
                    .padding([.leading, .trailing], 3)
-            NamesView(state: $readingState)
+            NamesView()
         }
         .background(Image("night-sky", bundle: nil)
                         .resizable()
@@ -35,9 +35,8 @@ struct ChartRoom: View {
 }
 
 struct ChartRoom_Previews: PreviewProvider {
-    @State static var state: RoomState = .Chart
     @State static var data: [DisplayPlanetRow] = Array<DisplayPlanetRow>()
     static var previews: some View {
-        ChartRoom(readingState: $state, planetData: $data)
+        ChartRoom(planetData: $data)
     }
 }

@@ -14,11 +14,11 @@
 import SwiftUI
 
 struct DoneView: View {
-    @Binding var state: RoomState
+    @Environment(\.roomState) private var roomState
     let newRoomState: RoomState
     var body: some View {
         Button(action: {
-        state = newRoomState
+            roomState.wrappedValue = newRoomState
         }) {
             HStack(alignment: .center) {
                 Text("<\(newRoomState.getName())")
@@ -34,6 +34,6 @@ struct DoneView: View {
 struct DoneView_Previews: PreviewProvider {
     @State static var state:RoomState = .Chart
     static var previews: some View {
-        DoneView(state: $state, newRoomState: .Chart)
+        DoneView(newRoomState: .Chart)
     }
 }

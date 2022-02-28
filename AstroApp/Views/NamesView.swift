@@ -14,7 +14,7 @@
 import SwiftUI
 
 struct NamesView: View {
-    @Binding var state: RoomState
+    @Environment(\.roomState) private var roomState
     @EnvironmentObject var manager: BirthDataManager
     var body: some View {
         
@@ -84,14 +84,13 @@ extension NamesView {
     }
     
     func addName() {
-        state = .Names
+        roomState.wrappedValue = .Names
     }
 }
 
 
 struct NamesView_Previews: PreviewProvider {
-    @State static var state: RoomState = .Chart
     static var previews: some View {
-        NamesView(state: $state)
+        NamesView()
     }
 }

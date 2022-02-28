@@ -15,7 +15,7 @@ import SwiftUI
 
 struct NameDataView: View {
     @EnvironmentObject private var manager: BirthDataManager
-    @Binding var state: RoomState
+    @Environment(\.roomState) private var roomState
     @Binding var name: String
     @Binding var birthdate: Date
     @Binding var exactTime: Bool
@@ -46,7 +46,7 @@ struct NameDataView: View {
                 HStack {
                     Text("Add a birth city to calculate Acendent").font(.subheadline)
                     Button(action: {
-                        state = .Cities
+                        roomState.wrappedValue = .Cities
                     }) {
                         Text("+City")
                     }
@@ -86,7 +86,7 @@ extension NameDataView {
             manager.addBirthData(data: birthData)
             name = ""
             manager.selectedName = manager.birthDates.count - 1
-            state = .Chart
+            roomState.wrappedValue = .Chart
         } catch BuildErrors.NoName(let mes) {
             birthDataError = mes
         } catch BuildErrors.DuplicateName(let mes) {
@@ -100,11 +100,10 @@ extension NameDataView {
 }
 
 struct NameDataView_Previews: PreviewProvider {
-    @State static var state: RoomState = .Cities
     @State static var name: String = "Tom"
     @State static var date: Date = Date()
     @State static var exactTime: Bool = false
     static var previews: some View {
-        NameDataView(state: $state, name: $name, birthdate: $date, exactTime: $exactTime)
+        NameDataView(name: $name, birthdate: $date, exactTime: $exactTime)
     }
 }

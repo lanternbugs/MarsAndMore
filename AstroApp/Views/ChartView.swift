@@ -15,7 +15,7 @@ import SwiftUI
 
 struct ChartView: View {
     @Binding var data: [DisplayPlanetRow]
-    @Binding var state: RoomState
+    @Environment(\.roomState) private var roomState
     @EnvironmentObject var manager:BirthDataManager
     
     var body: some View {
@@ -34,7 +34,7 @@ struct ChartView: View {
                                 Text("\(planetRow.type.rawValue)  \(planetRow.name)").padding(.top).font(.headline)
                                 switch(planetRow.type) {
                                 case .Planets:
-                                    PlanetsEntry(data: planetRow, state: $state)
+                                    PlanetsEntry(data: planetRow)
                                 default:
                                     AspectsEntry(data: planetRow)
                                 }
@@ -52,6 +52,6 @@ struct ChartView_Previews: PreviewProvider {
     @State static var state: RoomState = .Chart
     @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike")]
     static var previews: some View {
-        ChartView(data: $row, state: $state)
+        ChartView(data: $row)
     }
 }

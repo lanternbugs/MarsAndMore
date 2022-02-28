@@ -16,7 +16,7 @@ import SwiftUI
 struct CitiesView: View {
     @EnvironmentObject var manager:BirthDataManager
     @State private var city = ""
-    @Binding var state: RoomState
+    @Environment(\.roomState) private var roomState
     var displayCities: [City] {
         if let  cities = manager.cityInfo?.cities
         {
@@ -47,7 +47,7 @@ struct CitiesView: View {
                 }.gesture(TapGesture().onEnded {
                     withAnimation(.easeIn, {
                         manager.builder.addCity(city)
-                        state = .Names
+                        roomState.wrappedValue = .Names
                     })}
                 )
             }
@@ -57,8 +57,7 @@ struct CitiesView: View {
 }
 
 struct CitiesView_Previews: PreviewProvider {
-    @State static var roomState: RoomState = .Cities
     static var previews: some View {
-        CitiesView(state: $roomState)
+        CitiesView()
     }
 }

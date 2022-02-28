@@ -15,7 +15,7 @@ import SwiftUI
 
 struct PlanetsEntry: View {
     let data: DisplayPlanetRow
-    @Binding var state: RoomState
+    @Environment(\.roomState) private var roomState
     
     var venusData: PlanetCell? {
         nil
@@ -32,7 +32,7 @@ struct PlanetsEntry: View {
     var body: some View {
         VStack {
             if let mars = getData(planet: .Mars) , let venus = getData(planet: .Venus) {
-                FeaturedPlanetsEntry(state: $state, marsData: mars, venusData: venus)
+                FeaturedPlanetsEntry(marsData: mars, venusData: venus)
             }
           
             Text(rowFromPlanets(row: regularPlanets))
@@ -68,9 +68,8 @@ extension PlanetsEntry {
 
 
 struct PlanetsEntry_Previews: PreviewProvider {
-    @State static var state: RoomState = .Chart
     static var previews: some View {
         let row = DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike")
-        PlanetsEntry(data: row, state: $state)
+        PlanetsEntry(data: row)
     }
 }

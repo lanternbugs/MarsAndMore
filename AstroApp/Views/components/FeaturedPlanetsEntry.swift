@@ -14,7 +14,7 @@
 import SwiftUI
 
 struct FeaturedPlanetsEntry: View {
-    @Binding var state: RoomState
+    @Environment(\.roomState) private var roomState
     let marsData: PlanetCell
     let venusData: PlanetCell
     var body: some View {
@@ -23,7 +23,7 @@ struct FeaturedPlanetsEntry: View {
             Spacer()
 #endif
             Button(action: {
-                state = .Reading(planet: marsData.planet, sign: marsData.sign)
+                roomState.wrappedValue = .Reading(planet: marsData.planet, sign: marsData.sign)
             }) {
                 Text("\(marsData.planet.getName())")
                 
@@ -40,7 +40,7 @@ struct FeaturedPlanetsEntry: View {
             }
             
             Button(action: {
-                state = .Reading(planet: venusData.planet, sign: venusData.sign)
+                roomState.wrappedValue = .Reading(planet: venusData.planet, sign: venusData.sign)
             }) {
                 Text("\(venusData.planet.getName())")
                 
@@ -62,10 +62,9 @@ struct FeaturedPlanetsEntry: View {
 }
 
 struct FeaturedPlanetsEntry_Previews: PreviewProvider {
-    @State static var state: RoomState = .Chart
     static var previews: some View {
         let mars = PlanetCell(planet: Planets.Mars, degree: "0", sign: Signs.Scorpio,  retrograde: false)
         let venus = PlanetCell(planet: Planets.Venus, degree: "0", sign: Signs.Scorpio,  retrograde: false)
-        FeaturedPlanetsEntry(state: $state, marsData: mars, venusData: venus)
+        FeaturedPlanetsEntry(marsData: mars, venusData: venus)
     }
 }

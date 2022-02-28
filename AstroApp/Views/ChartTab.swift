@@ -14,35 +14,35 @@
 import SwiftUI
 
 struct ChartTab: View {
-    @State private var roomState: RoomState = .Chart
+    @Environment(\.roomState) private var roomState
     @State private var name: String = ""
     @State private var date: Date = Date(timeIntervalSince1970: 0)
     @State private var exactTime: Bool = false
     @State private var data: [DisplayPlanetRow] = Array<DisplayPlanetRow>()
     @ViewBuilder
     var body: some View {
-        switch(roomState) {
+        switch(roomState.wrappedValue) {
         case .Reading:
             VStack {
-                DoneView(state: $roomState, newRoomState: .Chart)
-                ReadingView(state: $roomState)
+                DoneView(newRoomState: .Chart)
+                ReadingView(state: roomState)
             }
             
         case .Cities:
             VStack {
-                DoneView(state: $roomState, newRoomState: .Names)
-                CitiesView(state: $roomState)
+                DoneView(newRoomState: .Names)
+                CitiesView()
             }
              
         case .Names:
             VStack {
-                DoneView(state: $roomState, newRoomState: .Chart)
-                NameDataView(state: $roomState,
+                DoneView(newRoomState: .Chart)
+                NameDataView(
                              name: $name, birthdate: $date, exactTime: $exactTime)
             }
             
         default:
-            ChartRoom(readingState: $roomState, planetData: $data)
+            ChartRoom(planetData: $data)
             
         }
     }
