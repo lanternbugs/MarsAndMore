@@ -83,7 +83,7 @@ extension NameDataView {
         manager.builder.addNameDate(name, birthdate: CalendarDate(birthDate: birthdate, exactTime: exactTime))
         do {
             let birthData = try manager.builder.build()
-            manager.birthDates.append(birthData)
+            manager.addBirthData(data: birthData)
             name = ""
             manager.selectedName = manager.birthDates.count - 1
             state = .Chart

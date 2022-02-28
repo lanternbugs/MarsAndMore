@@ -39,6 +39,15 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
         }
     }
     
+    func addBirthData(data: BirthData) {
+        // implement core data save
+        birthDates.append(data)
+    }
+    
+    func loadBirthData() {
+        // implement core data load
+    }
+    
     func readFileToString(_ file: String)->String
     {
         if let filepath = Bundle.main.path(forResource: file, ofType: "json") {
