@@ -145,6 +145,8 @@
 		76908C9827C04FCC00806F9D /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9627C04FCC00806F9D /* View+Extensions.swift */; };
 		76908C9A27C050CA00806F9D /* SelectedNameModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9927C050CA00806F9D /* SelectedNameModifier.swift */; };
 		76908C9B27C050CA00806F9D /* SelectedNameModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9927C050CA00806F9D /* SelectedNameModifier.swift */; };
+		7694464F27CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */; };
+		7694465027CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */; };
 		76AB623127B0A9CF00FEFBD4 /* ReadingCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */; };
 		76AB623227B0A9CF00FEFBD4 /* ReadingCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */; };
 		76AF1D5227AE1E7400CB4E97 /* venus-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4627AE1E7400CB4E97 /* venus-scorpio.txt */; };
@@ -314,6 +316,7 @@
 		76908C9327C04F2900806F9D /* NamesTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesTextModifier.swift; sourceTree = "<group>"; };
 		76908C9627C04FCC00806F9D /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		76908C9927C050CA00806F9D /* SelectedNameModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNameModifier.swift; sourceTree = "<group>"; };
+		7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirthDataManager+Extensions.swift"; sourceTree = "<group>"; };
 		76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingCredits.swift; sourceTree = "<group>"; };
 		76AF1D4627AE1E7400CB4E97 /* venus-scorpio.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-scorpio.txt"; sourceTree = "<group>"; };
 		76AF1D4727AE1E7400CB4E97 /* venus-taurus.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-taurus.txt"; sourceTree = "<group>"; };
@@ -511,6 +514,7 @@
 		763CFC0327B1E4C4004A73B8 /* BirthDataManager */ = {
 			isa = PBXGroup;
 			children = (
+				7694464D27CD9B9E00D61758 /* extensions */,
 				763CFC0B27B1E4FD004A73B8 /* Models */,
 				763CFC0427B1E4C4004A73B8 /* Data */,
 				763CFC0827B1E4E8004A73B8 /* BirthDataManager.swift */,
@@ -634,6 +638,14 @@
 				763B3F9F27BDB2BA007A2690 /* Aspects+Extensions.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		7694464D27CD9B9E00D61758 /* extensions */ = {
+			isa = PBXGroup;
+			children = (
+				7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */,
+			);
+			path = extensions;
 			sourceTree = "<group>";
 		};
 		76AF1D4527AE1E7400CB4E97 /* VenusData */ = {
@@ -922,6 +934,7 @@
 				762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */,
 				761DEEC9279B9EF900A71938 /* swemplan.c in Sources */,
 				76860B8F27B224E400533BD2 /* NameDataView.swift in Sources */,
+				7694464F27CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */,
 				761DEE7B279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */,
 				761DEE81279B9EB200A71938 /* Persistence.swift in Sources */,
 				761DEE7D279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */,
@@ -981,6 +994,7 @@
 				76B34ED527AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,
 				761DEEC6279B9EF900A71938 /* sweph.c in Sources */,
 				76860B9027B224E400533BD2 /* NameDataView.swift in Sources */,
+				7694465027CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */,
 				761DEEB8279B9EF900A71938 /* swehel.c in Sources */,
 				761DEECC279B9EF900A71938 /* swephlib.c in Sources */,
 				761DEECA279B9EF900A71938 /* swemplan.c in Sources */,

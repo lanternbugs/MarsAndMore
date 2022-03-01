@@ -34,6 +34,8 @@ struct MainView: View {
                 .environmentObject(birthDataManager)
                 .environment(\.roomState, $roomState)
             }
+        }.onAppear {
+            birthDataManager.setContext(_viewContext.wrappedValue)
         }
     }
 }

@@ -12,12 +12,13 @@
 */
 
 import Foundation
+import CoreData
 class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var birthDates = [BirthData]()
     @Published var cityInfo: CityInfo?
     @Published var selectedName: Int?
     let builder = BirthDataBuilder()
-    
+    var managedContext: NSManagedObjectContext?
     init() {
         builder.managerInterface = self
         DispatchQueue.global().async { [weak self] in
@@ -39,14 +40,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
         }
     }
     
-    func addBirthData(data: BirthData) {
-        // implement core data save
-        birthDates.append(data)
-    }
     
-    func loadBirthData() {
-        // implement core data load
-    }
     
     func readFileToString(_ file: String)->String
     {
@@ -59,6 +53,11 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
         }
         return "none"
     }
+    
+    
+}
+//Mark: builder helper functions
+extension BirthDataManager {
     
     func checkIfNameExist(_ name: String) -> Bool {
         let data = birthDates.first {
