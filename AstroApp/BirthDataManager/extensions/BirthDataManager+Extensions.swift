@@ -80,3 +80,34 @@ extension BirthDataManager {
         loadBirthData()
     }
 }
+
+
+//Mark: Astrobot Functionality
+extension BirthDataManager {
+    func getSelectionTime()->Double {
+        if let index = self.selectedName {
+            let data = self.birthDates.first {
+                $0.id == index
+            }
+            guard let data = data else {
+                return Date().getAstroTime()
+            }
+            return data.getAstroTime()
+        }
+        return Date().getAstroTime()
+    }
+    
+    func getSelectionLocation()->LocationData?
+    {
+        if let index = self.selectedName {
+            let data = self.birthDates.first {
+                $0.id == index
+            }
+            guard let data = data else {
+                return nil
+            }
+            return data.location
+        }
+        return nil
+    }
+}

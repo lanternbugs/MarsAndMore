@@ -46,6 +46,10 @@ struct ChartView: View {
                                     value.scrollTo($data.count - 1)
                                 }
                                 
+                            }.onChange(of: manager.selectedName) { _ in
+                                if $data.count > 0 {
+                                    value.scrollTo($data.count - 1)
+                                }
                             }
                         }
                         

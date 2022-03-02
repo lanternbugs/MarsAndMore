@@ -17,73 +17,40 @@ struct AstroButtons: View, AstrobotInterface {
     
     @EnvironmentObject private var manager: BirthDataManager
     @Binding var data: [DisplayPlanetRow]
+    @ViewBuilder
     var body: some View {
-        HStack(alignment: .top) {
-            Spacer()
-            Button(action: planets) {
-                Text("Planets")
+        VStack {
+            HStack(alignment: .top) {
+                Spacer()
+                Button(action: planets) {
+                    Text("Planets")
+                }
+                Spacer()
+                Button(action: aspects) {
+                    Text("Aspects")
+                }
+                Spacer()
             }
-            Spacer()
-            Button(action: aspects) {
-                Text("Aspects")
+            if let _ = manager.selectedName {
+                TransitsButtonControl()
             }
-            Spacer()
-            Button(action: transits) {
-                Text("Transits")
-            }
-            Spacer()
         }
+        
     }
 }
 extension AstroButtons {
     func planets()
     {
-        let row = getPlanets(time: getTime(), location: getLocation())
+        let row = getPlanets(time: manager.getSelectionTime(), location: manager.getSelectionLocation())
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets, name: manager.getCurrentName())
         data.append(displayRow)
     }
     
     func aspects()
     {
-        getAspectTransitData(type: .Aspects)
-    }
-    
-    func transits()
-    {
-        getAspectTransitData(type: .Transits)
-    }
-    
-    func getAspectTransitData(type: PlanetFetchType) {
-        let row = getAspects(time: getTime(), type: type)
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: type, name: manager.getCurrentName())
+        let row = getAspects(time: manager.getSelectionTime(), type: .Aspects)
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects, name: manager.getCurrentName())
         data.append(displayRow)
-    }
-    
-    func getTime()->Double {
-        if let index = manager.selectedName {
-            let data = manager.birthDates.first {
-                $0.id == index
-            }
-            guard let data = data else {
-                return Date().getAstroTime()
-            }
-            return data.getAstroTime()
-        }
-        return Date().getAstroTime()
-    }
-    
-    func getLocation()->LocationData?
-    {
-        if let index = manager.selectedName {
-            let data = manager.birthDates.first {
-                $0.id == index
-            }
-            guard let data = data else {
-                return nil
-            }
-            return data.location
-        }
-        return nil
     }
 }
 struct AstroButtons_Previews: PreviewProvider {
