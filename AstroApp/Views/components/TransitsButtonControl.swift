@@ -38,7 +38,7 @@ struct TransitsButtonControl: View, AstrobotInterface {
 extension TransitsButtonControl {
     func transits()
     {
-        let row = getAspects(time: manager.getSelectionTime(), with: transitDate.getAstroTime())
+        let row = getAspects(time: manager.getSelectionTime(), with: transitDate.getAstroTime(), and: manager.getSelectionLocation())
         let dateFormater = DateFormatter()
         dateFormater.dateFormat = "YY/MM/dd h:m"
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Transits(date: dateFormater.string(from: transitDate)), name: manager.getCurrentName())

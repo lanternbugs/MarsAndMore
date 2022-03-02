@@ -48,7 +48,7 @@ extension AstroButtons {
     
     func aspects()
     {
-        let row = getAspects(time: manager.getSelectionTime(), with: nil)
+        let row = getAspects(time: manager.getSelectionTime(), with: nil, and: manager.getSelectionLocation())
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects, name: manager.getCurrentName())
         data.append(displayRow)
     }

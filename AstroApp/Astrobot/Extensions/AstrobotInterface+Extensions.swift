@@ -56,21 +56,24 @@ extension AstrobotBaseInterface {
     
     func calculateASC(time: Double, location: LocationData)->PlanetCell
     {
-        let adapter = AdapterToEphemeris()
-        let degree = adapter.getAscendent(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble())
+        let degree = getAscendentDegree(time: time, from: location)
         return  PlanetCell(planet: .Ascendent, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false)
+    }
+    
+    func getAscendentDegree(time: Double, from location: LocationData)->Double {
+        let adapter = AdapterToEphemeris()
+        return adapter.getAscendent(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble())
     }
 }
 
 extension AstrobotInterface {
     
-    func getAspects(time: Double, with time2: Double?)->PlanetRow
+    func getAspects(time: Double, with time2: Double?, and location: LocationData?)->PlanetRow
     {
-        let adapter = AdapterToEphemeris()
-        var natalPlanets = getTransitingPlanets(for: time)
+        let natalPlanets = getTransitingPlanets(for: time, and: location)
         var transitPlanets: [TransitingPlanet]?
         if let time2 = time2 {
-            transitPlanets = getTransitingPlanets(for: time2)
+            transitPlanets = getTransitingPlanets(for: time2, and: nil)
         } else {
             transitPlanets = natalPlanets
         }
@@ -106,16 +109,23 @@ extension AstrobotInterface {
         return transitsRow
     }
     
-    func getTransitingPlanets(for time: Double)->[TransitingPlanet] {
+    func getTransitingPlanets(for time: Double, and location: LocationData?)->[TransitingPlanet] {
         let adapter = AdapterToEphemeris()
         var transitPlanets = [TransitingPlanet]()
         for type in Planets.allCases
         {
             if type == .Ascendent {
-                continue
+                guard let location = location else {
+                    continue
+                }
+                let degree = getAscendentDegree(time: time, from: location)
+                transitPlanets.append(TransitingPlanet(planet: type, degree: degree))
+
+            } else {
+                let val = adapter.getPlanetDegree(time, Int32(type.rawValue))
+                transitPlanets.append(TransitingPlanet(planet: type, degree: Double(val)))
             }
-            let val = adapter.getPlanetDegree(time, Int32(type.rawValue))
-            transitPlanets.append(TransitingPlanet(planet: type, degree: Double(val)))
+            
         }
         return transitPlanets
     }
