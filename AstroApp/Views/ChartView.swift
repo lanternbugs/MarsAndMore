@@ -25,22 +25,30 @@ struct ChartView: View {
                 Divider()
                        .padding([.top, .bottom], 3)
                 ScrollView {
-                    LazyVStack {
-                        ForEach($data, id:\.id)
-                        { $planetRow in
-                            
-                            
-                            VStack {
-                                Text("\(planetRow.type.rawValue)  \(planetRow.name)").padding(.top).font(.headline)
-                                switch(planetRow.type) {
-                                case .Planets:
-                                    PlanetsEntry(data: planetRow)
-                                default:
-                                    AspectsEntry(data: planetRow)
+                    ScrollViewReader { value in
+                        LazyVStack {
+                            ForEach($data, id:\.id)
+                            { $planetRow in
+                                
+                                
+                                VStack {
+                                    Text("\(planetRow.type.rawValue)  \(planetRow.name)").padding(.top).font(.headline)
+                                    switch(planetRow.type) {
+                                    case .Planets:
+                                        PlanetsEntry(data: planetRow)
+                                    default:
+                                        AspectsEntry(data: planetRow)
+                                    }
                                 }
+                                
+                            }.onChange(of: $data.count) { _ in
+                                if $data.count > 0 {
+                                    value.scrollTo($data.count - 1)
+                                }
+                                
                             }
-                            
                         }
+                        
                     }
                 }
                 
