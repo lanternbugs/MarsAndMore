@@ -39,6 +39,9 @@ struct NamesView: View {
                             .padding(.bottom)
                     } else {
                         Text("Time Now").padding(.bottom).lineLimit(1)
+                            .gesture(TapGesture().onEnded({
+                                manager.selectedName = nil
+                        }))
                     }
                     ForEach(manager.birthDates, id: \.id) {
                         nameDateInfo in
