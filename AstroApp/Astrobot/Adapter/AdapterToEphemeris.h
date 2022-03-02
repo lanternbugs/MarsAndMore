@@ -21,6 +21,7 @@
 }
 -(double) getPlanetDegree:(double) astroTime : (int) type;
 -(double) getSweJulianDay:(int) year : (int) month : (int) day : (double) time;
+-(double) getAscendent:(double) time : (double) latitude : (double) longitude;
 @end
 
 #endif /* AdapterToEphemeris_h */

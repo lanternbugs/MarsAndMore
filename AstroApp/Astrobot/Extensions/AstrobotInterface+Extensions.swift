@@ -13,17 +13,25 @@
 
 import Foundation
 extension AstrobotBaseInterface {
-    func getPlanets(time: Double)->PlanetRow
+    func getPlanets(time: Double, location: LocationData?)->PlanetRow
     {
         var row = PlanetRow()
         let adapter = AdapterToEphemeris()
         let interval: Double = 0.2
         for type in Planets.allCases
         {
-            let val = adapter.getPlanetDegree(time, Int32(type.rawValue))
-            let pastVal = adapter.getPlanetDegree(time - interval, Int32(type.rawValue))
-            let retro = checkRetrograde(val: val, past: pastVal)
-            row.planets.append(getPlanetData(type, degree: Double(val), retrograde: retro))
+            if type == .Ascendent {
+                guard let location = location else {
+                    continue
+                }
+                row.planets.append(calculateASC(time: time, location: location))
+
+            } else {
+                let val = adapter.getPlanetDegree(time, Int32(type.rawValue))
+                let pastVal = adapter.getPlanetDegree(time - interval, Int32(type.rawValue))
+                let retro = checkRetrograde(val: val, past: pastVal)
+                row.planets.append(getPlanetData(type, degree: Double(val), retrograde: retro))
+            }
         }
         return row
     }
@@ -45,6 +53,13 @@ extension AstrobotBaseInterface {
         }
         return false
     }
+    
+    func calculateASC(time: Double, location: LocationData)->PlanetCell
+    {
+        let adapter = AdapterToEphemeris()
+        let degree = adapter.getAscendent(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble())
+        return  PlanetCell(planet: .Ascendent, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false)
+    }
 }
 
 extension AstrobotInterface {
@@ -55,6 +70,9 @@ extension AstrobotInterface {
         var transitPlanets = [TransitingPlanet]()
         for type in Planets.allCases
         {
+            if type == .Ascendent {
+                continue
+            }
             let val = adapter.getPlanetDegree(time, Int32(type.rawValue))
             transitPlanets.append(TransitingPlanet(planet: type, degree: Double(val)))
         }

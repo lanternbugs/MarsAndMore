@@ -12,6 +12,7 @@
 */
 
 import Foundation
+import SwiftUI
 extension String {
     func convertToTwentyFourHours()->String
     {
@@ -24,4 +25,27 @@ extension String {
         }
         return self.replacingOccurrences(of: "AM", with: "")
     }
+    
+    func getLatLongAsDouble()->Double {
+        let trimmed = self.trimmingCharacters(in: .whitespacesAndNewlines)
+        let degreeSymobol: Character = "°"
+        let minuteSymbol: Character = "'"
+        if let degSymbIndex = trimmed.firstIndex(of: degreeSymobol), let minSymbIndex = trimmed.firstIndex(of: minuteSymbol)  {
+            let minStartIndex = trimmed.index(degSymbIndex, offsetBy: 1)
+            let range = minStartIndex..<minSymbIndex
+
+            let minuteSubstring = trimmed[range]  // play
+            if let degree = Double(trimmed.prefix(upTo: degSymbIndex)), let minute = Double(minuteSubstring.trimmingCharacters(in: .whitespacesAndNewlines))
+            {
+                if degree < 0 {
+                    return degree - minute / 60.0
+                } else {
+                    return degree + minute / 60.0
+                }
+            }
+        }
+        return 0
+    }
+    
+    
 }

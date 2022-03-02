@@ -27,9 +27,9 @@ extension BirthDataManager {
             entry.month = data.birthDate.month
             entry.day = data.birthDate.day
             entry.time = data.birthTime
-            if let locatoin = data.location {
-                entry.latitude = locatoin.latitude
-                entry.longitude = locatoin.longitude
+            if let location = data.location {
+                entry.latitude = location.latitude
+                entry.longitude = location.longitude
             }
             
             do {

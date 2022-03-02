@@ -38,7 +38,7 @@ struct AstroButtons: View, AstrobotInterface {
 extension AstroButtons {
     func planets()
     {
-        let row = getPlanets(time: getTime())
+        let row = getPlanets(time: getTime(), location: getLocation())
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets, name: manager.getCurrentName())
         data.append(displayRow)
     }
@@ -47,15 +47,18 @@ extension AstroButtons {
     {
         getAspectTransitData(type: .Aspects)
     }
+    
     func transits()
     {
         getAspectTransitData(type: .Transits)
     }
+    
     func getAspectTransitData(type: PlanetFetchType) {
         let row = getAspects(time: getTime(), type: type)
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: type, name: manager.getCurrentName())
         data.append(displayRow)
     }
+    
     func getTime()->Double {
         if let index = manager.selectedName {
             let data = manager.birthDates.first {
@@ -67,6 +70,20 @@ extension AstroButtons {
             return data.getAstroTime()
         }
         return Date().getAstroTime()
+    }
+    
+    func getLocation()->LocationData?
+    {
+        if let index = manager.selectedName {
+            let data = manager.birthDates.first {
+                $0.id == index
+            }
+            guard let data = data else {
+                return nil
+            }
+            return data.location
+        }
+        return nil
     }
 }
 struct AstroButtons_Previews: PreviewProvider {

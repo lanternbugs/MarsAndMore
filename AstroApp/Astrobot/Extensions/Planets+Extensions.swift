@@ -15,6 +15,8 @@ import Foundation
 extension Planets {
     func getName()->String {
         switch(self) {
+        case .Ascendent:
+            return "Asc"
         case .Sun:
             return "Sun"
         case .Moon:
@@ -37,7 +39,6 @@ extension Planets {
             return "Pluto"
         case .Chiron:
             return "Chiron"
-    
         }
     }
     
@@ -46,7 +47,7 @@ extension Planets {
         switch(self) {
         case .Sun, .Moon:
             return 8.0
-        case .Mars, .Venus, .Mercury:
+        case .Mars, .Venus, .Mercury, .Ascendent:
             return 6.0
         default:
             return 5.0
