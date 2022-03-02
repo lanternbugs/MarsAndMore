@@ -10,7 +10,6 @@ import SwiftUI
 struct TransitsButtonControl: View, AstrobotInterface {
     
     @EnvironmentObject private var manager: BirthDataManager
-    @State private var birthdate: Date = Date(timeIntervalSince1970: 0)
     var body: some View {
         VStack {
             HStack {
@@ -26,7 +25,7 @@ struct TransitsButtonControl: View, AstrobotInterface {
             }
             DatePicker(
               "On",
-              selection: $birthdate,
+              selection: $manager.transitDate,
               displayedComponents: [.date, .hourAndMinute]
             ).datePickerStyle(DefaultDatePickerStyle())
         }
