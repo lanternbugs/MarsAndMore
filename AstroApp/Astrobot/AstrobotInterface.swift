@@ -17,7 +17,7 @@ protocol AstrobotBaseInterface {
 }
 
 protocol AstrobotInterface: AstrobotBaseInterface {
-    func getAspects(time: Double, type: PlanetFetchType)->PlanetRow
+    func getAspects(time: Double, with time2: Double?)->PlanetRow
 }
 
 protocol AstroRowCell {

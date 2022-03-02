@@ -64,7 +64,7 @@ extension AstrobotBaseInterface {
 
 extension AstrobotInterface {
     
-    func getAspects(time: Double, type: PlanetFetchType)->PlanetRow
+    func getAspects(time: Double, with time2: Double?)->PlanetRow
     {
         let adapter = AdapterToEphemeris()
         var transitPlanets = [TransitingPlanet]()
@@ -85,7 +85,7 @@ extension AstrobotInterface {
                 if planet2.planet.rawValue < startPlanet.rawValue {
                     continue
                 }
-                else if let aspect = getAspect(planet1: $0, planet2: planet2, type: type) {
+                else if let aspect = getAspect(planet1: $0, planet2: planet2, with: time2) {
                     transits.append(TransitCell(planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect))
                 }
             }
@@ -104,14 +104,14 @@ extension AstrobotInterface {
         return transitsRow
     }
     
-    func getAspect(planet1: TransitingPlanet, planet2: TransitingPlanet, type: PlanetFetchType)->Aspects? {
+    func getAspect(planet1: TransitingPlanet, planet2: TransitingPlanet, with time2: Double?)->Aspects? {
         
         var degree = abs(planet1.degree - planet2.degree)
         if degree > 180 {
             degree = 360 - degree
         }
         for aspect in Aspects.allCases {
-            let orb = type == .Aspects ? planet1.planet.getNatalOrb() : planet1.planet.getTransitOrb()
+            let orb = time2 == nil ? planet1.planet.getNatalOrb() : planet1.planet.getTransitOrb()
             if abs(degree - aspect.rawValue) <  orb {
                 return aspect
             }
