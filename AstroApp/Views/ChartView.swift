@@ -32,10 +32,13 @@ struct ChartView: View {
                                 
                                 
                                 VStack {
-                                    Text("\(planetRow.type.rawValue)  \(planetRow.name)").padding(.top).font(.headline)
+                                    Text("\(planetRow.type.getName())  \(planetRow.name)").padding(.top).font(.headline)
                                     switch(planetRow.type) {
                                     case .Planets:
                                         PlanetsEntry(data: planetRow)
+                                    case .Transits(let date):
+                                        Text("on \(date)")
+                                        AspectsEntry(data: planetRow)
                                     default:
                                         AspectsEntry(data: planetRow)
                                     }

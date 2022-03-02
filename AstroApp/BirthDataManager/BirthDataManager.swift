@@ -17,7 +17,6 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var birthDates = [BirthData]()
     @Published var cityInfo: CityInfo?
     @Published var selectedName: Int?
-    @Published var transitDate: Date = Date(timeIntervalSince1970: 0)
     let builder = BirthDataBuilder()
     var managedContext: NSManagedObjectContext?
     init() {

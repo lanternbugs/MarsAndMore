@@ -25,8 +25,8 @@ enum Aspects: Double, CaseIterable {
     case Trine = 120, Conjunction = 0, Sextile = 60, Square = 90, Opposition = 180
 }
 
-enum PlanetFetchType: String {
-    case Planets, Aspects, Transits
+enum PlanetFetchType {
+    case Planets, Aspects, Transits(date: String)
 }
 
 struct TransitingPlanet {

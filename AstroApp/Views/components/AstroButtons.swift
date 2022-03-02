@@ -32,7 +32,7 @@ struct AstroButtons: View, AstrobotInterface {
                 Spacer()
             }
             if let _ = manager.selectedName {
-                TransitsButtonControl()
+                TransitsButtonControl(data: $data)
             }
         }
         

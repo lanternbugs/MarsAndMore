@@ -67,28 +67,30 @@ extension AstrobotInterface {
     func getAspects(time: Double, with time2: Double?)->PlanetRow
     {
         let adapter = AdapterToEphemeris()
-        var transitPlanets = [TransitingPlanet]()
-        for type in Planets.allCases
-        {
-            if type == .Ascendent {
-                continue
-            }
-            let val = adapter.getPlanetDegree(time, Int32(type.rawValue))
-            transitPlanets.append(TransitingPlanet(planet: type, degree: Double(val)))
+        var natalPlanets = getTransitingPlanets(for: time)
+        var transitPlanets: [TransitingPlanet]?
+        if let time2 = time2 {
+            transitPlanets = getTransitingPlanets(for: time2)
+        } else {
+            transitPlanets = natalPlanets
         }
-        let planetRow: [[TransitCell]?] = transitPlanets.map {
+        
+        let planetRow: [[TransitCell]?] = natalPlanets.map {
             guard let startPlanet = Planets(rawValue: $0.planet.rawValue + 1) else {
                 return nil
             }
             var transits = [TransitCell]()
-            for planet2 in transitPlanets {
-                if planet2.planet.rawValue < startPlanet.rawValue {
-                    continue
-                }
-                else if let aspect = getAspect(planet1: $0, planet2: planet2, with: time2) {
-                    transits.append(TransitCell(planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect))
+            if let transitPlanets = transitPlanets {
+                for planet2 in transitPlanets {
+                    if planet2.planet.rawValue < startPlanet.rawValue {
+                        continue
+                    }
+                    else if let aspect = getAspect(planet1: $0, planet2: planet2, with: time2) {
+                        transits.append(TransitCell(planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect))
+                    }
                 }
             }
+            
             return transits
         }
 
@@ -102,6 +104,20 @@ extension AstrobotInterface {
         }
         
         return transitsRow
+    }
+    
+    func getTransitingPlanets(for time: Double)->[TransitingPlanet] {
+        let adapter = AdapterToEphemeris()
+        var transitPlanets = [TransitingPlanet]()
+        for type in Planets.allCases
+        {
+            if type == .Ascendent {
+                continue
+            }
+            let val = adapter.getPlanetDegree(time, Int32(type.rawValue))
+            transitPlanets.append(TransitingPlanet(planet: type, degree: Double(val)))
+        }
+        return transitPlanets
     }
     
     func getAspect(planet1: TransitingPlanet, planet2: TransitingPlanet, with time2: Double?)->Aspects? {

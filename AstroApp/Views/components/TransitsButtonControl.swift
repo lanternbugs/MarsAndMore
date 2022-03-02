@@ -10,6 +10,8 @@ import SwiftUI
 struct TransitsButtonControl: View, AstrobotInterface {
     
     @EnvironmentObject private var manager: BirthDataManager
+    @State private var transitDate: Date = Date()
+    @Binding var data: [DisplayPlanetRow]
     var body: some View {
         VStack {
             HStack {
@@ -25,7 +27,7 @@ struct TransitsButtonControl: View, AstrobotInterface {
             }
             DatePicker(
               "On",
-              selection: $manager.transitDate,
+              selection: $transitDate,
               displayedComponents: [.date, .hourAndMinute]
             ).datePickerStyle(DefaultDatePickerStyle())
         }
@@ -36,11 +38,17 @@ struct TransitsButtonControl: View, AstrobotInterface {
 extension TransitsButtonControl {
     func transits()
     {
+        let row = getAspects(time: manager.getSelectionTime(), with: transitDate.getAstroTime())
+        let dateFormater = DateFormatter()
+        dateFormater.dateFormat = "YY/MM/dd h:m"
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Transits(date: dateFormater.string(from: transitDate)), name: manager.getCurrentName())
+        data.append(displayRow)
     }
 }
 
 struct TransitsButtonControl_Previews: PreviewProvider {
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike")]
     static var previews: some View {
-        TransitsButtonControl()
+        TransitsButtonControl(data: $row)
     }
 }

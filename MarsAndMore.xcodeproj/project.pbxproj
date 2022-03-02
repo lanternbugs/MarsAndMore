@@ -141,6 +141,8 @@
 		76860B9327B2264D00533BD2 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B9127B2264D00533BD2 /* DoneView.swift */; };
 		7688E0B027AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688E0AF27AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift */; };
 		7688E0B127AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688E0AF27AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift */; };
+		7689C6B327D02FDD00B38E4A /* PlanetFetchType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689C6B227D02FDD00B38E4A /* PlanetFetchType+Extensions.swift */; };
+		7689C6B427D02FDD00B38E4A /* PlanetFetchType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689C6B227D02FDD00B38E4A /* PlanetFetchType+Extensions.swift */; };
 		76908C9427C04F2900806F9D /* NamesTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9327C04F2900806F9D /* NamesTextModifier.swift */; };
 		76908C9527C04F2900806F9D /* NamesTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9327C04F2900806F9D /* NamesTextModifier.swift */; };
 		76908C9727C04FCC00806F9D /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9627C04FCC00806F9D /* View+Extensions.swift */; };
@@ -316,6 +318,7 @@
 		76860B8E27B224E400533BD2 /* NameDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameDataView.swift; sourceTree = "<group>"; };
 		76860B9127B2264D00533BD2 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		7688E0AF27AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AstrobotReadingInterface+Extensions.swift"; sourceTree = "<group>"; };
+		7689C6B227D02FDD00B38E4A /* PlanetFetchType+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "PlanetFetchType+Extensions.swift"; sourceTree = "<group>"; };
 		76908C9327C04F2900806F9D /* NamesTextModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesTextModifier.swift; sourceTree = "<group>"; };
 		76908C9627C04FCC00806F9D /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		76908C9927C050CA00806F9D /* SelectedNameModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNameModifier.swift; sourceTree = "<group>"; };
@@ -640,6 +643,7 @@
 				7617DAB827AFA9320064B98E /* Planets+Extensions.swift */,
 				765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */,
 				763B3F9F27BDB2BA007A2690 /* Aspects+Extensions.swift */,
+				7689C6B227D02FDD00B38E4A /* PlanetFetchType+Extensions.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -916,6 +920,7 @@
 				763B3FA027BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */,
 				7617DAB627AFA8A70064B98E /* AstroModels.swift in Sources */,
 				76860B9227B2264D00533BD2 /* DoneView.swift in Sources */,
+				7689C6B327D02FDD00B38E4A /* PlanetFetchType+Extensions.swift in Sources */,
 				761DEEC1279B9EF900A71938 /* swehouse.c in Sources */,
 				761DEEBB279B9EF900A71938 /* swepdate.c in Sources */,
 				76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
@@ -977,6 +982,7 @@
 				763B3FA127BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */,
 				7617DAB727AFA8A70064B98E /* AstroModels.swift in Sources */,
 				76860B9327B2264D00533BD2 /* DoneView.swift in Sources */,
+				7689C6B427D02FDD00B38E4A /* PlanetFetchType+Extensions.swift in Sources */,
 				76BEF3F727ACB0EF001C9AD0 /* AstroReadingModel.swift in Sources */,
 				76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */,
 				76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
