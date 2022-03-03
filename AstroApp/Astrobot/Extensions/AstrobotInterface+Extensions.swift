@@ -91,7 +91,8 @@ extension AstrobotInterface {
                     continue
                 }
                 else if let aspect = getAspect(planet1: $0, planet2: planet2, with: time2) {
-                    transits.append(TransitCell(planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect))
+                    let movement: Movement = $0.degree.getApplying(with: $0.laterDegree, otherDegree: planet2.degree)
+                    transits.append(TransitCell(planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect, movement: movement))
                 }
             }
             
@@ -120,11 +121,13 @@ extension AstrobotInterface {
                     continue
                 }
                 let degree = getAscendentDegree(time: time, from: location)
-                transitPlanets.append(TransitingPlanet(planet: type, degree: degree))
+                transitPlanets.append(TransitingPlanet(planet: type, degree: degree, laterDegree: degree))
 
             } else {
+                let interval: Double = 0.2
                 let val = adapter.getPlanetDegree(time, Int32(type.rawValue))
-                transitPlanets.append(TransitingPlanet(planet: type, degree: Double(val)))
+                let val2 = adapter.getPlanetDegree(time + interval, Int32(type.rawValue))
+                transitPlanets.append(TransitingPlanet(planet: type, degree: Double(val), laterDegree: val2))
             }
             
         }

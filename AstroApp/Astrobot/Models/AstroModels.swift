@@ -25,6 +25,10 @@ enum Aspects: Double, CaseIterable {
     case Trine = 120, Conjunction = 0, Sextile = 60, Square = 90, Opposition = 180
 }
 
+enum Movement {
+    case Applying, Stationary, Seperating, None
+}
+
 enum PlanetFetchType {
     case Planets, Aspects, Transits(date: String)
 }
@@ -32,6 +36,7 @@ enum PlanetFetchType {
 struct TransitingPlanet {
     let planet: Planets
     let degree: Double
+    let laterDegree: Double
 }
 
 struct PlanetCell: AstroRowCell {
@@ -48,6 +53,7 @@ struct TransitCell: AstroRowCell {
     let planet2: Planets
     let degree: String
     let aspect: Aspects
+    let movement: Movement
 }
 
 struct PlanetRow {

@@ -23,9 +23,12 @@ struct AspectsEntry: View {
                 if manager.bodiesToShow.contains(val.planet) && manager.bodiesToShow.contains(val.planet2)
                 {
                     if display.count > 0 {
-                        display += " "
+                        display += "; "
                     }
                     display += val.planet.getName() + " " + val.aspect.getName() + " " + val.planet2.getName() + " " + val.degree
+                    if val.movement == .Applying {
+                        display += " Applying"
+                    }
                 }
                 
             }

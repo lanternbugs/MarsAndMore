@@ -51,4 +51,15 @@ extension Double {
         return abs(aspect.rawValue - degree).getAstroDegree()
     }
     
+    func getApplying(with degree2: Double, otherDegree: Double)->Movement {
+        
+        if degree2 > self && otherDegree > self {
+            return .Applying
+        }
+        if degree2 < self && otherDegree < self {
+            return .Applying
+        }
+        return .None
+    }
+    
 }
