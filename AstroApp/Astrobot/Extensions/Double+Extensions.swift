@@ -66,7 +66,7 @@ extension Double {
         }
     }
     
-    func getTransitDegree(originalDegree: Double, with degree2: Double, for aspect: Aspects)->Double
+    private func getTransitDegree(originalDegree: Double, with degree2: Double, for aspect: Aspects)->Double
     {
         var degree = abs(originalDegree - degree2)
         if degree > 180 {
