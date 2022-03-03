@@ -39,6 +39,16 @@ extension Planets {
             return "Pluto"
         case .Chiron:
             return "Chiron"
+        case .Pholus:
+            return "Pholus"
+        case .Ceres:
+            return "Ceres"
+        case .Pallas:
+            return "Pallas"
+        case .Juno:
+            return "Juno"
+        case .Vesta:
+            return "Vesta"
         }
     }
     

@@ -44,7 +44,10 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     
     func initializeBodiesToShow() {
         for body in Planets.allCases {
-            bodiesToShow.insert(body)
+            if body.rawValue <= Planets.Chiron.rawValue {
+                bodiesToShow.insert(body)
+            }
+            
         }
     }
     
