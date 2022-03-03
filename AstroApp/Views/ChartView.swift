@@ -44,14 +44,14 @@ struct ChartView: View {
                                     }
                                 }
                                 
-                            }.onChange(of: $data.count) { _ in
-                                if $data.count > 0 {
-                                    value.scrollTo($data.count - 1)
+                            }.onChange(of: data.count) { _ in
+                                if data.count > 0 {
+                                    value.scrollTo(data.count - 1)
                                 }
                                 
                             }.onChange(of: manager.selectedName) { _ in
-                                if $data.count > 0 {
-                                    value.scrollTo($data.count - 1)
+                                if data.count > 0 {
+                                    value.scrollTo(data.count - 1)
                                 }
                             }
                         }
