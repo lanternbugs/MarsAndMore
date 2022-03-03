@@ -17,9 +17,11 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var birthDates = [BirthData]()
     @Published var cityInfo: CityInfo?
     @Published var selectedName: Int?
+    @Published var bodiesToShow = Set<Planets>()
     let builder = BirthDataBuilder()
     var managedContext: NSManagedObjectContext?
     init() {
+        self.initializeBodiesToShow()
         builder.managerInterface = self
         DispatchQueue.global().async { [weak self] in
             let decoder = JSONDecoder()
@@ -40,7 +42,11 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
         }
     }
     
-    
+    func initializeBodiesToShow() {
+        for body in Planets.allCases {
+            bodiesToShow.insert(body)
+        }
+    }
     
     func readFileToString(_ file: String)->String
     {
