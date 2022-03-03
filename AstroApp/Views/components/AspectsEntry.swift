@@ -27,7 +27,7 @@ struct AspectsEntry: View {
                     }
                     display += val.planet.getName() + " " + val.aspect.getName() + " " + val.planet2.getName() + " " + val.degree
                     if val.movement == .Applying {
-                        display += val.movement.rawValue
+                        display += " " + val.movement.rawValue
                     }
                 }
                 
