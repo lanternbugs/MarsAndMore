@@ -70,27 +70,28 @@ extension AstrobotInterface {
     
     func getAspects(time: Double, with time2: Double?, and location: LocationData?)->PlanetRow
     {
-        let natalPlanets = getTransitingPlanets(for: time, and: location)
         var transitPlanets: [TransitingPlanet]?
+        let natalPlanets = getTransitingPlanets(for: time, and: location)
         if let time2 = time2 {
             transitPlanets = getTransitingPlanets(for: time2, and: nil)
         } else {
             transitPlanets = natalPlanets
         }
-        
-        let planetRow: [[TransitCell]?] = natalPlanets.map {
+        guard let transitPlanets = transitPlanets else {
+            return PlanetRow()
+        }
+
+        let planetRow: [[TransitCell]?] = transitPlanets.map {
             guard let startPlanet = Planets(rawValue: $0.planet.rawValue + 1) else {
                 return nil
             }
             var transits = [TransitCell]()
-            if let transitPlanets = transitPlanets {
-                for planet2 in transitPlanets {
-                    if planet2.planet.rawValue < startPlanet.rawValue {
-                        continue
-                    }
-                    else if let aspect = getAspect(planet1: $0, planet2: planet2, with: time2) {
-                        transits.append(TransitCell(planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect))
-                    }
+            for planet2 in natalPlanets {
+                if planet2.planet.rawValue < startPlanet.rawValue {
+                    continue
+                }
+                else if let aspect = getAspect(planet1: $0, planet2: planet2, with: time2) {
+                    transits.append(TransitCell(planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect))
                 }
             }
             
