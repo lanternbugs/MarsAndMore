@@ -16,6 +16,7 @@ import SwiftUI
 struct PlanetsEntry: View {
     let data: DisplayPlanetRow
     @Environment(\.roomState) private var roomState
+    @EnvironmentObject private var manager: BirthDataManager
     
     var venusData: PlanetCell? {
         nil
@@ -46,8 +47,11 @@ extension PlanetsEntry {
     func rowFromPlanets(row: [PlanetCell])->String {
         var rowString = ""
         for val in row {
-            rowString += val.planet.getName() + " " + val.degree + " " + val.sign.getNameShort()
-            rowString += val.retrograde ? " R " : " "
+            if manager.bodiesToShow.contains(val.planet) {
+                rowString += val.planet.getName() + " " + val.degree + " " + val.sign.getNameShort()
+                rowString += val.retrograde ? " R " : " "
+            }
+            
         }
         return rowString
     }

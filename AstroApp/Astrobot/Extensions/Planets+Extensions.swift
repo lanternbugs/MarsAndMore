@@ -58,4 +58,15 @@ extension Planets {
     {
         return 1.0
     }
+    
+    func getIndex()->Int {
+        var i = 0
+        for val in Planets.allCases {
+            if val == self {
+                return i
+            }
+            i += 1
+        }
+        return 0
+    }
 }

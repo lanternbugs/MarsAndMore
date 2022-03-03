@@ -15,14 +15,19 @@ import SwiftUI
 
 struct AspectsEntry: View {
     let data: DisplayPlanetRow
+    @EnvironmentObject private var manager: BirthDataManager
     var displayString: String {
         var display = ""
         if let transitData = data.planets as? [TransitCell] {
             for val in transitData {
-                if display.count > 0 {
-                    display += " "
+                if manager.bodiesToShow.contains(val.planet) && manager.bodiesToShow.contains(val.planet2)
+                {
+                    if display.count > 0 {
+                        display += " "
+                    }
+                    display += val.planet.getName() + " " + val.aspect.getName() + " " + val.planet2.getName() + " " + val.degree
                 }
-                display += val.planet.getName() + " " + val.aspect.getName() + " " + val.planet2.getName() + " " + val.degree
+                
             }
             return display
         }

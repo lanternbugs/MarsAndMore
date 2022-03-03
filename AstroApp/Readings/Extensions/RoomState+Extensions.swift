@@ -25,6 +25,8 @@ extension RoomState: AstroReading {
             return "Add/Edit Name"
         case .Reading:
             return "Reading"
+        case .ChartSettings:
+            return "Chart Settings"
         }
     }
     func getReading()-> [ReadingEntry] {

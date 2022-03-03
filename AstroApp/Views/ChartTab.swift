@@ -40,7 +40,11 @@ struct ChartTab: View {
                 NameDataView(
                              name: $name, birthdate: $date, exactTime: $exactTime)
             }
-            
+        case .ChartSettings:
+            VStack {
+                DoneView(newRoomState: .Chart)
+                ChartSettings()
+            }
         default:
             ChartRoom(planetData: $data)
             

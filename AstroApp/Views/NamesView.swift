@@ -29,6 +29,9 @@ struct NamesView: View {
                     Spacer()
                     
                 }
+                Button(action: { roomState.wrappedValue = .ChartSettings }) {
+                    Text("Chart Settings").font(Font.headline)
+                }
                 Divider()
                        .padding([.top, .bottom], 3)
                 ScrollView {
