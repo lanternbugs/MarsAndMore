@@ -25,7 +25,7 @@ enum Aspects: Double, CaseIterable {
     case Trine = 120, Conjunction = 0, Sextile = 60, Square = 90, Opposition = 180
 }
 
-enum Movement {
+enum Movement: String {
     case Applying, Stationary, Seperating, None
 }
 

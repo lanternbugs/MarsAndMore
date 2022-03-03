@@ -51,14 +51,19 @@ extension Double {
         return abs(aspect.rawValue - degree).getAstroDegree()
     }
     
-    func getApplying(with degree2: Double, otherDegree: Double, for aspect: Aspects)->Movement {
-        
-        let initalOrb:Double = getTransitDegree(originalDegree: self, with: otherDegree, for: aspect)
-        let laterOrb = getTransitDegree(originalDegree: degree2, with: otherDegree, for: aspect)
-        if laterOrb < initalOrb {
-            return .Applying
+    func getApplying(with degree2: Double, otherDegree: Double, for aspect: Aspects, type: PlanetFetchType)->Movement
+    {
+        switch(type) {
+        case .Transits:
+            let initalOrb:Double = getTransitDegree(originalDegree: self, with: otherDegree, for: aspect)
+            let laterOrb = getTransitDegree(originalDegree: degree2, with: otherDegree, for: aspect)
+            if laterOrb < initalOrb {
+                return .Applying
+            }
+            return .None
+        default:
+            return .None
         }
-        return .None
     }
     
     func getTransitDegree(originalDegree: Double, with degree2: Double, for aspect: Aspects)->Double
