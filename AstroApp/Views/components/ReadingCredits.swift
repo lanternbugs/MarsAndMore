@@ -20,7 +20,7 @@ struct ReadingCreditsView: View {
             Text("with ghost writer Aleister Crowley").frame(maxWidth: .infinity, alignment: .trailing).foregroundColor(Color.white)
             Text("Your Place in the Stars 1933").foregroundColor(Color.white)
             Button(action: openWikipediaLink) {
-                Text("https://en.wikipedia.org/wiki/Evangeline_Adams").padding()
+                Text("https://en.wikipedia.org/wiki/Evangeline_Adams").foregroundColor(Color.blue).padding()
             }
         }.background(Color.black).padding()
     }
@@ -28,14 +28,8 @@ struct ReadingCreditsView: View {
 
 extension ReadingCreditsView {
     func openWikipediaLink()->Void {
-        if let url = URL(string: "https://en.wikipedia.org/wiki/Evangeline_Adams") {
-#if os(iOS)
-            UIApplication.shared.open(url)
-#elseif os(macOS)
-            
-#endif
-           
-        }
+        openLink(link: "https://en.wikipedia.org/wiki/Evangeline_Adams")
+        
     }
 }
 struct ReadingCreditsView_Previews: PreviewProvider {
