@@ -25,7 +25,10 @@ struct DoneView: View {
                     .font(.title2)
                     .frame(minWidth: 20, alignment: .bottom).padding(0)
                 Spacer()
-            }.padding(.vertical)
+            }
+#if os(iOS)
+            .padding(.vertical)
+#endif
             
         }
     }

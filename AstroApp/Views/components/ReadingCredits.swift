@@ -14,13 +14,18 @@
 import SwiftUI
 
 struct ReadingCreditsView: View {
+    let wikiLink = "https://en.wikipedia.org/wiki/Evangeline_Adams"
     var body: some View {
         VStack {
             Text("- Evangeline Adams").frame(maxWidth: .infinity, alignment: .leading).foregroundColor(Color.white)
             Text("with ghost writer Aleister Crowley").frame(maxWidth: .infinity, alignment: .trailing).foregroundColor(Color.white)
             Text("Your Place in the Stars 1933").foregroundColor(Color.white)
             Button(action: openWikipediaLink) {
-                Text("https://en.wikipedia.org/wiki/Evangeline_Adams").foregroundColor(Color.blue).padding()
+                Text(wikiLink)
+#if os(iOS)
+                    .padding()
+#endif
+                    .foregroundColor(Color.blue)
             }
         }.background(Color.black).padding()
     }
@@ -28,7 +33,7 @@ struct ReadingCreditsView: View {
 
 extension ReadingCreditsView {
     func openWikipediaLink()->Void {
-        openLink(link: "https://en.wikipedia.org/wiki/Evangeline_Adams")
+        openLink(link: wikiLink)
         
     }
 }
