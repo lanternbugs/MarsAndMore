@@ -19,6 +19,7 @@ enum RoomState {
     case Names
     case Cities
     case ChartSettings
+    case Resources
     case Reading(planet: Planets, sign: Signs)
 }
 struct ReadingEntry {

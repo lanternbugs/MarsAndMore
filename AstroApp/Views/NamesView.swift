@@ -30,10 +30,14 @@ struct NamesView: View {
                     
                 }
                 Button(action: { roomState.wrappedValue = .ChartSettings }) {
-                    Text("Chart Settings").font(Font.headline)
+                    Text("Chart Settings").font(Font.subheadline)
                 }
+                
                 Divider()
                        .padding([.top, .bottom], 3)
+                Button(action: { roomState.wrappedValue = .Resources }) {
+                    Text("Resources").font(Font.subheadline)
+                }
                 ScrollView {
                 VStack() {
                     if manager.selectedName == nil{
@@ -46,6 +50,7 @@ struct NamesView: View {
                                 manager.selectedName = nil
                         }))
                     }
+                    
                     ForEach(manager.birthDates, id: \.id) {
                         nameDateInfo in
                         if manager.selectedName == nameDateInfo.id {

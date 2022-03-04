@@ -45,6 +45,11 @@ struct ChartTab: View {
                 DoneView(newRoomState: .Chart)
                 ChartSettings()
             }
+        case .Resources:
+            VStack {
+                DoneView(newRoomState: .Chart)
+                ResourcesView()
+            }
         default:
             ChartRoom(planetData: $data)
             
