@@ -79,4 +79,86 @@ extension Planets {
         }
         return 0
     }
+    
+    func getAstroIndex()->Int
+    {
+        switch(self) {
+        case .Ascendent:
+            return -1
+        case .Sun:
+            return 0
+        case .Moon:
+            return 1
+        case .Mercury:
+            return 2
+        case .Venus:
+            return 3
+        case .Mars:
+            return 4
+        case .Jupiter:
+            return 5
+        case .Saturn:
+            return 6
+        case .Uranus:
+            return 7
+        case .Neptune:
+            return 8
+        case .Pluto:
+            return 9
+        case .Chiron:
+            return 15
+        case .Pholus:
+            return 16
+        case .Ceres:
+            return 17
+        case .Pallas:
+            return 18
+        case.Juno:
+            return 19
+        case .Vesta:
+            return 20
+        }
+    }
+    
+    func getPlanetForAstroIndex(val: Int)->Planets?
+    {
+        switch(val) {
+        case -1:
+            return .Ascendent
+        case 0:
+            return .Sun
+        case 1:
+            return .Moon
+        case 2:
+            return .Mercury
+        case 3:
+            return .Venus
+        case 4:
+            return .Mars
+        case 5:
+            return .Jupiter
+        case 6:
+            return .Saturn
+        case 7:
+            return .Uranus
+        case 8:
+            return .Neptune
+        case 9:
+            return .Pluto
+        case 15:
+            return .Chiron
+        case 16:
+            return .Pholus
+        case 17:
+            return .Ceres
+        case 18:
+            return .Pallas
+        case 19:
+            return .Juno
+        case 20:
+            return .Vesta
+        default:
+            return nil
+        }
+    }
 }

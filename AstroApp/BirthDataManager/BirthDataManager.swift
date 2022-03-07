@@ -49,6 +49,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
             }
             
         }
+        self.loadUserBodiesToShowInfo()
     }
     
     func readFileToString(_ file: String)->String

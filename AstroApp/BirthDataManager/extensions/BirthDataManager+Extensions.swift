@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-//Mark: Core Data functions
+//Mark: Core Data functions around Birthdates
 extension BirthDataManager {
     
     func addBirthData(data: BirthData) {
@@ -81,6 +81,23 @@ extension BirthDataManager {
     }
 }
 
+//Mark: Core Data functoins around Bodies to show
+extension BirthDataManager {
+    func addBodyToPersistentStorage(body: Planets)->Void
+    {
+        
+    }
+    
+    func removeBodyFromPersistentStorage(body: Planets)->Void
+    {
+        
+    }
+    
+    func loadUserBodiesToShowInfo()
+    {
+        
+    }
+}
 
 //Mark: Astrobot Functionality
 extension BirthDataManager {

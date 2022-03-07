@@ -20,8 +20,10 @@ struct ChartSettings: View {
                             Toggle("Show", isOn: $toggleValues[planet.getIndex()]).onChange(of: toggleValues[planet.getIndex()]) { _ in
                                 if manager.bodiesToShow.contains(planet) {
                                     manager.bodiesToShow.remove(planet)
+                                    manager.removeBodyFromPersistentStorage(body: planet)
                                 } else {
                                     manager.bodiesToShow.insert(planet)
+                                    manager.addBodyToPersistentStorage(body: planet)
                                 }
                             }.namesStyle()
                                 .padding([.trailing, .leading])
