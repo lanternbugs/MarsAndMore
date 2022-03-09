@@ -120,7 +120,7 @@ extension Planets {
         }
     }
     
-    func getPlanetForAstroIndex(val: Int)->Planets?
+    static func getPlanetForAstroIndex(val: Int32)->Planets?
     {
         switch(val) {
         case -1:

@@ -77,25 +77,117 @@ extension BirthDataManager {
     
     func setContext(_ context: NSManagedObjectContext) {
         self.managedContext = context
+        addInitialBodyData()
+        loadUserBodiesToShowInfo()
         loadBirthData()
     }
 }
 
 //Mark: Core Data functoins around Bodies to show
 extension BirthDataManager {
+    
+    func addInitialBodyData() {
+        guard let context = self.managedContext else {
+            return
+        }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bodies")
+        do {
+            if let bodies =  try context.fetch(fetchRequest) as? [Bodies] {
+                if bodies.count == 0 {
+                    for val in defaultBodiesToShow {
+                        addBodyToPersistentStorage(body: val)
+                    }
+                }
+            }
+        }
+        catch let error as NSError  {
+                    print("Could not load \(error), \(error.userInfo)")
+        }
+        
+    }
+    
     func addBodyToPersistentStorage(body: Planets)->Void
     {
+        guard let context = self.managedContext else {
+            return
+        }
         
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bodies")
+        do {
+            if let bodies =  try context.fetch(fetchRequest) as? [Bodies] {
+                let planetSet: Set<Planets?> = Set(bodies.map {
+                    if let planet = Planets.getPlanetForAstroIndex(val: $0.planet) {
+                        return planet
+                    }
+                    return nil
+                })
+                
+                if planetSet.contains(body) {
+                    return
+                }
+                let index = body.getAstroIndex()
+                let body = Bodies(context: context)
+                body.planet = Int32(index)
+                try context.save()
+                
+            }
+        }
+        catch let error as NSError  {
+                    print("Could not load \(error), \(error.userInfo)")
+        }
     }
     
     func removeBodyFromPersistentStorage(body: Planets)->Void
     {
+        guard let context = self.managedContext else {
+            return
+        }
         
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bodies")
+        do {
+            if let bodies =  try context.fetch(fetchRequest) as? [Bodies] {
+                
+                for astroBody in bodies {
+                    if let planet = Planets.getPlanetForAstroIndex(val: astroBody.planet) {
+                        if planet == body {
+                            context.delete(astroBody)
+                            try context.save()
+                            return
+                        }
+                    }
+                    
+                }
+            }
+        }
+        catch let error as NSError  {
+                    print("Could not load \(error), \(error.userInfo)")
+        }
     }
     
     func loadUserBodiesToShowInfo()
     {
+        guard let context = self.managedContext else {
+            return
+        }
         
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "Bodies")
+        do {
+            if let bodies =  try context.fetch(fetchRequest) as? [Bodies] {
+                for body in bodies {
+                    if let planet = Planets.getPlanetForAstroIndex(val: body.planet) {
+                        if bodiesToShow.contains(planet) {
+                            continue
+                        }
+                        bodiesToShow.insert(planet)
+                    }
+                }
+                
+            }
+        }
+        catch let error as NSError  {
+                    print("Could not load \(error), \(error.userInfo)")
+        }
     }
 }
 
