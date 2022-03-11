@@ -17,12 +17,14 @@ extension Date {
         let adapter = AdapterToEphemeris()
         let formatter = DateFormatter()
         formatter.dateFormat = "MM-dd-yyyy HH:mm"
-        let utcDate = formatter.string(from: self)
-        let year = localToUTC(utcDate, newFormat: "yyyy")
-        let month = localToUTC(utcDate, newFormat: "MM")
-        let day = localToUTC(utcDate, newFormat: "dd")
-        let hour = localToUTC(utcDate, newFormat: "hha")
-        let minute = localToUTC(utcDate, newFormat: "mm")
+        formatter.calendar = NSCalendar.current
+        formatter.timeZone = TimeZone.current
+        let localDate = formatter.string(from: self)
+        let year = localToUTC(localDate, newFormat: "yyyy")
+        let month = localToUTC(localDate, newFormat: "MM")
+        let day = localToUTC(localDate, newFormat: "dd")
+        let hour = localToUTC(localDate, newFormat: "hha")
+        let minute = localToUTC(localDate, newFormat: "mm")
         if let y = Int32(year), let m = Int32(month), let d = Int32(day), let h = Double(hour.convertToTwentyFourHours()), let min = Double(minute) {
             return Double(adapter.getSweJulianDay(y, m, d, Double(h + min / 60)))
         }
@@ -33,8 +35,7 @@ extension Date {
         let dateFormatter = DateFormatter()
         let format = "MM-dd-yyyy HH:mm"
         dateFormatter.dateFormat = format
-        dateFormatter.calendar = NSCalendar.current
-        dateFormatter.timeZone = TimeZone.current
+        
 
         if let dt = dateFormatter.date(from: date) {
             dateFormatter.timeZone = TimeZone(abbreviation: "UTC")
