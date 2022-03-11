@@ -27,7 +27,7 @@ extension AstrobotBaseInterface {
                 row.planets.append(calculateASC(time: time, location: location))
 
             } else {
-                let val = adapter.getPlanetDegree(time, Int32(type.rawValue))
+                let val = adapter.getPlanetDegree(time, Int32(type.getAstroIndex()))
                 let pastVal = adapter.getPlanetDegree(time - interval, Int32(type.rawValue))
                 let retro = checkRetrograde(val: val, past: pastVal)
                 row.planets.append(getPlanetData(type, degree: Double(val), retrograde: retro))
