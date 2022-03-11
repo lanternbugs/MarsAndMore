@@ -49,6 +49,8 @@ extension Planets {
             return "Juno"
         case .Vesta:
             return "Vesta"
+        case .TrueNode:
+            return "True Node"
         }
     }
     
@@ -105,6 +107,8 @@ extension Planets {
             return 8
         case .Pluto:
             return 9
+        case .TrueNode:
+            return 11
         case .Chiron:
             return 15
         case .Pholus:
@@ -145,6 +149,8 @@ extension Planets {
             return .Neptune
         case 9:
             return .Pluto
+        case 11:
+            return .TrueNode
         case 15:
             return .Chiron
         case 16:

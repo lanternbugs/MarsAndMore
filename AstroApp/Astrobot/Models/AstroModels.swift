@@ -14,7 +14,7 @@
 import Foundation
 import IOSurface
 enum Planets: Int, CaseIterable {
-    case Ascendent = -1, Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Chiron, Pholus, Ceres, Pallas, Juno, Vesta
+    case Ascendent = -1, Sun, Moon, Mercury, Venus, Mars, Jupiter, Saturn, Uranus, Neptune, Pluto, Chiron, Pholus, Ceres, Pallas, Juno, Vesta, TrueNode
 }
 enum Signs: Int {
     case Aries, Taurus, Gemini, Cancer, Leo, Virgo, Libra, Scorpio, Sagitarius, Capricorn,
