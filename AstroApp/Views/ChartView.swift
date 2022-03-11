@@ -32,7 +32,13 @@ struct ChartView: View {
                                 
                                 
                                 VStack {
-                                    Text("\(planetRow.type.getName())  \(planetRow.name)").padding(.top).font(.headline)
+                                    if #available(macOS 12.0, *) {
+                                        Text("\(planetRow.type.getName())  \(planetRow.name)").textSelection(.enabled).padding(.top).font(.headline)
+                                    }
+                                    else {
+                                        Text("\(planetRow.type.getName())  \(planetRow.name)").padding(.top).font(.headline)
+                                    }
+                                    
                                     switch(planetRow.type) {
                                     case .Planets:
                                         PlanetsEntry(data: planetRow)

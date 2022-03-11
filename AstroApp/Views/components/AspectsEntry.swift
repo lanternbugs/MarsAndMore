@@ -37,9 +37,14 @@ struct AspectsEntry: View {
         
         return "No Aspects"
     }
+    @ViewBuilder
     var body: some View {
         
-        Text(displayString).padding([.top,.bottom])
+        if #available(macOS 12.0, *) {
+            Text(displayString).textSelection(.enabled).padding([.top,.bottom])
+        } else {
+            Text(displayString).padding([.top,.bottom])
+        }
     }
 }
 
