@@ -17,7 +17,7 @@ extension AstrobotBaseInterface {
     {
         var row = PlanetRow()
         let adapter = AdapterToEphemeris()
-        let interval: Double = 0.2
+        let interval: Double = 0.1
         for type in Planets.allCases
         {
             if type == .Ascendent {
@@ -125,7 +125,7 @@ extension AstrobotInterface {
                 transitPlanets.append(TransitingPlanet(planet: type, degree: degree, laterDegree: degree))
 
             } else {
-                let interval: Double = 0.2
+                let interval: Double = 0.05
                 let val = adapter.getPlanetDegree(time, Int32(type.rawValue))
                 let val2 = adapter.getPlanetDegree(time + interval, Int32(type.rawValue))
                 transitPlanets.append(TransitingPlanet(planet: type, degree: Double(val), laterDegree: val2))
