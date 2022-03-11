@@ -25,10 +25,10 @@ struct AspectsEntry: View {
                     if display.count > 0 {
                         display += "; "
                     }
-                    display += val.planet.getName() + " " + val.aspect.getName() + " " + val.planet2.getName() + " " + val.degree
                     if val.movement == .Applying {
-                        display += " " + val.movement.rawValue
+                        display += val.movement.rawValue + " "
                     }
+                    display += val.planet.getName() + " " + val.aspect.getName() + " " + val.planet2.getName() + " " + val.degree
                 }
                 
             }

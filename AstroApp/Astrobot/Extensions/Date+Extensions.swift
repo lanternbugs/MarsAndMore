@@ -23,9 +23,9 @@ extension Date {
         let year = localToUTC(localDate, newFormat: "yyyy")
         let month = localToUTC(localDate, newFormat: "MM")
         let day = localToUTC(localDate, newFormat: "dd")
-        let hour = localToUTC(localDate, newFormat: "hha")
+        let hour = localToUTC(localDate, newFormat: "HH")
         let minute = localToUTC(localDate, newFormat: "mm")
-        if let y = Int32(year), let m = Int32(month), let d = Int32(day), let h = Double(hour.convertToTwentyFourHours()), let min = Double(minute) {
+        if let y = Int32(year), let m = Int32(month), let d = Int32(day), let h = Double(hour), let min = Double(minute) {
             return Double(adapter.getSweJulianDay(y, m, d, Double(h + min / 60)))
         }
         return Double(adapter.getSweJulianDay(1970, 1, 1, 0))

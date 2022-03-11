@@ -17,7 +17,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var birthDates = [BirthData]()
     @Published var cityInfo: CityInfo?
     @Published var selectedName: Int?
-    @Published var bodiesToShow = Set<Planets>()
+    var bodiesToShow = Set<Planets>()
     var defaultBodiesToShow = Set<Planets>()
     let builder = BirthDataBuilder()
     var managedContext: NSManagedObjectContext?
