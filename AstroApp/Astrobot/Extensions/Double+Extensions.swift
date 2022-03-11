@@ -26,16 +26,12 @@ extension Double {
     
     func getAstroDegree()->String
     {
-        let s = (Int(self/30))%12
-        let num = Int(self - (Double(s) * 30))
+        let num = Int(self) % 30
+        let difference =  self - Double(Int(self))
+        let doubleMinute = difference * 60;
 
-        let intSelf = Int(self)
-        let difference =  self - Double(intSelf)
-        let fraction = difference * 3600;
-
-        let minute1 = fraction / 60;
-        var minute = Int(fraction / 60)
-        if 10 * (minute1 - Double(minute)) >= 5  {
+        var minute = Int(doubleMinute)
+        if 10 * (doubleMinute - Double(minute)) >= 5  {
             minute += 1
         }
         
