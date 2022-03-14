@@ -126,8 +126,8 @@ extension AstrobotInterface {
 
             } else {
                 let interval: Double = 0.05
-                let val = adapter.getPlanetDegree(time, Int32(type.rawValue))
-                let val2 = adapter.getPlanetDegree(time + interval, Int32(type.rawValue))
+                let val = adapter.getPlanetDegree(time, Int32(type.getAstroIndex()))
+                let val2 = adapter.getPlanetDegree(time + interval, Int32(type.getAstroIndex()))
                 transitPlanets.append(TransitingPlanet(planet: type, degree: Double(val), laterDegree: val2))
             }
             
