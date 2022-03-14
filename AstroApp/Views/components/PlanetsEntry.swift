@@ -35,14 +35,27 @@ struct PlanetsEntry: View {
             if let mars = getData(planet: .Mars) , let venus = getData(planet: .Venus) {
                 FeaturedPlanetsEntry(marsData: mars, venusData: venus)
             }
+#if os(macOS)
             if #available(macOS 12.0, *) {
                 Text(rowFromPlanets(row: regularPlanets))
                     .textSelection(.enabled)
-                .frame(maxWidth: .infinity, alignment: .leading)
-            } else {
-                Text(rowFromPlanets(row: regularPlanets))
-                .frame(maxWidth: .infinity, alignment: .leading)
+                    .frame(maxWidth: .infinity, alignment: .leading)
             }
+            else {
+                Text(rowFromPlanets(row: regularPlanets))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+#else
+            if #available(iOS 15.0, *) {
+                Text(rowFromPlanets(row: regularPlanets))
+                    .textSelection(.enabled)
+                    .frame(maxWidth: .infinity, alignment: .leading)
+            }
+            else {
+                Text(rowFromPlanets(row: regularPlanets))
+                    .frame(maxWidth: .infinity, alignment: .leading)
+                }
+#endif
             
         }
             

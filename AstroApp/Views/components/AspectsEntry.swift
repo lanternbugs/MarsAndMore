@@ -40,11 +40,21 @@ struct AspectsEntry: View {
     @ViewBuilder
     var body: some View {
         
-        if #available(macOS 12.0, *) {
-            Text(displayString).textSelection(.enabled).padding([.top,.bottom])
-        } else {
-            Text(displayString).padding([.top,.bottom])
-        }
+#if os(macOS)
+            if #available(macOS 12.0, *) {
+                Text(displayString).textSelection(.enabled).padding([.top,.bottom])
+            }
+            else {
+                Text(displayString).padding([.top,.bottom])
+                }
+#else
+            if #available(iOS 15.0, *) {
+                Text(displayString).textSelection(.enabled).padding([.top,.bottom])
+            }
+            else {
+                Text(displayString).padding([.top,.bottom])
+                }
+#endif
     }
 }
 
