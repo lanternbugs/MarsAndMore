@@ -30,6 +30,12 @@ struct AstroButtons: View, AstrobotInterface {
                     Text("Aspects")
                 }
                 Spacer()
+                if data.count > 0 {
+                    Button(action: clearData) {
+                        Text("Clear")
+                    }
+                    Spacer()
+                }
             }
             if let _ = manager.selectedName {
                 TransitsButtonControl(data: $data)
@@ -51,6 +57,11 @@ extension AstroButtons {
         let row = getAspects(time: manager.getSelectionTime(), with: nil, and: manager.getSelectionLocation())
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects, name: manager.getCurrentName())
         data.append(displayRow)
+    }
+    
+    func clearData()
+    {
+        data.removeAll()
     }
 }
 struct AstroButtons_Previews: PreviewProvider {
