@@ -68,7 +68,7 @@ extension PlanetsEntry {
         for val in row {
             if manager.bodiesToShow.contains(val.planet) {
                 rowString += val.planet.getName() + " " + val.degree + " " + val.sign.getNameShort()
-                rowString += val.retrograde ? " R " : " "
+                rowString += val.retrograde ? " R; " : "; "
             }
             
         }
