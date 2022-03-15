@@ -15,9 +15,8 @@ import SwiftUI
 
 struct ChartTab: View {
     @Environment(\.roomState) private var roomState
-    @State private var name: String = ""
-    @State private var date: Date = Date(timeIntervalSince1970: 0)
-    @State private var exactTime: Bool = false
+    @EnvironmentObject var manager: BirthDataManager
+    
     @State private var data: [DisplayPlanetRow] = Array<DisplayPlanetRow>()
     @ViewBuilder
     var body: some View {
@@ -34,11 +33,10 @@ struct ChartTab: View {
                 CitiesView()
             }
              
-        case .Names:
+        case .Names, .EditName:
             VStack {
                 DoneView(newRoomState: .Chart)
-                NameDataView(
-                             name: $name, birthdate: $date, exactTime: $exactTime)
+                NameDataView()
             }
         case .ChartSettings:
             VStack {
@@ -56,7 +54,9 @@ struct ChartTab: View {
         }
     }
 }
-
+extension ChartTab {
+    
+}
 struct ChartTab_Previews: PreviewProvider {
     static var previews: some View {
         ChartTab()

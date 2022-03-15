@@ -157,6 +157,8 @@
 		7694465027CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */; };
 		76AB623127B0A9CF00FEFBD4 /* ReadingCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */; };
 		76AB623227B0A9CF00FEFBD4 /* ReadingCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */; };
+		76ADD2C527E12B2D00261505 /* SelectedNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADD2C427E12B2D00261505 /* SelectedNameView.swift */; };
+		76ADD2C627E12B2D00261505 /* SelectedNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADD2C427E12B2D00261505 /* SelectedNameView.swift */; };
 		76AF1D5227AE1E7400CB4E97 /* venus-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4627AE1E7400CB4E97 /* venus-scorpio.txt */; };
 		76AF1D5327AE1E7400CB4E97 /* venus-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4627AE1E7400CB4E97 /* venus-scorpio.txt */; };
 		76AF1D5427AE1E7400CB4E97 /* venus-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76AF1D4727AE1E7400CB4E97 /* venus-taurus.txt */; };
@@ -330,6 +332,7 @@
 		76908C9927C050CA00806F9D /* SelectedNameModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNameModifier.swift; sourceTree = "<group>"; };
 		7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirthDataManager+Extensions.swift"; sourceTree = "<group>"; };
 		76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingCredits.swift; sourceTree = "<group>"; };
+		76ADD2C427E12B2D00261505 /* SelectedNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNameView.swift; sourceTree = "<group>"; };
 		76AF1D4627AE1E7400CB4E97 /* venus-scorpio.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-scorpio.txt"; sourceTree = "<group>"; };
 		76AF1D4727AE1E7400CB4E97 /* venus-taurus.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-taurus.txt"; sourceTree = "<group>"; };
 		76AF1D4827AE1E7400CB4E97 /* venus-leo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-leo.txt"; sourceTree = "<group>"; };
@@ -520,6 +523,7 @@
 				76908C9327C04F2900806F9D /* NamesTextModifier.swift */,
 				76908C9927C050CA00806F9D /* SelectedNameModifier.swift */,
 				7667125327D00D7F00644429 /* TransitsButtonControl.swift */,
+				76ADD2C427E12B2D00261505 /* SelectedNameView.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -937,6 +941,7 @@
 				76DAC8A727B2016700852872 /* CitiesView.swift in Sources */,
 				761DEEC3279B9EF900A71938 /* swecl.c in Sources */,
 				761DEEC5279B9EF900A71938 /* sweph.c in Sources */,
+				76ADD2C527E12B2D00261505 /* SelectedNameView.swift in Sources */,
 				761DEEB7279B9EF900A71938 /* swehel.c in Sources */,
 				761DEECB279B9EF900A71938 /* swephlib.c in Sources */,
 				764EF76D27ACA897008A15F1 /* ReadingView.swift in Sources */,
@@ -1001,6 +1006,7 @@
 				76DAC8A827B2016700852872 /* CitiesView.swift in Sources */,
 				76BEF3F627ACB0AB001C9AD0 /* MainView.swift in Sources */,
 				761DEEC2279B9EF900A71938 /* swehouse.c in Sources */,
+				76ADD2C627E12B2D00261505 /* SelectedNameView.swift in Sources */,
 				7606E28527AB18BF00C72FAB /* ChartRoom.swift in Sources */,
 				764EF76E27ACA897008A15F1 /* ReadingView.swift in Sources */,
 				761DEEBC279B9EF900A71938 /* swepdate.c in Sources */,

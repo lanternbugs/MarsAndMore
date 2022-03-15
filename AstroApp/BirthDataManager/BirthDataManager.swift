@@ -17,6 +17,9 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var birthDates = [BirthData]()
     @Published var cityInfo: CityInfo?
     @Published var selectedName: Int?
+    @Published var nameToEdit: String = ""
+    @Published var dateToEdit: Date = Date(timeIntervalSince1970: 0)
+    @Published var exactTimeToEdit: Bool = false
     var bodiesToShow = Set<Planets>()
     var defaultBodiesToShow = Set<Planets>()
     let builder = BirthDataBuilder()

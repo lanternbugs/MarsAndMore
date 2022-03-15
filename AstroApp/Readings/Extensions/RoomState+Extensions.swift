@@ -22,7 +22,9 @@ extension RoomState: AstroReading {
         case .Cities:
             return "Cities"
         case .Names:
-            return "Add/Edit Name"
+            return "Add Name"
+        case .EditName:
+            return "Edit Name Entry"
         case .Reading:
             return "Reading"
         case .ChartSettings:

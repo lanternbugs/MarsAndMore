@@ -17,6 +17,7 @@ enum RoomState {
     case Entry
     case Chart
     case Names
+    case EditName
     case Cities
     case ChartSettings
     case Resources

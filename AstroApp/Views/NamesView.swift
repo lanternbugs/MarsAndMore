@@ -54,11 +54,7 @@ struct NamesView: View {
                     ForEach(manager.birthDates, id: \.id) {
                         nameDateInfo in
                         if manager.selectedName == nameDateInfo.id {
-                            Text(nameDateInfo.name).namesStyle()
-                                .selectedNameColor()
-                                .gesture(TapGesture().onEnded({
-                                tappedName(with: nameDateInfo.id)
-                            }))
+                            SelectedNameView()
                         } else {
                             Text(nameDateInfo.name).namesStyle().gesture(TapGesture().onEnded({
                                 tappedName(with: nameDateInfo.id)
