@@ -130,6 +130,7 @@ class BirthDataBuilder {
             throw BuildErrors.MissingDependency(mess: genericError)
         }
         let formatter = DateFormatter()
+        formatter.locale   = Locale(identifier: "en_US_POSIX")
         formatter.dateFormat = "yyyy"
         let year = formatter.string(from: date.birthDate)
        formatter.dateFormat = "MM"

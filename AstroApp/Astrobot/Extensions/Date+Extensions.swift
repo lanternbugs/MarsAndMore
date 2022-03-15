@@ -17,6 +17,7 @@ extension Date {
         let adapter = AdapterToEphemeris()
         let formatter = DateFormatter()
         formatter.dateFormat = "MM-dd-yyyy HH:mm"
+        formatter.locale   = Locale(identifier: "en_US_POSIX")
         formatter.calendar = NSCalendar.current
         formatter.timeZone = TimeZone.current
         let localDate = formatter.string(from: self)
@@ -35,6 +36,7 @@ extension Date {
         let dateFormatter = DateFormatter()
         let format = "MM-dd-yyyy HH:mm"
         dateFormatter.dateFormat = format
+        dateFormatter.locale   = Locale(identifier: "en_US_POSIX")
         
 
         if let dt = dateFormatter.date(from: date) {
