@@ -50,20 +50,18 @@ struct NamesView: View {
                                 manager.selectedName = nil
                         }))
                     }
-                    
-                    ForEach(manager.birthDates, id: \.id) {
-                        nameDateInfo in
-                        if manager.selectedName == nameDateInfo.id {
-                            SelectedNameView()
-                        } else {
-                            Text(nameDateInfo.name).namesStyle().gesture(TapGesture().onEnded({
-                                tappedName(with: nameDateInfo.id)
-                            }))
+                    ScrollView {
+                        ForEach(manager.birthDates, id: \.id) {
+                            nameDateInfo in
+                            if manager.selectedName == nameDateInfo.id {
+                                SelectedNameView()
+                            } else {
+                                Text(nameDateInfo.name).namesStyle().gesture(TapGesture().onEnded({
+                                    tappedName(with: nameDateInfo.id)
+                                }))
+                            }
                         }
-                        
                     }
-                    
-                    
                 }
             }
 

@@ -22,23 +22,23 @@ struct NameDataView: View {
         VStack {
             HStack {
                 Text("Input Name:").font(.headline)
-                TextField("Name", text: $manager.nameToEdit)
+                TextField("Name", text: $manager.userNameSelection)
             }
-            if !manager.exactTimeToEdit {
+            if !manager.userExactTimeSelection {
                 DatePicker(
                   "Birthdate",
-                  selection: $manager.dateToEdit,
+                  selection: $manager.userDateSelection,
                   displayedComponents: .date
                 ).datePickerStyle(DefaultDatePickerStyle())
             } else {
                 DatePicker(
                   "Birthdate",
-                  selection: $manager.dateToEdit,
+                  selection: $manager.userDateSelection,
                   displayedComponents: [.date, .hourAndMinute]
                 ).datePickerStyle(DefaultDatePickerStyle())
             }
-            Toggle("Exact Time", isOn: $manager.exactTimeToEdit)
-            if manager.exactTimeToEdit {
+            Toggle("Exact Time", isOn: $manager.userExactTimeSelection)
+            if manager.userExactTimeSelection {
                 Text("Local time used. Adjust time as needed.").font(.headline)
                 HStack {
                     Text("Add a birth city to calculate Acendent").font(.subheadline)
@@ -49,7 +49,7 @@ struct NameDataView: View {
                     }
                 }
             }
-            if manager.exactTimeToEdit  {
+            if manager.userExactTimeSelection  {
                 if let city = manager.builder.cityData {
                     HStack {
                         Text("\(city.name)").padding()
@@ -77,11 +77,16 @@ struct NameDataView: View {
 
 extension NameDataView {
     func submitBirthData()->Void {
-        manager.builder.addNameDate(manager.nameToEdit, birthdate: CalendarDate(birthDate: manager.dateToEdit, exactTime: manager.exactTimeToEdit))
+        manager.builder.addNameDate(manager.userNameSelection, birthdate: CalendarDate(birthDate: manager.userDateSelection, exactTime: manager.userExactTimeSelection))
         do {
-            let birthData = try manager.builder.build()
-            manager.addBirthData(data: birthData)
-            manager.nameToEdit = ""
+            let birthData = try manager.builder.build(mode: roomState.wrappedValue)
+            switch(roomState.wrappedValue) {
+            case .EditName:
+                manager.updateBirthData(data: birthData)
+            default:
+                manager.addBirthData(data: birthData)
+            }
+            manager.userNameSelection = ""
             manager.selectedName = manager.birthDates.count - 1
             roomState.wrappedValue = .Chart
         } catch BuildErrors.NoName(let mes) {

@@ -57,4 +57,5 @@ struct BirthData {
 protocol ManagerBuilderInterface: AnyObject {
     func checkIfNameExist(_ name: String)->Bool
     func getNextId()->Int
+    func getIdForName(_ name: String) throws ->Int
 }

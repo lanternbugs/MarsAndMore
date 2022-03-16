@@ -43,12 +43,12 @@ extension SelectedNameView {
     
     func setSelectedNameData()->Void {
         if let index = manager.selectedName {
-            manager.nameToEdit = manager.birthDates[index].name
+            manager.userNameSelection = manager.birthDates[index].name
             if let time =  manager.birthDates[index].birthTime {
-                manager.exactTimeToEdit = true
-                manager.dateToEdit = time
+                manager.userExactTimeSelection = true
+                manager.userDateSelection = time
             } else {
-                manager.exactTimeToEdit = false
+                manager.userExactTimeSelection = false
                 setTimeFromBirthdate(from: index)
                 
             }
@@ -68,7 +68,7 @@ extension SelectedNameView {
         // Create date from components
         let userCalendar = Calendar(identifier: .gregorian)
         if let time = userCalendar.date(from: dateComponents) {
-            manager.dateToEdit = time
+            manager.userDateSelection = time
         }
     }
 }

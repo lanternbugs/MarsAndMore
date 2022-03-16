@@ -17,9 +17,9 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var birthDates = [BirthData]()
     @Published var cityInfo: CityInfo?
     @Published var selectedName: Int?
-    @Published var nameToEdit: String = ""
-    @Published var dateToEdit: Date = Date(timeIntervalSince1970: 0)
-    @Published var exactTimeToEdit: Bool = false
+    @Published var userNameSelection: String = ""
+    @Published var userDateSelection: Date = Date(timeIntervalSince1970: 0)
+    @Published var userExactTimeSelection: Bool = false
     var bodiesToShow = Set<Planets>()
     var defaultBodiesToShow = Set<Planets>()
     let builder = BirthDataBuilder()
@@ -86,6 +86,11 @@ extension BirthDataManager {
         return birthDates.count
     }
     
+    func getIdForName(_ name: String) throws ->Int
+    {
+        return 0
+    }
+    
     func getCurrentName()->String
     {
         if let index = selectedName {
@@ -117,15 +122,27 @@ class BirthDataBuilder {
         self.cityData = city
     }
     
-    func build() throws ->BirthData
+    func build(mode: RoomState) throws ->BirthData
     {
         let genericError = "error, cannot validate now.";
-        guard let name = name, !name.isEmpty else {
-            throw BuildErrors.NoName(mess: "You must enter a name")
-        }
+        var index: Int?
         guard let manager = managerInterface else {
             throw BuildErrors.MissingDependency(mess: genericError)
         }
+        guard let name = name else {
+            throw BuildErrors.NoName(mess: "You must enter a name")
+        }
+        switch(mode) {
+        case .EditName:
+            if name.isEmpty {
+                throw BuildErrors.NoName(mess: "You must enter a name")
+            }
+            index = try manager.getIdForName(name)
+        default:
+            index = manager.getNextId()
+        }
+        
+        
         guard !manager.checkIfNameExist(name) else {
             throw BuildErrors.DuplicateName(mess: "Name is in use. It must be deleted first before reusing.")
         }
@@ -143,7 +160,9 @@ class BirthDataBuilder {
         guard let y = Int32(year), let m = Int32(month), let d = Int32(day) else {
             throw BuildErrors.MissingDependency(mess: genericError)
         }
-        let id = manager.getNextId()
+        guard let id = index else {
+            throw BuildErrors.MissingDependency(mess: genericError)
+        }
         if date.exactTime {
             if let cityData = cityData {
                 let location = LocationData(latitude: cityData.latitude, longitude: cityData.longitude)

@@ -16,6 +16,10 @@ extension BirthDataManager {
         addPersonToPersistentStorage(with: data)
     }
     
+    func updateBirthData(data: BirthData)->Void {
+        
+    }
+    
     func addPersonToPersistentStorage(with data: BirthData) {
         guard let context = self.managedContext else {
             return
