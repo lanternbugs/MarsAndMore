@@ -17,7 +17,31 @@ extension BirthDataManager {
     }
     
     func updateBirthData(data: BirthData)->Void {
+        guard let context = self.managedContext else {
+            return
+        }
         
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BirthDates")
+        do {
+            if let birthDates =  try context.fetch(fetchRequest) as? [BirthDates] {
+                for val in birthDates {
+                    if val.name == data.name {
+                        val.year = data.birthDate.year
+                        val.month = data.birthDate.month
+                        val.day = data.birthDate.day
+                        val.time = data.birthTime
+                        val.latitude = data.location?.latitude
+                        val.longitude = data.location?.longitude
+                        try context.save()
+                        self.birthDates[data.id] = data
+                        return
+                    }
+                }
+            }
+        } catch let error as NSError  {
+            print("Could not save \(error), \(error.userInfo)")
+            
+        }
     }
     
     func addPersonToPersistentStorage(with data: BirthData) {

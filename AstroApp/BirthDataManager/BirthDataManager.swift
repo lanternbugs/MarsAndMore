@@ -88,7 +88,13 @@ extension BirthDataManager {
     
     func getIdForName(_ name: String) throws ->Int
     {
-        return 0
+        let genericError = "error, the name is in use.";
+        for val in birthDates {
+            if val.name == name {
+                return val.id
+            }
+        }
+        throw BuildErrors.MissingDependency(mess: genericError)
     }
     
     func getCurrentName()->String
@@ -139,13 +145,12 @@ class BirthDataBuilder {
             }
             index = try manager.getIdForName(name)
         default:
+            guard !manager.checkIfNameExist(name) else {
+                throw BuildErrors.DuplicateName(mess: "Name is in use. It must be deleted first before reusing.")
+            }
             index = manager.getNextId()
         }
         
-        
-        guard !manager.checkIfNameExist(name) else {
-            throw BuildErrors.DuplicateName(mess: "Name is in use. It must be deleted first before reusing.")
-        }
         guard let date = date else {
             throw BuildErrors.MissingDependency(mess: genericError)
         }
