@@ -77,27 +77,32 @@ struct NameDataView: View {
 
 extension NameDataView {
     func submitBirthData()->Void {
-        manager.builder.addNameDate(manager.userNameSelection, birthdate: CalendarDate(birthDate: manager.userDateSelection, exactTime: manager.userExactTimeSelection))
-        do {
-            let birthData = try manager.builder.build(mode: roomState.wrappedValue)
-            switch(roomState.wrappedValue) {
-            case .EditName:
-                manager.updateBirthData(data: birthData)
-            default:
-                manager.addBirthData(data: birthData)
-            }
-            manager.userNameSelection = ""
-            manager.selectedName = manager.birthDates.count - 1
-            roomState.wrappedValue = .Chart
-        } catch BuildErrors.NoName(let mes) {
-            birthDataError = mes
-        } catch BuildErrors.DuplicateName(let mes) {
-            birthDataError = mes
-        } catch BuildErrors.MissingDependency(let mes) {
-            birthDataError = mes
-        } catch {
-            birthDataError = "there was an unknown error"
+        if let location = manager.userLocationData {
+            manager.builder.addLocation(location)
         }
+               manager.builder.addNameDate(manager.userNameSelection, birthdate: CalendarDate(birthDate: manager.userDateSelection, exactTime: manager.userExactTimeSelection))
+
+                do {
+                    let birthData = try manager.builder.build(mode: roomState.wrappedValue)
+                    switch(roomState.wrappedValue) {
+                    case .EditName:
+                        manager.updateBirthData(data: birthData)
+                    default:
+                        manager.addBirthData(data: birthData)
+                    }
+                    manager.userNameSelection = ""
+                    manager.userLocationData = nil
+                    manager.selectedName = birthData.id
+                    roomState.wrappedValue = .Chart
+                } catch BuildErrors.NoName(let mes) {
+                    birthDataError = mes
+                } catch BuildErrors.DuplicateName(let mes) {
+                    birthDataError = mes
+                } catch BuildErrors.MissingDependency(let mes) {
+                    birthDataError = mes
+                } catch {
+                    birthDataError = "there was an unknown error"
+                }
     }
 }
 

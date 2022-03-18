@@ -20,6 +20,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var userNameSelection: String = ""
     @Published var userDateSelection: Date = Date(timeIntervalSince1970: 0)
     @Published var userExactTimeSelection: Bool = false
+    @Published var userLocationData: LocationData?
     var bodiesToShow = Set<Planets>()
     var defaultBodiesToShow = Set<Planets>()
     let builder = BirthDataBuilder()
@@ -108,12 +109,14 @@ extension BirthDataManager {
 
 class BirthDataBuilder {
     public private(set) var cityData: City?
+    public private(set) var locationData: LocationData?
     public private(set) var name: String?
     public private(set) var date: CalendarDate?
     weak var managerInterface: ManagerBuilderInterface?
     
     func reset()->Void {
         cityData = nil
+        locationData = nil
         name = nil
         date = nil
     }
@@ -125,7 +128,15 @@ class BirthDataBuilder {
     
     func addCity(_ city: City)
     {
-        self.cityData = city
+       self.cityData = city
+    }
+    
+    func addLocation(_ location: LocationData) {
+        self.locationData = location
+    }
+    
+    func removeLocation() {
+        self.locationData = nil
     }
     
     func build(mode: RoomState) throws ->BirthData
@@ -174,8 +185,14 @@ class BirthDataBuilder {
                 reset()
                 return BirthData(name: name, birthDate: BirthDate(year: y, month: m, day: d), birthTime: date.birthDate, location: location, id: id)
             } else {
-                reset()
-                return BirthData(name: name, birthDate: BirthDate(year: y, month: m, day: d), birthTime: date.birthDate, location: nil, id: id)
+                if let location = locationData {
+                    reset()
+                    return BirthData(name: name, birthDate: BirthDate(year: y, month: m, day: d), birthTime: date.birthDate, location: location, id: id)
+                } else {
+                    reset()
+                    return BirthData(name: name, birthDate: BirthDate(year: y, month: m, day: d), birthTime: date.birthDate, location: nil, id: id)
+                }
+                
             }
         }
         reset()

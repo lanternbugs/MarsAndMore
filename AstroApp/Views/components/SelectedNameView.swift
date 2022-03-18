@@ -47,6 +47,9 @@ extension SelectedNameView {
             if let time =  manager.birthDates[index].birthTime {
                 manager.userExactTimeSelection = true
                 manager.userDateSelection = time
+                if let location = manager.birthDates[index].location {
+                    manager.userLocationData = location
+                }
             } else {
                 manager.userExactTimeSelection = false
                 setTimeFromBirthdate(from: index)

@@ -47,6 +47,8 @@ struct CitiesView: View {
                 }.gesture(TapGesture().onEnded {
                     withAnimation(.easeIn, {
                         manager.builder.addCity(city)
+                        manager.userLocationData = nil
+                        manager.builder.removeLocation()
                         roomState.wrappedValue = .Names
                     })}
                 )
