@@ -48,8 +48,12 @@ struct CitiesView: View {
                     withAnimation(.easeIn, {
                         manager.builder.addCity(city)
                         manager.userLocationData = nil
-                        manager.builder.removeLocation()
-                        roomState.wrappedValue = .Names
+                        switch(roomState.wrappedValue) {
+                        case .UpdateCity:
+                            roomState.wrappedValue = .EditName
+                        default:
+                            roomState.wrappedValue = .Names
+                        }
                     })}
                 )
             }

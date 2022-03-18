@@ -129,14 +129,12 @@ class BirthDataBuilder {
     func addCity(_ city: City)
     {
        self.cityData = city
+        self.locationData = nil
     }
     
     func addLocation(_ location: LocationData) {
         self.locationData = location
-    }
-    
-    func removeLocation() {
-        self.locationData = nil
+        self.cityData = nil
     }
     
     func build(mode: RoomState) throws ->BirthData

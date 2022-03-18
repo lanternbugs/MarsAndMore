@@ -43,7 +43,13 @@ struct NameDataView: View {
                 HStack {
                     Text("Add a birth city to calculate Acendent").font(.subheadline)
                     Button(action: {
-                        roomState.wrappedValue = .Cities
+                        switch(roomState.wrappedValue) {
+                        case .EditName:
+                            roomState.wrappedValue = .UpdateCity
+                        default:
+                            roomState.wrappedValue = .Cities
+                        }
+                        
                     }) {
                         Text("+City")
                     }

@@ -19,6 +19,7 @@ enum RoomState {
     case Names
     case EditName
     case Cities
+    case UpdateCity
     case ChartSettings
     case Resources
     case Reading(planet: Planets, sign: Signs)
