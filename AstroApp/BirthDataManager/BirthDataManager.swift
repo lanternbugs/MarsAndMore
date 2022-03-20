@@ -73,6 +73,11 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
 //Mark: builder helper functions
 extension BirthDataManager {
     
+    func resetSpecificUserData() {
+        userNameSelection = ""
+        userExactTimeSelection = false
+        builder.removeLocation()
+    }
     func checkIfNameExist(_ name: String) -> Bool {
         let data = birthDates.first {
             $0.name == name
@@ -134,6 +139,11 @@ class BirthDataBuilder {
     
     func addLocation(_ location: LocationData) {
         self.locationData = location
+        self.cityData = nil
+    }
+    
+    func removeLocation() {
+        self.locationData = nil
         self.cityData = nil
     }
     

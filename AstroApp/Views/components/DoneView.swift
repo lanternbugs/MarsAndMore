@@ -15,10 +15,18 @@ import SwiftUI
 
 struct DoneView: View {
     @Environment(\.roomState) private var roomState
+    @EnvironmentObject private var manager: BirthDataManager
     let newRoomState: RoomState
     var body: some View {
         Button(action: {
-            roomState.wrappedValue = newRoomState
+            switch(roomState.wrappedValue) {
+            case .EditName:
+                manager.resetSpecificUserData()
+                roomState.wrappedValue = newRoomState
+            default:
+                roomState.wrappedValue = newRoomState
+            }
+            
         }) {
             HStack(alignment: .center) {
                 Text("<\(newRoomState.getName())")
