@@ -155,15 +155,12 @@ class BirthDataBuilder {
         guard let manager = managerInterface else {
             throw BuildErrors.MissingDependency(mess: genericError)
         }
-        guard let name = name else {
+        guard let name = name, !name.isEmpty else {
             throw BuildErrors.NoName(mess: "You must enter a name")
         }
         switch(mode) {
         case .EditName:
-            if name.isEmpty {
-                throw BuildErrors.NoName(mess: "You must enter a name")
-            }
-            index = try manager.getIdForName(name)
+                    index = try manager.getIdForName(name)
         default:
             guard !manager.checkIfNameExist(name) else {
                 throw BuildErrors.DuplicateName(mess: "Name is in use. It must be deleted first before reusing.")
