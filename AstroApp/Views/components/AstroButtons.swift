@@ -17,6 +17,7 @@ struct AstroButtons: View, AstrobotInterface {
     
     @EnvironmentObject private var manager: BirthDataManager
     @Binding var data: [DisplayPlanetRow]
+    @State private var astroButtonsEnabled = true
     @ViewBuilder
     var body: some View {
         VStack {
@@ -44,9 +45,24 @@ struct AstroButtons: View, AstrobotInterface {
         
     }
 }
+
+
+
 extension AstroButtons {
+    func temporaryDisableButtons()->Void
+    {
+        astroButtonsEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            astroButtonsEnabled = true
+        }
+    }
     func planets()
     {
+        guard astroButtonsEnabled else {
+            return
+        }
+        temporaryDisableButtons()
+        
         let row = getPlanets(time: manager.getSelectionTime(), location: manager.getSelectionLocation())
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets, name: manager.getCurrentName())
         data.append(displayRow)
@@ -54,6 +70,10 @@ extension AstroButtons {
     
     func aspects()
     {
+        guard astroButtonsEnabled else {
+            return
+        }
+        temporaryDisableButtons()
         let row = getAspects(time: manager.getSelectionTime(), with: nil, and: manager.getSelectionLocation())
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects, name: manager.getCurrentName())
         data.append(displayRow)

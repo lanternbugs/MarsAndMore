@@ -12,6 +12,7 @@ struct TransitsButtonControl: View, AstrobotInterface {
     @EnvironmentObject private var manager: BirthDataManager
     @State private var transitDate: Date = Date()
     @Binding var data: [DisplayPlanetRow]
+    @State private var astroButtonsEnabled = true
     var body: some View {
         VStack {
             HStack {
@@ -36,8 +37,21 @@ struct TransitsButtonControl: View, AstrobotInterface {
 }
 
 extension TransitsButtonControl {
+    func temporaryDisableButtons()->Void
+    {
+        astroButtonsEnabled = false
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+            astroButtonsEnabled = true
+        }
+    }
+    
     func transits()
     {
+        guard astroButtonsEnabled else {
+            return
+        }
+        temporaryDisableButtons()
+        
         let row = getAspects(time: manager.getSelectionTime(), with: transitDate.getAstroTime(), and: manager.getSelectionLocation())
         let dateFormater = DateFormatter()
         dateFormater.locale   = Locale(identifier: "en_US_POSIX")
