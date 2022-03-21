@@ -24,7 +24,7 @@ struct SelectedNameView: View {
                     setSelectedNameData()
                     roomState.wrappedValue = .EditName
                 }) {
-                    Text("Edit").selectedNameColor()
+                    Text("Edit").font(.headline).padding([.leading, .trailing]).selectedNameColor()
                 }
             }
             

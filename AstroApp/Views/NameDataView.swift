@@ -83,24 +83,40 @@ struct NameDataView: View {
             if manager.userExactTimeSelection {
                 Text("Local time used. Adjust time as needed.").font(.headline)
                 HStack {
-                    Text("Add a birth city to calculate Acendent").font(.subheadline)
-                    Button(action: {
-                        switch(roomState.wrappedValue) {
-                        case .EditName:
-                            roomState.wrappedValue = .UpdateCity
-                        default:
-                            roomState.wrappedValue = .Cities
+                    if let locationData = manager.userLocationData {
+                        VStack {
+                            Text("Location set to \(locationData.latitude) latitude and \(locationData.longitude) longitude").font(.subheadline)
+                            Button(action: {
+                                manager.builder.removeLocation()
+                                manager.userLocationData = nil
+                                
+                            }) {
+                                Text("Remove Location")
+                            }
                         }
                         
-                    }) {
-                        Text("+City")
+                    } else {
+                        Text("Add a birth city to calculate Acendent").font(.subheadline)
+                        Button(action: {
+                            switch(roomState.wrappedValue) {
+                            case .EditName:
+                                roomState.wrappedValue = .UpdateCity
+                            default:
+                                roomState.wrappedValue = .Cities
+                            }
+                            
+                        }) {
+                            Text("+City")
+                        }
                     }
+                    
                 }
             }
             if manager.userExactTimeSelection  {
                 if let city = manager.builder.cityData {
                     HStack {
-                        Text("\(city.name)").padding()
+                        Spacer()
+                        Text("\(city.name)").font(.headline).padding()
                         Spacer()
                     }
                 }
