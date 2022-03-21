@@ -71,11 +71,20 @@ struct NamesView: View {
 #if os(iOS)
             .frame(width: UIScreen.main.bounds.size.width / 3.7)
 #elseif os(macOS)
-            
+            .frame(width: getMacWidth() / 9)
 #endif
         
     }
     
+}
+
+extension NamesView {
+    func getMacWidth()->Double {
+        guard let mainScreen = NSScreen.main else {
+            return 200.0
+        }
+        return mainScreen.visibleFrame.size.width
+    }
 }
 
 extension NamesView {
