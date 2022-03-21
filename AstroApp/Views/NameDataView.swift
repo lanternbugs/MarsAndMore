@@ -21,10 +21,18 @@ struct NameDataView: View {
     @ViewBuilder
     var body: some View {
         VStack {
-            HStack {
-                Text("Input Name:").font(.headline)
-                TextField("Name", text: $manager.userNameSelection)
+            if roomState.wrappedValue == .EditName {
+                HStack {
+                    Text("Edit \(manager.userNameSelection)").font(.title)
+                    Spacer()
+                }
+            } else {
+                HStack {
+                    Text("Input Name:").font(.headline)
+                    TextField("Name", text: $manager.userNameSelection)
+                }
             }
+            
             if roomState.wrappedValue == .EditName {
                 if showRemovalAlert {
                     HStack {
@@ -35,6 +43,7 @@ struct NameDataView: View {
                         Button(action: {
                             manager.removeUserBirthData(selection: manager.selectedName)
                             manager.resetSpecificUserData()
+                            manager.selectedName = nil
                             roomState.wrappedValue = .Chart
                         }) {
                             HStack {
@@ -43,14 +52,17 @@ struct NameDataView: View {
                         }
                     }
                 } else {
-                    Button(action: {
-                        showRemovalAlert = true
-                    }) {
-                        HStack {
-                            Text("Remove \(manager.userNameSelection)")
-                            Spacer()
+                    HStack {
+                        Button(action: {
+                            showRemovalAlert = true
+                        }) {
+                            HStack {
+                                Text("Remove \(manager.userNameSelection)")
+                            }
                         }
+                        Spacer()
                     }
+                    
                 }
                 
             }
