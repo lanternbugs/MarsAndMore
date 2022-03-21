@@ -18,7 +18,27 @@ extension BirthDataManager {
     
     func removeUserBirthData(selection: Int?)->Void {
         if let selection = selection {
-            birthDates.remove(at: selection)
+            guard let context = self.managedContext else {
+                return
+            }
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "BirthDates")
+            do {
+                if let dates =  try context.fetch(fetchRequest) as? [BirthDates] {
+                    for val in dates {
+                        if val.name == birthDates[selection].name {
+                            context.delete(val)
+                            try context.save()
+                            birthDates.remove(at: selection)
+                            return
+                        }
+                    }
+                }
+            }
+            catch let error as NSError  {
+                print("Could not delete \(error), \(error.userInfo)")
+                
+            }
         }
     }
     
