@@ -13,7 +13,7 @@
 
 import Foundation
 
-enum RoomState {
+enum RoomState: Equatable {
     case Entry
     case Chart
     case Names

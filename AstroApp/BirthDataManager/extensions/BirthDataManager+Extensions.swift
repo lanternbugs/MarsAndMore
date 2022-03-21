@@ -16,6 +16,12 @@ extension BirthDataManager {
         addPersonToPersistentStorage(with: data)
     }
     
+    func removeUserBirthData(selection: Int?)->Void {
+        if let selection = selection {
+            birthDates.remove(at: selection)
+        }
+    }
+    
     func updateBirthData(data: BirthData)->Void {
         guard let context = self.managedContext else {
             return

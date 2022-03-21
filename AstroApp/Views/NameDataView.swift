@@ -17,12 +17,42 @@ struct NameDataView: View {
     @EnvironmentObject private var manager: BirthDataManager
     @Environment(\.roomState) private var roomState
     @State var birthDataError: String?
+    @State private var showRemovalAlert = false
     @ViewBuilder
     var body: some View {
         VStack {
             HStack {
                 Text("Input Name:").font(.headline)
                 TextField("Name", text: $manager.userNameSelection)
+            }
+            if roomState.wrappedValue == .EditName {
+                if showRemovalAlert {
+                    HStack {
+                        Spacer()
+                        Button(action: { showRemovalAlert = false }) {
+                            Text("Cancel")
+                        }
+                        Button(action: {
+                            manager.removeUserBirthData(selection: manager.selectedName)
+                            manager.resetSpecificUserData()
+                            roomState.wrappedValue = .Chart
+                        }) {
+                            HStack {
+                                Text("Remove \(manager.userNameSelection)?").foregroundColor(Color.red)
+                            }
+                        }
+                    }
+                } else {
+                    Button(action: {
+                        showRemovalAlert = true
+                    }) {
+                        HStack {
+                            Text("Remove \(manager.userNameSelection)")
+                            Spacer()
+                        }
+                    }
+                }
+                
             }
             if !manager.userExactTimeSelection {
                 DatePicker(
