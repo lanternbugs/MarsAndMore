@@ -76,6 +76,7 @@ extension BirthDataManager {
     func resetSpecificUserData() {
         userNameSelection = ""
         userExactTimeSelection = false
+        userLocationData = nil
         builder.removeLocation()
     }
     func checkIfNameExist(_ name: String) -> Bool {
