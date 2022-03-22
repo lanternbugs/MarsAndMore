@@ -69,9 +69,9 @@ struct NamesView: View {
             
         }.padding(.vertical)
 #if os(iOS)
-            .frame(width: UIScreen.main.bounds.size.width / 3.7)
+            .frame(width: getScreenWidth() / 3.7)
 #elseif os(macOS)
-            .frame(width: getMacWidth() / 9)
+            .frame(width: getScreenWidth() / 9)
 #endif
         
     }
@@ -79,11 +79,17 @@ struct NamesView: View {
 }
 
 extension NamesView {
-    func getMacWidth()->Double {
+    func getScreenWidth()->Double
+    {
+#if os(macOS)
         guard let mainScreen = NSScreen.main else {
             return 200.0
         }
         return mainScreen.visibleFrame.size.width
+#elseif os(iOS)
+    return UIScreen.main.bounds.size.width
+#endif
+    
     }
 }
 
