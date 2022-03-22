@@ -20,7 +20,7 @@ struct DoneView: View {
     var body: some View {
         Button(action: {
             switch(roomState.wrappedValue) {
-            case .EditName:
+            case .EditName, .Names:
                 manager.resetSpecificUserData()
                 roomState.wrappedValue = newRoomState
             default:
