@@ -50,7 +50,7 @@ struct BirthData {
     let birthDate: BirthDate
     let birthTime: Date?
     let location: LocationData?
-    let id: Int
+    var id: Int
     
 }
 

@@ -30,6 +30,7 @@ extension BirthDataManager {
                             context.delete(val)
                             try context.save()
                             birthDates.remove(at: selection)
+                            updateIdsOnRemoval(from: selection)
                             return
                         }
                     }
@@ -39,6 +40,13 @@ extension BirthDataManager {
                 print("Could not delete \(error), \(error.userInfo)")
                 
             }
+        }
+    }
+    
+    func updateIdsOnRemoval(from spot: Int)
+    {
+        for val in spot..<birthDates.count {
+            birthDates[val].id -= 1
         }
     }
     
