@@ -26,7 +26,7 @@ struct ReadingView: View {
                 }
                 
                 ForEach(reading, id: \.id) { entry in
-                    Text("\(entry.text)")
+                    Text("\(entry.text)").fixedSize(horizontal: false, vertical: true)
                 }
                 ReadingCreditsView()
             }
