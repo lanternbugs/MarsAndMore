@@ -1,5 +1,5 @@
 # MarsAndMore
-Mars and More is a Swift App that uses Swift UI for the user Interface. My previous app Diamond Chess, used Objective-c, with some Swift View Controllers, and Auto Layout for most scenes. And I thought it would be interesting to do an app entirely in Swift with MVVM and SwiftUI.
+Mars and More is a Swift App that uses Swift UI for the user Interface. https://apps.apple.com/gb/app/mars-and-more/id1615627889 Releasing outside USA as reading material is currently under copyright for 2 more years in US. If the project is downloaded and run in Xcode it should be set up to run as a Mac App by hitting play. My previous app Diamond Chess, used Objective-c, with some Swift View Controllers, and Auto Layout for most scenes. And I thought it would be interesting to do an app entirely in Swift with MVVM and SwiftUI.
 
 This program, or parts, can be redistributed and/or modified under the terms of the GNU General Public License; either version 2 of the License, or (at your option) any later version.
 
