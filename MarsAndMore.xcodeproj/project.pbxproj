@@ -28,8 +28,6 @@
 		7617DABA27AFA9320064B98E /* Planets+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7617DAB827AFA9320064B98E /* Planets+Extensions.swift */; };
 		7618A97427ADB6AA008C6508 /* NamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7618A97327ADB6AA008C6508 /* NamesView.swift */; };
 		7618A97527ADB6AA008C6508 /* NamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7618A97327ADB6AA008C6508 /* NamesView.swift */; };
-		761DEE6C279B9EB200A71938 /* Tests_iOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE6B279B9EB200A71938 /* Tests_iOS.swift */; };
-		761DEE6E279B9EB200A71938 /* Tests_iOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE6D279B9EB200A71938 /* Tests_iOSLaunchTests.swift */; };
 		761DEE78279B9EB200A71938 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE77279B9EB200A71938 /* Tests_macOS.swift */; };
 		761DEE7A279B9EB200A71938 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE79279B9EB200A71938 /* Tests_macOSLaunchTests.swift */; };
 		761DEE7B279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE50279B9EB100A71938 /* MarsAndMore.xcdatamodeld */; };
@@ -205,6 +203,31 @@
 		76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */; };
 		76DAC8A727B2016700852872 /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DAC8A627B2016700852872 /* CitiesView.swift */; };
 		76DAC8A827B2016700852872 /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DAC8A627B2016700852872 /* CitiesView.swift */; };
+		76E6FFD7287A19090057825F /* AstrobotUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E6FFD6287A19090057825F /* AstrobotUnitTesting.swift */; };
+		76E6FFD8287A1BDD0057825F /* AstrobotInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7727AF184F007911C9 /* AstrobotInterface+Extensions.swift */; };
+		76E6FFD9287A1C280057825F /* AstroModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7617DAB527AFA8A70064B98E /* AstroModels.swift */; };
+		76E6FFDA287A1C570057825F /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
+		76E6FFDB287A1CBF0057825F /* swemmoon.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE99279B9EF900A71938 /* swemmoon.c */; };
+		76E6FFDC287A1CBF0057825F /* swehel.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE9F279B9EF900A71938 /* swehel.c */; };
+		76E6FFDD287A1CBF0057825F /* swepdate.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEA2279B9EF900A71938 /* swepdate.c */; };
+		76E6FFDE287A1CBF0057825F /* swepcalc.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEA4279B9EF900A71938 /* swepcalc.c */; };
+		76E6FFDF287A1CBF0057825F /* swehouse.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEA7279B9EF900A71938 /* swehouse.c */; };
+		76E6FFE0287A1CBF0057825F /* swecl.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEA8279B9EF900A71938 /* swecl.c */; };
+		76E6FFE1287A1CBF0057825F /* sweph.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAA279B9EF900A71938 /* sweph.c */; };
+		76E6FFE2287A1CBF0057825F /* swedate.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAB279B9EF900A71938 /* swedate.c */; };
+		76E6FFE3287A1CBF0057825F /* swemplan.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAC279B9EF900A71938 /* swemplan.c */; };
+		76E6FFE4287A1CBF0057825F /* swephlib.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAD279B9EF900A71938 /* swephlib.c */; };
+		76E6FFE5287A1CBF0057825F /* swejpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAE279B9EF900A71938 /* swejpl.c */; };
+		76E6FFE6287A1CBF0057825F /* AdapterToEphemeris.m in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */; };
+		76E6FFE7287A1CBF0057825F /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7827AF184F007911C9 /* Double+Extensions.swift */; };
+		76E6FFE8287A1CBF0057825F /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */; };
+		76E6FFE9287A1CBF0057825F /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBE03527AF9ED20010CB62 /* String+Extensions.swift */; };
+		76E6FFEA287A1CBF0057825F /* Signs+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7617DAB227AFA6530064B98E /* Signs+Extensions.swift */; };
+		76E6FFEB287A1CBF0057825F /* Planets+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7617DAB827AFA9320064B98E /* Planets+Extensions.swift */; };
+		76E6FFEC287A1CBF0057825F /* BirthData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */; };
+		76E6FFED287A1CBF0057825F /* Aspects+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B3F9F27BDB2BA007A2690 /* Aspects+Extensions.swift */; };
+		76E6FFEE287A1CBF0057825F /* PlanetFetchType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689C6B227D02FDD00B38E4A /* PlanetFetchType+Extensions.swift */; };
+		76E6FFEF287A1D090057825F /* BirthDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0C27B1E535004A73B8 /* BirthDataModels.swift */; };
 		76EBE03627AF9ED20010CB62 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBE03527AF9ED20010CB62 /* String+Extensions.swift */; };
 		76EBE03727AF9ED20010CB62 /* String+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76EBE03527AF9ED20010CB62 /* String+Extensions.swift */; };
 		76F5BDC427AF43F30075FCEC /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */; };
@@ -249,8 +272,6 @@
 		761DEE60279B9EB200A71938 /* MarsAndMore.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MarsAndMore.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		761DEE62279B9EB200A71938 /* macOS.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = macOS.entitlements; sourceTree = "<group>"; };
 		761DEE67279B9EB200A71938 /* Tests iOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests iOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		761DEE6B279B9EB200A71938 /* Tests_iOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOS.swift; sourceTree = "<group>"; };
-		761DEE6D279B9EB200A71938 /* Tests_iOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_iOSLaunchTests.swift; sourceTree = "<group>"; };
 		761DEE73279B9EB200A71938 /* Tests macOS.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Tests macOS.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		761DEE77279B9EB200A71938 /* Tests_macOS.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOS.swift; sourceTree = "<group>"; };
 		761DEE79279B9EB200A71938 /* Tests_macOSLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tests_macOSLaunchTests.swift; sourceTree = "<group>"; };
@@ -348,6 +369,7 @@
 		76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlanetsEntry.swift; sourceTree = "<group>"; };
 		76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReadingContent.swift; sourceTree = "<group>"; };
 		76DAC8A627B2016700852872 /* CitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesView.swift; sourceTree = "<group>"; };
+		76E6FFD6287A19090057825F /* AstrobotUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrobotUnitTesting.swift; sourceTree = "<group>"; };
 		76EBE03527AF9ED20010CB62 /* String+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Extensions.swift"; sourceTree = "<group>"; };
 		76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -444,8 +466,7 @@
 		761DEE6A279B9EB200A71938 /* Tests iOS */ = {
 			isa = PBXGroup;
 			children = (
-				761DEE6B279B9EB200A71938 /* Tests_iOS.swift */,
-				761DEE6D279B9EB200A71938 /* Tests_iOSLaunchTests.swift */,
+				76E6FFD6287A19090057825F /* AstrobotUnitTesting.swift */,
 			);
 			path = "Tests iOS";
 			sourceTree = "<group>";
@@ -1057,8 +1078,31 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				761DEE6E279B9EB200A71938 /* Tests_iOSLaunchTests.swift in Sources */,
-				761DEE6C279B9EB200A71938 /* Tests_iOS.swift in Sources */,
+				76E6FFEF287A1D090057825F /* BirthDataModels.swift in Sources */,
+				76E6FFDB287A1CBF0057825F /* swemmoon.c in Sources */,
+				76E6FFDC287A1CBF0057825F /* swehel.c in Sources */,
+				76E6FFDD287A1CBF0057825F /* swepdate.c in Sources */,
+				76E6FFDE287A1CBF0057825F /* swepcalc.c in Sources */,
+				76E6FFDF287A1CBF0057825F /* swehouse.c in Sources */,
+				76E6FFE0287A1CBF0057825F /* swecl.c in Sources */,
+				76E6FFE1287A1CBF0057825F /* sweph.c in Sources */,
+				76E6FFE2287A1CBF0057825F /* swedate.c in Sources */,
+				76E6FFE3287A1CBF0057825F /* swemplan.c in Sources */,
+				76E6FFE4287A1CBF0057825F /* swephlib.c in Sources */,
+				76E6FFE5287A1CBF0057825F /* swejpl.c in Sources */,
+				76E6FFE6287A1CBF0057825F /* AdapterToEphemeris.m in Sources */,
+				76E6FFE7287A1CBF0057825F /* Double+Extensions.swift in Sources */,
+				76E6FFE8287A1CBF0057825F /* Date+Extensions.swift in Sources */,
+				76E6FFE9287A1CBF0057825F /* String+Extensions.swift in Sources */,
+				76E6FFEA287A1CBF0057825F /* Signs+Extensions.swift in Sources */,
+				76E6FFEB287A1CBF0057825F /* Planets+Extensions.swift in Sources */,
+				76E6FFEC287A1CBF0057825F /* BirthData+Extensions.swift in Sources */,
+				76E6FFED287A1CBF0057825F /* Aspects+Extensions.swift in Sources */,
+				76E6FFEE287A1CBF0057825F /* PlanetFetchType+Extensions.swift in Sources */,
+				76E6FFDA287A1C570057825F /* AstrobotInterface.swift in Sources */,
+				76E6FFD9287A1C280057825F /* AstroModels.swift in Sources */,
+				76E6FFD8287A1BDD0057825F /* AstrobotInterface+Extensions.swift in Sources */,
+				76E6FFD7287A19090057825F /* AstrobotUnitTesting.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1341,6 +1385,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "AstroApp/MarsAndMore-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "MarsAndMore (iOS)";
@@ -1365,6 +1410,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SDKROOT = iphoneos;
 				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_OBJC_BRIDGING_HEADER = "AstroApp/MarsAndMore-Bridging-Header.h";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_TARGET_NAME = "MarsAndMore (iOS)";

@@ -24,3 +24,8 @@ protocol AstroRowCell {
     var planet: Planets {get}
     var degree: String { get}
 }
+
+struct AstroBot: AstrobotInterface
+{
+    // used for testing
+}
