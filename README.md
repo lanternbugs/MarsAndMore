@@ -3,7 +3,7 @@ Mars and More is a GPL Swift App that uses Swift UI for the user Interface. It u
 
 This program, or parts, can be redistributed and/or modified under the terms of the GNU General Public License; either version 2 of the License, or (at your option) any later version.
 
-Mars and More uses the Swiss Ephemeris located at AstroApp/Astrobot/Ephemeris. This is a C library. We currently are using 4 API calls from the AdapterToEphemeris class in Astrobot/Adapter folder to the Swiss Ephemeris.  Its data files are at AstroApp/Astrobot/ephe. And its license is located next to ours in outer folder, swiss-ephemeris-license. It is compatible with GPL and Mars and More uses it under GPL. It also has a dual license. And for those interested in just the Ephemeris there is also a Java port by Thomas Mack.
+Mars and More uses the Swiss Ephemeris located at AstroApp/Astrobot/Ephemeris. This is a C library. We currently are using 4 API calls from AstroApp/Astrobot/Adapter/AdapterToEphemeris.m implementation to the Swiss Ephemeris.  Its data files are at AstroApp/Astrobot/ephe. Its license is located next to ours in outer folder, swiss-ephemeris-license. It is compatible with GPL and Mars and More uses it under GPL. It also has a dual license. And for those interested in just the Ephemeris there is also a GPL Java port by Thomas Mack.
 
 City data in cities.json for latitude and longitude is from KStars, https://edu.kde.org/kstars/ and used under GPL. 
 
