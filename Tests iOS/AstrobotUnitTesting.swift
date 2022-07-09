@@ -23,31 +23,46 @@ class AstrobotUnitTesting: XCTestCase {
         try super.tearDownWithError()
     }
 
-    func testSunSignIsCorrestForFirstOfMonth() throws
+    func testPlanetsArrayNotEmpty() throws
     {
-
+        let row = sut.getPlanets(time: Date().getAstroTime(), location: nil)
+        XCTAssertGreaterThan(row.planets.count, 0)
     }
-
+    
     func testDegreeStringsNotEmpty() throws
     {
-
+        let row = sut.getPlanets(time: Date().getAstroTime(), location: nil)
+        for planet in row.planets {
+            XCTAssertGreaterThan(planet.degree.count, 0)
+        }
     }
 
     func testNoPlanetsDuplicated() throws
     {
-
+        let row = sut.getPlanets(time: Date().getAstroTime(), location: nil)
+        var planetSet = Set<Planets>()
+        for planet in row.planets {
+            XCTAssertTrue(!planetSet.contains(planet.planet))
+            planetSet.insert(planet.planet)
+        }
     }
         
     func testNoSignNone() throws
     {
-
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+        let row = sut.getPlanets(time: Date().getAstroTime(), location: nil)
+        for planet in row.planets {
+            let planetCell = planet as? PlanetCell
+            XCTAssertNotNil(planetCell)
+            guard let planetCell = planetCell else {
+                continue
+            }
+            XCTAssertNotEqual(planetCell.sign, Signs.None)
         }
+    }
+    
+    func testSunSignIsCorrestForFirstOfMonth() throws
+    {
+
     }
 
 }
