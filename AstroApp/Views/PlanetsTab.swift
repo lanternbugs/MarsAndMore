@@ -8,8 +8,26 @@
 import SwiftUI
 
 struct PlanetsTab: View {
+    @Environment(\.roomState) private var roomState
+    @EnvironmentObject var manager: BirthDataManager
+    @State private var data: [DisplayPlanetRow] = Array<DisplayPlanetRow>()
+    @ViewBuilder
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        switch(roomState.wrappedValue) {
+        case .Reading:
+            VStack {
+                DoneView(newRoomState: .Chart)
+                ReadingView(state: roomState)
+            }
+        case .ChartSettings:
+            VStack {
+                DoneView(newRoomState: .Chart)
+                ChartSettings()
+            }
+        default:
+            PlanetRoom(data: $data)
+            
+        }
     }
 }
 

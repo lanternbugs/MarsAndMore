@@ -37,6 +37,7 @@ struct MainView: View {
                     .tabItem {
                     Text("Planets")
                     }
+                    .environmentObject(birthDataManager)
                 .tag(2)
             }
         }.onAppear {

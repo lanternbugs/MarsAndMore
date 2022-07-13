@@ -30,23 +30,9 @@ struct ChartView: View {
                             ForEach($data, id:\.id)
                             { $planetRow in
                                 
-                                
+                                ChartTitle(planetRow: $planetRow)
                                 VStack {
-#if os(macOS)
-            if #available(macOS 12.0, *) {
-                Text("\(planetRow.type.getName())  \(planetRow.name)").textSelection(.enabled).padding(.top).font(.headline)
-            }
-            else {
-                Text("\(planetRow.type.getName())  \(planetRow.name)").padding(.top).font(.headline)
-                }
-#else
-            if #available(iOS 15.0, *) {
-                Text("\(planetRow.type.getName())  \(planetRow.name)").textSelection(.enabled).padding(.top).font(.headline)
-            }
-            else {
-                Text("\(planetRow.type.getName())  \(planetRow.name)").padding(.top).font(.headline)
-                }
-#endif
+
                                     switch(planetRow.type) {
                                     case .Planets:
                                         PlanetsEntry(data: planetRow)
