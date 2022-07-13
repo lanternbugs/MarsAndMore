@@ -12,7 +12,7 @@
 */
 
 import SwiftUI
-struct MarsRoom: View, AstrobotReadingInterface {
+struct MarsTab: View, AstrobotReadingInterface {
     
     @State private var birthdate = Date(timeIntervalSince1970: 0)
     @State private var planetChoice: Planets = Planets.Mars
@@ -66,7 +66,7 @@ struct MarsRoom: View, AstrobotReadingInterface {
     }
 }
 
-extension MarsRoom {
+extension MarsTab {
    private func pickedDate()  {
         marsData = getPlanet(type: .Mars, time: birthdate.getAstroTime())
         venusData = getPlanet(type: .Venus, time: birthdate.getAstroTime())
@@ -75,8 +75,8 @@ extension MarsRoom {
     }
 }
 
-struct MarsRoom_Previews: PreviewProvider {
+struct MarsTab_Previews: PreviewProvider {
     static var previews: some View {
-        MarsRoom()
+        MarsTab()
     }
 }

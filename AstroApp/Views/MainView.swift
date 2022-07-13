@@ -21,25 +21,29 @@ struct MainView: View {
     var body: some View {
         VStack {
             TabView(selection: $currentTab) {
-               MarsRoom()
+               MarsTab()
                     .tabItem {
                         Text("Mars Room")
                     }
                     .tag(0)
                 ChartTab()
                     .tabItem {
-                    Text("Chart Room")
+                    Text("Charts")
                     }
                 .tag(1)
                 .environmentObject(birthDataManager)
                 .environment(\.roomState, $roomState)
+                PlanetsTab()
+                    .tabItem {
+                    Text("Planets")
+                    }
+                .tag(2)
             }
         }.onAppear {
             birthDataManager.setContext(_viewContext.wrappedValue)
         }
     }
 }
-
 
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
