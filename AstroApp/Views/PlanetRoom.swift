@@ -18,16 +18,23 @@ struct PlanetRoom: View {
                     LazyVStack {
                         ForEach($data, id:\.id)
                         { $planetRow in
-                            ChartTitle(planetRow: $planetRow)
-                            switch(planetRow.type) {
-                            case .Planets:
-                                PlanetsEntry(data: planetRow)
-                            case .Transits(let date):
-                                Text("on \(date)")
-                                AspectsEntry(data: planetRow)
-                            default:
-                                AspectsEntry(data: planetRow)
+                            VStack {
+                                ChartTitle(planetRow: $planetRow)
+                                switch(planetRow.type) {
+                                case .Planets:
+                                    PlanetsEntry(data: planetRow)
+                                case .Transits(let date):
+                                    Text("on \(date)")
+                                    AspectsEntry(data: planetRow)
+                                default:
+                                    AspectsEntry(data: planetRow)
+                                }
                             }
+                        }.onChange(of: data.count) { _ in
+                            if data.count > 0 {
+                                value.scrollTo(data.count - 1)
+                            }
+                            
                         }
                     }
                 }

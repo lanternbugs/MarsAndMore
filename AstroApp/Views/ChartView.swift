@@ -29,9 +29,8 @@ struct ChartView: View {
                         LazyVStack {
                             ForEach($data, id:\.id)
                             { $planetRow in
-                                
-                                ChartTitle(planetRow: $planetRow)
                                 VStack {
+                                    ChartTitle(planetRow: $planetRow)
 
                                     switch(planetRow.type) {
                                     case .Planets:
