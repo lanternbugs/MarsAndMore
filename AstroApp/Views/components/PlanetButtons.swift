@@ -17,9 +17,8 @@ struct PlanetButtons: View, AstrobotInterface {
     
     @Binding var data: [DisplayPlanetRow]
     @Environment(\.roomState) private var roomState
+    @EnvironmentObject private var savedDate: PlanetsDate
     @State private var planetButtonsEnabled = true
-    @State private var dateChoice = Date();
-    @State private var exactTime = false
     @ViewBuilder
     var body: some View {
         VStack {
@@ -41,22 +40,22 @@ struct PlanetButtons: View, AstrobotInterface {
                 }
             }
             HStack(alignment: .top) {
-                if !exactTime {
+                if !savedDate.exactPlanetsTime {
                     DatePicker(
                       "Date",
-                      selection: $dateChoice,
+                      selection: $savedDate.planetsDateChoice,
                       displayedComponents: .date
                     ).datePickerStyle(DefaultDatePickerStyle())
                 } else {
                     DatePicker(
                       "Date",
-                      selection: $dateChoice,
+                      selection: $savedDate.planetsDateChoice,
                       displayedComponents: [.date, .hourAndMinute]
                     ).datePickerStyle(DefaultDatePickerStyle())
                 }
             }
             HStack {
-                Toggle("Exact Time", isOn: $exactTime)
+                Toggle("Exact Time", isOn: $savedDate.exactPlanetsTime)
                 Button(action: { roomState.wrappedValue = .ChartSettings }) {
                     Text("Settings").font(Font.subheadline)
                 }
@@ -84,7 +83,7 @@ extension PlanetButtons {
         }
         temporaryDisableButtons()
         
-        let row = getPlanets(time: dateChoice.getAstroTime(), location: nil)
+        let row = getPlanets(time: savedDate.planetsDateChoice.getAstroTime(), location: nil)
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets, name: getStringDate())
         data.append(displayRow)
     }
@@ -95,7 +94,7 @@ extension PlanetButtons {
             return
         }
         temporaryDisableButtons()
-        let row = getAspects(time: dateChoice.getAstroTime(), with: nil, and: nil)
+        let row = getAspects(time: savedDate.planetsDateChoice.getAstroTime(), with: nil, and: nil)
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects, name: getStringDate())
         data.append(displayRow)
     }
@@ -109,10 +108,10 @@ extension PlanetButtons {
     {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "YY/MM/dd"
-        if exactTime {
+        if savedDate.exactPlanetsTime {
             dateFormatter.dateFormat = "YY-MM-dd HH:mm Z"
         }
-        return dateFormatter.string(from: dateChoice)
+        return dateFormatter.string(from: savedDate.planetsDateChoice)
     }
 }
 struct PlanetButtons_Previews: PreviewProvider {
