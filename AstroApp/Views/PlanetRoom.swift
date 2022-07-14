@@ -11,7 +11,7 @@ struct PlanetRoom: View {
     @Binding var data: [DisplayPlanetRow]
     var body: some View {
         VStack {
-            AstroButtons(data: $data)
+            PlanetButtons(data: $data)
             Divider().padding([.top, .bottom], 3)
             ScrollView {
                 ScrollViewReader { value in

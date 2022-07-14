@@ -18,6 +18,7 @@ struct MainView: View {
     @AppStorage("currentTab") private var currentTab: Int = 0
     @StateObject private var birthDataManager = BirthDataManager()
     @State private var roomState: RoomState = .Chart
+    @State private var planetsState: RoomState = .Chart
     var body: some View {
         VStack {
             TabView(selection: $currentTab) {
@@ -38,6 +39,7 @@ struct MainView: View {
                     Text("Planets")
                     }
                     .environmentObject(birthDataManager)
+                    .environment(\.roomState, $planetsState)
                 .tag(2)
             }
         }.onAppear {

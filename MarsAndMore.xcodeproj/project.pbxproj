@@ -131,6 +131,8 @@
 		76664B3127CC4B2A002A4235 /* Environment+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */; };
 		7667125427D00D7F00644429 /* TransitsButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7667125327D00D7F00644429 /* TransitsButtonControl.swift */; };
 		7667125527D00D7F00644429 /* TransitsButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7667125327D00D7F00644429 /* TransitsButtonControl.swift */; };
+		766C89D5287F8A5100E437A7 /* PlanetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C89D4287F8A5100E437A7 /* PlanetButtons.swift */; };
+		766C89D6287F8A5100E437A7 /* PlanetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C89D4287F8A5100E437A7 /* PlanetButtons.swift */; };
 		7679FF7927AF184F007911C9 /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
 		7679FF7A27AF184F007911C9 /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
 		7679FF7D27AF1850007911C9 /* AdapterToEphemeris.m in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */; };
@@ -346,6 +348,7 @@
 		76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomState+Extensions.swift"; sourceTree = "<group>"; };
 		76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Extensions.swift"; sourceTree = "<group>"; };
 		7667125327D00D7F00644429 /* TransitsButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitsButtonControl.swift; sourceTree = "<group>"; };
+		766C89D4287F8A5100E437A7 /* PlanetButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetButtons.swift; sourceTree = "<group>"; };
 		7679FF7027AF184F007911C9 /* AstrobotInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstrobotInterface.swift; sourceTree = "<group>"; };
 		7679FF7427AF184F007911C9 /* AdapterToEphemeris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdapterToEphemeris.h; sourceTree = "<group>"; };
 		7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdapterToEphemeris.m; sourceTree = "<group>"; };
@@ -543,6 +546,7 @@
 		762D4A6527AB962E00EA59E8 /* components */ = {
 			isa = PBXGroup;
 			children = (
+				766C89D4287F8A5100E437A7 /* PlanetButtons.swift */,
 				762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */,
 				763B3F9C27BDB00C007A2690 /* AspectsEntry.swift */,
 				76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */,
@@ -975,6 +979,7 @@
 				76664B3027CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
 				76DAC8A727B2016700852872 /* CitiesView.swift in Sources */,
 				761DEEC3279B9EF900A71938 /* swecl.c in Sources */,
+				766C89D5287F8A5100E437A7 /* PlanetButtons.swift in Sources */,
 				761DEEC5279B9EF900A71938 /* sweph.c in Sources */,
 				76ADD2C527E12B2D00261505 /* SelectedNameView.swift in Sources */,
 				761DEEB7279B9EF900A71938 /* swehel.c in Sources */,
@@ -1043,6 +1048,7 @@
 				76664B3127CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
 				76DAC8A827B2016700852872 /* CitiesView.swift in Sources */,
 				76BEF3F627ACB0AB001C9AD0 /* MainView.swift in Sources */,
+				766C89D6287F8A5100E437A7 /* PlanetButtons.swift in Sources */,
 				761DEEC2279B9EF900A71938 /* swehouse.c in Sources */,
 				76ADD2C627E12B2D00261505 /* SelectedNameView.swift in Sources */,
 				7606E28527AB18BF00C72FAB /* ChartRoom.swift in Sources */,

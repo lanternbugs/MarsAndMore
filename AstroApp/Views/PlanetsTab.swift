@@ -9,7 +9,6 @@ import SwiftUI
 
 struct PlanetsTab: View {
     @Environment(\.roomState) private var roomState
-    @EnvironmentObject var manager: BirthDataManager
     @State private var data: [DisplayPlanetRow] = Array<DisplayPlanetRow>()
     @ViewBuilder
     var body: some View {
