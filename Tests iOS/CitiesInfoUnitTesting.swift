@@ -15,12 +15,14 @@ class CitiesInfoUnitTesting: XCTestCase {
     override func setUpWithError() throws {
         try super.setUpWithError()
         expected = expectation(description: "callback happens")
-        sut = BirthDataManager() { [weak self] in
+        sut = BirthDataManager()
+        sut.citiesParsedCompletionHandler = { [weak self] in
             self?.expected.fulfill()
         }
     }
 
     override func tearDownWithError() throws {
+        sut.citiesParsedCompletionHandler = nil
         sut = nil
         expected = nil
         try super.tearDownWithError()

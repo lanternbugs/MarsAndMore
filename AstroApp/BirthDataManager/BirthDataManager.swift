@@ -27,12 +27,6 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     var managedContext: NSManagedObjectContext?
     var citiesParsedCompletionHandler: (()->Void)?
     
-    convenience init(handler: @escaping ()->Void)
-    {
-        self.init()
-        citiesParsedCompletionHandler = handler
-    }
-    
     init() {
         self.initializeDefaultBodiesToShow()
         builder.managerInterface = self
@@ -49,6 +43,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
                                 if let citiesParsedCompletionHandler = self?.citiesParsedCompletionHandler
                                 {
                                     citiesParsedCompletionHandler()
+                                    self?.citiesParsedCompletionHandler = nil
                                 }
                             }
                         } catch {
