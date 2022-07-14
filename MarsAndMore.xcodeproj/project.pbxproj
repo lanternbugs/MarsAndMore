@@ -70,6 +70,14 @@
 		761DEECE279B9EF900A71938 /* swejpl.c in Sources */ = {isa = PBXBuildFile; fileRef = 761DEEAE279B9EF900A71938 /* swejpl.c */; };
 		761DEECF279B9EF900A71938 /* sefstars.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761DEEAF279B9EF900A71938 /* sefstars.txt */; };
 		761DEED0279B9EF900A71938 /* sefstars.txt in Resources */ = {isa = PBXBuildFile; fileRef = 761DEEAF279B9EF900A71938 /* sefstars.txt */; };
+		762214812880955300E0FC65 /* CitiesInfoUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762214802880955300E0FC65 /* CitiesInfoUnitTesting.swift */; };
+		762214822880963800E0FC65 /* BirthDataManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */; };
+		762214832880963800E0FC65 /* BirthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0827B1E4E8004A73B8 /* BirthDataManager.swift */; };
+		762214842880968400E0FC65 /* RoomState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */; };
+		762214852880968400E0FC65 /* AstrobotReadingInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688E0AF27AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift */; };
+		762214862880968400E0FC65 /* AstroReadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9A27AC79D8009094DC /* AstroReadingModel.swift */; };
+		76221487288096D100E0FC65 /* MarsAndMore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE50279B9EB100A71938 /* MarsAndMore.xcdatamodeld */; };
+		762214892880A57100E0FC65 /* cities.json in Resources */ = {isa = PBXBuildFile; fileRef = 763CFC0527B1E4C4004A73B8 /* cities.json */; };
 		7624283A27C334DE0002F5B3 /* seas_00.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762427D927C334DD0002F5B3 /* seas_00.se1 */; };
 		7624283B27C334DE0002F5B3 /* seas_00.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762427D927C334DD0002F5B3 /* seas_00.se1 */; };
 		7624283E27C334DE0002F5B3 /* seas_06.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762427DB27C334DD0002F5B3 /* seas_06.se1 */; };
@@ -310,6 +318,7 @@
 		761DEEAE279B9EF900A71938 /* swejpl.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = swejpl.c; sourceTree = "<group>"; };
 		761DEEAF279B9EF900A71938 /* sefstars.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = sefstars.txt; sourceTree = "<group>"; };
 		761DEEB0279B9EF900A71938 /* sweodef.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = sweodef.h; sourceTree = "<group>"; };
+		762214802880955300E0FC65 /* CitiesInfoUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesInfoUnitTesting.swift; sourceTree = "<group>"; };
 		762427D927C334DD0002F5B3 /* seas_00.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_00.se1; sourceTree = "<group>"; };
 		762427DB27C334DD0002F5B3 /* seas_06.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_06.se1; sourceTree = "<group>"; };
 		762427DC27C334DD0002F5B3 /* seas_12.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_12.se1; sourceTree = "<group>"; };
@@ -479,6 +488,7 @@
 			isa = PBXGroup;
 			children = (
 				76E6FFD6287A19090057825F /* AstrobotUnitTesting.swift */,
+				762214802880955300E0FC65 /* CitiesInfoUnitTesting.swift */,
 			);
 			path = "Tests iOS";
 			sourceTree = "<group>";
@@ -947,6 +957,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				762214892880A57100E0FC65 /* cities.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1102,6 +1113,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76221487288096D100E0FC65 /* MarsAndMore.xcdatamodeld in Sources */,
+				762214842880968400E0FC65 /* RoomState+Extensions.swift in Sources */,
+				762214852880968400E0FC65 /* AstrobotReadingInterface+Extensions.swift in Sources */,
+				762214862880968400E0FC65 /* AstroReadingModel.swift in Sources */,
+				762214822880963800E0FC65 /* BirthDataManager+Extensions.swift in Sources */,
+				762214832880963800E0FC65 /* BirthDataManager.swift in Sources */,
 				76E6FFEF287A1D090057825F /* BirthDataModels.swift in Sources */,
 				76E6FFDB287A1CBF0057825F /* swemmoon.c in Sources */,
 				76E6FFDC287A1CBF0057825F /* swehel.c in Sources */,
@@ -1121,6 +1138,7 @@
 				76E6FFEA287A1CBF0057825F /* Signs+Extensions.swift in Sources */,
 				76E6FFEB287A1CBF0057825F /* Planets+Extensions.swift in Sources */,
 				76E6FFEC287A1CBF0057825F /* BirthData+Extensions.swift in Sources */,
+				762214812880955300E0FC65 /* CitiesInfoUnitTesting.swift in Sources */,
 				76E6FFED287A1CBF0057825F /* Aspects+Extensions.swift in Sources */,
 				76E6FFEE287A1CBF0057825F /* PlanetFetchType+Extensions.swift in Sources */,
 				76E6FFDA287A1C570057825F /* AstrobotInterface.swift in Sources */,

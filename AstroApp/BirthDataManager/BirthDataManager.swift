@@ -25,24 +25,42 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     var defaultBodiesToShow = Set<Planets>()
     let builder = BirthDataBuilder()
     var managedContext: NSManagedObjectContext?
+    var citiesParsedCompletionHandler: (()->Void)?
+    
+    convenience init(handler: @escaping ()->Void)
+    {
+        self.init()
+        citiesParsedCompletionHandler = handler
+    }
+    
     init() {
         self.initializeDefaultBodiesToShow()
         builder.managerInterface = self
-        DispatchQueue.global().async { [weak self] in
+        DispatchQueue.global().async {
             let decoder = JSONDecoder()
-            let cities = self?.readFileToString("cities")
-            guard let cities = cities else {
-                return
-            }
-            if let data = cities.data(using: .utf8) {
+            if let citiesPath = Bundle(for: type(of: self)).url(forResource: "cities", withExtension: "json") {
                 do {
-                    let cityData = try decoder.decode(CityInfo.self, from: data)
-                    DispatchQueue.main.async { [weak self] in
-                        self?.cityInfo = cityData
+                    let cities = try String(contentsOf: citiesPath)
+                    if let data = cities.data(using: .utf8) {
+                        do {
+                            let cityData = try decoder.decode(CityInfo.self, from: data)
+                            DispatchQueue.main.async { [weak self] in
+                                self?.cityInfo = cityData
+                                if let citiesParsedCompletionHandler = self?.citiesParsedCompletionHandler
+                                {
+                                    citiesParsedCompletionHandler()
+                                }
+                            }
+                        } catch {
+                            print(error)
+                        }
                     }
-                } catch {
-                    print(error)
                 }
+                catch {
+                    print("failed to read file")
+                }
+            } else {
+                print("no bundle url")
             }
         }
     }
