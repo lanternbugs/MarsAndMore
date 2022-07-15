@@ -82,6 +82,25 @@ class AstrobotUnitTesting: XCTestCase {
         }
     }
     
+    func testAspectsArrayNotEmpty() throws
+    {
+        let row = sut.getAspects(time: Date().getAstroTime(), with: nil, and: nil)
+        XCTAssertGreaterThan(row.planets.count, 0)
+    }
+    
+    func testAspectsAspectDifferentPlanet() throws
+    {
+        let row = sut.getAspects(time: Date().getAstroTime(), with: nil, and: nil)
+        for planet in row.planets {
+            let planetCell = planet as? TransitCell
+            XCTAssertNotNil(planetCell)
+            guard let planetCell = planetCell else {
+                continue
+            }
+            XCTAssertNotEqual(planetCell.planet, planetCell.planet2)
+        }
+    }
+    
     func getDate(y: Int, m: Int, d: Int)->Date?
     {
         let calendar = Calendar.current
