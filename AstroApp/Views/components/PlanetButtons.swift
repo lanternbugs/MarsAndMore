@@ -56,6 +56,7 @@ struct PlanetButtons: View, AstrobotInterface {
             }
             HStack {
                 Toggle("Exact Time", isOn: $savedDate.exactPlanetsTime)
+                Spacer()
                 Button(action: { roomState.wrappedValue = .ChartSettings }) {
                     Text("Settings").font(Font.subheadline)
                 }
