@@ -19,6 +19,8 @@ extension RoomState: AstroReading {
             return "Entry"
         case .Chart:
             return "Chart Room"
+        case .Planets:
+            return "Planets Room"
         case .Cities:
             return "Cities"
         case .UpdateCity:

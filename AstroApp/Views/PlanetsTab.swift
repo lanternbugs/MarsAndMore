@@ -15,12 +15,12 @@ struct PlanetsTab: View {
         switch(roomState.wrappedValue) {
         case .Reading:
             VStack {
-                DoneView(newRoomState: .Chart)
+                DoneView(newRoomState: .Planets)
                 ReadingView(state: roomState)
             }
         case .ChartSettings:
             VStack {
-                DoneView(newRoomState: .Chart)
+                DoneView(newRoomState: .Planets)
                 ChartSettings()
             }
         default:

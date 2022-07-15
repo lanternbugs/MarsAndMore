@@ -19,7 +19,7 @@ struct MainView: View {
     @StateObject private var birthDataManager = BirthDataManager()
     @StateObject private var planetsDate = PlanetsDate()
     @State private var roomState: RoomState = .Chart
-    @State private var planetsState: RoomState = .Chart
+    @State private var planetsState: RoomState = .Planets
     var body: some View {
         VStack {
             TabView(selection: $currentTab) {

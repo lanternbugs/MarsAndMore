@@ -16,6 +16,7 @@ import Foundation
 enum RoomState: Equatable {
     case Entry
     case Chart
+    case Planets
     case Names
     case EditName
     case Cities
