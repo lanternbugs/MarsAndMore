@@ -7,8 +7,12 @@
 
 import Foundation
 import Combine
-import UIKit
-// 1
+#if os(macOS)
+import Cocoa
+typealias UIImage = NSImage
+#elseif os(iOS)
+    import UIKit
+#endif
 class DownloadImageBinder: ObservableObject {
     private var subscription: AnyCancellable?
     @Published private(set) var image: UIImage?

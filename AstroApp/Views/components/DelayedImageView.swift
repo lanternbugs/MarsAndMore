@@ -18,9 +18,16 @@ struct DelayedImageView: View {
         VStack {
             
             if binder.image != nil {
+#if os(macOS)
+                Image(nsImage: binder.image!)
+                    .renderingMode(.original)
+                    .resizable()
+#elseif os(iOS)
                 Image(uiImage: binder.image!)
                     .renderingMode(.original)
                     .resizable()
+#endif
+                
             } else {
                 HStack {
                     Spacer()
