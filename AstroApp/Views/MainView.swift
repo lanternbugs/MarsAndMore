@@ -17,6 +17,7 @@ struct MainView: View {
     @Environment(\.managedObjectContext) private var viewContext
     @AppStorage("currentTab") private var currentTab: Int = 0
     @StateObject private var birthDataManager = BirthDataManager()
+    @StateObject private var spaceDataManager = SpaceDataManager()
     @StateObject private var planetsDate = PlanetsDate()
     @State private var roomState: RoomState = .Chart
     @State private var planetsState: RoomState = .Planets
@@ -43,6 +44,10 @@ struct MainView: View {
                     .environmentObject(planetsDate)
                     .environment(\.roomState, $planetsState)
                 .tag(2)
+                SpaceView().tabItem {
+                    Text("Space")
+                }.environmentObject(spaceDataManager)
+                    .tag(3)
             }
         }.onAppear {
             birthDataManager.setContext(_viewContext.wrappedValue)
