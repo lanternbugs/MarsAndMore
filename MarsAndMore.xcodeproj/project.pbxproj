@@ -28,6 +28,8 @@
 		7617DABA27AFA9320064B98E /* Planets+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7617DAB827AFA9320064B98E /* Planets+Extensions.swift */; };
 		7618A97427ADB6AA008C6508 /* NamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7618A97327ADB6AA008C6508 /* NamesView.swift */; };
 		7618A97527ADB6AA008C6508 /* NamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7618A97327ADB6AA008C6508 /* NamesView.swift */; };
+		761CF35928877919008FC865 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CF35828877919008FC865 /* Image+Extensions.swift */; };
+		761CF35A28877919008FC865 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CF35828877919008FC865 /* Image+Extensions.swift */; };
 		761DEE78279B9EB200A71938 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE77279B9EB200A71938 /* Tests_macOS.swift */; };
 		761DEE7A279B9EB200A71938 /* Tests_macOSLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE79279B9EB200A71938 /* Tests_macOSLaunchTests.swift */; };
 		761DEE7B279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE50279B9EB100A71938 /* MarsAndMore.xcdatamodeld */; };
@@ -291,6 +293,7 @@
 		7617DAB527AFA8A70064B98E /* AstroModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstroModels.swift; sourceTree = "<group>"; };
 		7617DAB827AFA9320064B98E /* Planets+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planets+Extensions.swift"; sourceTree = "<group>"; };
 		7618A97327ADB6AA008C6508 /* NamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesView.swift; sourceTree = "<group>"; };
+		761CF35828877919008FC865 /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
 		761DEE51279B9EB100A71938 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		761DEE52279B9EB100A71938 /* MarsAndMoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsAndMoreApp.swift; sourceTree = "<group>"; };
 		761DEE53279B9EB100A71938 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -448,6 +451,7 @@
 		760A35CB27ACE97E00BCFE81 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				761CF35828877919008FC865 /* Image+Extensions.swift */,
 				760A35CF27ACEA0700BCFE81 /* UIDevice+Extensions.swift */,
 				76908C9627C04FCC00806F9D /* View+Extensions.swift */,
 				76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */,
@@ -1036,6 +1040,7 @@
 				761DEEBB279B9EF900A71938 /* swepdate.c in Sources */,
 				76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
 				76664B3027CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
+				761CF35928877919008FC865 /* Image+Extensions.swift in Sources */,
 				76DAC8A727B2016700852872 /* CitiesView.swift in Sources */,
 				761DEEC3279B9EF900A71938 /* swecl.c in Sources */,
 				766C89D5287F8A5100E437A7 /* PlanetButtons.swift in Sources */,
@@ -1111,6 +1116,7 @@
 				76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */,
 				76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
 				76664B3127CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
+				761CF35A28877919008FC865 /* Image+Extensions.swift in Sources */,
 				76DAC8A827B2016700852872 /* CitiesView.swift in Sources */,
 				76BEF3F627ACB0AB001C9AD0 /* MainView.swift in Sources */,
 				766C89D6287F8A5100E437A7 /* PlanetButtons.swift in Sources */,
