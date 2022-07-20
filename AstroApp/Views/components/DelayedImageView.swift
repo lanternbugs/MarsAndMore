@@ -20,12 +20,11 @@ struct DelayedImageView: View {
             if binder.image != nil {
 #if os(macOS)
                 Image(nsImage: binder.image!)
-                    .renderingMode(.original)
-                    .resizable()
+                    .imageModifierFitScreen()
+                    
 #elseif os(iOS)
                 Image(uiImage: binder.image!)
-                    .renderingMode(.original)
-                    .resizable()
+                    .imageModifierFitScreen()
 #endif
                 
             } else {
