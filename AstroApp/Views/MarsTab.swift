@@ -14,7 +14,7 @@
 import SwiftUI
 struct MarsTab: View, AstrobotReadingInterface {
     
-    @State private var birthdate = Date(timeIntervalSince1970: 0)
+    @State private var birthdate = Date()
     @State private var planetChoice: Planets = Planets.Mars
     @State private var marsData: RoomState = .Entry
     @State private var venusData: RoomState = .Entry
