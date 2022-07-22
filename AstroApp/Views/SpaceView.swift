@@ -23,6 +23,11 @@ struct SpaceView: View {
                     Text(imageInfo.title)
                     DelayedImageView(url: imageInfo.url)
                 }
+                ForEach(manager.curiosityPhotos, id: \.id) {
+                    imageInfo in
+                    Text(imageInfo.title)
+                    DelayedImageView(url: imageInfo.url)
+                }
             }
         }
     }

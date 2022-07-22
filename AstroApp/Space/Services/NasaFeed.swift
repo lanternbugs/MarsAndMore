@@ -49,6 +49,47 @@ struct NasaFeed
         dataTask?.resume()
     }
     
+    static func getMarsPhotos(with querry: String, completion: @escaping (RoverPhotos)->Void)
+    {
+        
+        var dataTask: URLSessionDataTask?
+        let urlWithApiKey = querry + getApiKey()
+        guard let url = URL(string: urlWithApiKey) else {
+            return
+        }
+        dataTask = urlSession.dataTask(with: url) { data, response, error in
+            if let error = error {
+                print(error.localizedDescription)
+            } else
+            {
+                if let response = response as? HTTPURLResponse,
+                      response.statusCode == 200 {
+                    let decoder = JSONDecoder()
+                    do {
+                        guard let data = data else {
+                            print("data invalid")
+                            return
+                        }
+                      let photoInfo = try decoder.decode(RoverPhotos.self, from: data)
+                        print("\(photoInfo.photos.count) is the count")
+                        completion(photoInfo)
+                    } catch
+                    {
+                        print(error)
+                    }
+                    
+                    
+                }
+                else {
+                    if let response = response as? HTTPURLResponse {
+                        print("Response \(response.statusCode)")
+                    }
+                }
+            }
+        }
+        dataTask?.resume()
+    }
+    
     static func getApiKey()->String
     {
         // get your own api key https://api.nasa.gov/
