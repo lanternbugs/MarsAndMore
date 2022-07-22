@@ -153,6 +153,12 @@
 		76664B3127CC4B2A002A4235 /* Environment+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */; };
 		7667125427D00D7F00644429 /* TransitsButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7667125327D00D7F00644429 /* TransitsButtonControl.swift */; };
 		7667125527D00D7F00644429 /* TransitsButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7667125327D00D7F00644429 /* TransitsButtonControl.swift */; };
+		7667C4572888A96400D4DF06 /* opportunity-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4542888A96400D4DF06 /* opportunity-manifest.json */; };
+		7667C4582888A96400D4DF06 /* opportunity-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4542888A96400D4DF06 /* opportunity-manifest.json */; };
+		7667C4592888A96400D4DF06 /* spiriit-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4552888A96400D4DF06 /* spiriit-manifest.json */; };
+		7667C45A2888A96400D4DF06 /* spiriit-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4552888A96400D4DF06 /* spiriit-manifest.json */; };
+		7667C45B2888A96400D4DF06 /* curiosity-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4562888A96400D4DF06 /* curiosity-manifest.json */; };
+		7667C45C2888A96400D4DF06 /* curiosity-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4562888A96400D4DF06 /* curiosity-manifest.json */; };
 		766C89D5287F8A5100E437A7 /* PlanetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C89D4287F8A5100E437A7 /* PlanetButtons.swift */; };
 		766C89D6287F8A5100E437A7 /* PlanetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C89D4287F8A5100E437A7 /* PlanetButtons.swift */; };
 		7679FF7927AF184F007911C9 /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
@@ -378,6 +384,9 @@
 		76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomState+Extensions.swift"; sourceTree = "<group>"; };
 		76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Extensions.swift"; sourceTree = "<group>"; };
 		7667125327D00D7F00644429 /* TransitsButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitsButtonControl.swift; sourceTree = "<group>"; };
+		7667C4542888A96400D4DF06 /* opportunity-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "opportunity-manifest.json"; sourceTree = "<group>"; };
+		7667C4552888A96400D4DF06 /* spiriit-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "spiriit-manifest.json"; sourceTree = "<group>"; };
+		7667C4562888A96400D4DF06 /* curiosity-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "curiosity-manifest.json"; sourceTree = "<group>"; };
 		766C89D4287F8A5100E437A7 /* PlanetButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetButtons.swift; sourceTree = "<group>"; };
 		7679FF7027AF184F007911C9 /* AstrobotInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstrobotInterface.swift; sourceTree = "<group>"; };
 		7679FF7427AF184F007911C9 /* AdapterToEphemeris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdapterToEphemeris.h; sourceTree = "<group>"; };
@@ -600,6 +609,7 @@
 		762EAF8528833E99007DB4A9 /* Space */ = {
 			isa = PBXGroup;
 			children = (
+				7667C4532888A7FA00D4DF06 /* Data */,
 				762EAF8728833EED007DB4A9 /* Services */,
 				762EAF8628833EDF007DB4A9 /* Models */,
 				76282AE328863C94000D2465 /* SpaceDataManager.swift */,
@@ -711,6 +721,16 @@
 				762EAF942884C8AD007DB4A9 /* SpaceView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		7667C4532888A7FA00D4DF06 /* Data */ = {
+			isa = PBXGroup;
+			children = (
+				7667C4562888A96400D4DF06 /* curiosity-manifest.json */,
+				7667C4542888A96400D4DF06 /* opportunity-manifest.json */,
+				7667C4552888A96400D4DF06 /* spiriit-manifest.json */,
+			);
+			path = Data;
 			sourceTree = "<group>";
 		};
 		7679FF6F27AF184F007911C9 /* Astrobot */ = {
@@ -921,8 +941,11 @@
 				764EF76827ACA6E0008A15F1 /* mars-cancer.txt in Resources */,
 				764EF76327ACA6E0008A15F1 /* mars-aquarius.txt in Resources */,
 				763CFC0627B1E4C4004A73B8 /* cities.json in Resources */,
+				7667C4592888A96400D4DF06 /* spiriit-manifest.json in Resources */,
 				7624285627C334DE0002F5B3 /* seasnam2.txt in Resources */,
+				7667C45B2888A96400D4DF06 /* curiosity-manifest.json in Resources */,
 				76AF1D6027AE1E7400CB4E97 /* venus-libra.txt in Resources */,
+				7667C4572888A96400D4DF06 /* opportunity-manifest.json in Resources */,
 				76AF1D6427AE1E7400CB4E97 /* venus-gemini.txt in Resources */,
 				76AF1D6227AE1E7400CB4E97 /* venus-aries.txt in Resources */,
 				76AF1D5227AE1E7400CB4E97 /* venus-scorpio.txt in Resources */,
@@ -969,8 +992,11 @@
 				76BEF3FC27ACB4B8001C9AD0 /* mars-cancer.txt in Resources */,
 				76BEF3FD27ACB4B8001C9AD0 /* mars-capricorn.txt in Resources */,
 				763CFC0727B1E4C4004A73B8 /* cities.json in Resources */,
+				7667C45A2888A96400D4DF06 /* spiriit-manifest.json in Resources */,
 				7624285727C334DE0002F5B3 /* seasnam2.txt in Resources */,
+				7667C45C2888A96400D4DF06 /* curiosity-manifest.json in Resources */,
 				76AF1D6127AE1E7400CB4E97 /* venus-libra.txt in Resources */,
+				7667C4582888A96400D4DF06 /* opportunity-manifest.json in Resources */,
 				76AF1D6527AE1E7400CB4E97 /* venus-gemini.txt in Resources */,
 				76AF1D6327AE1E7400CB4E97 /* venus-aries.txt in Resources */,
 				76AF1D5327AE1E7400CB4E97 /* venus-scorpio.txt in Resources */,
