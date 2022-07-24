@@ -67,17 +67,26 @@ class SpaceDataManager: ObservableObject
     func fetchCuriosityPhotos()
     {
         if let list: [PhotoData] = curiosityManifest?.photo_manifest.photos.filter({ photo in
-            return photo.total_photos > 4
+            // 2020 2021 2022 etc
+            photo.total_photos > 4 && photo.earth_date.hasPrefix("202") &&  photo.cameras.first { $0 == "NAVCAM" } != nil
         }) {
             NasaFeed.getMarsPhotos(with: getMarsQuerry(from: list, with: "curiosity")) { [weak self] photoInfo in
                 DispatchQueue.main.async { [weak self] in
-                    for photo in photoInfo.photos {
-                        let info = ImageInfo(url: photo.img_src, description: "", title: photo.earth_date, id: self?.curiosityPhotos.count ?? 0)
+                    if let mastPhoto = photoInfo.photos.first(where: { $0.camera.name == "NAVCAM" }) {
+                        let info = ImageInfo(url: mastPhoto.img_src, description: mastPhoto.camera.name, title: mastPhoto.earth_date, id: self?.curiosityPhotos.count ?? 0)
                         self?.curiosityPhotos.append(info)
-                        if self?.curiosityPhotos.count ?? 5 > 4 {
-                            break
+                        for photo in photoInfo.photos {
+                            if photo.img_src == mastPhoto.img_src {
+                                continue
+                            }
+                            let info = ImageInfo(url: photo.img_src, description: photo.camera.name, title: photo.earth_date, id: self?.curiosityPhotos.count ?? 0)
+                            self?.curiosityPhotos.append(info)
+                            if self?.curiosityPhotos.count ?? 5 > 4 {
+                                break
+                            }
                         }
                     }
+                    
                 }
             }
         }
