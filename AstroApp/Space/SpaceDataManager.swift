@@ -73,13 +73,13 @@ class SpaceDataManager: ObservableObject
             NasaFeed.getMarsPhotos(with: getMarsQuerry(from: list, with: "curiosity")) { [weak self] photoInfo in
                 DispatchQueue.main.async { [weak self] in
                     if let mastPhoto = photoInfo.photos.first(where: { $0.camera.name == "NAVCAM" }) {
-                        let info = ImageInfo(url: mastPhoto.img_src, description: mastPhoto.camera.name, title: mastPhoto.earth_date, id: self?.curiosityPhotos.count ?? 0)
+                        let info = ImageInfo(url: mastPhoto.img_src, description: mastPhoto.camera.full_name, title: mastPhoto.earth_date, id: self?.curiosityPhotos.count ?? 0)
                         self?.curiosityPhotos.append(info)
                         for photo in photoInfo.photos {
                             if photo.img_src == mastPhoto.img_src {
                                 continue
                             }
-                            let info = ImageInfo(url: photo.img_src, description: photo.camera.name, title: photo.earth_date, id: self?.curiosityPhotos.count ?? 0)
+                            let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.curiosityPhotos.count ?? 0)
                             self?.curiosityPhotos.append(info)
                             if self?.curiosityPhotos.count ?? 5 > 4 {
                                 break
