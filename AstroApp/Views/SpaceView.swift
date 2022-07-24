@@ -21,12 +21,13 @@ struct SpaceView: View {
                 ForEach(manager.imageOfDayData, id: \.id) {
                     imageInfo in
                     Text(imageInfo.title)
-                    DelayedImageView(url: imageInfo.url)
+                    DelayedImageView(url: imageInfo.url, cacheKey: "nasaphotoofday")
                 }
                 ForEach(manager.curiosityPhotos, id: \.id) {
                     imageInfo in
                     Text(imageInfo.title)
-                    DelayedImageView(url: imageInfo.url)
+                    Text(imageInfo.description)
+                    DelayedImageView(url: imageInfo.url, cacheKey: "curiosity" + String(imageInfo.id))
                 }
             }
         }
