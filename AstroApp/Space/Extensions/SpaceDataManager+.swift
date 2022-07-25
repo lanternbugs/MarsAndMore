@@ -28,6 +28,18 @@ extension SpaceDataManager {
             }
         }
         
+        if let opportunityDate = getSaveDateOrNil(type: .Opportunity) {
+            if opportunityDate != getDateInYYYYMMDD() {
+                clearAllPhotoData(type: .Opportunity)
+            }
+        }
+        
+        if let spiritDate = getSaveDateOrNil(type: .Spirit) {
+            if spiritDate != getDateInYYYYMMDD() {
+                clearAllPhotoData(type: .Spirit)
+            }
+        }
+        
         if let photoOfDayDate = getSaveDateOrNil(type: .NasaPhotoOfDay) {
             if photoOfDayDate != getDateInYYYYMMDD() {
                 clearAllPhotoData(type: .NasaPhotoOfDay)
@@ -47,6 +59,20 @@ extension SpaceDataManager {
             parseManifest(manifest: "curiosity-manifest")
         } else {
            curiosityPhotos = loadNasaResponse(type: .Curiosity)
+        }
+        
+        if !checkAllDataExists(type: .Opportunity) {
+            
+            parseManifest(manifest: "opportunity-manifest")
+        } else {
+           opportunityPhotos = loadNasaResponse(type: .Opportunity)
+        }
+        
+        if !checkAllDataExists(type: .Spirit) {
+            
+            parseManifest(manifest: "spirit-manifest")
+        } else {
+           spiritPhotos = loadNasaResponse(type: .Spirit)
         }
     }
     
