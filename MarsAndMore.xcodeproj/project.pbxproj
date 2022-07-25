@@ -159,8 +159,8 @@
 		7667125527D00D7F00644429 /* TransitsButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7667125327D00D7F00644429 /* TransitsButtonControl.swift */; };
 		7667C4572888A96400D4DF06 /* opportunity-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4542888A96400D4DF06 /* opportunity-manifest.json */; };
 		7667C4582888A96400D4DF06 /* opportunity-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4542888A96400D4DF06 /* opportunity-manifest.json */; };
-		7667C4592888A96400D4DF06 /* spiriit-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4552888A96400D4DF06 /* spiriit-manifest.json */; };
-		7667C45A2888A96400D4DF06 /* spiriit-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4552888A96400D4DF06 /* spiriit-manifest.json */; };
+		7667C4592888A96400D4DF06 /* spirit-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4552888A96400D4DF06 /* spirit-manifest.json */; };
+		7667C45A2888A96400D4DF06 /* spirit-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4552888A96400D4DF06 /* spirit-manifest.json */; };
 		7667C45B2888A96400D4DF06 /* curiosity-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4562888A96400D4DF06 /* curiosity-manifest.json */; };
 		7667C45C2888A96400D4DF06 /* curiosity-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4562888A96400D4DF06 /* curiosity-manifest.json */; };
 		766C89D5287F8A5100E437A7 /* PlanetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C89D4287F8A5100E437A7 /* PlanetButtons.swift */; };
@@ -391,7 +391,7 @@
 		76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Extensions.swift"; sourceTree = "<group>"; };
 		7667125327D00D7F00644429 /* TransitsButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitsButtonControl.swift; sourceTree = "<group>"; };
 		7667C4542888A96400D4DF06 /* opportunity-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "opportunity-manifest.json"; sourceTree = "<group>"; };
-		7667C4552888A96400D4DF06 /* spiriit-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "spiriit-manifest.json"; sourceTree = "<group>"; };
+		7667C4552888A96400D4DF06 /* spirit-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "spirit-manifest.json"; sourceTree = "<group>"; };
 		7667C4562888A96400D4DF06 /* curiosity-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "curiosity-manifest.json"; sourceTree = "<group>"; };
 		766C89D4287F8A5100E437A7 /* PlanetButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetButtons.swift; sourceTree = "<group>"; };
 		7679FF7027AF184F007911C9 /* AstrobotInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstrobotInterface.swift; sourceTree = "<group>"; };
@@ -429,6 +429,8 @@
 		76ECF738287F585400AE7B34 /* PlanetRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetRoom.swift; sourceTree = "<group>"; };
 		76ECF73B287F5DDD00AE7B34 /* ChartTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTitle.swift; sourceTree = "<group>"; };
 		76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
+		76F7C34C288F196900F097AB /* MarsAndMore--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MarsAndMore--macOS--Info.plist"; sourceTree = "<group>"; };
+		76F7C34D288F1B8100F097AB /* MarsAndMore--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MarsAndMore--iOS--Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -477,6 +479,8 @@
 		761DEE4A279B9EB000A71938 = {
 			isa = PBXGroup;
 			children = (
+				76F7C34D288F1B8100F097AB /* MarsAndMore--iOS--Info.plist */,
+				76F7C34C288F196900F097AB /* MarsAndMore--macOS--Info.plist */,
 				761DEE4F279B9EB100A71938 /* AstroApp */,
 				761DEE61279B9EB200A71938 /* macOS */,
 				761DEE6A279B9EB200A71938 /* Tests iOS */,
@@ -744,7 +748,7 @@
 			children = (
 				7667C4562888A96400D4DF06 /* curiosity-manifest.json */,
 				7667C4542888A96400D4DF06 /* opportunity-manifest.json */,
-				7667C4552888A96400D4DF06 /* spiriit-manifest.json */,
+				7667C4552888A96400D4DF06 /* spirit-manifest.json */,
 			);
 			path = Data;
 			sourceTree = "<group>";
@@ -957,7 +961,7 @@
 				764EF76827ACA6E0008A15F1 /* mars-cancer.txt in Resources */,
 				764EF76327ACA6E0008A15F1 /* mars-aquarius.txt in Resources */,
 				763CFC0627B1E4C4004A73B8 /* cities.json in Resources */,
-				7667C4592888A96400D4DF06 /* spiriit-manifest.json in Resources */,
+				7667C4592888A96400D4DF06 /* spirit-manifest.json in Resources */,
 				7624285627C334DE0002F5B3 /* seasnam2.txt in Resources */,
 				7667C45B2888A96400D4DF06 /* curiosity-manifest.json in Resources */,
 				76AF1D6027AE1E7400CB4E97 /* venus-libra.txt in Resources */,
@@ -1008,7 +1012,7 @@
 				76BEF3FC27ACB4B8001C9AD0 /* mars-cancer.txt in Resources */,
 				76BEF3FD27ACB4B8001C9AD0 /* mars-capricorn.txt in Resources */,
 				763CFC0727B1E4C4004A73B8 /* cities.json in Resources */,
-				7667C45A2888A96400D4DF06 /* spiriit-manifest.json in Resources */,
+				7667C45A2888A96400D4DF06 /* spirit-manifest.json in Resources */,
 				7624285727C334DE0002F5B3 /* seasnam2.txt in Resources */,
 				7667C45C2888A96400D4DF06 /* curiosity-manifest.json in Resources */,
 				76AF1D6127AE1E7400CB4E97 /* venus-libra.txt in Resources */,
@@ -1407,6 +1411,7 @@
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MarsAndMore--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1440,6 +1445,7 @@
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MarsAndMore--iOS--Info.plist";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -1475,6 +1481,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MarsAndMore--macOS--Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1505,6 +1512,7 @@
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = "MarsAndMore--macOS--Info.plist";
 				INFOPLIST_KEY_NSHumanReadableCopyright = "";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
