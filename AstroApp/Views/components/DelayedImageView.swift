@@ -9,10 +9,8 @@ import SwiftUI
 
 struct DelayedImageView: View {
     @ObservedObject var binder = DownloadImageBinder()
-    var url: URL
-    init(url: URL) {
-        self.url = url
-        binder.load(url: self.url)
+    init(url: URL, key: PhotoKey) {
+        binder.load(url: url, key: key)
     }
     var body: some View {
         VStack {
@@ -43,7 +41,8 @@ struct DelayedImageView: View {
 
 struct DelayedImageView_Previews: PreviewProvider {
     static var url = URL(string: "https://www.google.com")!
+    static var key = PhotoKey(type: .Curiosity, id: 0)
     static var previews: some View {
-        DelayedImageView(url: url)
+        DelayedImageView(url: url, key: key)
     }
 }
