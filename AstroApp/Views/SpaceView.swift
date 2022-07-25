@@ -21,7 +21,7 @@ struct SpaceView: View {
                 
                 ForEach(manager.imageOfDayData, id: \.id) {
                     imageInfo in
-                    Text(imageInfo.title)
+                    Text(imageInfo.title).font(.headline)
                     DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .NasaPhotoOfDay, id: imageInfo.id))
                 }
                 HStack {
@@ -38,22 +38,22 @@ struct SpaceView: View {
                 case .Curiosity:
                     ForEach(manager.curiosityPhotos, id: \.id) {
                         imageInfo in
-                        Text(imageInfo.title)
-                        Text(imageInfo.description)
+                        Text(imageInfo.title).font(.subheadline)
+                        Text(imageInfo.description).font(.subheadline)
                         DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Curiosity, id: imageInfo.id))
                     }
                 case .Opportunity:
                     ForEach(manager.opportunityPhotos, id: \.id) {
                         imageInfo in
-                        Text(imageInfo.title)
-                        Text(imageInfo.description)
+                        Text(imageInfo.title).font(.subheadline)
+                        Text(imageInfo.description).font(.subheadline)
                         DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Opportunity, id: imageInfo.id))
                     }
                 case .Spirit:
                     ForEach(manager.spiritPhotos, id: \.id) {
                         imageInfo in
-                        Text(imageInfo.title)
-                        Text(imageInfo.description)
+                        Text(imageInfo.title).font(.subheadline)
+                        Text(imageInfo.description).font(.subheadline)
                         DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Spirit, id: imageInfo.id))
                     }
                 default:
