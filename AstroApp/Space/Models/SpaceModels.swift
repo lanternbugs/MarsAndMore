@@ -81,3 +81,12 @@ struct Rover: Codable
     var status: String
 }
 
+enum  NASAPhotoType:String {
+    case NasaPhotoOfDay, Curiosity, Opportunity, Spirit
+}
+
+struct PhotoKey
+{
+    let type: NASAPhotoType
+    let id: Int
+}

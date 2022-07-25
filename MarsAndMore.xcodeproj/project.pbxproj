@@ -106,6 +106,10 @@
 		76282AE528863C94000D2465 /* SpaceDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76282AE328863C94000D2465 /* SpaceDataManager.swift */; };
 		762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */; };
 		762D4A6927AB986A00EA59E8 /* AstroButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6827AB986A00EA59E8 /* AstroButtons.swift */; };
+		762E0C66288DC6E8008B825A /* SpaceDataManager+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E0C65288DC6E8008B825A /* SpaceDataManager+.swift */; };
+		762E0C67288DC6E8008B825A /* SpaceDataManager+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E0C65288DC6E8008B825A /* SpaceDataManager+.swift */; };
+		762E0C69288DCA30008B825A /* NASAPhotoType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E0C68288DCA30008B825A /* NASAPhotoType+.swift */; };
+		762E0C6A288DCA30008B825A /* NASAPhotoType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E0C68288DCA30008B825A /* NASAPhotoType+.swift */; };
 		762EAF8928833F11007DB4A9 /* SpaceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF8828833F11007DB4A9 /* SpaceModels.swift */; };
 		762EAF8A28833F11007DB4A9 /* SpaceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF8828833F11007DB4A9 /* SpaceModels.swift */; };
 		762EAF8C28833F4A007DB4A9 /* NasaFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF8B28833F4A007DB4A9 /* NasaFeed.swift */; };
@@ -354,6 +358,8 @@
 		76282AE328863C94000D2465 /* SpaceDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceDataManager.swift; sourceTree = "<group>"; };
 		762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsEntry.swift; sourceTree = "<group>"; };
 		762D4A6827AB986A00EA59E8 /* AstroButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroButtons.swift; sourceTree = "<group>"; };
+		762E0C65288DC6E8008B825A /* SpaceDataManager+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceDataManager+.swift"; sourceTree = "<group>"; };
+		762E0C68288DCA30008B825A /* NASAPhotoType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NASAPhotoType+.swift"; sourceTree = "<group>"; };
 		762EAF8828833F11007DB4A9 /* SpaceModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceModels.swift; sourceTree = "<group>"; };
 		762EAF8B28833F4A007DB4A9 /* NasaFeed.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaFeed.swift; sourceTree = "<group>"; };
 		762EAF8E2884C579007DB4A9 /* DelayedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedImageView.swift; sourceTree = "<group>"; };
@@ -606,9 +612,19 @@
 			path = components;
 			sourceTree = "<group>";
 		};
+		762E0C64288DC6B0008B825A /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				762E0C65288DC6E8008B825A /* SpaceDataManager+.swift */,
+				762E0C68288DCA30008B825A /* NASAPhotoType+.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
 		762EAF8528833E99007DB4A9 /* Space */ = {
 			isa = PBXGroup;
 			children = (
+				762E0C64288DC6B0008B825A /* Extensions */,
 				7667C4532888A7FA00D4DF06 /* Data */,
 				762EAF8728833EED007DB4A9 /* Services */,
 				762EAF8628833EDF007DB4A9 /* Models */,
@@ -1064,6 +1080,7 @@
 				7656279D287E000A00A63C8B /* PlanetsTab.swift in Sources */,
 				761DEEC1279B9EF900A71938 /* swehouse.c in Sources */,
 				761DEEBB279B9EF900A71938 /* swepdate.c in Sources */,
+				762E0C69288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
 				76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
 				76664B3027CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
 				761CF35928877919008FC865 /* Image+Extensions.swift in Sources */,
@@ -1091,6 +1108,7 @@
 				762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */,
 				761DEEC9279B9EF900A71938 /* swemplan.c in Sources */,
 				76860B8F27B224E400533BD2 /* NameDataView.swift in Sources */,
+				762E0C66288DC6E8008B825A /* SpaceDataManager+.swift in Sources */,
 				7694464F27CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */,
 				761DEE7B279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */,
 				761DEE81279B9EB200A71938 /* Persistence.swift in Sources */,
@@ -1140,6 +1158,7 @@
 				7656279E287E000A00A63C8B /* PlanetsTab.swift in Sources */,
 				76BEF3F727ACB0EF001C9AD0 /* AstroReadingModel.swift in Sources */,
 				76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */,
+				762E0C6A288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
 				76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
 				76664B3127CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
 				761CF35A28877919008FC865 /* Image+Extensions.swift in Sources */,
@@ -1167,6 +1186,7 @@
 				76B34ED527AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,
 				761DEEC6279B9EF900A71938 /* sweph.c in Sources */,
 				76860B9027B224E400533BD2 /* NameDataView.swift in Sources */,
+				762E0C67288DC6E8008B825A /* SpaceDataManager+.swift in Sources */,
 				7694465027CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */,
 				761DEEB8279B9EF900A71938 /* swehel.c in Sources */,
 				761DEECC279B9EF900A71938 /* swephlib.c in Sources */,

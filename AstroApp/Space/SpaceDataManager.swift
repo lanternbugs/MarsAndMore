@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 class SpaceDataManager: ObservableObject
 {
     @Published var imageOfDayData: [ImageInfo] = []
@@ -15,25 +16,28 @@ class SpaceDataManager: ObservableObject
     
     init()
     {
-        fetchData()
-        parseManifest(manifest: "curiosity-manifest")
+        
     }
     
-    func fetchData()->Void
+    func fetchImageOfDay()->Void
     {
         imageOfDayData.removeAll()
-        marsRoverData.removeAll()
         
         NasaFeed.getPhotoOfDay(completion: {[weak self] picture in
             let info: ImageInfo = ImageInfo(url: picture.url, description: picture.explanation, title: picture.title, id: self?.imageOfDayData.count ?? 0)
             DispatchQueue.main.async { [weak self] in
                 self?.imageOfDayData.append(info)
+                let nasaType = NASAPhotoType.NasaPhotoOfDay
+                if !(self?.checkAllDataExists(type: nasaType) ?? true) {
+                    self?.saveNasaResponse(type: nasaType, data: [info])
+                }
             }
         })
     }
     
     func parseManifest(manifest: String)->Void
     {
+        marsRoverData.removeAll()
         DispatchQueue.global().async {
             let decoder = JSONDecoder()
             if let roverPath = Bundle(for: type(of: self)).url(forResource: manifest, withExtension: "json") {
@@ -66,6 +70,7 @@ class SpaceDataManager: ObservableObject
     
     func fetchCuriosityPhotos()
     {
+        curiosityPhotos.removeAll()
         if let list: [PhotoData] = curiosityManifest?.photo_manifest.photos.filter({ photo in
             // 2020 2021 2022 etc
             photo.total_photos > 4 && photo.earth_date.hasPrefix("202") &&  photo.cameras.first { $0 == "NAVCAM" } != nil
@@ -81,7 +86,13 @@ class SpaceDataManager: ObservableObject
                             }
                             let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.curiosityPhotos.count ?? 0)
                             self?.curiosityPhotos.append(info)
-                            if self?.curiosityPhotos.count ?? 5 > 4 {
+                            let roverType = NASAPhotoType.Curiosity
+                            if self?.curiosityPhotos.count ?? roverType.getMaxPhotos() >= roverType.getMaxPhotos() {
+                                if !(self?.checkAllDataExists(type: roverType) ?? true) {
+                                    if let curiosityPhotos = self?.curiosityPhotos {
+                                        self?.saveNasaResponse(type: roverType, data: curiosityPhotos)
+                                    }
+                                }
                                 break
                             }
                         }
