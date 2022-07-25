@@ -186,7 +186,6 @@ class SpaceDataManager: ObservableObject
         let choice = Int(arc4random_uniform(UInt32(max)))
         let solDay = String(list[choice].sol)
         let querry =  "https://api.nasa.gov/mars-photos/api/v1/rovers/" + rover + "/photos?sol=" + solDay + "&api_key="
-        print(querry)
         return querry
     }
 }
