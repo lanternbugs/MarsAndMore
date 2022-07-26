@@ -20,6 +20,7 @@
         <attribute name="fetchDate" attributeType="String"/>
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
+        <attribute name="mediaType" attributeType="String" defaultValueString="mars"/>
         <attribute name="title" attributeType="String"/>
         <attribute name="type" attributeType="String"/>
         <attribute name="url" attributeType="URI"/>
@@ -28,6 +29,6 @@
         <element name="BirthDates" positionX="-63" positionY="-9" width="128" height="134"/>
         <element name="Bodies" positionX="-63" positionY="36" width="128" height="44"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
-        <element name="NASAPhotoData" positionX="-63" positionY="36" width="128" height="134"/>
+        <element name="NASAPhotoData" positionX="-63" positionY="36" width="128" height="149"/>
     </elements>
 </model>

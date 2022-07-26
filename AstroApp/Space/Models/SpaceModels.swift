@@ -11,6 +11,7 @@ struct ImageInfo {
     let description: String
     let title: String
     let id: Int
+    let mediaType: String
 }
 
 struct PictureOfDay: Codable
@@ -18,7 +19,7 @@ struct PictureOfDay: Codable
     let date: String?
     let explanation: String
     let hdurl: URL?
-    let media_type: String?
+    let media_type: String
     let service_version: String?
     let title: String
     let url: URL
