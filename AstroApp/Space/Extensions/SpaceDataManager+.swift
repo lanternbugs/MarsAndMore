@@ -239,7 +239,7 @@ extension SpaceDataManager {
                 nasaImage.id = Int32(image.id)
                 nasaImage.descript = image.description
                 nasaImage.fetchDate = fetchDate
-                nasaImage.mediaType = image.mediaType
+                nasaImage.mediaType = image.mediaType.rawValue
                 try context.save()
             }
         } catch let error as NSError  {
@@ -264,7 +264,7 @@ extension SpaceDataManager {
                     guard let url = photo.url, let descript = photo.descript, let title = photo.title, let mediaType = photo.mediaType else {
                         return imageInfo
                     }
-                    let info = ImageInfo(url: url, description: descript, title: title, id: Int(photo.id), mediaType: mediaType)
+                    let info = ImageInfo(url: url, description: descript, title: title, id: Int(photo.id), mediaType: mediaType == MediaType.Video.rawValue ? .Video : .Picture)
                     imageInfo.append(info)
                 }
             }

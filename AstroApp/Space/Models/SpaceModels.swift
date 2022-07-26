@@ -11,7 +11,11 @@ struct ImageInfo {
     let description: String
     let title: String
     let id: Int
-    let mediaType: String
+    let mediaType: MediaType
+}
+
+enum MediaType: String {
+    case Video = "video", Picture
 }
 
 struct PictureOfDay: Codable

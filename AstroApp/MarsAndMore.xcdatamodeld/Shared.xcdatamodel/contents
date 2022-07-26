@@ -20,7 +20,7 @@
         <attribute name="fetchDate" attributeType="String"/>
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <attribute name="mediaType" attributeType="String" defaultValueString="mars"/>
+        <attribute name="mediaType" attributeType="String" defaultValueString="Picture"/>
         <attribute name="title" attributeType="String"/>
         <attribute name="type" attributeType="String"/>
         <attribute name="url" attributeType="URI"/>

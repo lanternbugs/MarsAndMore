@@ -27,7 +27,7 @@ class SpaceDataManager: ObservableObject
         imageOfDayData.removeAll()
         
         NasaFeed.getPhotoOfDay(completion: {[weak self] picture in
-            let info: ImageInfo = ImageInfo(url: picture.url, description: picture.explanation, title: picture.title, id: self?.imageOfDayData.count ?? 0, mediaType: picture.media_type)
+            let info: ImageInfo = ImageInfo(url: picture.url, description: picture.explanation, title: picture.title, id: self?.imageOfDayData.count ?? 0, mediaType: picture.media_type == MediaType.Video.rawValue ? .Video : .Picture)
             DispatchQueue.main.async { [weak self] in
                 self?.imageOfDayData.append(info)
                 let nasaType = NASAPhotoType.NasaPhotoOfDay
@@ -83,13 +83,13 @@ class SpaceDataManager: ObservableObject
                 DispatchQueue.main.async { [weak self] in
                     self?.curiosityPhotos.removeAll()
                     if let mastPhoto = photoInfo.photos.first(where: { $0.camera.name == "NAVCAM" }) {
-                        let info = ImageInfo(url: mastPhoto.img_src, description: mastPhoto.camera.full_name, title: mastPhoto.earth_date, id: self?.curiosityPhotos.count ?? 0, mediaType: "mars")
+                        let info = ImageInfo(url: mastPhoto.img_src, description: mastPhoto.camera.full_name, title: mastPhoto.earth_date, id: self?.curiosityPhotos.count ?? 0, mediaType: .Picture)
                         self?.curiosityPhotos.append(info)
                         for photo in photoInfo.photos {
                             if photo.img_src == mastPhoto.img_src {
                                 continue
                             }
-                            let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.curiosityPhotos.count ?? 0, mediaType: "mars")
+                            let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.curiosityPhotos.count ?? 0, mediaType: .Picture)
                             self?.curiosityPhotos.append(info)
                             let roverType = NASAPhotoType.Curiosity
                             if self?.curiosityPhotos.count ?? roverType.getMaxPhotos() >= roverType.getMaxPhotos() {
@@ -119,13 +119,13 @@ class SpaceDataManager: ObservableObject
                 DispatchQueue.main.async { [weak self] in
                     self?.opportunityPhotos.removeAll()
                     if let mastPhoto = photoInfo.photos.first(where: { $0.camera.name == "NAVCAM" }) {
-                        let info = ImageInfo(url: mastPhoto.img_src, description: mastPhoto.camera.full_name, title: mastPhoto.earth_date, id: self?.opportunityPhotos.count ?? 0, mediaType: "mars")
+                        let info = ImageInfo(url: mastPhoto.img_src, description: mastPhoto.camera.full_name, title: mastPhoto.earth_date, id: self?.opportunityPhotos.count ?? 0, mediaType: .Picture)
                         self?.opportunityPhotos.append(info)
                         for photo in photoInfo.photos {
                             if photo.img_src == mastPhoto.img_src {
                                 continue
                             }
-                            let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.opportunityPhotos.count ?? 0, mediaType: "mars")
+                            let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.opportunityPhotos.count ?? 0, mediaType: .Picture)
                             self?.opportunityPhotos.append(info)
                             let roverType = NASAPhotoType.Opportunity
                             if self?.opportunityPhotos.count ?? roverType.getMaxPhotos() >= roverType.getMaxPhotos() {
@@ -155,13 +155,13 @@ class SpaceDataManager: ObservableObject
                 DispatchQueue.main.async { [weak self] in
                     self?.spiritPhotos.removeAll()
                     if let mastPhoto = photoInfo.photos.first(where: { $0.camera.name == "NAVCAM" }) {
-                        let info = ImageInfo(url: mastPhoto.img_src, description: mastPhoto.camera.full_name, title: mastPhoto.earth_date, id: self?.spiritPhotos.count ?? 0, mediaType: "mars")
+                        let info = ImageInfo(url: mastPhoto.img_src, description: mastPhoto.camera.full_name, title: mastPhoto.earth_date, id: self?.spiritPhotos.count ?? 0, mediaType: .Picture)
                         self?.spiritPhotos.append(info)
                         for photo in photoInfo.photos {
                             if photo.img_src == mastPhoto.img_src {
                                 continue
                             }
-                            let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.spiritPhotos.count ?? 0, mediaType: "mars")
+                            let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.spiritPhotos.count ?? 0, mediaType: .Picture)
                             self?.spiritPhotos.append(info)
                             let roverType = NASAPhotoType.Spirit
                             if self?.spiritPhotos.count ?? roverType.getMaxPhotos() >= roverType.getMaxPhotos() {
