@@ -120,6 +120,10 @@
 		762EAF932884C75C007DB4A9 /* DownloadImageBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF912884C75C007DB4A9 /* DownloadImageBinder.swift */; };
 		762EAF952884C8AD007DB4A9 /* SpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF942884C8AD007DB4A9 /* SpaceView.swift */; };
 		762EAF962884C8AD007DB4A9 /* SpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF942884C8AD007DB4A9 /* SpaceView.swift */; };
+		7631117F289082A800912263 /* NasaPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631117E289082A800912263 /* NasaPhotoView.swift */; };
+		76311180289082A800912263 /* NasaPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631117E289082A800912263 /* NasaPhotoView.swift */; };
+		76311182289089B000912263 /* SpaceTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76311181289089B000912263 /* SpaceTab.swift */; };
+		76311183289089B000912263 /* SpaceTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76311181289089B000912263 /* SpaceTab.swift */; };
 		7635723727B6FC7D00C2E5A6 /* ChartTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7635723627B6FC7D00C2E5A6 /* ChartTab.swift */; };
 		7635723827B6FC7D00C2E5A6 /* ChartTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7635723627B6FC7D00C2E5A6 /* ChartTab.swift */; };
 		763B3F9D27BDB00C007A2690 /* AspectsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B3F9C27BDB00C007A2690 /* AspectsEntry.swift */; };
@@ -365,6 +369,8 @@
 		762EAF8E2884C579007DB4A9 /* DelayedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedImageView.swift; sourceTree = "<group>"; };
 		762EAF912884C75C007DB4A9 /* DownloadImageBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageBinder.swift; sourceTree = "<group>"; };
 		762EAF942884C8AD007DB4A9 /* SpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceView.swift; sourceTree = "<group>"; };
+		7631117E289082A800912263 /* NasaPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaPhotoView.swift; sourceTree = "<group>"; };
+		76311181289089B000912263 /* SpaceTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceTab.swift; sourceTree = "<group>"; };
 		7635723627B6FC7D00C2E5A6 /* ChartTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTab.swift; sourceTree = "<group>"; };
 		763B3F9C27BDB00C007A2690 /* AspectsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AspectsEntry.swift; sourceTree = "<group>"; };
 		763B3F9F27BDB2BA007A2690 /* Aspects+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Aspects+Extensions.swift"; sourceTree = "<group>"; };
@@ -738,7 +744,9 @@
 				76860B8E27B224E400533BD2 /* NameDataView.swift */,
 				7615428B27D1456600B0E781 /* ChartSettings.swift */,
 				76165BDF27D19A4700C2F709 /* ResourcesView.swift */,
+				76311181289089B000912263 /* SpaceTab.swift */,
 				762EAF942884C8AD007DB4A9 /* SpaceView.swift */,
+				7631117E289082A800912263 /* NasaPhotoView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1091,6 +1099,7 @@
 				76DAC8A727B2016700852872 /* CitiesView.swift in Sources */,
 				761DEEC3279B9EF900A71938 /* swecl.c in Sources */,
 				766C89D5287F8A5100E437A7 /* PlanetButtons.swift in Sources */,
+				76311182289089B000912263 /* SpaceTab.swift in Sources */,
 				761DEEC5279B9EF900A71938 /* sweph.c in Sources */,
 				76ADD2C527E12B2D00261505 /* SelectedNameView.swift in Sources */,
 				761DEEB7279B9EF900A71938 /* swehel.c in Sources */,
@@ -1112,6 +1121,7 @@
 				762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */,
 				761DEEC9279B9EF900A71938 /* swemplan.c in Sources */,
 				76860B8F27B224E400533BD2 /* NameDataView.swift in Sources */,
+				7631117F289082A800912263 /* NasaPhotoView.swift in Sources */,
 				762E0C66288DC6E8008B825A /* SpaceDataManager+.swift in Sources */,
 				7694464F27CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */,
 				761DEE7B279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */,
@@ -1169,6 +1179,7 @@
 				76DAC8A827B2016700852872 /* CitiesView.swift in Sources */,
 				76BEF3F627ACB0AB001C9AD0 /* MainView.swift in Sources */,
 				766C89D6287F8A5100E437A7 /* PlanetButtons.swift in Sources */,
+				76311183289089B000912263 /* SpaceTab.swift in Sources */,
 				761DEEC2279B9EF900A71938 /* swehouse.c in Sources */,
 				76ADD2C627E12B2D00261505 /* SelectedNameView.swift in Sources */,
 				7606E28527AB18BF00C72FAB /* ChartRoom.swift in Sources */,
@@ -1190,6 +1201,7 @@
 				76B34ED527AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,
 				761DEEC6279B9EF900A71938 /* sweph.c in Sources */,
 				76860B9027B224E400533BD2 /* NameDataView.swift in Sources */,
+				76311180289082A800912263 /* NasaPhotoView.swift in Sources */,
 				762E0C67288DC6E8008B825A /* SpaceDataManager+.swift in Sources */,
 				7694465027CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */,
 				761DEEB8279B9EF900A71938 /* swehel.c in Sources */,

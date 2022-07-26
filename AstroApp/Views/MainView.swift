@@ -21,6 +21,7 @@ struct MainView: View {
     @StateObject private var planetsDate = PlanetsDate()
     @State private var roomState: RoomState = .Chart
     @State private var planetsState: RoomState = .Planets
+    @State private var spaceState: RoomState = .Planets
     var body: some View {
         VStack {
             TabView(selection: $currentTab) {
@@ -44,9 +45,10 @@ struct MainView: View {
                     .environmentObject(planetsDate)
                     .environment(\.roomState, $planetsState)
                 .tag(2)
-                SpaceView().tabItem {
+                SpaceTab().tabItem {
                     Text("Space")
                 }.environmentObject(spaceDataManager)
+                    .environment(\.roomState, $spaceState)
                     .tag(3)
             }
         }.onAppear {

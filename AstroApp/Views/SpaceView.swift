@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SpaceView: View {
     @EnvironmentObject private var manager: SpaceDataManager
+    @Environment(\.roomState) private var spaceState
     @State private var roverChoice: NASAPhotoType = NASAPhotoType.Curiosity
     var body: some View {
         ScrollView {
@@ -29,7 +30,9 @@ struct SpaceView: View {
                             Text("Open Video")
                         }
                     case .Picture:
-                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .NasaPhotoOfDay, id: imageInfo.id))
+                        Button(action:  { spaceState.wrappedValue = RoomState.Picture }) {
+                            Text("Nasa Picture of Day")
+                        }
                     }
                     
                 }
