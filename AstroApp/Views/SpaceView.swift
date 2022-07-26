@@ -22,7 +22,14 @@ struct SpaceView: View {
                 ForEach(manager.imageOfDayData, id: \.id) {
                     imageInfo in
                     Text(imageInfo.title).font(Font.headline.weight(.semibold))
-                    DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .NasaPhotoOfDay, id: imageInfo.id))
+                    if imageInfo.mediaType == "video" {
+                        Button(action:  { openURL(url: imageInfo.url) }) {
+                            Text("Open Video")
+                        }
+                    } else {
+                        
+                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .NasaPhotoOfDay, id: imageInfo.id))
+                    }
                 }
                 HStack {
                     Spacer()

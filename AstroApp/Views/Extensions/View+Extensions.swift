@@ -36,4 +36,12 @@ extension View {
            
         }
     }
+    
+    func openURL(url: URL)->Void {
+#if os(iOS)
+            UIApplication.shared.open(url)
+#elseif os(macOS)
+            NSWorkspace.shared.open(url)
+#endif
+    }
 }
