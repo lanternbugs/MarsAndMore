@@ -21,7 +21,7 @@ struct MainView: View {
     @StateObject private var planetsDate = PlanetsDate()
     @State private var roomState: RoomState = .Chart
     @State private var planetsState: RoomState = .Planets
-    @State private var spaceState: RoomState = .Planets
+    @State private var spaceState: RoomState = .Space
     var body: some View {
         VStack {
             TabView(selection: $currentTab) {
