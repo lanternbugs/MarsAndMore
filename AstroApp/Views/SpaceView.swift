@@ -17,7 +17,7 @@ import SwiftUI
 struct SpaceView: View {
     @EnvironmentObject private var manager: SpaceDataManager
     @Environment(\.roomState) private var spaceState
-    @State private var roverChoice: NASAPhotoType = NASAPhotoType.Curiosity
+    @AppStorage("roverChoice") private var roverChoice: NASAPhotoType = NASAPhotoType.Curiosity
     var body: some View {
         ScrollView {
             VStack {
