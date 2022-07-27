@@ -20,38 +20,47 @@ extension SpaceDataManager {
   
     static var managedContext: NSManagedObjectContext?
     
-    func setContextAndLoad(_ context: NSManagedObjectContext) {
-        SpaceDataManager.managedContext = context
+    func checkForNewData()
+    {
+        if curiosityPhotos.count == NASAPhotoType.Curiosity.getMaxPhotos() {
+            if let date = getSaveDateOrNil(type: .Curiosity) {
+                if date != getDateInYYYYMMDD() {
+                    loadCuriosity()
+                }
+            }
+        }
+        
+        if opportunityPhotos.count == NASAPhotoType.Opportunity.getMaxPhotos() {
+            if let date = getSaveDateOrNil(type: .Opportunity) {
+                if date != getDateInYYYYMMDD() {
+                    loadOpportunity()
+                }
+            }
+        }
+        
+        if spiritPhotos.count == NASAPhotoType.Spirit.getMaxPhotos() {
+            if let date = getSaveDateOrNil(type: .Spirit) {
+                if date != getDateInYYYYMMDD() {
+                    loadSpirit()
+                }
+            }
+        }
+        
+        if imageOfDayData.count == NASAPhotoType.NasaPhotoOfDay.getMaxPhotos() {
+            if let date = getSaveDateOrNil(type: .NasaPhotoOfDay) {
+                if date != getDateInYYYYMMDD() {
+                    loadPictureOfDay()
+                }
+            }
+        }
+    }
+    
+    func loadCuriosity()
+    {
         if let curiosityDate = getSaveDateOrNil(type: .Curiosity) {
             if curiosityDate != getDateInYYYYMMDD() {
                 clearAllPhotoData(type: .Curiosity)
             }
-        }
-        
-        if let opportunityDate = getSaveDateOrNil(type: .Opportunity) {
-            if opportunityDate != getDateInYYYYMMDD() {
-                clearAllPhotoData(type: .Opportunity)
-            }
-        }
-        
-        if let spiritDate = getSaveDateOrNil(type: .Spirit) {
-            if spiritDate != getDateInYYYYMMDD() {
-                clearAllPhotoData(type: .Spirit)
-            }
-        }
-        
-        if let photoOfDayDate = getSaveDateOrNil(type: .NasaPhotoOfDay) {
-            if photoOfDayDate != getDateInYYYYMMDD() {
-                clearAllPhotoData(type: .NasaPhotoOfDay)
-            }
-        }
-        
-        
-        if !checkAllDataExists(type: .NasaPhotoOfDay) {
-            
-            fetchImageOfDay()
-        } else {
-           imageOfDayData = loadNasaResponse(type: .NasaPhotoOfDay)
         }
         
         if !checkAllDataExists(type: .Curiosity) {
@@ -60,12 +69,30 @@ extension SpaceDataManager {
         } else {
            curiosityPhotos = loadNasaResponse(type: .Curiosity)
         }
+    }
+    
+    func loadOpportunity()
+    {
+        if let opportunityDate = getSaveDateOrNil(type: .Opportunity) {
+            if opportunityDate != getDateInYYYYMMDD() {
+                clearAllPhotoData(type: .Opportunity)
+            }
+        }
         
         if !checkAllDataExists(type: .Opportunity) {
             
             parseManifest(manifest: "opportunity-manifest")
         } else {
            opportunityPhotos = loadNasaResponse(type: .Opportunity)
+        }
+    }
+    
+    func loadSpirit()
+    {
+        if let spiritDate = getSaveDateOrNil(type: .Spirit) {
+            if spiritDate != getDateInYYYYMMDD() {
+                clearAllPhotoData(type: .Spirit)
+            }
         }
         
         if !checkAllDataExists(type: .Spirit) {
@@ -74,6 +101,30 @@ extension SpaceDataManager {
         } else {
            spiritPhotos = loadNasaResponse(type: .Spirit)
         }
+    }
+    
+    func loadPictureOfDay()
+    {
+        if let photoOfDayDate = getSaveDateOrNil(type: .NasaPhotoOfDay) {
+            if photoOfDayDate != getDateInYYYYMMDD() {
+                clearAllPhotoData(type: .NasaPhotoOfDay)
+            }
+        }
+        
+        if !checkAllDataExists(type: .NasaPhotoOfDay) {
+            
+            fetchImageOfDay()
+        } else {
+           imageOfDayData = loadNasaResponse(type: .NasaPhotoOfDay)
+        }
+    }
+    
+    func setContextAndLoad(_ context: NSManagedObjectContext) {
+        SpaceDataManager.managedContext = context
+        loadCuriosity()
+        loadOpportunity()
+        loadSpirit()
+        loadPictureOfDay()
     }
     
     func clearAllPhotoData(type: NASAPhotoType)

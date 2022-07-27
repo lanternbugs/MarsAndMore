@@ -9,6 +9,7 @@ import SwiftUI
 
 struct SpaceTab: View {
     @Environment(\.roomState) private var spaceState
+    @EnvironmentObject private var manager: SpaceDataManager
     var body: some View {
         switch(spaceState.wrappedValue) {
         case .Picture:
@@ -17,7 +18,10 @@ struct SpaceTab: View {
                 NasaPhotoView()
             }
         default:
-            SpaceView()
+            SpaceView().onAppear {
+                manager.checkForNewData()
+                
+            }
         }
     }
 }
