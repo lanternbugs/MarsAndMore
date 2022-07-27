@@ -57,13 +57,14 @@ extension SpaceDataManager {
     
     func loadCuriosity()
     {
+        var dateChange = false
         if let curiosityDate = getSaveDateOrNil(type: .Curiosity) {
             if curiosityDate != getDateInYYYYMMDD() {
-                clearAllPhotoData(type: .Curiosity)
+                dateChange = true
             }
         }
         
-        if !checkAllDataExists(type: .Curiosity) {
+        if !checkAllDataExists(type: .Curiosity) || dateChange {
             
             parseManifest(manifest: "curiosity-manifest")
         } else {
@@ -73,13 +74,14 @@ extension SpaceDataManager {
     
     func loadOpportunity()
     {
+        var dateChange = false
         if let opportunityDate = getSaveDateOrNil(type: .Opportunity) {
             if opportunityDate != getDateInYYYYMMDD() {
-                clearAllPhotoData(type: .Opportunity)
+                dateChange = true
             }
         }
         
-        if !checkAllDataExists(type: .Opportunity) {
+        if !checkAllDataExists(type: .Opportunity) || dateChange {
             
             parseManifest(manifest: "opportunity-manifest")
         } else {
@@ -89,13 +91,14 @@ extension SpaceDataManager {
     
     func loadSpirit()
     {
+        var dateChange = false
         if let spiritDate = getSaveDateOrNil(type: .Spirit) {
             if spiritDate != getDateInYYYYMMDD() {
-                clearAllPhotoData(type: .Spirit)
+                dateChange = true
             }
         }
         
-        if !checkAllDataExists(type: .Spirit) {
+        if !checkAllDataExists(type: .Spirit) || dateChange {
             
             parseManifest(manifest: "spirit-manifest")
         } else {
@@ -105,13 +108,14 @@ extension SpaceDataManager {
     
     func loadPictureOfDay()
     {
+        var dateChange = false
         if let photoOfDayDate = getSaveDateOrNil(type: .NasaPhotoOfDay) {
             if photoOfDayDate != getDateInYYYYMMDD() {
-                clearAllPhotoData(type: .NasaPhotoOfDay)
+                dateChange = true
             }
         }
         
-        if !checkAllDataExists(type: .NasaPhotoOfDay) {
+        if !checkAllDataExists(type: .NasaPhotoOfDay) || dateChange {
             
             fetchImageOfDay()
         } else {
@@ -278,7 +282,7 @@ extension SpaceDataManager {
         guard let context = SpaceDataManager.managedContext else {
             return
         }
-        
+        clearAllPhotoData(type: type)
         let fetchDate = getDateInYYYYMMDD()
         do {
             for image in data

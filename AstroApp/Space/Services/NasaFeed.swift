@@ -9,7 +9,7 @@ import Foundation
 struct NasaFeed
 {
     static let urlSession = URLSession(configuration: .default)
-    static func getPhotoOfDay(completion: @escaping (PictureOfDay)->Void)
+    static func getPhotoOfDay(completion: @escaping (PictureOfDay?)->Void)
     {
         
         var dataTask: URLSessionDataTask?
@@ -20,6 +20,7 @@ struct NasaFeed
         dataTask = urlSession.dataTask(with: url) { data, response, error in
             if let error = error {
                 print(error.localizedDescription)
+                completion(nil)
             } else
             {
                 if let response = response as? HTTPURLResponse,
@@ -35,6 +36,7 @@ struct NasaFeed
                     } catch
                     {
                         print(error)
+                        completion(nil)
                     }
                     
                     
@@ -42,6 +44,7 @@ struct NasaFeed
                 else {
                     if let response = response as? HTTPURLResponse {
                         print("Response \(response.statusCode)")
+                        completion(nil)
                     }
                 }
             }
@@ -60,6 +63,7 @@ struct NasaFeed
         dataTask = urlSession.dataTask(with: url) { data, response, error in
             if let error = error {
                 print(error.localizedDescription)
+                completion(RoverPhotos(photos: []))
             } else
             {
                 if let response = response as? HTTPURLResponse,
@@ -76,6 +80,7 @@ struct NasaFeed
                     } catch
                     {
                         print(error)
+                        completion(RoverPhotos(photos: []))
                     }
                     
                     
@@ -83,6 +88,7 @@ struct NasaFeed
                 else {
                     if let response = response as? HTTPURLResponse {
                         print("Response \(response.statusCode)")
+                        completion(RoverPhotos(photos: []))
                     }
                 }
             }
