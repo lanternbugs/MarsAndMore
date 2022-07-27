@@ -73,15 +73,32 @@ struct NameDataView: View {
                   displayedComponents: .date
                 ).datePickerStyle(DefaultDatePickerStyle())
             } else {
-                DatePicker(
-                  "Birthdate",
-                  selection: $manager.userDateSelection,
-                  displayedComponents: [.date, .hourAndMinute]
-                ).datePickerStyle(DefaultDatePickerStyle())
+                if manager.userUTCTimeSelection {
+                    DatePicker(
+                      "Birthdate",
+                      selection: $manager.userDateSelection,
+                      displayedComponents: [.date, .hourAndMinute]
+                    ).datePickerStyle(DefaultDatePickerStyle())
+                        .environment(\.timeZone, TimeZone(secondsFromGMT: 0)!)
+                } else {
+                    DatePicker(
+                      "Birthdate",
+                      selection: $manager.userDateSelection,
+                      displayedComponents: [.date, .hourAndMinute]
+                    ).datePickerStyle(DefaultDatePickerStyle())
+                }
+                
             }
             Toggle("Exact Time", isOn: $manager.userExactTimeSelection)
             if manager.userExactTimeSelection {
-                Text("Local time used. Adjust time as needed.").font(.headline)
+                if manager.userUTCTimeSelection {
+                    Text("UTC time used.").font(.headline)
+                } else {
+                    Text("Local time used. Adjust time as needed.").font(.headline)
+                }
+                
+                Toggle("UTC Time", isOn: $manager.userUTCTimeSelection)
+                
                 HStack {
                     if let locationData = manager.userLocationData {
                         VStack {

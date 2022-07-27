@@ -13,6 +13,7 @@
 
 import Foundation
 import CoreData
+import SwiftUI
 class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var birthDates = [BirthData]()
     @Published var cityInfo: CityInfo?
@@ -20,6 +21,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var userNameSelection: String = ""
     @Published var userDateSelection: Date = Date(timeIntervalSince1970: 0)
     @Published var userExactTimeSelection: Bool = false
+    @AppStorage("utcTimeChoice") var userUTCTimeSelection: Bool = false
     @Published var userLocationData: LocationData?
     var bodiesToShow = Set<Planets>()
     var defaultBodiesToShow = Set<Planets>()
