@@ -31,17 +31,16 @@ class SpaceDataManager: ObservableObject
     
     func fetchImageOfDay()->Void
     {
-        imageOfDayData.removeAll()
+        
         
         NasaFeed.getPhotoOfDay(completion: {[weak self] picture in
             if let picture = picture {
                 let info: ImageInfo = ImageInfo(url: picture.url, description: picture.explanation, title: picture.title, id: self?.imageOfDayData.count ?? 0, mediaType: picture.media_type == MediaType.Video.rawValue ? .Video : .Picture)
                 DispatchQueue.main.async { [weak self] in
+                    self?.imageOfDayData.removeAll()
                     self?.imageOfDayData.append(info)
                     let nasaType = NASAPhotoType.NasaPhotoOfDay
-                    if !(self?.checkAllDataExists(type: nasaType) ?? true) {
-                        self?.saveNasaResponse(type: nasaType, data: [info])
-                    }
+                    self?.saveNasaResponse(type: nasaType, data: [info])
                 }
             } else {
                 DispatchQueue.main.async { [weak self] in
@@ -116,10 +115,8 @@ class SpaceDataManager: ObservableObject
                             self?.curiosityPhotos.append(info)
                             let roverType = NASAPhotoType.Curiosity
                             if self?.curiosityPhotos.count ?? roverType.getMaxPhotos() >= roverType.getMaxPhotos() {
-                                if !(self?.checkAllDataExists(type: roverType) ?? true) {
-                                    if let curiosityPhotos = self?.curiosityPhotos {
-                                        self?.saveNasaResponse(type: roverType, data: curiosityPhotos)
-                                    }
+                                if let curiosityPhotos = self?.curiosityPhotos {
+                                    self?.saveNasaResponse(type: roverType, data: curiosityPhotos)
                                 }
                                 break
                             }
@@ -158,10 +155,8 @@ class SpaceDataManager: ObservableObject
                             self?.opportunityPhotos.append(info)
                             let roverType = NASAPhotoType.Opportunity
                             if self?.opportunityPhotos.count ?? roverType.getMaxPhotos() >= roverType.getMaxPhotos() {
-                                if !(self?.checkAllDataExists(type: roverType) ?? true) {
-                                    if let opportunityPhotos = self?.opportunityPhotos {
-                                        self?.saveNasaResponse(type: roverType, data: opportunityPhotos)
-                                    }
+                                if let opportunityPhotos = self?.opportunityPhotos {
+                                    self?.saveNasaResponse(type: roverType, data: opportunityPhotos)
                                 }
                                 break
                             }
@@ -200,10 +195,8 @@ class SpaceDataManager: ObservableObject
                             self?.spiritPhotos.append(info)
                             let roverType = NASAPhotoType.Spirit
                             if self?.spiritPhotos.count ?? roverType.getMaxPhotos() >= roverType.getMaxPhotos() {
-                                if !(self?.checkAllDataExists(type: roverType) ?? true) {
-                                    if let spiritPhotos = self?.spiritPhotos {
-                                        self?.saveNasaResponse(type: roverType, data: spiritPhotos)
-                                    }
+                                if let spiritPhotos = self?.spiritPhotos {
+                                    self?.saveNasaResponse(type: roverType, data: spiritPhotos)
                                 }
                                 break
                             }
