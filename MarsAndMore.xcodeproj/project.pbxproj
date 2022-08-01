@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		76038DD8289869CB00F6DA0F /* Houses+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76038DD7289869CB00F6DA0F /* Houses+.swift */; };
+		76038DD9289869CB00F6DA0F /* Houses+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76038DD7289869CB00F6DA0F /* Houses+.swift */; };
 		7606E27B27AB159600C72FAB /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E27A27AB14DA00C72FAB /* MainView.swift */; };
 		7606E28127AB18A900C72FAB /* MarsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28027AB18A900C72FAB /* MarsTab.swift */; };
 		7606E28227AB18A900C72FAB /* MarsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28027AB18A900C72FAB /* MarsTab.swift */; };
@@ -167,6 +169,8 @@
 		7667C45A2888A96400D4DF06 /* spirit-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4552888A96400D4DF06 /* spirit-manifest.json */; };
 		7667C45B2888A96400D4DF06 /* curiosity-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4562888A96400D4DF06 /* curiosity-manifest.json */; };
 		7667C45C2888A96400D4DF06 /* curiosity-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4562888A96400D4DF06 /* curiosity-manifest.json */; };
+		7669E1D82898609900B8628D /* HousesEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669E1D72898609900B8628D /* HousesEntry.swift */; };
+		7669E1D92898609900B8628D /* HousesEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669E1D72898609900B8628D /* HousesEntry.swift */; };
 		766C89D5287F8A5100E437A7 /* PlanetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C89D4287F8A5100E437A7 /* PlanetButtons.swift */; };
 		766C89D6287F8A5100E437A7 /* PlanetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C89D4287F8A5100E437A7 /* PlanetButtons.swift */; };
 		7679FF7927AF184F007911C9 /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
@@ -296,6 +300,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		76038DD7289869CB00F6DA0F /* Houses+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Houses+.swift"; sourceTree = "<group>"; };
 		7606E27A27AB14DA00C72FAB /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		7606E28027AB18A900C72FAB /* MarsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsTab.swift; sourceTree = "<group>"; };
 		7606E28327AB18BF00C72FAB /* ChartRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartRoom.swift; sourceTree = "<group>"; };
@@ -399,6 +404,7 @@
 		7667C4542888A96400D4DF06 /* opportunity-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "opportunity-manifest.json"; sourceTree = "<group>"; };
 		7667C4552888A96400D4DF06 /* spirit-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "spirit-manifest.json"; sourceTree = "<group>"; };
 		7667C4562888A96400D4DF06 /* curiosity-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "curiosity-manifest.json"; sourceTree = "<group>"; };
+		7669E1D72898609900B8628D /* HousesEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousesEntry.swift; sourceTree = "<group>"; };
 		766C89D4287F8A5100E437A7 /* PlanetButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetButtons.swift; sourceTree = "<group>"; };
 		7679FF7027AF184F007911C9 /* AstrobotInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstrobotInterface.swift; sourceTree = "<group>"; };
 		7679FF7427AF184F007911C9 /* AdapterToEphemeris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdapterToEphemeris.h; sourceTree = "<group>"; };
@@ -607,6 +613,7 @@
 				766C89D4287F8A5100E437A7 /* PlanetButtons.swift */,
 				762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */,
 				763B3F9C27BDB00C007A2690 /* AspectsEntry.swift */,
+				7669E1D72898609900B8628D /* HousesEntry.swift */,
 				76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */,
 				762D4A6827AB986A00EA59E8 /* AstroButtons.swift */,
 				76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */,
@@ -803,6 +810,7 @@
 				765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */,
 				763B3F9F27BDB2BA007A2690 /* Aspects+Extensions.swift */,
 				7689C6B227D02FDD00B38E4A /* PlanetFetchType+Extensions.swift */,
+				76038DD7289869CB00F6DA0F /* Houses+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1084,6 +1092,7 @@
 				7606E27B27AB159600C72FAB /* MainView.swift in Sources */,
 				7667125427D00D7F00644429 /* TransitsButtonControl.swift in Sources */,
 				763B3FA027BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */,
+				7669E1D82898609900B8628D /* HousesEntry.swift in Sources */,
 				7617DAB627AFA8A70064B98E /* AstroModels.swift in Sources */,
 				76ECF739287F585400AE7B34 /* PlanetRoom.swift in Sources */,
 				76860B9227B2264D00533BD2 /* DoneView.swift in Sources */,
@@ -1091,6 +1100,7 @@
 				76165BE027D19A4700C2F709 /* ResourcesView.swift in Sources */,
 				7656279D287E000A00A63C8B /* PlanetsTab.swift in Sources */,
 				761DEEC1279B9EF900A71938 /* swehouse.c in Sources */,
+				76038DD8289869CB00F6DA0F /* Houses+.swift in Sources */,
 				761DEEBB279B9EF900A71938 /* swepdate.c in Sources */,
 				762E0C69288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
 				76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
@@ -1164,6 +1174,7 @@
 				76BEF3F927ACB1E2001C9AD0 /* PlanetsEntry.swift in Sources */,
 				7667125527D00D7F00644429 /* TransitsButtonControl.swift in Sources */,
 				763B3FA127BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */,
+				7669E1D92898609900B8628D /* HousesEntry.swift in Sources */,
 				7617DAB727AFA8A70064B98E /* AstroModels.swift in Sources */,
 				76ECF73A287F585400AE7B34 /* PlanetRoom.swift in Sources */,
 				76860B9327B2264D00533BD2 /* DoneView.swift in Sources */,
@@ -1171,6 +1182,7 @@
 				76165BE127D19A4700C2F709 /* ResourcesView.swift in Sources */,
 				7656279E287E000A00A63C8B /* PlanetsTab.swift in Sources */,
 				76BEF3F727ACB0EF001C9AD0 /* AstroReadingModel.swift in Sources */,
+				76038DD9289869CB00F6DA0F /* Houses+.swift in Sources */,
 				76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */,
 				762E0C6A288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
 				76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
@@ -1419,7 +1431,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1434,7 +1446,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = iphoneos;
@@ -1453,7 +1465,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 4;
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1468,7 +1480,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.1;
+				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = iphoneos;
