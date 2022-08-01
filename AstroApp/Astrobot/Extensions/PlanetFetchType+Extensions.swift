@@ -21,6 +21,8 @@ extension PlanetFetchType {
             return "Aspects"
         case .Transits:
             return "Transits"
+        case .Houses:
+            return "Houses"
         }
     }
 }

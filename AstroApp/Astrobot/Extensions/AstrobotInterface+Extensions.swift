@@ -149,4 +149,16 @@ extension AstrobotInterface {
         }
         return nil
     }
+    
+    func getHouses(time: Double, location: LocationData)->PlanetRow
+    {
+        let adapter = AdapterToEphemeris()
+        var row = PlanetRow()
+        for house in Houses.allCases {
+            let val =  adapter.getHouse(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), Int32(house.rawValue))
+            row.planets.append(HouseCell(degree: val.getAstroDegree(),sign: val.getAstroSign(),  house: house))
+        }
+        
+        return row
+    }
 }

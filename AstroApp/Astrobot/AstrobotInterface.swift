@@ -18,10 +18,10 @@ protocol AstrobotBaseInterface {
 
 protocol AstrobotInterface: AstrobotBaseInterface {
     func getAspects(time: Double, with time2: Double?, and location: LocationData?)->PlanetRow
+    func getHouses(time: Double, location: LocationData)->PlanetRow
 }
 
 protocol AstroRowCell {
-    var planet: Planets {get}
     var degree: String { get}
 }
 

@@ -113,7 +113,7 @@ struct NameDataView: View {
                         }
                         
                     } else {
-                        Text("Add a birth city to calculate Acendent").font(.subheadline)
+                        Text("Add a birth city to calculate Ascendant and Houses").font(.subheadline)
                         Button(action: {
                             switch(roomState.wrappedValue) {
                             case .EditName:

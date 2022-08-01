@@ -35,6 +35,8 @@ struct ChartView: View {
                                     case .Transits(let date):
                                         Text("on \(date)")
                                         AspectsEntry(data: planetRow)
+                                    case .Houses:
+                                        HousesEntry(data: planetRow)
                                     default:
                                         AspectsEntry(data: planetRow)
                                     }

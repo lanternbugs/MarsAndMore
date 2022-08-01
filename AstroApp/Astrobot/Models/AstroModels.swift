@@ -21,6 +21,9 @@ enum Signs: Int {
     Aquarius, Pisces, None
 }
 
+enum Houses: Int, CaseIterable {
+    case H1 = 1, H2, H3, H4, H5, H6, H7, H8, H9, H10, H11, H12
+}
 enum Aspects: Double, CaseIterable {
     case Trine = 120, Conjunction = 0, Sextile = 60, Square = 90, Opposition = 180
 }
@@ -30,13 +33,19 @@ enum Movement: String {
 }
 
 enum PlanetFetchType {
-    case Planets, Aspects, Transits(date: String)
+    case Planets, Aspects, Transits(date: String), Houses
 }
 
 struct TransitingPlanet {
     let planet: Planets
     let degree: Double
     let laterDegree: Double
+}
+
+struct HouseCell: AstroRowCell {
+    let degree: String
+    let sign: Signs
+    let house: Houses
 }
 
 struct PlanetCell: AstroRowCell {

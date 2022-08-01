@@ -31,6 +31,13 @@ struct TransitsButtonControl: View, AstrobotInterface {
                     Text("\(name)")
                     Spacer()
                 }
+                if let num = manager.selectedName, let date = manager.birthDates[num], let _ = date.location
+                {
+                    Button(action: houses) {
+                        Text("Houses")
+                    }
+                    Spacer()
+                }
             }
             DatePicker(
               "On",
@@ -49,6 +56,20 @@ extension TransitsButtonControl {
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
             astroButtonsEnabled = true
         }
+    }
+    
+    func houses()
+    {
+        guard astroButtonsEnabled else {
+            return
+        }
+        temporaryDisableButtons()
+        if let location = manager.getSelectionLocation() {
+            let row = getHouses(time: manager.getSelectionTime(), location: location)
+            let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Houses, name: manager.getCurrentName())
+            data.append(displayRow)
+        }
+        
     }
     
     func transits()

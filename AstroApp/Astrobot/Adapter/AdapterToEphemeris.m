@@ -36,6 +36,15 @@
     return cusp[1];
 }
 
+-(double) getHouse:(double) time : (double) latitude : (double) longitude : (int) house
+{
+    double cusp[16];  /* empty + 12 houses */
+    double ascmc[10];    /* asc, mc, armc, vertex .. */
+    char system = 'P'; // house system Placidius
+     int val =swe_houses(time, latitude, longitude, system, cusp,  ascmc);
+    return cusp[house];
+}
+
 -(double) getSweJulianDay:(int) year : (int) month : (int) day : (double) time
 {
     return swe_julday(year, month, day, time, 1);
