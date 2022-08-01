@@ -21,9 +21,6 @@ struct ChartView: View {
     var body: some View {
         
             VStack {
-                AstroButtons(data: $data)
-                Divider()
-                       .padding([.top, .bottom], 3)
                 ScrollView {
                     ScrollViewReader { value in
                         LazyVStack {

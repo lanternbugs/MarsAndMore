@@ -18,18 +18,24 @@ struct ChartRoom: View {
     @Binding var planetData: [DisplayPlanetRow]
     
     var body: some View {
-        HStack {
-            ChartView(data: $planetData)
+        VStack {
+            AstroButtons(data: $planetData)
             Divider()
-                   .padding([.leading, .trailing], 3)
-            NamesView()
-        }
-        .background(Image("night-sky", bundle: nil)
+                   .padding([.top, .bottom], 3)
+            HStack {
+                ChartView(data: $planetData)
+                Divider()
+                       .padding([.leading, .trailing], 3)
+                NamesView()
+            }
+            
+        }.background(Image("night-sky", bundle: nil)
                         .resizable()
                         .aspectRatio(1 / 1, contentMode: .fill)
                         .edgesIgnoringSafeArea(.all)
                         .saturation(0.5)
                     .opacity(0.2))
+        
             
     }
 }

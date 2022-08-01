@@ -39,7 +39,7 @@ struct AstroButtons: View, AstrobotInterface {
                 }
             }
             if let _ = manager.selectedName {
-                TransitsButtonControl(data: $data)
+                TransitsButtonControl(data: $data).padding([.top])
             }
         }
         
