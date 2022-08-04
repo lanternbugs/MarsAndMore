@@ -24,6 +24,11 @@ enum Signs: Int {
 enum Houses: Int, CaseIterable {
     case H1 = 1, H2, H3, H4, H5, H6, H7, H8, H9, H10, H11, H12
 }
+
+enum HouseSystem: String, CaseIterable {
+    case Placidus, Koch, Porphyrius, Regiomontanus, Campanus, Equal, Whole
+}
+
 enum Aspects: Double, CaseIterable {
     case Trine = 120, Conjunction = 0, Sextile = 60, Square = 90, Opposition = 180
 }
@@ -33,7 +38,7 @@ enum Movement: String {
 }
 
 enum PlanetFetchType {
-    case Planets, Aspects, Transits(date: String), Houses
+    case Planets, Aspects, Transits(date: String), Houses(system: HouseSystem)
 }
 
 struct TransitingPlanet {

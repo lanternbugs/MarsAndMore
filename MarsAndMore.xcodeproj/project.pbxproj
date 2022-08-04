@@ -181,6 +181,8 @@
 		7679FF8027AF1850007911C9 /* AstrobotInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7727AF184F007911C9 /* AstrobotInterface+Extensions.swift */; };
 		7679FF8127AF1850007911C9 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7827AF184F007911C9 /* Double+Extensions.swift */; };
 		7679FF8227AF1850007911C9 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7827AF184F007911C9 /* Double+Extensions.swift */; };
+		768453C1289C709D0086B37C /* HouseSystem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768453C0289C709D0086B37C /* HouseSystem+.swift */; };
+		768453C2289C709D0086B37C /* HouseSystem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768453C0289C709D0086B37C /* HouseSystem+.swift */; };
 		76860B8F27B224E400533BD2 /* NameDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B8E27B224E400533BD2 /* NameDataView.swift */; };
 		76860B9027B224E400533BD2 /* NameDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B8E27B224E400533BD2 /* NameDataView.swift */; };
 		76860B9227B2264D00533BD2 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B9127B2264D00533BD2 /* DoneView.swift */; };
@@ -411,6 +413,7 @@
 		7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdapterToEphemeris.m; sourceTree = "<group>"; };
 		7679FF7727AF184F007911C9 /* AstrobotInterface+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AstrobotInterface+Extensions.swift"; sourceTree = "<group>"; };
 		7679FF7827AF184F007911C9 /* Double+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		768453C0289C709D0086B37C /* HouseSystem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HouseSystem+.swift"; sourceTree = "<group>"; };
 		76860B8E27B224E400533BD2 /* NameDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameDataView.swift; sourceTree = "<group>"; };
 		76860B9127B2264D00533BD2 /* DoneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DoneView.swift; sourceTree = "<group>"; };
 		7688E0AF27AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "AstrobotReadingInterface+Extensions.swift"; sourceTree = "<group>"; };
@@ -811,6 +814,7 @@
 				763B3F9F27BDB2BA007A2690 /* Aspects+Extensions.swift */,
 				7689C6B227D02FDD00B38E4A /* PlanetFetchType+Extensions.swift */,
 				76038DD7289869CB00F6DA0F /* Houses+.swift */,
+				768453C0289C709D0086B37C /* HouseSystem+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1134,6 +1138,7 @@
 				7631117F289082A800912263 /* NasaPhotoView.swift in Sources */,
 				762E0C66288DC6E8008B825A /* SpaceDataManager+.swift in Sources */,
 				7694464F27CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */,
+				768453C1289C709D0086B37C /* HouseSystem+.swift in Sources */,
 				761DEE7B279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */,
 				761DEE81279B9EB200A71938 /* Persistence.swift in Sources */,
 				761DEE7D279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */,
@@ -1216,6 +1221,7 @@
 				76311180289082A800912263 /* NasaPhotoView.swift in Sources */,
 				762E0C67288DC6E8008B825A /* SpaceDataManager+.swift in Sources */,
 				7694465027CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */,
+				768453C2289C709D0086B37C /* HouseSystem+.swift in Sources */,
 				761DEEB8279B9EF900A71938 /* swehel.c in Sources */,
 				761DEECC279B9EF900A71938 /* swephlib.c in Sources */,
 				761DEECA279B9EF900A71938 /* swemplan.c in Sources */,
