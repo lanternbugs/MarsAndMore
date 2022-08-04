@@ -36,11 +36,11 @@
     return cusp[1];
 }
 
--(double) getHouse:(double) time : (double) latitude : (double) longitude : (int) house
+-(double) getHouse:(double) time : (double) latitude : (double) longitude : (int) house : (char) system
 {
     double cusp[16];  /* empty + 12 houses */
     double ascmc[10];    /* asc, mc, armc, vertex .. */
-    char system = 'P'; // house system Placidius
+   //char system = 'P'; // house system Placidius
      int val =swe_houses(time, latitude, longitude, system, cusp,  ascmc);
     return cusp[house];
 }

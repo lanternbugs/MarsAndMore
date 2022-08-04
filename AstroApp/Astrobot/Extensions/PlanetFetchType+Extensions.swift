@@ -21,8 +21,8 @@ extension PlanetFetchType {
             return "Aspects"
         case .Transits:
             return "Transits"
-        case .Houses:
-            return "Houses"
+        case .Houses(let system):
+            return system.rawValue + " Houses"
         }
     }
 }

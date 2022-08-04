@@ -22,6 +22,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var userDateSelection: Date = Date(timeIntervalSince1970: 0)
     @Published var userExactTimeSelection: Bool = false
     @AppStorage("utcTimeChoice") var userUTCTimeSelection: Bool = false
+    @AppStorage("houseSystem") var houseSystem: HouseSystem = HouseSystem.Placidus
     @Published var userLocationData: LocationData?
     var bodiesToShow = Set<Planets>()
     var defaultBodiesToShow = Set<Planets>()

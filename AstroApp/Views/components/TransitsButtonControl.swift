@@ -65,8 +65,8 @@ extension TransitsButtonControl {
         }
         temporaryDisableButtons()
         if let location = manager.getSelectionLocation() {
-            let row = getHouses(time: manager.getSelectionTime(), location: location)
-            let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Houses, name: manager.getCurrentName())
+            let row = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode())
+            let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Houses(system: manager.houseSystem), name: manager.getCurrentName())
             data.append(displayRow)
         }
         
