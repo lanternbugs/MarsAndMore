@@ -19,27 +19,56 @@ struct ChartSettings: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                ForEach(Planets.allCases, id: \.rawValue) {
-                    planet in
-                    HStack() {
-                        if toggleValues.count > planet.getIndex() {
-                            Toggle("Show", isOn: $toggleValues[planet.getIndex()]).onChange(of: toggleValues[planet.getIndex()]) { _ in
-                                if manager.bodiesToShow.contains(planet) {
-                                    manager.bodiesToShow.remove(planet)
-                                    manager.removeBodyFromPersistentStorage(body: planet)
-                                } else {
-                                    manager.bodiesToShow.insert(planet)
-                                    manager.addBodyToPersistentStorage(body: planet)
-                                }
-                            }.namesStyle()
-                                .padding([.trailing, .leading])
+                
+                Section {
+                    HStack {
+                        Spacer()
+                        Text("Bodies to Show").font(.title)
+                        Spacer()
+                    }
+                    ForEach(Planets.allCases, id: \.rawValue) {
+                        planet in
+                        HStack() {
+                            if toggleValues.count > planet.getIndex() {
+                                Toggle("Show", isOn: $toggleValues[planet.getIndex()]).onChange(of: toggleValues[planet.getIndex()]) { _ in
+                                    if manager.bodiesToShow.contains(planet) {
+                                        manager.bodiesToShow.remove(planet)
+                                        manager.removeBodyFromPersistentStorage(body: planet)
+                                    } else {
+                                        manager.bodiesToShow.insert(planet)
+                                        manager.addBodyToPersistentStorage(body: planet)
+                                    }
+                                }.namesStyle()
+                                    .padding([.trailing, .leading])
+                            }
+                            Text("\(planet.getName())").namesStyle().padding([.trailing,.leading])
                         }
-                        Text("\(planet.getName())").namesStyle().padding([.trailing,.leading])
+                        
+                        
+                    }
+                }
+                
+            }.padding()
+                .border(.gray, width: 1)
+            
+            Section {
+                VStack {
+                    HStack {
+                        Picker(selection: manager.$houseSystem, label: Text("Choose House System")) {
+                            ForEach(HouseSystem.allCases, id: \.rawValue) {
+                                system in
+                                Text(system.rawValue).tag(system)
+                            }
+                        }.pickerStyle(RadioGroupPickerStyle())
+                        Spacer()
                     }
                     
                     
                 }
-            }
+                
+            }.padding()
+                .border(.gray, width: 1)
+            
         }.onAppear {
             updateToggles()
         }
