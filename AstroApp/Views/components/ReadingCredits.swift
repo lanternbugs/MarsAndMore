@@ -19,7 +19,7 @@ struct ReadingCreditsView: View {
         VStack {
             Text("- Evangeline Adams").frame(maxWidth: .infinity, alignment: .leading).foregroundColor(Color.white)
             Text("with ghost writer Aleister Crowley").frame(maxWidth: .infinity, alignment: .trailing).foregroundColor(Color.white)
-            Text("Your Place in the Stars 1933").foregroundColor(Color.white)
+            Text("Your Place in the Stars 1930").foregroundColor(Color.white)
             Button(action: openWikipediaLink) {
                 Text(wikiLink)
 #if os(iOS)
