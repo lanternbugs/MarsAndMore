@@ -28,7 +28,7 @@ class DownloadImageBinder: ObservableObject {
            image = uiimage
            return
         }
-        subscription = URLSession.shared
+         URLSession.shared
                                .dataTaskPublisher(for: url)
                                .map { UIImage(data: $0.data) }
                                .replaceError(with: nil)
@@ -37,9 +37,6 @@ class DownloadImageBinder: ObservableObject {
                                        SpaceDataManager.setPhotoForKey(key: key, image: img)
                                    }})
                                .receive(on: DispatchQueue.main)
-                               .assign(to: \.image, on: self)
-    }
-    func cancel() {
-        subscription?.cancel()
+                               .assign(to: &$image)
     }
 }

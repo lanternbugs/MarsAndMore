@@ -34,7 +34,6 @@ struct DelayedImageView: View {
             }
                     
         }.onAppear {  }
-        .onDisappear { self.binder.cancel() }
                 
     }
 }
