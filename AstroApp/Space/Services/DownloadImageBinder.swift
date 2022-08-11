@@ -23,8 +23,8 @@ typealias UIImage = NSImage
 class DownloadImageBinder: ObservableObject {
     private var subscription: AnyCancellable?
     @Published private(set) var image: UIImage?
-    func load(url: URL, key: PhotoKey) {
-        if let uiimage = SpaceDataManager.getPhotoForKeyOrNil(key: key) {
+    func load(url: URL, key: PhotoKey?) {
+        if let key = key, let uiimage = SpaceDataManager.getPhotoForKeyOrNil(key: key) {
            image = uiimage
            return
         }
@@ -33,7 +33,7 @@ class DownloadImageBinder: ObservableObject {
                                .map { UIImage(data: $0.data) }
                                .replaceError(with: nil)
                                .handleEvents(receiveOutput: {
-                                   if let img = $0 {
+                                   if let img = $0, let key = key {
                                        SpaceDataManager.setPhotoForKey(key: key, image: img)
                                    }})
                                .receive(on: DispatchQueue.main)
