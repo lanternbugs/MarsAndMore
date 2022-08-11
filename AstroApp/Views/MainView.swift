@@ -18,10 +18,12 @@ struct MainView: View {
     @AppStorage("currentTab") private var currentTab: Int = 0
     @StateObject private var birthDataManager = BirthDataManager()
     @StateObject private var spaceDataManager = SpaceDataManager()
+    @StateObject private var artDataManager = ArtDataManager()
     @StateObject private var planetsDate = PlanetsDate()
     @State private var roomState: RoomState = .Chart
     @State private var planetsState: RoomState = .Planets
     @State private var spaceState: RoomState = .Space
+    @State private var artState: RoomState = .Art
     var body: some View {
         VStack {
             TabView(selection: $currentTab) {
@@ -49,6 +51,11 @@ struct MainView: View {
                     Text("Space")
                 }.environmentObject(spaceDataManager)
                     .environment(\.roomState, $spaceState)
+                    .tag(3)
+                ArtView().tabItem {
+                    Text("Art")
+                }.environmentObject(artDataManager)
+                    .environment(\.roomState, $artState)
                     .tag(3)
             }
         }.onAppear {
