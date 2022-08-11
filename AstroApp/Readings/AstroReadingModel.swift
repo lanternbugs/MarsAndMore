@@ -26,6 +26,7 @@ enum RoomState: Equatable {
     case Reading(planet: Planets, sign: Signs)
     case Space
     case Picture
+    case Art
 }
 struct ReadingEntry {
     let text: String

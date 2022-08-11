@@ -39,6 +39,8 @@ extension RoomState: AstroReading {
             return "Space"
         case .Picture:
             return "Picture"
+        case .Art:
+            return "Art"
         }
     }
     func getReading()-> [ReadingEntry] {

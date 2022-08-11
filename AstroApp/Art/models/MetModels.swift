@@ -98,3 +98,17 @@ struct Tags: Codable
     let AAT_URL: String?
     let Wikidata_URL: String?
 }
+
+struct MetImageData
+{
+    let objectId: Int
+    let name: String
+    let url: URL
+    let id: Int
+}
+
+enum FailureReason : Error {
+    case sessionFailed(error: URLError)
+    case decodingFailed
+    case other(Error)
+}
