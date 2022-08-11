@@ -56,7 +56,7 @@ struct MainView: View {
                     Text("Art")
                 }.environmentObject(artDataManager)
                     .environment(\.roomState, $artState)
-                    .tag(3)
+                    .tag(4)
             }
         }.onAppear {
             birthDataManager.setContext(_viewContext.wrappedValue)
