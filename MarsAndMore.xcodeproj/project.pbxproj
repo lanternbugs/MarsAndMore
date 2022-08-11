@@ -122,6 +122,8 @@
 		762EAF932884C75C007DB4A9 /* DownloadImageBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF912884C75C007DB4A9 /* DownloadImageBinder.swift */; };
 		762EAF952884C8AD007DB4A9 /* SpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF942884C8AD007DB4A9 /* SpaceView.swift */; };
 		762EAF962884C8AD007DB4A9 /* SpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF942884C8AD007DB4A9 /* SpaceView.swift */; };
+		76305DF128A48B97001B8AC8 /* MetModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76305DF028A48B97001B8AC8 /* MetModels.swift */; };
+		76305DF228A48B97001B8AC8 /* MetModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76305DF028A48B97001B8AC8 /* MetModels.swift */; };
 		7631117F289082A800912263 /* NasaPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631117E289082A800912263 /* NasaPhotoView.swift */; };
 		76311180289082A800912263 /* NasaPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631117E289082A800912263 /* NasaPhotoView.swift */; };
 		76311182289089B000912263 /* SpaceTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76311181289089B000912263 /* SpaceTab.swift */; };
@@ -376,6 +378,7 @@
 		762EAF8E2884C579007DB4A9 /* DelayedImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DelayedImageView.swift; sourceTree = "<group>"; };
 		762EAF912884C75C007DB4A9 /* DownloadImageBinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DownloadImageBinder.swift; sourceTree = "<group>"; };
 		762EAF942884C8AD007DB4A9 /* SpaceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceView.swift; sourceTree = "<group>"; };
+		76305DF028A48B97001B8AC8 /* MetModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MetModels.swift; sourceTree = "<group>"; };
 		7631117E289082A800912263 /* NasaPhotoView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NasaPhotoView.swift; sourceTree = "<group>"; };
 		76311181289089B000912263 /* SpaceTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceTab.swift; sourceTree = "<group>"; };
 		7635723627B6FC7D00C2E5A6 /* ChartTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartTab.swift; sourceTree = "<group>"; };
@@ -507,6 +510,7 @@
 		761DEE4F279B9EB100A71938 /* AstroApp */ = {
 			isa = PBXGroup;
 			children = (
+				76305DEE28A48B6A001B8AC8 /* Art */,
 				762EAF8528833E99007DB4A9 /* Space */,
 				763CFC0327B1E4C4004A73B8 /* BirthDataManager */,
 				7679FF6F27AF184F007911C9 /* Astrobot */,
@@ -668,6 +672,22 @@
 				762EAF912884C75C007DB4A9 /* DownloadImageBinder.swift */,
 			);
 			path = Services;
+			sourceTree = "<group>";
+		};
+		76305DEE28A48B6A001B8AC8 /* Art */ = {
+			isa = PBXGroup;
+			children = (
+				76305DEF28A48B82001B8AC8 /* models */,
+			);
+			path = Art;
+			sourceTree = "<group>";
+		};
+		76305DEF28A48B82001B8AC8 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				76305DF028A48B97001B8AC8 /* MetModels.swift */,
+			);
+			path = models;
 			sourceTree = "<group>";
 		};
 		763CFC0327B1E4C4004A73B8 /* BirthDataManager */ = {
@@ -1101,6 +1121,7 @@
 				76ECF739287F585400AE7B34 /* PlanetRoom.swift in Sources */,
 				76860B9227B2264D00533BD2 /* DoneView.swift in Sources */,
 				7689C6B327D02FDD00B38E4A /* PlanetFetchType+Extensions.swift in Sources */,
+				76305DF128A48B97001B8AC8 /* MetModels.swift in Sources */,
 				76165BE027D19A4700C2F709 /* ResourcesView.swift in Sources */,
 				7656279D287E000A00A63C8B /* PlanetsTab.swift in Sources */,
 				761DEEC1279B9EF900A71938 /* swehouse.c in Sources */,
@@ -1184,6 +1205,7 @@
 				76ECF73A287F585400AE7B34 /* PlanetRoom.swift in Sources */,
 				76860B9327B2264D00533BD2 /* DoneView.swift in Sources */,
 				7689C6B427D02FDD00B38E4A /* PlanetFetchType+Extensions.swift in Sources */,
+				76305DF228A48B97001B8AC8 /* MetModels.swift in Sources */,
 				76165BE127D19A4700C2F709 /* ResourcesView.swift in Sources */,
 				7656279E287E000A00A63C8B /* PlanetsTab.swift in Sources */,
 				76BEF3F727ACB0EF001C9AD0 /* AstroReadingModel.swift in Sources */,
