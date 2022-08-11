@@ -28,7 +28,7 @@ struct DelayedImageView: View {
             } else {
                 HStack {
                     Spacer()
-                    Text("No Image Yet")
+                    Image("placeholder", bundle: nil)
                     Spacer()
                 }
             }
