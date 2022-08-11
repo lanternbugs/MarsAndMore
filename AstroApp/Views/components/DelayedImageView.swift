@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DelayedImageView: View {
     @ObservedObject var binder = DownloadImageBinder()
-    init(url: URL, key: PhotoKey) {
+    init(url: URL, key: PhotoKey?) {
         binder.load(url: url, key: key)
     }
     var body: some View {
