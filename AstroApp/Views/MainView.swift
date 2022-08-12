@@ -31,12 +31,12 @@ struct MainView: View {
                     .tabItem {
                         Text("Mars Room")
                     }
-                    .tag(0)
+                    .tag(AppTab.MarsTab.rawValue)
                 ChartTab()
                     .tabItem {
                     Text("Charts")
                     }
-                .tag(1)
+                    .tag(AppTab.ChartTab.rawValue)
                 .environmentObject(birthDataManager)
                 .environment(\.roomState, $roomState)
                 PlanetsTab()
@@ -46,17 +46,17 @@ struct MainView: View {
                     .environmentObject(birthDataManager)
                     .environmentObject(planetsDate)
                     .environment(\.roomState, $planetsState)
-                .tag(2)
+                    .tag(AppTab.PlanetsTab.rawValue)
                 SpaceTab().tabItem {
                     Text("Space")
                 }.environmentObject(spaceDataManager)
                     .environment(\.roomState, $spaceState)
-                    .tag(3)
+                    .tag(AppTab.SpaceTab.rawValue)
                 ArtView().tabItem {
                     Text("Art")
                 }.environmentObject(artDataManager)
                     .environment(\.roomState, $artState)
-                    .tag(4)
+                    .tag(AppTab.ArtTab.rawValue)
             }
         }.onAppear {
             birthDataManager.setContext(_viewContext.wrappedValue)

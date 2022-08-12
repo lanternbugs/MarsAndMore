@@ -13,21 +13,6 @@
 
 import Foundation
 
-enum RoomState: Equatable {
-    case Entry
-    case Chart
-    case Planets
-    case Names
-    case EditName
-    case Cities
-    case UpdateCity
-    case ChartSettings
-    case Resources
-    case Reading(planet: Planets, sign: Signs)
-    case Space
-    case Picture
-    case Art
-}
 struct ReadingEntry {
     let text: String
     let id: Int

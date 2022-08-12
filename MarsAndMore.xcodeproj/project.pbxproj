@@ -30,6 +30,8 @@
 		7617DABA27AFA9320064B98E /* Planets+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7617DAB827AFA9320064B98E /* Planets+Extensions.swift */; };
 		7618A97427ADB6AA008C6508 /* NamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7618A97327ADB6AA008C6508 /* NamesView.swift */; };
 		7618A97527ADB6AA008C6508 /* NamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7618A97327ADB6AA008C6508 /* NamesView.swift */; };
+		76190A5828A5D9A500FBF4D2 /* AppLevelModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76190A5728A5D9A500FBF4D2 /* AppLevelModels.swift */; };
+		76190A5928A5D9A500FBF4D2 /* AppLevelModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76190A5728A5D9A500FBF4D2 /* AppLevelModels.swift */; };
 		761CF35928877919008FC865 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CF35828877919008FC865 /* Image+Extensions.swift */; };
 		761CF35A28877919008FC865 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CF35828877919008FC865 /* Image+Extensions.swift */; };
 		761DEE78279B9EB200A71938 /* Tests_macOS.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE77279B9EB200A71938 /* Tests_macOS.swift */; };
@@ -320,6 +322,7 @@
 		7617DAB527AFA8A70064B98E /* AstroModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstroModels.swift; sourceTree = "<group>"; };
 		7617DAB827AFA9320064B98E /* Planets+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Planets+Extensions.swift"; sourceTree = "<group>"; };
 		7618A97327ADB6AA008C6508 /* NamesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NamesView.swift; sourceTree = "<group>"; };
+		76190A5728A5D9A500FBF4D2 /* AppLevelModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppLevelModels.swift; sourceTree = "<group>"; };
 		761CF35828877919008FC865 /* Image+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Image+Extensions.swift"; sourceTree = "<group>"; };
 		761DEE51279B9EB100A71938 /* Shared.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Shared.xcdatamodel; sourceTree = "<group>"; };
 		761DEE52279B9EB100A71938 /* MarsAndMoreApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsAndMoreApp.swift; sourceTree = "<group>"; };
@@ -500,6 +503,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		76190A5628A5D98200FBF4D2 /* AppLevelModels */ = {
+			isa = PBXGroup;
+			children = (
+				76190A5728A5D9A500FBF4D2 /* AppLevelModels.swift */,
+			);
+			path = AppLevelModels;
+			sourceTree = "<group>";
+		};
 		761DEE4A279B9EB000A71938 = {
 			isa = PBXGroup;
 			children = (
@@ -516,6 +527,7 @@
 		761DEE4F279B9EB100A71938 /* AstroApp */ = {
 			isa = PBXGroup;
 			children = (
+				76190A5628A5D98200FBF4D2 /* AppLevelModels */,
 				76305DEE28A48B6A001B8AC8 /* Art */,
 				762EAF8528833E99007DB4A9 /* Space */,
 				763CFC0327B1E4C4004A73B8 /* BirthDataManager */,
@@ -1149,6 +1161,7 @@
 				761DEECB279B9EF900A71938 /* swephlib.c in Sources */,
 				764EF76D27ACA897008A15F1 /* ReadingView.swift in Sources */,
 				7617DAB327AFA6530064B98E /* Signs+Extensions.swift in Sources */,
+				76190A5828A5D9A500FBF4D2 /* AppLevelModels.swift in Sources */,
 				7606E28127AB18A900C72FAB /* MarsTab.swift in Sources */,
 				7679FF8127AF1850007911C9 /* Double+Extensions.swift in Sources */,
 				7606E28427AB18BF00C72FAB /* ChartRoom.swift in Sources */,
@@ -1235,6 +1248,7 @@
 				764EF76E27ACA897008A15F1 /* ReadingView.swift in Sources */,
 				761DEEBC279B9EF900A71938 /* swepdate.c in Sources */,
 				7617DAB427AFA6530064B98E /* Signs+Extensions.swift in Sources */,
+				76190A5928A5D9A500FBF4D2 /* AppLevelModels.swift in Sources */,
 				761DEEC4279B9EF900A71938 /* swecl.c in Sources */,
 				7679FF8227AF1850007911C9 /* Double+Extensions.swift in Sources */,
 				7606E29827AB54E300C72FAB /* ChartView.swift in Sources */,
