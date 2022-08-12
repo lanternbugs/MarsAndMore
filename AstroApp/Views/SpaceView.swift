@@ -20,7 +20,7 @@ struct SpaceView: View {
     @AppStorage("roverChoice") private var roverChoice: NASAPhotoType = NASAPhotoType.Curiosity
     var body: some View {
         ScrollView {
-            VStack {
+            LazyVStack {
                 HStack {
                     Spacer()
                     Text("Photos Update Daily").font(.title)
