@@ -54,12 +54,32 @@ struct ChartSettings: View {
             Section {
                 VStack {
                     HStack {
+                        
+#if os(macOS)
+                        
                         Picker(selection: manager.$houseSystem, label: Text("Choose House System")) {
                             ForEach(HouseSystem.allCases, id: \.rawValue) {
                                 system in
                                 Text(system.rawValue).tag(system)
                             }
                         }.pickerStyle(RadioGroupPickerStyle())
+                        
+#else
+                        VStack {
+                            Spacer()
+                            Text("Choose House System")
+                            Spacer()
+                            Picker(selection: manager.$houseSystem, label: Text("Choose House System")) {
+                                ForEach(HouseSystem.allCases, id: \.rawValue) {
+                                    system in
+                                    Text(system.rawValue).tag(system)
+                                }
+                            }
+                        }
+                        
+#endif
+                        
+                        
                         Spacer()
                     }
                     
