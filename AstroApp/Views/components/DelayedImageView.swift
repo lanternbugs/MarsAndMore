@@ -28,7 +28,7 @@ struct DelayedImageView: View {
             } else {
                 HStack {
                     Spacer()
-                    Image("placeholder", bundle: nil)
+                    Image("placeholder", bundle: nil).imageModifierFitScreen()
                     Spacer()
                 }
             }
