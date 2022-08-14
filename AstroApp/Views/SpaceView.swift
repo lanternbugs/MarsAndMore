@@ -57,23 +57,23 @@ struct SpaceView: View {
                 case .Curiosity:
                     ForEach(manager.curiosityPhotos, id: \.id) {
                         imageInfo in
-                        Text(imageInfo.title).font(Font.headline.weight(.semibold))
-                        Text(imageInfo.description).font(Font.headline.weight(.regular))
-                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Curiosity, id: imageInfo.id))
+                        Text(imageInfo.title).font(Font.headline.weight(.semibold)).id(UUID())
+                        Text(imageInfo.description).font(Font.headline.weight(.regular)).id(UUID())
+                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Curiosity, id: imageInfo.id)).id(UUID())
                     }
                 case .Opportunity:
                     ForEach(manager.opportunityPhotos, id: \.id) {
                         imageInfo in
-                        Text(imageInfo.title).font(Font.headline.weight(.semibold))
-                        Text(imageInfo.description).font(Font.headline.weight(.regular))
-                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Opportunity, id: imageInfo.id))
+                        Text(imageInfo.title).font(Font.headline.weight(.semibold)).id(UUID())
+                        Text(imageInfo.description).font(Font.headline.weight(.regular)).id(UUID())
+                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Opportunity, id: imageInfo.id)).id(UUID())
                     }
                 case .Spirit:
                     ForEach(manager.spiritPhotos, id: \.id) {
                         imageInfo in
-                        Text(imageInfo.title).font(Font.headline.weight(.semibold))
-                        Text(imageInfo.description).font(Font.headline.weight(.regular))
-                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Spirit, id: imageInfo.id))
+                        Text(imageInfo.title).font(Font.headline.weight(.semibold)).id(UUID())
+                        Text(imageInfo.description).font(Font.headline.weight(.regular)).id(UUID())
+                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Spirit, id: imageInfo.id)).id(UUID())
                     }
                 default:
                     Text("Error, invalid picker choice ")
