@@ -23,7 +23,7 @@ struct ArtView: View {
                 if let objDate = image.objectDate {
                     Text(objDate).textSelection(.enabled)
                 }
-                Text(String(image.objectId))
+                Text(String(image.objectId)).textSelection(.enabled)
                 
             }
             else {
