@@ -103,6 +103,8 @@ struct MetImageData
 {
     let objectId: Int
     let name: String
+    let artistDisplayName: String?
+    let objectDate: String?
     let url: URL
     let id: Int
 }
