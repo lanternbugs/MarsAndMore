@@ -105,8 +105,9 @@ struct MetImageData
     let name: String
     let artistDisplayName: String?
     let objectDate: String?
+    let objectName: String?
     let url: URL
-    let id: Int
+    let id: String
 }
 
 enum FailureReason : Error {
