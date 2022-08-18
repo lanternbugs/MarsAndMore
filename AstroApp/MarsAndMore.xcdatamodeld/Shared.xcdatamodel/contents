@@ -12,23 +12,32 @@
     <entity name="Bodies" representedClassName="Bodies" syncable="YES" codeGenerationType="class">
         <attribute name="planet" optional="YES" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
     </entity>
-    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
-        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-    </entity>
-    <entity name="NASAPhotoData" representedClassName="NASAPhotoData" syncable="YES" codeGenerationType="class">
-        <attribute name="descript" attributeType="String"/>
+    <entity name="GenericImage" representedClassName="GenericImage" syncable="YES" codeGenerationType="class">
         <attribute name="fetchDate" attributeType="String"/>
         <attribute name="id" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="image" optional="YES" attributeType="Binary" allowsExternalBinaryDataStorage="YES"/>
-        <attribute name="mediaType" attributeType="String" defaultValueString="Picture"/>
-        <attribute name="title" attributeType="String"/>
         <attribute name="type" attributeType="String"/>
         <attribute name="url" attributeType="URI"/>
+    </entity>
+    <entity name="Item" representedClassName="Item" syncable="YES" codeGenerationType="class">
+        <attribute name="timestamp" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+    </entity>
+    <entity name="MetArtImage" representedClassName="MetArtImage" parentEntity="GenericImage" syncable="YES" codeGenerationType="class">
+        <attribute name="artistName" optional="YES" attributeType="String"/>
+        <attribute name="objDate" optional="YES" attributeType="String"/>
+        <attribute name="title" attributeType="String"/>
+    </entity>
+    <entity name="NASAPhotoData" representedClassName="NASAPhotoData" parentEntity="GenericImage" syncable="YES" codeGenerationType="class">
+        <attribute name="descript" attributeType="String"/>
+        <attribute name="mediaType" attributeType="String" defaultValueString="Picture"/>
+        <attribute name="title" attributeType="String"/>
     </entity>
     <elements>
         <element name="BirthDates" positionX="-63" positionY="-9" width="128" height="134"/>
         <element name="Bodies" positionX="-63" positionY="36" width="128" height="44"/>
         <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
-        <element name="NASAPhotoData" positionX="-63" positionY="36" width="128" height="149"/>
+        <element name="NASAPhotoData" positionX="-63" positionY="36" width="128" height="74"/>
+        <element name="MetArtImage" positionX="-63" positionY="72" width="128" height="74"/>
+        <element name="GenericImage" positionX="-54" positionY="99" width="128" height="104"/>
     </elements>
 </model>
