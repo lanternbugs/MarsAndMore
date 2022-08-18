@@ -39,12 +39,12 @@ class SpaceDataManager: ObservableObject
                 DispatchQueue.main.async { [weak self] in
                     self?.imageOfDayData.removeAll()
                     self?.imageOfDayData.append(info)
-                    let nasaType = NASAPhotoType.NasaPhotoOfDay
+                    let nasaType = ImagePhotoType.NasaPhotoOfDay
                     self?.saveNasaResponse(type: nasaType, data: [info])
                 }
             } else {
                 DispatchQueue.main.async { [weak self] in
-                    if let data = self?.loadNasaResponse(type: NASAPhotoType.NasaPhotoOfDay) {
+                    if let data = self?.loadNasaResponse(type: ImagePhotoType.NasaPhotoOfDay) {
                         self?.imageOfDayData = data
                     }
                 }
@@ -113,7 +113,7 @@ class SpaceDataManager: ObservableObject
                             }
                             let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.curiosityPhotos.count ?? 0, mediaType: .Picture)
                             self?.curiosityPhotos.append(info)
-                            let roverType = NASAPhotoType.Curiosity
+                            let roverType = ImagePhotoType.Curiosity
                             if self?.curiosityPhotos.count ?? roverType.getMaxPhotos() >= roverType.getMaxPhotos() {
                                 if let curiosityPhotos = self?.curiosityPhotos {
                                     self?.saveNasaResponse(type: roverType, data: curiosityPhotos)
@@ -153,7 +153,7 @@ class SpaceDataManager: ObservableObject
                             }
                             let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.opportunityPhotos.count ?? 0, mediaType: .Picture)
                             self?.opportunityPhotos.append(info)
-                            let roverType = NASAPhotoType.Opportunity
+                            let roverType = ImagePhotoType.Opportunity
                             if self?.opportunityPhotos.count ?? roverType.getMaxPhotos() >= roverType.getMaxPhotos() {
                                 if let opportunityPhotos = self?.opportunityPhotos {
                                     self?.saveNasaResponse(type: roverType, data: opportunityPhotos)
@@ -193,7 +193,7 @@ class SpaceDataManager: ObservableObject
                             }
                             let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.spiritPhotos.count ?? 0, mediaType: .Picture)
                             self?.spiritPhotos.append(info)
-                            let roverType = NASAPhotoType.Spirit
+                            let roverType = ImagePhotoType.Spirit
                             if self?.spiritPhotos.count ?? roverType.getMaxPhotos() >= roverType.getMaxPhotos() {
                                 if let spiritPhotos = self?.spiritPhotos {
                                     self?.saveNasaResponse(type: roverType, data: spiritPhotos)

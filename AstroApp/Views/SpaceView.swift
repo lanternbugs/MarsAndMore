@@ -17,7 +17,7 @@ import SwiftUI
 struct SpaceView: View {
     @EnvironmentObject private var manager: SpaceDataManager
     @Environment(\.roomState) private var spaceState
-    @AppStorage("roverChoice") private var roverChoice: NASAPhotoType = NASAPhotoType.Curiosity
+    @AppStorage("roverChoice") private var roverChoice: ImagePhotoType = ImagePhotoType.Curiosity
     var body: some View {
         ScrollView {
             LazyVStack {
@@ -49,9 +49,9 @@ struct SpaceView: View {
                     Spacer()
                 }
                 Picker(selection: $roverChoice, label: Text("Rover")) {
-                    Text(NASAPhotoType.Curiosity.rawValue).tag(NASAPhotoType.Curiosity)
-                    Text(NASAPhotoType.Opportunity.rawValue).tag(NASAPhotoType.Opportunity)
-                    Text(NASAPhotoType.Spirit.rawValue).tag(NASAPhotoType.Spirit)
+                    Text(ImagePhotoType.Curiosity.rawValue).tag(ImagePhotoType.Curiosity)
+                    Text(ImagePhotoType.Opportunity.rawValue).tag(ImagePhotoType.Opportunity)
+                    Text(ImagePhotoType.Spirit.rawValue).tag(ImagePhotoType.Spirit)
                 }.background(Color.white).pickerStyle(SegmentedPickerStyle())
                 switch(roverChoice) {
                 case .Curiosity:
@@ -59,21 +59,21 @@ struct SpaceView: View {
                         imageInfo in
                         Text(imageInfo.title).font(Font.headline.weight(.semibold)).id(UUID())
                         Text(imageInfo.description).font(Font.headline.weight(.regular)).id(UUID())
-                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Curiosity, id: imageInfo.id)).id(UUID())
+                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Curiosity, id: imageInfo.id, enity: .Nasa)).id(UUID())
                     }
                 case .Opportunity:
                     ForEach(manager.opportunityPhotos, id: \.id) {
                         imageInfo in
                         Text(imageInfo.title).font(Font.headline.weight(.semibold)).id(UUID())
                         Text(imageInfo.description).font(Font.headline.weight(.regular)).id(UUID())
-                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Opportunity, id: imageInfo.id)).id(UUID())
+                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Opportunity, id: imageInfo.id, enity: .Nasa)).id(UUID())
                     }
                 case .Spirit:
                     ForEach(manager.spiritPhotos, id: \.id) {
                         imageInfo in
                         Text(imageInfo.title).font(Font.headline.weight(.semibold)).id(UUID())
                         Text(imageInfo.description).font(Font.headline.weight(.regular)).id(UUID())
-                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Spirit, id: imageInfo.id)).id(UUID())
+                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Spirit, id: imageInfo.id, enity: .Nasa)).id(UUID())
                     }
                 default:
                     Text("Error, invalid picker choice ")

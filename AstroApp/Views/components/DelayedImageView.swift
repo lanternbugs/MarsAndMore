@@ -40,7 +40,7 @@ struct DelayedImageView: View {
 
 struct DelayedImageView_Previews: PreviewProvider {
     static var url = URL(string: "https://www.google.com")!
-    static var key = PhotoKey(type: .Curiosity, id: 0)
+    static var key = PhotoKey(type: .Curiosity, id: 0, enity: .Nasa)
     static var previews: some View {
         DelayedImageView(url: url, key: key)
     }

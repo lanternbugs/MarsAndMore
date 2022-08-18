@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ArtDisplayView: View {
     let image: MetImageData
+    let type: ImagePhotoType
     var body: some View {
 #if os(macOS)
             if #available(macOS 12.0, *) {
@@ -19,7 +20,7 @@ struct ArtDisplayView: View {
                 if let objDate = image.objectDate {
                     Text(objDate).textSelection(.enabled)
                 }
-                Text(String(image.objectId)).textSelection(.enabled)
+                Text("MET id: " + String(image.objectId)).textSelection(.enabled)
                 
             }
             else {
@@ -30,7 +31,7 @@ struct ArtDisplayView: View {
                 if let objDate = image.objectDate {
                     Text(objDate)
                 }
-                Text(String(image.objectId))
+                Text("MET id: " + String(image.objectId))
                 }
 #else
             if #available(iOS 15.0, *) {
@@ -41,7 +42,6 @@ struct ArtDisplayView: View {
                 if let objDate = image.objectDate {
                     Text(objDate).textSelection(.enabled)
                 }
-                Text(String(image.objectId)).textSelection(.enabled)
             }
             else {
                 Text(image.name)
@@ -51,16 +51,16 @@ struct ArtDisplayView: View {
                 if let objDate = image.objectDate {
                     Text(objDate)
                 }
-                Text(String(image.objectId))
                 }
 #endif
-                    DelayedImageView(url: image.url, key: nil)
+        DelayedImageView(url: image.url, key: PhotoKey(type: type, id: image.id, enity: ImageEnities.Met))
                 }
 }
 
 struct ArtDisplayView_Previews: PreviewProvider {
-    static var image = MetImageData(objectId: 0, name: "image", artistDisplayName: nil, objectDate: nil, objectName: nil, url: URL(string: "https://www.google.com")!, id: UUID().uuidString)
+    static var image = MetImageData(objectId: 0, name: "image", artistDisplayName: nil, objectDate: nil, objectName: nil, url: URL(string: "https://www.google.com")!, id: 0, stringId: UUID().uuidString)
+    static var type = ImagePhotoType.MarsArt
     static var previews: some View {
-        ArtDisplayView(image: image)
+        ArtDisplayView(image: image, type: type)
     }
 }

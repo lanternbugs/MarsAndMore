@@ -25,7 +25,7 @@ struct NasaPhotoView: View {
                     switch imageInfo.mediaType
                     {
                     case .Picture:
-                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .NasaPhotoOfDay, id: imageInfo.id))
+                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .NasaPhotoOfDay, id: imageInfo.id, enity: .Nasa))
                         Text(imageInfo.description).font(Font.headline.weight(.regular))
                     default:
                         EmptyView()

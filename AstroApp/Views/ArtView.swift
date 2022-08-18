@@ -31,20 +31,23 @@ struct ArtView: View {
                 }.background(Color.white).pickerStyle(SegmentedPickerStyle())
                 switch planetChoice {
                 case .Mars:
-                    ForEach(artDataManager.marsArtData, id: \.id) {
+                    ForEach(artDataManager.marsArtData, id: \.stringId) {
                         image in
-                        ArtDisplayView(image: image)
+                        ArtDisplayView(image: image, type: ImagePhotoType.MarsArt)
                     }
                 case .Venus:
-                    ForEach(artDataManager.venusArtData, id: \.id) {
+                    ForEach(artDataManager.venusArtData, id: \.stringId) {
                         image in
-                        ArtDisplayView(image: image)
+                        ArtDisplayView(image: image, type: ImagePhotoType.VenusArt)
                     }
                 default:
                     EmptyView()
                 }
                 
             }
+        }.onAppear {
+            artDataManager.checkForNewData()
+            
         }
     }
 }

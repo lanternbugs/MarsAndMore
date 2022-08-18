@@ -61,6 +61,7 @@ struct MainView: View {
         }.onAppear {
             birthDataManager.setContext(_viewContext.wrappedValue)
             spaceDataManager.setContextAndLoad(_viewContext.wrappedValue)
+            artDataManager.setContextAndLoad(_viewContext.wrappedValue)
         }
     }
 }
