@@ -12,6 +12,8 @@ extension ArtDataManager {
     
     func setContextAndLoad(_ context: NSManagedObjectContext) {
         ArtDataManager.managedContext = context
+        //SpaceDataManager.clearAllPhotoData(type: .VenusArt, enity: ImageEnities.Met)
+        //SpaceDataManager.clearAllPhotoData(type: .MarsArt, enity: ImageEnities.Met)
         loadVenusArt()
         loadMarsArt()
     }
@@ -97,6 +99,7 @@ extension ArtDataManager {
                 artImage.fetchDate = fetchDate
                 artImage.objDate = image.objectDate
                 artImage.artistName = image.artistDisplayName
+                artImage.objId = Int32(image.objectId)
                 try context.save()
             }
         } catch let error as NSError  {
@@ -121,7 +124,7 @@ extension ArtDataManager {
                     guard let url = photo.url, let title = photo.title else {
                         return imageInfo
                     }
-                    let info = MetImageData(objectId: Int(photo.id), name: title, artistDisplayName: photo.artistName, objectDate: photo.objDate, objectName: nil, url: url, id: Int(photo.id), stringId: UUID().uuidString)
+                    let info = MetImageData(objectId: Int(photo.objId), name: title, artistDisplayName: photo.artistName, objectDate: photo.objDate, objectName: nil, url: url, id: Int(photo.id), stringId: UUID().uuidString)
                     imageInfo.append(info)
                 }
             }

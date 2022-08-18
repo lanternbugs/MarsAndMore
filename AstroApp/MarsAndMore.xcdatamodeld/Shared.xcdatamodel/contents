@@ -25,6 +25,7 @@
     <entity name="MetArtImage" representedClassName="MetArtImage" parentEntity="GenericImage" syncable="YES" codeGenerationType="class">
         <attribute name="artistName" optional="YES" attributeType="String"/>
         <attribute name="objDate" optional="YES" attributeType="String"/>
+        <attribute name="objId" attributeType="Integer 32" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="title" attributeType="String"/>
     </entity>
     <entity name="NASAPhotoData" representedClassName="NASAPhotoData" parentEntity="GenericImage" syncable="YES" codeGenerationType="class">
@@ -35,9 +36,9 @@
     <elements>
         <element name="BirthDates" positionX="-63" positionY="-9" width="128" height="134"/>
         <element name="Bodies" positionX="-63" positionY="36" width="128" height="44"/>
-        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
-        <element name="NASAPhotoData" positionX="-63" positionY="36" width="128" height="74"/>
-        <element name="MetArtImage" positionX="-63" positionY="72" width="128" height="74"/>
         <element name="GenericImage" positionX="-54" positionY="99" width="128" height="104"/>
+        <element name="Item" positionX="-63" positionY="-18" width="128" height="44"/>
+        <element name="MetArtImage" positionX="-63" positionY="72" width="128" height="89"/>
+        <element name="NASAPhotoData" positionX="-63" positionY="36" width="128" height="74"/>
     </elements>
 </model>
