@@ -107,7 +107,8 @@ struct MetImageData
     let objectDate: String?
     let objectName: String?
     let url: URL
-    let id: String
+    let id: Int
+    let stringId: String
 }
 
 enum FailureReason : Error {

@@ -29,33 +29,33 @@ extension SpaceDataManager {
     
     func checkForNewData()
     {
-        if curiosityPhotos.count == NASAPhotoType.Curiosity.getMaxPhotos() {
-            if let date = getSaveDateOrNil(type: .Curiosity) {
-                if date != getDateInYYYYMMDD() {
+        if curiosityPhotos.count == ImagePhotoType.Curiosity.getMaxPhotos() {
+            if let date = SpaceDataManager.getSaveDateOrNil(type: .Curiosity) {
+                if date != SpaceDataManager.getDateInYYYYMMDD() {
                     loadCuriosity()
                 }
             }
         }
         
-        if opportunityPhotos.count == NASAPhotoType.Opportunity.getMaxPhotos() {
-            if let date = getSaveDateOrNil(type: .Opportunity) {
-                if date != getDateInYYYYMMDD() {
+        if opportunityPhotos.count == ImagePhotoType.Opportunity.getMaxPhotos() {
+            if let date = SpaceDataManager.getSaveDateOrNil(type: .Opportunity) {
+                if date != SpaceDataManager.getDateInYYYYMMDD() {
                     loadOpportunity()
                 }
             }
         }
         
-        if spiritPhotos.count == NASAPhotoType.Spirit.getMaxPhotos() {
-            if let date = getSaveDateOrNil(type: .Spirit) {
-                if date != getDateInYYYYMMDD() {
+        if spiritPhotos.count == ImagePhotoType.Spirit.getMaxPhotos() {
+            if let date = SpaceDataManager.getSaveDateOrNil(type: .Spirit) {
+                if date != SpaceDataManager.getDateInYYYYMMDD() {
                     loadSpirit()
                 }
             }
         }
         
-        if imageOfDayData.count == NASAPhotoType.NasaPhotoOfDay.getMaxPhotos() {
-            if let date = getSaveDateOrNil(type: .NasaPhotoOfDay) {
-                if date != getDateInYYYYMMDD() {
+        if imageOfDayData.count == ImagePhotoType.NasaPhotoOfDay.getMaxPhotos() {
+            if let date = SpaceDataManager.getSaveDateOrNil(type: .NasaPhotoOfDay) {
+                if date != SpaceDataManager.getDateInYYYYMMDD() {
                     loadPictureOfDay()
                 }
             }
@@ -65,13 +65,13 @@ extension SpaceDataManager {
     func loadCuriosity()
     {
         var dateChange = false
-        if let curiosityDate = getSaveDateOrNil(type: .Curiosity) {
-            if curiosityDate != getDateInYYYYMMDD() {
+        if let curiosityDate = SpaceDataManager.getSaveDateOrNil(type: .Curiosity) {
+            if curiosityDate != SpaceDataManager.getDateInYYYYMMDD() {
                 dateChange = true
             }
         }
         
-        if !checkAllDataExists(type: .Curiosity) || dateChange {
+        if !SpaceDataManager.checkAllDataExists(type: .Curiosity) || dateChange {
             
             parseManifest(manifest: "curiosity-manifest")
         } else {
@@ -82,13 +82,13 @@ extension SpaceDataManager {
     func loadOpportunity()
     {
         var dateChange = false
-        if let opportunityDate = getSaveDateOrNil(type: .Opportunity) {
-            if opportunityDate != getDateInYYYYMMDD() {
+        if let opportunityDate = SpaceDataManager.getSaveDateOrNil(type: .Opportunity) {
+            if opportunityDate != SpaceDataManager.getDateInYYYYMMDD() {
                 dateChange = true
             }
         }
         
-        if !checkAllDataExists(type: .Opportunity) || dateChange {
+        if !SpaceDataManager.checkAllDataExists(type: .Opportunity) || dateChange {
             
             parseManifest(manifest: "opportunity-manifest")
         } else {
@@ -99,13 +99,13 @@ extension SpaceDataManager {
     func loadSpirit()
     {
         var dateChange = false
-        if let spiritDate = getSaveDateOrNil(type: .Spirit) {
-            if spiritDate != getDateInYYYYMMDD() {
+        if let spiritDate = SpaceDataManager.getSaveDateOrNil(type: .Spirit) {
+            if spiritDate != SpaceDataManager.getDateInYYYYMMDD() {
                 dateChange = true
             }
         }
         
-        if !checkAllDataExists(type: .Spirit) || dateChange {
+        if !SpaceDataManager.checkAllDataExists(type: .Spirit) || dateChange {
             
             parseManifest(manifest: "spirit-manifest")
         } else {
@@ -116,13 +116,13 @@ extension SpaceDataManager {
     func loadPictureOfDay()
     {
         var dateChange = false
-        if let photoOfDayDate = getSaveDateOrNil(type: .NasaPhotoOfDay) {
-            if photoOfDayDate != getDateInYYYYMMDD() {
+        if let photoOfDayDate = SpaceDataManager.getSaveDateOrNil(type: .NasaPhotoOfDay) {
+            if photoOfDayDate != SpaceDataManager.getDateInYYYYMMDD() {
                 dateChange = true
             }
         }
         
-        if !checkAllDataExists(type: .NasaPhotoOfDay) || dateChange {
+        if !SpaceDataManager.checkAllDataExists(type: .NasaPhotoOfDay) || dateChange {
             
             fetchImageOfDay()
         } else {
@@ -138,16 +138,16 @@ extension SpaceDataManager {
         loadPictureOfDay()
     }
     
-    func clearAllPhotoData(type: NASAPhotoType)
+    static func clearAllPhotoData(type: ImagePhotoType, enity: ImageEnities = ImageEnities.Nasa)
     {
         guard let context = SpaceDataManager.managedContext else {
             return
         }
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NASAPhotoData")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: enity.rawValue)
         fetchRequest.predicate = NSPredicate(format: "type == %@", type.rawValue)
         do {
-            if let photos =  try context.fetch(fetchRequest) as? [NASAPhotoData] {
+            if let photos =  try context.fetch(fetchRequest) as? [GenericImage] {
                 for photo in photos
                 {
                     context.delete(photo)
@@ -160,16 +160,16 @@ extension SpaceDataManager {
         }
     }
     
-    func checkAllDataExists(type: NASAPhotoType)->Bool
+    static func checkAllDataExists(type: ImagePhotoType, enity: String = ImageEnities.Nasa.rawValue)->Bool
     {
         guard let context = SpaceDataManager.managedContext else {
             return false
         }
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NASAPhotoData")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: enity)
         fetchRequest.predicate = NSPredicate(format: "type == %@", type.rawValue)
         do {
-            if let photos =  try context.fetch(fetchRequest) as? [NASAPhotoData] {
+            if let photos =  try context.fetch(fetchRequest) as? [GenericImage] {
                 if photos.count == type.getMaxPhotos() {
                     return true
                 }
@@ -187,12 +187,12 @@ extension SpaceDataManager {
             return nil
         }
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NASAPhotoData")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: key.enity.rawValue)
         let predicate1:NSPredicate = NSPredicate(format: "type == %@", key.type.rawValue)
         let predicate2:NSPredicate = NSPredicate(format: "id == %d", key.id)
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1,predicate2] )
         do {
-            if let photos =  try context.fetch(fetchRequest) as? [NASAPhotoData] {
+            if let photos =  try context.fetch(fetchRequest) as? [GenericImage] {
                 if(photos.count == 1)
                 {
                     for photo in photos
@@ -221,12 +221,12 @@ extension SpaceDataManager {
             return
         }
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NASAPhotoData")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: key.enity.rawValue)
         let predicate1:NSPredicate = NSPredicate(format: "type == %@", key.type.rawValue)
         let predicate2:NSPredicate = NSPredicate(format: "id == %d", key.id)
         fetchRequest.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [predicate1,predicate2] )
         do {
-            if let photos =  try context.fetch(fetchRequest) as? [NASAPhotoData] {
+            if let photos =  try context.fetch(fetchRequest) as? [GenericImage] {
                 if(photos.count == 1)
                 {
                     for photo in photos
@@ -251,16 +251,16 @@ extension SpaceDataManager {
             
     }
     
-    func getSaveDateOrNil(type: NASAPhotoType)->String?
+    static func getSaveDateOrNil(type: ImagePhotoType, enity: String = ImageEnities.Nasa.rawValue)->String?
     {
         guard let context = SpaceDataManager.managedContext else {
             return nil
         }
         
-        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "NASAPhotoData")
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: enity)
         fetchRequest.predicate = NSPredicate(format: "type == %@", type.rawValue)
         do {
-            if let photos =  try context.fetch(fetchRequest) as? [NASAPhotoData] {
+            if let photos =  try context.fetch(fetchRequest) as? [GenericImage] {
                 for photo in photos
                 {
                     guard let date = photo.fetchDate else {
@@ -276,7 +276,7 @@ extension SpaceDataManager {
         return nil
     }
     
-    func getDateInYYYYMMDD()->String
+    static func getDateInYYYYMMDD()->String
     {
         let date = Date()
         let dateFormatter = DateFormatter()
@@ -284,13 +284,13 @@ extension SpaceDataManager {
         return dateFormatter.string(from: date)
     }
     
-    func saveNasaResponse(type: NASAPhotoType, data: [ImageInfo])
+    func saveNasaResponse(type: ImagePhotoType, data: [ImageInfo])
     {
         guard let context = SpaceDataManager.managedContext else {
             return
         }
-        clearAllPhotoData(type: type)
-        let fetchDate = getDateInYYYYMMDD()
+        SpaceDataManager.clearAllPhotoData(type: type)
+        let fetchDate = SpaceDataManager.getDateInYYYYMMDD()
         do {
             for image in data
             {
@@ -310,7 +310,7 @@ extension SpaceDataManager {
         }
     }
     
-    func loadNasaResponse(type: NASAPhotoType)->[ImageInfo]
+    func loadNasaResponse(type: ImagePhotoType)->[ImageInfo]
     {
         var imageInfo = [ImageInfo]()
         guard let context = SpaceDataManager.managedContext else {

@@ -25,3 +25,17 @@ enum RoomState: Equatable {
 enum AppTab: Int {
     case MarsTab, ChartTab, PlanetsTab, SpaceTab, ArtTab
 }
+
+enum  ImagePhotoType:String {
+    case NasaPhotoOfDay, Curiosity, Opportunity, Spirit, MarsArt, VenusArt
+}
+
+enum ImageEnities: String { case Nasa = "NASAPhotoData", Met = "MetArtImage" }
+
+struct PhotoKey
+{
+    let type: ImagePhotoType
+    let id: Int
+    let enity: ImageEnities
+}
+

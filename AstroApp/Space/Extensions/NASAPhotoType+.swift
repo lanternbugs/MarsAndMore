@@ -13,7 +13,7 @@
 
 
 import Foundation
-extension NASAPhotoType {
+extension ImagePhotoType {
     func getMaxPhotos()->Int
     {
         switch(self)
@@ -25,6 +25,10 @@ extension NASAPhotoType {
         case .Opportunity:
             return 5
         case .Spirit:
+            return 5
+        case .MarsArt:
+            return 5
+        case .VenusArt:
             return 5
         }
     }
