@@ -18,13 +18,13 @@ extension ArtDataManager {
     
     func checkForNewData()
     {
-        if !marsSearchOngoing, let date = SpaceDataManager.getSaveDateOrNil(type: .VenusArt, enity: ImageEnities.Met.rawValue) {
+        if !venusSearchOngoing, let date = SpaceDataManager.getSaveDateOrNil(type: .VenusArt, enity: ImageEnities.Met.rawValue) {
             if date != SpaceDataManager.getDateInYYYYMMDD() {
                 loadVenusArt()
             }
         }
         
-        if !venusSearchOngoing, let date = SpaceDataManager.getSaveDateOrNil(type: .MarsArt, enity: ImageEnities.Met.rawValue) {
+        if !marsSearchOngoing, let date = SpaceDataManager.getSaveDateOrNil(type: .MarsArt, enity: ImageEnities.Met.rawValue) {
             if date != SpaceDataManager.getDateInYYYYMMDD() {
                 loadMarsArt()
             }
