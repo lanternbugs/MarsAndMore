@@ -27,9 +27,7 @@ class ArtDataManager: ObservableObject
     // love search
     
     init() {
-        print("venus count is \(venusObjects.count) and Mars count is \(marsObjects.count)")
-        
-        
+       // print("venus count is \(venusObjects.count) and Mars count is \(marsObjects.count)")
         //loadSelectArt(from: selectArt)
        // checkForDuplicates(marsObjects, with: "mars")
        // checkForDuplicates(venusObjects, with: "venus")

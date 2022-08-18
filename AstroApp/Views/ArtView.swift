@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ArtView: View {
     @EnvironmentObject private var artDataManager: ArtDataManager
-    @State private var planetChoice: Planets = Planets.Mars
+    @AppStorage("artChoice") private var artChoice: Planets = Planets.Mars
     var body: some View {
         ScrollView {
             
@@ -17,19 +17,19 @@ struct ArtView: View {
             LazyVStack {
                 HStack {
                     Spacer()
-                    Text("Mars and Venus themed Art")
+                    Text("Mars and Venus themed Art").font(.title)
                     Spacer()
                 }
                 HStack {
                     Spacer()
-                    Text("Images update daily")
+                    Text("Images update daily").font(.title)
                     Spacer()
                 }
-                Picker(selection: $planetChoice, label: Text("Choice")) {
+                Picker(selection: $artChoice, label: Text("Choice")) {
                     Text("Mars").tag(Planets.Mars)
                     Text("Venus").tag(Planets.Venus)
                 }.background(Color.white).pickerStyle(SegmentedPickerStyle())
-                switch planetChoice {
+                switch artChoice {
                 case .Mars:
                     ForEach(artDataManager.marsArtData, id: \.stringId) {
                         image in

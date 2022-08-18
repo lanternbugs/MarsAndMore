@@ -13,43 +13,42 @@ struct ArtDisplayView: View {
     var body: some View {
 #if os(macOS)
             if #available(macOS 12.0, *) {
-                Text(image.name).textSelection(.enabled)
+                Text(image.name).textSelection(.enabled).font(Font.headline.weight(.regular))
                 if let artistName = image.artistDisplayName, artistName.count > 0 {
-                    Text("by \(artistName)").textSelection(.enabled)
+                    Text("by \(artistName)").font(Font.headline.weight(.regular)).textSelection(.enabled)
                 }
                 if let objDate = image.objectDate {
-                    Text(objDate).textSelection(.enabled)
+                    Text(objDate).textSelection(.enabled).font(Font.headline.weight(.regular))
                 }
-                Text("MET id: " + String(image.objectId)).textSelection(.enabled)
+                //Text("MET id: " + String(image.objectId)).font(Font.headline.weight(.regular)).textSelection(.enabled)
                 
             }
             else {
-                Text(image.name)
+                Text(image.name).font(Font.headline.weight(.regular))
                 if let artistName = image.artistDisplayName, artistName.count > 0 {
-                    Text("by \(artistName)")
+                    Text("by \(artistName)").font(Font.headline.weight(.regular))
                 }
                 if let objDate = image.objectDate {
-                    Text(objDate)
+                    Text(objDate).font(Font.headline.weight(.regular))
                 }
-                Text("MET id: " + String(image.objectId))
                 }
 #else
             if #available(iOS 15.0, *) {
-                Text(image.name).textSelection(.enabled)
+                Text(image.name).textSelection(.enabled).font(Font.headline.weight(.regular))
                 if let artistName = image.artistDisplayName, artistName.count > 0 {
-                    Text("by \(artistName)").textSelection(.enabled)
+                    Text("by \(artistName)").font(Font.headline.weight(.regular)).textSelection(.enabled)
                 }
                 if let objDate = image.objectDate {
-                    Text(objDate).textSelection(.enabled)
+                    Text(objDate).textSelection(.enabled).font(Font.headline.weight(.regular))
                 }
             }
             else {
-                Text(image.name)
+                Text(image.name).font(Font.headline.weight(.regular))
                 if let artistName = image.artistDisplayName, artistName.count > 0 {
-                    Text("by \(artistName)")
+                    Text("by \(artistName)").font(Font.headline.weight(.regular))
                 }
                 if let objDate = image.objectDate {
-                    Text(objDate)
+                    Text(objDate).font(Font.headline.weight(.regular))
                 }
                 }
 #endif
