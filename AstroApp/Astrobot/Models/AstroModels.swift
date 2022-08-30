@@ -82,3 +82,5 @@ struct DisplayPlanetRow {
     
 }
 
+enum OrbType { case NarrrowOrbs, MediumOrbs, WideOrbs }
+

@@ -54,8 +54,41 @@ extension Planets {
         }
     }
     
-    func getNatalOrb()->Double
+    func getNatalOrb(type: OrbType)->Double
     {
+        switch type {
+        case .NarrrowOrbs:
+            return getNarrowNatalOrbs()
+        case .MediumOrbs:
+            return getMediumNatalOrbs()
+        case .WideOrbs:
+            return getWideNatalOrbs()
+        }
+    }
+    
+    func getNarrowNatalOrbs()->Double {
+        switch(self) {
+        case .Sun, .Moon:
+            return 8.0
+        case .Mars, .Venus, .Mercury, .Ascendent:
+            return 6.0
+        default:
+            return 5.0
+        }
+    }
+    
+    func getMediumNatalOrbs()->Double {
+        switch(self) {
+        case .Sun, .Moon:
+            return 8.0
+        case .Mars, .Venus, .Mercury, .Ascendent:
+            return 6.0
+        default:
+            return 5.0
+        }
+    }
+    
+    func getWideNatalOrbs()->Double {
         switch(self) {
         case .Sun, .Moon:
             return 8.0

@@ -142,7 +142,7 @@ extension AstrobotInterface {
             degree = 360 - degree
         }
         for aspect in Aspects.allCases {
-            let orb = time2 == nil ? planet1.planet.getNatalOrb() : planet1.planet.getTransitOrb()
+            let orb = time2 == nil ? planet1.planet.getNatalOrb(type: OrbType.MediumOrbs) : planet1.planet.getTransitOrb()
             if abs(degree - aspect.rawValue) <  orb {
                 return aspect
             }
