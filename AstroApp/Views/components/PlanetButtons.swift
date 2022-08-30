@@ -57,6 +57,9 @@ struct PlanetButtons: View, AstrobotInterface {
             HStack {
                 Toggle("Exact Time", isOn: $savedDate.exactPlanetsTime)
                 Spacer()
+                Button(action: { savedDate.planetsDateChoice = Date()  }) {
+                    Text("Reset to Now").font(Font.subheadline)
+                }
                 Button(action: { roomState.wrappedValue = .ChartSettings }) {
                     Text("Settings").font(Font.subheadline)
                 }
