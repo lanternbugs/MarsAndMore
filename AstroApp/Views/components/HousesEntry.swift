@@ -22,7 +22,20 @@ struct HousesEntry: View {
         return "No Houses"
     }
     var body: some View {
-        Text(displayString)
+#if os(macOS)
+        if #available(macOS 12.0, *) {
+            Text(displayString).textSelection(.enabled)
+        } else {
+            Text(displayString)
+        }
+        
+#else
+        if #available(iOS 15.0, *) {
+            Text(displayString).textSelection(.enabled)
+        } else {
+            Text(displayString)
+        }
+#endif
     }
 }
 
