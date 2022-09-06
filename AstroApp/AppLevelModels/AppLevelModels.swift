@@ -20,6 +20,7 @@ enum RoomState: Equatable {
     case Space
     case Picture
     case Art
+    case Library
 }
 
 enum AppTab: Int {
@@ -27,7 +28,7 @@ enum AppTab: Int {
 }
 
 enum  ImagePhotoType:String {
-    case NasaPhotoOfDay, Curiosity, Opportunity, Spirit, MarsArt, VenusArt
+    case NasaPhotoOfDay, Curiosity, Opportunity, Spirit, MarsArt, VenusArt, Library
 }
 
 enum ImageEnities: String { case Nasa = "NASAPhotoData", Met = "MetArtImage" }

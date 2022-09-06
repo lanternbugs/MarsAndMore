@@ -30,6 +30,8 @@ extension ImagePhotoType {
             return 5
         case .VenusArt:
             return 5
+        case .Library:
+            return Int.max
         }
     }
 }
