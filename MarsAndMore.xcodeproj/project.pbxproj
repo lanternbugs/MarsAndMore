@@ -142,6 +142,10 @@
 		763CFC0A27B1E4E8004A73B8 /* BirthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0827B1E4E8004A73B8 /* BirthDataManager.swift */; };
 		763CFC0D27B1E535004A73B8 /* BirthDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0C27B1E535004A73B8 /* BirthDataModels.swift */; };
 		763CFC0E27B1E535004A73B8 /* BirthDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0C27B1E535004A73B8 /* BirthDataModels.swift */; };
+		7646F7CB28C7FBE5007FC924 /* ArtLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */; };
+		7646F7CC28C7FBE5007FC924 /* ArtLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */; };
+		7646F7CE28C7FC04007FC924 /* ArtTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CD28C7FC04007FC924 /* ArtTab.swift */; };
+		7646F7CF28C7FC04007FC924 /* ArtTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CD28C7FC04007FC924 /* ArtTab.swift */; };
 		764EF76027ACA6E0008A15F1 /* mars-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75427ACA6E0008A15F1 /* mars-taurus.txt */; };
 		764EF76127ACA6E0008A15F1 /* mars-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75527ACA6E0008A15F1 /* mars-libra.txt */; };
 		764EF76227ACA6E0008A15F1 /* mars-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75627ACA6E0008A15F1 /* mars-capricorn.txt */; };
@@ -398,6 +402,8 @@
 		763CFC0527B1E4C4004A73B8 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		763CFC0827B1E4E8004A73B8 /* BirthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDataManager.swift; sourceTree = "<group>"; };
 		763CFC0C27B1E535004A73B8 /* BirthDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDataModels.swift; sourceTree = "<group>"; };
+		7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtLibraryView.swift; sourceTree = "<group>"; };
+		7646F7CD28C7FC04007FC924 /* ArtTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtTab.swift; sourceTree = "<group>"; };
 		764EF75427ACA6E0008A15F1 /* mars-taurus.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-taurus.txt"; sourceTree = "<group>"; };
 		764EF75527ACA6E0008A15F1 /* mars-libra.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-libra.txt"; sourceTree = "<group>"; };
 		764EF75627ACA6E0008A15F1 /* mars-capricorn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-capricorn.txt"; sourceTree = "<group>"; };
@@ -804,7 +810,9 @@
 				76311181289089B000912263 /* SpaceTab.swift */,
 				762EAF942884C8AD007DB4A9 /* SpaceView.swift */,
 				7631117E289082A800912263 /* NasaPhotoView.swift */,
+				7646F7CD28C7FC04007FC924 /* ArtTab.swift */,
 				765ED44E28A595C0001374AB /* ArtView.swift */,
+				7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1162,6 +1170,7 @@
 				7656279D287E000A00A63C8B /* PlanetsTab.swift in Sources */,
 				761DEEC1279B9EF900A71938 /* swehouse.c in Sources */,
 				76C2878228AB2C4800DB0A2E /* ArtDisplayView.swift in Sources */,
+				7646F7CE28C7FC04007FC924 /* ArtTab.swift in Sources */,
 				76038DD8289869CB00F6DA0F /* Houses+.swift in Sources */,
 				761DEEBB279B9EF900A71938 /* swepdate.c in Sources */,
 				762E0C69288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
@@ -1217,6 +1226,7 @@
 				761DEECD279B9EF900A71938 /* swejpl.c in Sources */,
 				762EAF8928833F11007DB4A9 /* SpaceModels.swift in Sources */,
 				76908C9727C04FCC00806F9D /* View+Extensions.swift in Sources */,
+				7646F7CB28C7FBE5007FC924 /* ArtLibraryView.swift in Sources */,
 				76F5BDC427AF43F30075FCEC /* Date+Extensions.swift in Sources */,
 				76908C9A27C050CA00806F9D /* SelectedNameModifier.swift in Sources */,
 				762D4A6927AB986A00EA59E8 /* AstroButtons.swift in Sources */,
@@ -1251,6 +1261,7 @@
 				7656279E287E000A00A63C8B /* PlanetsTab.swift in Sources */,
 				76BEF3F727ACB0EF001C9AD0 /* AstroReadingModel.swift in Sources */,
 				76C2878328AB2C4800DB0A2E /* ArtDisplayView.swift in Sources */,
+				7646F7CF28C7FC04007FC924 /* ArtTab.swift in Sources */,
 				76038DD9289869CB00F6DA0F /* Houses+.swift in Sources */,
 				76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */,
 				762E0C6A288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
@@ -1306,6 +1317,7 @@
 				761DEEC8279B9EF900A71938 /* swedate.c in Sources */,
 				762EAF8A28833F11007DB4A9 /* SpaceModels.swift in Sources */,
 				76908C9827C04FCC00806F9D /* View+Extensions.swift in Sources */,
+				7646F7CC28C7FBE5007FC924 /* ArtLibraryView.swift in Sources */,
 				76F5BDC527AF43F30075FCEC /* Date+Extensions.swift in Sources */,
 				76908C9B27C050CA00806F9D /* SelectedNameModifier.swift in Sources */,
 				7606E28227AB18A900C72FAB /* MarsTab.swift in Sources */,

@@ -10,6 +10,7 @@ import SwiftUI
 struct ArtDisplayView: View {
     let image: MetImageData
     let type: ImagePhotoType
+    @EnvironmentObject private var artDataManager: ArtDataManager
     var body: some View {
 #if os(macOS)
             if #available(macOS 12.0, *) {
@@ -52,8 +53,24 @@ struct ArtDisplayView: View {
                 }
                 }
 #endif
-        DelayedImageView(url: image.url, key: PhotoKey(type: type, id: image.id, enity: ImageEnities.Met))
+        HStack {
+            Spacer()
+            if artDataManager.libraryData.first { $0.objectId == image.objectId} == nil {
+                Button(action: { artDataManager.saveToLibrary(image: image, type: type) }) {
+                    Text("Add to Library")
                 }
+            }
+            Spacer()
+            
+        }
+        switch type {
+        case .Library:
+            DelayedImageView(url: image.url, key: PhotoKey(type: type, id: image.objectId + ArtDataManager.libraryOffset, enity: ImageEnities.Met))
+        default:
+            DelayedImageView(url: image.url, key: PhotoKey(type: type, id: image.id, enity: ImageEnities.Met))
+        }
+        
+    }
 }
 
 struct ArtDisplayView_Previews: PreviewProvider {

@@ -52,7 +52,7 @@ struct MainView: View {
                 }.environmentObject(spaceDataManager)
                     .environment(\.roomState, $spaceState)
                     .tag(AppTab.SpaceTab.rawValue)
-                ArtView().tabItem {
+                ArtTab().tabItem {
                     Text("Art")
                 }.environmentObject(artDataManager)
                     .environment(\.roomState, $artState)

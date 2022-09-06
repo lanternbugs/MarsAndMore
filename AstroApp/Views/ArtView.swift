@@ -9,6 +9,7 @@ import SwiftUI
 
 struct ArtView: View {
     @EnvironmentObject private var artDataManager: ArtDataManager
+    @Environment(\.roomState) private var artState
     @AppStorage("artChoice") private var artChoice: Planets = Planets.Mars
     var body: some View {
         ScrollView {
@@ -25,6 +26,12 @@ struct ArtView: View {
                     Text("Images update daily").font(.title)
                     Spacer()
                 }
+                if artDataManager.libraryData.count > 0 {
+                    Button(action: { artState.wrappedValue = .Library }) {
+                        Text("Library")
+                    }
+                }
+                
                 Picker(selection: $artChoice, label: Text("Choice")) {
                     Text("Mars").tag(Planets.Mars)
                     Text("Venus").tag(Planets.Venus)
