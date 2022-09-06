@@ -26,6 +26,12 @@ class DownloadImageBinder: ObservableObject {
     func load(url: URL, key: PhotoKey?) {
         if let key = key, let uiimage = SpaceDataManager.getPhotoForKeyOrNil(key: key) {
            image = uiimage
+            switch key.type {
+            case .MarsArt, .VenusArt:
+                ArtDataManager.updateImage(image: uiimage, type: key.type, id: key.id)
+            default:
+                break
+            }
            return
         }
          URLSession.shared
@@ -35,8 +41,19 @@ class DownloadImageBinder: ObservableObject {
                                .handleEvents(receiveOutput: {
                                    if let img = $0, let key = key {
                                        SpaceDataManager.setPhotoForKey(key: key, image: img)
+                                       switch key.type {
+                                       case .MarsArt, .VenusArt:
+                                           ArtDataManager.updateImage(image: img, type: key.type, id: key.id)
+                                       default:
+                                           break
+                                       }
                                    }})
                                .receive(on: DispatchQueue.main)
                                .assign(to: &$image)
+    }
+    
+    func saveImage(key: PhotoKey, img: UIImage)
+    {
+        
     }
 }
