@@ -7,6 +7,9 @@
 
 import Foundation
 import CoreData
+#if os(iOS)
+import UIKit
+#endif
 extension ArtDataManager {
     static var managedContext: NSManagedObjectContext?
     

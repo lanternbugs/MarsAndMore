@@ -7,8 +7,10 @@
 
 import Foundation
 import Combine
-
-class ArtDataManager: ObservableObject
+#if os(iOS)
+    import UIKit
+#endif
+    class ArtDataManager: ObservableObject
 {
     @Published var venusArtData = [MetImageData]()
     @Published var marsArtData = [MetImageData]()
