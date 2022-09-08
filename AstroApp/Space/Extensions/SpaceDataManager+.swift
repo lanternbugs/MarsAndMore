@@ -237,7 +237,7 @@ extension SpaceDataManager {
 
                         photo.image = image.pngData
 #elseif os(iOS)
-                        photo.image = image.pngData()
+                        photo.image = image.jpegData(compressionQuality: CGFloat(JPEGQuality.low.rawValue))
 #endif
                         try context.save()
                     }

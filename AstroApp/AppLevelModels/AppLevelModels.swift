@@ -40,3 +40,11 @@ struct PhotoKey
     let enity: ImageEnities
 }
 
+enum JPEGQuality: Float {
+    case lowest  = 0.2
+    case low     = 0.4
+    case medium  = 0.6
+    case high    = 0.8
+    case highest = 1
+}
+
