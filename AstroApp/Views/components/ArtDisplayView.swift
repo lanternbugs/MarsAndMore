@@ -10,6 +10,7 @@ import SwiftUI
 struct ArtDisplayView: View {
     let image: MetImageData
     let type: ImagePhotoType
+    @State var showButton = true
     @EnvironmentObject private var artDataManager: ArtDataManager
     var body: some View {
 #if os(macOS)
@@ -55,8 +56,18 @@ struct ArtDisplayView: View {
 #endif
         HStack {
             Spacer()
-            if artDataManager.libraryData.first { $0.objectId == image.objectId} == nil {
-                Button(action: { artDataManager.saveToLibrary(image: image, type: type) }) {
+            if artDataManager.libraryData.first { $0.objectId == image.objectId} == nil && showButton {
+                Button(action: {
+                    if showButton {
+                        artDataManager.saveToLibrary(image: image, type: type)
+                        showButton = false
+                        // we want the button back if they later delete image from library and go back to this view but this provides a long lock till the core data layer is done. 
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                            showButton = true
+                        }
+                    }
+                    
+                }) {
                     Text("Add to Library")
                 }
             }

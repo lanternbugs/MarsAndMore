@@ -15,6 +15,7 @@ import Combine
     @Published var venusArtData = [MetImageData]()
     @Published var marsArtData = [MetImageData]()
     @Published var libraryData = [MetImageData]()
+    let serialQueue = DispatchQueue(label: "coreDataSerialQueue")
     static var artImages = Dictionary<String, UIImage>()
     var tempVenusArtData = [MetImageData]()
     var tempMarsArtData = [MetImageData]()

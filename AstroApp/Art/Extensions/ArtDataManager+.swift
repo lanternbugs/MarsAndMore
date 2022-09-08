@@ -146,36 +146,43 @@ extension ArtDataManager {
     
     func saveToLibrary(image: MetImageData, type: ImagePhotoType)
     {
-        guard let photo =  ArtDataManager.artImages[type.rawValue + String(image.id)]  else  {
-            return
-        }
         
-        guard let context = SpaceDataManager.managedContext else {
-            return
-        }
-        
-        let fetchDate = SpaceDataManager.getDateInYYYYMMDD()
-        do {
-            let artImage = MetArtImage(context: context)
-            artImage.type = ImagePhotoType.Library.rawValue
-            artImage.url = image.url
-            artImage.title = image.name
-            artImage.id = Int32(image.objectId) + Int32(ArtDataManager.libraryOffset)
-            artImage.fetchDate = fetchDate
-            artImage.objDate = image.objectDate
-            artImage.artistName = image.artistDisplayName
-            artImage.objId = Int32(image.objectId)
-#if os(macOS)
-
-            artImage.image = photo.pngData
-#elseif os(iOS)
-            artImage.image = photo.pngData()
-#endif
-            libraryData.append(image)
-            try context.save()
-        } catch let error as NSError  {
-            print("Could not save \(error), \(error.userInfo)")
+        serialQueue.async { [weak self] in
+            guard let photo =  ArtDataManager.artImages[type.rawValue + String(image.id)]  else  {
+                return
+            }
             
+            guard let context = SpaceDataManager.managedContext else {
+                return
+            }
+            
+            let fetchDate = SpaceDataManager.getDateInYYYYMMDD()
+            do {
+                let artImage = MetArtImage(context: context)
+                artImage.type = ImagePhotoType.Library.rawValue
+                artImage.url = image.url
+                artImage.title = image.name
+                artImage.id = Int32(image.objectId) + Int32(ArtDataManager.libraryOffset)
+                artImage.fetchDate = fetchDate
+                artImage.objDate = image.objectDate
+                artImage.artistName = image.artistDisplayName
+                artImage.objId = Int32(image.objectId)
+    #if os(macOS)
+
+                artImage.image = photo.pngData
+    #elseif os(iOS)
+                artImage.image = photo.pngData()
+    #endif
+                DispatchQueue.main.async { [weak self] in
+                    self?.libraryData.append(image)
+                }
+                
+                try context.save()
+            } catch let error as NSError  {
+                print("Could not save \(error), \(error.userInfo)")
+                
+            }
         }
+        
     }
 }
