@@ -17,7 +17,7 @@ protocol AstrobotBaseInterface {
 }
 
 protocol AstrobotInterface: AstrobotBaseInterface {
-    func getAspects(time: Double, with time2: Double?, and location: LocationData?)->PlanetRow
+    func getAspects(time: Double, with time2: Double?, and location: LocationData?, type: OrbType)->PlanetRow
     func getHouses(time: Double, location: LocationData, system: String)->PlanetRow
 }
 
