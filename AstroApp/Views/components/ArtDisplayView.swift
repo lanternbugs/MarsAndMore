@@ -76,7 +76,7 @@ struct ArtDisplayView: View {
         }
         switch type {
         case .Library:
-            DelayedImageView(url: image.url, key: PhotoKey(type: type, id: image.objectId + ArtDataManager.libraryOffset, enity: ImageEnities.Met))
+            DelayedImageView(url: image.url, key: PhotoKey(type: type, id: image.libraryKey, enity: ImageEnities.Met))
         default:
             DelayedImageView(url: image.url, key: PhotoKey(type: type, id: image.id, enity: ImageEnities.Met))
         }

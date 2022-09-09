@@ -162,7 +162,7 @@ extension ArtDataManager {
                 artImage.type = ImagePhotoType.Library.rawValue
                 artImage.url = image.url
                 artImage.title = image.name
-                artImage.id = Int32(image.objectId) + Int32(ArtDataManager.libraryOffset)
+                artImage.id = Int32(image.libraryKey)
                 artImage.fetchDate = fetchDate
                 artImage.objDate = image.objectDate
                 artImage.artistName = image.artistDisplayName

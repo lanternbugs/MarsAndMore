@@ -109,6 +109,9 @@ struct MetImageData
     let url: URL
     let id: Int
     let stringId: String
+    var libraryKey: Int {
+        objectId + ArtDataManager.libraryOffset
+    }
 }
 
 enum FailureReason : Error {
