@@ -64,6 +64,13 @@ struct ChartSettings: View {
                             }
                         }.pickerStyle(RadioGroupPickerStyle())
                         
+                        Picker(selection: manager.$orbSelection, label: Text("Choose Aspects Orbs Type")) {
+                            ForEach(OrbType.allCases, id: \.rawValue) {
+                                orbs in
+                                Text(orbs.rawValue).tag(orbs)
+                            }
+                        }.pickerStyle(RadioGroupPickerStyle())
+                        
 #else
                         VStack {
                             Spacer()
@@ -73,6 +80,15 @@ struct ChartSettings: View {
                                 ForEach(HouseSystem.allCases, id: \.rawValue) {
                                     system in
                                     Text(system.rawValue).tag(system)
+                                }
+                            }
+                            
+                            Text("Choose Aspects Orbs Type")
+                            Spacer()
+                            Picker(selection: manager.$orbSelection, label: Text("Choose Aspects Orbs Type")) {
+                                ForEach(OrbType.allCases, id: \.rawValue) {
+                                    orbs in
+                                    Text(orbs.rawValue).tag(orbs)
                                 }
                             }
                         }

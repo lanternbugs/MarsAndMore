@@ -18,6 +18,7 @@ struct PlanetButtons: View, AstrobotInterface {
     @Binding var data: [DisplayPlanetRow]
     @Environment(\.roomState) private var roomState
     @EnvironmentObject private var savedDate: PlanetsDate
+    @EnvironmentObject private var manager: BirthDataManager
     @State private var planetButtonsEnabled = true
     @ViewBuilder
     var body: some View {
@@ -98,7 +99,7 @@ extension PlanetButtons {
             return
         }
         temporaryDisableButtons()
-        let row = getAspects(time: savedDate.planetsDateChoice.getAstroTime(), with: nil, and: nil)
+        let row = getAspects(time: savedDate.planetsDateChoice.getAstroTime(), with: nil, and: nil, type: manager.orbSelection)
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects, name: getStringDate())
         data.append(displayRow)
     }
