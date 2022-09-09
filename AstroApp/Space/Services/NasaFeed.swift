@@ -82,7 +82,6 @@ struct NasaFeed
                             return
                         }
                       let photoInfo = try decoder.decode(RoverPhotos.self, from: data)
-                        print("\(photoInfo.photos.count) is the count")
                         completion(photoInfo)
                     } catch
                     {
