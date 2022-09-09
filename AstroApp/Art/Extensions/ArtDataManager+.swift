@@ -149,9 +149,11 @@ extension ArtDataManager {
         
         serialQueue.async { [weak self] in
             guard let photo =  ArtDataManager.artImages[type.rawValue + String(image.id)]  else  {
-                return
+                return // garantees it's downloaded
             }
-            
+            guard self?.libraryData.first(where: { $0.objectId == image.objectId}) == nil else {
+                return // redundancy safetey check
+            }
             guard let context = SpaceDataManager.managedContext else {
                 return
             }
