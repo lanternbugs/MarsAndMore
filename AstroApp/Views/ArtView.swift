@@ -26,10 +26,8 @@ struct ArtView: View {
                     Text("Images update daily").font(.title)
                     Spacer()
                 }
-                if artDataManager.libraryData.count > 0 {
-                    Button(action: { artState.wrappedValue = .Library }) {
-                        Text("Library")
-                    }
+                Button(action: { artState.wrappedValue = .Library }) {
+                    Text("Library")
                 }
                 
                 Picker(selection: $artChoice, label: Text("Choice")) {

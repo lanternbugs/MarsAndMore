@@ -12,9 +12,13 @@ struct ArtLibraryView: View {
     var body: some View {
         ScrollView {
             LazyVStack {
-                ForEach(artDataManager.libraryData, id: \.stringId) {
-                    image in
-                    ArtDisplayView(image: image, type: ImagePhotoType.Library)
+                if artDataManager.libraryData.count  == 0 {
+                    Text("No pictures have been saved yet. Above Mars and Venus Art users can select Add to Library")
+                } else {
+                    ForEach(artDataManager.libraryData, id: \.stringId) {
+                        image in
+                        ArtDisplayView(image: image, type: ImagePhotoType.Library)
+                    }
                 }
             }
         }
