@@ -171,7 +171,7 @@ extension ArtDataManager {
                 artImage.objId = Int32(image.objectId)
     #if os(macOS)
 
-                artImage.image = photo.jpgData
+                artImage.image = photo.jpgData()
     #elseif os(iOS)
                 artImage.image = photo.jpegData(compressionQuality: CGFloat(JPEGQuality.low.rawValue))
     #endif

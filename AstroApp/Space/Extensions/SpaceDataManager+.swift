@@ -17,12 +17,12 @@ import SwiftUI
 import CoreData
 #if os(macOS)
 extension NSImage {
-    var pngData: Data? {
+    func pngData()->Data? {
         guard let tiffRepresentation = tiffRepresentation, let bitmapImage = NSBitmapImageRep(data: tiffRepresentation) else { return nil }
         return bitmapImage.representation(using: .png, properties: [:])
     }
     
-    var jpgData: Data {
+    func jpgData()->Data {
             let cgImage = self.cgImage(forProposedRect: nil, context: nil, hints: nil)!
             let bitmapRep = NSBitmapImageRep(cgImage: cgImage)
             let jpegData = bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:])!
@@ -242,7 +242,7 @@ extension SpaceDataManager {
                         
 #if os(macOS)
 
-                        photo.image = image.jpgData
+                        photo.image = image.jpgData()
 #elseif os(iOS)
                         photo.image = image.jpegData(compressionQuality: CGFloat(JPEGQuality.low.rawValue))
 #endif
