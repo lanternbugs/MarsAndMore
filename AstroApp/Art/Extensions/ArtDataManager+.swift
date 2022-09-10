@@ -173,7 +173,7 @@ extension ArtDataManager {
 
                 artImage.image = photo.pngData
     #elseif os(iOS)
-                artImage.image = photo.pngData()
+                artImage.image = photo.jpegData(compressionQuality: CGFloat(JPEGQuality.low.rawValue))
     #endif
                 DispatchQueue.main.async { [weak self] in
                     self?.libraryData.append(image)
