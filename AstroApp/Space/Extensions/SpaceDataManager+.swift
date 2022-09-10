@@ -21,6 +21,13 @@ extension NSImage {
         guard let tiffRepresentation = tiffRepresentation, let bitmapImage = NSBitmapImageRep(data: tiffRepresentation) else { return nil }
         return bitmapImage.representation(using: .png, properties: [:])
     }
+    
+    var jpgData: Data {
+            let cgImage = self.cgImage(forProposedRect: nil, context: nil, hints: nil)!
+            let bitmapRep = NSBitmapImageRep(cgImage: cgImage)
+            let jpegData = bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: [:])!
+            return jpegData
+    }
 }
 #endif
 extension SpaceDataManager {
@@ -235,7 +242,7 @@ extension SpaceDataManager {
                         
 #if os(macOS)
 
-                        photo.image = image.pngData
+                        photo.image = image.jpgData
 #elseif os(iOS)
                         photo.image = image.jpegData(compressionQuality: CGFloat(JPEGQuality.low.rawValue))
 #endif
