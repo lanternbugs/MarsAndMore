@@ -54,26 +54,51 @@ struct ArtDisplayView: View {
                 }
                 }
 #endif
-        HStack {
-            Spacer()
-            if artDataManager.libraryData.first { $0.objectId == image.objectId} == nil && showButton {
-                Button(action: {
-                    if showButton {
-                        artDataManager.saveToLibrary(image: image, type: type)
-                        showButton = false
-                        // we want the button back if they later delete image from library and go back to this view but this provides a long lock till the core data layer is done. 
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-                            showButton = true
+        switch type {
+        case .Library:
+            HStack {
+                Spacer()
+                if artDataManager.libraryData.first { $0.objectId == image.objectId} != nil && showButton {
+                    Button(action: {
+                        if showButton {
+                            deleteFromLibrary(id: image.objectId)
+                            showButton = false
+                            // we want the button back if they later delete image from library and go back to this view but this provides a long lock till the core data layer is done.
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                showButton = true
+                            }
                         }
+                        
+                    }) {
+                        Text("Delete from Library")
                     }
-                    
-                }) {
-                    Text("Add to Library")
                 }
+                Spacer()
+                
             }
-            Spacer()
-            
+        default:
+            HStack {
+                Spacer()
+                if artDataManager.libraryData.first { $0.objectId == image.objectId} == nil && showButton {
+                    Button(action: {
+                        if showButton {
+                            artDataManager.saveToLibrary(image: image, type: type)
+                            showButton = false
+                            // we want the button back if they later delete image from library and go back to this view but this provides a long lock till the core data layer is done.
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+                                showButton = true
+                            }
+                        }
+                        
+                    }) {
+                        Text("Add to Library")
+                    }
+                }
+                Spacer()
+                
+            }
         }
+        
         switch type {
         case .Library:
             DelayedImageView(url: image.url, key: PhotoKey(type: type, id: image.libraryKey, enity: ImageEnities.Met))
@@ -84,6 +109,19 @@ struct ArtDisplayView: View {
     }
 }
 
+extension ArtDisplayView {
+    func deleteFromLibrary(id: Int)
+    {
+        for (i, img) in artDataManager.libraryData.enumerated() {
+            if img.objectId == id {
+                artDataManager.libraryData.remove(at: i)
+                artDataManager.deleteFromLibrary(image: img)
+                break
+            }
+            
+        }
+    }
+}
 struct ArtDisplayView_Previews: PreviewProvider {
     static var image = MetImageData(objectId: 0, name: "image", artistDisplayName: nil, objectDate: nil, objectName: nil, url: URL(string: "https://www.google.com")!, id: 0, stringId: UUID().uuidString)
     static var type = ImagePhotoType.MarsArt

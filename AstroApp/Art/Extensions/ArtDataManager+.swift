@@ -187,4 +187,28 @@ extension ArtDataManager {
         }
         
     }
+    
+    func deleteFromLibrary(image: MetImageData)
+    {
+        serialQueue.async {
+            guard let context = SpaceDataManager.managedContext else {
+                return
+            }
+            
+            let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: ImageEnities.Met.rawValue)
+            fetchRequest.predicate = NSPredicate(format: "id == %d", image.libraryKey)
+            do {
+                if let photos =  try context.fetch(fetchRequest) as? [GenericImage] {
+                    for photo in photos
+                    {
+                        context.delete(photo)
+                        try context.save()
+                    }
+                }
+            } catch let error as NSError  {
+                print("Could not fetch \(error), \(error.userInfo)")
+                
+            }
+        }
+    }
 }
