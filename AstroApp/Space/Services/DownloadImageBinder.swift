@@ -40,13 +40,29 @@ class DownloadImageBinder: ObservableObject {
                                .replaceError(with: nil)
                                .handleEvents(receiveOutput: {
                                    if let img = $0, let key = key {
-                                       SpaceDataManager.setPhotoForKey(key: key, image: img)
                                        switch key.type {
                                        case .MarsArt, .VenusArt:
-                                           ArtDataManager.updateImage(image: img, type: key.type, id: key.id)
+#if os(macOS)
+
+            let compressedImage = img.jpgData()
+            let img = NSImage.init(data: compressedImage)
+                                           
+#elseif os(iOS)
+                                           guard let compressedImage = img.jpegData(compressionQuality: CGFloat(JPEGQuality.low.rawValue)) else {
+                                               return
+                                           }
+            let img = UIImage(data: compressedImage)
+#endif
+                                           if let img = img {
+                                               ArtDataManager.updateImage(image: img, type: key.type, id: key.id)
+                                               SpaceDataManager.setPhotoForKey(key: key, image: img)
+                                           }
+                                           
                                        default:
-                                           break
+                                           SpaceDataManager.setPhotoForKey(key: key, image: img)
                                        }
+                                       
+                                       
                                    }})
                                .receive(on: DispatchQueue.main)
                                .assign(to: &$image)
