@@ -66,7 +66,6 @@ struct ArtDisplayView: View {
         case .Library:
             if showWarning {
                 HStack {
-                    Text("Are you sure? ")
                     Button(action: {
                         if showButton {
                             deleteFromLibrary(id: image.objectId)
@@ -83,6 +82,7 @@ struct ArtDisplayView: View {
                     Button(action: { showWarning = false }) {
                         Text("Cancel")
                     }
+                    Text(" Are you sure? ")
                     Spacer()
                 }
             } else {
