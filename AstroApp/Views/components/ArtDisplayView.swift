@@ -1,16 +1,24 @@
-//
-//  ArtDisplayView.swift
-//  MarsAndMore
-//
-//  Created by Michael Adams on 8/15/22.
-//
+/*
+*  Copyright (C) 2022 Michael R Adams.
+*  All rights reserved.
+*
+* This program can be redistributed and/or modified under
+* the terms of the GNU General Public License; either
+* version 2 of the License, or (at your option) any later version.
+*
+*  This code is distributed in the hope that it will
+*  be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*/
+
 
 import SwiftUI
 
 struct ArtDisplayView: View {
     let image: MetImageData
     let type: ImagePhotoType
-    @State var showButton = true
+    @State private var showButton = true
+    @State private var showWarning = false
     @EnvironmentObject private var artDataManager: ArtDataManager
     var body: some View {
 #if os(macOS)
@@ -56,9 +64,9 @@ struct ArtDisplayView: View {
 #endif
         switch type {
         case .Library:
-            HStack {
-                Spacer()
-                if artDataManager.libraryData.first { $0.objectId == image.objectId} != nil && showButton {
+            if showWarning {
+                HStack {
+                    Text("Are you sure? ")
                     Button(action: {
                         if showButton {
                             deleteFromLibrary(id: image.objectId)
@@ -70,12 +78,31 @@ struct ArtDisplayView: View {
                         }
                         
                     }) {
-                        Text("Delete from Library")
+                        Text("Delete")
                     }
+                    Button(action: { showWarning = false }) {
+                        Text("Cancel")
+                    }
+                    Spacer()
                 }
-                Spacer()
-                
+            } else {
+                HStack {
+                    Spacer()
+                    if artDataManager.libraryData.first { $0.objectId == image.objectId} != nil && showButton {
+                        Button(action: {
+                            if showButton {
+                                showWarning = true
+                            }
+                            
+                        }) {
+                            Text("Delete from Library")
+                        }
+                    }
+                    Spacer()
+                    
+                }
             }
+            
         default:
             HStack {
                 Spacer()
