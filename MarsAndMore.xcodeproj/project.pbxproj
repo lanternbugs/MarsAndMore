@@ -18,6 +18,8 @@
 		7606E29827AB54E300C72FAB /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E29627AB54E300C72FAB /* ChartView.swift */; };
 		760A35D027ACEA0700BCFE81 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760A35CF27ACEA0700BCFE81 /* UIDevice+Extensions.swift */; };
 		760A35D127ACEA0700BCFE81 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760A35CF27ACEA0700BCFE81 /* UIDevice+Extensions.swift */; };
+		7611E8A328CFFB1400D510DC /* OrbType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611E8A228CFFB1400D510DC /* OrbType+.swift */; };
+		7611E8A428CFFB1400D510DC /* OrbType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611E8A228CFFB1400D510DC /* OrbType+.swift */; };
 		7615428C27D1456600B0E781 /* ChartSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7615428B27D1456600B0E781 /* ChartSettings.swift */; };
 		7615428D27D1456600B0E781 /* ChartSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7615428B27D1456600B0E781 /* ChartSettings.swift */; };
 		76165BE027D19A4700C2F709 /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76165BDF27D19A4700C2F709 /* ResourcesView.swift */; };
@@ -324,6 +326,7 @@
 		7606E28327AB18BF00C72FAB /* ChartRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartRoom.swift; sourceTree = "<group>"; };
 		7606E29627AB54E300C72FAB /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		760A35CF27ACEA0700BCFE81 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
+		7611E8A228CFFB1400D510DC /* OrbType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrbType+.swift"; sourceTree = "<group>"; };
 		7615428B27D1456600B0E781 /* ChartSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSettings.swift; sourceTree = "<group>"; };
 		76165BDF27D19A4700C2F709 /* ResourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesView.swift; sourceTree = "<group>"; };
 		7617DAB227AFA6530064B98E /* Signs+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signs+Extensions.swift"; sourceTree = "<group>"; };
@@ -871,6 +874,7 @@
 				7689C6B227D02FDD00B38E4A /* PlanetFetchType+Extensions.swift */,
 				76038DD7289869CB00F6DA0F /* Houses+.swift */,
 				768453C0289C709D0086B37C /* HouseSystem+.swift */,
+				7611E8A228CFFB1400D510DC /* OrbType+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1176,6 +1180,7 @@
 				762E0C69288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
 				76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
 				76664B3027CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
+				7611E8A328CFFB1400D510DC /* OrbType+.swift in Sources */,
 				761CF35928877919008FC865 /* Image+Extensions.swift in Sources */,
 				76DAC8A727B2016700852872 /* CitiesView.swift in Sources */,
 				761DEEC3279B9EF900A71938 /* swecl.c in Sources */,
@@ -1267,6 +1272,7 @@
 				762E0C6A288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
 				76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
 				76664B3127CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
+				7611E8A428CFFB1400D510DC /* OrbType+.swift in Sources */,
 				761CF35A28877919008FC865 /* Image+Extensions.swift in Sources */,
 				76DAC8A827B2016700852872 /* CitiesView.swift in Sources */,
 				76BEF3F627ACB0AB001C9AD0 /* MainView.swift in Sources */,
