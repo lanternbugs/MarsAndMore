@@ -102,7 +102,7 @@ extension PlanetButtons {
         }
         temporaryDisableButtons()
         let row = getAspects(time: savedDate.planetsDateChoice.getAstroTime(), with: nil, and: nil, type: manager.orbSelection)
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects, name: getStringDate())
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects(orbs: manager.orbSelection.getShortName()), name: getStringDate())
         data.append(displayRow)
     }
     

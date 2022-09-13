@@ -75,7 +75,7 @@ extension AstroButtons {
         }
         temporaryDisableButtons()
         let row = getAspects(time: manager.getSelectionTime(), with: nil, and: manager.getSelectionLocation(), type: manager.orbSelection)
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects, name: manager.getCurrentName())
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects(orbs: manager.orbSelection.getShortName()), name: manager.getCurrentName())
         data.append(displayRow)
     }
     
