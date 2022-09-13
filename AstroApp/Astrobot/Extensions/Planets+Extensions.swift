@@ -54,15 +54,29 @@ extension Planets {
         }
     }
     
-    func getNatalOrb(type: OrbType)->Double
+    func getNatalOrb(type: OrbType, with aspect: Aspects)->Double
     {
-        switch type {
-        case .NarrowOrbs:
-            return getNarrowNatalOrbs()
-        case .MediumOrbs:
-            return getMediumNatalOrbs()
-        case .WideOrbs:
-            return getWideNatalOrbs()
+        switch aspect {
+        case .Sextile:
+            switch type {
+            case .NarrowOrbs:
+                return getNarrowSextileNatalOrb()
+            case .MediumOrbs:
+                return getMediumSextileNatalOrb()
+            case .WideOrbs:
+                return getWideSextileNatalOrb()
+            }
+            
+        default:
+            switch type {
+            case .NarrowOrbs:
+                return getNarrowNatalOrbs()
+            case .MediumOrbs:
+                return getMediumNatalOrbs()
+            case .WideOrbs:
+                return getWideNatalOrbs()
+            }
+            
         }
     }
     
@@ -96,6 +110,39 @@ extension Planets {
             return 8.0
         default:
             return 6.0
+        }
+    }
+    
+    func getNarrowSextileNatalOrb()->Double {
+        switch(self) {
+        case .Sun, .Moon:
+            return 3.0
+        case .Mars, .Venus, .Mercury, .Ascendent:
+            return 2.0
+        default:
+            return 1.0
+        }
+    }
+    
+    func getMediumSextileNatalOrb()->Double {
+        switch(self) {
+        case .Sun, .Moon:
+            return 5.0
+        case .Mars, .Venus, .Mercury, .Ascendent:
+            return 4.0
+        default:
+            return 3.0
+        }
+    }
+    
+    func getWideSextileNatalOrb()->Double {
+        switch(self) {
+        case .Sun, .Moon:
+            return 6.0
+        case .Mars, .Venus, .Mercury, .Ascendent:
+            return 5.0
+        default:
+            return 5.0
         }
     }
     
