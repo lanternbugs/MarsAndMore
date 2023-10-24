@@ -27,11 +27,11 @@ struct TransitsButtonControl: View, AstrobotInterface {
                     Text("Transits")
                 }
                 Spacer()
-                if let name = manager.getCurrentName() {
-                    Text("\(name)")
-                    Spacer()
-                }
-                if let num = manager.selectedName, let date = manager.birthDates[num], let _ = date.location
+                
+                Text("\(manager.getCurrentName() )")
+                Spacer()
+                
+                if let num = manager.selectedName,  manager.birthDates[num].location != nil
                 {
                     Button(action: houses) {
                         Text("Houses")
