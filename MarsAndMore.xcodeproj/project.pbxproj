@@ -20,6 +20,117 @@
 		760A35D127ACEA0700BCFE81 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760A35CF27ACEA0700BCFE81 /* UIDevice+Extensions.swift */; };
 		7611E8A328CFFB1400D510DC /* OrbType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611E8A228CFFB1400D510DC /* OrbType+.swift */; };
 		7611E8A428CFFB1400D510DC /* OrbType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611E8A228CFFB1400D510DC /* OrbType+.swift */; };
+		7614A3AE2AE9B849005AEC82 /* moon-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3882AE9B849005AEC82 /* moon-capricorn.txt */; };
+		7614A3AF2AE9B849005AEC82 /* moon-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3882AE9B849005AEC82 /* moon-capricorn.txt */; };
+		7614A3B02AE9B849005AEC82 /* moon-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3882AE9B849005AEC82 /* moon-capricorn.txt */; };
+		7614A3B12AE9B849005AEC82 /* moon-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3892AE9B849005AEC82 /* moon-scorpio.txt */; };
+		7614A3B22AE9B849005AEC82 /* moon-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3892AE9B849005AEC82 /* moon-scorpio.txt */; };
+		7614A3B32AE9B849005AEC82 /* moon-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3892AE9B849005AEC82 /* moon-scorpio.txt */; };
+		7614A3B42AE9B849005AEC82 /* moon-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38A2AE9B849005AEC82 /* moon-aquarius.txt */; };
+		7614A3B52AE9B849005AEC82 /* moon-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38A2AE9B849005AEC82 /* moon-aquarius.txt */; };
+		7614A3B62AE9B849005AEC82 /* moon-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38A2AE9B849005AEC82 /* moon-aquarius.txt */; };
+		7614A3B72AE9B849005AEC82 /* moon-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38B2AE9B849005AEC82 /* moon-gemini.txt */; };
+		7614A3B82AE9B849005AEC82 /* moon-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38B2AE9B849005AEC82 /* moon-gemini.txt */; };
+		7614A3B92AE9B849005AEC82 /* moon-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38B2AE9B849005AEC82 /* moon-gemini.txt */; };
+		7614A3BA2AE9B849005AEC82 /* moon-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38C2AE9B849005AEC82 /* moon-pisces.txt */; };
+		7614A3BB2AE9B849005AEC82 /* moon-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38C2AE9B849005AEC82 /* moon-pisces.txt */; };
+		7614A3BC2AE9B849005AEC82 /* moon-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38C2AE9B849005AEC82 /* moon-pisces.txt */; };
+		7614A3BD2AE9B849005AEC82 /* moon-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38D2AE9B849005AEC82 /* moon-leo.txt */; };
+		7614A3BE2AE9B849005AEC82 /* moon-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38D2AE9B849005AEC82 /* moon-leo.txt */; };
+		7614A3BF2AE9B849005AEC82 /* moon-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38D2AE9B849005AEC82 /* moon-leo.txt */; };
+		7614A3C02AE9B849005AEC82 /* moon-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38E2AE9B849005AEC82 /* moon-sagitarius.txt */; };
+		7614A3C12AE9B849005AEC82 /* moon-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38E2AE9B849005AEC82 /* moon-sagitarius.txt */; };
+		7614A3C22AE9B849005AEC82 /* moon-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38E2AE9B849005AEC82 /* moon-sagitarius.txt */; };
+		7614A3C32AE9B849005AEC82 /* moon-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38F2AE9B849005AEC82 /* moon-aries.txt */; };
+		7614A3C42AE9B849005AEC82 /* moon-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38F2AE9B849005AEC82 /* moon-aries.txt */; };
+		7614A3C52AE9B849005AEC82 /* moon-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A38F2AE9B849005AEC82 /* moon-aries.txt */; };
+		7614A3C62AE9B849005AEC82 /* moon-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3902AE9B849005AEC82 /* moon-libra.txt */; };
+		7614A3C72AE9B849005AEC82 /* moon-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3902AE9B849005AEC82 /* moon-libra.txt */; };
+		7614A3C82AE9B849005AEC82 /* moon-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3902AE9B849005AEC82 /* moon-libra.txt */; };
+		7614A3C92AE9B849005AEC82 /* moon-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3912AE9B849005AEC82 /* moon-taurus.txt */; };
+		7614A3CA2AE9B849005AEC82 /* moon-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3912AE9B849005AEC82 /* moon-taurus.txt */; };
+		7614A3CB2AE9B849005AEC82 /* moon-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3912AE9B849005AEC82 /* moon-taurus.txt */; };
+		7614A3CC2AE9B849005AEC82 /* moon-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3922AE9B849005AEC82 /* moon-virgo.txt */; };
+		7614A3CD2AE9B849005AEC82 /* moon-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3922AE9B849005AEC82 /* moon-virgo.txt */; };
+		7614A3CE2AE9B849005AEC82 /* moon-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3922AE9B849005AEC82 /* moon-virgo.txt */; };
+		7614A3CF2AE9B849005AEC82 /* moon-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3932AE9B849005AEC82 /* moon-cancer.txt */; };
+		7614A3D02AE9B849005AEC82 /* moon-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3932AE9B849005AEC82 /* moon-cancer.txt */; };
+		7614A3D12AE9B849005AEC82 /* moon-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3932AE9B849005AEC82 /* moon-cancer.txt */; };
+		7614A3D22AE9B849005AEC82 /* sun-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3952AE9B849005AEC82 /* sun-gemini.txt */; };
+		7614A3D32AE9B849005AEC82 /* sun-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3952AE9B849005AEC82 /* sun-gemini.txt */; };
+		7614A3D42AE9B849005AEC82 /* sun-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3952AE9B849005AEC82 /* sun-gemini.txt */; };
+		7614A3D52AE9B849005AEC82 /* sun-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3962AE9B849005AEC82 /* sun-aries.txt */; };
+		7614A3D62AE9B849005AEC82 /* sun-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3962AE9B849005AEC82 /* sun-aries.txt */; };
+		7614A3D72AE9B849005AEC82 /* sun-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3962AE9B849005AEC82 /* sun-aries.txt */; };
+		7614A3D82AE9B849005AEC82 /* sun-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3972AE9B849005AEC82 /* sun-libra.txt */; };
+		7614A3D92AE9B849005AEC82 /* sun-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3972AE9B849005AEC82 /* sun-libra.txt */; };
+		7614A3DA2AE9B849005AEC82 /* sun-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3972AE9B849005AEC82 /* sun-libra.txt */; };
+		7614A3DB2AE9B849005AEC82 /* sun-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3982AE9B849005AEC82 /* sun-pisces.txt */; };
+		7614A3DC2AE9B849005AEC82 /* sun-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3982AE9B849005AEC82 /* sun-pisces.txt */; };
+		7614A3DD2AE9B849005AEC82 /* sun-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3982AE9B849005AEC82 /* sun-pisces.txt */; };
+		7614A3DE2AE9B849005AEC82 /* sun-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3992AE9B849005AEC82 /* sun-scorpio.txt */; };
+		7614A3DF2AE9B849005AEC82 /* sun-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3992AE9B849005AEC82 /* sun-scorpio.txt */; };
+		7614A3E02AE9B849005AEC82 /* sun-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3992AE9B849005AEC82 /* sun-scorpio.txt */; };
+		7614A3E12AE9B849005AEC82 /* sun-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39A2AE9B849005AEC82 /* sun-sagitarius.txt */; };
+		7614A3E22AE9B849005AEC82 /* sun-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39A2AE9B849005AEC82 /* sun-sagitarius.txt */; };
+		7614A3E32AE9B849005AEC82 /* sun-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39A2AE9B849005AEC82 /* sun-sagitarius.txt */; };
+		7614A3E42AE9B849005AEC82 /* sun-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39B2AE9B849005AEC82 /* sun-taurus.txt */; };
+		7614A3E52AE9B849005AEC82 /* sun-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39B2AE9B849005AEC82 /* sun-taurus.txt */; };
+		7614A3E62AE9B849005AEC82 /* sun-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39B2AE9B849005AEC82 /* sun-taurus.txt */; };
+		7614A3E72AE9B849005AEC82 /* sun-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39C2AE9B849005AEC82 /* sun-capricorn.txt */; };
+		7614A3E82AE9B849005AEC82 /* sun-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39C2AE9B849005AEC82 /* sun-capricorn.txt */; };
+		7614A3E92AE9B849005AEC82 /* sun-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39C2AE9B849005AEC82 /* sun-capricorn.txt */; };
+		7614A3EA2AE9B849005AEC82 /* sun-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39D2AE9B849005AEC82 /* sun-leo.txt */; };
+		7614A3EB2AE9B849005AEC82 /* sun-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39D2AE9B849005AEC82 /* sun-leo.txt */; };
+		7614A3EC2AE9B849005AEC82 /* sun-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39D2AE9B849005AEC82 /* sun-leo.txt */; };
+		7614A3ED2AE9B849005AEC82 /* sun-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39E2AE9B849005AEC82 /* sun-virgo.txt */; };
+		7614A3EE2AE9B849005AEC82 /* sun-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39E2AE9B849005AEC82 /* sun-virgo.txt */; };
+		7614A3EF2AE9B849005AEC82 /* sun-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39E2AE9B849005AEC82 /* sun-virgo.txt */; };
+		7614A3F02AE9B849005AEC82 /* sun-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39F2AE9B849005AEC82 /* sun-cancer.txt */; };
+		7614A3F12AE9B849005AEC82 /* sun-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39F2AE9B849005AEC82 /* sun-cancer.txt */; };
+		7614A3F22AE9B849005AEC82 /* sun-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A39F2AE9B849005AEC82 /* sun-cancer.txt */; };
+		7614A3F32AE9B849005AEC82 /* sun-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A02AE9B849005AEC82 /* sun-aquarius.txt */; };
+		7614A3F42AE9B849005AEC82 /* sun-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A02AE9B849005AEC82 /* sun-aquarius.txt */; };
+		7614A3F52AE9B849005AEC82 /* sun-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A02AE9B849005AEC82 /* sun-aquarius.txt */; };
+		7614A3F62AE9B849005AEC82 /* mercury-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A22AE9B849005AEC82 /* mercury-taurus.txt */; };
+		7614A3F72AE9B849005AEC82 /* mercury-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A22AE9B849005AEC82 /* mercury-taurus.txt */; };
+		7614A3F82AE9B849005AEC82 /* mercury-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A22AE9B849005AEC82 /* mercury-taurus.txt */; };
+		7614A3F92AE9B849005AEC82 /* mercury-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A32AE9B849005AEC82 /* mercury-capricorn.txt */; };
+		7614A3FA2AE9B849005AEC82 /* mercury-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A32AE9B849005AEC82 /* mercury-capricorn.txt */; };
+		7614A3FB2AE9B849005AEC82 /* mercury-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A32AE9B849005AEC82 /* mercury-capricorn.txt */; };
+		7614A3FC2AE9B849005AEC82 /* mercury-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A42AE9B849005AEC82 /* mercury-scorpio.txt */; };
+		7614A3FD2AE9B849005AEC82 /* mercury-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A42AE9B849005AEC82 /* mercury-scorpio.txt */; };
+		7614A3FE2AE9B849005AEC82 /* mercury-scorpio.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A42AE9B849005AEC82 /* mercury-scorpio.txt */; };
+		7614A3FF2AE9B849005AEC82 /* mercury-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A52AE9B849005AEC82 /* mercury-cancer.txt */; };
+		7614A4002AE9B849005AEC82 /* mercury-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A52AE9B849005AEC82 /* mercury-cancer.txt */; };
+		7614A4012AE9B849005AEC82 /* mercury-cancer.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A52AE9B849005AEC82 /* mercury-cancer.txt */; };
+		7614A4022AE9B849005AEC82 /* mercury-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A62AE9B849005AEC82 /* mercury-virgo.txt */; };
+		7614A4032AE9B849005AEC82 /* mercury-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A62AE9B849005AEC82 /* mercury-virgo.txt */; };
+		7614A4042AE9B849005AEC82 /* mercury-virgo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A62AE9B849005AEC82 /* mercury-virgo.txt */; };
+		7614A4052AE9B849005AEC82 /* mercury-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A72AE9B849005AEC82 /* mercury-leo.txt */; };
+		7614A4062AE9B849005AEC82 /* mercury-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A72AE9B849005AEC82 /* mercury-leo.txt */; };
+		7614A4072AE9B849005AEC82 /* mercury-leo.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A72AE9B849005AEC82 /* mercury-leo.txt */; };
+		7614A4082AE9B849005AEC82 /* mercury-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A82AE9B849005AEC82 /* mercury-libra.txt */; };
+		7614A4092AE9B849005AEC82 /* mercury-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A82AE9B849005AEC82 /* mercury-libra.txt */; };
+		7614A40A2AE9B849005AEC82 /* mercury-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A82AE9B849005AEC82 /* mercury-libra.txt */; };
+		7614A40B2AE9B849005AEC82 /* mercury-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A92AE9B849005AEC82 /* mercury-aries.txt */; };
+		7614A40C2AE9B849005AEC82 /* mercury-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A92AE9B849005AEC82 /* mercury-aries.txt */; };
+		7614A40D2AE9B849005AEC82 /* mercury-aries.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3A92AE9B849005AEC82 /* mercury-aries.txt */; };
+		7614A40E2AE9B849005AEC82 /* mercury-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3AA2AE9B849005AEC82 /* mercury-gemini.txt */; };
+		7614A40F2AE9B849005AEC82 /* mercury-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3AA2AE9B849005AEC82 /* mercury-gemini.txt */; };
+		7614A4102AE9B849005AEC82 /* mercury-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3AA2AE9B849005AEC82 /* mercury-gemini.txt */; };
+		7614A4112AE9B849005AEC82 /* mercury-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3AB2AE9B849005AEC82 /* mercury-aquarius.txt */; };
+		7614A4122AE9B849005AEC82 /* mercury-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3AB2AE9B849005AEC82 /* mercury-aquarius.txt */; };
+		7614A4132AE9B849005AEC82 /* mercury-aquarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3AB2AE9B849005AEC82 /* mercury-aquarius.txt */; };
+		7614A4142AE9B849005AEC82 /* mercury-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3AC2AE9B849005AEC82 /* mercury-pisces.txt */; };
+		7614A4152AE9B849005AEC82 /* mercury-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3AC2AE9B849005AEC82 /* mercury-pisces.txt */; };
+		7614A4162AE9B849005AEC82 /* mercury-pisces.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3AC2AE9B849005AEC82 /* mercury-pisces.txt */; };
+		7614A4172AE9B849005AEC82 /* mercury-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3AD2AE9B849005AEC82 /* mercury-sagitarius.txt */; };
+		7614A4182AE9B849005AEC82 /* mercury-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3AD2AE9B849005AEC82 /* mercury-sagitarius.txt */; };
+		7614A4192AE9B849005AEC82 /* mercury-sagitarius.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3AD2AE9B849005AEC82 /* mercury-sagitarius.txt */; };
+		7614A41B2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A41A2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift */; };
+		7614A41C2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A41A2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift */; };
+		7614A41D2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7614A41A2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift */; };
 		7615428C27D1456600B0E781 /* ChartSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7615428B27D1456600B0E781 /* ChartSettings.swift */; };
 		7615428D27D1456600B0E781 /* ChartSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7615428B27D1456600B0E781 /* ChartSettings.swift */; };
 		76165BE027D19A4700C2F709 /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76165BDF27D19A4700C2F709 /* ResourcesView.swift */; };
@@ -327,6 +438,43 @@
 		7606E29627AB54E300C72FAB /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		760A35CF27ACEA0700BCFE81 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		7611E8A228CFFB1400D510DC /* OrbType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrbType+.swift"; sourceTree = "<group>"; };
+		7614A3882AE9B849005AEC82 /* moon-capricorn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-capricorn.txt"; sourceTree = "<group>"; };
+		7614A3892AE9B849005AEC82 /* moon-scorpio.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-scorpio.txt"; sourceTree = "<group>"; };
+		7614A38A2AE9B849005AEC82 /* moon-aquarius.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-aquarius.txt"; sourceTree = "<group>"; };
+		7614A38B2AE9B849005AEC82 /* moon-gemini.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-gemini.txt"; sourceTree = "<group>"; };
+		7614A38C2AE9B849005AEC82 /* moon-pisces.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-pisces.txt"; sourceTree = "<group>"; };
+		7614A38D2AE9B849005AEC82 /* moon-leo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-leo.txt"; sourceTree = "<group>"; };
+		7614A38E2AE9B849005AEC82 /* moon-sagitarius.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-sagitarius.txt"; sourceTree = "<group>"; };
+		7614A38F2AE9B849005AEC82 /* moon-aries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-aries.txt"; sourceTree = "<group>"; };
+		7614A3902AE9B849005AEC82 /* moon-libra.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-libra.txt"; sourceTree = "<group>"; };
+		7614A3912AE9B849005AEC82 /* moon-taurus.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-taurus.txt"; sourceTree = "<group>"; };
+		7614A3922AE9B849005AEC82 /* moon-virgo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-virgo.txt"; sourceTree = "<group>"; };
+		7614A3932AE9B849005AEC82 /* moon-cancer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-cancer.txt"; sourceTree = "<group>"; };
+		7614A3952AE9B849005AEC82 /* sun-gemini.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sun-gemini.txt"; sourceTree = "<group>"; };
+		7614A3962AE9B849005AEC82 /* sun-aries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sun-aries.txt"; sourceTree = "<group>"; };
+		7614A3972AE9B849005AEC82 /* sun-libra.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sun-libra.txt"; sourceTree = "<group>"; };
+		7614A3982AE9B849005AEC82 /* sun-pisces.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sun-pisces.txt"; sourceTree = "<group>"; };
+		7614A3992AE9B849005AEC82 /* sun-scorpio.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sun-scorpio.txt"; sourceTree = "<group>"; };
+		7614A39A2AE9B849005AEC82 /* sun-sagitarius.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sun-sagitarius.txt"; sourceTree = "<group>"; };
+		7614A39B2AE9B849005AEC82 /* sun-taurus.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sun-taurus.txt"; sourceTree = "<group>"; };
+		7614A39C2AE9B849005AEC82 /* sun-capricorn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sun-capricorn.txt"; sourceTree = "<group>"; };
+		7614A39D2AE9B849005AEC82 /* sun-leo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sun-leo.txt"; sourceTree = "<group>"; };
+		7614A39E2AE9B849005AEC82 /* sun-virgo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sun-virgo.txt"; sourceTree = "<group>"; };
+		7614A39F2AE9B849005AEC82 /* sun-cancer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sun-cancer.txt"; sourceTree = "<group>"; };
+		7614A3A02AE9B849005AEC82 /* sun-aquarius.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "sun-aquarius.txt"; sourceTree = "<group>"; };
+		7614A3A22AE9B849005AEC82 /* mercury-taurus.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mercury-taurus.txt"; sourceTree = "<group>"; };
+		7614A3A32AE9B849005AEC82 /* mercury-capricorn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mercury-capricorn.txt"; sourceTree = "<group>"; };
+		7614A3A42AE9B849005AEC82 /* mercury-scorpio.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mercury-scorpio.txt"; sourceTree = "<group>"; };
+		7614A3A52AE9B849005AEC82 /* mercury-cancer.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mercury-cancer.txt"; sourceTree = "<group>"; };
+		7614A3A62AE9B849005AEC82 /* mercury-virgo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mercury-virgo.txt"; sourceTree = "<group>"; };
+		7614A3A72AE9B849005AEC82 /* mercury-leo.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mercury-leo.txt"; sourceTree = "<group>"; };
+		7614A3A82AE9B849005AEC82 /* mercury-libra.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mercury-libra.txt"; sourceTree = "<group>"; };
+		7614A3A92AE9B849005AEC82 /* mercury-aries.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mercury-aries.txt"; sourceTree = "<group>"; };
+		7614A3AA2AE9B849005AEC82 /* mercury-gemini.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mercury-gemini.txt"; sourceTree = "<group>"; };
+		7614A3AB2AE9B849005AEC82 /* mercury-aquarius.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mercury-aquarius.txt"; sourceTree = "<group>"; };
+		7614A3AC2AE9B849005AEC82 /* mercury-pisces.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mercury-pisces.txt"; sourceTree = "<group>"; };
+		7614A3AD2AE9B849005AEC82 /* mercury-sagitarius.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mercury-sagitarius.txt"; sourceTree = "<group>"; };
+		7614A41A2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewFeaturedPlantesEntry.swift; sourceTree = "<group>"; };
 		7615428B27D1456600B0E781 /* ChartSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartSettings.swift; sourceTree = "<group>"; };
 		76165BDF27D19A4700C2F709 /* ResourcesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesView.swift; sourceTree = "<group>"; };
 		7617DAB227AFA6530064B98E /* Signs+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Signs+Extensions.swift"; sourceTree = "<group>"; };
@@ -518,6 +666,63 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		7614A3872AE9B849005AEC82 /* MoonData */ = {
+			isa = PBXGroup;
+			children = (
+				7614A3882AE9B849005AEC82 /* moon-capricorn.txt */,
+				7614A3892AE9B849005AEC82 /* moon-scorpio.txt */,
+				7614A38A2AE9B849005AEC82 /* moon-aquarius.txt */,
+				7614A38B2AE9B849005AEC82 /* moon-gemini.txt */,
+				7614A38C2AE9B849005AEC82 /* moon-pisces.txt */,
+				7614A38D2AE9B849005AEC82 /* moon-leo.txt */,
+				7614A38E2AE9B849005AEC82 /* moon-sagitarius.txt */,
+				7614A38F2AE9B849005AEC82 /* moon-aries.txt */,
+				7614A3902AE9B849005AEC82 /* moon-libra.txt */,
+				7614A3912AE9B849005AEC82 /* moon-taurus.txt */,
+				7614A3922AE9B849005AEC82 /* moon-virgo.txt */,
+				7614A3932AE9B849005AEC82 /* moon-cancer.txt */,
+			);
+			path = MoonData;
+			sourceTree = "<group>";
+		};
+		7614A3942AE9B849005AEC82 /* SunData */ = {
+			isa = PBXGroup;
+			children = (
+				7614A3952AE9B849005AEC82 /* sun-gemini.txt */,
+				7614A3962AE9B849005AEC82 /* sun-aries.txt */,
+				7614A3972AE9B849005AEC82 /* sun-libra.txt */,
+				7614A3982AE9B849005AEC82 /* sun-pisces.txt */,
+				7614A3992AE9B849005AEC82 /* sun-scorpio.txt */,
+				7614A39A2AE9B849005AEC82 /* sun-sagitarius.txt */,
+				7614A39B2AE9B849005AEC82 /* sun-taurus.txt */,
+				7614A39C2AE9B849005AEC82 /* sun-capricorn.txt */,
+				7614A39D2AE9B849005AEC82 /* sun-leo.txt */,
+				7614A39E2AE9B849005AEC82 /* sun-virgo.txt */,
+				7614A39F2AE9B849005AEC82 /* sun-cancer.txt */,
+				7614A3A02AE9B849005AEC82 /* sun-aquarius.txt */,
+			);
+			path = SunData;
+			sourceTree = "<group>";
+		};
+		7614A3A12AE9B849005AEC82 /* MercuryData */ = {
+			isa = PBXGroup;
+			children = (
+				7614A3A22AE9B849005AEC82 /* mercury-taurus.txt */,
+				7614A3A32AE9B849005AEC82 /* mercury-capricorn.txt */,
+				7614A3A42AE9B849005AEC82 /* mercury-scorpio.txt */,
+				7614A3A52AE9B849005AEC82 /* mercury-cancer.txt */,
+				7614A3A62AE9B849005AEC82 /* mercury-virgo.txt */,
+				7614A3A72AE9B849005AEC82 /* mercury-leo.txt */,
+				7614A3A82AE9B849005AEC82 /* mercury-libra.txt */,
+				7614A3A92AE9B849005AEC82 /* mercury-aries.txt */,
+				7614A3AA2AE9B849005AEC82 /* mercury-gemini.txt */,
+				7614A3AB2AE9B849005AEC82 /* mercury-aquarius.txt */,
+				7614A3AC2AE9B849005AEC82 /* mercury-pisces.txt */,
+				7614A3AD2AE9B849005AEC82 /* mercury-sagitarius.txt */,
+			);
+			path = MercuryData;
+			sourceTree = "<group>";
+		};
 		76190A5628A5D98200FBF4D2 /* AppLevelModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -655,6 +860,7 @@
 				763B3F9C27BDB00C007A2690 /* AspectsEntry.swift */,
 				7669E1D72898609900B8628D /* HousesEntry.swift */,
 				76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */,
+				7614A41A2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift */,
 				762D4A6827AB986A00EA59E8 /* AstroButtons.swift */,
 				76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */,
 				76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */,
@@ -756,6 +962,9 @@
 		76620A9527AC793C009094DC /* Readings */ = {
 			isa = PBXGroup;
 			children = (
+				7614A3A12AE9B849005AEC82 /* MercuryData */,
+				7614A3872AE9B849005AEC82 /* MoonData */,
+				7614A3942AE9B849005AEC82 /* SunData */,
 				76AF1D4527AE1E7400CB4E97 /* VenusData */,
 				76620A9927AC7996009094DC /* Extensions */,
 				76620A9627AC7951009094DC /* MarsData */,
@@ -1041,50 +1250,86 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7614A3F92AE9B849005AEC82 /* mercury-capricorn.txt in Resources */,
+				7614A4052AE9B849005AEC82 /* mercury-leo.txt in Resources */,
 				76AF1D5E27AE1E7400CB4E97 /* venus-cancer.txt in Resources */,
+				7614A3E42AE9B849005AEC82 /* sun-taurus.txt in Resources */,
+				7614A4172AE9B849005AEC82 /* mercury-sagitarius.txt in Resources */,
 				764EF76B27ACA6E0008A15F1 /* mars-gemini.txt in Resources */,
+				7614A3B42AE9B849005AEC82 /* moon-aquarius.txt in Resources */,
 				761DEEBF279B9EF900A71938 /* seleapsec.txt in Resources */,
+				7614A40B2AE9B849005AEC82 /* mercury-aries.txt in Resources */,
+				7614A3C02AE9B849005AEC82 /* moon-sagitarius.txt in Resources */,
 				76AF1D5A27AE1E7400CB4E97 /* venus-virgo.txt in Resources */,
 				7624287927C340830002F5B3 /* seasnam.txt in Resources */,
+				7614A4112AE9B849005AEC82 /* mercury-aquarius.txt in Resources */,
 				764EF76827ACA6E0008A15F1 /* mars-cancer.txt in Resources */,
 				764EF76327ACA6E0008A15F1 /* mars-aquarius.txt in Resources */,
 				763CFC0627B1E4C4004A73B8 /* cities.json in Resources */,
+				7614A3ED2AE9B849005AEC82 /* sun-virgo.txt in Resources */,
+				7614A4082AE9B849005AEC82 /* mercury-libra.txt in Resources */,
 				7667C4592888A96400D4DF06 /* spirit-manifest.json in Resources */,
 				7624285627C334DE0002F5B3 /* seasnam2.txt in Resources */,
 				7667C45B2888A96400D4DF06 /* curiosity-manifest.json in Resources */,
 				76AF1D6027AE1E7400CB4E97 /* venus-libra.txt in Resources */,
+				7614A3D52AE9B849005AEC82 /* sun-aries.txt in Resources */,
+				7614A3BA2AE9B849005AEC82 /* moon-pisces.txt in Resources */,
+				7614A3CF2AE9B849005AEC82 /* moon-cancer.txt in Resources */,
+				7614A3F02AE9B849005AEC82 /* sun-cancer.txt in Resources */,
 				7667C4572888A96400D4DF06 /* opportunity-manifest.json in Resources */,
+				7614A3EA2AE9B849005AEC82 /* sun-leo.txt in Resources */,
 				76AF1D6427AE1E7400CB4E97 /* venus-gemini.txt in Resources */,
+				7614A3F62AE9B849005AEC82 /* mercury-taurus.txt in Resources */,
 				76AF1D6227AE1E7400CB4E97 /* venus-aries.txt in Resources */,
 				76AF1D5227AE1E7400CB4E97 /* venus-scorpio.txt in Resources */,
 				764EF76927ACA6E0008A15F1 /* mars-leo.txt in Resources */,
+				7614A3AE2AE9B849005AEC82 /* moon-capricorn.txt in Resources */,
+				7614A40E2AE9B849005AEC82 /* mercury-gemini.txt in Resources */,
+				7614A3CC2AE9B849005AEC82 /* moon-virgo.txt in Resources */,
+				7614A4022AE9B849005AEC82 /* mercury-virgo.txt in Resources */,
 				764EF76227ACA6E0008A15F1 /* mars-capricorn.txt in Resources */,
+				7614A3D82AE9B849005AEC82 /* sun-libra.txt in Resources */,
 				76AF1D6827AE1E7400CB4E97 /* venus-capricorn.txt in Resources */,
 				76AF1D5C27AE1E7400CB4E97 /* venus-sagitarius.txt in Resources */,
 				762428A627C341C70002F5B3 /* seas_30.se1 in Resources */,
 				7624284027C334DE0002F5B3 /* seas_12.se1 in Resources */,
+				7614A3C32AE9B849005AEC82 /* moon-aries.txt in Resources */,
 				764EF76627ACA6E0008A15F1 /* mars-virgo.txt in Resources */,
 				764EF76127ACA6E0008A15F1 /* mars-libra.txt in Resources */,
 				764EF76427ACA6E0008A15F1 /* mars-pisces.txt in Resources */,
+				7614A3E72AE9B849005AEC82 /* sun-capricorn.txt in Resources */,
+				7614A3D22AE9B849005AEC82 /* sun-gemini.txt in Resources */,
+				7614A3E12AE9B849005AEC82 /* sun-sagitarius.txt in Resources */,
 				764EF76727ACA6E0008A15F1 /* mars-aries.txt in Resources */,
+				7614A3B72AE9B849005AEC82 /* moon-gemini.txt in Resources */,
 				762428CD27C343950002F5B3 /* seas_18.se1 in Resources */,
+				7614A3F32AE9B849005AEC82 /* sun-aquarius.txt in Resources */,
 				764EF76027ACA6E0008A15F1 /* mars-taurus.txt in Resources */,
+				7614A3DE2AE9B849005AEC82 /* sun-scorpio.txt in Resources */,
 				76AF1D5427AE1E7400CB4E97 /* venus-taurus.txt in Resources */,
+				7614A3C92AE9B849005AEC82 /* moon-taurus.txt in Resources */,
 				76AF1D6627AE1E7400CB4E97 /* venus-pisces.txt in Resources */,
 				76AF1D5827AE1E7400CB4E97 /* venus-aquarius.txt in Resources */,
 				761DEEB5279B9EF900A71938 /* sedeltat.txt.inactive in Resources */,
 				762428B227C342F20002F5B3 /* seas_24.se1 in Resources */,
 				761DEEB9279B9EF900A71938 /* seorbel.txt in Resources */,
+				7614A3DB2AE9B849005AEC82 /* sun-pisces.txt in Resources */,
+				7614A3FC2AE9B849005AEC82 /* mercury-scorpio.txt in Resources */,
+				7614A4142AE9B849005AEC82 /* mercury-pisces.txt in Resources */,
 				7624283A27C334DE0002F5B3 /* seas_00.se1 in Resources */,
 				761DEE83279B9EB200A71938 /* Assets.xcassets in Resources */,
 				764EF76A27ACA6E0008A15F1 /* mars-scorpio.txt in Resources */,
 				762428A427C341C70002F5B3 /* seas_42.se1 in Resources */,
 				7624283E27C334DE0002F5B3 /* seas_06.se1 in Resources */,
 				76AF1D5627AE1E7400CB4E97 /* venus-leo.txt in Resources */,
+				7614A3FF2AE9B849005AEC82 /* mercury-cancer.txt in Resources */,
 				7624285027C334DE0002F5B3 /* seas_48.se1 in Resources */,
 				761DEECF279B9EF900A71938 /* sefstars.txt in Resources */,
+				7614A3B12AE9B849005AEC82 /* moon-scorpio.txt in Resources */,
 				762428A827C341C70002F5B3 /* seas_36.se1 in Resources */,
+				7614A3BD2AE9B849005AEC82 /* moon-leo.txt in Resources */,
 				764EF76527ACA6E0008A15F1 /* mars-sagitarius.txt in Resources */,
+				7614A3C62AE9B849005AEC82 /* moon-libra.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1092,50 +1337,86 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7614A3FA2AE9B849005AEC82 /* mercury-capricorn.txt in Resources */,
+				7614A4062AE9B849005AEC82 /* mercury-leo.txt in Resources */,
 				76AF1D5F27AE1E7400CB4E97 /* venus-cancer.txt in Resources */,
+				7614A3E52AE9B849005AEC82 /* sun-taurus.txt in Resources */,
+				7614A4182AE9B849005AEC82 /* mercury-sagitarius.txt in Resources */,
 				76BEF3FA27ACB4B8001C9AD0 /* mars-aquarius.txt in Resources */,
+				7614A3B52AE9B849005AEC82 /* moon-aquarius.txt in Resources */,
 				76BEF3FB27ACB4B8001C9AD0 /* mars-aries.txt in Resources */,
+				7614A40C2AE9B849005AEC82 /* mercury-aries.txt in Resources */,
+				7614A3C12AE9B849005AEC82 /* moon-sagitarius.txt in Resources */,
 				76AF1D5B27AE1E7400CB4E97 /* venus-virgo.txt in Resources */,
 				7624287A27C340830002F5B3 /* seasnam.txt in Resources */,
+				7614A4122AE9B849005AEC82 /* mercury-aquarius.txt in Resources */,
 				76BEF3FC27ACB4B8001C9AD0 /* mars-cancer.txt in Resources */,
 				76BEF3FD27ACB4B8001C9AD0 /* mars-capricorn.txt in Resources */,
 				763CFC0727B1E4C4004A73B8 /* cities.json in Resources */,
+				7614A3EE2AE9B849005AEC82 /* sun-virgo.txt in Resources */,
+				7614A4092AE9B849005AEC82 /* mercury-libra.txt in Resources */,
 				7667C45A2888A96400D4DF06 /* spirit-manifest.json in Resources */,
 				7624285727C334DE0002F5B3 /* seasnam2.txt in Resources */,
 				7667C45C2888A96400D4DF06 /* curiosity-manifest.json in Resources */,
 				76AF1D6127AE1E7400CB4E97 /* venus-libra.txt in Resources */,
+				7614A3D62AE9B849005AEC82 /* sun-aries.txt in Resources */,
+				7614A3BB2AE9B849005AEC82 /* moon-pisces.txt in Resources */,
+				7614A3D02AE9B849005AEC82 /* moon-cancer.txt in Resources */,
+				7614A3F12AE9B849005AEC82 /* sun-cancer.txt in Resources */,
 				7667C4582888A96400D4DF06 /* opportunity-manifest.json in Resources */,
+				7614A3EB2AE9B849005AEC82 /* sun-leo.txt in Resources */,
 				76AF1D6527AE1E7400CB4E97 /* venus-gemini.txt in Resources */,
+				7614A3F72AE9B849005AEC82 /* mercury-taurus.txt in Resources */,
 				76AF1D6327AE1E7400CB4E97 /* venus-aries.txt in Resources */,
 				76AF1D5327AE1E7400CB4E97 /* venus-scorpio.txt in Resources */,
 				76BEF3FE27ACB4B8001C9AD0 /* mars-gemini.txt in Resources */,
+				7614A3AF2AE9B849005AEC82 /* moon-capricorn.txt in Resources */,
+				7614A40F2AE9B849005AEC82 /* mercury-gemini.txt in Resources */,
+				7614A3CD2AE9B849005AEC82 /* moon-virgo.txt in Resources */,
+				7614A4032AE9B849005AEC82 /* mercury-virgo.txt in Resources */,
 				76BEF3FF27ACB4B8001C9AD0 /* mars-leo.txt in Resources */,
+				7614A3D92AE9B849005AEC82 /* sun-libra.txt in Resources */,
 				76AF1D6927AE1E7400CB4E97 /* venus-capricorn.txt in Resources */,
 				76AF1D5D27AE1E7400CB4E97 /* venus-sagitarius.txt in Resources */,
 				762428A727C341C70002F5B3 /* seas_30.se1 in Resources */,
 				7624284127C334DE0002F5B3 /* seas_12.se1 in Resources */,
+				7614A3C42AE9B849005AEC82 /* moon-aries.txt in Resources */,
 				76BEF40027ACB4B8001C9AD0 /* mars-libra.txt in Resources */,
 				76BEF40127ACB4B8001C9AD0 /* mars-pisces.txt in Resources */,
 				76BEF40227ACB4B8001C9AD0 /* mars-sagitarius.txt in Resources */,
+				7614A3E82AE9B849005AEC82 /* sun-capricorn.txt in Resources */,
+				7614A3D32AE9B849005AEC82 /* sun-gemini.txt in Resources */,
+				7614A3E22AE9B849005AEC82 /* sun-sagitarius.txt in Resources */,
 				76BEF40327ACB4B8001C9AD0 /* mars-scorpio.txt in Resources */,
+				7614A3B82AE9B849005AEC82 /* moon-gemini.txt in Resources */,
 				762428CE27C343950002F5B3 /* seas_18.se1 in Resources */,
+				7614A3F42AE9B849005AEC82 /* sun-aquarius.txt in Resources */,
 				76BEF40427ACB4B8001C9AD0 /* mars-taurus.txt in Resources */,
+				7614A3DF2AE9B849005AEC82 /* sun-scorpio.txt in Resources */,
 				76AF1D5527AE1E7400CB4E97 /* venus-taurus.txt in Resources */,
+				7614A3CA2AE9B849005AEC82 /* moon-taurus.txt in Resources */,
 				76AF1D6727AE1E7400CB4E97 /* venus-pisces.txt in Resources */,
 				76AF1D5927AE1E7400CB4E97 /* venus-aquarius.txt in Resources */,
 				76BEF40527ACB4B8001C9AD0 /* mars-virgo.txt in Resources */,
 				762428B327C342F20002F5B3 /* seas_24.se1 in Resources */,
 				761DEEC0279B9EF900A71938 /* seleapsec.txt in Resources */,
+				7614A3DC2AE9B849005AEC82 /* sun-pisces.txt in Resources */,
+				7614A3FD2AE9B849005AEC82 /* mercury-scorpio.txt in Resources */,
+				7614A4152AE9B849005AEC82 /* mercury-pisces.txt in Resources */,
 				7624283B27C334DE0002F5B3 /* seas_00.se1 in Resources */,
 				761DEEB6279B9EF900A71938 /* sedeltat.txt.inactive in Resources */,
 				761DEEBA279B9EF900A71938 /* seorbel.txt in Resources */,
 				762428A527C341C70002F5B3 /* seas_42.se1 in Resources */,
 				7624283F27C334DE0002F5B3 /* seas_06.se1 in Resources */,
 				76AF1D5727AE1E7400CB4E97 /* venus-leo.txt in Resources */,
+				7614A4002AE9B849005AEC82 /* mercury-cancer.txt in Resources */,
 				7624285127C334DE0002F5B3 /* seas_48.se1 in Resources */,
 				761DEE84279B9EB200A71938 /* Assets.xcassets in Resources */,
+				7614A3B22AE9B849005AEC82 /* moon-scorpio.txt in Resources */,
 				762428A927C341C70002F5B3 /* seas_36.se1 in Resources */,
+				7614A3BE2AE9B849005AEC82 /* moon-leo.txt in Resources */,
 				761DEED0279B9EF900A71938 /* sefstars.txt in Resources */,
+				7614A3C72AE9B849005AEC82 /* moon-libra.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1143,7 +1424,43 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7614A3EC2AE9B849005AEC82 /* sun-leo.txt in Resources */,
+				7614A3FB2AE9B849005AEC82 /* mercury-capricorn.txt in Resources */,
+				7614A3CB2AE9B849005AEC82 /* moon-taurus.txt in Resources */,
+				7614A3BF2AE9B849005AEC82 /* moon-leo.txt in Resources */,
+				7614A3EF2AE9B849005AEC82 /* sun-virgo.txt in Resources */,
+				7614A3E32AE9B849005AEC82 /* sun-sagitarius.txt in Resources */,
+				7614A3E92AE9B849005AEC82 /* sun-capricorn.txt in Resources */,
+				7614A4012AE9B849005AEC82 /* mercury-cancer.txt in Resources */,
+				7614A3D72AE9B849005AEC82 /* sun-aries.txt in Resources */,
+				7614A4132AE9B849005AEC82 /* mercury-aquarius.txt in Resources */,
+				7614A3B62AE9B849005AEC82 /* moon-aquarius.txt in Resources */,
+				7614A3C52AE9B849005AEC82 /* moon-aries.txt in Resources */,
+				7614A3B92AE9B849005AEC82 /* moon-gemini.txt in Resources */,
+				7614A4042AE9B849005AEC82 /* mercury-virgo.txt in Resources */,
+				7614A3C22AE9B849005AEC82 /* moon-sagitarius.txt in Resources */,
+				7614A3D42AE9B849005AEC82 /* sun-gemini.txt in Resources */,
+				7614A3DA2AE9B849005AEC82 /* sun-libra.txt in Resources */,
+				7614A3DD2AE9B849005AEC82 /* sun-pisces.txt in Resources */,
+				7614A40D2AE9B849005AEC82 /* mercury-aries.txt in Resources */,
+				7614A3E62AE9B849005AEC82 /* sun-taurus.txt in Resources */,
+				7614A3BC2AE9B849005AEC82 /* moon-pisces.txt in Resources */,
+				7614A3C82AE9B849005AEC82 /* moon-libra.txt in Resources */,
+				7614A3F52AE9B849005AEC82 /* sun-aquarius.txt in Resources */,
+				7614A4162AE9B849005AEC82 /* mercury-pisces.txt in Resources */,
+				7614A3F82AE9B849005AEC82 /* mercury-taurus.txt in Resources */,
 				762214892880A57100E0FC65 /* cities.json in Resources */,
+				7614A3E02AE9B849005AEC82 /* sun-scorpio.txt in Resources */,
+				7614A4072AE9B849005AEC82 /* mercury-leo.txt in Resources */,
+				7614A3F22AE9B849005AEC82 /* sun-cancer.txt in Resources */,
+				7614A3CE2AE9B849005AEC82 /* moon-virgo.txt in Resources */,
+				7614A3FE2AE9B849005AEC82 /* mercury-scorpio.txt in Resources */,
+				7614A3D12AE9B849005AEC82 /* moon-cancer.txt in Resources */,
+				7614A40A2AE9B849005AEC82 /* mercury-libra.txt in Resources */,
+				7614A4102AE9B849005AEC82 /* mercury-gemini.txt in Resources */,
+				7614A4192AE9B849005AEC82 /* mercury-sagitarius.txt in Resources */,
+				7614A3B32AE9B849005AEC82 /* moon-scorpio.txt in Resources */,
+				7614A3B02AE9B849005AEC82 /* moon-capricorn.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1182,6 +1499,7 @@
 				76664B3027CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
 				7611E8A328CFFB1400D510DC /* OrbType+.swift in Sources */,
 				761CF35928877919008FC865 /* Image+Extensions.swift in Sources */,
+				7614A41B2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift in Sources */,
 				76DAC8A727B2016700852872 /* CitiesView.swift in Sources */,
 				761DEEC3279B9EF900A71938 /* swecl.c in Sources */,
 				766C89D5287F8A5100E437A7 /* PlanetButtons.swift in Sources */,
@@ -1274,6 +1592,7 @@
 				76664B3127CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
 				7611E8A428CFFB1400D510DC /* OrbType+.swift in Sources */,
 				761CF35A28877919008FC865 /* Image+Extensions.swift in Sources */,
+				7614A41C2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift in Sources */,
 				76DAC8A827B2016700852872 /* CitiesView.swift in Sources */,
 				76BEF3F627ACB0AB001C9AD0 /* MainView.swift in Sources */,
 				766C89D6287F8A5100E437A7 /* PlanetButtons.swift in Sources */,
@@ -1368,6 +1687,7 @@
 				76E6FFE8287A1CBF0057825F /* Date+Extensions.swift in Sources */,
 				76E6FFE9287A1CBF0057825F /* String+Extensions.swift in Sources */,
 				76E6FFEA287A1CBF0057825F /* Signs+Extensions.swift in Sources */,
+				7614A41D2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift in Sources */,
 				76E6FFEB287A1CBF0057825F /* Planets+Extensions.swift in Sources */,
 				76E6FFEC287A1CBF0057825F /* BirthData+Extensions.swift in Sources */,
 				762214812880955300E0FC65 /* CitiesInfoUnitTesting.swift in Sources */,

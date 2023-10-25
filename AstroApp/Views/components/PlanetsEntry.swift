@@ -24,7 +24,9 @@ struct PlanetsEntry: View {
     var regularPlanets: [PlanetCell] {
         if let planets: [PlanetCell]  = data.planets as? [PlanetCell] {
             return  planets.filter { planet in
-                planet.planet != Planets.Mars && planet.planet != Planets.Venus
+                planet.planet != Planets.Mars && planet.planet != Planets.Venus &&
+                planet.planet != Planets.Sun && planet.planet != Planets.Moon &&
+                planet.planet != Planets.Mercury
             }
         }
        return [PlanetCell]()
@@ -32,9 +34,14 @@ struct PlanetsEntry: View {
     
     var body: some View {
         VStack {
+            
+            if let sun = getData(planet: .Sun), let moon = getData(planet: .Moon), let mercury = getData(planet: .Mercury) {
+                NewFeaturedPlanetsEntry(sunData: sun, moonData: moon, mercuryData: mercury)
+            }
             if let mars = getData(planet: .Mars) , let venus = getData(planet: .Venus) {
                 FeaturedPlanetsEntry(marsData: mars, venusData: venus)
             }
+                
 #if os(macOS)
             if #available(macOS 12.0, *) {
                 Text(rowFromPlanets(row: regularPlanets))
