@@ -19,7 +19,7 @@ struct ChartSettings: View {
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
-                
+                Toggle("Show Planet Reading Buttons", isOn: $manager.showPlanetReadingButtons)
                 Section {
                     HStack {
                         Spacer()

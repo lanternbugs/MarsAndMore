@@ -32,37 +32,72 @@ struct PlanetsEntry: View {
        return [PlanetCell]()
     }
     
+    var allPlanets: [PlanetCell] {
+        if let planets = data.planets as? [PlanetCell] {
+            return planets
+            
+        } else {
+            return []
+        }
+        
+    }
+    
     var body: some View {
         VStack {
-            
-            if let sun = getData(planet: .Sun), let moon = getData(planet: .Moon), let mercury = getData(planet: .Mercury) {
-                NewFeaturedPlanetsEntry(sunData: sun, moonData: moon, mercuryData: mercury)
-            }
-            if let mars = getData(planet: .Mars) , let venus = getData(planet: .Venus) {
-                FeaturedPlanetsEntry(marsData: mars, venusData: venus)
-            }
+            if manager.showPlanetReadingButtons  {
+                if let sun = getData(planet: .Sun), let moon = getData(planet: .Moon), let mercury = getData(planet: .Mercury) {
+                    NewFeaturedPlanetsEntry(sunData: sun, moonData: moon, mercuryData: mercury)
+                }
+                if let mars = getData(planet: .Mars) , let venus = getData(planet: .Venus) {
+                    FeaturedPlanetsEntry(marsData: mars, venusData: venus)
+                }
+                    
+    #if os(macOS)
+                if #available(macOS 12.0, *) {
+                    Text(rowFromPlanets(row: regularPlanets))
+                        .textSelection(.enabled)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                else {
+                    Text(rowFromPlanets(row: regularPlanets))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+    #else
+                if #available(iOS 15.0, *) {
+                    Text(rowFromPlanets(row: regularPlanets))
+                        .textSelection(.enabled)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
+                else {
+                    Text(rowFromPlanets(row: regularPlanets))
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+    #endif
+                
+            } else {
                 
 #if os(macOS)
             if #available(macOS 12.0, *) {
-                Text(rowFromPlanets(row: regularPlanets))
+                Text(rowFromPlanets(row: allPlanets))
                     .textSelection(.enabled)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             else {
-                Text(rowFromPlanets(row: regularPlanets))
+                Text(rowFromPlanets(row: allPlanets))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
 #else
             if #available(iOS 15.0, *) {
-                Text(rowFromPlanets(row: regularPlanets))
+                Text(rowFromPlanets(row: allPlanets))
                     .textSelection(.enabled)
                     .frame(maxWidth: .infinity, alignment: .leading)
             }
             else {
-                Text(rowFromPlanets(row: regularPlanets))
+                Text(rowFromPlanets(row: allPlanets))
                     .frame(maxWidth: .infinity, alignment: .leading)
                 }
 #endif
+            }
             
         }
             
