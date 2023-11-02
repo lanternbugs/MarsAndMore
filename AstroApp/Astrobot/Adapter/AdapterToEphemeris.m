@@ -23,6 +23,8 @@
 {
     double xx[6];
     char serr[999];
+    // for sidereal swe_calc_ut(astroTime,  type, SEFLG_SIDEREAL, xx, serr);
+    // for tropical swe_calc_ut(astroTime,  type, 0, xx, serr);
     swe_calc_ut(astroTime,  type, 0, xx, serr);
     return xx[0];
 }
