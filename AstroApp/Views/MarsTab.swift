@@ -19,6 +19,8 @@ struct MarsTab: View, AstrobotReadingInterface {
     @State private var marsData: RoomState = .Entry
     @State private var venusData: RoomState = .Entry
     @State private var sunData: RoomState = .Entry
+    @State private var moonData: RoomState = .Entry
+    @State private var mercuryData: RoomState = .Entry
     @State private var readingInitialized = false
     
     @ViewBuilder
@@ -42,6 +44,11 @@ struct MarsTab: View, AstrobotReadingInterface {
                 Text("Sun").font(.headline)
             }
             Picker(selection: $planetChoice, label: Text("Choice")) {
+                Text("Sun").tag(Planets.Sun)
+
+                Text("Moon").tag(Planets.Moon)
+                Text("Mercury").tag(Planets.Mercury)
+
                 Text("Mars").tag(Planets.Mars)
 
                 Text("Venus").tag(Planets.Venus)
@@ -49,10 +56,16 @@ struct MarsTab: View, AstrobotReadingInterface {
             }.background(Color.white).pickerStyle(SegmentedPickerStyle())
             if readingInitialized {
                 switch(planetChoice) {
-                case .Mars:
-                    ReadingView(state: $marsData)
+                case .Sun:
+                    ReadingView(state: $sunData)
+                case .Moon:
+                    ReadingView(state: $moonData)
+                case .Mercury:
+                    ReadingView(state: $mercuryData)
                 case .Venus:
                     ReadingView(state: $venusData)
+                case .Mars:
+                    ReadingView(state: $marsData)
                 default:
                     Text("Error, there is no reading for this planet ")
                 }
@@ -71,6 +84,8 @@ extension MarsTab {
         marsData = getPlanet(type: .Mars, time: birthdate.getAstroTime())
         venusData = getPlanet(type: .Venus, time: birthdate.getAstroTime())
         sunData = getPlanet(type: .Sun, time: birthdate.getAstroTime())
+       moonData = getPlanet(type: .Moon, time: birthdate.getAstroTime())
+       mercuryData = getPlanet(type: .Mercury, time: birthdate.getAstroTime())
        readingInitialized = true
     }
 }
