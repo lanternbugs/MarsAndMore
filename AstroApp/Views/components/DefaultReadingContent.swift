@@ -25,7 +25,7 @@ struct DefaultReadingContent: View {
                 .padding(.bottom)
             Text(defaultReadingThirdMessage)
                 .padding(.bottom)
-            ReadingCreditsView()
+            ReadingCreditsView(book: .YourPlaceStars)
         }.font(.headline)
     }
 }

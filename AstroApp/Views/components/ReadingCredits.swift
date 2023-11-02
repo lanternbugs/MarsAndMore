@@ -12,14 +12,23 @@
 */
 
 import SwiftUI
-
+enum Books {
+    case YourPlaceSun
+    case YourPlaceStars
+}
 struct ReadingCreditsView: View {
     let wikiLink = "https://en.wikipedia.org/wiki/Evangeline_Adams"
+    let book: Books
     var body: some View {
         VStack {
             Text("- Evangeline Adams").frame(maxWidth: .infinity, alignment: .leading).foregroundColor(Color.white)
             Text("with ghost writer Aleister Crowley").frame(maxWidth: .infinity, alignment: .trailing).foregroundColor(Color.white)
-            Text("Your Place in the Stars 1930").foregroundColor(Color.white)
+            if case book = .YourPlaceStars {
+                Text("Your Place in the Stars 1930").foregroundColor(Color.white)
+            } else {
+                Text("Your Place in the Sun 1927").foregroundColor(Color.white)
+            }
+            
             Button(action: openWikipediaLink) {
                 Text(wikiLink)
 #if os(iOS)
@@ -39,6 +48,6 @@ extension ReadingCreditsView {
 }
 struct ReadingCreditsView_Previews: PreviewProvider {
     static var previews: some View {
-        ReadingCreditsView()
+        ReadingCreditsView(book: .YourPlaceStars)
     }
 }

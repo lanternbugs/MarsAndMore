@@ -28,7 +28,19 @@ struct ReadingView: View {
                 ForEach(reading, id: \.id) { entry in
                     Text("\(entry.text)").fixedSize(horizontal: false, vertical: true)
                 }
-                ReadingCreditsView()
+                if case .Reading(let planet, _) = state
+                {
+                    if case  planet = Planets.Sun {
+                        ReadingCreditsView(book: .YourPlaceSun)
+                    } else {
+                        ReadingCreditsView(book: .YourPlaceStars)
+                    }
+                
+                } 
+                else {
+                    ReadingCreditsView(book: .YourPlaceStars)
+                }
+                
             }
         }.padding(.vertical)
     }
