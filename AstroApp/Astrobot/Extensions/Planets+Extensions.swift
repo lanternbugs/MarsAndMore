@@ -56,27 +56,14 @@ extension Planets {
     
     func getNatalOrb(type: OrbType, with aspect: Aspects)->Double
     {
-        switch aspect {
-        case .Sextile:
-            switch type {
-            case .NarrowOrbs:
-                return getNarrowSextileNatalOrb()
-            case .MediumOrbs:
-                return getMediumSextileNatalOrb()
-            case .WideOrbs:
-                return getWideSextileNatalOrb()
-            }
-            
-        default:
-            switch type {
-            case .NarrowOrbs:
-                return getNarrowNatalOrbs()
-            case .MediumOrbs:
-                return getMediumNatalOrbs()
-            case .WideOrbs:
-                return getWideNatalOrbs()
-            }
-            
+        // no longer using differnt orb for sextile aspect
+        switch type {
+        case .NarrowOrbs:
+            return getNarrowNatalOrbs()
+        case .MediumOrbs:
+            return getMediumNatalOrbs()
+        case .WideOrbs:
+            return getWideNatalOrbs()
         }
     }
     
@@ -112,7 +99,7 @@ extension Planets {
             return 6.0
         }
     }
-    
+    /*
     func getNarrowSextileNatalOrb()->Double {
         switch(self) {
         case .Sun, .Moon:
@@ -145,6 +132,7 @@ extension Planets {
             return 5.0
         }
     }
+     */
     
     func getTransitOrb()->Double
     {
