@@ -20,44 +20,68 @@ struct NewFeaturedPlanetsEntry: View {
     let mercuryData: PlanetCell
     
     var body: some View {
-        HStack {
+        VStack {
+            HStack {
 #if os(macOS)
-            Spacer()
+                Spacer()
 #endif
-            Button(action: {
-                roomState.wrappedValue = .Reading(planet: sunData.planet, sign: sunData.sign)
-            }) {
-                Text("\(sunData.planet.getName())")
-                
-            }.layoutPriority(1)
-            Text(" \(sunData.degree) ")
+                Button(action: {
+                    roomState.wrappedValue = .Reading(planet: sunData.planet, sign: sunData.sign)
+                }) {
+                    Text("\(sunData.planet.getName())")
+                    
+                }.layoutPriority(1)
+                Text(" \(sunData.degree) ")
 #if os(iOS)
-            UIDevice.isIPhone ? Text(" \(sunData.sign.getNameShort())") : Text(" \(sunData.sign.getName())")
+                UIDevice.isIPhone ? Text(" \(sunData.sign.getNameShort())") : Text(" \(sunData.sign.getName())")
 #else
-            Text(" \(sunData.sign.getName())")
+                Text(" \(sunData.sign.getName())")
 #endif
-            
-            if sunData.retrograde {
-                Text(" R ")
-            }
-            Spacer()
-            
-            Button(action: {
-                roomState.wrappedValue = .Reading(planet: moonData.planet, sign: moonData.sign)
-            }) {
-                Text("\(moonData.planet.getName())")
                 
-            }.layoutPriority(1)
-            Text(" \(moonData.degree) ")
+                if sunData.retrograde {
+                    Text(" R ")
+                }
+                Spacer()
+                
+                Button(action: {
+                    roomState.wrappedValue = .Reading(planet: moonData.planet, sign: moonData.sign)
+                }) {
+                    Text("\(moonData.planet.getName())")
+                    
+                }.layoutPriority(1)
+                Text(" \(moonData.degree) ")
 #if os(iOS)
-            UIDevice.isIPhone ? Text(" \(moonData.sign.getNameShort())") : Text(" \(moonData.sign.getName())")
+               
 #else
-            Text(" \(moonData.sign.getName())")
+                Text(" \(moonData.sign.getName())")
 #endif
-            if moonData.retrograde {
-                Text(" R ")
+                if moonData.retrograde {
+                    Text(" R ")
+                }
+                Spacer()
+#if os(macOS)
+                Button(action: {
+                    roomState.wrappedValue = .Reading(planet: mercuryData.planet, sign: mercuryData.sign)
+                }) {
+                    Text("\(mercuryData.planet.getName())")
+                    
+                }.layoutPriority(1)
+                Text(" \(mercuryData.degree) ")
+                Text(" \(mercuryData.sign.getName())")
+                
+                
+                if mercuryData.retrograde {
+                    Text(" R ")
+                }
+                
+                Spacer()
+#endif
             }
+        }
+#if os(iOS)
+        HStack {
             Spacer()
+
             Button(action: {
                 roomState.wrappedValue = .Reading(planet: mercuryData.planet, sign: mercuryData.sign)
             }) {
@@ -65,19 +89,17 @@ struct NewFeaturedPlanetsEntry: View {
                 
             }.layoutPriority(1)
             Text(" \(mercuryData.degree) ")
-#if os(iOS)
             UIDevice.isIPhone ? Text(" \(mercuryData.sign.getNameShort())") : Text(" \(mercuryData.sign.getName())")
-#else
-            Text(" \(mercuryData.sign.getName())")
-#endif
+            
             
             if mercuryData.retrograde {
                 Text(" R ")
             }
-#if os(macOS)
+            
             Spacer()
-#endif
         }
+        
+#endif
     }
 }
 
