@@ -19,9 +19,7 @@ struct FeaturedPlanetsEntry: View {
     let venusData: PlanetCell
     var body: some View {
         HStack {
-#if os(macOS)
             Spacer()
-#endif
             Button(action: {
                 roomState.wrappedValue = .Reading(planet: marsData.planet, sign: marsData.sign)
             }) {
@@ -38,7 +36,7 @@ struct FeaturedPlanetsEntry: View {
             if marsData.retrograde {
                 Text(" R ")
             }
-            
+            Spacer()
             Button(action: {
                 roomState.wrappedValue = .Reading(planet: venusData.planet, sign: venusData.sign)
             }) {
@@ -54,9 +52,7 @@ struct FeaturedPlanetsEntry: View {
             if venusData.retrograde {
                 Text(" R ")
             }
-#if os(macOS)
             Spacer()
-#endif
         }
     }
 }

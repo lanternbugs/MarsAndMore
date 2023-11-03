@@ -22,9 +22,8 @@ struct NewFeaturedPlanetsEntry: View {
     var body: some View {
         VStack {
             HStack {
-#if os(macOS)
+
                 Spacer()
-#endif
                 Button(action: {
                     roomState.wrappedValue = .Reading(planet: sunData.planet, sign: sunData.sign)
                 }) {
@@ -51,7 +50,7 @@ struct NewFeaturedPlanetsEntry: View {
                 }.layoutPriority(1)
                 Text(" \(moonData.degree) ")
 #if os(iOS)
-               
+                UIDevice.isIPhone ? Text(" \(moonData.sign.getNameShort())") : Text(" \(moonData.sign.getName())")
 #else
                 Text(" \(moonData.sign.getName())")
 #endif
