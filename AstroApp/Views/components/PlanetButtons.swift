@@ -90,8 +90,8 @@ extension PlanetButtons {
         }
         temporaryDisableButtons()
         
-        let row = getPlanets(time: savedDate.planetsDateChoice.getAstroTime(), location: nil)
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets, name: getStringDate())
+        let row = getPlanets(time: savedDate.planetsDateChoice.getAstroTime(), location: nil, tropical: manager.tropical)
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets, name: getStringDate(), tropical: manager.tropical)
         data.append(displayRow)
     }
     
@@ -101,8 +101,8 @@ extension PlanetButtons {
             return
         }
         temporaryDisableButtons()
-        let row = getAspects(time: savedDate.planetsDateChoice.getAstroTime(), with: nil, and: nil, type: manager.orbSelection)
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects(orbs: manager.orbSelection.getShortName()), name: getStringDate())
+        let row = getAspects(time: savedDate.planetsDateChoice.getAstroTime(), with: nil, and: nil, type: manager.orbSelection, tropical: manager.tropical)
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects(orbs: manager.orbSelection.getShortName()), name: getStringDate(), tropical: manager.tropical)
         data.append(displayRow)
     }
     
@@ -122,7 +122,7 @@ extension PlanetButtons {
     }
 }
 struct PlanetButtons_Previews: PreviewProvider {
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike")]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", tropical: true)]
     static var previews: some View {
         AstroButtons(data: $row)
     }

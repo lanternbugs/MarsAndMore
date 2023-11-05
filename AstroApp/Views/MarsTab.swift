@@ -48,10 +48,11 @@ struct MarsTab: View, AstrobotReadingInterface {
 
                 Text("Moon").tag(Planets.Moon)
                 Text("Mercury").tag(Planets.Mercury)
+                Text("Venus").tag(Planets.Venus)
 
                 Text("Mars").tag(Planets.Mars)
 
-                Text("Venus").tag(Planets.Venus)
+                
 
             }.background(Color.white).pickerStyle(SegmentedPickerStyle())
             if readingInitialized {
@@ -81,11 +82,11 @@ struct MarsTab: View, AstrobotReadingInterface {
 
 extension MarsTab {
    private func pickedDate()  {
-        marsData = getPlanet(type: .Mars, time: birthdate.getAstroTime())
-        venusData = getPlanet(type: .Venus, time: birthdate.getAstroTime())
-        sunData = getPlanet(type: .Sun, time: birthdate.getAstroTime())
-       moonData = getPlanet(type: .Moon, time: birthdate.getAstroTime())
-       mercuryData = getPlanet(type: .Mercury, time: birthdate.getAstroTime())
+        marsData = getPlanet(type: .Mars, time: birthdate.getAstroTime(), tropical: true)
+        venusData = getPlanet(type: .Venus, time: birthdate.getAstroTime(), tropical: true)
+        sunData = getPlanet(type: .Sun, time: birthdate.getAstroTime(), tropical: true)
+       moonData = getPlanet(type: .Moon, time: birthdate.getAstroTime(), tropical: true)
+       mercuryData = getPlanet(type: .Mercury, time: birthdate.getAstroTime(), tropical: true)
        readingInitialized = true
     }
 }

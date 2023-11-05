@@ -21,6 +21,23 @@ struct FeaturedPlanetsEntry: View {
         HStack {
             Spacer()
             Button(action: {
+                roomState.wrappedValue = .Reading(planet: venusData.planet, sign: venusData.sign)
+            }) {
+                Text("\(venusData.planet.getName())")
+                
+            }.layoutPriority(1)
+            Text(" \(venusData.degree) ")
+#if os(iOS)
+            UIDevice.isIPhone ? Text(" \(venusData.sign.getNameShort())") : Text(" \(venusData.sign.getName())")
+#else
+            Text(" \(venusData.sign.getName())")
+#endif
+            if venusData.retrograde {
+                Text(" R ")
+            }
+            Spacer()
+            
+            Button(action: {
                 roomState.wrappedValue = .Reading(planet: marsData.planet, sign: marsData.sign)
             }) {
                 Text("\(marsData.planet.getName())")
@@ -34,22 +51,6 @@ struct FeaturedPlanetsEntry: View {
 #endif
             
             if marsData.retrograde {
-                Text(" R ")
-            }
-            Spacer()
-            Button(action: {
-                roomState.wrappedValue = .Reading(planet: venusData.planet, sign: venusData.sign)
-            }) {
-                Text("\(venusData.planet.getName())")
-                
-            }.layoutPriority(1)
-            Text(" \(venusData.degree) ")
-#if os(iOS)
-            UIDevice.isIPhone ? Text(" \(venusData.sign.getNameShort())") : Text(" \(venusData.sign.getName())")
-#else
-            Text(" \(venusData.sign.getName())")
-#endif
-            if venusData.retrograde {
                 Text(" R ")
             }
             Spacer()

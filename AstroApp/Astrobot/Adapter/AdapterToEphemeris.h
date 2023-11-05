@@ -19,10 +19,10 @@
 {
     char ephepath[500];
 }
--(double) getPlanetDegree:(double) astroTime : (int) type;
+-(double) getPlanetDegree:(double) astroTime : (int) type : (BOOL) tropical;
 -(double) getSweJulianDay:(int) year : (int) month : (int) day : (double) time;
--(double) getAscendent:(double) time : (double) latitude : (double) longitude;
--(double) getHouse:(double) time : (double) latitude : (double) longitude : (int) house : (char) system;
+-(double) getAscendent:(double) time : (double) latitude : (double) longitude : (BOOL) tropical;
+-(double) getHouse:(double) time : (double) latitude : (double) longitude : (int) house : (char) system : (BOOL) tropical;
 @end
 
 #endif /* AdapterToEphemeris_h */

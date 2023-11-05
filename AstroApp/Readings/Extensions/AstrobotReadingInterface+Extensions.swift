@@ -14,9 +14,9 @@
 import Foundation
 
 extension AstrobotReadingInterface {
-    func getPlanet(type: Planets, time: Double)->RoomState
+    func getPlanet(type: Planets, time: Double, tropical: Bool)->RoomState
     {
-        let data = getPlanets(time: time, location: nil)
+        let data = getPlanets(time: time, location: nil, tropical: tropical)
         if let planets  =  data.planets as? [PlanetCell]
         {
             let planet = planets.filter {

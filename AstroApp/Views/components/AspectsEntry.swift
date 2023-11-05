@@ -61,7 +61,7 @@ struct AspectsEntry: View {
 struct AspectsEntry_Previews: PreviewProvider {
     
     static var previews: some View {
-        let row = DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike")
+        let row = DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", tropical: true)
         AspectsEntry(data: row)
     }
 }

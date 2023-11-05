@@ -20,6 +20,8 @@ struct ChartSettings: View {
         ScrollView {
             VStack(alignment: .leading) {
                 Toggle("Show Planet Reading Buttons", isOn: $manager.showPlanetReadingButtons)
+                Toggle("Tropical", isOn: $manager.tropical)
+                Text("Turn off for Sidereal. Sign readings intended for Tropical.")
                 Section {
                     HStack {
                         Spacer()

@@ -65,8 +65,8 @@ extension TransitsButtonControl {
         }
         temporaryDisableButtons()
         if let location = manager.getSelectionLocation() {
-            let row = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode())
-            let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Houses(system: manager.houseSystem), name: manager.getCurrentName())
+            let row = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode(), tropical: manager.tropical)
+            let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Houses(system: manager.houseSystem), name: manager.getCurrentName(), tropical: manager.tropical)
             data.append(displayRow)
         }
         
@@ -79,17 +79,17 @@ extension TransitsButtonControl {
         }
         temporaryDisableButtons()
         
-        let row = getAspects(time: manager.getSelectionTime(), with: transitDate.getAstroTime(), and: manager.getSelectionLocation())
+        let row = getAspects(time: manager.getSelectionTime(), with: transitDate.getAstroTime(), and: manager.getSelectionLocation(), tropical: manager.tropical)
         let dateFormater = DateFormatter()
         dateFormater.locale   = Locale(identifier: "en_US_POSIX")
         dateFormater.dateFormat = "YY/MM/dd h:m"
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Transits(date: dateFormater.string(from: transitDate)), name: manager.getCurrentName())
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Transits(date: dateFormater.string(from: transitDate)), name: manager.getCurrentName(), tropical: manager.tropical)
         data.append(displayRow)
     }
 }
 
 struct TransitsButtonControl_Previews: PreviewProvider {
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike")]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", tropical: true)]
     static var previews: some View {
         TransitsButtonControl(data: $row)
     }

@@ -79,6 +79,7 @@ struct DisplayPlanetRow {
     let id: Int
     let type: PlanetFetchType
     let name: String
+    let tropical: Bool
     
 }
 

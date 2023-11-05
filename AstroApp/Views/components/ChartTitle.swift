@@ -16,27 +16,39 @@ import SwiftUI
 
 struct ChartTitle: View {
     @Binding var planetRow: DisplayPlanetRow
+    var planetRowText: String  {
+        var title = "none"
+        switch planetRow.type {
+        case .Planets, .Houses:
+            title = planetRow.tropical ? "\(planetRow.type.getName())  \(planetRow.name)" : "\(planetRow.type.getName())  \(planetRow.name) Sidereal"
+        default:
+           title =  "\(planetRow.type.getName())  \(planetRow.name)"
+            
+        }
+        return title
+    }
+
     var body: some View {
 #if os(macOS)
             if #available(macOS 12.0, *) {
-                Text("\(planetRow.type.getName())  \(planetRow.name)").textSelection(.enabled).padding(.top).font(.headline)
+                Text(planetRowText).textSelection(.enabled).padding(.top).font(.headline)
             }
             else {
-                Text("\(planetRow.type.getName())  \(planetRow.name)").padding(.top).font(.headline)
+                Text(planetRowText).padding(.top).font(.headline)
                 }
 #else
             if #available(iOS 15.0, *) {
-                Text("\(planetRow.type.getName())  \(planetRow.name)").textSelection(.enabled).padding(.top).font(.headline)
+                Text(planetRowText).textSelection(.enabled).padding(.top).font(.headline)
             }
             else {
-                Text("\(planetRow.type.getName())  \(planetRow.name)").padding(.top).font(.headline)
+                Text(planetRowText).padding(.top).font(.headline)
                 }
 #endif
     }
 }
 
 struct ChartTitle_Previews: PreviewProvider {
-    @State static var row: DisplayPlanetRow = DisplayPlanetRow(planets: [], id: 0, type: .Planets, name: "mike")
+    @State static var row: DisplayPlanetRow = DisplayPlanetRow(planets: [], id: 0, type: .Planets, name: "mike", tropical: true)
     static var previews: some View {
         ChartTitle(planetRow: $row)
     }

@@ -13,12 +13,12 @@
 
 import Foundation
 protocol AstrobotBaseInterface {
-    func getPlanets(time: Double, location: LocationData?)->PlanetRow
+    func getPlanets(time: Double, location: LocationData?, tropical: Bool)->PlanetRow
 }
 
 protocol AstrobotInterface: AstrobotBaseInterface {
-    func getAspects(time: Double, with time2: Double?, and location: LocationData?, type: OrbType)->PlanetRow
-    func getHouses(time: Double, location: LocationData, system: String)->PlanetRow
+    func getAspects(time: Double, with time2: Double?, and location: LocationData?, type: OrbType, tropical: Bool)->PlanetRow
+    func getHouses(time: Double, location: LocationData, system: String, tropical: Bool)->PlanetRow
 }
 
 protocol AstroRowCell {
