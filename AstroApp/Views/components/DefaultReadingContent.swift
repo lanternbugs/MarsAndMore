@@ -14,7 +14,7 @@
 import SwiftUI
 
 struct DefaultReadingContent: View {
-    let defaultReadingMessage = "Pick a date and select go for an Evengeline Adams Mars and Venus Reading"
+    let defaultReadingMessage = "Pick a date and select go for an Evengeline Adams(ghostwriter Crowley) Sun, Moon, Mercury, Venus and Mars Reading"
     let defaultReadingSecondaryMessage = "When reading the planet/sign interpetations, be aware as stated by Adams, \"Of course, the usual modifications caused by aspects are always to be considered.\"."
     let defaultReadingThirdMessage =  "These interpetations were written in the 1930s. An older mindset was involved, though progressive for its time using Astrology"
     var body: some View {
