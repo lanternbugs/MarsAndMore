@@ -26,6 +26,12 @@ extension AstrobotBaseInterface {
                 }
                 row.planets.append(calculateASC(time: time, location: location, tropical: tropical))
 
+            } else if type == .MC {
+                guard let location = location else {
+                    continue
+                }
+                row.planets.append(calculateMC(time: time, location: location, tropical: tropical))
+
             } else {
                 let val = adapter.getPlanetDegree(time, Int32(type.getAstroIndex()), tropical)
                 let pastVal = adapter.getPlanetDegree(time - interval, Int32(type.rawValue), tropical)
@@ -63,6 +69,17 @@ extension AstrobotBaseInterface {
     func getAscendentDegree(time: Double, from location: LocationData, tropical: Bool)->Double {
         let adapter = AdapterToEphemeris()
         return adapter.getAscendent(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), tropical)
+    }
+    
+    func calculateMC(time: Double, location: LocationData, tropical: Bool)->PlanetCell
+    {
+        let degree = getMCDegree(time: time, from: location, tropical: tropical)
+        return  PlanetCell(planet: .MC, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false)
+    }
+    
+    func getMCDegree(time: Double, from location: LocationData, tropical: Bool)->Double {
+        let adapter = AdapterToEphemeris()
+        return adapter.getMC(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), tropical)
     }
 }
 
@@ -124,7 +141,17 @@ extension AstrobotInterface {
                 let degree = getAscendentDegree(time: time, from: location, tropical: tropical)
                 transitPlanets.append(TransitingPlanet(planet: type, degree: degree, laterDegree: degree))
 
-            } else {
+            }
+            else if type == .MC {
+                guard let location = location else {
+                    continue
+                }
+                let degree = getMCDegree(time: time, from: location, tropical: tropical)
+                transitPlanets.append(TransitingPlanet(planet: type, degree: degree, laterDegree: degree))
+
+            }
+            
+            else {
                 let interval: Double = 0.05
                 let val = adapter.getPlanetDegree(time, Int32(type.getAstroIndex()), tropical)
                 let val2 = adapter.getPlanetDegree(time + interval, Int32(type.getAstroIndex()), tropical)

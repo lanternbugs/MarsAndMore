@@ -51,6 +51,24 @@
     return cusp[1];
 }
 
+-(double) getMC:(double) time : (double) latitude : (double) longitude : (BOOL) tropical
+{
+    double cusp[16];  /* empty + 12 houses */
+    double ascmc[10];    /* asc, mc, armc, vertex .. */
+    char system = 'P'; // house system Placidius
+     // int val =swe_houses(time, latitude, longitude, system, cusp,  ascmc); regular
+    // swe_set_sid_mode(SE_SIDM_LAHIRI, 0, 0); int val =swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, system, cusp,  ascmc); sidreal
+    if(tropical) {
+         swe_houses(time, latitude, longitude, system, cusp,  ascmc);
+    } else {
+        swe_set_sid_mode(SE_SIDM_LAHIRI, 0, 0);
+        swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, system, cusp,  ascmc);
+    }
+    
+    return cusp[10];
+}
+
+
 -(double) getHouse:(double) time : (double) latitude : (double) longitude : (int) house : (char) system : (BOOL) tropical
 {
     double cusp[16];  /* empty + 12 houses */

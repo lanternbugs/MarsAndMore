@@ -15,6 +15,8 @@ import Foundation
 extension Planets {
     func getName()->String {
         switch(self) {
+        case .MC:
+            return "MC"
         case .Ascendent:
             return "Asc"
         case .Sun:
@@ -153,6 +155,8 @@ extension Planets {
     func getAstroIndex()->Int
     {
         switch(self) {
+        case .MC:
+            return -2
         case .Ascendent:
             return -1
         case .Sun:
@@ -195,6 +199,8 @@ extension Planets {
     static func getPlanetForAstroIndex(val: Int32)->Planets?
     {
         switch(val) {
+        case -2:
+            return .MC
         case -1:
             return .Ascendent
         case 0:
