@@ -89,9 +89,9 @@ extension AstrobotInterface {
     {
         let fetchType: PlanetFetchType = time2 == nil ? .Aspects(orbs: type.getShortName()) : .Transits(date: "none")
         var transitPlanets: [TransitingPlanet]?
-        let natalPlanets = getTransitingPlanets(for: time, and: location, tropical: tropical)
+        let natalPlanets = getTransitingPlanets(for: time, and: location, tropical: false)
         if let time2 = time2 {
-            transitPlanets = getTransitingPlanets(for: time2, and: nil, tropical: tropical)
+            transitPlanets = getTransitingPlanets(for: time2, and: nil, tropical: false)
         } else {
             transitPlanets = natalPlanets
         }
