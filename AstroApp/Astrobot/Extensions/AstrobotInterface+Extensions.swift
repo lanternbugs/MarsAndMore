@@ -33,7 +33,7 @@ extension AstrobotBaseInterface {
                 row.planets.append(calculateMC(time: time, location: location, tropical: tropical))
 
             } else {
-                var lookupType = type != .SouthNode ? type : .TrueNode
+                let lookupType = type != .SouthNode ? type : .TrueNode
                 var val = adapter.getPlanetDegree(time, Int32(lookupType.getAstroIndex()), tropical)
                 var pastVal = adapter.getPlanetDegree(time - interval, Int32(lookupType.getAstroIndex()), tropical)
                 if type == .SouthNode && val >= 180 {
@@ -100,9 +100,9 @@ extension AstrobotInterface {
     {
         let fetchType: PlanetFetchType = time2 == nil ? .Aspects(orbs: type.getShortName()) : .Transits(date: "none")
         var transitPlanets: [TransitingPlanet]?
-        let natalPlanets = getTransitingPlanets(for: time, and: location, tropical: false)
+        let natalPlanets = getTransitingPlanets(for: time, and: location, tropical: true)
         if let time2 = time2 {
-            transitPlanets = getTransitingPlanets(for: time2, and: nil, tropical: false)
+            transitPlanets = getTransitingPlanets(for: time2, and: nil, tropical: true)
         } else {
             transitPlanets = natalPlanets
         }
@@ -167,6 +167,7 @@ extension AstrobotInterface {
                 let lookupType = type != .SouthNode ? type : .TrueNode
                 var val = adapter.getPlanetDegree(time, Int32(lookupType.getAstroIndex()), tropical)
                 var val2 = adapter.getPlanetDegree(time + interval, Int32(lookupType.getAstroIndex()), tropical)
+                
                 if type == .SouthNode && val >= 180 {
                     val -= 180
                 } else if type == .SouthNode {
@@ -177,7 +178,7 @@ extension AstrobotInterface {
                 } else if type == .SouthNode {
                     val2 = 360 - (180 - val2)
                 }
-                transitPlanets.append(TransitingPlanet(planet: type, degree: Double(val), laterDegree: val2))
+                transitPlanets.append(TransitingPlanet(planet: type, degree: Double(val), laterDegree: Double(val2)))
             }
             
         }
