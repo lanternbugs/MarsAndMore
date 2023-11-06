@@ -33,8 +33,19 @@ extension AstrobotBaseInterface {
                 row.planets.append(calculateMC(time: time, location: location, tropical: tropical))
 
             } else {
-                let val = adapter.getPlanetDegree(time, Int32(type.getAstroIndex()), tropical)
-                let pastVal = adapter.getPlanetDegree(time - interval, Int32(type.rawValue), tropical)
+                var lookupType = type != .SouthNode ? type : .TrueNode
+                var val = adapter.getPlanetDegree(time, Int32(lookupType.getAstroIndex()), tropical)
+                var pastVal = adapter.getPlanetDegree(time - interval, Int32(lookupType.getAstroIndex()), tropical)
+                if type == .SouthNode && val >= 180 {
+                    val -= 180
+                } else if type == .SouthNode {
+                    val = 360 - (180 - val)
+                }
+                if type == .SouthNode && pastVal >= 180 {
+                    pastVal -= 180
+                } else if type == .SouthNode {
+                    pastVal = 360 - (180 - pastVal)
+                }
                 let retro = checkRetrograde(val: val, past: pastVal)
                 row.planets.append(getPlanetData(type, degree: Double(val), retrograde: retro))
             }
@@ -153,8 +164,19 @@ extension AstrobotInterface {
             
             else {
                 let interval: Double = 0.05
-                let val = adapter.getPlanetDegree(time, Int32(type.getAstroIndex()), tropical)
-                let val2 = adapter.getPlanetDegree(time + interval, Int32(type.getAstroIndex()), tropical)
+                let lookupType = type != .SouthNode ? type : .TrueNode
+                var val = adapter.getPlanetDegree(time, Int32(lookupType.getAstroIndex()), tropical)
+                var val2 = adapter.getPlanetDegree(time + interval, Int32(lookupType.getAstroIndex()), tropical)
+                if type == .SouthNode && val >= 180 {
+                    val -= 180
+                } else if type == .SouthNode {
+                    val = 360 - (180 - val)
+                }
+                if type == .SouthNode && val2 >= 180 {
+                    val2 -= 180
+                } else if type == .SouthNode {
+                    val2 = 360 - (180 - val2)
+                }
                 transitPlanets.append(TransitingPlanet(planet: type, degree: Double(val), laterDegree: val2))
             }
             
