@@ -26,6 +26,20 @@ extension Aspects {
             return "Sextile"
         case .Square:
             return "Square"
+        case .Semisextile:
+            return "Semisextile"
+        case .Semiquintile:
+            return "Semiquintile"
+        case .Semisquare:
+            return "Semisquare"
+        case .Quintile:
+            return "Quintile"
+        case .Sesquisquare:
+            return "Sesquisquare"
+        case .Biquintile:
+            return "Biquintile"
+        case .Quincunx:
+            return "Quincunx"
         }
     }
 }
