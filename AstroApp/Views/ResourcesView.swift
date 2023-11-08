@@ -42,6 +42,33 @@ struct ResourcesView: View {
                     Text(astrologyKingTransits).foregroundColor(Color.blue)
                 }.padding()
             }.padding([.trailing, .leading])
+            HStack {
+                Text("Major Aspects Shown").font(.title2)
+                Spacer()
+            }
+            ForEach(Aspects.allCases, id: \.rawValue) {
+                aspect in
+                if aspect.isMajor() {
+                    HStack {
+                        Text("\(aspect.getName()) \(Int(aspect.rawValue))")
+                        Spacer()
+                    }
+                }
+            }
+            Text("")
+            HStack {
+                Text("Minor Aspects Shown").font(.title2)
+                Spacer()
+            }
+            ForEach(Aspects.allCases, id: \.rawValue) {
+                aspect in
+                if !aspect.isMajor() {
+                    HStack {
+                        Text("\(aspect.getName()) \(Int(aspect.rawValue))")
+                        Spacer()
+                    }
+                }
+            }
         }
         
     }
