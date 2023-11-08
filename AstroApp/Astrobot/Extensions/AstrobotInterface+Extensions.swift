@@ -98,7 +98,7 @@ extension AstrobotInterface {
     
     func getAspects(time: Double, with time2: Double?, and location: LocationData?, type: OrbType = OrbType.MediumOrbs, tropical: Bool)->PlanetRow
     {
-        let fetchType: PlanetFetchType = time2 == nil ? .Aspects(orbs: type.getShortName()) : .Transits(date: "none")
+        let fetchType: PlanetFetchType = time2 == nil ? .Aspects(orbs: type.getShortName()) : .Transits(date: "none", orbs: "none")
         var transitPlanets: [TransitingPlanet]?
         let natalPlanets = getTransitingPlanets(for: time, and: location, tropical: true)
         if let time2 = time2 {
@@ -192,7 +192,7 @@ extension AstrobotInterface {
             degree = 360 - degree
         }
         for aspect in Aspects.allCases {
-            let orb = time2 == nil ? planet1.planet.getNatalOrb(type: type, with: aspect) : planet1.planet.getTransitOrb()
+            let orb = time2 == nil ? planet1.planet.getNatalOrb(type: type, with: aspect) : planet1.planet.getTransitOrb(type: type, with: aspect)
             if abs(degree - aspect.rawValue) <  orb {
                 return aspect
             }

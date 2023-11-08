@@ -32,7 +32,7 @@ struct ChartView: View {
                                     switch(planetRow.type) {
                                     case .Planets:
                                         PlanetsEntry(data: planetRow)
-                                    case .Transits(let date):
+                                    case .Transits(let date, _):
                                         Text("on \(date)")
                                         AspectsEntry(data: planetRow)
                                     case .Houses:

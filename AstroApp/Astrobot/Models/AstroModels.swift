@@ -40,7 +40,7 @@ enum Movement: String {
 }
 
 enum PlanetFetchType {
-    case Planets, Aspects(orbs: String), Transits(date: String), Houses(system: HouseSystem)
+    case Planets, Aspects(orbs: String), Transits(date: String, orbs: String), Houses(system: HouseSystem)
 }
 
 struct TransitingPlanet {
