@@ -22,6 +22,7 @@ struct ChartSettings: View {
                 Toggle("Show Planet Reading Buttons", isOn: $manager.showPlanetReadingButtons)
                 Toggle("Tropical", isOn: $manager.tropical)
                 Text("Turn off for Sidereal. Sign readings intended for Tropical.")
+                Toggle("Show Minor Aspects", isOn: $manager.showMinorAspects)
                 Section {
                     HStack {
                         Spacer()
@@ -58,20 +59,28 @@ struct ChartSettings: View {
                     HStack {
                         
 #if os(macOS)
-                        
+                        Spacer()
                         Picker(selection: manager.$houseSystem, label: Text("Choose House System")) {
                             ForEach(HouseSystem.allCases, id: \.rawValue) {
                                 system in
                                 Text(system.rawValue).tag(system)
                             }
                         }.pickerStyle(RadioGroupPickerStyle())
-                        
+                        Spacer()
                         Picker(selection: manager.$orbSelection, label: Text("Choose Aspects Orbs Type")) {
                             ForEach(OrbType.allCases, id: \.rawValue) {
                                 orbs in
                                 Text(orbs.rawValue).tag(orbs)
                             }
                         }.pickerStyle(RadioGroupPickerStyle())
+                        Spacer()
+                        Picker(selection: manager.$transitOrbSelection, label: Text("Transits Orbs Type")) {
+                            ForEach(OrbType.allCases, id: \.rawValue) {
+                                orbs in
+                                Text(orbs.rawValue).tag(orbs)
+                            }
+                        }.pickerStyle(RadioGroupPickerStyle())
+                        Spacer()
                         
 #else
                         VStack {
@@ -88,6 +97,14 @@ struct ChartSettings: View {
                             Text("Choose Aspects Orbs Type")
                             Spacer()
                             Picker(selection: manager.$orbSelection, label: Text("Choose Aspects Orbs Type")) {
+                                ForEach(OrbType.allCases, id: \.rawValue) {
+                                    orbs in
+                                    Text(orbs.rawValue).tag(orbs)
+                                }
+                            }
+                            Text("Transits Orbs Type")
+                            Spacer()
+                            Picker(selection: manager.$transitOrbSelection, label: Text("Transits Orbs Type")) {
                                 ForEach(OrbType.allCases, id: \.rawValue) {
                                     orbs in
                                     Text(orbs.rawValue).tag(orbs)
