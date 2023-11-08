@@ -63,8 +63,7 @@ extension AspectsEntry {
         if manager.showMinorAspects  {
             return true
         }
-        // the Major
-        if aspect == .Conjunction || aspect == .Square || aspect == .Trine || aspect == .Opposition || aspect == .Sextile {
+        if aspect.isMajor() {
             return true
         }
         return false

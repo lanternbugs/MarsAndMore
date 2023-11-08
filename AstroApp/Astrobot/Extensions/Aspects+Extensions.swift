@@ -42,4 +42,13 @@ extension Aspects {
             return "Quincunx"
         }
     }
+    
+    func isMajor() -> Bool {
+        switch self {
+        case .Conjunction, .Opposition, .Square, .Trine, .Sextile:
+            return true
+        default:
+           return false
+        }
+    }
 }

@@ -152,8 +152,7 @@ extension Planets {
     
     func getTransitOrb(type: OrbType, with aspect: Aspects)->Double
     {
-        switch aspect {
-        case .Conjunction, .Opposition, .Square, .Trine, .Sextile:
+        if aspect.isMajor() {
             switch type {
             case .NarrowOrbs:
                 return 1.0
@@ -162,7 +161,7 @@ extension Planets {
             case .WideOrbs:
                 return 3.0
             }
-        default:
+        } else {
             switch type {
             case .NarrowOrbs:
                 return 0.5
@@ -172,6 +171,7 @@ extension Planets {
                 return 1.5
             }
         }
+        
     }
     
     func getIndex()->Int {
