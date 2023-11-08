@@ -20,7 +20,8 @@ struct AspectsEntry: View {
         var display = ""
         if let transitData = data.planets as? [TransitCell] {
             for val in transitData {
-                if manager.bodiesToShow.contains(val.planet) && manager.bodiesToShow.contains(val.planet2)
+                
+                if manager.bodiesToShow.contains(val.planet) && manager.bodiesToShow.contains(val.planet2) && showAspect(aspect: val.aspect)
                 {
                     if display.count > 0 {
                         display += "; "
@@ -57,6 +58,19 @@ struct AspectsEntry: View {
 #endif
     }
 }
+extension AspectsEntry {
+    func showAspect(aspect: Aspects) -> Bool {
+        if manager.showMinorAspects  {
+            return true
+        }
+        // the Major
+        if aspect == .Conjunction || aspect == .Square || aspect == .Trine || aspect == .Opposition || aspect == .Sextile {
+            return true
+        }
+        return false
+    }
+}
+
 
 struct AspectsEntry_Previews: PreviewProvider {
     
