@@ -29,6 +29,10 @@ enum HouseSystem: String, CaseIterable {
     case Placidus, Koch, Porphyrius, Regiomontanus, Campanus, Equal, Whole
 }
 
+enum SiderealSystem: Int, CaseIterable {
+    case Lahiri = 1, FaganBradley = 0, Raman = 3
+}
+
 enum Aspects: Double, CaseIterable {
     case Trine = 120, Conjunction = 0, Sextile = 60, Square = 90, Opposition = 180,
     Semisextile = 30, Semiquintile = 36, Semisquare = 45, Quintile = 72, Sesquisquare = 135,
@@ -81,7 +85,7 @@ struct DisplayPlanetRow {
     let id: Int
     let type: PlanetFetchType
     let name: String
-    let tropical: Bool
+    let calculationSettings: CalculationSettings
     
 }
 

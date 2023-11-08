@@ -13,7 +13,6 @@
 
 import SwiftUI
 struct MarsTab: View, AstrobotReadingInterface {
-    
     @State private var birthdate = Date()
     @State private var planetChoice: Planets = Planets.Mars
     @State private var marsData: RoomState = .Entry
@@ -82,11 +81,11 @@ struct MarsTab: View, AstrobotReadingInterface {
 
 extension MarsTab {
    private func pickedDate()  {
-        marsData = getPlanet(type: .Mars, time: birthdate.getAstroTime(), tropical: true)
-        venusData = getPlanet(type: .Venus, time: birthdate.getAstroTime(), tropical: true)
-        sunData = getPlanet(type: .Sun, time: birthdate.getAstroTime(), tropical: true)
-       moonData = getPlanet(type: .Moon, time: birthdate.getAstroTime(), tropical: true)
-       mercuryData = getPlanet(type: .Mercury, time: birthdate.getAstroTime(), tropical: true)
+        marsData = getPlanet(type: .Mars, time: birthdate.getAstroTime(), calculationSettings: CalculationSettings())
+        venusData = getPlanet(type: .Venus, time: birthdate.getAstroTime(), calculationSettings: CalculationSettings())
+        sunData = getPlanet(type: .Sun, time: birthdate.getAstroTime(), calculationSettings: CalculationSettings())
+       moonData = getPlanet(type: .Moon, time: birthdate.getAstroTime(), calculationSettings: CalculationSettings())
+       mercuryData = getPlanet(type: .Mercury, time: birthdate.getAstroTime(), calculationSettings: CalculationSettings())
        readingInitialized = true
     }
 }

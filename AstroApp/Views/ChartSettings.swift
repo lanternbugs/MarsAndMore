@@ -22,6 +22,30 @@ struct ChartSettings: View {
                 Toggle("Show Planet Reading Buttons", isOn: $manager.showPlanetReadingButtons)
                 Toggle("Tropical", isOn: $manager.tropical)
                 Text("Turn off for Sidereal. Sign readings intended for Tropical.")
+                if !manager.tropical {
+#if os(macOS)
+                        Spacer()
+                        Picker(selection: manager.$siderealSystem, label: Text("Sidereal System")) {
+                            ForEach(SiderealSystem.allCases, id: \.rawValue) {
+                                system in
+                                Text(system.getName()).tag(system)
+                            }
+                        }.pickerStyle(RadioGroupPickerStyle())
+                        
+                        
+#else
+                    Text("Sidereal System")
+                    Spacer()
+                    Picker(selection: manager.$siderealSystem, label: Text("Sidereal System")) {
+                        ForEach(SiderealSystem.allCases, id: \.rawValue) {
+                            system in
+                            Text(system.getName()).tag(system)
+                        }
+                    }
+                        
+                        
+#endif
+                }
                 Toggle("Show Minor Aspects", isOn: $manager.showMinorAspects)
                 Section {
                     HStack {

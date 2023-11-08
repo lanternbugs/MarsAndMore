@@ -63,8 +63,8 @@ extension AstroButtons {
         }
         temporaryDisableButtons()
         
-        let row = getPlanets(time: manager.getSelectionTime(), location: manager.getSelectionLocation(), tropical: manager.tropical)
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets, name: manager.getCurrentName(), tropical: manager.tropical)
+        let row = getPlanets(time: manager.getSelectionTime(), location: manager.getSelectionLocation(), calculationSettings: manager.calculationSettings)
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets, name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
         data.append(displayRow)
     }
     
@@ -74,8 +74,8 @@ extension AstroButtons {
             return
         }
         temporaryDisableButtons()
-        let row = getAspects(time: manager.getSelectionTime(), with: nil, and: manager.getSelectionLocation(), type: manager.orbSelection, tropical: manager.tropical)
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects(orbs: manager.orbSelection.getShortName()), name: manager.getCurrentName(), tropical: manager.tropical)
+        let row = getAspects(time: manager.getSelectionTime(), with: nil, and: manager.getSelectionLocation(), type: manager.orbSelection, calculationSettings: manager.calculationSettings)
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects(orbs: manager.orbSelection.getShortName()), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
         data.append(displayRow)
     }
     
@@ -85,7 +85,7 @@ extension AstroButtons {
     }
 }
 struct AstroButtons_Previews: PreviewProvider {
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", tropical: true)]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", calculationSettings: CalculationSettings())]
     static var previews: some View {
         AstroButtons(data: $row)
     }

@@ -13,12 +13,12 @@
 
 import Foundation
 protocol AstrobotBaseInterface {
-    func getPlanets(time: Double, location: LocationData?, tropical: Bool)->PlanetRow
+    func getPlanets(time: Double, location: LocationData?, calculationSettings: CalculationSettings)->PlanetRow
 }
 
 protocol AstrobotInterface: AstrobotBaseInterface {
-    func getAspects(time: Double, with time2: Double?, and location: LocationData?, type: OrbType, tropical: Bool)->PlanetRow
-    func getHouses(time: Double, location: LocationData, system: String, tropical: Bool)->PlanetRow
+    func getAspects(time: Double, with time2: Double?, and location: LocationData?, type: OrbType, calculationSettings: CalculationSettings) -> PlanetRow
+    func getHouses(time: Double, location: LocationData, system: String, calculationSettings: CalculationSettings) -> PlanetRow
 }
 
 protocol AstroRowCell {
@@ -28,4 +28,10 @@ protocol AstroRowCell {
 struct AstroBot: AstrobotInterface
 {
     // used for testing
+}
+
+struct CalculationSettings {
+    var tropical: Bool = true
+    var siderealSystem: SiderealSystem = .Lahiri
+    var houseSystem: String = "P"
 }

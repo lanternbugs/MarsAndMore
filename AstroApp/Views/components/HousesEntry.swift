@@ -48,7 +48,7 @@ struct HousesEntry: View {
 
 struct HousesEntry_Previews: PreviewProvider {
     static var previews: some View {
-        let row = DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", tropical: true)
+        let row = DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", calculationSettings: CalculationSettings())
         HousesEntry(data: row)
     }
 }

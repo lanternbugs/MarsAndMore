@@ -65,8 +65,8 @@ extension TransitsButtonControl {
         }
         temporaryDisableButtons()
         if let location = manager.getSelectionLocation() {
-            let row = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode(), tropical: manager.tropical)
-            let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Houses(system: manager.houseSystem), name: manager.getCurrentName(), tropical: manager.tropical)
+            let row = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
+            let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Houses(system: manager.houseSystem), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
             data.append(displayRow)
         }
         
@@ -79,17 +79,17 @@ extension TransitsButtonControl {
         }
         temporaryDisableButtons()
         
-        let row = getAspects(time: manager.getSelectionTime(), with: transitDate.getAstroTime(), and: manager.getSelectionLocation(), type: manager.transitOrbSelection, tropical: manager.tropical)
+        let row = getAspects(time: manager.getSelectionTime(), with: transitDate.getAstroTime(), and: manager.getSelectionLocation(), type: manager.transitOrbSelection, calculationSettings: manager.calculationSettings)
         let dateFormater = DateFormatter()
         dateFormater.locale   = Locale(identifier: "en_US_POSIX")
         dateFormater.dateFormat = "YY/MM/dd h:m"
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Transits(date: dateFormater.string(from: transitDate), orbs: manager.transitOrbSelection.getShortName()), name: manager.getCurrentName(), tropical: manager.tropical)
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Transits(date: dateFormater.string(from: transitDate), orbs: manager.transitOrbSelection.getShortName()), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
         data.append(displayRow)
     }
 }
 
 struct TransitsButtonControl_Previews: PreviewProvider {
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", tropical: true)]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", calculationSettings: CalculationSettings())]
     static var previews: some View {
         TransitsButtonControl(data: $row)
     }

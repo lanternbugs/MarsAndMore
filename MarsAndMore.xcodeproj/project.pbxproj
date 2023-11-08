@@ -275,6 +275,8 @@
 		764EF76E27ACA897008A15F1 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EF76C27ACA897008A15F1 /* ReadingView.swift */; };
 		7656279D287E000A00A63C8B /* PlanetsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7656279C287E000A00A63C8B /* PlanetsTab.swift */; };
 		7656279E287E000A00A63C8B /* PlanetsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7656279C287E000A00A63C8B /* PlanetsTab.swift */; };
+		765C04F42AFC38AB0068482B /* SiderealSystem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765C04F32AFC38AB0068482B /* SiderealSystem+.swift */; };
+		765C04F52AFC38AB0068482B /* SiderealSystem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765C04F32AFC38AB0068482B /* SiderealSystem+.swift */; };
 		765D83C827BAFBDC00EE1CD9 /* BirthData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */; };
 		765D83C927BAFBDC00EE1CD9 /* BirthData+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */; };
 		765ED44C28A5951F001374AB /* ArtDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED44B28A5951F001374AB /* ArtDataManager.swift */; };
@@ -569,6 +571,7 @@
 		764EF75F27ACA6E0008A15F1 /* mars-gemini.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-gemini.txt"; sourceTree = "<group>"; };
 		764EF76C27ACA897008A15F1 /* ReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
 		7656279C287E000A00A63C8B /* PlanetsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsTab.swift; sourceTree = "<group>"; };
+		765C04F32AFC38AB0068482B /* SiderealSystem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SiderealSystem+.swift"; sourceTree = "<group>"; };
 		765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirthData+Extensions.swift"; sourceTree = "<group>"; };
 		765ED44B28A5951F001374AB /* ArtDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDataManager.swift; sourceTree = "<group>"; };
 		765ED44E28A595C0001374AB /* ArtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtView.swift; sourceTree = "<group>"; };
@@ -1084,6 +1087,7 @@
 				76038DD7289869CB00F6DA0F /* Houses+.swift */,
 				768453C0289C709D0086B37C /* HouseSystem+.swift */,
 				7611E8A228CFFB1400D510DC /* OrbType+.swift */,
+				765C04F32AFC38AB0068482B /* SiderealSystem+.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1497,6 +1501,7 @@
 				762E0C69288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
 				76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
 				76664B3027CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
+				765C04F42AFC38AB0068482B /* SiderealSystem+.swift in Sources */,
 				7611E8A328CFFB1400D510DC /* OrbType+.swift in Sources */,
 				761CF35928877919008FC865 /* Image+Extensions.swift in Sources */,
 				7614A41B2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift in Sources */,
@@ -1590,6 +1595,7 @@
 				762E0C6A288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
 				76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
 				76664B3127CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
+				765C04F52AFC38AB0068482B /* SiderealSystem+.swift in Sources */,
 				7611E8A428CFFB1400D510DC /* OrbType+.swift in Sources */,
 				761CF35A28877919008FC865 /* Image+Extensions.swift in Sources */,
 				7614A41C2AE9BB1B005AEC82 /* NewFeaturedPlantesEntry.swift in Sources */,
@@ -1843,7 +1849,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 33;
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1858,7 +1864,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.50;
+				MARKETING_VERSION = 1.55;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = iphoneos;
@@ -1877,7 +1883,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 31;
+				CURRENT_PROJECT_VERSION = 33;
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1892,7 +1898,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.50;
+				MARKETING_VERSION = 1.55;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = iphoneos;
@@ -1913,7 +1919,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1926,7 +1932,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.50;
+				MARKETING_VERSION = 1.55;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = macosx;
@@ -1946,7 +1952,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 32;
+				CURRENT_PROJECT_VERSION = 34;
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -1959,7 +1965,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 1.50;
+				MARKETING_VERSION = 1.55;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = macosx;

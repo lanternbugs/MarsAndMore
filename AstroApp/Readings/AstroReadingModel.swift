@@ -22,5 +22,5 @@ protocol AstroReading {
 }
 
 protocol AstrobotReadingInterface: AstrobotBaseInterface  {
-    func getPlanet(type: Planets, time: Double, tropical: Bool)->RoomState
+    func getPlanet(type: Planets, time: Double, calculationSettings: CalculationSettings)->RoomState
 }

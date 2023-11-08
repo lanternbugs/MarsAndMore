@@ -20,7 +20,7 @@ struct ChartTitle: View {
         var title = "none"
         switch planetRow.type {
         case .Planets, .Houses:
-            title = planetRow.tropical ? "\(planetRow.type.getName())  \(planetRow.name)" : "\(planetRow.type.getName())  \(planetRow.name) Sidereal"
+            title = planetRow.calculationSettings.tropical ? "\(planetRow.type.getName())  \(planetRow.name)" : "\(planetRow.type.getName())  \(planetRow.name) \(planetRow.calculationSettings.siderealSystem.getName())"
         default:
            title =  "\(planetRow.type.getName())  \(planetRow.name)"
             
@@ -48,7 +48,7 @@ struct ChartTitle: View {
 }
 
 struct ChartTitle_Previews: PreviewProvider {
-    @State static var row: DisplayPlanetRow = DisplayPlanetRow(planets: [], id: 0, type: .Planets, name: "mike", tropical: true)
+    @State static var row: DisplayPlanetRow = DisplayPlanetRow(planets: [], id: 0, type: .Planets, name: "mike", calculationSettings: CalculationSettings())
     static var previews: some View {
         ChartTitle(planetRow: $row)
     }

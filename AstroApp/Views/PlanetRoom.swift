@@ -44,7 +44,7 @@ struct PlanetRoom: View {
 }
 
 struct PlanetRoom_Previews: PreviewProvider {
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", tropical: true)]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", calculationSettings: CalculationSettings())]
     static var previews: some View {
         PlanetRoom(data: $row)
     }

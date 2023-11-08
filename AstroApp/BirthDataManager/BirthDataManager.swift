@@ -23,6 +23,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var userExactTimeSelection: Bool = false
     @AppStorage("utcTimeChoice") var userUTCTimeSelection: Bool = false
     @AppStorage("houseSystem") var houseSystem: HouseSystem = HouseSystem.Placidus
+    @AppStorage("siderealSystem") var siderealSystem: SiderealSystem = SiderealSystem.Lahiri
     @AppStorage("orbType") var orbSelection: OrbType = OrbType.MediumOrbs
     @AppStorage("transitOrbType") var transitOrbSelection: OrbType = OrbType.NarrowOrbs
     @AppStorage("showPlanetReadingButtons") var showPlanetReadingButtons: Bool = true
@@ -34,6 +35,9 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     let builder = BirthDataBuilder()
     var managedContext: NSManagedObjectContext?
     var citiesParsedCompletionHandler: (()->Void)?
+    var calculationSettings: CalculationSettings {
+        CalculationSettings(tropical: tropical, siderealSystem: siderealSystem, houseSystem: houseSystem.getHouseCode())
+    }
     
     init() {
         self.initializeDefaultBodiesToShow()
@@ -88,9 +92,8 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
         }
         return "none"
     }
-    
-    
 }
+
 //Mark: builder helper functions
 extension BirthDataManager {
     

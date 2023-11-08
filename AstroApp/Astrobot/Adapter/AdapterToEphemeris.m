@@ -19,7 +19,7 @@
 
 @implementation AdapterToEphemeris
 
--(double) getPlanetDegree:(double) astroTime : (int) type : (BOOL) tropical
+-(double) getPlanetDegree:(double) astroTime : (int) type : (BOOL) tropical : (int) siderealSystem
 {
     double xx[6];
     char serr[999];
@@ -28,40 +28,40 @@
     if(tropical) {
         swe_calc_ut(astroTime,  type, 0, xx, serr);
     } else {
-        swe_set_sid_mode(SE_SIDM_LAHIRI, 0, 0);
+        swe_set_sid_mode(siderealSystem, 0, 0);
         swe_calc_ut(astroTime,  type, SEFLG_SIDEREAL, xx, serr);
     }
     return xx[0];
 }
 
--(double) getAscendent:(double) time : (double) latitude : (double) longitude : (BOOL) tropical
+-(double) getAscendent:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem
 {
     double cusp[16];  /* empty + 12 houses */
     double ascmc[10];    /* asc, mc, armc, vertex .. */
-    char system = 'P'; // house system Placidius
+    //char system = 'P'; // house system Placidius
      // int val =swe_houses(time, latitude, longitude, system, cusp,  ascmc); regular
     // swe_set_sid_mode(SE_SIDM_LAHIRI, 0, 0); int val =swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, system, cusp,  ascmc); sidreal
     if(tropical) {
          swe_houses(time, latitude, longitude, system, cusp,  ascmc);
     } else {
-        swe_set_sid_mode(SE_SIDM_LAHIRI, 0, 0);
+        swe_set_sid_mode(siderealSystem, 0, 0);
         swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, system, cusp,  ascmc);
     }
     
     return cusp[1];
 }
 
--(double) getMC:(double) time : (double) latitude : (double) longitude : (BOOL) tropical
+-(double) getMC:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem
 {
     double cusp[16];  /* empty + 12 houses */
     double ascmc[10];    /* asc, mc, armc, vertex .. */
-    char system = 'P'; // house system Placidius
+    //char system = 'P'; // house system Placidius
      // int val =swe_houses(time, latitude, longitude, system, cusp,  ascmc); regular
     // swe_set_sid_mode(SE_SIDM_LAHIRI, 0, 0); int val =swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, system, cusp,  ascmc); sidreal
     if(tropical) {
          swe_houses(time, latitude, longitude, system, cusp,  ascmc);
     } else {
-        swe_set_sid_mode(SE_SIDM_LAHIRI, 0, 0);
+        swe_set_sid_mode(siderealSystem, 0, 0);
         swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, system, cusp,  ascmc);
     }
     
@@ -69,7 +69,7 @@
 }
 
 
--(double) getHouse:(double) time : (double) latitude : (double) longitude : (int) house : (char) system : (BOOL) tropical
+-(double) getHouse:(double) time : (double) latitude : (double) longitude : (int) house : (char) system : (BOOL) tropical : (int) siderealSystem
 {
     double cusp[16];  /* empty + 12 houses */
     double ascmc[10];    /* asc, mc, armc, vertex .. */
@@ -79,7 +79,7 @@
     if(tropical) {
         swe_houses(time, latitude, longitude, system, cusp,  ascmc);
     } else {
-        swe_set_sid_mode(SE_SIDM_LAHIRI, 0, 0);
+        swe_set_sid_mode(siderealSystem, 0, 0);
         swe_houses_ex(time, SEFLG_SIDEREAL,  latitude, longitude, system, cusp,  ascmc);
     }
     

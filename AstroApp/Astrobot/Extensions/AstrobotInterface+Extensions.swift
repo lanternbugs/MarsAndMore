@@ -13,7 +13,7 @@
 
 import Foundation
 extension AstrobotBaseInterface {
-    func getPlanets(time: Double, location: LocationData?, tropical: Bool)->PlanetRow
+    func getPlanets(time: Double, location: LocationData?, calculationSettings: CalculationSettings)->PlanetRow
     {
         var row = PlanetRow()
         let adapter = AdapterToEphemeris()
@@ -24,18 +24,18 @@ extension AstrobotBaseInterface {
                 guard let location = location else {
                     continue
                 }
-                row.planets.append(calculateASC(time: time, location: location, tropical: tropical))
+                row.planets.append(calculateASC(time: time, location: location, calculationSettings: calculationSettings))
 
             } else if type == .MC {
                 guard let location = location else {
                     continue
                 }
-                row.planets.append(calculateMC(time: time, location: location, tropical: tropical))
+                row.planets.append(calculateMC(time: time, location: location, calculationSettings: calculationSettings))
 
             } else {
                 let lookupType = type != .SouthNode ? type : .TrueNode
-                var val = adapter.getPlanetDegree(time, Int32(lookupType.getAstroIndex()), tropical)
-                var pastVal = adapter.getPlanetDegree(time - interval, Int32(lookupType.getAstroIndex()), tropical)
+                var val = adapter.getPlanetDegree(time, Int32(lookupType.getAstroIndex()), calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
+                var pastVal = adapter.getPlanetDegree(time - interval, Int32(lookupType.getAstroIndex()), calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
                 if type == .SouthNode && val >= 180 {
                     val -= 180
                 } else if type == .SouthNode {
@@ -71,38 +71,38 @@ extension AstrobotBaseInterface {
         return false
     }
     
-    func calculateASC(time: Double, location: LocationData, tropical: Bool)->PlanetCell
+    func calculateASC(time: Double, location: LocationData, calculationSettings: CalculationSettings)->PlanetCell
     {
-        let degree = getAscendentDegree(time: time, from: location, tropical: tropical)
+        let degree = getAscendentDegree(time: time, from: location, calculationSettings: calculationSettings)
         return  PlanetCell(planet: .Ascendent, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false)
     }
     
-    func getAscendentDegree(time: Double, from location: LocationData, tropical: Bool)->Double {
+    func getAscendentDegree(time: Double, from location: LocationData, calculationSettings: CalculationSettings)->Double {
         let adapter = AdapterToEphemeris()
-        return adapter.getAscendent(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), tropical)
+        return adapter.getAscendent(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), calculationSettings.houseSystem.utf8CString[0], calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
     }
     
-    func calculateMC(time: Double, location: LocationData, tropical: Bool)->PlanetCell
+    func calculateMC(time: Double, location: LocationData, calculationSettings: CalculationSettings)->PlanetCell
     {
-        let degree = getMCDegree(time: time, from: location, tropical: tropical)
+        let degree = getMCDegree(time: time, from: location, calculationSettings: calculationSettings)
         return  PlanetCell(planet: .MC, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false)
     }
     
-    func getMCDegree(time: Double, from location: LocationData, tropical: Bool)->Double {
+    func getMCDegree(time: Double, from location: LocationData, calculationSettings: CalculationSettings)->Double {
         let adapter = AdapterToEphemeris()
-        return adapter.getMC(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), tropical)
+        return adapter.getMC(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), calculationSettings.houseSystem.utf8CString[0], calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
     }
 }
 
 extension AstrobotInterface {
     
-    func getAspects(time: Double, with time2: Double?, and location: LocationData?, type: OrbType = OrbType.MediumOrbs, tropical: Bool)->PlanetRow
+    func getAspects(time: Double, with time2: Double?, and location: LocationData?, type: OrbType = OrbType.MediumOrbs, calculationSettings: CalculationSettings)->PlanetRow
     {
         let fetchType: PlanetFetchType = time2 == nil ? .Aspects(orbs: type.getShortName()) : .Transits(date: "none", orbs: "none")
         var transitPlanets: [TransitingPlanet]?
-        let natalPlanets = getTransitingPlanets(for: time, and: location, tropical: true)
+        let natalPlanets = getTransitingPlanets(for: time, and: location, calculationSettings: CalculationSettings( houseSystem: calculationSettings.houseSystem))
         if let time2 = time2 {
-            transitPlanets = getTransitingPlanets(for: time2, and: nil, tropical: true)
+            transitPlanets = getTransitingPlanets(for: time2, and: nil, calculationSettings: CalculationSettings(houseSystem: calculationSettings.houseSystem))
         } else {
             transitPlanets = natalPlanets
         }
@@ -140,7 +140,7 @@ extension AstrobotInterface {
         return transitsRow
     }
     
-    func getTransitingPlanets(for time: Double, and location: LocationData?, type withOrbType: OrbType = OrbType.MediumOrbs, tropical: Bool)->[TransitingPlanet] {
+    func getTransitingPlanets(for time: Double, and location: LocationData?, type withOrbType: OrbType = OrbType.MediumOrbs, calculationSettings: CalculationSettings)->[TransitingPlanet] {
         let adapter = AdapterToEphemeris()
         var transitPlanets = [TransitingPlanet]()
         for type in Planets.allCases
@@ -149,7 +149,7 @@ extension AstrobotInterface {
                 guard let location = location else {
                     continue
                 }
-                let degree = getAscendentDegree(time: time, from: location, tropical: tropical)
+                let degree = getAscendentDegree(time: time, from: location, calculationSettings: calculationSettings)
                 transitPlanets.append(TransitingPlanet(planet: type, degree: degree, laterDegree: degree))
 
             }
@@ -157,7 +157,7 @@ extension AstrobotInterface {
                 guard let location = location else {
                     continue
                 }
-                let degree = getMCDegree(time: time, from: location, tropical: tropical)
+                let degree = getMCDegree(time: time, from: location, calculationSettings: calculationSettings)
                 transitPlanets.append(TransitingPlanet(planet: type, degree: degree, laterDegree: degree))
 
             }
@@ -165,8 +165,8 @@ extension AstrobotInterface {
             else {
                 let interval: Double = 0.05
                 let lookupType = type != .SouthNode ? type : .TrueNode
-                var val = adapter.getPlanetDegree(time, Int32(lookupType.getAstroIndex()), tropical)
-                var val2 = adapter.getPlanetDegree(time + interval, Int32(lookupType.getAstroIndex()), tropical)
+                var val = adapter.getPlanetDegree(time, Int32(lookupType.getAstroIndex()), calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
+                var val2 = adapter.getPlanetDegree(time + interval, Int32(lookupType.getAstroIndex()), calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
                 
                 if type == .SouthNode && val >= 180 {
                     val -= 180
@@ -200,13 +200,13 @@ extension AstrobotInterface {
         return nil
     }
     
-    func getHouses(time: Double, location: LocationData, system: String, tropical: Bool)->PlanetRow
+    func getHouses(time: Double, location: LocationData, system: String, calculationSettings: CalculationSettings)->PlanetRow
     {
         let adapter = AdapterToEphemeris()
         var row = PlanetRow()
         for house in Houses.allCases {
             let val =  adapter.getHouse(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), Int32(house.rawValue),
-                                        system.utf8CString[0], tropical)
+                                        system.utf8CString[0], calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
             row.planets.append(HouseCell(degree: val.getAstroDegree(),sign: val.getAstroSign(),  house: house))
         }
         
