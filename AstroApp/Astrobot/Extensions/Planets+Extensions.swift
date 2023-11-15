@@ -150,16 +150,20 @@ extension Planets {
     }
      */
     
-    func getTransitOrb(type: OrbType, with aspect: Aspects)->Double
+    func getTransitOrb(type: OrbType, with aspect: Aspects) -> Double
     {
         if aspect.isMajor() {
+            var moonBonus: Double = 0
+            if self == .Moon {
+                moonBonus = 3
+            }
             switch type {
             case .NarrowOrbs:
-                return 1.0
+                return 1.0 + moonBonus
             case .MediumOrbs:
-                return 2.0
+                return 2.0 + moonBonus
             case .WideOrbs:
-                return 3.0
+                return 3.0 + moonBonus
             }
         } else {
             switch type {
