@@ -155,7 +155,7 @@ extension Planets {
         if aspect.isMajor() {
             var moonBonus: Double = 0
             if self == .Moon {
-                moonBonus = 3
+                moonBonus = 1.5
             }
             switch type {
             case .NarrowOrbs:
