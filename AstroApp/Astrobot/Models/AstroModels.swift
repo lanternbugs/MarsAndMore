@@ -76,6 +76,15 @@ struct TransitCell: AstroRowCell {
     let movement: Movement
 }
 
+struct TransitTime {
+    let planet: Planets
+    let planet2: Planets
+    let aspect: Aspects
+    let time: Double
+    let start_time: Double
+    let end_time: Double
+}
+
 struct PlanetRow {
     var planets = Array<AstroRowCell>()
 }

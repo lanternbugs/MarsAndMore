@@ -18,6 +18,7 @@ struct PlanetRoom: View {
     var body: some View {
         VStack {
             PlanetButtons(data: $data).padding([.top], 20)
+            MundanePlanetsRow()
             Divider().padding([.top, .bottom], 3)
             ScrollView {
                 ScrollViewReader { value in

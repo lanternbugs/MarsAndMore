@@ -20,6 +20,10 @@
 		760A35D127ACEA0700BCFE81 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760A35CF27ACEA0700BCFE81 /* UIDevice+Extensions.swift */; };
 		7611E8A328CFFB1400D510DC /* OrbType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611E8A228CFFB1400D510DC /* OrbType+.swift */; };
 		7611E8A428CFFB1400D510DC /* OrbType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611E8A228CFFB1400D510DC /* OrbType+.swift */; };
+		7612B4812B0AA0DB0062D829 /* MundanePlanetsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612B4802B0AA0DB0062D829 /* MundanePlanetsRow.swift */; };
+		7612B4822B0AA0DB0062D829 /* MundanePlanetsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612B4802B0AA0DB0062D829 /* MundanePlanetsRow.swift */; };
+		7612B4842B0AA1260062D829 /* MundaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612B4832B0AA1260062D829 /* MundaneView.swift */; };
+		7612B4852B0AA1260062D829 /* MundaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612B4832B0AA1260062D829 /* MundaneView.swift */; };
 		7614A3AE2AE9B849005AEC82 /* moon-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3882AE9B849005AEC82 /* moon-capricorn.txt */; };
 		7614A3AF2AE9B849005AEC82 /* moon-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3882AE9B849005AEC82 /* moon-capricorn.txt */; };
 		7614A3B02AE9B849005AEC82 /* moon-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 7614A3882AE9B849005AEC82 /* moon-capricorn.txt */; };
@@ -440,6 +444,8 @@
 		7606E29627AB54E300C72FAB /* ChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartView.swift; sourceTree = "<group>"; };
 		760A35CF27ACEA0700BCFE81 /* UIDevice+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIDevice+Extensions.swift"; sourceTree = "<group>"; };
 		7611E8A228CFFB1400D510DC /* OrbType+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "OrbType+.swift"; sourceTree = "<group>"; };
+		7612B4802B0AA0DB0062D829 /* MundanePlanetsRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MundanePlanetsRow.swift; sourceTree = "<group>"; };
+		7612B4832B0AA1260062D829 /* MundaneView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MundaneView.swift; sourceTree = "<group>"; };
 		7614A3882AE9B849005AEC82 /* moon-capricorn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-capricorn.txt"; sourceTree = "<group>"; };
 		7614A3892AE9B849005AEC82 /* moon-scorpio.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-scorpio.txt"; sourceTree = "<group>"; };
 		7614A38A2AE9B849005AEC82 /* moon-aquarius.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "moon-aquarius.txt"; sourceTree = "<group>"; };
@@ -875,6 +881,7 @@
 				76ECF73B287F5DDD00AE7B34 /* ChartTitle.swift */,
 				762EAF8E2884C579007DB4A9 /* DelayedImageView.swift */,
 				76C2878128AB2C4800DB0A2E /* ArtDisplayView.swift */,
+				7612B4802B0AA0DB0062D829 /* MundanePlanetsRow.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -1028,6 +1035,7 @@
 				7646F7CD28C7FC04007FC924 /* ArtTab.swift */,
 				765ED44E28A595C0001374AB /* ArtView.swift */,
 				7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */,
+				7612B4832B0AA1260062D829 /* MundaneView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1483,6 +1491,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7606E27B27AB159600C72FAB /* MainView.swift in Sources */,
+				7612B4842B0AA1260062D829 /* MundaneView.swift in Sources */,
+				7612B4812B0AA0DB0062D829 /* MundanePlanetsRow.swift in Sources */,
 				7667125427D00D7F00644429 /* TransitsButtonControl.swift in Sources */,
 				763B3FA027BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */,
 				7669E1D82898609900B8628D /* HousesEntry.swift in Sources */,
@@ -1577,6 +1587,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				76BEF3F927ACB1E2001C9AD0 /* PlanetsEntry.swift in Sources */,
+				7612B4852B0AA1260062D829 /* MundaneView.swift in Sources */,
+				7612B4822B0AA0DB0062D829 /* MundanePlanetsRow.swift in Sources */,
 				7667125527D00D7F00644429 /* TransitsButtonControl.swift in Sources */,
 				763B3FA127BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */,
 				7669E1D92898609900B8628D /* HousesEntry.swift in Sources */,

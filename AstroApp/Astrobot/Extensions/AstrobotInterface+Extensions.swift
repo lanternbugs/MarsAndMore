@@ -212,4 +212,8 @@ extension AstrobotInterface {
         
         return row
     }
+    
+    func getTransitTimes(start_time: Double, end_time: Double) -> [TransitTime] {
+        []
+    }
 }

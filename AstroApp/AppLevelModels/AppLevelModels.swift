@@ -28,6 +28,7 @@ enum RoomState: Equatable {
     case Picture
     case Art
     case Library
+    case Mundane
 }
 
 enum AppTab: Int {
