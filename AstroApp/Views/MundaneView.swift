@@ -13,6 +13,11 @@ struct MundaneView: View, AstrobotInterface {
     var body: some View {
         VStack {
             HStack {
+                Spacer()
+                Text("Mundane").font(.title)
+                Spacer()
+            }
+            HStack {
                 Button(action: previousDay) {
                     Text("<<").font(.title)
                 }
@@ -23,25 +28,57 @@ struct MundaneView: View, AstrobotInterface {
                     Text(">>").font(.title)
                 }
             }
-            HStack {
-                Text("Moon Transits").font(.title)
-                Spacer()
-            }
+            
             ScrollView {
                 VStack {
-                    ForEach(transits, id: \.time) {
+                    HStack {
+                        Text("Planetary Transits").font(.title)
+                        Spacer()
+                    }
+                    ForEach(transits.sorted(by: { $0.time.time < $1.time.time}), id: \.time) {
                         transit in
-                        let displayTime = getDisplayTime(transit: transit)
-                        Text("\(transit.planet.getName()) \(transit.aspect.getName()) \(transit.planet2.getName()) \(displayTime)")
+                        if isPlanetaryTransit(transit) {
+                            let displayTime = getDisplayTime(transit: transit)
+                            HStack {
+                                Text("\(transit.planet.getName()) \(transit.aspect.getName()) \(transit.planet2.getName()) \(displayTime)")
+                                Spacer()
+                            }
+                        }
+                        
+                    }
+                    Text(" ")
+                    HStack {
+                        Text("Moon Transits").font(.title)
+                        Spacer()
+                    }
+                    VStack {
+                        ForEach(transits.sorted(by: { $0.time.time < $1.time.time}), id: \.time) {
+                            transit in
+                            if isMoonTransit(transit) {
+                                let displayTime = getDisplayTime(transit: transit)
+                                HStack {
+                                    Text("\(transit.planet.getName()) \(transit.aspect.getName()) \(transit.planet2.getName()) \(displayTime)")
+                                    Spacer()
+                                }
+                            }
+                        }
                     }
                 }
-            }        
+            }
+            
         }
         
     }
 }
 
 extension MundaneView {
+    func isPlanetaryTransit(_ transit: TransitTime) -> Bool {
+        transit.planet != .Moon && transit.planet2 != .Moon
+    }
+    func isMoonTransit(_ transit: TransitTime) -> Bool {
+        transit.planet == .Moon
+    }
+
     func getDateString() -> String {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M-d-yyyy"
@@ -82,7 +119,6 @@ extension MundaneView {
         dateComponents.month = Int(month)
         dateComponents.day = Int(day)
         dateComponents.hour = Int(time)
-        let date = Date()
         let minuteFraction = time - Double(Int(time))
         dateComponents.minute = Int(60.0 * minuteFraction)
         dateComponents.timeZone = TimeZone(abbreviation: "UTC" )
