@@ -18,7 +18,7 @@ struct TransitFinder {
                 continue
             }
             for aspect in Aspects.allCases {
-                if aspect.isMajor() {
+                if aspect.isMajor() || manager.showMinorAspects {
                     if canMakeAspect(.Moon, with: planet, aspect: aspect, low: start_time, high: end_time) {
                         let time = findAspect(.Moon, with: planet, aspect: aspect, low: start_time, high: end_time)
                         if time > 0 {
@@ -49,7 +49,7 @@ struct TransitFinder {
                     continue;
                 }
                 for aspect in Aspects.allCases {
-                    if aspect.isMajor() {
+                    if aspect.isMajor() || manager.showMinorAspects {
                         if canMakeAspect(planet, with: transitingPlanet, aspect: aspect, low: start_time, high: end_time) {
                             let time = findAspect(planet, with: transitingPlanet, aspect: aspect, low: start_time, high: end_time)
                             if time > 0 {
