@@ -8,7 +8,7 @@
 import Foundation
 struct TransitFinder {
     let tolerance = 0.0001
-    let timeDifferential: Double = 1.0/10000.0
+    let timeDifferential: Double = 1.0/1000000.0
     
     func getMoonTransitsOfDay(start_time: Double, end_time: Double) -> [TransitTime] {
         let adapter = AdapterToEphemeris()
