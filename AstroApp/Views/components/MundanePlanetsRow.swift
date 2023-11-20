@@ -10,6 +10,7 @@ import SwiftUI
 struct MundanePlanetsRow: View, AstrobotInterface {
     @Environment(\.roomState) private var roomState
     @EnvironmentObject private var savedDate: PlanetsDate
+    @EnvironmentObject private var manager: BirthDataManager
     var body: some View {
         HStack(alignment: .top) {
             Spacer()
@@ -28,7 +29,7 @@ extension MundanePlanetsRow {
         start = calendar.startOfDay(for: start)
         let end = calendar.date(byAdding: .day, value: 1, to: start)
         if let end = end {
-            roomState.wrappedValue = .Mundane(transits: getTransitTimes(start_time: start.getAstroTime(), end_time: end.getAstroTime()), date: start)
+            roomState.wrappedValue = .Mundane(transits: getTransitTimes(start_time: start.getAstroTime(), end_time: end.getAstroTime(), manager: manager), date: start)
         }
     }
 }

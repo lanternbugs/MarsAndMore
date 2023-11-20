@@ -10,6 +10,7 @@ import SwiftUI
 struct MundaneView: View, AstrobotInterface {
     @State var transits: [TransitTime]
     @State var date: Date
+    @EnvironmentObject private var manager: BirthDataManager
     var body: some View {
         VStack {
             HStack {
@@ -90,7 +91,7 @@ extension MundaneView {
         let calendar = Calendar.current
         let newDate = calendar.date(byAdding: .day, value: -1, to: date)
         if let newDate = newDate {
-            transits = getTransitTimes(start_time: newDate.getAstroTime(), end_time: date.getAstroTime())
+            transits = getTransitTimes(start_time: newDate.getAstroTime(), end_time: date.getAstroTime(), manager: manager)
             date = newDate
         }
     }
@@ -101,7 +102,7 @@ extension MundaneView {
         if let newDate = newDate {
             let endDate = calendar.date(byAdding: .day, value: 1, to: newDate)
             if let endDate = endDate {
-                transits = getTransitTimes(start_time: newDate.getAstroTime(), end_time: endDate.getAstroTime())
+                transits = getTransitTimes(start_time: newDate.getAstroTime(), end_time: endDate.getAstroTime(), manager: manager)
                 date = newDate
             }
         }

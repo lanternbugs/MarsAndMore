@@ -213,9 +213,9 @@ extension AstrobotInterface {
         return row
     }
     
-    func getTransitTimes(start_time: Double, end_time: Double) -> [TransitTime] {
-        let moonTransits =  TransitFinder().getMoonTransitsOfDay(start_time: start_time, end_time: end_time)
-        let planetTransits = TransitFinder().getPlanetaryTransitsOfDay(start_time: start_time, end_time: end_time)
+    func getTransitTimes(start_time: Double, end_time: Double, manager: BirthDataManager) -> [TransitTime] {
+        let moonTransits =  TransitFinder().getMoonTransitsOfDay(start_time: start_time, end_time: end_time, manager: manager)
+        let planetTransits = TransitFinder().getPlanetaryTransitsOfDay(start_time: start_time, end_time: end_time, manager: manager)
         return moonTransits + planetTransits
         
     }
