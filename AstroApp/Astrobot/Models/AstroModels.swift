@@ -80,7 +80,7 @@ struct TransitTime {
     let planet: Planets
     let planet2: Planets
     let aspect: Aspects
-    let time: Double
+    let time: TransitTimeObject
     let start_time: Double
     let end_time: Double
 }

@@ -16,7 +16,10 @@
 #include "swephexp.h"
 #include <string.h>
 
+@implementation TransitTimeObject
 
+
+@end
 @implementation AdapterToEphemeris
 
 -(double) getPlanetDegree:(double) astroTime : (int) type : (BOOL) tropical : (int) siderealSystem
@@ -92,17 +95,19 @@
     return swe_julday(year, month, day, time, 1);
 }
 
--(double) convertSweDate:(double) time {
+-(TransitTimeObject *) convertSweDate:(double) time {
     
     int year = 0;
     int month = 0;
     int day = 0;
     double hour = 0;
-    swe_revjul(time, SE_JUL_CAL, &year, &month, &day, &hour);
-    double monthFraction = (double) month / 12;
-    double dayFraction = (double) day / 365;
-    double hourFraction = (double) ((hour / 24)/ 365);
-    return (double) year + monthFraction + dayFraction + hourFraction;
+    swe_revjul(time, SE_GREG_CAL, &year, &month, &day, &hour);
+    TransitTimeObject *tObject = [[TransitTimeObject alloc] init];
+    tObject.year = year;
+    tObject.month = month;
+    tObject.day = day;
+    tObject.time = hour;
+    return tObject;
 }
 
 -(id) init

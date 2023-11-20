@@ -31,17 +31,32 @@ struct MundaneView: View {
 
 extension MundaneView {
     func getDisplayTime(transit: TransitTime) -> String {
-        return "\(transit.time)"
-        /*
-        var date = Date(timeIntervalSince1970: transit.time)
+        var dateComponents = DateComponents()
+        let year = transit.time.year
+        let month = transit.time.month
+        let day = transit.time.day
+        let time = transit.time.time
+        dateComponents.year = Int(year)
+        dateComponents.month = Int(month)
+        dateComponents.day = Int(day)
+        dateComponents.hour = Int(time)
+        let date = Date()
+        let minuteFraction = time - Double(Int(time))
+        dateComponents.minute = Int(60.0 * minuteFraction)
+        dateComponents.timeZone = TimeZone(abbreviation: "UTC" )
+
+        // Create date from components
+        let userCalendar = Calendar(identifier: .gregorian) // since the components above (like year 1980) are for Gregorian
+        guard let someDateTime = userCalendar.date(from: dateComponents) else { return "no time" }
         let formatter = DateFormatter()
-        formatter.dateFormat = "hh a" // "a" prints "pm" or "am"
-        let hourString = formatter.string(from: date)
-        return "\(transit.time)"
-         */
-        
+        formatter.dateFormat = "MM-dd hh:mm a"
+        formatter.timeZone = TimeZone.current
+        // TimeZone.current.identifier
+        let hourString = formatter.string(from: someDateTime)
+        return hourString
     }
 }
+
 
 #Preview {
     MundaneView(transits: [])

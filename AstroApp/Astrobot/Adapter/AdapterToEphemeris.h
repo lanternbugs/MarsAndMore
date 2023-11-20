@@ -14,7 +14,12 @@
 #ifndef AdapterToEphemeris_h
 #define AdapterToEphemeris_h
 #import <Foundation/Foundation.h>
-
+@interface TransitTimeObject: NSObject
+@property int year;
+@property int month;
+@property int day;
+@property double time;
+@end
 @interface AdapterToEphemeris: NSObject
 {
     char ephepath[500];
@@ -24,7 +29,7 @@
 -(double) getAscendent:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem;
 -(double) getMC:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem;
 -(double) getHouse:(double) time : (double) latitude : (double) longitude : (int) house : (char) system : (BOOL) tropical : (int) siderealSystem;
--(double) convertSweDate:(double) time;
+-(TransitTimeObject *) convertSweDate:(double) time;
 @end
 
 #endif /* AdapterToEphemeris_h */
