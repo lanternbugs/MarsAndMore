@@ -24,6 +24,7 @@
 -(double) getAscendent:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem;
 -(double) getMC:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem;
 -(double) getHouse:(double) time : (double) latitude : (double) longitude : (int) house : (char) system : (BOOL) tropical : (int) siderealSystem;
+-(double) convertSweDate:(double) time;
 @end
 
 #endif /* AdapterToEphemeris_h */

@@ -15,6 +15,7 @@ import SwiftUI
 
 struct PlanetRoom: View {
     @Binding var data: [DisplayPlanetRow]
+    @Binding var roomState: RoomState
     var body: some View {
         VStack {
             PlanetButtons(data: $data).padding([.top], 20)
@@ -51,8 +52,9 @@ struct PlanetRoom: View {
 }
 
 struct PlanetRoom_Previews: PreviewProvider {
+    @State static var roomState: RoomState = .Planets
     @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", calculationSettings: CalculationSettings())]
     static var previews: some View {
-        PlanetRoom(data: $row)
+        PlanetRoom(data: $row, roomState: $roomState)
     }
 }

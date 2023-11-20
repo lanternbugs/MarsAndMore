@@ -14,6 +14,10 @@
 
 import Foundation
 enum RoomState: Equatable {
+    static func == (lhs: RoomState, rhs: RoomState) -> Bool {
+        lhs.getName() == rhs.getName()
+    }
+    
     case Entry
     case Chart
     case Planets
@@ -28,7 +32,7 @@ enum RoomState: Equatable {
     case Picture
     case Art
     case Library
-    case Mundane
+    case Mundane(transits: [TransitTime])
 }
 
 enum AppTab: Int {

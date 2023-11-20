@@ -330,6 +330,9 @@
 		76908C9B27C050CA00806F9D /* SelectedNameModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9927C050CA00806F9D /* SelectedNameModifier.swift */; };
 		7694464F27CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */; };
 		7694465027CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */; };
+		76AA33882B0ACBE500451FC3 /* TransitFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AA33872B0ACBE500451FC3 /* TransitFinder.swift */; };
+		76AA33892B0ACBE500451FC3 /* TransitFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AA33872B0ACBE500451FC3 /* TransitFinder.swift */; };
+		76AA338A2B0ACBE500451FC3 /* TransitFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AA33872B0ACBE500451FC3 /* TransitFinder.swift */; };
 		76AB623127B0A9CF00FEFBD4 /* ReadingCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */; };
 		76AB623227B0A9CF00FEFBD4 /* ReadingCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */; };
 		76ADD2C527E12B2D00261505 /* SelectedNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADD2C427E12B2D00261505 /* SelectedNameView.swift */; };
@@ -604,6 +607,7 @@
 		76908C9627C04FCC00806F9D /* View+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extensions.swift"; sourceTree = "<group>"; };
 		76908C9927C050CA00806F9D /* SelectedNameModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNameModifier.swift; sourceTree = "<group>"; };
 		7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirthDataManager+Extensions.swift"; sourceTree = "<group>"; };
+		76AA33872B0ACBE500451FC3 /* TransitFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitFinder.swift; sourceTree = "<group>"; };
 		76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingCredits.swift; sourceTree = "<group>"; };
 		76ADD2C427E12B2D00261505 /* SelectedNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNameView.swift; sourceTree = "<group>"; };
 		76AF1D4627AE1E7400CB4E97 /* venus-scorpio.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-scorpio.txt"; sourceTree = "<group>"; };
@@ -1053,8 +1057,9 @@
 		7679FF6F27AF184F007911C9 /* Astrobot */ = {
 			isa = PBXGroup;
 			children = (
-				762427B427C334DD0002F5B3 /* ephe */,
 				7679FF7027AF184F007911C9 /* AstrobotInterface.swift */,
+				76AA33872B0ACBE500451FC3 /* TransitFinder.swift */,
+				762427B427C334DD0002F5B3 /* ephe */,
 				761DEE96279B9EF900A71938 /* ephemeris */,
 				7679FF7327AF184F007911C9 /* Adapter */,
 				7679FF7127AF184F007911C9 /* Models */,
@@ -1579,6 +1584,7 @@
 				760A35D027ACEA0700BCFE81 /* UIDevice+Extensions.swift in Sources */,
 				76620A9D27AC7C51009094DC /* RoomState+Extensions.swift in Sources */,
 				7606E29727AB54E300C72FAB /* ChartView.swift in Sources */,
+				76AA33882B0ACBE500451FC3 /* TransitFinder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1675,6 +1681,7 @@
 				760A35D127ACEA0700BCFE81 /* UIDevice+Extensions.swift in Sources */,
 				76620A9E27AC7C51009094DC /* RoomState+Extensions.swift in Sources */,
 				761DEE80279B9EB200A71938 /* ContentView.swift in Sources */,
+				76AA33892B0ACBE500451FC3 /* TransitFinder.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1709,6 +1716,7 @@
 				76E6FFEB287A1CBF0057825F /* Planets+Extensions.swift in Sources */,
 				76E6FFEC287A1CBF0057825F /* BirthData+Extensions.swift in Sources */,
 				762214812880955300E0FC65 /* CitiesInfoUnitTesting.swift in Sources */,
+				76AA338A2B0ACBE500451FC3 /* TransitFinder.swift in Sources */,
 				76E6FFED287A1CBF0057825F /* Aspects+Extensions.swift in Sources */,
 				76E6FFEE287A1CBF0057825F /* PlanetFetchType+Extensions.swift in Sources */,
 				76E6FFDA287A1C570057825F /* AstrobotInterface.swift in Sources */,

@@ -92,6 +92,19 @@
     return swe_julday(year, month, day, time, 1);
 }
 
+-(double) convertSweDate:(double) time {
+    
+    int year = 0;
+    int month = 0;
+    int day = 0;
+    double hour = 0;
+    swe_revjul(time, SE_JUL_CAL, &year, &month, &day, &hour);
+    double monthFraction = (double) month / 12;
+    double dayFraction = (double) day / 365;
+    double hourFraction = (double) ((hour / 24)/ 365);
+    return (double) year + monthFraction + dayFraction + hourFraction;
+}
+
 -(id) init
 {
     self = [super init];
