@@ -7,10 +7,22 @@
 
 import SwiftUI
 
-struct MundaneView: View {
-    let transits: [TransitTime]
+struct MundaneView: View, AstrobotInterface {
+    @State var transits: [TransitTime]
+    @State var date: Date
     var body: some View {
         VStack {
+            HStack {
+                Button(action: previousDay) {
+                    Text("<<").font(.title)
+                }
+                Spacer()
+                Text("\(getDateString())").font(.title2)
+                Spacer()
+                Button(action: nextDay) {
+                    Text(">>").font(.title)
+                }
+            }
             HStack {
                 Text("Moon Transits").font(.title)
                 Spacer()
@@ -30,6 +42,36 @@ struct MundaneView: View {
 }
 
 extension MundaneView {
+    func getDateString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M-d-yyyy"
+        let dateString = dateFormatter.string(from: date)
+        return dateString
+    }
+    
+    func previousDay() {
+        let calendar = Calendar.current
+        let newDate = calendar.date(byAdding: .day, value: -1, to: date)
+        if let newDate = newDate {
+            transits = getTransitTimes(start_time: newDate.getAstroTime(), end_time: date.getAstroTime())
+            date = newDate
+        }
+    }
+    
+    func nextDay() {
+        let calendar = Calendar.current
+        let newDate = calendar.date(byAdding: .day, value: 1, to: date)
+        if let newDate = newDate {
+            let endDate = calendar.date(byAdding: .day, value: 1, to: newDate)
+            if let endDate = endDate {
+                transits = getTransitTimes(start_time: newDate.getAstroTime(), end_time: endDate.getAstroTime())
+                date = newDate
+            }
+        }
+        
+        
+    }
+    
     func getDisplayTime(transit: TransitTime) -> String {
         var dateComponents = DateComponents()
         let year = transit.time.year
@@ -46,12 +88,11 @@ extension MundaneView {
         dateComponents.timeZone = TimeZone(abbreviation: "UTC" )
 
         // Create date from components
-        let userCalendar = Calendar(identifier: .gregorian) // since the components above (like year 1980) are for Gregorian
+        let userCalendar = Calendar(identifier: .gregorian)
         guard let someDateTime = userCalendar.date(from: dateComponents) else { return "no time" }
         let formatter = DateFormatter()
-        formatter.dateFormat = "MM-dd hh:mm a"
+        formatter.dateFormat = "hh:mm a"
         formatter.timeZone = TimeZone.current
-        // TimeZone.current.identifier
         let hourString = formatter.string(from: someDateTime)
         return hourString
     }
@@ -59,5 +100,5 @@ extension MundaneView {
 
 
 #Preview {
-    MundaneView(transits: [])
+    MundaneView(transits: [], date: Date())
 }

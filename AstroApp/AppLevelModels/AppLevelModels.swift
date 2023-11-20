@@ -32,7 +32,7 @@ enum RoomState: Equatable {
     case Picture
     case Art
     case Library
-    case Mundane(transits: [TransitTime])
+    case Mundane(transits: [TransitTime], date: Date)
 }
 
 enum AppTab: Int {

@@ -29,10 +29,10 @@ struct PlanetsTab: View {
                 DoneView(newRoomState: .Planets)
                 ChartSettings()
             }
-        case .Mundane(let transits):
+        case .Mundane(let transits, let date):
             VStack {
                 DoneView(newRoomState: .Planets)
-                MundaneView(transits: transits)
+                MundaneView(transits: transits, date: date)
             }
         default:
             PlanetRoom(data: $data, roomState: roomState)
