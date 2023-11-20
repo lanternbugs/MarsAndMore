@@ -13,8 +13,9 @@ struct TransitFinder {
     func getMoonTransitsOfDay(start_time: Double, end_time: Double) -> [TransitTime] {
         let adapter = AdapterToEphemeris()
         var transitTimes = [TransitTime]()
+        let lastPlanet = Planets.Chiron.rawValue
         for planet in Planets.allCases {
-            if planet == .Moon || planet == .MC || planet == .Ascendent {
+            if planet == .Moon || planet == .MC || planet == .Ascendent || planet.rawValue > lastPlanet {
                 continue
             }
             for aspect in Aspects.allCases {
@@ -22,7 +23,7 @@ struct TransitFinder {
                     let time = findAspect(.Moon, with: planet, aspect: aspect, low: start_time, high: end_time)
                     if time > 0 {
                         if let transitTimeObject = adapter.convertSweDate(time) {
-                            let transitTime = TransitTime(planet: .Moon, planet2: planet, aspect: aspect, time: transitTimeObject, start_time: start_time, end_time: end_time)
+                            let transitTime = TransitTime(planet: Planets.Moon, planet2: planet, aspect: aspect, time: transitTimeObject, start_time: start_time, end_time: end_time)
                             transitTimes.append(transitTime)
                         }
                     }
