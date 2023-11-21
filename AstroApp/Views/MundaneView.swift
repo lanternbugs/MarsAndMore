@@ -121,7 +121,12 @@ extension MundaneView {
         dateComponents.day = Int(day)
         dateComponents.hour = Int(time)
         let minuteFraction = time - Double(Int(time))
-        dateComponents.minute = Int(60.0 * minuteFraction)
+        var minute = Int(60.0 * minuteFraction)
+        let decimalMinute = 60.0 * minuteFraction
+        if decimalMinute - Double(minute) >= 0.5 {
+            minute += 1
+        }
+        dateComponents.minute = minute
         dateComponents.timeZone = TimeZone(abbreviation: "UTC" )
 
         // Create date from components
