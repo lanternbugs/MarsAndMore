@@ -36,7 +36,7 @@ struct MundaneView: View, AstrobotInterface {
                         Text("Planetary Transits").font(.title)
                         Spacer()
                     }
-                    ForEach(transits.sorted(by: { $0.time.time < $1.time.time}), id: \.time) {
+                    ForEach(transits.sorted(), id: \.time) {
                         transit in
                         if isPlanetaryTransit(transit) {
                             let displayTime = getDisplayTime(transit: transit)
@@ -53,7 +53,7 @@ struct MundaneView: View, AstrobotInterface {
                         Spacer()
                     }
                     VStack {
-                        ForEach(transits.sorted(by: { $0.time.time < $1.time.time}), id: \.time) {
+                        ForEach(transits.sorted(), id: \.time) {
                             transit in
                             if isMoonTransit(transit) {
                                 let displayTime = getDisplayTime(transit: transit)

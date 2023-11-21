@@ -76,7 +76,29 @@ struct TransitCell: AstroRowCell {
     let movement: Movement
 }
 
-struct TransitTime {
+struct TransitTime: Comparable {
+    static func < (lhs: TransitTime, rhs: TransitTime) -> Bool {
+        if lhs.time.year < rhs.time.year {
+            return true
+        }
+        if lhs.time.year < rhs.time.year {
+            return true
+        } else if lhs.time.year > rhs.time.year {
+            return false
+        }
+        if lhs.time.month < rhs.time.month {
+            return true
+        } else if lhs.time.month > rhs.time.month {
+            return false
+        }
+        if lhs.time.day < rhs.time.day {
+            return true
+        } else if lhs.time.day > rhs.time.day {
+            return false
+        }
+        return lhs.time.time < rhs.time.time
+    }
+    
     let planet: Planets
     let planet2: Planets
     let aspect: Aspects
