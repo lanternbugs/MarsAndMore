@@ -84,7 +84,7 @@ extension MundaneView {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "M-d-yyyy"
         let dateString = dateFormatter.string(from: date)
-        return dateString
+        return date.getDayOfWeek() + " " + dateString
     }
     
     func previousDay() {
