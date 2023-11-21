@@ -48,7 +48,15 @@ extension Date {
         dateFormatter.dateFormat = newFormat
         return dateFormatter.string(from: self)
       }
-
     
-    
+    func getDayOfWeek() -> String {
+        let daysOfWeek = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"]
+        if let dayNumber = Calendar.current.dateComponents([.weekday], from: self).weekday {
+            let day = dayNumber - 1
+            if day >= 0 && day < daysOfWeek.count {
+                return daysOfWeek[day]
+            }
+        }
+        return "Unknown"
+    }
 }
