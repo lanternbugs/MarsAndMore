@@ -69,10 +69,16 @@ struct TransitFinder {
         let adapter = AdapterToEphemeris()
         let planetDegree = adapter.getPlanetDegree(low, Int32(planet1.getAstroIndex()), true, 0)
         let planet2Degree = adapter.getPlanetDegree(low, Int32(planet2.getAstroIndex()), true, 0)
-        let beginDistance = abs(planetDegree - planet2Degree)
+        var beginDistance = abs(planetDegree - planet2Degree)
+        if beginDistance > 180 && aspect != .Opposition {
+            beginDistance = 360 - beginDistance
+        }
         let endPlanetDegree = adapter.getPlanetDegree(high, Int32(planet1.getAstroIndex()), true, 0)
         let endPlanet2Degree = adapter.getPlanetDegree(high, Int32(planet2.getAstroIndex()), true, 0)
-        let endDistance = abs(endPlanetDegree - endPlanet2Degree)
+        var endDistance = abs(endPlanetDegree - endPlanet2Degree)
+        if endDistance > 180 && aspect != .Opposition {
+            endDistance = 360 - endDistance
+        }
         if aspect.rawValue == 0 {
             if planetDegree < planet2Degree && endPlanetDegree > endPlanet2Degree {
                 return true
@@ -103,6 +109,9 @@ struct TransitFinder {
         if orb < 0 {
             orb = -orb
         }
+        if orb > 180 { //15 sag 255 16 aries 16 orb is 239. should be 121  360 - 239 = 121
+            orb = 360 - orb
+        }
         var diff = orb - Double(aspect.rawValue)
         if diff < 0 {
             diff = -diff
@@ -115,9 +124,17 @@ struct TransitFinder {
         if orb > aspect.rawValue && planetDegree < planet2Degree {
             aspectIsFoward = true
         }
-        if orb < aspect.rawValue && planetDegree > planet2Degree {
+        if  abs(planetDegree - planet2Degree) < 180 && planetDegree > planet2Degree && aspect == .Opposition {
+            aspectIsFoward = true
+        } else if  abs(planetDegree - planet2Degree) > 180 && planetDegree < planet2Degree && aspect == .Opposition {
             aspectIsFoward = true
         }
+        else if orb > aspect.rawValue && planetDegree > planet2Degree && (planetDegree + aspect.rawValue) > 360 && (planetDegree - planet2Degree) > 180 && aspect != .Opposition {
+            aspectIsFoward = true
+        } else if orb < aspect.rawValue && planetDegree > planet2Degree && ((planetDegree + aspect.rawValue) <= 360 || (planetDegree - planet2Degree) <= 180) && aspect != .Opposition {
+            aspectIsFoward = true
+        }
+        
         if aspectIsFoward {
             return findAspect(planet1, with: planet2, aspect: aspect, low: mid, high: high)
         }
