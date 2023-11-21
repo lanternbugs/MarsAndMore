@@ -104,6 +104,8 @@ struct TransitFinder {
         let mid: Double = (low + high) / 2.0
        
         let planetDegree = adapter.getPlanetDegree(mid, Int32(planet1.getAstroIndex()), true, 0)
+        let planetLaterDegree = adapter.getPlanetDegree(mid + 0.025, Int32(planet1.getAstroIndex()), true, 0)
+        let direct = planetLaterDegree > planetDegree ? true : false
         let planet2Degree = adapter.getPlanetDegree(mid, Int32(planet2.getAstroIndex()), true, 0)
         var orb = planetDegree - planet2Degree
         if orb < 0 {
@@ -133,6 +135,9 @@ struct TransitFinder {
             aspectIsFoward = true
         } else if orb < aspect.rawValue && planetDegree > planet2Degree && ((planetDegree + aspect.rawValue) <= 360 || (planetDegree - planet2Degree) <= 180) && aspect != .Opposition {
             aspectIsFoward = true
+        }
+        if !direct {
+            aspectIsFoward = !aspectIsFoward
         }
         
         if aspectIsFoward {
