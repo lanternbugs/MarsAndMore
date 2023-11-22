@@ -83,7 +83,8 @@ extension TransitsButtonControl {
         let dateFormater = DateFormatter()
         dateFormater.locale   = Locale(identifier: "en_US_POSIX")
         dateFormater.dateFormat = "YY/MM/dd h:m"
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Transits(date: dateFormater.string(from: transitDate), orbs: manager.transitOrbSelection.getShortName(), time: transitDate), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
+        let transitData = TransitTimeData(calculationSettings: manager.calculationSettings, time: manager.getSelectionTime(), location: manager.getSelectionLocation())
+        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Transits(date: dateFormater.string(from: transitDate), orbs: manager.transitOrbSelection.getShortName(), transitData: transitData), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
         data.append(displayRow)
     }
 }

@@ -6,9 +6,7 @@
 //
 
 import SwiftUI
-enum TransitsToShow {
-    case Moon, Planetary, All
-}
+
 struct TransitTimesView: View {
     @Binding var transits: [TransitTime]
     let transitToShow: TransitsToShow

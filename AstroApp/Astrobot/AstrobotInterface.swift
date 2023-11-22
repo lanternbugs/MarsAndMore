@@ -30,9 +30,3 @@ struct AstroBot: AstrobotInterface
 {
     // used for testing
 }
-
-struct CalculationSettings {
-    var tropical: Bool = true
-    var siderealSystem: SiderealSystem = .Lahiri
-    var houseSystem: String = "P"
-}

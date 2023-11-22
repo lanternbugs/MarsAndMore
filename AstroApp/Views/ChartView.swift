@@ -32,8 +32,8 @@ struct ChartView: View {
                                     switch(planetRow.type) {
                                     case .Planets:
                                         PlanetsEntry(data: planetRow)
-                                    case .Transits(let date, _, let time):
-                                        Button(action: { showTransitsOfDay(date: time) }) {
+                                    case .Transits(let date, _, let transitData):
+                                        Button(action: { showTransitsOfDay(transitData: transitData) }) {
                                             Text("Transits of Day").font(Font.subheadline)
                                         }
                                         Text("on \(date)")
@@ -65,8 +65,8 @@ struct ChartView: View {
 }
 
 extension ChartView: AstrobotInterface {
-    func showTransitsOfDay(date: Date) {
-        var start = date
+    func showTransitsOfDay(transitData: TransitTimeData) {
+        var start = transitData.transitTime
         let calendar = Calendar.current
         start = calendar.startOfDay(for: start)
         let end = calendar.date(byAdding: .day, value: 1, to: start)

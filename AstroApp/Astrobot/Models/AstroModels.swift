@@ -44,7 +44,7 @@ enum Movement: String {
 }
 
 enum PlanetFetchType {
-    case Planets, Aspects(orbs: String), Transits(date: String, orbs: String, time: Date), Houses(system: HouseSystem)
+    case Planets, Aspects(orbs: String), Transits(date: String, orbs: String, transitData: TransitTimeData), Houses(system: HouseSystem)
 }
 
 struct TransitingPlanet {
@@ -83,6 +83,23 @@ struct TransitTime {
     let time: TransitTimeObject
     let start_time: Double
     let end_time: Double
+}
+
+enum TransitsToShow {
+    case Moon, Planetary, All
+}
+
+struct TransitTimeData {
+    var calculationSettings: CalculationSettings = CalculationSettings()
+    var time: Double = 0
+    var transitTime: Date = Date()
+    var location: LocationData?
+}
+
+struct CalculationSettings {
+    var tropical: Bool = true
+    var siderealSystem: SiderealSystem = .Lahiri
+    var houseSystem: String = "P"
 }
 
 struct PlanetRow {
