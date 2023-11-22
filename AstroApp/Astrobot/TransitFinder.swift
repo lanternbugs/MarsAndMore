@@ -156,4 +156,137 @@ struct TransitFinder {
         }
         
     }
+    
+    
+    
+    func getNatalTransitsOfDay(start_time: Double, end_time: Double, manager: BirthDataManager, transitTimeData: TransitTimeData) -> [TransitTime] {
+        let adapter = AdapterToEphemeris()
+        var transitTimes = [TransitTime]()
+        let natalDictionary = getNatalDictionary(transitTimeData)
+        for planet in Planets.allCases {
+            if planet == .MC || planet == .Ascendent || !manager.bodiesToShow.contains(planet) {
+                continue
+            }
+            for natalPlanet  in Planets.allCases {
+                if natalPlanet == .MC || natalPlanet == .Ascendent || !manager.bodiesToShow.contains(natalPlanet) {
+                    continue
+                }
+                if natalPlanet.rawValue <= planet.rawValue {
+                    continue;
+                }
+                guard let natalDegree = natalDictionary[natalPlanet] else {
+                    continue
+                }
+                for aspect in Aspects.allCases {
+                    if aspect.isMajor() || manager.showMinorAspects {
+                        if canMakeNatalAspect(planet, with: natalDegree, aspect: aspect, low: start_time, high: end_time) {
+                            let time = findNatalAspect(planet, with: natalDegree, aspect: aspect, low: start_time, high: end_time)
+                            if time > 0 {
+                                let transitTime = TransitTime(planet: planet, planet2: natalPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time)
+                                transitTimes.append(transitTime)
+                            }
+                        }
+                    }
+                }
+            }
+            
+        }
+        return transitTimes
+    }
+    
+    func getNatalDictionary(_ transitTimeData: TransitTimeData) -> [Planets: Double] {
+        let adapter = AdapterToEphemeris()
+        var natalDictionary = [Planets: Double]()
+        for planet in Planets.allCases {
+            if planet != .MC && planet != .Ascendent {
+                natalDictionary[planet] = adapter.getPlanetDegree(transitTimeData.time, Int32(planet.getAstroIndex()), true, 0)
+            }
+        }
+        return natalDictionary
+    }
+    
+    func canMakeNatalAspect(_ planet1: Planets, with natalDegree: Double, aspect: Aspects, low: Double, high: Double) -> Bool {
+        ///TODO:  make this work consitently with a planet that changes motion on that day
+        let adapter = AdapterToEphemeris()
+        let planetDegree = adapter.getPlanetDegree(low, Int32(planet1.getAstroIndex()), true, 0)
+        let planet2Degree = natalDegree
+        var beginDistance = abs(planetDegree - planet2Degree)
+        if beginDistance > 180 && aspect != .Opposition {
+            beginDistance = 360 - beginDistance
+        }
+        let endPlanetDegree = adapter.getPlanetDegree(high, Int32(planet1.getAstroIndex()), true, 0)
+        let endPlanet2Degree = natalDegree
+        var endDistance = abs(endPlanetDegree - endPlanet2Degree)
+        if endDistance > 180 && aspect != .Opposition {
+            endDistance = 360 - endDistance
+        }
+        if aspect.rawValue == 0 {
+            if planetDegree < planet2Degree && endPlanetDegree > endPlanet2Degree {
+                return true
+            }
+            if planetDegree > planet2Degree && endPlanetDegree < endPlanet2Degree {
+                return true
+            }
+            return false
+        }
+        if aspect.rawValue > beginDistance && aspect.rawValue < endDistance {
+            return true
+        }
+        if aspect.rawValue > endDistance && aspect.rawValue < beginDistance {
+            return true
+        }
+        return false
+    }
+    func findNatalAspect(_ planet1: Planets, with natalDegree: Double, aspect: Aspects, low: Double, high: Double) -> Double {
+        let adapter = AdapterToEphemeris()
+        if (low + timeDifferential) > high {
+            return -1
+        }
+        let mid: Double = (low + high) / 2.0
+       
+        let planetDegree = adapter.getPlanetDegree(mid, Int32(planet1.getAstroIndex()), true, 0)
+        let planetLaterDegree = adapter.getPlanetDegree(mid + 0.025, Int32(planet1.getAstroIndex()), true, 0)
+        let direct = planetLaterDegree > planetDegree ? true : false
+        let planet2Degree = natalDegree
+        var orb = planetDegree - planet2Degree
+        if orb < 0 {
+            orb = -orb
+        }
+        if orb > 180 { //15 sag 255 16 aries 16 orb is 239. should be 121  360 - 239 = 121
+            orb = 360 - orb
+        }
+        var diff = orb - Double(aspect.rawValue)
+        if diff < 0 {
+            diff = -diff
+        }
+        
+        if  diff  < tolerance {
+            return mid
+        }
+        var aspectIsFoward = false
+        if orb > aspect.rawValue && planetDegree < planet2Degree {
+            aspectIsFoward = true
+        }
+        if  abs(planetDegree - planet2Degree) < 180 && planetDegree > planet2Degree && aspect == .Opposition {
+            aspectIsFoward = true
+        } else if  abs(planetDegree - planet2Degree) > 180 && planetDegree < planet2Degree && aspect == .Opposition {
+            aspectIsFoward = true
+        }
+        else if orb > aspect.rawValue && planetDegree > planet2Degree && (planetDegree + aspect.rawValue) > 360 && (planetDegree - planet2Degree) > 180 && aspect != .Opposition {
+            aspectIsFoward = true
+        } else if orb < aspect.rawValue && planetDegree > planet2Degree && ((planetDegree + aspect.rawValue) <= 360 || (planetDegree - planet2Degree) <= 180) && aspect != .Opposition {
+            aspectIsFoward = true
+        }
+        if !direct {
+            aspectIsFoward = !aspectIsFoward
+        }
+        
+        if aspectIsFoward {
+            return findNatalAspect(planet1, with: natalDegree, aspect: aspect, low: mid, high: high)
+        }
+        else  {
+            return findNatalAspect(planet1, with: natalDegree, aspect: aspect, low: low, high: mid)
+        }
+        
+    }
 }

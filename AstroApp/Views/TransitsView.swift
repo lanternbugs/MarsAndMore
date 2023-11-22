@@ -21,6 +21,11 @@ struct TransitsView: View {
                     Spacer()
                 }
                 HStack {
+                    Text("Transits").font(.title)
+                    Spacer()
+                }
+                TransitTimesView(transits: $transits, transitToShow: .All)
+                HStack {
                     Text("Planetary Transits").font(.title)
                     Spacer()
                 }

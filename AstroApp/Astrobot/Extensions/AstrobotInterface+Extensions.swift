@@ -219,4 +219,8 @@ extension AstrobotInterface {
         return moonTransits + planetTransits
         
     }
+    
+    func getNatalTransitTimes(start_time: Double, end_time: Double, manager: BirthDataManager, transitTimeData: TransitTimeData) -> [TransitTime] {
+            TransitFinder().getNatalTransitsOfDay(start_time: start_time, end_time: end_time, manager: manager, transitTimeData: transitTimeData)
+    }
 }

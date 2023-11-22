@@ -71,7 +71,7 @@ extension ChartView: AstrobotInterface {
         start = calendar.startOfDay(for: start)
         let end = calendar.date(byAdding: .day, value: 1, to: start)
         if let end = end {
-            roomState.wrappedValue = .TransitsView(transits: [], skyTransits: getTransitTimes(start_time: start.getAstroTime(), end_time: end.getAstroTime(), manager: manager), date: start)
+            roomState.wrappedValue = .TransitsView(transits: getNatalTransitTimes(start_time: start.getAstroTime(), end_time: end.getAstroTime(), manager: manager, transitTimeData: transitData), skyTransits: getTransitTimes(start_time: start.getAstroTime(), end_time: end.getAstroTime(), manager: manager), date: start)
         }
         roomState.wrappedValue = .TransitsView(transits: [], skyTransits: [], date: Date())
     }
