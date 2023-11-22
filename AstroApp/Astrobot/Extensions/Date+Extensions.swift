@@ -59,4 +59,11 @@ extension Date {
         }
         return "Unknown"
     }
+    
+    func getLongDateTitleString() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "M-d-yyyy"
+        let dateString = dateFormatter.string(from: self)
+        return self.getDayOfWeek() + " " + dateString
+    }
 }

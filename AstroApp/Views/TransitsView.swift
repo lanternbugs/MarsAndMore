@@ -17,7 +17,7 @@ struct TransitsView: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text("\(getDateString())").font(.title2)
+                    Text("\(date.getLongDateTitleString())").font(.title2)
                     Spacer()
                 }
                 HStack {
@@ -25,6 +25,7 @@ struct TransitsView: View {
                     Spacer()
                 }
                 TransitTimesView(transits: $transits, transitToShow: .All)
+                Text(" ")
                 HStack {
                     Text("Planetary Transits").font(.title)
                     Spacer()
@@ -38,16 +39,6 @@ struct TransitsView: View {
                 TransitTimesView(transits: $skyTransits, transitToShow: .Moon)
             }
         }
-    }
-}
-
-extension TransitsView {
-    
-    func getDateString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M-d-yyyy"
-        let dateString = dateFormatter.string(from: date)
-        return date.getDayOfWeek() + " " + dateString
     }
 }
 

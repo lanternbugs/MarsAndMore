@@ -34,7 +34,7 @@ struct ChartView: View {
                                         PlanetsEntry(data: planetRow)
                                     case .Transits(let date, _, let transitData):
                                         Button(action: { showTransitsOfDay(transitData: transitData) }) {
-                                            Text("Transits of Day").font(Font.subheadline)
+                                            Text("Transit Times").font(Font.subheadline)
                                         }
                                         Text("on \(date)")
                                         AspectsEntry(data: planetRow)

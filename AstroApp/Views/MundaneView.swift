@@ -23,7 +23,7 @@ struct MundaneView: View, AstrobotInterface {
                     Text("<<").font(.title)
                 }
                 Spacer()
-                Text("\(getDateString())").font(.title2)
+                Text("\(date.getLongDateTitleString())").font(.title2)
                 Spacer()
                 Button(action: nextDay) {
                     Text(">>").font(.title)
@@ -52,14 +52,6 @@ struct MundaneView: View, AstrobotInterface {
 }
 
 extension MundaneView {
-
-    func getDateString() -> String {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "M-d-yyyy"
-        let dateString = dateFormatter.string(from: date)
-        return date.getDayOfWeek() + " " + dateString
-    }
-    
     func previousDay() {
         let calendar = Calendar.current
         let newDate = calendar.date(byAdding: .day, value: -1, to: date)
@@ -79,8 +71,6 @@ extension MundaneView {
                 date = newDate
             }
         }
-        
-        
     }
 }
 
