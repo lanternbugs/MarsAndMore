@@ -91,7 +91,7 @@ struct TransitFinder {
             if planetDegree < planet2Degree && endPlanetDegree > endPlanet2Degree {
                 return true
             }
-            if planetDegree > planet2Degree && endPlanetDegree < endPlanet2Degree {
+            if planetDegree > planet2Degree && endPlanetDegree > endPlanet2Degree && endPlanetDegree < planetDegree {
                 return true
             }
             return false
@@ -130,20 +130,8 @@ struct TransitFinder {
         if  diff  < tolerance {
             return mid
         }
-        var aspectIsFoward = false
-        if orb > aspect.rawValue && planetDegree < planet2Degree {
-            aspectIsFoward = true
-        }
-        if  abs(planetDegree - planet2Degree) < 180 && planetDegree > planet2Degree && aspect == .Opposition {
-            aspectIsFoward = true
-        } else if  abs(planetDegree - planet2Degree) > 180 && planetDegree < planet2Degree && aspect == .Opposition {
-            aspectIsFoward = true
-        }
-        else if orb > aspect.rawValue && planetDegree > planet2Degree && (planetDegree + aspect.rawValue) > 360 && (planetDegree - planet2Degree) > 180 && aspect != .Opposition {
-            aspectIsFoward = true
-        } else if orb < aspect.rawValue && planetDegree > planet2Degree && ((planetDegree + aspect.rawValue) <= 360 || (planetDegree - planet2Degree) <= 180) && aspect != .Opposition {
-            aspectIsFoward = true
-        }
+        var aspectIsFoward  = isAspectFoward(planetDegree, planet2Degree, aspect)
+        
         if !direct {
             aspectIsFoward = !aspectIsFoward
         }
@@ -171,9 +159,7 @@ struct TransitFinder {
                 if natalPlanet == .MC || natalPlanet == .Ascendent || !manager.bodiesToShow.contains(natalPlanet) {
                     continue
                 }
-                if natalPlanet.rawValue <= planet.rawValue {
-                    continue;
-                }
+                
                 guard let natalDegree = natalDictionary[natalPlanet] else {
                     continue
                 }
@@ -206,7 +192,6 @@ struct TransitFinder {
     }
     
     func canMakeNatalAspect(_ planet1: Planets, with natalDegree: Double, aspect: Aspects, low: Double, high: Double) -> Bool {
-        ///TODO:  make this work consitently with a planet that changes motion on that day
         let adapter = AdapterToEphemeris()
         let planetDegree = adapter.getPlanetDegree(low, Int32(planet1.getAstroIndex()), true, 0)
         let planet2Degree = natalDegree
@@ -221,10 +206,10 @@ struct TransitFinder {
             endDistance = 360 - endDistance
         }
         if aspect.rawValue == 0 {
-            if planetDegree < planet2Degree && endPlanetDegree > endPlanet2Degree {
+            if (planetDegree < planet2Degree) && (endPlanetDegree > endPlanet2Degree) {
                 return true
             }
-            if planetDegree > planet2Degree && endPlanetDegree < endPlanet2Degree {
+            if planetDegree > planet2Degree && endPlanetDegree > endPlanet2Degree && endPlanetDegree < planetDegree {
                 return true
             }
             return false
@@ -245,8 +230,12 @@ struct TransitFinder {
         let mid: Double = (low + high) / 2.0
        
         let planetDegree = adapter.getPlanetDegree(mid, Int32(planet1.getAstroIndex()), true, 0)
-        let planetLaterDegree = adapter.getPlanetDegree(mid + 0.025, Int32(planet1.getAstroIndex()), true, 0)
-        let direct = planetLaterDegree > planetDegree ? true : false
+        var direct = true
+        if planet1 != .Sun && planet1 != .Moon {
+            let planetLaterDegree = adapter.getPlanetDegree(mid + 0.025, Int32(planet1.getAstroIndex()), true, 0)
+            direct = planetLaterDegree > planetDegree ? true : false
+        }
+        
         let planet2Degree = natalDegree
         var orb = planetDegree - planet2Degree
         if orb < 0 {
@@ -263,20 +252,8 @@ struct TransitFinder {
         if  diff  < tolerance {
             return mid
         }
-        var aspectIsFoward = false
-        if orb > aspect.rawValue && planetDegree < planet2Degree {
-            aspectIsFoward = true
-        }
-        if  abs(planetDegree - planet2Degree) < 180 && planetDegree > planet2Degree && aspect == .Opposition {
-            aspectIsFoward = true
-        } else if  abs(planetDegree - planet2Degree) > 180 && planetDegree < planet2Degree && aspect == .Opposition {
-            aspectIsFoward = true
-        }
-        else if orb > aspect.rawValue && planetDegree > planet2Degree && (planetDegree + aspect.rawValue) > 360 && (planetDegree - planet2Degree) > 180 && aspect != .Opposition {
-            aspectIsFoward = true
-        } else if orb < aspect.rawValue && planetDegree > planet2Degree && ((planetDegree + aspect.rawValue) <= 360 || (planetDegree - planet2Degree) <= 180) && aspect != .Opposition {
-            aspectIsFoward = true
-        }
+        var aspectIsFoward = isAspectFoward(planetDegree, planet2Degree, aspect)
+        
         if !direct {
             aspectIsFoward = !aspectIsFoward
         }
@@ -288,5 +265,41 @@ struct TransitFinder {
             return findNatalAspect(planet1, with: natalDegree, aspect: aspect, low: low, high: mid)
         }
         
+    }
+    
+    func isAspectFoward(_ planetDegree: Double, _ planet2Degree: Double, _ aspect: Aspects) -> Bool {
+        if aspect == .Conjunction {
+            if (planetDegree < planet2Degree) && ((planet2Degree - planetDegree) < 180) {
+                return true
+            } else if (planetDegree > planet2Degree) && ((360 - planetDegree + planet2Degree) <= 180) {
+                return true
+            }
+        } else if aspect == .Opposition {
+            if planetDegree < 180 {
+                if (planetDegree + aspect.rawValue) < planet2Degree {
+                    return true
+                } 
+            } else if (planetDegree - planet2Degree) < aspect.rawValue {
+                return true
+            }
+        } else {
+            if planetDegree < planet2Degree {
+                if (planetDegree + aspect.rawValue) < planet2Degree && (planet2Degree - planetDegree) < 180  {
+                    return true
+                }
+                if (360 - planet2Degree + planetDegree) < aspect.rawValue && (360 - planet2Degree + planetDegree) < 180  {
+                    return true
+                }
+            } else { // failes for moon in pisces sextile  my taurus moon
+                if ((planetDegree - planet2Degree) < aspect.rawValue) && ((planetDegree - planet2Degree) <= 180) {
+                    return true
+                }
+                if ((360 - (planetDegree - planet2Degree)) > aspect.rawValue) && ((planetDegree - planet2Degree) > 180) {
+                    return true
+                }
+            }
+        }
+        
+        return false
     }
 }
