@@ -26,7 +26,24 @@ struct ReadingView: View {
                 }
                 
                 ForEach(reading, id: \.id) { entry in
-                    Text("\(entry.text)").fixedSize(horizontal: false, vertical: true)
+#if os(macOS)
+
+            if #available(macOS 12.0, *) {
+                Text("\(entry.text)").textSelection(.enabled).fixedSize(horizontal: false, vertical: true)
+
+            } else {
+                Text("\(entry.text)").fixedSize(horizontal: false, vertical: true)
+            }
+
+#else
+
+            if #available(iOS 15.0, *) {
+                Text("\(entry.text)").textSelection(.enabled).fixedSize(horizontal: false, vertical: true)
+            } else {
+                Text("\(entry.text)").fixedSize(horizontal: false, vertical: true)
+            }
+
+#endif
                 }
                 if case .Reading(let planet, _) = state
                 {
