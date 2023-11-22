@@ -98,7 +98,7 @@ extension AstrobotInterface {
     
     func getAspects(time: Double, with time2: Double?, and location: LocationData?, type: OrbType = OrbType.MediumOrbs, calculationSettings: CalculationSettings)->PlanetRow
     {
-        let fetchType: PlanetFetchType = time2 == nil ? .Aspects(orbs: type.getShortName()) : .Transits(date: "none", orbs: "none")
+        let fetchType: PlanetFetchType = time2 == nil ? .Aspects(orbs: type.getShortName()) : .Transits(date: "none", orbs: "none", time: Date())
         var transitPlanets: [TransitingPlanet]?
         let natalPlanets = getTransitingPlanets(for: time, and: location, calculationSettings: CalculationSettings( houseSystem: calculationSettings.houseSystem))
         if let time2 = time2 {
@@ -112,7 +112,7 @@ extension AstrobotInterface {
 
         let planetRow: [[TransitCell]?] = transitPlanets.map {
             guard let startPlanet = Planets(rawValue: $0.planet.rawValue + 1) else {
-                return nil
+                return []
             }
             var transits = [TransitCell]()
             for planet2 in natalPlanets {
