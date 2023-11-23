@@ -32,8 +32,8 @@ struct ChartView: View {
                                     switch(planetRow.type) {
                                     case .Planets:
                                         PlanetsEntry(data: planetRow)
-                                    case .Transits(let date, _, let transitData):
-                                        Button(action: { showTransitsOfDay(transitData: transitData) }) {
+                                    case .Transits(let date, _, let transitData, let chartName):
+                                        Button(action: { showTransitsOfDay(transitData: transitData, chartName: chartName) }) {
                                             Text("Transit Times").font(Font.subheadline)
                                         }
                                         Text("on \(date)")
@@ -65,13 +65,13 @@ struct ChartView: View {
 }
 
 extension ChartView: AstrobotInterface {
-    func showTransitsOfDay(transitData: TransitTimeData) {
+    func showTransitsOfDay(transitData: TransitTimeData, chartName: String) {
         var start = transitData.transitTime
         let calendar = Calendar.current
         start = calendar.startOfDay(for: start)
         let end = calendar.date(byAdding: .day, value: 1, to: start)
         if let end = end {
-            roomState.wrappedValue = .TransitsView(transits: getNatalTransitTimes(start_time: start.getAstroTime(), end_time: end.getAstroTime(), manager: manager, transitTimeData: transitData), skyTransits: getTransitTimes(start_time: start.getAstroTime(), end_time: end.getAstroTime(), manager: manager), date: start)
+            roomState.wrappedValue = .TransitsView(transits: getNatalTransitTimes(start_time: start.getAstroTime(), end_time: end.getAstroTime(), manager: manager, transitTimeData: transitData), skyTransits: getTransitTimes(start_time: start.getAstroTime(), end_time: end.getAstroTime(), manager: manager), date: start, chartName: chartName, transitData: transitData)
         }
     }
 }

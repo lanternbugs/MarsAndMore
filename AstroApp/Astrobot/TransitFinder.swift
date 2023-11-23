@@ -156,7 +156,7 @@ struct TransitFinder {
                 continue
             }
             for natalPlanet  in Planets.allCases {
-                if natalPlanet == .MC || natalPlanet == .Ascendent || !manager.bodiesToShow.contains(natalPlanet) {
+                if !manager.bodiesToShow.contains(natalPlanet) {
                     continue
                 }
                 
@@ -186,6 +186,15 @@ struct TransitFinder {
         for planet in Planets.allCases {
             if planet != .MC && planet != .Ascendent {
                 natalDictionary[planet] = adapter.getPlanetDegree(transitTimeData.time, Int32(planet.getAstroIndex()), true, 0)
+            } else {
+                guard let location =  transitTimeData.location else {
+                        continue
+                }
+                if planet == .Ascendent {
+                    natalDictionary[planet] = adapter.getAscendent(transitTimeData.time, location.latitude.getLatLongAsDouble(), location.longitude.getLatLongAsDouble(), transitTimeData.calculationSettings.houseSystem.utf8CString[0], true, 0)
+                } else if planet == .MC {
+                    natalDictionary[planet] = adapter.getMC(transitTimeData.time, location.latitude.getLatLongAsDouble(), location.longitude.getLatLongAsDouble(), transitTimeData.calculationSettings.houseSystem.utf8CString[0], true, 0)
+                }
             }
         }
         return natalDictionary

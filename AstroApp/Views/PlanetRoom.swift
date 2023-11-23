@@ -31,7 +31,7 @@ struct PlanetRoom: View {
                                 switch(planetRow.type) {
                                 case .Planets:
                                     PlanetsEntry(data: planetRow)
-                                case .Transits(let date, _, _):
+                                case .Transits(let date, _, _, _):
                                     Text("on \(date)")
                                     AspectsEntry(data: planetRow)
                                 default:
