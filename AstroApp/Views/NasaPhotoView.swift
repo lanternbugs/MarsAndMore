@@ -26,7 +26,25 @@ struct NasaPhotoView: View {
                     {
                     case .Picture:
                         DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .NasaPhotoOfDay, id: imageInfo.id, enity: .Nasa))
-                        Text(imageInfo.description).font(Font.headline.weight(.regular))
+#if os(macOS)
+
+            if #available(macOS 12.0, *) {
+                Text(imageInfo.description).font(Font.headline.weight(.regular)).textSelection(.enabled)
+
+            } else {
+                Text(imageInfo.description).font(Font.headline.weight(.regular))
+            }
+
+#else
+
+            if #available(iOS 15.0, *) {
+                Text(imageInfo.description).font(Font.headline.weight(.regular)).textSelection(.enabled)
+            } else {
+                Text(imageInfo.description).font(Font.headline.weight(.regular))
+            }
+
+#endif
+                        
                     default:
                         EmptyView()
                     }
