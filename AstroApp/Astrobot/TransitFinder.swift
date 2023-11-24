@@ -21,6 +21,17 @@ struct TransitFinder {
     func getMoonTransitsOfDay(start_time: Double, end_time: Double, manager: BirthDataManager) -> [TransitTime] {
         let adapter = AdapterToEphemeris()
         var transitTimes = [TransitTime]()
+        // Moon Sign Change
+        let moonSignChangeDegree = getSignChangeDegree(.Moon, low: start_time)
+        if canMakeNatalAspect(.Moon, with: moonSignChangeDegree, aspect: .Conjunction, low: start_time, high: end_time) {
+            let time = findNatalAspect(.Moon, with: moonSignChangeDegree, aspect: .Conjunction, low: start_time, high: end_time)
+            if time > 0 {
+                let transitTime = TransitTime(planet: .Moon, planet2: .Moon, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: moonSignChangeDegree.getAstroSign())
+                transitTimes.append(transitTime)
+            }
+            
+        }
+        // Transits
         for planet in Planets.allCases {
             if planet == .Moon || planet == .MC || planet == .Ascendent || !manager.bodiesToShow.contains(planet) {
                 continue
@@ -31,7 +42,7 @@ struct TransitFinder {
                         let time = findAspect(.Moon, with: planet, aspect: aspect, low: start_time, high: end_time)
                         if time > 0 {
                             if let transitTimeObject = adapter.convertSweDate(time) {
-                                let transitTime = TransitTime(planet: Planets.Moon, planet2: planet, aspect: aspect, time: transitTimeObject, start_time: start_time, end_time: end_time)
+                                let transitTime = TransitTime(planet: Planets.Moon, planet2: planet, aspect: aspect, time: transitTimeObject, start_time: start_time, end_time: end_time, sign: nil)
                                 transitTimes.append(transitTime)
                             }
                         }
@@ -45,6 +56,23 @@ struct TransitFinder {
     func getPlanetaryTransitsOfDay(start_time: Double, end_time: Double, manager: BirthDataManager) -> [TransitTime] {
         let adapter = AdapterToEphemeris()
         var transitTimes = [TransitTime]()
+        
+        // sign changes
+        for planet in Planets.allCases {
+            if planet == .Moon || planet == .MC || planet == .Ascendent || !manager.bodiesToShow.contains(planet) {
+                continue
+            }
+            let signChangeDegree = getSignChangeDegree(planet, low: start_time)
+            if canMakeNatalAspect(planet, with: signChangeDegree, aspect: .Conjunction, low: start_time, high: end_time) {
+                let time = findNatalAspect(planet, with: signChangeDegree, aspect: .Conjunction, low: start_time, high: end_time)
+                if time > 0 {
+                    let transitTime = TransitTime(planet: planet, planet2: planet, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: signChangeDegree.getAstroSign())
+                    transitTimes.append(transitTime)
+                }
+                
+            }
+        }
+        // transits
         for planet in Planets.allCases {
             if planet == .Moon || planet == .MC || planet == .Ascendent || !manager.bodiesToShow.contains(planet) {
                 continue
@@ -61,7 +89,7 @@ struct TransitFinder {
                         if canMakeAspect(planet, with: transitingPlanet, aspect: aspect, low: start_time, high: end_time) {
                             let time = findAspect(planet, with: transitingPlanet, aspect: aspect, low: start_time, high: end_time)
                             if time > 0 {
-                                let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time)
+                                let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
                                 transitTimes.append(transitTime)
                             }
                         }
@@ -168,7 +196,7 @@ struct TransitFinder {
                         if canMakeNatalAspect(planet, with: natalDegree, aspect: aspect, low: start_time, high: end_time) {
                             let time = findNatalAspect(planet, with: natalDegree, aspect: aspect, low: start_time, high: end_time)
                             if time > 0 {
-                                let transitTime = TransitTime(planet: planet, planet2: natalPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time)
+                                let transitTime = TransitTime(planet: planet, planet2: natalPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
                                 transitTimes.append(transitTime)
                             }
                         }
@@ -198,6 +226,18 @@ struct TransitFinder {
             }
         }
         return natalDictionary
+    }
+    
+    func getSignChangeDegree(_ planet: Planets, low: Double) -> Double {
+        let adapter = AdapterToEphemeris()
+        let planetDegree = adapter.getPlanetDegree(low, Int32(planet.getAstroIndex()), true, 0)
+        let intDegree = Int(planetDegree)
+        let changeDegree = planetDegree + (30.0 - Double(intDegree % 30) -  (planetDegree - Double(intDegree)))
+        if changeDegree == 360 {
+            return 0
+        } else {
+            return changeDegree
+        }
     }
     
     func canMakeNatalAspect(_ planet1: Planets, with natalDegree: Double, aspect: Aspects, low: Double, high: Double) -> Bool {

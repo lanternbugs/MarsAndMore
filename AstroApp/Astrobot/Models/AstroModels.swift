@@ -83,6 +83,7 @@ struct TransitTime {
     let time: TransitTimeObject
     let start_time: Double
     let end_time: Double
+    let sign: Signs?
 }
 
 enum TransitsToShow {

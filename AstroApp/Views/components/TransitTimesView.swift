@@ -17,6 +17,26 @@ struct TransitTimesView: View {
                 if shouldShowTransit(transit) {
                     let displayTime = getDisplayTime(transit: transit)
                     HStack {
+                        if let sign = transit.sign {
+#if os(macOS)
+
+            if #available(macOS 12.0, *) {
+                Text("\(transit.planet.getName()) Enters \(sign.getName()) \(displayTime)").textSelection(.enabled)
+
+            } else {
+                Text("\(transit.planet.getName()) Enters \(sign.getName()) \(displayTime)")
+            }
+
+#else
+
+            if #available(iOS 15.0, *) {
+                Text("\(transit.planet.getName()) Enters \(sign.getName()) \(displayTime)").textSelection(.enabled)
+            } else {
+                Text("\(transit.planet.getName()) Enters \(sign.getName()) \(displayTime)")
+            }
+
+#endif
+                        } else {
 #if os(macOS)
 
             if #available(macOS 12.0, *) {
@@ -35,6 +55,8 @@ struct TransitTimesView: View {
             }
 
 #endif
+                        }
+
                         Spacer()
                     }
                 }
