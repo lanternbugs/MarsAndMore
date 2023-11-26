@@ -134,7 +134,7 @@ struct TransitFinder {
             beginDistance = 360 - beginDistance
         }
         let endPlanetDegree = planet1.1 //adapter.getPlanetDegree(high, Int32(planet1.getAstroIndex()), true, 0)
-        let endPlanet2Degree = planet2.0
+        let endPlanet2Degree = planet2.1
         var endDistance = abs(endPlanetDegree - endPlanet2Degree)
         if endDistance > 180 && aspect != .Opposition {
             endDistance = 360 - endDistance
