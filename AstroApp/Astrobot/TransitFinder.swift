@@ -129,6 +129,22 @@ struct TransitFinder {
      TransitFinder.adapterCalls = 0
         return transitTimes
     }
+    
+    func canMakeConjunction(_ planetDegree: Double, endPlanetDegree: Double, planet2Degree: Double, endPlanet2Degree: Double) -> Bool {
+        if planetDegree > 180 && planet2Degree < 180 {
+            if endPlanetDegree > endPlanet2Degree && endPlanetDegree < 180 {
+                return true
+            }
+        } else {
+            if planetDegree > 180 && planet2Degree > 180 && endPlanetDegree < 180 && endPlanet2Degree > 180 {
+                return true
+            }
+            if planetDegree < planet2Degree && endPlanetDegree > endPlanet2Degree {
+                return true
+            }
+        }
+        return false
+    }
     func canMakeAspect(_ planet1: (Double, Double), with planet2: (Double, Double), aspect: Aspects, low: Double, high: Double) -> Bool {
         ///TODO:  make this work consitently with a planet that changes motion on that day
         let planetDegree = planet1.0  // adapter.getPlanetDegree(low, Int32(planet1.getAstroIndex()), true, 0)
@@ -144,17 +160,8 @@ struct TransitFinder {
             endDistance = 360 - endDistance
         }
         if aspect == .Conjunction {
+            return canMakeConjunction(planetDegree, endPlanetDegree: endPlanetDegree, planet2Degree: planet2Degree, endPlanet2Degree: endPlanet2Degree)
             
-            if planetDegree > 180 && planet2Degree < 180 {
-                if endPlanetDegree > endPlanet2Degree && endPlanetDegree < 180 {
-                    return true
-                }
-            } else {
-                if planetDegree < planet2Degree && endPlanetDegree > endPlanet2Degree {
-                    return true
-                }
-            }
-            return false
         }
         if aspect.rawValue == 0 {
             if planetDegree < planet2Degree && endPlanetDegree > endPlanet2Degree {
@@ -299,17 +306,9 @@ struct TransitFinder {
         let endPlanet2Degree = natalDegree
         var endDistance = abs(endPlanetDegree - endPlanet2Degree)
         if aspect == .Conjunction {
-            
-            if planetDegree > 180 && planet2Degree < 180 {
-                if endPlanetDegree > endPlanet2Degree && endPlanetDegree < 180 {
-                    return true
-                }
-            } else {
-                if planetDegree < planet2Degree && endPlanetDegree > endPlanet2Degree {
-                    return true
-                }
+            if aspect == .Conjunction {
+                return canMakeConjunction(planetDegree, endPlanetDegree: endPlanetDegree, planet2Degree: planet2Degree, endPlanet2Degree: endPlanet2Degree)
             }
-            return false
         }
         if endDistance > 180 && aspect != .Opposition {
             endDistance = 360 - endDistance
