@@ -58,6 +58,10 @@ extension Planets {
         }
     }
     
+    static func getPlanetsByOrbitalPeriod() -> [Planets] {
+        [.Ascendent, .MC, .Moon, .Sun, .Mercury, .Venus, .Mars, .Vesta, .Juno, .Ceres, .Pallas, .Jupiter, .TrueNode, .SouthNode, .Saturn, .Chiron, .Uranus, .Pholus, .Neptune, .Pluto]
+    }
+    
     func getNatalOrb(type: OrbType, with aspect: Aspects)->Double
     {
         // no longer using differnt orb for sextile aspect
