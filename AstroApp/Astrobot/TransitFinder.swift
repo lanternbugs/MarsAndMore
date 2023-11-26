@@ -56,6 +56,8 @@ struct TransitFinder {
                                 let transitTime = TransitTime(planet: Planets.Moon, planet2: planet, aspect: aspect, time: transitTimeObject, start_time: start_time, end_time: end_time, sign: nil)
                                 transitTimes.append(transitTime)
                             }
+                        } else {
+                            //print("missed aspect with \(planet.getName()) and \(aspect.getName()) and \(Planets.Moon.getName())")
                         }
                     }
                 }
@@ -114,6 +116,8 @@ struct TransitFinder {
                             if time > 0 {
                                 let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
                                 transitTimes.append(transitTime)
+                            } else {
+                                //print("missed aspect with \(planet.getName()) and \(aspect.getName()) and \(transitingPlanet.getName())")
                             }
                         }
                     }
@@ -138,6 +142,19 @@ struct TransitFinder {
         var endDistance = abs(endPlanetDegree - endPlanet2Degree)
         if endDistance > 180 && aspect != .Opposition {
             endDistance = 360 - endDistance
+        }
+        if aspect == .Conjunction {
+            
+            if planetDegree > 180 && planet2Degree < 180 {
+                if endPlanetDegree > endPlanet2Degree && endPlanetDegree < 180 {
+                    return true
+                }
+            } else {
+                if planetDegree < planet2Degree && endPlanetDegree > endPlanet2Degree {
+                    return true
+                }
+            }
+            return false
         }
         if aspect.rawValue == 0 {
             if planetDegree < planet2Degree && endPlanetDegree > endPlanet2Degree {
@@ -281,6 +298,19 @@ struct TransitFinder {
         let endPlanetDegree = planet1.1
         let endPlanet2Degree = natalDegree
         var endDistance = abs(endPlanetDegree - endPlanet2Degree)
+        if aspect == .Conjunction {
+            
+            if planetDegree > 180 && planet2Degree < 180 {
+                if endPlanetDegree > endPlanet2Degree && endPlanetDegree < 180 {
+                    return true
+                }
+            } else {
+                if planetDegree < planet2Degree && endPlanetDegree > endPlanet2Degree {
+                    return true
+                }
+            }
+            return false
+        }
         if endDistance > 180 && aspect != .Opposition {
             endDistance = 360 - endDistance
         }
