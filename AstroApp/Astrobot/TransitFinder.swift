@@ -36,9 +36,16 @@ struct TransitFinder {
             if planet == .Moon || planet == .MC || planet == .Ascendent || !manager.bodiesToShow.contains(planet) {
                 continue
             }
+            var planetDegree: (Double, Double) = (0,0)
+            var planet2Degree: (Double, Double) = (0,0)
+            planetDegree.0  = adapter.getPlanetDegree(start_time, Int32(planet.getAstroIndex()), true, 0)
+            planet2Degree.0 = adapter.getPlanetDegree(start_time, Int32(Planets.Moon.getAstroIndex()), true, 0)
+            
+            planetDegree.1 = adapter.getPlanetDegree(end_time, Int32(planet.getAstroIndex()), true, 0)
+            planet2Degree.1 = adapter.getPlanetDegree(end_time, Int32(Planets.Moon.getAstroIndex()), true, 0)
             for aspect in Aspects.allCases {
                 if aspect.isMajor() || manager.showMinorAspects {
-                    if canMakeAspect(.Moon, with: planet, aspect: aspect, low: start_time, high: end_time) {
+                    if canMakeAspect(planet2Degree, with: planetDegree, aspect: aspect, low: start_time, high: end_time) {
                         let time = findAspect(.Moon, with: planet, aspect: aspect, low: start_time, high: end_time)
                         if time > 0 {
                             if let transitTimeObject = adapter.convertSweDate(time) {
@@ -84,9 +91,16 @@ struct TransitFinder {
                 if transitingPlanet.rawValue <= planet.rawValue {
                     continue;
                 }
+                var planetDegree: (Double, Double) = (0,0)
+                var planet2Degree: (Double, Double) = (0,0)
+                planetDegree.0  = adapter.getPlanetDegree(start_time, Int32(planet.getAstroIndex()), true, 0)
+                planet2Degree.0 = adapter.getPlanetDegree(start_time, Int32(transitingPlanet.getAstroIndex()), true, 0)
+                
+                planetDegree.1 = adapter.getPlanetDegree(end_time, Int32(planet.getAstroIndex()), true, 0)
+                planet2Degree.1 = adapter.getPlanetDegree(end_time, Int32(transitingPlanet.getAstroIndex()), true, 0)
                 for aspect in Aspects.allCases {
                     if aspect.isMajor() || manager.showMinorAspects {
-                        if canMakeAspect(planet, with: transitingPlanet, aspect: aspect, low: start_time, high: end_time) {
+                        if canMakeAspect(planetDegree, with: planet2Degree, aspect: aspect, low: start_time, high: end_time) {
                             let time = findAspect(planet, with: transitingPlanet, aspect: aspect, low: start_time, high: end_time)
                             if time > 0 {
                                 let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
@@ -100,17 +114,17 @@ struct TransitFinder {
         }
         return transitTimes
     }
-    func canMakeAspect(_ planet1: Planets, with planet2: Planets, aspect: Aspects, low: Double, high: Double) -> Bool {
+    func canMakeAspect(_ planet1: (Double, Double), with planet2: (Double, Double), aspect: Aspects, low: Double, high: Double) -> Bool {
         ///TODO:  make this work consitently with a planet that changes motion on that day
         let adapter = AdapterToEphemeris()
-        let planetDegree = adapter.getPlanetDegree(low, Int32(planet1.getAstroIndex()), true, 0)
-        let planet2Degree = adapter.getPlanetDegree(low, Int32(planet2.getAstroIndex()), true, 0)
+        let planetDegree = planet1.0  // adapter.getPlanetDegree(low, Int32(planet1.getAstroIndex()), true, 0)
+        let planet2Degree = planet2.0
         var beginDistance = abs(planetDegree - planet2Degree)
         if beginDistance > 180 && aspect != .Opposition {
             beginDistance = 360 - beginDistance
         }
-        let endPlanetDegree = adapter.getPlanetDegree(high, Int32(planet1.getAstroIndex()), true, 0)
-        let endPlanet2Degree = adapter.getPlanetDegree(high, Int32(planet2.getAstroIndex()), true, 0)
+        let endPlanetDegree = planet1.1 //adapter.getPlanetDegree(high, Int32(planet1.getAstroIndex()), true, 0)
+        let endPlanet2Degree = planet2.0
         var endDistance = abs(endPlanetDegree - endPlanet2Degree)
         if endDistance > 180 && aspect != .Opposition {
             endDistance = 360 - endDistance
