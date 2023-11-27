@@ -118,7 +118,14 @@ struct TransitFinder {
                                 let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
                                 transitTimes.append(transitTime)
                             } else {
-                                //print("missed aspect with \(planet.getName()) and \(aspect.getName()) and \(transitingPlanet.getName())")
+                                // a second check if the normally faster planet is now moving slower
+                                let time = findAspect(transitingPlanet, with: planet, aspect: aspect, low: start_time, high: end_time)
+                                if time > 0 {
+                                    let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
+                                    transitTimes.append(transitTime)
+                                } else {
+                                    //print("missed aspect with \(planet.getName()) and \(aspect.getName()) and \(transitingPlanet.getName())")
+                                }
                             }
                         }
                     }
