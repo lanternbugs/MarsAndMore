@@ -62,14 +62,6 @@ extension Planets {
         [.Ascendent, .MC, .Moon, .Sun, .Mercury, .Venus, .Mars, .Vesta, .Juno, .Ceres, .Pallas, .Jupiter, .TrueNode, .SouthNode, .Saturn, .Chiron, .Uranus, .Pholus, .Neptune, .Pluto]
     }
     
-    static func getOrbitalSpot(_ planet: Planets) -> Int {
-        let dictionary: [Planets: Int] = [.Ascendent: 0, .MC: 1, .Moon: 2, .Sun: 3, .Mercury: 4, .Venus: 5, .Mars: 6, .Vesta: 7, .Juno: 8, .Ceres: 9, .Pallas: 10, .Jupiter: 11, .TrueNode: 12, .SouthNode: 13, .Saturn: 14, .Chiron: 15, .Uranus: 16, .Pholus: 17, .Neptune: 18, .Pluto: 19]
-        if let order = dictionary[planet] {
-            return order
-        }
-        return 0
-    }
-    
     func getNatalOrb(type: OrbType, with aspect: Aspects)->Double
     {
         // no longer using differnt orb for sextile aspect
