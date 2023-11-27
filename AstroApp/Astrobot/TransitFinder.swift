@@ -90,15 +90,15 @@ struct TransitFinder {
             }
         }
         // transits
-        for planet in Planets.allCases {
+     for planet in Planets.getPlanetsByOrbitalPeriod() {
             if planet == .Moon || planet == .MC || planet == .Ascendent || !manager.bodiesToShow.contains(planet) {
                 continue
             }
-            for transitingPlanet  in Planets.allCases {
+            for transitingPlanet  in Planets.getPlanetsByOrbitalPeriod() {
                 if transitingPlanet == .Moon || transitingPlanet == .MC || transitingPlanet == .Ascendent || !manager.bodiesToShow.contains(transitingPlanet) {
                     continue
                 }
-                if transitingPlanet.rawValue <= planet.rawValue {
+                if Planets.getOrbitalSpot(transitingPlanet) <= Planets.getOrbitalSpot(planet) {
                     continue;
                 }
                 var planetDegree: (Double, Double) = (0,0)
@@ -228,7 +228,7 @@ struct TransitFinder {
         let adapter = AdapterToEphemeris()
         var transitTimes = [TransitTime]()
         let natalDictionary = getNatalDictionary(transitTimeData)
-        for planet in Planets.allCases {
+        for planet in Planets.getPlanetsByOrbitalPeriod() {
             if planet == .MC || planet == .Ascendent || !manager.bodiesToShow.contains(planet) {
                 continue
             }
@@ -251,6 +251,8 @@ struct TransitFinder {
                             if time > 0 {
                                 let transitTime = TransitTime(planet: planet, planet2: natalPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
                                 transitTimes.append(transitTime)
+                            } else {
+                               // print("missed aspect with \(planet.getName()) and \(aspect.getName()) and \(natalPlanet.getName())")
                             }
                         }
                     }
