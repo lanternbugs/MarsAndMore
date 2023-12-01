@@ -13,7 +13,7 @@
 
 
 import Foundation
-enum RoomState: Equatable {
+indirect enum RoomState: Equatable {
     static func == (lhs: RoomState, rhs: RoomState) -> Bool {
         lhs.getName() == rhs.getName()
     }
@@ -34,6 +34,7 @@ enum RoomState: Equatable {
     case Library
     case Mundane(transits: [TransitTime], date: Date)
     case TransitsView(transits: [TransitTime], skyTransits: [TransitTime], date: Date, chartName: String, transitData: TransitTimeData)
+    case NatalView(onDismiss: RoomState, Date, chartName: String, transitData: TransitTimeData)
 }
 
 enum AppTab: Int {

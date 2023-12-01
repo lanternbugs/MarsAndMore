@@ -47,6 +47,8 @@ extension RoomState: AstroReading {
             return "Mundane"
         case .TransitsView:
             return "Transits View"
+        case .NatalView:
+            return "Natal Chart"
         }
     }
     func getReading()-> [ReadingEntry] {
