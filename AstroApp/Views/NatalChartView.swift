@@ -17,8 +17,7 @@ struct NatalChartView: View {
                     Text("Natal Chart")
                     Spacer()
                 }
-                NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: getScreenWidth() * 0.75)
-                
+                NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6)
             }
         }
     }
