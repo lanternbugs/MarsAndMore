@@ -21,7 +21,7 @@ extension PlanetFetchType {
             return "Aspects \(orbs)"
         case .Transits(_, let orbs, _, _):
             return "Transits \(orbs)"
-        case .Houses(let system):
+        case .Houses(let system, _):
             return system.rawValue + " Houses"
         }
     }

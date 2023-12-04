@@ -56,7 +56,7 @@ extension AstrobotBaseInterface {
     func getPlanetData(_ type: Planets, degree: Double, retrograde: Bool) ->PlanetCell
     {
         
-        return  PlanetCell(planet: type, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: retrograde)
+        return  PlanetCell(planet: type, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: retrograde, numericDegree: degree)
     }
     
     func checkRetrograde(val: Double, past: Double)->Bool
@@ -74,7 +74,7 @@ extension AstrobotBaseInterface {
     func calculateASC(time: Double, location: LocationData, calculationSettings: CalculationSettings)->PlanetCell
     {
         let degree = getAscendentDegree(time: time, from: location, calculationSettings: calculationSettings)
-        return  PlanetCell(planet: .Ascendent, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false)
+        return  PlanetCell(planet: .Ascendent, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false, numericDegree: degree)
     }
     
     func getAscendentDegree(time: Double, from location: LocationData, calculationSettings: CalculationSettings)->Double {
@@ -85,7 +85,7 @@ extension AstrobotBaseInterface {
     func calculateMC(time: Double, location: LocationData, calculationSettings: CalculationSettings)->PlanetCell
     {
         let degree = getMCDegree(time: time, from: location, calculationSettings: calculationSettings)
-        return  PlanetCell(planet: .MC, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false)
+        return  PlanetCell(planet: .MC, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false, numericDegree: degree)
     }
     
     func getMCDegree(time: Double, from location: LocationData, calculationSettings: CalculationSettings)->Double {
@@ -207,7 +207,7 @@ extension AstrobotInterface {
         for house in Houses.allCases {
             let val =  adapter.getHouse(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), Int32(house.rawValue),
                                         system.utf8CString[0], calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
-            row.planets.append(HouseCell(degree: val.getAstroDegree(),sign: val.getAstroSign(),  house: house))
+            row.planets.append(HouseCell(degree: val.getAstroDegree(),sign: val.getAstroSign(),  house: house, numericDegree: val))
         }
         
         return row

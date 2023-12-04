@@ -104,9 +104,9 @@ struct NewFeaturedPlanetsEntry: View {
 
 struct NewFeaturedPlanetsEntry_Previews: PreviewProvider {
     static var previews: some View {
-        let sun = PlanetCell(planet: Planets.Mars, degree: "0", sign: Signs.Scorpio,  retrograde: false)
-        let moon = PlanetCell(planet: Planets.Venus, degree: "0", sign: Signs.Scorpio,  retrograde: false)
-        let mercury = PlanetCell(planet: Planets.Venus, degree: "0", sign: Signs.Scorpio,  retrograde: false)
+        let sun = PlanetCell(planet: Planets.Mars, degree: "0", sign: Signs.Scorpio,  retrograde: false, numericDegree: 0)
+        let moon = PlanetCell(planet: Planets.Venus, degree: "0", sign: Signs.Scorpio,  retrograde: false, numericDegree: 0)
+        let mercury = PlanetCell(planet: Planets.Venus, degree: "0", sign: Signs.Scorpio,  retrograde: false, numericDegree: 0)
         NewFeaturedPlanetsEntry(sunData: sun, moonData: moon, mercuryData: mercury)
     }
 }

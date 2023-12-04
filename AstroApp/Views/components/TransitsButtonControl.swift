@@ -34,7 +34,7 @@ struct TransitsButtonControl: View, AstrobotInterface {
                 if let num = manager.selectedName,  manager.birthDates[num].location != nil
                 {
                     Button(action: houses) {
-                        Text("Houses")
+                        Text("Chart Wheel")
                     }
                     Spacer()
                 }
@@ -66,7 +66,12 @@ extension TransitsButtonControl {
         temporaryDisableButtons()
         if let location = manager.getSelectionLocation() {
             let row = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
-            let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Houses(system: manager.houseSystem), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
+            var viewModel = NatalChartViewModel()
+            if let planets = row.planets as? [HouseCell] {
+                viewModel.houseData = planets
+            }
+            
+            let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Houses(system: manager.houseSystem, chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
             data.append(displayRow)
         }
         

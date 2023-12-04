@@ -60,8 +60,8 @@ struct FeaturedPlanetsEntry: View {
 
 struct FeaturedPlanetsEntry_Previews: PreviewProvider {
     static var previews: some View {
-        let mars = PlanetCell(planet: Planets.Mars, degree: "0", sign: Signs.Scorpio,  retrograde: false)
-        let venus = PlanetCell(planet: Planets.Venus, degree: "0", sign: Signs.Scorpio,  retrograde: false)
+        let mars = PlanetCell(planet: Planets.Mars, degree: "0", sign: Signs.Scorpio,  retrograde: false, numericDegree: 0)
+        let venus = PlanetCell(planet: Planets.Venus, degree: "0", sign: Signs.Scorpio,  retrograde: false, numericDegree: 0)
         FeaturedPlanetsEntry(marsData: mars, venusData: venus)
     }
 }

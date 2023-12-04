@@ -44,7 +44,7 @@ enum Movement: String {
 }
 
 enum PlanetFetchType {
-    case Planets, Aspects(orbs: String), Transits(date: String, orbs: String, transitData: TransitTimeData, chartName: String), Houses(system: HouseSystem)
+    case Planets, Aspects(orbs: String), Transits(date: String, orbs: String, transitData: TransitTimeData, chartName: String), Houses(system: HouseSystem, chartModel: NatalChartViewModel)
 }
 
 struct TransitingPlanet {
@@ -57,6 +57,7 @@ struct HouseCell: AstroRowCell {
     let degree: String
     let sign: Signs
     let house: Houses
+    let numericDegree: Double
 }
 
 struct PlanetCell: AstroRowCell {
@@ -64,6 +65,7 @@ struct PlanetCell: AstroRowCell {
     let degree: String
     let sign: Signs
     let retrograde: Bool
+    let numericDegree: Double
     
     
 }

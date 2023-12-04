@@ -38,7 +38,10 @@ struct ChartView: View {
                                         }
                                         Text("on \(date)")
                                         AspectsEntry(data: planetRow)
-                                    case .Houses:
+                                    case .Houses(_, let viewModel):
+                                        Button(action: { showNatalChartView(viewModel: viewModel) }) {
+                                            Text("Chart Wheel").font(Font.subheadline)
+                                        }
                                         HousesEntry(data: planetRow)
                                     default:
                                         AspectsEntry(data: planetRow)
@@ -73,6 +76,10 @@ extension ChartView: AstrobotInterface {
         if let end = end {
             roomState.wrappedValue = .TransitsView(transits: getNatalTransitTimes(start_time: start.getAstroTime(), end_time: end.getAstroTime(), manager: manager, transitTimeData: transitData), skyTransits: getTransitTimes(start_time: start.getAstroTime(), end_time: end.getAstroTime(), manager: manager), date: start, chartName: chartName, transitData: transitData)
         }
+    }
+    
+    func showNatalChartView(viewModel: NatalChartViewModel) {
+        roomState.wrappedValue = .NatalView(onDismiss: .Chart, viewModel: viewModel)
     }
 }
 

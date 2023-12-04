@@ -57,6 +57,11 @@ struct ChartTab: View {
                 DoneView(newRoomState: .Chart)
                 TransitsView(transits: transits, skyTransits: skyTransits, date: date, chartName: chartName, transitData: transitData)
             }
+        case .NatalView(let dismissal, let viewModel):
+            VStack {
+                DoneView(newRoomState: dismissal)
+                NatalChartView(viewModel: viewModel)
+            }
         default:
             ChartRoom(planetData: $data)
             

@@ -9,4 +9,6 @@ import Foundation
 
 struct NatalChartViewModel {
     let chart = "Natal Chart Stub Text"
+    var houseData = [HouseCell]()
+    var planetData = [PlanetCell]()
 }
