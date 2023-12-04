@@ -87,8 +87,13 @@ extension NatalChartDrawingView {
     func drawColoredArc( _ center: CGPoint, rad: Double) {
         var strokeWidth = 30.0
         var strokeColor: NSColor = NSColor.green
-        var startAngleRadian: Double = 0
-        var endAngleRadian =   30.0
+        var startAngleRadian: Double = model.getChartStartDegree()
+        print(startAngleRadian)
+        var endAngleRadian =   startAngleRadian + 30.0
+        guard let astroFont = NSFont(name: "AstroDotBasic", size: NSFont.labelFontSize) else {
+            print("Failed to load the font.")
+            return
+        }
 #if os(iOS)
         endAngleRadian = Double.pi / 6.0
         strokeWidth = 20.0

@@ -319,7 +319,6 @@
 		76859E882B1A621E0007FED1 /* NatalViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76859E872B1A621E0007FED1 /* NatalViewRepresentable.swift */; };
 		76859E892B1A621E0007FED1 /* NatalViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76859E872B1A621E0007FED1 /* NatalViewRepresentable.swift */; };
 		76859E8C2B1A64A40007FED1 /* NatalChartDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76859E8B2B1A64A40007FED1 /* NatalChartDrawingView.swift */; };
-		76859E8D2B1A64A40007FED1 /* NatalChartDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76859E8B2B1A64A40007FED1 /* NatalChartDrawingView.swift */; };
 		76860B8F27B224E400533BD2 /* NameDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B8E27B224E400533BD2 /* NameDataView.swift */; };
 		76860B9027B224E400533BD2 /* NameDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B8E27B224E400533BD2 /* NameDataView.swift */; };
 		76860B9227B2264D00533BD2 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B9127B2264D00533BD2 /* DoneView.swift */; };
@@ -391,6 +390,10 @@
 		76C2878328AB2C4800DB0A2E /* ArtDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C2878128AB2C4800DB0A2E /* ArtDisplayView.swift */; };
 		76C5C3652B0D342D00CD287A /* TransitTime+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C5C3642B0D342D00CD287A /* TransitTime+.swift */; };
 		76C5C3662B0D342D00CD287A /* TransitTime+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C5C3642B0D342D00CD287A /* TransitTime+.swift */; };
+		76C6229A2B1E5B9000694871 /* NatalChartDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76859E8B2B1A64A40007FED1 /* NatalChartDrawingView.swift */; };
+		76C622A42B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76C622A32B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf */; };
+		76C622AC2B1E7BC200694871 /* Astrodotbasic-ow3Pd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76C622A32B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf */; };
+		76C622AE2B1E7BF300694871 /* astrodot-info.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76C622AD2B1E7BF300694871 /* astrodot-info.txt */; };
 		76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */; };
 		76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */; };
 		76D54B582B194A7D00E5269B /* NatalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B572B194A7D00E5269B /* NatalChartView.swift */; };
@@ -643,6 +646,8 @@
 		76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlanetsEntry.swift; sourceTree = "<group>"; };
 		76C2878128AB2C4800DB0A2E /* ArtDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDisplayView.swift; sourceTree = "<group>"; };
 		76C5C3642B0D342D00CD287A /* TransitTime+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitTime+.swift"; sourceTree = "<group>"; };
+		76C622A32B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Astrodotbasic-ow3Pd.ttf"; sourceTree = "<group>"; };
+		76C622AD2B1E7BF300694871 /* astrodot-info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "astrodot-info.txt"; sourceTree = "<group>"; };
 		76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReadingContent.swift; sourceTree = "<group>"; };
 		76D54B572B194A7D00E5269B /* NatalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatalChartView.swift; sourceTree = "<group>"; };
 		76D54B5B2B194AC700E5269B /* NatalChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatalChartViewModel.swift; sourceTree = "<group>"; };
@@ -768,6 +773,8 @@
 		761DEE4A279B9EB000A71938 = {
 			isa = PBXGroup;
 			children = (
+				76C622AD2B1E7BF300694871 /* astrodot-info.txt */,
+				76C622A32B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf */,
 				76F7C34D288F1B8100F097AB /* MarsAndMore--iOS--Info.plist */,
 				76F7C34C288F196900F097AB /* MarsAndMore--macOS--Info.plist */,
 				761DEE4F279B9EB100A71938 /* AstroApp */,
@@ -1323,6 +1330,7 @@
 				7614A3C02AE9B849005AEC82 /* moon-sagitarius.txt in Resources */,
 				76AF1D5A27AE1E7400CB4E97 /* venus-virgo.txt in Resources */,
 				7624287927C340830002F5B3 /* seasnam.txt in Resources */,
+				76C622AE2B1E7BF300694871 /* astrodot-info.txt in Resources */,
 				7614A4112AE9B849005AEC82 /* mercury-aquarius.txt in Resources */,
 				764EF76827ACA6E0008A15F1 /* mars-cancer.txt in Resources */,
 				764EF76327ACA6E0008A15F1 /* mars-aquarius.txt in Resources */,
@@ -1358,6 +1366,7 @@
 				764EF76627ACA6E0008A15F1 /* mars-virgo.txt in Resources */,
 				764EF76127ACA6E0008A15F1 /* mars-libra.txt in Resources */,
 				764EF76427ACA6E0008A15F1 /* mars-pisces.txt in Resources */,
+				76C622A42B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf in Resources */,
 				7614A3E72AE9B849005AEC82 /* sun-capricorn.txt in Resources */,
 				7614A3D22AE9B849005AEC82 /* sun-gemini.txt in Resources */,
 				7614A3E12AE9B849005AEC82 /* sun-sagitarius.txt in Resources */,
@@ -1398,6 +1407,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76C622AC2B1E7BC200694871 /* Astrodotbasic-ow3Pd.ttf in Resources */,
 				7614A3FA2AE9B849005AEC82 /* mercury-capricorn.txt in Resources */,
 				7614A4062AE9B849005AEC82 /* mercury-leo.txt in Resources */,
 				76AF1D5F27AE1E7400CB4E97 /* venus-cancer.txt in Resources */,
@@ -1685,7 +1695,7 @@
 				761DEEC4279B9EF900A71938 /* swecl.c in Sources */,
 				7679FF8227AF1850007911C9 /* Double+Extensions.swift in Sources */,
 				7606E29827AB54E300C72FAB /* ChartView.swift in Sources */,
-				76859E8D2B1A64A40007FED1 /* NatalChartDrawingView.swift in Sources */,
+				76C6229A2B1E5B9000694871 /* NatalChartDrawingView.swift in Sources */,
 				763B3F9E27BDB00C007A2690 /* AspectsEntry.swift in Sources */,
 				7688E0B127AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift in Sources */,
 				76E7402F28AD982800D8D699 /* ArtDataManager+.swift in Sources */,
@@ -2004,7 +2014,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MarsAndMore--macOS--Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Michael Adams 2022";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
@@ -2037,7 +2046,6 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MarsAndMore--macOS--Info.plist";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
-				INFOPLIST_KEY_NSHumanReadableCopyright = "Michael Adams 2022";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/../Frameworks",
