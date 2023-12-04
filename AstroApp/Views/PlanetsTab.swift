@@ -34,6 +34,11 @@ struct PlanetsTab: View {
                 DoneView(newRoomState: .Planets)
                 MundaneView(transits: transits, date: date)
             }
+        case .NatalView(let dismissal, let viewModel):
+            VStack {
+                DoneView(newRoomState: dismissal)
+                NatalChartView(viewModel: viewModel)
+            }
         default:
             PlanetRoom(data: $data, roomState: roomState)
             

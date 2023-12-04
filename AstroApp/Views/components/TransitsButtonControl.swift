@@ -95,7 +95,7 @@ extension TransitsButtonControl {
 }
 
 struct TransitsButtonControl_Previews: PreviewProvider {
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", calculationSettings: CalculationSettings())]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: NatalChartViewModel()), name: "Mike", calculationSettings: CalculationSettings())]
     static var previews: some View {
         TransitsButtonControl(data: $row)
     }

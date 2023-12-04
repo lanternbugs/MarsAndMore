@@ -30,7 +30,10 @@ struct ChartView: View {
                                     ChartTitle(planetRow: $planetRow)
 
                                     switch(planetRow.type) {
-                                    case .Planets:
+                                    case .Planets(let viewModel):
+                                        Button(action: { showNatalChartView(viewModel: viewModel) }) {
+                                            Text("Chart Wheel").font(Font.subheadline)
+                                        }
                                         PlanetsEntry(data: planetRow)
                                     case .Transits(let date, _, let transitData, let chartName):
                                         Button(action: { showTransitsOfDay(transitData: transitData, chartName: chartName) }) {
@@ -85,7 +88,7 @@ extension ChartView: AstrobotInterface {
 
 struct ChartView_Previews: PreviewProvider {
     @State static var state: RoomState = .Chart
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", calculationSettings: CalculationSettings())]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: NatalChartViewModel()), name: "Mike", calculationSettings: CalculationSettings())]
     static var previews: some View {
         ChartView(data: $row)
     }

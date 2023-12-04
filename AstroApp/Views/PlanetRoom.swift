@@ -29,7 +29,10 @@ struct PlanetRoom: View {
                             VStack {
                                 ChartTitle(planetRow: $planetRow)
                                 switch(planetRow.type) {
-                                case .Planets:
+                                case .Planets(let viewModel):
+                                    Button(action: { showNatalChartView(viewModel: viewModel) }) {
+                                        Text("Chart Wheel").font(Font.subheadline)
+                                    }
                                     PlanetsEntry(data: planetRow)
                                 case .Transits(let date, _, _, _):
                                     Text("on \(date)")
@@ -51,9 +54,15 @@ struct PlanetRoom: View {
     }
 }
 
+extension PlanetRoom {
+    func showNatalChartView(viewModel: NatalChartViewModel) {
+        $roomState.wrappedValue = .NatalView(onDismiss: .Planets, viewModel: viewModel)
+    }
+}
+
 struct PlanetRoom_Previews: PreviewProvider {
     @State static var roomState: RoomState = .Planets
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets, name: "Mike", calculationSettings: CalculationSettings())]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: NatalChartViewModel()), name: "Mike", calculationSettings: CalculationSettings())]
     static var previews: some View {
         PlanetRoom(data: $row, roomState: $roomState)
     }
