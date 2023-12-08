@@ -97,8 +97,9 @@ extension NatalChartDrawingView {
         endAngleRadian = Double.pi / 6.0
         strokeWidth = 20.0
 #endif
+        var counter = 0
         let radius = rad - strokeWidth / 2.0
-        for sign in Signs.allCases {
+        for sign in Signs.allCases.reversed() {
             if sign == .None {
                 continue
             }
@@ -109,18 +110,18 @@ extension NatalChartDrawingView {
             arc.appendArc(withCenter: center, radius: radius, startAngle: startAngleRadian, endAngle: endAngleRadian, clockwise: false)
 #endif
             arc.lineWidth = strokeWidth
-            if sign.rawValue % 4 == 0 {
-                strokeColor = NSColor.red
+            if sign.rawValue % 4 == 1 {
+                strokeColor = NSColor.green
                 //NSColor(red: 0, green: 173.0, blue: 0, alpha: 1.0)
-                
-            } else if sign.rawValue % 4 == 1 {
-                strokeColor = NSColor.blue
                 
             } else if sign.rawValue % 4 == 2 {
                 strokeColor = NSColor.yellow
                 
             } else if sign.rawValue % 4 == 3 {
-                strokeColor = NSColor.green
+                strokeColor = NSColor.cyan
+                
+            } else if sign.rawValue % 4 == 0 {
+                strokeColor = NSColor.red
             }
             strokeColor.set()
             arc.stroke()
@@ -139,8 +140,10 @@ extension NatalChartDrawingView {
 #else
             endAngleRadian += 30.0
 #endif
-            
-            
+            counter += 1
+            if counter == 2 {
+               // break
+            }
         }
     }
     
