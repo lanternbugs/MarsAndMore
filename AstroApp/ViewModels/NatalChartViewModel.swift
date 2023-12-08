@@ -32,8 +32,12 @@ struct NatalChartViewModel {
     
     func getChartStartDegree() -> Double {
         if houseData.count > 0 {
-            let degree = abs(180 -  houseData[0].numericDegree)
-            return degree
+            let houseDegree = houseData[0].numericDegree
+            if houseDegree > 180 {
+                return abs(180 - houseDegree)
+            } else {
+                return houseDegree + 180.0
+            }
         }
         return 180.0
     }
