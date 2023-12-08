@@ -15,5 +15,9 @@
 			</dict>
 		</dict>
 	</dict>
+	<key>UIAppFonts</key>
+	<array>
+		<string>Astrodotbasic-ow3Pd.ttf</string>
+	</array>
 </dict>
 </plist>
