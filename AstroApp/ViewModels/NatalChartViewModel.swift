@@ -42,10 +42,15 @@ struct NatalChartViewModel {
     }
     
     func getXYFromPolar(_ radius: Double, _ degree: Double) -> (Int, Int) {
-        var radians = degree * ( .pi / 180 )
-#if os(iOS)
-          radians = degree
-#endif
+        let radians = degree * ( .pi / 180.0 )
         return ((Int(center.x + radius * cos(radians))), Int(center.y + radius * sin(radians)))
+    }
+    
+    func getArcStrokeWidth() -> Double {
+#if os(iOS)
+        return 20
+#else
+        return 30
+#endif
     }
 }
