@@ -188,18 +188,7 @@ extension NatalChartDrawingView {
         var coordinate = coordinates
         let size = 21.0
         let radians = degree * ( .pi / 180.0 )
-        let xJustification = Int(cos(radians) * size / 2)
-        if xJustification < 0 {
-            coordinate.0 += xJustification
-        } else {
-            coordinate.0 -= xJustification
-        }
-        let yJustification = Int(sin(radians) * size / 2) // sin positive subtract sin negative add
-        if yJustification < 0 {
-            coordinate.1 += yJustification
-        } else {
-            coordinate.1 -= yJustification
-        }
+        coordinate = viewModel.justifyCoordinate(inputCoordinate: coordinate, radians: radians, size: size)
         
 #if os(iOS)
         if let font = UIFont(name: "AstroDotBasic", size: size) {

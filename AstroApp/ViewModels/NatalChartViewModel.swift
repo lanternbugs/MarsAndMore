@@ -41,9 +41,37 @@ struct NatalChartViewModel {
         return 180.0
     }
     
+    func justifyCoordinate(inputCoordinate: (Int, Int), radians: Double, size: Double) -> (Int, Int) {
+        var coordinate = inputCoordinate
+        let xJustification = Int(cos(radians) * size / 2)
+
+        if xJustification < 0 {
+            coordinate.0 += xJustification
+        } else {
+            coordinate.0 -= xJustification
+        }
+
+        let yJustification = Int(sin(radians) * size / 2) // sin positive subtract sin negative add
+
+        if yJustification < 0 {
+            coordinate.1 += yJustification
+        } else {
+            coordinate.1 -= yJustification
+        }
+
+        
+        
+        
+        return coordinate
+    }
+    
     func getXYFromPolar(_ radius: Double, _ degree: Double) -> (Int, Int) {
         let radians = degree * ( .pi / 180.0 )
-        return ((Int(center.x + radius * cos(radians))), Int(center.y + radius * sin(radians)))
+        var coordinate = ((Int(center.x + radius * cos(radians))), Int(center.y + radius * sin(radians)))
+#if os(iOS)
+        coordinate.1 = Int(height) - coordinate.1
+#endif
+        return coordinate
     }
     
     func getArcStrokeWidth() -> Double {
