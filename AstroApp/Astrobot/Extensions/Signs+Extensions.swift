@@ -60,4 +60,35 @@ extension Signs {
             return .None
         }
     }
+    
+    func getAstroDotCharacter() -> Character {
+        switch self {
+        case .Aries:
+            return "a"
+        case .Taurus:
+            return "b"
+        case .Gemini:
+            return "c"
+        case .Cancer:
+            return "d"
+        case .Leo:
+            return "e"
+        case .Virgo:
+            return "f"
+        case .Libra:
+            return "g"
+        case .Scorpio:
+            return "h"
+        case .Sagitarius:
+            return "i"
+        case .Capricorn:
+            return "j"
+        case .Aquarius:
+            return "k"
+        case .Pisces:
+            return "l"
+        default:
+            return "a"
+        }
+    }
 }

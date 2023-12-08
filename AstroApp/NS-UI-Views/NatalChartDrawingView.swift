@@ -12,19 +12,19 @@ class NatalChartDrawingView: UIView {
     typealias NSColor = UIColor
     typealias NSBezierPath = UIBezierPath
     
-    let model: NatalChartViewModel
+    var viewModel: NatalChartViewModel
     override init(frame frameRect: CGRect) {
-        model = NatalChartViewModel()
+        viewModel = NatalChartViewModel()
         super.init(frame: frameRect)
     }
 
     required init(coder: NSCoder) {
-        model = NatalChartViewModel()
+        viewModel = NatalChartViewModel()
         super.init(coder: coder)!
     }
 
     init(model: NatalChartViewModel) {
-        self.model = model
+        self.viewModel = model
         super.init(frame: CGRect.zero)
         backgroundColor = NSColor.white
     }
@@ -37,19 +37,19 @@ class NatalChartDrawingView: UIView {
 #else
 import Cocoa
 class NatalChartDrawingView: NSView {
-    let model: NatalChartViewModel
+    var viewModel: NatalChartViewModel
     override init(frame frameRect: NSRect) {
-        model = NatalChartViewModel()
+        viewModel = NatalChartViewModel()
         super.init(frame: frameRect);
     }
 
     required init(coder: NSCoder) {
-        model = NatalChartViewModel()
+        viewModel = NatalChartViewModel()
         super.init(coder: coder)!
     }
 
     init(model: NatalChartViewModel) {
-        self.model = model
+        self.viewModel = model
         super.init(frame: NSRect.zero);
     }
     
@@ -63,13 +63,11 @@ class NatalChartDrawingView: NSView {
 
 extension NatalChartDrawingView {
     func drawChart() {
-        let width = frame.width
-        let height = frame.height
+        viewModel.setWidth(frame.width)
+        viewModel.setHeight(frame.height)
         
-        let radius = frame.width < frame.height ? width / 2.0 : height / 2.0
-        let center: (x: Double, y: Double) = (width / 2.0, width / 2 -  ((width - height) / 2.0))
-        drawColoredArc(CGPoint(x: center.x, y: center.y), rad: radius)
-        drawCircle(center, radius: radius * 0.40)
+        drawColoredArc(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
+        drawCircle(viewModel.center, radius: viewModel.radius * 0.40)
     }
     
     func drawCircle(_ center: (Double, Double), radius: Double, lineWidth: Double = 1) {
@@ -87,19 +85,23 @@ extension NatalChartDrawingView {
     func drawColoredArc( _ center: CGPoint, rad: Double) {
         var strokeWidth = 30.0
         var strokeColor: NSColor = NSColor.green
-        var startAngleRadian: Double = model.getChartStartDegree()
+        var startAngleRadian: Double = viewModel.getChartStartDegree()
+#if os(iOS)
+        startAngleRadian = 360 - startAngleRadian
+        startAngleRadian *= ( .pi / 180.0 )
+#endif
         print(startAngleRadian)
         var endAngleRadian =   startAngleRadian + 30.0
-        guard let astroFont = NSFont(name: "AstroDotBasic", size: NSFont.labelFontSize) else {
-            print("Failed to load the font.")
-            return
-        }
+        
 #if os(iOS)
         endAngleRadian = Double.pi / 6.0
         strokeWidth = 20.0
 #endif
         let radius = rad - strokeWidth / 2.0
-        for segment in 1...12 {
+        for sign in Signs.allCases {
+            if sign == .None {
+                continue
+            }
             let arc = NSBezierPath.init()
 #if os(iOS)
             arc.addArc(withCenter: center, radius: radius, startAngle: startAngleRadian, endAngle: endAngleRadian, clockwise: true)
@@ -107,22 +109,31 @@ extension NatalChartDrawingView {
             arc.appendArc(withCenter: center, radius: radius, startAngle: startAngleRadian, endAngle: endAngleRadian, clockwise: false)
 #endif
             arc.lineWidth = strokeWidth
-            if segment % 4 == 0 {
-                strokeColor = NSColor.green
+            if sign.rawValue % 4 == 0 {
+                strokeColor = NSColor.red
                 //NSColor(red: 0, green: 173.0, blue: 0, alpha: 1.0)
                 
-            } else if segment % 4 == 1 {
-                strokeColor = NSColor.red
-                
-            } else if segment % 4 == 2 {
+            } else if sign.rawValue % 4 == 1 {
                 strokeColor = NSColor.blue
                 
-            } else if segment % 4 == 3 {
+            } else if sign.rawValue % 4 == 2 {
                 strokeColor = NSColor.yellow
+                
+            } else if sign.rawValue % 4 == 3 {
+                strokeColor = NSColor.green
             }
             strokeColor.set()
             arc.stroke()
+            var offSet: Double = 0
+#if os(iOS)
+            offSet = (.pi / 12.0)
+#else
+            offSet = 15.0
+#endif
+            printSign(viewModel.getXYFromPolar(radius, endAngleRadian - offSet), sign.getAstroDotCharacter(), endAngleRadian - offSet)
             startAngleRadian = endAngleRadian
+            
+            
 #if os(iOS)
             endAngleRadian += .pi / 6.0
 #else
@@ -131,5 +142,42 @@ extension NatalChartDrawingView {
             
             
         }
+    }
+    
+    func printSign(_ coordinates: (Int, Int), _ character: Character, _ degree: Double) {
+        var coordinate = coordinates
+        let size = 21.0
+        var radians = degree * ( .pi / 180.0 )
+#if os(iOS)
+          radians = degree
+#endif
+        let xJustification = Int(cos(radians) * size / 2)
+        if xJustification < 0 {
+            coordinate.0 += xJustification
+        } else {
+            coordinate.0 -= xJustification
+        }
+        let yJustification = Int(sin(radians) * size / 2) // sin positive subtract sin negative add
+        if yJustification < 0 {
+            coordinate.1 += yJustification
+        } else {
+            coordinate.1 -= yJustification
+        }
+        
+#if os(iOS)
+        if let font = UIFont(name: "AstroDotBasic", size: size) {
+            let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
+            String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+
+        }
+#else
+        if let font = NSFont(name: "AstroDotBasic", size: size) {
+            let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
+            String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+
+        }
+#endif
+        
+            
     }
 }
