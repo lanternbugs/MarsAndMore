@@ -73,7 +73,7 @@ extension NatalChartDrawingView {
 #endif
         printSigns(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
         drawCircle(viewModel.center, radius: viewModel.radius - viewModel.getArcStrokeWidth() - 10.0)
-        drawCircle(viewModel.center, radius: viewModel.radius * 0.40)
+        drawCircle(viewModel.center, radius: viewModel.innerRadius)
         
         drawSpoke()
     }
@@ -88,16 +88,17 @@ extension NatalChartDrawingView {
                 len = 5
             }
             drawLine(degree: Double(a) + startDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: len)
-            var houseDegree = a
-            var trueDegree = Double(a) + startDegree
+            var houseDegree =   a
+            var trueDegree =  viewModel.getChartStartDegree()  - Double(a)
             if let signTupple = viewModel.houseDictionary[houseDegree] {
-                drawHouseInfo(at: houseDegree, for: trueDegree, sign: signTupple.1 )
+                drawHouseInfo(at: houseDegree, for: trueDegree, house: String(signTupple.0), sign: signTupple.1 )
             }
         }
     }
     
-    func drawHouseInfo(at houseDegree: Int, for trueDegree: Double, sign: Signs) {
-        
+    func drawHouseInfo(at houseDegree: Int, for trueDegree: Double, house: String, sign: Signs) {
+        drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.innerRadius - viewModel.getArcStrokeWidth()))
+        printText(viewModel.getXYFromPolar(viewModel.innerRadius + 10, trueDegree - 10.0), house, trueDegree - 10.0)
     }
     
     
@@ -257,6 +258,32 @@ extension NatalChartDrawingView {
         if let font = NSFont(name: "AstroDotBasic", size: size) {
             let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
             String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+
+        }
+#endif
+    }
+    
+    func printText(_ coordinates: (Int, Int), _ text: String, _ degree: Double) {
+        var coordinate = coordinates
+        let size = 16.0
+        let radians = degree * ( .pi / 180.0 )
+        if text.count < 2 {
+            coordinate = viewModel.justifyCoordinate(inputCoordinate: coordinate, radians: radians, size: size)
+        } else {
+            coordinate = viewModel.justifyTextCoordinatePlus(inputCoordinate: coordinate, radians: radians, size: size, multiplier: text.count + 1)
+        }
+        
+        
+#if os(iOS)
+        if let font = UIFont(name: "Arial", size: size) {
+            let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
+            text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+
+        }
+#else
+        if let font = NSFont(name: "Arial", size: size) {
+            let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
+            text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
 
         }
 #endif

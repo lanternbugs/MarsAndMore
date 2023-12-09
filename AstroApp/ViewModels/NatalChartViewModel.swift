@@ -25,6 +25,10 @@ struct NatalChartViewModel {
         width < height ? width / 2.0 - 25.0 : height / 2.0 - 25.0
     }
     
+    var innerRadius: Double {
+        radius * 0.40
+    }
+    
     var center: (x: Double, y: Double) {
         (width / 2.0, width / 2 -  ((width - height) / 2.0))
     }
@@ -72,7 +76,29 @@ struct NatalChartViewModel {
         
         return coordinate
     }
-    
+    func justifyTextCoordinatePlus(inputCoordinate: (Int, Int), radians: Double, size: Double, multiplier: Int) -> (Int, Int) {
+        var coordinate = inputCoordinate
+        let xJustification = Int(cos(radians) * size / 2) * multiplier
+
+        if xJustification < 0 {
+            coordinate.0 += xJustification
+        } else {
+            coordinate.0 -= xJustification
+        }
+
+        let yJustification = Int(sin(radians) * size / 2) // sin positive subtract sin negative add
+
+        if yJustification < 0 {
+            coordinate.1 += yJustification
+        } else {
+            coordinate.1 -= yJustification
+        }
+
+        
+        
+        
+        return coordinate
+    }
     func getXYFromPolar(_ radius: Double, _ degree: Double) -> (Int, Int) {
         let radians = degree * ( .pi / 180.0 )
         var coordinate = ((Int(center.x + radius * cos(radians))), Int(center.y + radius * sin(radians)))
