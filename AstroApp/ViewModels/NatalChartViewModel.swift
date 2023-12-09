@@ -11,11 +11,18 @@ struct NatalChartViewModel {
     let chart = "Natal Chart Stub Text"
     var houseData = [HouseCell]()
     var planetData = [PlanetCell]()
+    var houseDictionary = [Int: (Int, Signs)]()
     var width: Double = 2
     var height: Double = 2
-    
+    mutating func populateData() {
+        if houseData.count > 0 {
+            for i in 0...houseData.count - 1 {
+                houseDictionary[Int(houseData[i].numericDegree)] = (i + 1, houseData[i].sign)
+            }
+        }
+    }
     var radius: Double {
-        width < height ? width / 2.0 : height / 2.0
+        width < height ? width / 2.0 - 25.0 : height / 2.0 - 25.0
     }
     
     var center: (x: Double, y: Double) {

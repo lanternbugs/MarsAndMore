@@ -65,6 +65,7 @@ extension NatalChartDrawingView {
     func drawChart() {
         viewModel.setWidth(frame.width)
         viewModel.setHeight(frame.height)
+        viewModel.populateData()
 #if os(iOS)
         drawColoredArciOS(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
 #else
@@ -73,7 +74,56 @@ extension NatalChartDrawingView {
         printSigns(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
         
         drawCircle(viewModel.center, radius: viewModel.radius * 0.40)
+        drawCircle(viewModel.center, radius: viewModel.radius - viewModel.getArcStrokeWidth() - 10.0)
+        drawSpoke()
     }
+    
+    func drawSpoke() {
+        let startDegree: Double = viewModel.getChartStartDegree()
+        for a in 0...359 {
+            var len = 0
+            if a % 5 == 0 {
+                len = 10
+            } else {
+                len = 5
+            }
+            drawLine(degree: Double(a) + startDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: len)
+            var houseDegree = a
+            var trueDegree = Double(a) + startDegree
+            if let signTupple = viewModel.houseDictionary[houseDegree] {
+                drawHouseInfo(at: houseDegree, for: trueDegree, sign: signTupple.1 )
+            }
+        }
+    }
+    
+    func drawHouseInfo(at houseDegree: Int, for trueDegree: Double, sign: Signs) {
+        
+    }
+    
+    
+    func drawLine(degree: Double, radius: Double, length: Int) {
+        let coordinate1 = viewModel.getXYFromPolar(radius, degree)
+        let coordinate2 = viewModel.getXYFromPolar(radius - Double(length), degree)
+#if os(iOS)
+        let aPath = UIBezierPath()
+        aPath.move(to: CGPoint(x:coordinate1.0, y:coordinate1.1))
+        aPath.addLine(to: CGPoint(x: coordinate2.0, y: coordinate2.1))
+        aPath.close()
+        UIColor.black.set()
+        aPath.lineWidth = 1
+        aPath.stroke()
+#else
+        let aPath = NSBezierPath.init()
+        aPath.move(to: CGPoint(x:coordinate1.0, y:coordinate1.1))
+        aPath.line(to: CGPoint(x: coordinate2.0, y: coordinate2.1))
+        aPath.close()
+        NSColor.black.set()
+        aPath.lineWidth = 1
+        aPath.stroke()
+#endif
+        
+    }
+    
     
     func drawCircle(_ center: (Double, Double), radius: Double, lineWidth: Double = 1) {
         let fillColor: NSColor = NSColor.white
