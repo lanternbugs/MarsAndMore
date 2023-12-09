@@ -72,9 +72,9 @@ extension NatalChartDrawingView {
         drawColoredArcMac(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
 #endif
         printSigns(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
-        
-        drawCircle(viewModel.center, radius: viewModel.radius * 0.40)
         drawCircle(viewModel.center, radius: viewModel.radius - viewModel.getArcStrokeWidth() - 10.0)
+        drawCircle(viewModel.center, radius: viewModel.radius * 0.40)
+        
         drawSpoke()
     }
     
@@ -133,6 +133,7 @@ extension NatalChartDrawingView {
             oval.lineWidth = lineWidth
             fillColor.set()
             oval.fill()
+            oval.close()
             strokeColor.set()
             oval.stroke()
     }
