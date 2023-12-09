@@ -90,7 +90,7 @@ extension NatalChartDrawingView {
     func drawColoredArciOS( _ center: CGPoint, rad: Double) {
         let strokeWidth = viewModel.getArcStrokeWidth()
         var strokeColor: NSColor = NSColor.green
-        var startAngleRadian: Double = viewModel.getChartStartDegree()
+        var startAngleRadian: Double = viewModel.getiOSChartArcStartDegree()
 
         startAngleRadian *= ( .pi / 180.0 )
 
@@ -107,17 +107,17 @@ extension NatalChartDrawingView {
             arc.addArc(withCenter: center, radius: radius, startAngle: startAngleRadian, endAngle: endAngleRadian, clockwise: true)
 
             arc.lineWidth = strokeWidth
-            if sign.rawValue % 4 == 1 {
+            if sign.rawValue % 4 == 0 {
                 strokeColor = NSColor.red
                 //NSColor(red: 0, green: 173.0, blue: 0, alpha: 1.0)
                 
-            } else if sign.rawValue % 4 == 2 {
+            } else if sign.rawValue % 4 == 1 {
                 strokeColor = NSColor.green
                 
-            } else if sign.rawValue % 4 == 3 {
+            } else if sign.rawValue % 4 == 2 {
                 strokeColor = NSColor.yellow
                 
-            } else if sign.rawValue % 4 == 0 {
+            } else if sign.rawValue % 4 == 3 {
                 strokeColor = NSColor.cyan
             }
             strokeColor.set()
