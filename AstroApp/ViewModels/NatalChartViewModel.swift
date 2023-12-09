@@ -22,7 +22,7 @@ struct NatalChartViewModel {
         }
     }
     var radius: Double {
-        width < height ? width / 2.0 - 25.0 : height / 2.0 - 25.0
+        width < height ? width / 2.0 - 34.0 : height / 2.0 - 34.0
     }
     
     var innerRadius: Double {
@@ -78,12 +78,22 @@ struct NatalChartViewModel {
     }
     func justifyTextCoordinatePlus(inputCoordinate: (Int, Int), radians: Double, size: Double, multiplier: Int) -> (Int, Int) {
         var coordinate = inputCoordinate
-        let xJustification = Int(cos(radians) * size / 2) * multiplier
+        var xJustification = Int(cos(radians) * size / 2)
 
         if xJustification < 0 {
-            coordinate.0 += xJustification
+#if os(iOS)
+            coordinate.0 += Int(Double(xJustification) * 1.5)
+#else
+            coordinate.0 += xJustification  * multiplier
+#endif
+            
         } else {
+           
+#if os(iOS)
             coordinate.0 -= xJustification
+#else
+            // coordinate.0 += xJustification
+#endif
         }
 
         let yJustification = Int(sin(radians) * size / 2) // sin positive subtract sin negative add

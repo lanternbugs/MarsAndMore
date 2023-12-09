@@ -98,7 +98,16 @@ extension NatalChartDrawingView {
     
     func drawHouseInfo(at houseDegree: Int, for trueDegree: Double, house: String, sign: Signs) {
         drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.innerRadius - viewModel.getArcStrokeWidth()))
-        printText(viewModel.getXYFromPolar(viewModel.innerRadius + 10, trueDegree - 10.0), house, trueDegree - 10.0)
+        drawLine(degree: Double(trueDegree), radius: viewModel.radius + 5, length: 5)
+        var fontSize = 14.0
+#if os(iOS)
+        fontSize = 10.0
+#endif
+        printText(viewModel.getXYFromPolar(viewModel.innerRadius + 10, trueDegree - 10.0), house, trueDegree - 10.0, false, fontSize)
+        printSign(viewModel.getXYFromPolar(viewModel.radius + 15, trueDegree), Double(houseDegree).getAstroSign().getAstroDotCharacter(), trueDegree)
+        let signDegreeText = viewModel.houseData[(Int(house) ?? 1) - 1].numericDegree.getAstroDegree()
+
+        printText(viewModel.getXYFromPolar(viewModel.radius + 20, trueDegree - 6), signDegreeText, trueDegree - 6, true, fontSize)
     }
     
     
@@ -263,17 +272,14 @@ extension NatalChartDrawingView {
 #endif
     }
     
-    func printText(_ coordinates: (Int, Int), _ text: String, _ degree: Double) {
+    func printText(_ coordinates: (Int, Int), _ text: String, _ degree: Double, _ extraJustify: Bool,  _ size: Double = 16.0 ) {
         var coordinate = coordinates
-        let size = 16.0
         let radians = degree * ( .pi / 180.0 )
-        if text.count < 2 {
+        if text.count < 2 && extraJustify {
             coordinate = viewModel.justifyCoordinate(inputCoordinate: coordinate, radians: radians, size: size)
         } else {
             coordinate = viewModel.justifyTextCoordinatePlus(inputCoordinate: coordinate, radians: radians, size: size, multiplier: text.count + 1)
         }
-        
-        
 #if os(iOS)
         if let font = UIFont(name: "Arial", size: size) {
             let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
