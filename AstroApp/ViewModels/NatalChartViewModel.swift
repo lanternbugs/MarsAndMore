@@ -29,17 +29,7 @@ struct NatalChartViewModel {
     mutating func setHeight(_ h: Double) {
         height = h
     }
-    func getiOSChartArcStartDegree() -> Double {
-        if houseData.count > 0 {
-            let houseDegree = houseData[1].numericDegree
-            if houseDegree > 180 {
-                return abs(180 - houseDegree)
-            } else {
-                return houseDegree + 180.0
-            }
-        }
-        return 180.0
-    }
+    
     func getChartStartDegree() -> Double {
         if houseData.count > 0 {
             let houseDegree = houseData[0].numericDegree

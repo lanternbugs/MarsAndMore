@@ -90,7 +90,13 @@ extension NatalChartDrawingView {
     func drawColoredArciOS( _ center: CGPoint, rad: Double) {
         let strokeWidth = viewModel.getArcStrokeWidth()
         var strokeColor: NSColor = NSColor.green
-        var startAngleRadian: Double = viewModel.getiOSChartArcStartDegree()
+        var startAngleRadian: Double = viewModel.getChartStartDegree()
+        let distanceFrom180 = abs(180 - startAngleRadian)
+        if startAngleRadian > 180 {
+            startAngleRadian -= 2.0 * distanceFrom180
+        } else if startAngleRadian < 180 {
+            startAngleRadian += 2.0 * distanceFrom180
+        }
 
         startAngleRadian *= ( .pi / 180.0 )
 
