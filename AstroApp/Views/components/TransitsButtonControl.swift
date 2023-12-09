@@ -70,6 +70,10 @@ extension TransitsButtonControl {
             if let planets = row.planets as? [HouseCell] {
                 viewModel.houseData = planets
             }
+            let planetsRow = getPlanets(time: manager.getSelectionTime(), location: nil, calculationSettings: manager.calculationSettings)
+            if let planets = planetsRow.planets as? [PlanetCell] {
+                viewModel.planetData = planets
+            }
             
             let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Houses(system: manager.houseSystem, chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
             data.append(displayRow)

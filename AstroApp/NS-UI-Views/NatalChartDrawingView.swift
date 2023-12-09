@@ -81,15 +81,23 @@ extension NatalChartDrawingView {
     func drawSpoke() {
         let startDegree: Double = viewModel.getChartStartDegree()
         for a in 0...359 {
+            var trueDegree =  viewModel.getChartStartDegree()  - Double(a)
             var len = 0
             if a % 5 == 0 {
                 len = 10
             } else {
                 len = 5
             }
-            drawLine(degree: Double(a) + startDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: len)
+            var thickness = 1
+            var planetDegree = a
+            if let planetTupple = viewModel.planetsDictionary[planetDegree] {
+                //thickness = 2
+                //len = 18
+            }
+            
+            drawLine(degree: Double(a) + startDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: len, thickness: thickness)
             var houseDegree =   a
-            var trueDegree =  viewModel.getChartStartDegree()  - Double(a)
+            
             if let signTupple = viewModel.houseDictionary[houseDegree] {
                 drawHouseInfo(at: houseDegree, for: trueDegree, house: String(signTupple.0), sign: signTupple.1 )
             }
@@ -97,8 +105,8 @@ extension NatalChartDrawingView {
     }
     
     func drawHouseInfo(at houseDegree: Int, for trueDegree: Double, house: String, sign: Signs) {
-        drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.innerRadius - viewModel.getArcStrokeWidth()))
-        drawLine(degree: Double(trueDegree), radius: viewModel.radius + 5, length: 5)
+        drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.innerRadius - viewModel.getArcStrokeWidth()), thickness: 1)
+        drawLine(degree: Double(trueDegree), radius: viewModel.radius + 5, length: 5, thickness: 1)
         var fontSize = 14.0
 #if os(iOS)
         fontSize = 10.0
@@ -111,7 +119,7 @@ extension NatalChartDrawingView {
     }
     
     
-    func drawLine(degree: Double, radius: Double, length: Int) {
+    func drawLine(degree: Double, radius: Double, length: Int, thickness: Int) {
         let coordinate1 = viewModel.getXYFromPolar(radius, degree)
         let coordinate2 = viewModel.getXYFromPolar(radius - Double(length), degree)
 #if os(iOS)
@@ -120,7 +128,7 @@ extension NatalChartDrawingView {
         aPath.addLine(to: CGPoint(x: coordinate2.0, y: coordinate2.1))
         aPath.close()
         UIColor.black.set()
-        aPath.lineWidth = 1
+        aPath.lineWidth = CGFloat(thickness)
         aPath.stroke()
 #else
         let aPath = NSBezierPath.init()
@@ -128,7 +136,7 @@ extension NatalChartDrawingView {
         aPath.line(to: CGPoint(x: coordinate2.0, y: coordinate2.1))
         aPath.close()
         NSColor.black.set()
-        aPath.lineWidth = 1
+        aPath.lineWidth = CGFloat(thickness)
         aPath.stroke()
 #endif
         

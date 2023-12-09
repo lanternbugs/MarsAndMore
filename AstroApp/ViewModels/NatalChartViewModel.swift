@@ -12,12 +12,24 @@ struct NatalChartViewModel {
     var houseData = [HouseCell]()
     var planetData = [PlanetCell]()
     var houseDictionary = [Int: (Int, Signs)]()
+    var planetsDictionary = [Int: (Double, Planets)]()
     var width: Double = 2
     var height: Double = 2
     mutating func populateData() {
         if houseData.count > 0 {
             for i in 0...houseData.count - 1 {
                 houseDictionary[Int(houseData[i].numericDegree)] = (i + 1, houseData[i].sign)
+            }
+        }
+        if planetData.count > 0 {
+            for i in 0...planetData.count - 1 {
+                if planetData[i].planet == .MC || planetData[i].planet == .Ascendent {
+                    continue
+                }
+                if planetData[i].planet.rawValue > Planets.Pluto.rawValue {
+                    continue
+                }
+                planetsDictionary[Int(planetData[i].numericDegree)] = (planetData[i].numericDegree , planetData[i].planet)
             }
         }
     }
