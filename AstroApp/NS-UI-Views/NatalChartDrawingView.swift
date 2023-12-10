@@ -81,27 +81,31 @@ extension NatalChartDrawingView {
     func drawSpoke() {
         let startDegree: Double = viewModel.getChartStartDegree()
         for a in 0...359 {
-            var trueDegree =  viewModel.getChartStartDegree()  - Double(a)
+            let trueDegree =  viewModel.getChartStartDegree()  - Double(a)
             var len = 0
             if a % 5 == 0 {
                 len = 10
             } else {
                 len = 5
             }
-            var thickness = 1
-            var planetDegree = a
-            if let planetTupple = viewModel.planetsDictionary[planetDegree] {
-                //thickness = 2
-                //len = 18
+            let thickness = 1
+            let planetDegree = a
+            if let planetArray = viewModel.planetsDictionary[a] {
+                drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 16, thickness: thickness + 1)
+                drawPlanetListing(planetArray, trueDegree)
             }
             
             drawLine(degree: Double(a) + startDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: len, thickness: thickness)
-            var houseDegree =   a
+            let houseDegree =   a
             
             if let signTupple = viewModel.houseDictionary[houseDegree] {
                 drawHouseInfo(at: houseDegree, for: trueDegree, house: String(signTupple.0), sign: signTupple.1 )
             }
         }
+    }
+    
+    func drawPlanetListing(_ planetArray: [PlanetCell], _ trueDegree: Double) {
+        
     }
     
     func drawHouseInfo(at houseDegree: Int, for trueDegree: Double, house: String, sign: Signs) {
