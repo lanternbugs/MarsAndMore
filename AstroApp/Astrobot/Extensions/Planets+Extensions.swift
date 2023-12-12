@@ -58,6 +58,47 @@ extension Planets {
         }
     }
     
+    func getAstroDotCharacter() -> Character {
+        switch self {
+        case .Sun:
+            return "A"
+        case .Moon:
+            return "B"
+        case .Mercury:
+            return "C"
+        case .Venus:
+            return "D"
+        case .Mars:
+            return "E"
+        case .Jupiter:
+            return "F"
+        case .Saturn:
+            return "G"
+        case .Uranus:
+            return "H"
+        case .Neptune:
+            return "I"
+        case .Pluto:
+            return "J"
+        case .Chiron:
+            return "U"
+        case .Ceres:
+            return "V"
+        case .Pallas:
+            return "W"
+        case .Juno:
+            return "X"
+        case .Vesta:
+            return "Y"
+        case .TrueNode:
+            return "L"
+        case .SouthNode:
+            return "M"
+        default:
+            return "Y" // no pholus
+        }
+    }
+    
     static func getPlanetsByOrbitalPeriod() -> [Planets] {
         [.Ascendent, .MC, .Moon, .Sun, .Mercury, .Venus, .Mars, .Vesta, .Juno, .Ceres, .Pallas, .Jupiter, .TrueNode, .SouthNode, .Saturn, .Chiron, .Uranus, .Pholus, .Neptune, .Pluto]
     }

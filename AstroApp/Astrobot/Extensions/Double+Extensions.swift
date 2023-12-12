@@ -28,7 +28,7 @@ extension Double {
     {
         let num = Int(self) % 30
         let difference =  self - Double(Int(self))
-        let doubleMinute = difference * 60;
+        let doubleMinute = difference * 60
 
         var minute = Int(doubleMinute)
         if 10 * (doubleMinute - Double(minute)) >= 5  {
@@ -37,6 +37,31 @@ extension Double {
         
         return "\(num)° \(minute)'"
     }
+    
+    func getAstroDegreeOnly()->String
+    {
+        let num = Int(self) % 30
+        let difference =  self - Double(Int(self))
+        let doubleMinute = difference * 60
+        
+        return "\(num)°"
+    }
+    
+    func getAstroMinute()->String
+    {
+        let num = Int(self) % 30
+        let difference =  self - Double(Int(self))
+        let doubleMinute = difference * 60;
+
+        var minute = Int(doubleMinute)
+        if 10 * (doubleMinute - Double(minute)) >= 5  {
+            minute += 1
+        }
+        
+        return "\(minute)'"
+    }
+    
+    
     
     func getTransitDegree(with degree2: Double, for aspect: Aspects)->String
     {
