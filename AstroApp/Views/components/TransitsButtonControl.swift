@@ -75,6 +75,12 @@ extension TransitsButtonControl {
                 viewModel.planetData = planets
             }
             
+            let aspectsRow = getAspects(time: manager.getSelectionTime(), with: nil, and: nil, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
+            
+            if let aspects = aspectsRow.planets as? [TransitCell] {
+                viewModel.aspectsData = aspects
+            }
+            
             let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Houses(system: manager.houseSystem, chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
             data.append(displayRow)
         }

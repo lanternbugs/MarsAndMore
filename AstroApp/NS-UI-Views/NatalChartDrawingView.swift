@@ -93,6 +93,7 @@ extension NatalChartDrawingView {
             if let planetArray = viewModel.planetsDictionary[a] {
                 drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 16, thickness: thickness + 1)
                 drawPlanetListing(planetArray, trueDegree)
+                drawAspects(planetArray, trueDegree, a)
             }
             
             drawLine(degree: Double(a) + startDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: len, thickness: thickness)
@@ -100,6 +101,26 @@ extension NatalChartDrawingView {
             
             if let signTupple = viewModel.houseDictionary[houseDegree] {
                 drawHouseInfo(at: houseDegree, for: trueDegree, house: String(signTupple.0), sign: signTupple.1 )
+            }
+        }
+    }
+    
+    func drawAspects(_ planetArray: [PlanetCell], _ trueDegree: Double, _ a: Int) {
+        for planet in planetArray {
+            let aspects = viewModel.aspectsData.filter { $0.planet == planet.planet && $0.planet2.rawValue < Planets.Chiron.rawValue + 1}
+            for aspect in aspects {
+                if !aspect.aspect.isMajor() || aspect.aspect == .Conjunction {
+                    continue
+                }
+                if let b = viewModel.planetToDegreeMap[aspect.planet], let c = viewModel.planetToDegreeMap[aspect.planet2] {
+                    var secondDegree =  viewModel.getChartStartDegree()  - Double(a + b - c)
+                    if c < b {
+                        secondDegree =  viewModel.getChartStartDegree()  - Double(a + c - b)
+                    }
+                    let coordinate1 = viewModel.getXYFromPolar(viewModel.innerRadius, trueDegree)
+                    let coordinate2 = viewModel.getXYFromPolar(viewModel.innerRadius, secondDegree)
+                    drawAspect(coordinate1: coordinate1, coordinate2: coordinate2, aspect: aspect.aspect, thickness: 1)
+                }
             }
         }
     }
@@ -150,6 +171,47 @@ extension NatalChartDrawingView {
         aPath.line(to: CGPoint(x: coordinate2.0, y: coordinate2.1))
         aPath.close()
         NSColor.black.set()
+        aPath.lineWidth = CGFloat(thickness)
+        aPath.stroke()
+#endif
+        
+    }
+    
+    func drawAspect(coordinate1: (Int, Int), coordinate2: (Int, Int), aspect: Aspects, thickness: Int) {
+        
+#if os(iOS)
+        let aPath = UIBezierPath()
+        aPath.move(to: CGPoint(x:coordinate1.0, y:coordinate1.1))
+        aPath.addLine(to: CGPoint(x: coordinate2.0, y: coordinate2.1))
+        aPath.close()
+        switch aspect {
+        case .Trine:
+            UIColor.blue.set()
+        case .Sextile:
+            UIColor.cyan.set()
+        case .Square, .Opposition:
+            UIColor.red.set()
+        default:
+            UIColor.black.set()
+        }
+        
+        aPath.lineWidth = CGFloat(thickness)
+        aPath.stroke()
+#else
+        let aPath = NSBezierPath.init()
+        aPath.move(to: CGPoint(x:coordinate1.0, y:coordinate1.1))
+        aPath.line(to: CGPoint(x: coordinate2.0, y: coordinate2.1))
+        aPath.close()
+        switch aspect {
+        case .Trine:
+            NSColor.blue.set()
+        case .Sextile:
+            NSColor.cyan.set()
+        case .Square, .Opposition:
+            NSColor.red.set()
+        default:
+            NSColor.black.set()
+        }
         aPath.lineWidth = CGFloat(thickness)
         aPath.stroke()
 #endif

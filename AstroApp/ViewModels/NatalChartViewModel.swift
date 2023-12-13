@@ -11,8 +11,10 @@ struct NatalChartViewModel {
     let chart = "Natal Chart Stub Text"
     var houseData = [HouseCell]()
     var planetData = [PlanetCell]()
+    var aspectsData = [TransitCell]()
     var houseDictionary = [Int: (Int, Signs)]()
     var planetsDictionary = [Int: [PlanetCell]]()
+    var planetToDegreeMap = [Planets: Int]()
     var width: Double = 2
     var height: Double = 2
     mutating func populateData() {
@@ -37,6 +39,7 @@ struct NatalChartViewModel {
                 } else {
                     planetsDictionary[Int(planetData[i].numericDegree)]?.append(planetData[i])
                 }
+                planetToDegreeMap[planetData[i].planet] = Int(planetData[i].numericDegree)
             }
         }
     }
