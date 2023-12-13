@@ -105,6 +105,16 @@ extension NatalChartDrawingView {
     }
     
     func drawPlanetListing(_ planetArray: [PlanetCell], _ trueDegree: Double) {
+        let fontSize = 12.0
+        let spread = viewModel.radius * 0.1
+        for planet in planetArray {
+            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, trueDegree), planet.planet.getAstroDotCharacter(), trueDegree)
+            printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 1.7, trueDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
+            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.5, trueDegree), planet.sign.getAstroDotCharacter(), trueDegree)
+
+            printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.3, trueDegree), planet.numericDegree.getAstroMinute(), trueDegree, false, fontSize)
+            
+        }
         
     }
     
