@@ -68,6 +68,18 @@ extension AstroButtons {
         if let planets = row.planets as? [PlanetCell] {
             viewModel.planetData = planets
         }
+        if let location = manager.getSelectionLocation() {
+            let housesRow = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
+            if let planets = housesRow.planets as? [HouseCell] {
+                viewModel.houseData = planets
+            }
+        }
+        
+        let aspectsRow = getAspects(time: manager.getSelectionTime(), with: nil, and: nil, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
+        
+        if let aspects = aspectsRow.planets as? [TransitCell] {
+            viewModel.aspectsData = aspects
+        }
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets(chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
         data.append(displayRow)
     }

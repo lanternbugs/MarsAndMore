@@ -95,6 +95,11 @@ extension PlanetButtons {
         if let planets = row.planets as? [PlanetCell] {
             viewModel.planetData = planets
         }
+        let aspectsRow = getAspects(time: savedDate.planetsDateChoice.getAstroTime(), with: nil, and: nil, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
+        
+        if let aspects = aspectsRow.planets as? [TransitCell] {
+            viewModel.aspectsData = aspects
+        }
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets(chartModel: viewModel), name: getStringDate(), calculationSettings: manager.calculationSettings)
         data.append(displayRow)
     }
