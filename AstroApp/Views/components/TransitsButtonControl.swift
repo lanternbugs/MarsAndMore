@@ -16,6 +16,7 @@ import SwiftUI
 struct TransitsButtonControl: View, AstrobotInterface {
     
     @EnvironmentObject private var manager: BirthDataManager
+    @Environment(\.roomState) private var roomState
     @State private var transitDate: Date = Date()
     @Binding var data: [DisplayPlanetRow]
     @State private var astroButtonsEnabled = true
@@ -83,6 +84,7 @@ extension TransitsButtonControl {
             
             let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Houses(system: manager.houseSystem, chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
             data.append(displayRow)
+            roomState.wrappedValue = .NatalView(onDismiss: .Chart, viewModel: viewModel)
         }
         
     }
