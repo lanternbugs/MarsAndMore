@@ -101,6 +101,8 @@ extension NatalChartDrawingView {
             
             if let signTupple = viewModel.houseDictionary[houseDegree] {
                 drawHouseInfo(at: houseDegree, for: trueDegree, house: String(signTupple.0), sign: signTupple.1 )
+            } else if viewModel.houseData.isEmpty && a % 30 == 0 {
+                drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.innerRadius - viewModel.getArcStrokeWidth()), thickness: 1)
             }
         }
     }
