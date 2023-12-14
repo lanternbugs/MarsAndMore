@@ -19,9 +19,6 @@ struct NatalChartViewModel {
     var width: Double = 2
     var height: Double = 2
     mutating func populateData() {
-        guard let manager = manager else {
-            return
-        }
         // we dont currently have a font image for Pholus
         planetData = planetData.filter( { $0.planet != .Pholus })
         aspectsData = aspectsData.filter( { $0.planet != .Pholus && $0.planet2 != .Pholus })
@@ -32,9 +29,6 @@ struct NatalChartViewModel {
         }
         if planetData.count > 0 {
             for i in 0...planetData.count - 1 {
-                if planetData[i].planet == .MC || planetData[i].planet == .Ascendent {
-                    continue
-                }
                 
                 if planetsDictionary[Int(planetData[i].numericDegree)] == nil {
                     var planetArray = [PlanetCell]()

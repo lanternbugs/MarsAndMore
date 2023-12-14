@@ -92,12 +92,14 @@ extension NatalChartDrawingView {
                 len = 5
             }
             let thickness = 1
-            let planetDegree = a
             if let planetArray = viewModel.planetsDictionary[a] {
                 let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
                 if !usersPlanets.isEmpty {
-                    drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 16, thickness: thickness + 1)
-                    drawPlanetListing(usersPlanets, trueDegree)
+                    if !usersPlanets.filter({$0.planet != .Ascendent && $0.planet != .MC}).isEmpty {
+                        drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 16, thickness: thickness + 1)
+                        drawPlanetListing(usersPlanets, trueDegree)
+                    }
+                    
                     drawAspects(usersPlanets, trueDegree, a)
                 }
             }
@@ -124,9 +126,12 @@ extension NatalChartDrawingView {
                     continue
                 }
                 if let b = viewModel.planetToDegreeMap[aspect.planet], let c = viewModel.planetToDegreeMap[aspect.planet2] {
-                    var secondDegree =  viewModel.getChartStartDegree()  - Double(a + b - c)
-                    if c < b {
-                        secondDegree =  viewModel.getChartStartDegree()  - Double(a + c - b)
+                    var secondDegree =  trueDegree
+                    let orb = Double(abs(c - b))
+                    if c > b && orb < aspect.aspect.rawValue + 20.0 {
+                        secondDegree -= orb
+                    } else {
+                        secondDegree += orb
                     }
                     let coordinate1 = viewModel.getXYFromPolar(viewModel.innerRadius, trueDegree)
                     let coordinate2 = viewModel.getXYFromPolar(viewModel.innerRadius, secondDegree)
@@ -140,6 +145,9 @@ extension NatalChartDrawingView {
         let fontSize = 12.0
         let spread = viewModel.radius * 0.1
         for planet in planetArray {
+            if planet.planet == .Ascendent || planet.planet == .MC {
+                continue
+            }
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, trueDegree), planet.planet.getAstroDotCharacter(), trueDegree)
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 1.7, trueDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.5, trueDegree), planet.sign.getAstroDotCharacter(), trueDegree)

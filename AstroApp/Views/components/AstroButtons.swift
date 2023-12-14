@@ -76,7 +76,7 @@ extension AstroButtons {
             }
         }
         
-        let aspectsRow = getAspects(time: manager.getSelectionTime(), with: nil, and: nil, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
+        let aspectsRow = getAspects(time: manager.getSelectionTime(), with: nil, and: manager.getSelectionLocation(), type: manager.orbSelection, calculationSettings: manager.calculationSettings)
         
         if let aspects = aspectsRow.planets as? [TransitCell] {
             viewModel.aspectsData = aspects
