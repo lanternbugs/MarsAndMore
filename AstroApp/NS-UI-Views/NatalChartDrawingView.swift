@@ -39,12 +39,12 @@ import Cocoa
 class NatalChartDrawingView: NSView {
     var viewModel: NatalChartViewModel
     override init(frame frameRect: NSRect) {
-        viewModel = NatalChartViewModel()
+        viewModel = NatalChartViewModel(chartName: "none")
         super.init(frame: frameRect);
     }
 
     required init(coder: NSCoder) {
-        viewModel = NatalChartViewModel()
+        viewModel = NatalChartViewModel(chartName: "none")
         super.init(coder: coder)!
     }
 

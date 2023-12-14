@@ -14,7 +14,7 @@ struct NatalChartView: View {
             VStack {
                 HStack {
                     Spacer()
-                    Text("Natal Chart")
+                    Text(viewModel.chartName)
                     Spacer()
                 }
 #if os(macOS)
@@ -44,5 +44,5 @@ extension NatalChartView {
 }
 
 #Preview {
-    NatalChartView(viewModel: NatalChartViewModel())
+    NatalChartView(viewModel: NatalChartViewModel(chartName: "mike"))
 }
