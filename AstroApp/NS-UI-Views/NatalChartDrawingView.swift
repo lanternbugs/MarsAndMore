@@ -114,8 +114,11 @@ extension NatalChartDrawingView {
     }
     
     func drawAspects(_ planetArray: [PlanetCell], _ trueDegree: Double, _ a: Int) {
+        guard let manager = viewModel.manager else {
+            return
+        }
         for planet in planetArray {
-            let aspects = viewModel.aspectsData.filter { $0.planet == planet.planet }
+            let aspects = viewModel.aspectsData.filter { $0.planet == planet.planet && manager.bodiesToShow.contains($0.planet2)}
             for aspect in aspects {
                 if !aspect.aspect.isMajor() || aspect.aspect == .Conjunction {
                     continue
