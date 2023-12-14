@@ -52,7 +52,7 @@ struct SpaceView: View {
                     Text(ImagePhotoType.Curiosity.rawValue).tag(ImagePhotoType.Curiosity)
                     Text(ImagePhotoType.Opportunity.rawValue).tag(ImagePhotoType.Opportunity)
                     Text(ImagePhotoType.Spirit.rawValue).tag(ImagePhotoType.Spirit)
-                }.background(Color.white).pickerStyle(SegmentedPickerStyle())
+                }.pickerStyle(SegmentedPickerStyle())
                 switch(roverChoice) {
                 case .Curiosity:
                     ForEach(manager.curiosityPhotos, id: \.id) {

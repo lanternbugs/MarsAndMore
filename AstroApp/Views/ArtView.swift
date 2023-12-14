@@ -40,7 +40,7 @@ struct ArtView: View {
                 Picker(selection: $artChoice, label: Text("Choice")) {
                     Text("Mars").tag(Planets.Mars)
                     Text("Venus").tag(Planets.Venus)
-                }.background(Color.white).pickerStyle(SegmentedPickerStyle())
+                }.pickerStyle(SegmentedPickerStyle())
                 switch artChoice {
                 case .Mars:
                     ForEach(artDataManager.marsArtData, id: \.stringId) {

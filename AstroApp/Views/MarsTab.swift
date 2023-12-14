@@ -53,7 +53,7 @@ struct MarsTab: View, AstrobotReadingInterface {
 
                 
 
-            }.background(Color.white).pickerStyle(SegmentedPickerStyle())
+            }.pickerStyle(SegmentedPickerStyle())
             if readingInitialized {
                 switch(planetChoice) {
                 case .Sun:
