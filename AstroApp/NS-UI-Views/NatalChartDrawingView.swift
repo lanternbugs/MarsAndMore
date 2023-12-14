@@ -14,6 +14,7 @@ class NatalChartDrawingView: UIView {
     
     var viewModel: NatalChartViewModel
     var lastPrintingDegree = -Int.max
+    private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     override init(frame frameRect: CGRect) {
         viewModel = NatalChartViewModel(chartName: "none")
         super.init(frame: frameRect)
@@ -133,6 +134,8 @@ extension NatalChartDrawingView {
                     let orb = Double(abs(c - b))
                     if c > b && orb < aspect.aspect.rawValue + 20.0 {
                         secondDegree -= orb
+                    } else if c > b && (360 - orb) < aspect.aspect.rawValue + 20.0 {
+                        secondDegree -= orb
                     } else {
                         secondDegree += orb
                     }
@@ -149,8 +152,11 @@ extension NatalChartDrawingView {
         var fontSize = 12.0
         var spread = viewModel.radius * 0.1
 #if os(iOS)
-        spread = spread * 1.4
-        fontSize = 10.0
+        if idiom != .pad {
+            spread = spread * 1.4
+            fontSize = 10.0
+        }
+        
 #else
         spread = spread * 1.1
 #endif
@@ -163,7 +169,10 @@ extension NatalChartDrawingView {
             var printDegree = trueDegree
             var seperation = 3.0
 #if os(iOS)
-            seperation = 4.0
+            if idiom != .pad {
+                seperation = 4.0
+            }
+            
 #endif
             if lastPrintingDegree != -Int.max && abs((Int(printDegree) % 360) - (lastPrintingDegree % 360)) < Int(seperation) {
                 printDegree = Double((lastPrintingDegree + Int(seperation)) % 360)
@@ -185,7 +194,10 @@ extension NatalChartDrawingView {
         drawLine(degree: Double(trueDegree), radius: viewModel.radius + 5, length: 5, thickness: 1)
         var fontSize = 14.0
 #if os(iOS)
-        fontSize = 10.0
+        if idiom != .pad {
+            fontSize = 10.0
+        }
+        
 #endif
         printText(viewModel.getXYFromPolar(viewModel.innerRadius + 10, trueDegree - 10.0), house, trueDegree - 10.0, false, fontSize)
         printSign(viewModel.getXYFromPolar(viewModel.radius + 15, trueDegree), Double(houseDegree).getAstroSign().getAstroDotCharacter(), trueDegree)
@@ -380,7 +392,10 @@ extension NatalChartDrawingView {
         var coordinate = coordinates
         var size = 21.0
 #if os(iOS)
-        size = 14.0
+        if idiom != .pad {
+            size = 14.0
+        }
+        
 #endif
         let radians = degree * ( .pi / 180.0 )
         coordinate = viewModel.justifyCoordinate(inputCoordinate: coordinate, radians: radians, size: size)

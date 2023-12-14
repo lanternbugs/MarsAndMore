@@ -6,6 +6,10 @@
 //
 
 import Foundation
+#if os(iOS)
+import UIKit
+#endif
+
 
 struct NatalChartViewModel {
     let chartName: String
@@ -48,6 +52,10 @@ struct NatalChartViewModel {
     
     var innerRadius: Double {
 #if os(iOS)
+        let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom
+        if idiom == .pad {
+            return radius  * 0.35
+        }
         return radius * 0.26
 #else
         return radius * 0.40
