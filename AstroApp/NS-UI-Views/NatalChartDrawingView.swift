@@ -13,6 +13,7 @@ class NatalChartDrawingView: UIView {
     typealias NSBezierPath = UIBezierPath
     
     var viewModel: NatalChartViewModel
+    var lastPrintingDegree = -Int.max
     override init(frame frameRect: CGRect) {
         viewModel = NatalChartViewModel(chartName: "none")
         super.init(frame: frameRect)
@@ -38,6 +39,7 @@ class NatalChartDrawingView: UIView {
 import Cocoa
 class NatalChartDrawingView: NSView {
     var viewModel: NatalChartViewModel
+    var lastPrintingDegree = -Int.max
     override init(frame frameRect: NSRect) {
         viewModel = NatalChartViewModel(chartName: "none")
         super.init(frame: frameRect);
@@ -82,6 +84,7 @@ extension NatalChartDrawingView {
         guard let manager = viewModel.manager else {
             return
         }
+        lastPrintingDegree = -Int.max
         let startDegree: Double = viewModel.getChartStartDegree()
         for a in 0...359 {
             let trueDegree =  viewModel.getChartStartDegree()  - Double(a)
@@ -142,11 +145,14 @@ extension NatalChartDrawingView {
     }
     
     func drawPlanetListing(_ planetArray: [PlanetCell], _ trueDegree: Double) {
-        let sortedArray = planetArray.sorted(by: {$0.numericDegree < $1.numericDegree })
-        let fontSize = 12.0
+        let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
+        var fontSize = 12.0
         var spread = viewModel.radius * 0.1
 #if os(iOS)
         spread = spread * 1.4
+        fontSize = 10.0
+#else
+        spread = spread * 1.1
 #endif
         
         
@@ -154,11 +160,21 @@ extension NatalChartDrawingView {
             if planet.planet == .Ascendent || planet.planet == .MC {
                 continue
             }
-            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, trueDegree), planet.planet.getAstroDotCharacter(), trueDegree)
-            printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 1.7, trueDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
-            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.5, trueDegree), planet.sign.getAstroDotCharacter(), trueDegree)
+            var printDegree = trueDegree
+            var seperation = 3.0
+#if os(iOS)
+            seperation = 4.0
+#endif
+            if lastPrintingDegree != -Int.max && abs((Int(printDegree) % 360) - (lastPrintingDegree % 360)) < Int(seperation) {
+                printDegree = Double((lastPrintingDegree + Int(seperation)) % 360)
+            }
+            
+            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree)
+            printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 1.7, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
+            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.5, printDegree), planet.sign.getAstroDotCharacter(), trueDegree)
 
-            printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.3, trueDegree), planet.numericDegree.getAstroMinute(), trueDegree, false, fontSize)
+            printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.3, printDegree), planet.numericDegree.getAstroMinute(), trueDegree, false, fontSize)
+            lastPrintingDegree = Int(printDegree) % 360
             
         }
         
@@ -362,7 +378,10 @@ extension NatalChartDrawingView {
 
     func printSign(_ coordinates: (Int, Int), _ character: Character, _ degree: Double) {
         var coordinate = coordinates
-        let size = 21.0
+        var size = 21.0
+#if os(iOS)
+        size = 14.0
+#endif
         let radians = degree * ( .pi / 180.0 )
         coordinate = viewModel.justifyCoordinate(inputCoordinate: coordinate, radians: radians, size: size)
         
