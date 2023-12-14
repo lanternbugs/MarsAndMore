@@ -14,12 +14,12 @@ class NatalChartDrawingView: UIView {
     
     var viewModel: NatalChartViewModel
     override init(frame frameRect: CGRect) {
-        viewModel = NatalChartViewModel()
+        viewModel = NatalChartViewModel(chartName: "none")
         super.init(frame: frameRect)
     }
 
     required init(coder: NSCoder) {
-        viewModel = NatalChartViewModel()
+        viewModel = NatalChartViewModel(chartName: "none")
         super.init(coder: coder)!
     }
 
@@ -142,9 +142,15 @@ extension NatalChartDrawingView {
     }
     
     func drawPlanetListing(_ planetArray: [PlanetCell], _ trueDegree: Double) {
+        let sortedArray = planetArray.sorted(by: {$0.numericDegree < $1.numericDegree })
         let fontSize = 12.0
-        let spread = viewModel.radius * 0.1
-        for planet in planetArray {
+        var spread = viewModel.radius * 0.1
+#if os(iOS)
+        spread = spread * 1.4
+#endif
+        
+        
+        for planet in sortedArray {
             if planet.planet == .Ascendent || planet.planet == .MC {
                 continue
             }

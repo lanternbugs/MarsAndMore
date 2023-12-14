@@ -47,7 +47,12 @@ struct NatalChartViewModel {
     }
     
     var innerRadius: Double {
-        radius * 0.40
+#if os(iOS)
+        return radius * 0.26
+#else
+        return radius * 0.40
+#endif
+        
     }
     
     var center: (x: Double, y: Double) {
