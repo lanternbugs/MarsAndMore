@@ -79,6 +79,9 @@ extension NatalChartDrawingView {
     }
     
     func drawSpoke() {
+        guard let manager = viewModel.manager else {
+            return
+        }
         let startDegree: Double = viewModel.getChartStartDegree()
         for a in 0...359 {
             let trueDegree =  viewModel.getChartStartDegree()  - Double(a)
@@ -91,9 +94,12 @@ extension NatalChartDrawingView {
             let thickness = 1
             let planetDegree = a
             if let planetArray = viewModel.planetsDictionary[a] {
-                drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 16, thickness: thickness + 1)
-                drawPlanetListing(planetArray, trueDegree)
-                drawAspects(planetArray, trueDegree, a)
+                let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
+                if !usersPlanets.isEmpty {
+                    drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 16, thickness: thickness + 1)
+                    drawPlanetListing(usersPlanets, trueDegree)
+                    drawAspects(usersPlanets, trueDegree, a)
+                }
             }
             
             drawLine(degree: Double(a) + startDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: len, thickness: thickness)
@@ -109,7 +115,7 @@ extension NatalChartDrawingView {
     
     func drawAspects(_ planetArray: [PlanetCell], _ trueDegree: Double, _ a: Int) {
         for planet in planetArray {
-            let aspects = viewModel.aspectsData.filter { $0.planet == planet.planet && $0.planet2.rawValue < Planets.Chiron.rawValue + 1}
+            let aspects = viewModel.aspectsData.filter { $0.planet == planet.planet }
             for aspect in aspects {
                 if !aspect.aspect.isMajor() || aspect.aspect == .Conjunction {
                     continue

@@ -9,6 +9,7 @@ import Foundation
 
 struct NatalChartViewModel {
     let chartName: String
+    var manager: BirthDataManager?
     var houseData = [HouseCell]()
     var planetData = [PlanetCell]()
     var aspectsData = [TransitCell]()
@@ -18,6 +19,12 @@ struct NatalChartViewModel {
     var width: Double = 2
     var height: Double = 2
     mutating func populateData() {
+        guard let manager = manager else {
+            return
+        }
+        // we dont currently have a font image for Pholus
+        planetData = planetData.filter( { $0.planet != .Pholus })
+        aspectsData = aspectsData.filter( { $0.planet != .Pholus && $0.planet2 != .Pholus })
         if houseData.count > 0 {
             for i in 0...houseData.count - 1 {
                 houseDictionary[Int(houseData[i].numericDegree)] = (i + 1, houseData[i].sign)
@@ -28,9 +35,7 @@ struct NatalChartViewModel {
                 if planetData[i].planet == .MC || planetData[i].planet == .Ascendent {
                     continue
                 }
-                if planetData[i].planet.rawValue > Planets.Pluto.rawValue {
-                    continue
-                }
+                
                 if planetsDictionary[Int(planetData[i].numericDegree)] == nil {
                     var planetArray = [PlanetCell]()
                     planetArray.append(planetData[i])

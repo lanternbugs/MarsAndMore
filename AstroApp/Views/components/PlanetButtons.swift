@@ -92,6 +92,7 @@ extension PlanetButtons {
         
         let row = getPlanets(time: savedDate.planetsDateChoice.getAstroTime(), location: nil, calculationSettings: manager.calculationSettings)
         var viewModel = NatalChartViewModel(chartName: savedDate.planetsDateChoice.description)
+        viewModel.manager = manager
         if let planets = row.planets as? [PlanetCell] {
             viewModel.planetData = planets
         }

@@ -65,6 +65,7 @@ extension AstroButtons {
         
         let row = getPlanets(time: manager.getSelectionTime(), location: manager.getSelectionLocation(), calculationSettings: manager.calculationSettings)
         var viewModel = NatalChartViewModel(chartName: manager.getCurrentName())
+        viewModel.manager = manager
         if let planets = row.planets as? [PlanetCell] {
             viewModel.planetData = planets
         }

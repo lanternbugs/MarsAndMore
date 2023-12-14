@@ -68,6 +68,7 @@ extension TransitsButtonControl {
         if let location = manager.getSelectionLocation() {
             let row = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
             var viewModel = NatalChartViewModel(chartName: manager.getCurrentName())
+            viewModel.manager = manager
             if let planets = row.planets as? [HouseCell] {
                 viewModel.houseData = planets
             }
