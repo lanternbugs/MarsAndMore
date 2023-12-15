@@ -91,7 +91,7 @@ extension NatalChartDrawingView {
         printingStack.removeAll()
         let startDegree: Double = viewModel.getChartStartDegree()
         for a in 0...359 {
-            let trueDegree =  viewModel.getChartStartDegree()  - Double(a)
+            let trueDegree =  360 - (viewModel.getChartStartDegree()  - Double(a))
             var len = 0
             if a % 5 == 0 {
                 len = 10
@@ -136,11 +136,11 @@ extension NatalChartDrawingView {
                     var secondDegree =  trueDegree
                     let orb = Double(abs(c - b))
                     if c > b && orb < aspect.aspect.rawValue + 20.0 {
-                        secondDegree -= orb
-                    } else if c > b && (360 - orb) < aspect.aspect.rawValue + 20.0 {
-                        secondDegree -= orb
-                    } else {
                         secondDegree += orb
+                    } else if c > b && (360 - orb) < aspect.aspect.rawValue + 20.0 {
+                        secondDegree += orb
+                    } else {
+                        secondDegree -= orb
                     }
                     let coordinate1 = viewModel.getXYFromPolar(viewModel.innerRadius, trueDegree)
                     let coordinate2 = viewModel.getXYFromPolar(viewModel.innerRadius, secondDegree)
@@ -179,11 +179,11 @@ extension NatalChartDrawingView {
 #endif
             if lastPrintingDegree != -Int.max && abs((lastPrintingDegree - Int(printDegree))) < Int(seperation) {
                 if i == 1 && printingStack.count < 2 {
-                    printDegree = Double((lastPrintingDegree + Int(seperation)))
-                } else if i == 1 && abs(printingStack[printingStack.count - 2] - (lastPrintingDegree + Int(seperation))) > 2  {
-                    printDegree = Double((lastPrintingDegree + Int(seperation)))
-                } else {
                     printDegree = Double((lastPrintingDegree - Int(seperation)))
+                } else if i == 1 && abs(printingStack[printingStack.count - 2] - (lastPrintingDegree + Int(seperation))) > 2  {
+                    printDegree = Double((lastPrintingDegree - Int(seperation)))
+                } else {
+                    printDegree = Double((lastPrintingDegree + Int(seperation)))
                 }
                 
             } else {
@@ -387,7 +387,7 @@ extension NatalChartDrawingView {
     
     func printSigns( _ center: CGPoint, rad: Double) {
         var startAngleRadian: Double = viewModel.getChartStartDegree()
-        var endAngleRadian =   startAngleRadian + 30.0
+        var endAngleRadian =   startAngleRadian - 30.0
         let strokeWidth = viewModel.getArcStrokeWidth()
         let radius = rad - strokeWidth / 2.0
         for sign in Signs.allCases.reversed() {
@@ -396,9 +396,9 @@ extension NatalChartDrawingView {
             }
             var offSet: Double = 0
             offSet = 15.0
-            printSign(viewModel.getXYFromPolar(radius, endAngleRadian - offSet), sign.getAstroDotCharacter(), endAngleRadian - offSet)
+            printSign(viewModel.getXYFromPolar(radius, endAngleRadian + offSet), sign.getAstroDotCharacter(), endAngleRadian + offSet)
             startAngleRadian = endAngleRadian
-            endAngleRadian += 30.0
+            endAngleRadian -= 30.0
         }
     }
 

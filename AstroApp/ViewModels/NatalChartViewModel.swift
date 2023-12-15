@@ -79,9 +79,9 @@ struct NatalChartViewModel {
         if houseData.count > 0 {
             let houseDegree = houseData[0].numericDegree
             if houseDegree > 180 {
-                return abs(180 - houseDegree)
+                return abs(houseDegree - 180)
             } else {
-                return houseDegree + 180.0
+                return 180.0 - houseDegree
             }
         }
         return 180.0
