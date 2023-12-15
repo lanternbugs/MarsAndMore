@@ -37,7 +37,11 @@ extension NatalChartView {
         }
         return mainScreen.visibleFrame.size.width / 2.0
 #elseif os(iOS)
-    return UIScreen.main.bounds.size.width
+        if UIScreen.main.bounds.size.width < UIScreen.main.bounds.size.height {
+            return UIScreen.main.bounds.size.width
+        }
+        return UIScreen.main.bounds.size.height * 0.75
+    
 #endif
     
     }

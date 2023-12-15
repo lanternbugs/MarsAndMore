@@ -51,7 +51,11 @@ struct NatalChartViewModel {
         }
     }
     var radius: Double {
-        width < height ? width / 2.0 - 34.0 : height / 2.0 - 34.0
+        var value = width < height ? width / 2.0 - 34.0 : height / 2.0 - 34.0
+        if houseData.isEmpty {
+            value += 30
+        }
+        return value
     }
     
     var innerRadius: Double {
