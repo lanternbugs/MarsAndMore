@@ -14,6 +14,7 @@ class NatalChartDrawingView: UIView {
     
     var viewModel: NatalChartViewModel
     var lastPrintingDegree = -Int.max
+    var printingStack = [Int]()
     private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     override init(frame frameRect: CGRect) {
         viewModel = NatalChartViewModel(chartName: "none")
@@ -41,6 +42,7 @@ import Cocoa
 class NatalChartDrawingView: NSView {
     var viewModel: NatalChartViewModel
     var lastPrintingDegree = -Int.max
+    var printingStack = [Int]()
     override init(frame frameRect: NSRect) {
         viewModel = NatalChartViewModel(chartName: "none")
         super.init(frame: frameRect);
@@ -86,6 +88,7 @@ extension NatalChartDrawingView {
             return
         }
         lastPrintingDegree = -Int.max
+        printingStack.removeAll()
         let startDegree: Double = viewModel.getChartStartDegree()
         for a in 0...359 {
             let trueDegree =  viewModel.getChartStartDegree()  - Double(a)
@@ -161,7 +164,7 @@ extension NatalChartDrawingView {
         spread = spread * 1.1
 #endif
         
-        
+        var i = 0
         for planet in sortedArray {
             if planet.planet == .Ascendent || planet.planet == .MC {
                 continue
@@ -174,8 +177,17 @@ extension NatalChartDrawingView {
             }
             
 #endif
-            if lastPrintingDegree != -Int.max && abs((Int(printDegree) % 360) - (lastPrintingDegree % 360)) < Int(seperation) {
-                printDegree = Double((lastPrintingDegree + Int(seperation)) % 360)
+            if lastPrintingDegree != -Int.max && abs((lastPrintingDegree - Int(printDegree))) < Int(seperation) {
+                if i == 1 && printingStack.count < 2 {
+                    printDegree = Double((lastPrintingDegree + Int(seperation)))
+                } else if i == 1 && abs(printingStack[printingStack.count - 2] - (lastPrintingDegree + Int(seperation))) > 2  {
+                    printDegree = Double((lastPrintingDegree + Int(seperation)))
+                } else {
+                    printDegree = Double((lastPrintingDegree - Int(seperation)))
+                }
+                
+            } else {
+                printDegree = trueDegree
             }
             
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree)
@@ -183,7 +195,9 @@ extension NatalChartDrawingView {
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.5, printDegree), planet.sign.getAstroDotCharacter(), trueDegree)
 
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.3, printDegree), planet.numericDegree.getAstroMinute(), trueDegree, false, fontSize)
-            lastPrintingDegree = Int(printDegree) % 360
+            lastPrintingDegree = Int(printDegree)
+            printingStack.append(lastPrintingDegree)
+            i += 1
             
         }
         
