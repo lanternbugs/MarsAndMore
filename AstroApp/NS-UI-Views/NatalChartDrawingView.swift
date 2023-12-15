@@ -91,7 +91,7 @@ extension NatalChartDrawingView {
         printingStack.removeAll()
         let startDegree: Double = viewModel.getChartStartDegree()
         for a in 0...359 {
-            let trueDegree =  360 - (viewModel.getChartStartDegree()  - Double(a))
+            let trueDegree =  viewModel.getChartStartDegree()  + Double(a)
             var len = 0
             if a % 5 == 0 {
                 len = 10
@@ -315,9 +315,8 @@ extension NatalChartDrawingView {
         var endAngleRadian =   startAngleRadian + Double.pi / 6.0
         
 
-        var counter = 0
         let radius = rad - strokeWidth / 2.0
-        for sign in Signs.allCases {
+        for sign in Signs.allCases.reversed() {
             if sign == .None {
                 continue
             }
@@ -352,7 +351,7 @@ extension NatalChartDrawingView {
         var startAngleRadian: Double = viewModel.getChartStartDegree()
         var endAngleRadian =   startAngleRadian + 30.0
         let radius = rad - strokeWidth / 2.0
-        for sign in Signs.allCases.reversed() {
+        for sign in Signs.allCases {
             if sign == .None {
                 continue
             }

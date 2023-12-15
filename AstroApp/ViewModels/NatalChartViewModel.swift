@@ -28,7 +28,11 @@ struct NatalChartViewModel {
         aspectsData = aspectsData.filter( { $0.planet != .Pholus && $0.planet2 != .Pholus })
         if houseData.count > 0 {
             for i in 0...houseData.count - 1 {
-                houseDictionary[Int(houseData[i].numericDegree)] = (i + 1, houseData[i].sign)
+                var a = i
+                if a == 0 {
+                    a = 12
+                }
+                houseDictionary[Int(houseData[a - 1].numericDegree)] = (a, houseData[a - 1].sign)
             }
         }
         if planetData.count > 0 {
@@ -78,11 +82,7 @@ struct NatalChartViewModel {
     func getChartStartDegree() -> Double {
         if houseData.count > 0 {
             let houseDegree = houseData[0].numericDegree
-            if houseDegree > 180 {
-                return abs(houseDegree - 180)
-            } else {
-                return 180.0 - houseDegree
-            }
+            return 180.0 - houseDegree
         }
         return 180.0
     }
