@@ -1,7 +1,15 @@
-//
-//  NatalChartDrawingView.swift
-//  MarsAndMore
-//
+/*
+*  Copyright (C) 2022-23 Michael R Adams.
+*  All rights reserved.
+*
+* This program can be redistributed and/or modified under
+* the terms of the GNU General Public License; either
+* version 2 of the License, or (at your option) any later version.
+*
+*  This code is distributed in the hope that it will
+*  be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*/
 //  Created by Michael Adams on 12/1/23.
 //
 
@@ -177,15 +185,18 @@ extension NatalChartDrawingView {
             }
             
 #endif
+            
             if lastPrintingDegree != -Int.max && abs((lastPrintingDegree - Int(printDegree))) < Int(seperation) {
                 if i == 1 && printingStack.count < 2 {
                     printDegree = Double((lastPrintingDegree - Int(seperation)))
                 } else if i == 1 && abs(printingStack[printingStack.count - 2] - (lastPrintingDegree + Int(seperation))) > 2  {
                     printDegree = Double((lastPrintingDegree - Int(seperation)))
                 } else {
-                    printDegree = Double((lastPrintingDegree + Int(seperation)))
+                    printDegree = Double((lastPrintingDegree + Int(seperation + 1.0)))
                 }
                 
+            } else if trueDegree - viewModel.getChartStartDegree() < 1 {
+                printDegree = Double((trueDegree + seperation ))
             } else {
                 printDegree = trueDegree
             }
