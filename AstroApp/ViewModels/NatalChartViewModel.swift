@@ -16,6 +16,7 @@
 import Foundation
 #if os(iOS)
 import UIKit
+private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
 #endif
 
 
@@ -31,6 +32,9 @@ struct NatalChartViewModel {
     var width: Double = 2
     var height: Double = 2
     mutating func populateData() {
+        if !planetsDictionary.isEmpty {
+            return
+        }
         // we dont currently have a font image for Pholus
         planetData = planetData.filter( { $0.planet != .Pholus })
         aspectsData = aspectsData.filter( { $0.planet != .Pholus && $0.planet2 != .Pholus })
@@ -63,6 +67,12 @@ struct NatalChartViewModel {
         if houseData.isEmpty {
             value += 30
         }
+#if os(iOS)
+        let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom
+        if idiom != .pad {
+            value += 7
+        }
+#endif
         return value
     }
     
@@ -70,9 +80,9 @@ struct NatalChartViewModel {
 #if os(iOS)
         let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom
         if idiom == .pad {
-            return radius  * 0.35
+            return radius  * 0.40
         }
-        return radius * 0.26
+        return radius * 0.29
 #else
         return radius * 0.40
 #endif
@@ -166,7 +176,11 @@ struct NatalChartViewModel {
     
     func getArcStrokeWidth() -> Double {
 #if os(iOS)
-        return 20
+        if idiom != .pad {
+            return 10
+        }
+        return 25
+        
 #else
         return 30
 #endif
