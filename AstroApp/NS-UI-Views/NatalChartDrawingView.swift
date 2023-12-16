@@ -195,8 +195,6 @@ extension NatalChartDrawingView {
                     printDegree = Double((lastPrintingDegree + Int(seperation + 1.0)))
                 }
                 
-            } else if trueDegree - viewModel.getChartStartDegree() < 1 {
-                printDegree = Double((trueDegree + seperation ))
             } else {
                 printDegree = trueDegree
             }
