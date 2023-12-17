@@ -21,6 +21,21 @@ struct MundanePlanetsRow: View, AstrobotInterface {
     @EnvironmentObject private var manager: BirthDataManager
     var body: some View {
         HStack(alignment: .top) {
+            if let location = manager.planetsLocationData {
+                Button(action: {
+                    manager.planetsLocationData = nil
+                }) {
+                    Text("Remove City")
+                }
+                Text(" \(location.latitude) \(location.longitude)")
+            } else {
+                Button(action: {
+                        roomState.wrappedValue = .PlanetsCity
+                }) {
+                    Text("+City")
+                }
+                
+            }
             Spacer()
             Button(action: mundane) {
                 Text("Mundane")

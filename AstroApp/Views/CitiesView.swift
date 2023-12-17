@@ -46,11 +46,19 @@ struct CitiesView: View {
                     Spacer()
                 }.gesture(TapGesture().onEnded {
                     withAnimation(.easeIn, {
-                        manager.builder.addCity(city)
-                        manager.userLocationData = nil
+                        switch(roomState.wrappedValue) {
+                        case .PlanetsCity:
+                            manager.planetsLocationData = LocationData(latitude: city.latitude, longitude: city.longitude)
+                        default:
+                            manager.builder.addCity(city)
+                            manager.userLocationData = nil
+                        }
+                        
                         switch(roomState.wrappedValue) {
                         case .UpdateCity:
                             roomState.wrappedValue = .EditName
+                        case .PlanetsCity:
+                            roomState.wrappedValue = .Planets
                         default:
                             roomState.wrappedValue = .Names
                         }

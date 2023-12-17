@@ -39,6 +39,11 @@ struct PlanetsTab: View {
                 DoneView(newRoomState: dismissal)
                 NatalChartView(viewModel: viewModel)
             }
+        case .PlanetsCity:
+            VStack {
+                DoneView(newRoomState: .Planets)
+                CitiesView()
+            }
         default:
             PlanetRoom(data: $data, roomState: roomState)
             

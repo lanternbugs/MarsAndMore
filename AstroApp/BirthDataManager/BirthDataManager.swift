@@ -30,6 +30,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @AppStorage("tropical") var tropical: Bool = true
     @AppStorage("showMinorAspects") var showMinorAspects: Bool = false
     @Published var userLocationData: LocationData?
+    @Published var planetsLocationData: LocationData?
     var bodiesToShow = Set<Planets>()
     var defaultBodiesToShow = Set<Planets>()
     let builder = BirthDataBuilder()

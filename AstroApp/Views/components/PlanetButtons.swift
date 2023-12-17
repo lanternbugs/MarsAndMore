@@ -90,16 +90,22 @@ extension PlanetButtons {
         }
         temporaryDisableButtons()
         
-        let row = getPlanets(time: savedDate.planetsDateChoice.getAstroTime(), location: nil, calculationSettings: manager.calculationSettings)
+        let row = getPlanets(time: savedDate.planetsDateChoice.getAstroTime(), location: manager.planetsLocationData, calculationSettings: manager.calculationSettings)
         var viewModel = NatalChartViewModel(chartName: savedDate.planetsDateChoice.description)
         viewModel.manager = manager
         if let planets = row.planets as? [PlanetCell] {
             viewModel.planetData = planets
         }
-        let aspectsRow = getAspects(time: savedDate.planetsDateChoice.getAstroTime(), with: nil, and: nil, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
+        let aspectsRow = getAspects(time: savedDate.planetsDateChoice.getAstroTime(), with: nil, and: manager.planetsLocationData, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
         
         if let aspects = aspectsRow.planets as? [TransitCell] {
             viewModel.aspectsData = aspects
+        }
+        if let location = manager.planetsLocationData {
+            let housesRow = getHouses(time: savedDate.planetsDateChoice.getAstroTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
+            if let planets = housesRow.planets as? [HouseCell] {
+                viewModel.houseData = planets
+            }
         }
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets(chartModel: viewModel), name: getStringDate(), calculationSettings: manager.calculationSettings)
         data.append(displayRow)

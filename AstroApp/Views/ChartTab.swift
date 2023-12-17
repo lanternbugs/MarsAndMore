@@ -32,6 +32,11 @@ struct ChartTab: View {
                 DoneView(newRoomState: .Names)
                 CitiesView()
             }
+        case .PlanetsCity:
+            VStack {
+                DoneView(newRoomState: .Planets)
+                CitiesView()
+            }
         case .UpdateCity:
             VStack {
                 DoneView(newRoomState: .EditName)

@@ -25,6 +25,7 @@ indirect enum RoomState: Equatable {
     case EditName
     case Cities
     case UpdateCity
+    case PlanetsCity
     case ChartSettings
     case Resources
     case Reading(planet: Planets, sign: Signs)
