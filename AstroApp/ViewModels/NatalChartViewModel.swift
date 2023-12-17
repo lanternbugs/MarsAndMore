@@ -69,7 +69,7 @@ struct NatalChartViewModel {
         }
 #if os(iOS)
         let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom
-        if idiom != .pad {
+        if !houseData.isEmpty  && idiom != .pad {
             value += 7
         }
 #endif
