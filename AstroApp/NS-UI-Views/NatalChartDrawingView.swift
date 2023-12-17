@@ -201,9 +201,12 @@ extension NatalChartDrawingView {
             
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree)
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 1.7, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
-            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.5, printDegree), planet.sign.getAstroDotCharacter(), trueDegree)
+            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), planet.sign.getAstroDotCharacter(), trueDegree)
 
-            printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.3, printDegree), planet.numericDegree.getAstroMinute(), trueDegree, false, fontSize)
+            printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.0, printDegree), planet.numericDegree.getAstroMinute(), trueDegree, false, fontSize)
+            if planet.retrograde {
+                printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.4, printDegree), "R", trueDegree, false, fontSize)
+            }
             lastPrintingDegree = Int(printDegree)
             printingStack.append(lastPrintingDegree)
             i += 1
