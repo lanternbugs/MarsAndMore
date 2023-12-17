@@ -48,7 +48,7 @@ extension NatalChartView {
         if UIScreen.main.bounds.size.width < UIScreen.main.bounds.size.height {
             return UIScreen.main.bounds.size.width
         }
-        return UIScreen.main.bounds.size.height * 0.78
+        return UIScreen.main.bounds.size.height * 0.77
     
 #endif
     
