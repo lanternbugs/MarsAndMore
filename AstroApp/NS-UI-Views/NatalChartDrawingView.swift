@@ -162,9 +162,11 @@ extension NatalChartDrawingView {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
         var fontSize = 12.0
         var spread = viewModel.radius * 0.1
+        var firstSpread = 1.7
 #if os(iOS)
         if idiom != .pad {
-            spread = spread * 1.4
+            spread = spread * 1.45
+            firstSpread = 1.5
             fontSize = 10.0
         }
         
@@ -200,7 +202,7 @@ extension NatalChartDrawingView {
             }
             
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree)
-            printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 1.7, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
+            printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), planet.sign.getAstroDotCharacter(), trueDegree)
 
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.0, printDegree), planet.numericDegree.getAstroMinute(), trueDegree, false, fontSize)
