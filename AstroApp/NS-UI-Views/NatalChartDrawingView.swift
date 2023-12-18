@@ -228,12 +228,12 @@ extension NatalChartDrawingView {
         
 #endif
         var printingHouse = Int(house)
-        printingHouse = (printingHouse ?? 1) - 1
+        printingHouse = (printingHouse ?? 1)
         if printingHouse == 0 {
             printingHouse = 12
         }
         
-        printText(viewModel.getXYFromPolar(viewModel.innerRadius + 10, trueDegree - 10.0), String(printingHouse ?? 1), trueDegree - 10.0, false, fontSize)
+        printText(viewModel.getXYFromPolar(viewModel.innerRadius + 10, trueDegree + 7.0), String(printingHouse ?? 1), trueDegree + 10.0, false, fontSize)
         printSign(viewModel.getXYFromPolar(viewModel.radius + 15, trueDegree), Double(houseDegree).getAstroSign().getAstroDotCharacter(), trueDegree)
         let signDegreeText = viewModel.houseData[(Int(house) ?? 1) - 1].numericDegree.getAstroDegree()
 
