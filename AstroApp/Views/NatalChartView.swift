@@ -16,7 +16,7 @@
 import SwiftUI
 
 struct NatalChartView: View {
-    let viewModel: NatalChartViewModel
+    let viewModel: ChartViewModel
     var body: some View {
         ScrollView {
             VStack {
@@ -56,5 +56,5 @@ extension NatalChartView {
 }
 
 #Preview {
-    NatalChartView(viewModel: NatalChartViewModel(chartName: "mike"))
+    NatalChartView(viewModel: ChartViewModel(chartName: "mike"))
 }

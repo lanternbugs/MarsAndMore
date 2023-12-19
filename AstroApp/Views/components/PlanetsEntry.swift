@@ -134,7 +134,7 @@ extension PlanetsEntry {
 
 struct PlanetsEntry_Previews: PreviewProvider {
     static var previews: some View {
-        let row = DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: NatalChartViewModel(chartName: "mike")), name: "Mike", calculationSettings: CalculationSettings())
+        let row = DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: ChartViewModel(chartName: "mike")), name: "Mike", calculationSettings: CalculationSettings())
         PlanetsEntry(data: row)
     }
 }

@@ -20,21 +20,21 @@ class NatalChartDrawingView: UIView {
     typealias NSColor = UIColor
     typealias NSBezierPath = UIBezierPath
     
-    var viewModel: NatalChartViewModel
+    var viewModel: ChartViewModel
     var lastPrintingDegree = -Int.max
     var printingStack = [Int]()
     private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     override init(frame frameRect: CGRect) {
-        viewModel = NatalChartViewModel(chartName: "none")
+        viewModel = ChartViewModel(chartName: "none")
         super.init(frame: frameRect)
     }
 
     required init(coder: NSCoder) {
-        viewModel = NatalChartViewModel(chartName: "none")
+        viewModel = ChartViewModel(chartName: "none")
         super.init(coder: coder)!
     }
 
-    init(model: NatalChartViewModel) {
+    init(model: ChartViewModel) {
         self.viewModel = model
         super.init(frame: CGRect.zero)
         backgroundColor = NSColor.white
@@ -48,20 +48,20 @@ class NatalChartDrawingView: UIView {
 #else
 import Cocoa
 class NatalChartDrawingView: NSView {
-    var viewModel: NatalChartViewModel
+    var viewModel: ChartViewModel
     var lastPrintingDegree = -Int.max
     var printingStack = [Int]()
     override init(frame frameRect: NSRect) {
-        viewModel = NatalChartViewModel(chartName: "none")
+        viewModel = ChartViewModel(chartName: "none")
         super.init(frame: frameRect);
     }
 
     required init(coder: NSCoder) {
-        viewModel = NatalChartViewModel(chartName: "none")
+        viewModel = ChartViewModel(chartName: "none")
         super.init(coder: coder)!
     }
 
-    init(model: NatalChartViewModel) {
+    init(model: ChartViewModel) {
         self.viewModel = model
         super.init(frame: NSRect.zero);
     }

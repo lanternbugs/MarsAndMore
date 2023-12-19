@@ -20,7 +20,7 @@ private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
 #endif
 
 
-struct NatalChartViewModel {
+class ChartViewModel {
     let chartName: String
     var manager: BirthDataManager?
     var houseData = [HouseCell]()
@@ -31,7 +31,11 @@ struct NatalChartViewModel {
     var planetToDegreeMap = [Planets: Int]()
     var width: Double = 2
     var height: Double = 2
-    mutating func populateData() {
+    
+    init(chartName: String) {
+        self.chartName = chartName
+    }
+    func populateData() {
         if !planetsDictionary.isEmpty {
             return
         }
@@ -93,11 +97,11 @@ struct NatalChartViewModel {
         (width / 2.0, width / 2 -  ((width - height) / 2.0))
     }
     
-    mutating func setWidth(_ w: Double) {
+    func setWidth(_ w: Double) {
         width = w
     }
     
-    mutating func setHeight(_ h: Double) {
+    func setHeight(_ h: Double) {
         height = h
     }
     

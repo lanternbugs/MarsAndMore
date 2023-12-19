@@ -81,14 +81,14 @@ extension ChartView: AstrobotInterface {
         }
     }
     
-    func showNatalChartView(viewModel: NatalChartViewModel) {
+    func showNatalChartView(viewModel: ChartViewModel) {
         roomState.wrappedValue = .NatalView(onDismiss: .Chart, viewModel: viewModel)
     }
 }
 
 struct ChartView_Previews: PreviewProvider {
     @State static var state: RoomState = .Chart
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: NatalChartViewModel(chartName: "mike")), name: "Mike", calculationSettings: CalculationSettings())]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: ChartViewModel(chartName: "mike")), name: "Mike", calculationSettings: CalculationSettings())]
     static var previews: some View {
         ChartView(data: $row)
     }

@@ -67,7 +67,7 @@ extension TransitsButtonControl {
         temporaryDisableButtons()
         if let location = manager.getSelectionLocation() {
             let row = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
-            var viewModel = NatalChartViewModel(chartName: manager.getCurrentName())
+            let viewModel = ChartViewModel(chartName: manager.getCurrentName())
             viewModel.manager = manager
             if let planets = row.planets as? [HouseCell] {
                 viewModel.houseData = planets
@@ -108,7 +108,7 @@ extension TransitsButtonControl {
 }
 
 struct TransitsButtonControl_Previews: PreviewProvider {
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: NatalChartViewModel(chartName: "mike")), name: "Mike", calculationSettings: CalculationSettings())]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: ChartViewModel(chartName: "mike")), name: "Mike", calculationSettings: CalculationSettings())]
     static var previews: some View {
         TransitsButtonControl(data: $row)
     }

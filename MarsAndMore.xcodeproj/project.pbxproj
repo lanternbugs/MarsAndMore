@@ -394,12 +394,14 @@
 		76C622A42B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76C622A32B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf */; };
 		76C622AC2B1E7BC200694871 /* Astrodotbasic-ow3Pd.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76C622A32B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf */; };
 		76C622AE2B1E7BF300694871 /* astrodot-info.txt in Resources */ = {isa = PBXBuildFile; fileRef = 76C622AD2B1E7BF300694871 /* astrodot-info.txt */; };
+		76CFDDA22B3230A60079E09E /* TransitChartDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CFDDA12B3230A60079E09E /* TransitChartDrawingView.swift */; };
+		76CFDDA32B3230A60079E09E /* TransitChartDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CFDDA12B3230A60079E09E /* TransitChartDrawingView.swift */; };
 		76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */; };
 		76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */; };
 		76D54B582B194A7D00E5269B /* NatalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B572B194A7D00E5269B /* NatalChartView.swift */; };
 		76D54B592B194A7D00E5269B /* NatalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B572B194A7D00E5269B /* NatalChartView.swift */; };
-		76D54B5C2B194AC700E5269B /* NatalChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B5B2B194AC700E5269B /* NatalChartViewModel.swift */; };
-		76D54B5D2B194AC700E5269B /* NatalChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B5B2B194AC700E5269B /* NatalChartViewModel.swift */; };
+		76D54B5C2B194AC700E5269B /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B5B2B194AC700E5269B /* ChartViewModel.swift */; };
+		76D54B5D2B194AC700E5269B /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B5B2B194AC700E5269B /* ChartViewModel.swift */; };
 		76DAC8A727B2016700852872 /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DAC8A627B2016700852872 /* CitiesView.swift */; };
 		76DAC8A827B2016700852872 /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DAC8A627B2016700852872 /* CitiesView.swift */; };
 		76E6FFD7287A19090057825F /* AstrobotUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E6FFD6287A19090057825F /* AstrobotUnitTesting.swift */; };
@@ -648,9 +650,10 @@
 		76C5C3642B0D342D00CD287A /* TransitTime+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitTime+.swift"; sourceTree = "<group>"; };
 		76C622A32B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Astrodotbasic-ow3Pd.ttf"; sourceTree = "<group>"; };
 		76C622AD2B1E7BF300694871 /* astrodot-info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "astrodot-info.txt"; sourceTree = "<group>"; };
+		76CFDDA12B3230A60079E09E /* TransitChartDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitChartDrawingView.swift; sourceTree = "<group>"; };
 		76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReadingContent.swift; sourceTree = "<group>"; };
 		76D54B572B194A7D00E5269B /* NatalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatalChartView.swift; sourceTree = "<group>"; };
-		76D54B5B2B194AC700E5269B /* NatalChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatalChartViewModel.swift; sourceTree = "<group>"; };
+		76D54B5B2B194AC700E5269B /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
 		76DAC8A627B2016700852872 /* CitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesView.swift; sourceTree = "<group>"; };
 		76E6FFD6287A19090057825F /* AstrobotUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrobotUnitTesting.swift; sourceTree = "<group>"; };
 		76E7402D28AD982700D8D699 /* ArtDataManager+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArtDataManager+.swift"; sourceTree = "<group>"; };
@@ -1144,6 +1147,7 @@
 			isa = PBXGroup;
 			children = (
 				76859E8B2B1A64A40007FED1 /* NatalChartDrawingView.swift */,
+				76CFDDA12B3230A60079E09E /* TransitChartDrawingView.swift */,
 			);
 			path = "UIViews+NS";
 			sourceTree = "<group>";
@@ -1178,7 +1182,7 @@
 		76D54B5A2B194A9000E5269B /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				76D54B5B2B194AC700E5269B /* NatalChartViewModel.swift */,
+				76D54B5B2B194AC700E5269B /* ChartViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1571,6 +1575,7 @@
 				76038DD8289869CB00F6DA0F /* Houses+.swift in Sources */,
 				761DEEBB279B9EF900A71938 /* swepdate.c in Sources */,
 				762E0C69288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
+				76CFDDA22B3230A60079E09E /* TransitChartDrawingView.swift in Sources */,
 				76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
 				76664B3027CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
 				765C04F42AFC38AB0068482B /* SiderealSystem+.swift in Sources */,
@@ -1601,7 +1606,7 @@
 				76ECF73C287F5DDD00AE7B34 /* ChartTitle.swift in Sources */,
 				7679FF7927AF184F007911C9 /* AstrobotInterface.swift in Sources */,
 				763CFC0D27B1E535004A73B8 /* BirthDataModels.swift in Sources */,
-				76D54B5C2B194AC700E5269B /* NatalChartViewModel.swift in Sources */,
+				76D54B5C2B194AC700E5269B /* ChartViewModel.swift in Sources */,
 				7615428C27D1456600B0E781 /* ChartSettings.swift in Sources */,
 				76EBE03627AF9ED20010CB62 /* String+Extensions.swift in Sources */,
 				762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */,
@@ -1675,6 +1680,7 @@
 				76038DD9289869CB00F6DA0F /* Houses+.swift in Sources */,
 				76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */,
 				762E0C6A288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
+				76CFDDA32B3230A60079E09E /* TransitChartDrawingView.swift in Sources */,
 				76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
 				76664B3127CC4B2A002A4235 /* Environment+Extensions.swift in Sources */,
 				765C04F52AFC38AB0068482B /* SiderealSystem+.swift in Sources */,
@@ -1705,7 +1711,7 @@
 				76ECF73D287F5DDD00AE7B34 /* ChartTitle.swift in Sources */,
 				7679FF7A27AF184F007911C9 /* AstrobotInterface.swift in Sources */,
 				763CFC0E27B1E535004A73B8 /* BirthDataModels.swift in Sources */,
-				76D54B5D2B194AC700E5269B /* NatalChartViewModel.swift in Sources */,
+				76D54B5D2B194AC700E5269B /* ChartViewModel.swift in Sources */,
 				7615428D27D1456600B0E781 /* ChartSettings.swift in Sources */,
 				76EBE03727AF9ED20010CB62 /* String+Extensions.swift in Sources */,
 				76B34ED527AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,

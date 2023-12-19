@@ -18,7 +18,7 @@ import SwiftUI
 
 #if os(iOS)
 struct NatalViewRepresentable: UIViewRepresentable {
-    let model: NatalChartViewModel
+    let model: ChartViewModel
 
     func makeUIView(context: Context) -> NatalChartDrawingView {
         NatalChartDrawingView(model: model)
@@ -31,7 +31,7 @@ struct NatalViewRepresentable: UIViewRepresentable {
 
 #else
 struct NatalViewRepresentable: NSViewRepresentable {
-    let model: NatalChartViewModel
+    let model: ChartViewModel
     
     func makeNSView(context: Context) -> NatalChartDrawingView {
         NatalChartDrawingView(model: model)
