@@ -795,11 +795,11 @@
 				7679FF6F27AF184F007911C9 /* Astrobot */,
 				76620A9527AC793C009094DC /* Readings */,
 				761DEE52279B9EB100A71938 /* MarsAndMoreApp.swift */,
-				76D54B5A2B194A9000E5269B /* ViewModels */,
 				76620A9F27AC801C009094DC /* Views */,
-				76859E8A2B1A641E0007FED1 /* NS-UI-Views */,
-				761DEE53279B9EB100A71938 /* ContentView.swift */,
+				76D54B5A2B194A9000E5269B /* ViewModels */,
+				76859E8A2B1A641E0007FED1 /* UIViews+NS */,
 				761DEE54279B9EB100A71938 /* Persistence.swift */,
+				761DEE53279B9EB100A71938 /* ContentView.swift */,
 				761DEE55279B9EB200A71938 /* Assets.xcassets */,
 				761DEE50279B9EB100A71938 /* MarsAndMore.xcdatamodeld */,
 				761DEE93279B9EF900A71938 /* MarsAndMore-Bridging-Header.h */,
@@ -1140,12 +1140,12 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		76859E8A2B1A641E0007FED1 /* NS-UI-Views */ = {
+		76859E8A2B1A641E0007FED1 /* UIViews+NS */ = {
 			isa = PBXGroup;
 			children = (
 				76859E8B2B1A64A40007FED1 /* NatalChartDrawingView.swift */,
 			);
-			path = "NS-UI-Views";
+			path = "UIViews+NS";
 			sourceTree = "<group>";
 		};
 		7694464D27CD9B9E00D61758 /* extensions */ = {
