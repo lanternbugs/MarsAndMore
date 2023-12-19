@@ -88,7 +88,7 @@ struct ArtDisplayView: View {
             } else {
                 HStack {
                     Spacer()
-                    if artDataManager.libraryData.first { $0.objectId == image.objectId} != nil && showButton {
+                    if artDataManager.libraryData.first(where: { $0.objectId == image.objectId}) != nil && showButton {
                         Button(action: {
                             if showButton {
                                 showWarning = true
@@ -106,7 +106,7 @@ struct ArtDisplayView: View {
         default:
             HStack {
                 Spacer()
-                if artDataManager.libraryData.first { $0.objectId == image.objectId} == nil && showButton {
+                if artDataManager.libraryData.first(where: { $0.objectId == image.objectId}) == nil && showButton {
                     Button(action: {
                         if showButton {
                             artDataManager.saveToLibrary(image: image, type: type)

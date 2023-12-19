@@ -41,15 +41,12 @@ extension Double {
     func getAstroDegreeOnly()->String
     {
         let num = Int(self) % 30
-        let difference =  self - Double(Int(self))
-        let doubleMinute = difference * 60
         
         return "\(num)°"
     }
     
     func getAstroMinute()->String
     {
-        let num = Int(self) % 30
         let difference =  self - Double(Int(self))
         let doubleMinute = difference * 60;
 
