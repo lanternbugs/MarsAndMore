@@ -34,7 +34,7 @@ extension TransitChartDrawingView {
         viewModel.setHeight(frame.height)
         viewModel.populateData()
 #if os(iOS)
-        drawColoredArciOS(CGPoint(x: transitviewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
+        drawColoredArciOS(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
 #else
         drawColoredArcMac(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
 #endif
