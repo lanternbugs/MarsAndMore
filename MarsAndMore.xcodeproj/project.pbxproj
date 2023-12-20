@@ -398,8 +398,8 @@
 		76CFDDA32B3230A60079E09E /* TransitChartDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CFDDA12B3230A60079E09E /* TransitChartDrawingView.swift */; };
 		76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */; };
 		76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */; };
-		76D54B582B194A7D00E5269B /* NatalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B572B194A7D00E5269B /* NatalChartView.swift */; };
-		76D54B592B194A7D00E5269B /* NatalChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B572B194A7D00E5269B /* NatalChartView.swift */; };
+		76D54B582B194A7D00E5269B /* WheelChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B572B194A7D00E5269B /* WheelChartView.swift */; };
+		76D54B592B194A7D00E5269B /* WheelChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B572B194A7D00E5269B /* WheelChartView.swift */; };
 		76D54B5C2B194AC700E5269B /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B5B2B194AC700E5269B /* ChartViewModel.swift */; };
 		76D54B5D2B194AC700E5269B /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B5B2B194AC700E5269B /* ChartViewModel.swift */; };
 		76DAC8A727B2016700852872 /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DAC8A627B2016700852872 /* CitiesView.swift */; };
@@ -652,7 +652,7 @@
 		76C622AD2B1E7BF300694871 /* astrodot-info.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "astrodot-info.txt"; sourceTree = "<group>"; };
 		76CFDDA12B3230A60079E09E /* TransitChartDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitChartDrawingView.swift; sourceTree = "<group>"; };
 		76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReadingContent.swift; sourceTree = "<group>"; };
-		76D54B572B194A7D00E5269B /* NatalChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatalChartView.swift; sourceTree = "<group>"; };
+		76D54B572B194A7D00E5269B /* WheelChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartView.swift; sourceTree = "<group>"; };
 		76D54B5B2B194AC700E5269B /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
 		76DAC8A627B2016700852872 /* CitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesView.swift; sourceTree = "<group>"; };
 		76E6FFD6287A19090057825F /* AstrobotUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrobotUnitTesting.swift; sourceTree = "<group>"; };
@@ -1076,7 +1076,7 @@
 				7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */,
 				7612B4832B0AA1260062D829 /* MundaneView.swift */,
 				7691C5F32B0D42850024613D /* TransitsView.swift */,
-				76D54B572B194A7D00E5269B /* NatalChartView.swift */,
+				76D54B572B194A7D00E5269B /* WheelChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1557,7 +1557,7 @@
 				7612B4842B0AA1260062D829 /* MundaneView.swift in Sources */,
 				7612B4812B0AA0DB0062D829 /* MundanePlanetsRow.swift in Sources */,
 				7667125427D00D7F00644429 /* TransitsButtonControl.swift in Sources */,
-				76D54B582B194A7D00E5269B /* NatalChartView.swift in Sources */,
+				76D54B582B194A7D00E5269B /* WheelChartView.swift in Sources */,
 				763B3FA027BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */,
 				7669E1D82898609900B8628D /* HousesEntry.swift in Sources */,
 				7617DAB627AFA8A70064B98E /* AstroModels.swift in Sources */,
@@ -1662,7 +1662,7 @@
 				7612B4852B0AA1260062D829 /* MundaneView.swift in Sources */,
 				7612B4822B0AA0DB0062D829 /* MundanePlanetsRow.swift in Sources */,
 				7667125527D00D7F00644429 /* TransitsButtonControl.swift in Sources */,
-				76D54B592B194A7D00E5269B /* NatalChartView.swift in Sources */,
+				76D54B592B194A7D00E5269B /* WheelChartView.swift in Sources */,
 				763B3FA127BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */,
 				7669E1D92898609900B8628D /* HousesEntry.swift in Sources */,
 				7617DAB727AFA8A70064B98E /* AstroModels.swift in Sources */,

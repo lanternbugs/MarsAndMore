@@ -37,7 +37,7 @@ struct PlanetsTab: View {
         case .NatalView(let dismissal, let viewModel):
             VStack {
                 DoneView(newRoomState: dismissal)
-                NatalChartView(viewModel: viewModel)
+                WheelChartView(viewModel: viewModel)
             }
         case .PlanetsCity:
             VStack {

@@ -65,7 +65,7 @@ struct ChartTab: View {
         case .NatalView(let dismissal, let viewModel):
             VStack {
                 DoneView(newRoomState: dismissal)
-                NatalChartView(viewModel: viewModel)
+                WheelChartView(viewModel: viewModel)
             }
         default:
             ChartRoom(planetData: $data)

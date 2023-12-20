@@ -15,7 +15,7 @@
 
 import SwiftUI
 
-struct NatalChartView: View {
+struct WheelChartView: View {
     let viewModel: ChartViewModel
     var body: some View {
         ScrollView {
@@ -36,7 +36,7 @@ struct NatalChartView: View {
     }
 }
 
-extension NatalChartView {
+extension WheelChartView {
     func getScreenWidth()->Double
     {
 #if os(macOS)
@@ -56,5 +56,5 @@ extension NatalChartView {
 }
 
 #Preview {
-    NatalChartView(viewModel: ChartViewModel(chartName: "mike", chartType: .Natal))
+    WheelChartView(viewModel: ChartViewModel(chartName: "mike", chartType: .Natal))
 }
