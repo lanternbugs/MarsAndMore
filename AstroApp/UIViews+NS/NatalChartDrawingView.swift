@@ -454,7 +454,7 @@ extension NatalChartDrawingView {
         }
     }
 
-    func printSign(_ coordinates: (Int, Int), _ character: Character, _ degree: Double) {
+    func printSign(_ coordinates: (Int, Int), _ character: Character, _ degree: Double, useRed: Bool = false) {
         var coordinate = coordinates
         var size = 21.0
 #if os(iOS)
@@ -469,13 +469,23 @@ extension NatalChartDrawingView {
 #if os(iOS)
         if let font = UIFont(name: "AstroDotBasic", size: size) {
             let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
-            String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+            if useRed {
+                String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.red])
+            } else {
+                String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+            }
+            
 
         }
 #else
         if let font = NSFont(name: "AstroDotBasic", size: size) {
             let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
-            String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+            if useRed {
+                String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: NSColor.red])
+            } else {
+                String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+            }
+            
 
         }
 #endif
