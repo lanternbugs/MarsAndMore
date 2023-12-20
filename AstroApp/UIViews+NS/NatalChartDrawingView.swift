@@ -89,36 +89,57 @@ extension NatalChartDrawingView {
         drawCircle(viewModel.center, radius: viewModel.innerRadius)
         
         drawSpoke()
+        drawPlanets()
     }
     
-    func drawSpoke() {
+    func drawPlanets() {
         guard let manager = viewModel.manager else {
             return
         }
         lastPrintingDegree = -Int.max
         printingStack.removeAll()
-        let startDegree: Double = viewModel.getChartStartDegree()
         for a in 0...359 {
             let trueDegree =  viewModel.getChartStartDegree()  + Double(a)
-            var len = 0
-            if a % 5 == 0 {
-                len = 10
-            } else {
-                len = 5
-            }
-            let thickness = 1
+            let thickness = 2
             if let planetArray = viewModel.planetsDictionary[a] {
                 let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
                 if !usersPlanets.isEmpty {
                     if !usersPlanets.filter({$0.planet != .Ascendent && $0.planet != .MC}).isEmpty {
-                        drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 16, thickness: thickness + 1)
+                        drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 16, thickness: thickness)
                         drawPlanetListing(usersPlanets, trueDegree)
                     }
                     
                     drawAspects(usersPlanets, trueDegree, a)
                 }
             }
+        }
+    }
+    
+    func drawSpoke() {
+        guard let manager = viewModel.manager else {
+            return
+        }
+        
+        let startDegree: Double = viewModel.getChartStartDegree()
+        for a in 0...359 {
+            let trueDegree =  viewModel.getChartStartDegree()  + Double(a)
+            var len = 0
+            if viewModel.chart == .Natal {
+                if a % 5 == 0 {
+                    len = 10
+                } else {
+                    len = 5
+                }
+            } else {
+                if a % 5 == 0 {
+                    len = 6
+                } else {
+                    len = 3
+                }
+            }
             
+            
+            let thickness = 1
             drawLine(degree: Double(a) + startDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: len, thickness: thickness)
             let houseDegree =   a
             
@@ -220,10 +241,16 @@ extension NatalChartDrawingView {
     func drawHouseInfo(at houseDegree: Int, for trueDegree: Double, house: String, sign: Signs) {
         drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.innerRadius - viewModel.getArcStrokeWidth()), thickness: 1)
         drawLine(degree: Double(trueDegree), radius: viewModel.radius + 5, length: 5, thickness: 1)
-        var fontSize = 14.0
+        var fontSize = 12.0
+        if viewModel.chart != .Natal {
+            fontSize = 10.0
+        }
 #if os(iOS)
         if idiom != .pad {
             fontSize = 10.0
+            if viewModel.chart != .Natal {
+                fontSize = 8.0
+            }
         }
         
 #endif
@@ -232,12 +259,18 @@ extension NatalChartDrawingView {
         if printingHouse == 0 {
             printingHouse = 12
         }
+        var textOffsetFromRadius = 4.0
         
-        printText(viewModel.getXYFromPolar(viewModel.innerRadius + 10, trueDegree + 7.0), String(printingHouse ?? 1), trueDegree + 10.0, false, fontSize)
-        printSign(viewModel.getXYFromPolar(viewModel.radius + 15, trueDegree), Double(houseDegree).getAstroSign().getAstroDotCharacter(), trueDegree)
-        let signDegreeText = viewModel.houseData[(Int(house) ?? 1) - 1].numericDegree.getAstroDegree()
-
-        printText(viewModel.getXYFromPolar(viewModel.radius + 20, trueDegree - 6), signDegreeText, trueDegree - 6, true, fontSize)
+#if os(iOS)
+        textOffsetFromRadius = 8
+#endif
+        
+        printText(viewModel.getXYFromPolar(viewModel.innerRadius + textOffsetFromRadius, trueDegree + 6.0), String(printingHouse ?? 1), trueDegree + 6.0, false, fontSize)
+        if viewModel.chart == .Natal {
+            printSign(viewModel.getXYFromPolar(viewModel.radius + 15, trueDegree), Double(houseDegree).getAstroSign().getAstroDotCharacter(), trueDegree)
+            let signDegreeText = viewModel.houseData[(Int(house) ?? 1) - 1].numericDegree.getAstroDegree()
+            printText(viewModel.getXYFromPolar(viewModel.radius + 20, trueDegree - 6), signDegreeText, trueDegree - 6, true, fontSize)
+        }
     }
     
     

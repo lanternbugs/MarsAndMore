@@ -35,10 +35,19 @@ struct ChartView: View {
                                             Text("Chart Wheel").font(Font.subheadline)
                                         }
                                         PlanetsEntry(data: planetRow)
-                                    case .Transits(let date, _, let transitData, let chartName):
-                                        Button(action: { showTransitsOfDay(transitData: transitData, chartName: chartName) }) {
-                                            Text("Transit Times").font(Font.subheadline)
+                                    case .Transits(let date, _, let transitData, let chartName, let viewModel):
+                                        HStack {
+                                            Spacer()
+                                            Button(action: { showTransitsOfDay(transitData: transitData, chartName: chartName) }) {
+                                                Text("Transit Times").font(Font.subheadline)
+                                            }
+                                            Spacer()
+                                            Button(action: { showTransitsChart(viewModel: viewModel, chartName: chartName) }) {
+                                                Text("Transit Wheel").font(Font.subheadline)
+                                            }
+                                            Spacer()
                                         }
+                                        
                                         Text("on \(date)")
                                         AspectsEntry(data: planetRow)
                                     case .Houses(_, let viewModel):
@@ -71,6 +80,10 @@ struct ChartView: View {
 }
 
 extension ChartView: AstrobotInterface {
+    func showTransitsChart(viewModel: ChartViewModel, chartName: String) {
+        roomState.wrappedValue = .NatalView(onDismiss: .Chart, viewModel: viewModel)
+    }
+    
     func showTransitsOfDay(transitData: TransitTimeData, chartName: String) {
         var start = transitData.transitTime
         let calendar = Calendar.current

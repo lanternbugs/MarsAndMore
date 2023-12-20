@@ -46,5 +46,9 @@ extension TransitChartDrawingView {
 #else
         drawColoredArcMac(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
 #endif
+        printSigns(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
+        drawCircle(viewModel.center, radius: viewModel.interiorRadius)
+        drawCircle(viewModel.center, radius: viewModel.innerRadius)
+        drawSpoke()
     }
 }

@@ -70,18 +70,24 @@ class ChartViewModel {
     }
     var radius: Double {
         var value = width < height ? width / 2.0 - 34.0 : height / 2.0 - 34.0
-        if houseData.isEmpty {
-            value += 30
+        if chart == .Natal {
+            if houseData.isEmpty {
+                value += 30
+            }
+    #if os(iOS)
+            let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom
+            if !houseData.isEmpty  && idiom != .pad {
+                value += 7
+            }
+    #endif
+        } else {
+            value += 33
         }
-#if os(iOS)
-        let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom
-        if !houseData.isEmpty  && idiom != .pad {
-            value += 7
-        }
-#endif
         return value
     }
-    
+    var interiorRadius: Double {
+        (radius - getArcStrokeWidth() + innerRadius) / 2
+    }
     var innerRadius: Double {
 #if os(iOS)
         let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom

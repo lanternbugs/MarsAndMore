@@ -34,7 +34,7 @@ struct PlanetRoom: View {
                                         Text("Chart Wheel").font(Font.subheadline)
                                     }
                                     PlanetsEntry(data: planetRow)
-                                case .Transits(let date, _, _, _):
+                                case .Transits(let date, _, _, _, _):
                                     Text("on \(date)")
                                     AspectsEntry(data: planetRow)
                                 default:
