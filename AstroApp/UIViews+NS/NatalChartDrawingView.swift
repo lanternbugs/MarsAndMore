@@ -23,7 +23,7 @@ class NatalChartDrawingView: UIView {
     var viewModel: ChartViewModel
     var lastPrintingDegree = -Int.max
     var printingStack = [Int]()
-    private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+    var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     override init(frame frameRect: CGRect) {
         viewModel = ChartViewModel(chartName: "none", chartType: .Natal)
         super.init(frame: frameRect)

@@ -86,7 +86,13 @@ class ChartViewModel {
         return value
     }
     var interiorRadius: Double {
-        (radius - getArcStrokeWidth() + innerRadius) / 2
+#if os(iOS)
+        (radius - getArcStrokeWidth() + innerRadius) / 2 * 1.11
+#else
+        (radius - getArcStrokeWidth() + innerRadius) / 2 * 1.06
+#endif
+        
+        
     }
     var innerRadius: Double {
 #if os(iOS)
