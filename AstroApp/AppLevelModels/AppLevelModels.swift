@@ -42,6 +42,9 @@ enum AppTab: Int {
     case MarsTab, ChartTab, PlanetsTab, SpaceTab, ArtTab
 }
 
+enum Charts {
+    case Natal, Transit, Synastry
+}
 enum  ImagePhotoType:String {
     case NasaPhotoOfDay, Curiosity, Opportunity, Spirit, MarsArt, VenusArt, Library
 }

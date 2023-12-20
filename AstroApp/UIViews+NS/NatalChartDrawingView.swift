@@ -52,12 +52,12 @@ class NatalChartDrawingView: NSView {
     var lastPrintingDegree = -Int.max
     var printingStack = [Int]()
     override init(frame frameRect: NSRect) {
-        viewModel = ChartViewModel(chartName: "none")
+        viewModel = ChartViewModel(chartName: "none", chartType: .Natal)
         super.init(frame: frameRect);
     }
 
     required init(coder: NSCoder) {
-        viewModel = ChartViewModel(chartName: "none")
+        viewModel = ChartViewModel(chartName: "none", chartType: .Natal)
         super.init(coder: coder)!
     }
 

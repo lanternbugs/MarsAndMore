@@ -56,5 +56,5 @@ extension NatalChartView {
 }
 
 #Preview {
-    NatalChartView(viewModel: ChartViewModel(chartName: "mike"))
+    NatalChartView(viewModel: ChartViewModel(chartName: "mike", chartType: .Natal))
 }

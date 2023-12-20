@@ -31,9 +31,11 @@ class ChartViewModel {
     var planetToDegreeMap = [Planets: Int]()
     var width: Double = 2
     var height: Double = 2
+    let chart: Charts
     
-    init(chartName: String) {
+    init(chartName: String, chartType: Charts) {
         self.chartName = chartName
+        self.chart = chartType
     }
     func populateData() {
         if !planetsDictionary.isEmpty {

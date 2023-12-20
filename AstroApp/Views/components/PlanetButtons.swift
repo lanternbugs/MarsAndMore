@@ -91,7 +91,7 @@ extension PlanetButtons {
         temporaryDisableButtons()
         
         let row = getPlanets(time: savedDate.planetsDateChoice.getAstroTime(), location: manager.planetsLocationData, calculationSettings: manager.calculationSettings)
-        let viewModel = ChartViewModel(chartName: savedDate.planetsDateChoice.description)
+        let viewModel = ChartViewModel(chartName: savedDate.planetsDateChoice.description, chartType: .Natal)
         viewModel.manager = manager
         if let planets = row.planets as? [PlanetCell] {
             viewModel.planetData = planets
@@ -138,7 +138,7 @@ extension PlanetButtons {
     }
 }
 struct PlanetButtons_Previews: PreviewProvider {
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: ChartViewModel(chartName: "mike")), name: "Mike", calculationSettings: CalculationSettings())]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: ChartViewModel(chartName: "mike", chartType: .Natal)), name: "Mike", calculationSettings: CalculationSettings())]
     static var previews: some View {
         AstroButtons(data: $row)
     }
