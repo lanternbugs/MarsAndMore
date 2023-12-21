@@ -168,10 +168,10 @@ extension TransitChartDrawingView {
                 continue
             }
             var printDegree = trueDegree
-            var seperation = 5.0
+            var seperation = 3.0
 #if os(iOS)
             if idiom != .pad {
-                seperation = 6.0
+                seperation = 5
             }
             
 #endif
@@ -182,14 +182,14 @@ extension TransitChartDrawingView {
                 } else if i == 1 && abs(secondaryPrintingStack[secondaryPrintingStack.count - 2] - (secondaryLastPrintingDegree + Int(seperation))) > 2  {
                     printDegree = Double((secondaryLastPrintingDegree - Int(seperation)))
                 } else {
-                    printDegree = Double((secondaryLastPrintingDegree + Int(seperation + seperation)))
+                    printDegree = Double((secondaryLastPrintingDegree + Int(seperation + 1.5)))
                 }
                 
             } else {
                 printDegree = trueDegree
             }
             
-            printSign(viewModel.getXYFromPolar(viewModel.interiorRadius - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree)
+            printSign(viewModel.getXYFromPolar(viewModel.interiorRadius - spread - 2, printDegree), planet.planet.getAstroDotCharacter(), trueDegree)
             printText(viewModel.getXYFromPolar(viewModel.interiorRadius - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             if planet.retrograde {
                 printText(viewModel.getXYFromPolar(viewModel.interiorRadius - spread * 3.2, printDegree), "R", trueDegree, false, fontSize)

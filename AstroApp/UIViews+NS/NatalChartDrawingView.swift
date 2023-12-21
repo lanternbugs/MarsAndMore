@@ -265,7 +265,7 @@ extension NatalChartDrawingView {
         textOffsetFromRadius = 8
 #endif
         if viewModel.chart != .Natal {
-            printText(viewModel.getXYFromPolar(viewModel.radius + textOffsetFromRadius, trueDegree + 4.0), Double(houseDegree).getAstroDegree(), trueDegree + 4.0, false, fontSize)
+            printText(viewModel.getXYFromPolar(viewModel.radius + textOffsetFromRadius, trueDegree + 4.0), Double(houseDegree).getAstroDegreeOnly(), trueDegree + 4.0, false, fontSize)
         }
         
         printText(viewModel.getXYFromPolar(viewModel.innerRadius + textOffsetFromRadius, trueDegree + 6.0), String(printingHouse ?? 1), trueDegree + 6.0, false, fontSize)
