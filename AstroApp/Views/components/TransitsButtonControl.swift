@@ -103,7 +103,7 @@ extension TransitsButtonControl {
         dateFormater.dateFormat = "YY/MM/dd h:m"
         let transitData = TransitTimeData(calculationSettings: manager.calculationSettings, time: manager.getSelectionTime(), transitTime: transitDate, location: manager.getSelectionLocation())
         
-        let viewModel = ChartViewModel(chartName: manager.getCurrentName(), chartType: .Transit)
+        let viewModel = ChartViewModel(chartName: "\(manager.getCurrentName()) + \(dateFormater.string(from: transitDate))", chartType: .Transit)
         viewModel.manager = manager
         
         if let location = manager.getSelectionLocation() {
