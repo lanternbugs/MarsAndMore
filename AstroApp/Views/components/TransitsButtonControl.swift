@@ -114,11 +114,14 @@ extension TransitsButtonControl {
             }
         }
         
-        
-        
         let planetsRow = getPlanets(time: manager.getSelectionTime(), location: manager.getSelectionLocation(), calculationSettings: manager.calculationSettings)
         if let planets = planetsRow.planets as? [PlanetCell] {
             viewModel.planetData = planets
+        }
+        
+        let planetsRowTwo = getPlanets(time: transitDate.getAstroTime(), location: nil, calculationSettings: manager.calculationSettings)
+        if let planets = planetsRowTwo.planets as? [PlanetCell] {
+            viewModel.secondaryPlanetData = planets
         }
         
         

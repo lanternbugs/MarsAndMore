@@ -21,7 +21,8 @@ import Cocoa
 #endif
 
 class TransitChartDrawingView: NatalChartDrawingView {
-    
+    var secondaryLastPrintingDegree = -Int.max
+    var secondaryPrintingStack = [Int]()
 #if os(iOS)
     override func draw(_ rect: CGRect) {
         drawTransitChart()
@@ -59,18 +60,31 @@ extension TransitChartDrawingView {
         }
         lastPrintingDegree = -Int.max
         printingStack.removeAll()
+        secondaryLastPrintingDegree = -Int.max
+        secondaryPrintingStack.removeAll()
         for a in 0...359 {
             let trueDegree =  viewModel.getChartStartDegree()  + Double(a)
             let thickness = 2
-            if let planetArray = viewModel.planetsDictionary[a] {
+            if let planetArray = viewModel.secondaryPlanetsDictionary[a] {
                 let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
                 if !usersPlanets.isEmpty {
                     if !usersPlanets.filter({$0.planet != .Ascendent && $0.planet != .MC}).isEmpty {
                         drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 8, thickness: thickness)
                         drawUpperPlanetListing(usersPlanets, trueDegree)
                     }
+                    drawAspects(usersPlanets, trueDegree, a)
                     
-                    //drawAspects(usersPlanets, trueDegree, a)
+                    
+                }
+            }
+            
+            if let planetArray = viewModel.planetsDictionary[a] {
+                let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
+                if !usersPlanets.isEmpty {
+                    if !usersPlanets.filter({$0.planet != .Ascendent && $0.planet != .MC}).isEmpty {
+                        drawLine(degree: trueDegree, radius: viewModel.interiorRadius, length: 8, thickness: thickness)
+                        drawLowerPlanetListing(usersPlanets, trueDegree)
+                    }
                 }
             }
         }
@@ -84,7 +98,7 @@ extension TransitChartDrawingView {
 #if os(iOS)
         if idiom != .pad {
             spread = spread * 1.2
-            firstSpread = 1.5
+            firstSpread = 1.65
             fontSize = 10.0
         }
         
@@ -126,6 +140,62 @@ extension TransitChartDrawingView {
             }
             lastPrintingDegree = Int(printDegree)
             printingStack.append(lastPrintingDegree)
+            i += 1
+            
+        }
+        
+    }
+    
+    func drawLowerPlanetListing(_ planetArray: [PlanetCell], _ trueDegree: Double) {
+        let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
+        var fontSize = 12.0
+        var spread = viewModel.interiorRadius * 0.065
+        var firstSpread = 2.5
+#if os(iOS)
+        if idiom != .pad {
+            spread = spread * 1.2
+            firstSpread = 2.2
+            fontSize = 10.0
+        }
+        
+#else
+        spread = spread * 1.5
+#endif
+        
+        var i = 0
+        for planet in sortedArray {
+            if planet.planet == .Ascendent || planet.planet == .MC {
+                continue
+            }
+            var printDegree = trueDegree
+            var seperation = 5.0
+#if os(iOS)
+            if idiom != .pad {
+                seperation = 6.0
+            }
+            
+#endif
+            
+            if secondaryLastPrintingDegree != -Int.max && abs((secondaryLastPrintingDegree - Int(printDegree))) < Int(seperation) {
+                if i == 1 && secondaryPrintingStack.count < 2 {
+                    printDegree = Double((secondaryLastPrintingDegree - Int(seperation)))
+                } else if i == 1 && abs(secondaryPrintingStack[secondaryPrintingStack.count - 2] - (secondaryLastPrintingDegree + Int(seperation))) > 2  {
+                    printDegree = Double((secondaryLastPrintingDegree - Int(seperation)))
+                } else {
+                    printDegree = Double((secondaryLastPrintingDegree + Int(seperation + seperation)))
+                }
+                
+            } else {
+                printDegree = trueDegree
+            }
+            
+            printSign(viewModel.getXYFromPolar(viewModel.interiorRadius - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree)
+            printText(viewModel.getXYFromPolar(viewModel.interiorRadius - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
+            if planet.retrograde {
+                printText(viewModel.getXYFromPolar(viewModel.interiorRadius - spread * 3.2, printDegree), "R", trueDegree, false, fontSize)
+            }
+            secondaryLastPrintingDegree = Int(printDegree)
+            secondaryPrintingStack.append(secondaryLastPrintingDegree)
             i += 1
             
         }

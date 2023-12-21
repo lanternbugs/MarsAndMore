@@ -25,10 +25,13 @@ class ChartViewModel {
     var manager: BirthDataManager?
     var houseData = [HouseCell]()
     var planetData = [PlanetCell]()
+    var secondaryPlanetData = [PlanetCell]()
     var aspectsData = [TransitCell]()
     var houseDictionary = [Int: (Int, Signs)]()
     var planetsDictionary = [Int: [PlanetCell]]()
+    var secondaryPlanetsDictionary = [Int: [PlanetCell]]()
     var planetToDegreeMap = [Planets: Int]()
+    var secondaryPlanetToDegreeMap = [Planets: Int]()
     var width: Double = 2
     var height: Double = 2
     let chart: Charts
@@ -66,6 +69,21 @@ class ChartViewModel {
                 }
                 planetToDegreeMap[planetData[i].planet] = Int(planetData[i].numericDegree)
             }
+            
+            if secondaryPlanetData.count > 0 {
+                for i in 0...secondaryPlanetData.count - 1 {
+                    
+                    if secondaryPlanetsDictionary[Int(secondaryPlanetData[i].numericDegree)] == nil {
+                        var planetArray = [PlanetCell]()
+                        planetArray.append(secondaryPlanetData[i])
+                        secondaryPlanetsDictionary[Int(secondaryPlanetData[i].numericDegree)] = planetArray
+                        
+                    } else {
+                        secondaryPlanetsDictionary[Int(secondaryPlanetData[i].numericDegree)]?.append(secondaryPlanetData[i])
+                    }
+                    secondaryPlanetToDegreeMap[secondaryPlanetData[i].planet] = Int(secondaryPlanetData[i].numericDegree)
+                }
+            }
         }
     }
     var radius: Double {
@@ -82,9 +100,17 @@ class ChartViewModel {
     #endif
         } else {
             value += 33
+#if os(iOS)
+        let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom
+            if idiom != .pad {
+                value -= 12
+            }
+#endif
         }
+
         return value
     }
+    
     var interiorRadius: Double {
 #if os(iOS)
         (radius - getArcStrokeWidth() + innerRadius) / 2 * 1.11

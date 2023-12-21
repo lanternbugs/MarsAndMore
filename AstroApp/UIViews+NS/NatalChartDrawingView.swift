@@ -161,7 +161,7 @@ extension NatalChartDrawingView {
                 if !aspect.aspect.isMajor() || aspect.aspect == .Conjunction {
                     continue
                 }
-                if let b = viewModel.planetToDegreeMap[aspect.planet], let c = viewModel.planetToDegreeMap[aspect.planet2] {
+                if let b = viewModel.secondaryPlanetToDegreeMap.isEmpty ? viewModel.planetToDegreeMap[aspect.planet] : viewModel.secondaryPlanetToDegreeMap[aspect.planet], let c =  viewModel.planetToDegreeMap[aspect.planet2] {
                     var secondDegree =  trueDegree
                     let orb = Double(abs(c - b))
                     if c > b && orb < aspect.aspect.rawValue + 20.0 {
@@ -264,6 +264,9 @@ extension NatalChartDrawingView {
 #if os(iOS)
         textOffsetFromRadius = 8
 #endif
+        if viewModel.chart != .Natal {
+            printText(viewModel.getXYFromPolar(viewModel.radius + textOffsetFromRadius, trueDegree + 4.0), Double(houseDegree).getAstroDegree(), trueDegree + 4.0, false, fontSize)
+        }
         
         printText(viewModel.getXYFromPolar(viewModel.innerRadius + textOffsetFromRadius, trueDegree + 6.0), String(printingHouse ?? 1), trueDegree + 6.0, false, fontSize)
         if viewModel.chart == .Natal {
