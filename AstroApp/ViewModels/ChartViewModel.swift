@@ -18,7 +18,7 @@ import Foundation
 import UIKit
 private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
 #endif
-
+enum PrintSize { case small, regular, large}
 
 class ChartViewModel {
     let chartName: String
@@ -35,6 +35,13 @@ class ChartViewModel {
     var width: Double = 2
     var height: Double = 2
     let chart: Charts
+    var secondaryLastPrintingDegree = -Int.max
+    var secondaryPrintingStack = [Int]()
+    var lastPrintingDegree = -Int.max
+    var printingStack = [Int]()
+    var upperPrintingQueue = [(Double, PrintSize)]()
+    var lowerPrintingQueue = [(Double, PrintSize)]()
+    
     
     init(chartName: String, chartType: Charts) {
         self.chartName = chartName
@@ -101,7 +108,6 @@ class ChartViewModel {
         } else {
             value += 33
 #if os(iOS)
-        let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom
             value -= 12
 #endif
         }
@@ -227,4 +233,167 @@ class ChartViewModel {
         return 30
 #endif
     }
+    
+    func computeUpperSeperation(_ planetArray: [PlanetCell], _ trueDegree: Double) {
+        let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
+        var i = 0
+        for planet in sortedArray {
+            if planet.planet == .Ascendent || planet.planet == .MC {
+                continue
+            }
+            var printDegree = trueDegree
+            var seperation = 3.0
+#if os(iOS)
+            if idiom != .pad {
+                seperation = 4.0
+            }
+            
+#endif
+            
+            if lastPrintingDegree != -Int.max && abs((lastPrintingDegree - Int(printDegree))) < Int(seperation) {
+                if i == 1 && printingStack.count < 2 {
+                    printDegree = Double((lastPrintingDegree - Int(seperation)))
+                } else if i == 1 && abs(printingStack[printingStack.count - 2] - (lastPrintingDegree + Int(seperation))) > 2  {
+                    printDegree = Double((lastPrintingDegree - Int(seperation)))
+                } else {
+                    printDegree = Double((lastPrintingDegree + Int(seperation + 1.0)))
+                }
+                
+            } else {
+                printDegree = trueDegree
+            }
+            lastPrintingDegree = Int(printDegree)
+            printingStack.append(lastPrintingDegree)
+            upperPrintingQueue.append((printDegree, .regular))
+            i += 1
+            
+        }
+    }
+    
+    func computeLowerSeperation(_ planetArray: [PlanetCell], _ trueDegree: Double) {
+        let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
+        var i = 0
+        for planet in sortedArray {
+            if planet.planet == .Ascendent || planet.planet == .MC {
+                continue
+            }
+            var printDegree = trueDegree
+            var seperation = 3.0
+#if os(iOS)
+            if idiom != .pad {
+                seperation = 5
+            }
+            
+#endif
+            
+            if secondaryLastPrintingDegree != -Int.max && abs((secondaryLastPrintingDegree - Int(printDegree))) < Int(seperation) {
+                if i == 1 && secondaryPrintingStack.count < 2 {
+                    printDegree = Double((secondaryLastPrintingDegree - Int(seperation)))
+                } else if i == 1 && abs(secondaryPrintingStack[secondaryPrintingStack.count - 2] - (secondaryLastPrintingDegree + Int(seperation))) > 2  {
+                    printDegree = Double((secondaryLastPrintingDegree - Int(seperation)))
+                } else {
+                    printDegree = Double((secondaryLastPrintingDegree + Int(seperation + 1.5)))
+                }
+                
+            } else {
+                printDegree = trueDegree
+            }
+            secondaryLastPrintingDegree = Int(printDegree)
+            secondaryPrintingStack.append(secondaryLastPrintingDegree)
+            lowerPrintingQueue.append((printDegree, .regular))
+            i += 1
+        }
+        
+    }
+    
+    func computePrintingQueues() {
+        guard let manager = manager else {
+            return
+        }
+        secondaryLastPrintingDegree = -Int.max
+        secondaryPrintingStack.removeAll()
+        lastPrintingDegree = -Int.max
+        printingStack.removeAll()
+        for a in 0...359 {
+            let trueDegree =  getChartStartDegree()  + Double(a)
+            if let planetArray = secondaryPlanetsDictionary[a] {
+                let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
+                if !usersPlanets.isEmpty {
+                    if !usersPlanets.filter({$0.planet != .Ascendent && $0.planet != .MC}).isEmpty {
+                        computeUpperSeperation(usersPlanets, trueDegree)
+                    }
+                }
+            }
+            
+            if let planetArray =  planetsDictionary[a] {
+                let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
+                if !usersPlanets.isEmpty {
+                    if !usersPlanets.filter({$0.planet != .Ascendent && $0.planet != .MC}).isEmpty {
+                        computeLowerSeperation(usersPlanets, trueDegree)
+                    }
+                }
+            }
+        }
+        
+        upperPrintingQueue = computePrintingSizes(queue: upperPrintingQueue)
+        lowerPrintingQueue = computePrintingSizes(queue: lowerPrintingQueue)
+        
+    }
+    
+    func getUpperPrintingDegree() -> (Double, PrintSize) {
+        if upperPrintingQueue.isEmpty {
+            return (0, .regular)
+        }
+        return upperPrintingQueue.remove(at: 0)
+        
+        
+    }
+    func getLowerPrintingDegree() -> (Double, PrintSize) {
+        if lowerPrintingQueue.isEmpty {
+            return (0, .regular)
+        }
+        return lowerPrintingQueue.remove(at: 0)
+    }
+    
+    func computePrintingSizes(queue: [(Double, PrintSize)]) -> [(Double, PrintSize)] {
+        var outputQueue = queue
+        if outputQueue.isEmpty {
+            return [(Double, PrintSize)]()
+        }
+        var targetSpread = 6.5
+        for i in 0...outputQueue.count - 1 {
+            if i == 0 {
+                if outputQueue.count > 1 {
+                    if outputQueue[1].0 - outputQueue[0].0 > targetSpread {
+                        outputQueue[0].1 = .large
+                    }
+                }
+            } else if i == outputQueue.count - 1 {
+                if outputQueue.count > 1 {
+                    if outputQueue[outputQueue.count - 1].0 - outputQueue[outputQueue.count - 2].0 > targetSpread {
+                        outputQueue[outputQueue.count - 1].1 = .large
+                    }
+                }
+            } else {
+                if i < outputQueue.count - 1 && i > 0 {
+                    if outputQueue[i + 1].0 - outputQueue[i].0 > targetSpread {
+                        if outputQueue[i].0 - outputQueue[i - 1].0 > targetSpread {
+                            
+                            if i > 1 {
+                                if outputQueue[i].0 - outputQueue[i - 2].0 > targetSpread {
+                                    outputQueue[i].1 = .large
+                                }
+                            }
+                            else {
+                                outputQueue[i].1 = .large
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        
+        return outputQueue
+    }
+    
 }

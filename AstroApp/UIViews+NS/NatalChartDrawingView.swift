@@ -116,9 +116,6 @@ extension NatalChartDrawingView {
     }
     
     func drawSpoke() {
-        guard let manager = viewModel.manager else {
-            return
-        }
         
         let startDegree: Double = viewModel.getChartStartDegree()
         for a in 0...359 {
@@ -249,7 +246,7 @@ extension NatalChartDrawingView {
         if idiom != .pad {
             fontSize = 10.0
             if viewModel.chart != .Natal {
-                fontSize = 8.0
+                fontSize = 10.0
             }
         }
         
@@ -277,7 +274,7 @@ extension NatalChartDrawingView {
     }
     
     
-    func drawLine(degree: Double, radius: Double, length: Int, thickness: Int) {
+    func drawLine(degree: Double, radius: Double, length: Int, thickness: Int, useRed: Bool = false) {
         let coordinate1 = viewModel.getXYFromPolar(radius, degree)
         let coordinate2 = viewModel.getXYFromPolar(radius - Double(length), degree)
 #if os(iOS)
@@ -285,7 +282,12 @@ extension NatalChartDrawingView {
         aPath.move(to: CGPoint(x:coordinate1.0, y:coordinate1.1))
         aPath.addLine(to: CGPoint(x: coordinate2.0, y: coordinate2.1))
         aPath.close()
-        UIColor.black.set()
+        if useRed {
+            UIColor.red.set()
+        } else {
+            UIColor.black.set()
+        }
+        
         aPath.lineWidth = CGFloat(thickness)
         aPath.stroke()
 #else
@@ -293,7 +295,11 @@ extension NatalChartDrawingView {
         aPath.move(to: CGPoint(x:coordinate1.0, y:coordinate1.1))
         aPath.line(to: CGPoint(x: coordinate2.0, y: coordinate2.1))
         aPath.close()
-        NSColor.black.set()
+        if useRed {
+            NSColor.red.set()
+        } else {
+            NSColor.black.set()
+        }
         aPath.lineWidth = CGFloat(thickness)
         aPath.stroke()
 #endif
@@ -457,15 +463,19 @@ extension NatalChartDrawingView {
         }
     }
 
-    func printSign(_ coordinates: (Int, Int), _ character: Character, _ degree: Double, useRed: Bool = false) {
+    func printSign(_ coordinates: (Int, Int), _ character: Character, _ degree: Double, useRed: Bool = false, printInfo: PrintSize = .regular) {
         var coordinate = coordinates
         var size = 21.0
 #if os(iOS)
         if idiom != .pad {
             size = 14.0
+            if printInfo == .large {
+                size += 6
+            }
         }
         
 #endif
+        
         let radians = degree * ( .pi / 180.0 )
         coordinate = viewModel.justifyCoordinate(inputCoordinate: coordinate, radians: radians, size: size)
         
