@@ -95,8 +95,8 @@ extension TransitChartDrawingView {
         var firstSpread = 1.7
 #if os(iOS)
         if idiom != .pad {
-            spread = spread * 1.2
-            firstSpread = 1.65
+            spread = spread * 1.4
+            firstSpread = 1.8
             fontSize = 10.0
         }
         
@@ -135,8 +135,8 @@ extension TransitChartDrawingView {
         var firstSpread = 2.5
 #if os(iOS)
         if idiom != .pad {
-            spread = spread * 1.2
-            firstSpread = 2.2
+            spread = spread * 1.5
+            firstSpread = 2.5
             fontSize = 10.0
         }
         

@@ -117,7 +117,12 @@ class ChartViewModel {
     
     var interiorRadius: Double {
 #if os(iOS)
-        (radius - getArcStrokeWidth() + innerRadius) / 2 * 1.11
+        let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom
+        if idiom == .pad {
+            return (radius - getArcStrokeWidth() + innerRadius) / 2 * 1.11
+        }
+        return (radius - getArcStrokeWidth() + innerRadius) / 2 
+        
 #else
         (radius - getArcStrokeWidth() + innerRadius) / 2 * 1.06
 #endif
