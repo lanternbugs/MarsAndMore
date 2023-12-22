@@ -360,7 +360,13 @@ class ChartViewModel {
         if outputQueue.isEmpty {
             return [(Double, PrintSize)]()
         }
-        var targetSpread = 6.5
+        var targetSpread = 3.0
+        
+#if os(iOS)
+        if idiom != .pad {
+            targetSpread = 6.5
+        }
+#endif
         for i in 0...outputQueue.count - 1 {
             if i == 0 {
                 if outputQueue.count > 1 {

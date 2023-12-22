@@ -245,9 +245,8 @@ extension NatalChartDrawingView {
 #if os(iOS)
         if idiom != .pad {
             fontSize = 10.0
-            if viewModel.chart != .Natal {
-                fontSize = 10.0
-            }
+        } else {
+            fontSize = 12.0
         }
         
 #endif
@@ -472,6 +471,8 @@ extension NatalChartDrawingView {
             if printInfo == .large {
                 size += 6
             }
+        } else if printInfo == .large {
+            size += 6
         }
         
 #endif
