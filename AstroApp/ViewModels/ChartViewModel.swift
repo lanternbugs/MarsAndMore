@@ -412,7 +412,7 @@ class ChartViewModel {
     func fixPrintDegreeSeperation(inputQueue: [(Double, PrintSize)]) -> [(Double, PrintSize)] {
         var queue = inputQueue
         if queue.count > 1 {
-            var desiredSpace = 7.0
+            var desiredSpace = 5.5
             
 #if os(iOS)
             if idiom != .pad {
