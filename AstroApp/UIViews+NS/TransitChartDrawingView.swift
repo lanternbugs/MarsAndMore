@@ -98,6 +98,8 @@ extension TransitChartDrawingView {
             spread = spread * 1.4
             firstSpread = 1.8
             fontSize = 10.0
+        } else {
+            firstSpread = 1.7
         }
         
 #else

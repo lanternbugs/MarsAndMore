@@ -120,7 +120,7 @@ class ChartViewModel {
 #if os(iOS)
         let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom
         if idiom == .pad {
-            return (radius - getArcStrokeWidth() + innerRadius) / 2 * 1.11
+            return (radius - getArcStrokeWidth() + innerRadius) / 2
         }
         return (radius - getArcStrokeWidth() + innerRadius) / 2 
         
