@@ -92,7 +92,7 @@ extension TransitChartDrawingView {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
         var fontSize = 12.0
         var spread = viewModel.radius * 0.083
-        var firstSpread = 1.9
+        var firstSpread = 1.8
 #if os(iOS)
         if idiom != .pad {
             spread = spread * 1.4
