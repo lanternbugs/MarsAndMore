@@ -21,8 +21,6 @@ class NatalChartDrawingView: UIView {
     typealias NSBezierPath = UIBezierPath
     
     var viewModel: ChartViewModel
-    var lastPrintingDegree = -Int.max
-    var printingStack = [Int]()
     var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     override init(frame frameRect: CGRect) {
         viewModel = ChartViewModel(chartName: "none", chartType: .Natal)
@@ -49,8 +47,6 @@ class NatalChartDrawingView: UIView {
 import Cocoa
 class NatalChartDrawingView: NSView {
     var viewModel: ChartViewModel
-    var lastPrintingDegree = -Int.max
-    var printingStack = [Int]()
     override init(frame frameRect: NSRect) {
         viewModel = ChartViewModel(chartName: "none", chartType: .Natal)
         super.init(frame: frameRect);
@@ -96,8 +92,7 @@ extension NatalChartDrawingView {
         guard let manager = viewModel.manager else {
             return
         }
-        lastPrintingDegree = -Int.max
-        printingStack.removeAll()
+        viewModel.computeNatalPrintingQueue()
         for a in 0...359 {
             let trueDegree =  viewModel.getChartStartDegree()  + Double(a)
             let thickness = 2
@@ -106,6 +101,7 @@ extension NatalChartDrawingView {
                 if !usersPlanets.isEmpty {
                     if !usersPlanets.filter({$0.planet != .Ascendent && $0.planet != .MC}).isEmpty {
                         drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 16, thickness: thickness)
+                        drawLine(degree: trueDegree, radius: viewModel.innerRadius + 5, length: 5, thickness: thickness)
                         drawPlanetListing(usersPlanets, trueDegree)
                     }
                     
@@ -179,7 +175,7 @@ extension NatalChartDrawingView {
     func drawPlanetListing(_ planetArray: [PlanetCell], _ trueDegree: Double) {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
         var fontSize = 12.0
-        var spread = viewModel.radius * 0.1
+        var spread = viewModel.radius * 0.115
         var firstSpread = 1.7
 #if os(iOS)
         if idiom != .pad {
@@ -197,29 +193,11 @@ extension NatalChartDrawingView {
             if planet.planet == .Ascendent || planet.planet == .MC {
                 continue
             }
-            var printDegree = trueDegree
-            var seperation = 3.0
-#if os(iOS)
-            if idiom != .pad {
-                seperation = 4.0
-            }
+            let printInfo = viewModel.getNatalPrintingDegree()
+            let printDegree = printInfo.0
+            let printSize = printInfo.1
             
-#endif
-            
-            if lastPrintingDegree != -Int.max && abs((lastPrintingDegree - Int(printDegree))) < Int(seperation) {
-                if i == 1 && printingStack.count < 2 {
-                    printDegree = Double((lastPrintingDegree - Int(seperation)))
-                } else if i == 1 && abs(printingStack[printingStack.count - 2] - (lastPrintingDegree + Int(seperation))) > 2  {
-                    printDegree = Double((lastPrintingDegree - Int(seperation)))
-                } else {
-                    printDegree = Double((lastPrintingDegree + Int(seperation + 1.0)))
-                }
-                
-            } else {
-                printDegree = trueDegree
-            }
-            
-            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree)
+            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, printInfo: printSize)
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), planet.sign.getAstroDotCharacter(), trueDegree)
 
@@ -227,8 +205,7 @@ extension NatalChartDrawingView {
             if planet.retrograde {
                 printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.4, printDegree), "R", trueDegree, false, fontSize)
             }
-            lastPrintingDegree = Int(printDegree)
-            printingStack.append(lastPrintingDegree)
+            
             i += 1
             
         }
@@ -474,7 +451,10 @@ extension NatalChartDrawingView {
         } else if printInfo == .large {
             size += 6
         }
-        
+#else
+        if printInfo == .large {
+            size += 6
+        }
 #endif
         
         let radians = degree * ( .pi / 180.0 )

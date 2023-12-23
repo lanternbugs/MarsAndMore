@@ -118,8 +118,6 @@ extension TransitChartDrawingView {
             if planet.retrograde {
                 printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), "R", trueDegree, false, fontSize)
             }
-            lastPrintingDegree = Int(printDegree)
-            printingStack.append(lastPrintingDegree)
             i += 1
             
         }

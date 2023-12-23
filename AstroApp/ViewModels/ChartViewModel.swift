@@ -41,6 +41,7 @@ class ChartViewModel {
     var printingStack = [Int]()
     var upperPrintingQueue = [(Double, PrintSize)]()
     var lowerPrintingQueue = [(Double, PrintSize)]()
+    var natalPrintingQueue = [(Double, PrintSize)]()
     
     
     init(chartName: String, chartType: Charts) {
@@ -311,6 +312,66 @@ class ChartViewModel {
         
     }
     
+    func computeNatalSeperation(_ planetArray: [PlanetCell], _ trueDegree: Double) {
+        let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
+        var i = 0
+        for planet in sortedArray {
+            if planet.planet == .Ascendent || planet.planet == .MC {
+                continue
+            }
+            var printDegree = trueDegree
+            var seperation = 3.0
+#if os(iOS)
+            if idiom != .pad {
+                seperation = 4.0
+            }
+            
+#endif
+            
+            if lastPrintingDegree != -Int.max && abs((lastPrintingDegree - Int(printDegree))) < Int(seperation) {
+                if i == 1 && printingStack.count < 2 {
+                    printDegree = Double((lastPrintingDegree - Int(seperation)))
+                } else if i == 1 && abs(printingStack[printingStack.count - 2] - (lastPrintingDegree + Int(seperation))) > 2  {
+                    printDegree = Double((lastPrintingDegree - Int(seperation)))
+                } else {
+                    printDegree = Double((lastPrintingDegree + Int(seperation + 1.0)))
+                }
+                
+            } else {
+                printDegree = trueDegree
+            }
+            lastPrintingDegree = Int(printDegree)
+            printingStack.append(lastPrintingDegree)
+            natalPrintingQueue.append((printDegree, .regular))
+            
+            i += 1
+        }
+        
+    }
+    
+    func computeNatalPrintingQueue() {
+        guard let manager = manager else {
+            return
+        }
+        lastPrintingDegree = -Int.max
+        printingStack.removeAll()
+        natalPrintingQueue.removeAll()
+        for a in 0...359 {
+            let trueDegree =  getChartStartDegree()  + Double(a)
+            if let planetArray = planetsDictionary[a] {
+                let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
+                if !usersPlanets.isEmpty {
+                    if !usersPlanets.filter({$0.planet != .Ascendent && $0.planet != .MC}).isEmpty {
+                        computeNatalSeperation(usersPlanets, trueDegree)
+                    }
+                }
+            }
+        }
+        
+        natalPrintingQueue = fixPrintDegreeSeperation(inputQueue: natalPrintingQueue)
+        natalPrintingQueue = computePrintingSizes(queue: natalPrintingQueue)
+    }
+    
     func computePrintingQueues() {
         guard let manager = manager else {
             return
@@ -319,6 +380,8 @@ class ChartViewModel {
         secondaryPrintingStack.removeAll()
         lastPrintingDegree = -Int.max
         printingStack.removeAll()
+        lowerPrintingQueue.removeAll()
+        upperPrintingQueue.removeAll()
         for a in 0...359 {
             let trueDegree =  getChartStartDegree()  + Double(a)
             if let planetArray = secondaryPlanetsDictionary[a] {
@@ -340,10 +403,10 @@ class ChartViewModel {
             }
         }
         
-        upperPrintingQueue = computePrintingSizes(queue: upperPrintingQueue)
-        lowerPrintingQueue = computePrintingSizes(queue: lowerPrintingQueue)
         upperPrintingQueue = fixPrintDegreeSeperation(inputQueue: upperPrintingQueue)
         lowerPrintingQueue = fixPrintDegreeSeperation(inputQueue: lowerPrintingQueue)
+        upperPrintingQueue = computePrintingSizes(queue: upperPrintingQueue)
+        lowerPrintingQueue = computePrintingSizes(queue: lowerPrintingQueue)
         
     }
     
@@ -360,6 +423,13 @@ class ChartViewModel {
             return (0, .regular)
         }
         return lowerPrintingQueue.remove(at: 0)
+    }
+    
+    func getNatalPrintingDegree() -> (Double, PrintSize) {
+        if natalPrintingQueue.isEmpty {
+            return (0, .regular)
+        }
+        return natalPrintingQueue.remove(at: 0)
     }
     
     func computePrintingSizes(queue: [(Double, PrintSize)]) -> [(Double, PrintSize)] {
