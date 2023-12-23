@@ -342,6 +342,8 @@ class ChartViewModel {
         
         upperPrintingQueue = computePrintingSizes(queue: upperPrintingQueue)
         lowerPrintingQueue = computePrintingSizes(queue: lowerPrintingQueue)
+        upperPrintingQueue = fixPrintDegreeSeperation(inputQueue: upperPrintingQueue)
+        lowerPrintingQueue = fixPrintDegreeSeperation(inputQueue: lowerPrintingQueue)
         
     }
     
@@ -405,6 +407,61 @@ class ChartViewModel {
         }
         
         return outputQueue
+    }
+    
+    func fixPrintDegreeSeperation(inputQueue: [(Double, PrintSize)]) -> [(Double, PrintSize)] {
+        var queue = inputQueue
+        if queue.count > 1 {
+            var desiredSpace = 7.0
+            
+#if os(iOS)
+            if idiom != .pad {
+                desiredSpace = 9.0
+            }
+            
+#endif
+            for i in 0...queue.count-2 {
+                if queue[i + 1].0 - queue[i].0 < desiredSpace {
+                    let offset = desiredSpace - abs(queue[i + 1].0 - queue[i].0)
+                    if queue[i + 1].0 - queue[i].0 > 0 {
+                        if i > 0 && queue[i].0 - queue[i - 1].0 > desiredSpace * 2 {
+                            queue[i].0 -= offset
+                        } else if i == 0 {
+                            queue[i].0 -= offset
+                        }
+                    }
+                } else if i > 0 {
+                    if abs(queue[i + 1].0 - queue[i - 1].0) < desiredSpace {
+                        let offset = desiredSpace - abs(queue[i + 1].0 - queue[i - 1].0)
+                        if queue[i + 1].0 - queue[i - 1].0 > 0 {
+                            if i + 2 < queue.count {
+                                if queue[i + 2].0 - queue[i + 1].0 > desiredSpace * 2 {
+                                    queue[i + 1].0 += offset
+                                }
+                            } else if i + 2 == queue.count {
+                                queue[i + 1].0 += offset
+                            }
+                            
+                        }
+                    }
+                    
+                    if queue[i].0 < queue[i - 1].0 {
+                        if queue[i - 1].0 - queue[i].0 < desiredSpace {
+                            let offset = desiredSpace - abs(queue[i - 1].0 - queue[i].0)
+                            if i + 1 < queue.count {
+                                if queue[i + 1].0 - queue[i - 1].0 > desiredSpace * 2 {
+                                    queue[i - 1].0 += offset
+                                }
+                            } else if i + 1 == queue.count {
+                                queue[i - 1].0 += offset
+                            }
+                            
+                        }
+                    }
+                }
+            }
+        }
+        return queue
     }
     
 }
