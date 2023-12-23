@@ -125,7 +125,7 @@ class ChartViewModel {
         return (radius - getArcStrokeWidth() + innerRadius) / 2 
         
 #else
-        (radius - getArcStrokeWidth() + innerRadius) / 2 * 1.06
+        (radius - getArcStrokeWidth() + innerRadius) / 2
 #endif
         
         

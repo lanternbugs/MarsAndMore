@@ -101,7 +101,7 @@ extension NatalChartDrawingView {
                 if !usersPlanets.isEmpty {
                     if !usersPlanets.filter({$0.planet != .Ascendent && $0.planet != .MC}).isEmpty {
                         drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 16, thickness: thickness)
-                        drawLine(degree: trueDegree, radius: viewModel.innerRadius + 5, length: 5, thickness: thickness)
+                        drawLine(degree: trueDegree, radius: viewModel.innerRadius + 6, length: 6, thickness: thickness)
                         drawPlanetListing(usersPlanets, trueDegree)
                     }
                     
@@ -236,6 +236,10 @@ extension NatalChartDrawingView {
         
 #if os(iOS)
         textOffsetFromRadius = 8
+        #else
+        if viewModel.chart == .Natal {
+            textOffsetFromRadius = 6
+        }
 #endif
         if viewModel.chart != .Natal {
             printText(viewModel.getXYFromPolar(viewModel.radius + textOffsetFromRadius, trueDegree + 4.0), Double(houseDegree).getAstroDegreeOnly(), trueDegree + 4.0, false, fontSize)
@@ -449,7 +453,8 @@ extension NatalChartDrawingView {
                 size += 6
             }
         } else if printInfo == .large {
-            size += 6
+            size = 24
+            size += 10
         }
 #else
         if printInfo == .large {
