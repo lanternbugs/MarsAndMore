@@ -39,9 +39,9 @@ class ChartViewModel {
     var secondaryPrintingStack = [Int]()
     var lastPrintingDegree = -Int.max
     var printingStack = [Int]()
-    var upperPrintingQueue = [(Double, PrintSize)]()
-    var lowerPrintingQueue = [(Double, PrintSize)]()
-    var natalPrintingQueue = [(Double, PrintSize)]()
+    var upperPrintingQueue = [((Double, Int), PrintSize)]()
+    var lowerPrintingQueue = [((Double, Int), PrintSize)]()
+    var natalPrintingQueue = [((Double, Int), PrintSize)]()
     
     
     init(chartName: String, chartType: Charts) {
@@ -270,7 +270,7 @@ class ChartViewModel {
             }
             lastPrintingDegree = Int(printDegree)
             printingStack.append(lastPrintingDegree)
-            upperPrintingQueue.append((printDegree, .regular))
+            upperPrintingQueue.append(((printDegree, upperPrintingQueue.count), .regular))
             i += 1
             
         }
@@ -306,7 +306,7 @@ class ChartViewModel {
             }
             secondaryLastPrintingDegree = Int(printDegree)
             secondaryPrintingStack.append(secondaryLastPrintingDegree)
-            lowerPrintingQueue.append((printDegree, .regular))
+            lowerPrintingQueue.append(((printDegree, lowerPrintingQueue.count), .regular))
             i += 1
         }
         
@@ -342,7 +342,7 @@ class ChartViewModel {
             }
             lastPrintingDegree = Int(printDegree)
             printingStack.append(lastPrintingDegree)
-            natalPrintingQueue.append((printDegree, .regular))
+            natalPrintingQueue.append(((printDegree, natalPrintingQueue.count), .regular))
             
             i += 1
         }
@@ -370,6 +370,7 @@ class ChartViewModel {
         
         natalPrintingQueue = fixPrintDegreeSeperation(inputQueue: natalPrintingQueue)
         natalPrintingQueue = computePrintingSizes(queue: natalPrintingQueue)
+        natalPrintingQueue = enforceMinimumSeperation(inputQueue: natalPrintingQueue)
     }
     
     func computePrintingQueues() {
@@ -407,6 +408,8 @@ class ChartViewModel {
         lowerPrintingQueue = fixPrintDegreeSeperation(inputQueue: lowerPrintingQueue)
         upperPrintingQueue = computePrintingSizes(queue: upperPrintingQueue)
         lowerPrintingQueue = computePrintingSizes(queue: lowerPrintingQueue)
+        lowerPrintingQueue = enforceMinimumSeperation(inputQueue: lowerPrintingQueue)
+        upperPrintingQueue = enforceMinimumSeperation(inputQueue: upperPrintingQueue)
         
     }
     
@@ -414,7 +417,8 @@ class ChartViewModel {
         if upperPrintingQueue.isEmpty {
             return (0, .regular)
         }
-        return upperPrintingQueue.remove(at: 0)
+        let val = upperPrintingQueue.remove(at: 0)
+        return (val.0.0, val.1)
         
         
     }
@@ -422,20 +426,22 @@ class ChartViewModel {
         if lowerPrintingQueue.isEmpty {
             return (0, .regular)
         }
-        return lowerPrintingQueue.remove(at: 0)
+        let val = lowerPrintingQueue.remove(at: 0)
+        return (val.0.0, val.1)
     }
     
     func getNatalPrintingDegree() -> (Double, PrintSize) {
         if natalPrintingQueue.isEmpty {
             return (0, .regular)
         }
-        return natalPrintingQueue.remove(at: 0)
+        let val = natalPrintingQueue.remove(at: 0)
+        return (val.0.0, val.1)
     }
     
-    func computePrintingSizes(queue: [(Double, PrintSize)]) -> [(Double, PrintSize)] {
+    func computePrintingSizes(queue: [((Double, Int), PrintSize)]) -> [((Double, Int), PrintSize)] {
         var outputQueue = queue
         if outputQueue.isEmpty {
-            return [(Double, PrintSize)]()
+            return [((Double, Int), PrintSize)]()
         }
         var targetSpread = 3.0
         
@@ -447,23 +453,23 @@ class ChartViewModel {
         for i in 0...outputQueue.count - 1 {
             if i == 0 {
                 if outputQueue.count > 1 {
-                    if outputQueue[1].0 - outputQueue[0].0 > targetSpread {
+                    if outputQueue[1].0.0 - outputQueue[0].0.0 > targetSpread {
                         outputQueue[0].1 = .large
                     }
                 }
             } else if i == outputQueue.count - 1 {
                 if outputQueue.count > 1 {
-                    if outputQueue[outputQueue.count - 1].0 - outputQueue[outputQueue.count - 2].0 > targetSpread {
+                    if outputQueue[outputQueue.count - 1].0.0 - outputQueue[outputQueue.count - 2].0.0 > targetSpread {
                         outputQueue[outputQueue.count - 1].1 = .large
                     }
                 }
             } else {
                 if i < outputQueue.count - 1 && i > 0 {
-                    if outputQueue[i + 1].0 - outputQueue[i].0 > targetSpread {
-                        if outputQueue[i].0 - outputQueue[i - 1].0 > targetSpread {
+                    if outputQueue[i + 1].0.0 - outputQueue[i].0.0 > targetSpread {
+                        if outputQueue[i].0.0 - outputQueue[i - 1].0.0 > targetSpread {
                             
                             if i > 1 {
-                                if outputQueue[i].0 - outputQueue[i - 2].0 > targetSpread {
+                                if outputQueue[i].0.0 - outputQueue[i - 2].0.0 > targetSpread {
                                     outputQueue[i].1 = .large
                                 }
                             }
@@ -479,7 +485,7 @@ class ChartViewModel {
         return outputQueue
     }
     
-    func fixPrintDegreeSeperation(inputQueue: [(Double, PrintSize)]) -> [(Double, PrintSize)] {
+    func fixPrintDegreeSeperation(inputQueue: [((Double, Int), PrintSize)]) -> [((Double, Int), PrintSize)] {
         var queue = inputQueue
         if queue.count > 1 {
             var desiredSpace = 5.5
@@ -491,39 +497,39 @@ class ChartViewModel {
             
 #endif
             for i in 0...queue.count-2 {
-                if queue[i + 1].0 - queue[i].0 < desiredSpace {
-                    let offset = desiredSpace - abs(queue[i + 1].0 - queue[i].0)
-                    if queue[i + 1].0 - queue[i].0 > 0 {
-                        if i > 0 && queue[i].0 - queue[i - 1].0 > desiredSpace * 2 {
-                            queue[i].0 -= offset
+                if queue[i + 1].0.0 - queue[i].0.0 < desiredSpace {
+                    let offset = desiredSpace - abs(queue[i + 1].0.0 - queue[i].0.0)
+                    if queue[i + 1].0.0 - queue[i].0.0 > 0 {
+                        if i > 0 && queue[i].0.0 - queue[i - 1].0.0 > desiredSpace * 2 {
+                            queue[i].0.0 -= offset
                         } else if i == 0 {
-                            queue[i].0 -= offset
+                            queue[i].0.0 -= offset
                         }
                     }
                 } else if i > 0 {
-                    if abs(queue[i + 1].0 - queue[i - 1].0) < desiredSpace {
-                        let offset = desiredSpace - abs(queue[i + 1].0 - queue[i - 1].0)
-                        if queue[i + 1].0 - queue[i - 1].0 > 0 {
+                    if abs(queue[i + 1].0.0 - queue[i - 1].0.0) < desiredSpace {
+                        let offset = desiredSpace - abs(queue[i + 1].0.0 - queue[i - 1].0.0)
+                        if queue[i + 1].0.0 - queue[i - 1].0.0 > 0 {
                             if i + 2 < queue.count {
-                                if queue[i + 2].0 - queue[i + 1].0 > desiredSpace * 2 {
-                                    queue[i + 1].0 += offset
+                                if queue[i + 2].0.0 - queue[i + 1].0.0 > desiredSpace * 2 {
+                                    queue[i + 1].0.0 += offset
                                 }
                             } else if i + 2 == queue.count {
-                                queue[i + 1].0 += offset
+                                queue[i + 1].0.0 += offset
                             }
                             
                         }
                     }
                     
                     if queue[i].0 < queue[i - 1].0 {
-                        if queue[i - 1].0 - queue[i].0 < desiredSpace {
-                            let offset = desiredSpace - abs(queue[i - 1].0 - queue[i].0)
+                        if queue[i - 1].0.0 - queue[i].0.0 < desiredSpace {
+                            let offset = desiredSpace - abs(queue[i - 1].0.0 - queue[i].0.0)
                             if i + 1 < queue.count {
-                                if queue[i + 1].0 - queue[i - 1].0 > desiredSpace * 2 {
-                                    queue[i - 1].0 += offset
+                                if queue[i + 1].0.0 - queue[i - 1].0.0 > desiredSpace * 2 {
+                                    queue[i - 1].0.0 += offset
                                 }
                             } else if i + 1 == queue.count {
-                                queue[i - 1].0 += offset
+                                queue[i - 1].0.0 += offset
                             }
                             
                         }
@@ -532,6 +538,28 @@ class ChartViewModel {
             }
         }
         return queue
+    }
+    
+    func enforceMinimumSeperation(inputQueue: [((Double, Int), PrintSize)]) -> [((Double, Int), PrintSize)] {
+        if inputQueue.count > 1 {
+            var desiredSpace = 4.5
+#if os(iOS)
+            if idiom != .pad {
+                desiredSpace = 9.0
+            }
+#endif
+            var fixes = 0
+            var queue1 = inputQueue.sorted(by: { $0.0.0 < $1.0.0 })
+            for i in 0...inputQueue.count - 2 {
+                if queue1[i + 1].0.0 - queue1[i].0.0 < desiredSpace {
+                    queue1[i + 1].0.0 += desiredSpace - (queue1[i + 1].0.0 - queue1[i].0.0)
+                    fixes += 1
+                }
+            }
+            return queue1.sorted(by: { $0.0.1 < $1.0.1 })
+        }
+        return inputQueue
+        
     }
     
     func getUpperWheelSpread() -> (Double, Double) {
