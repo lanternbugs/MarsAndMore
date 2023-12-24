@@ -175,17 +175,13 @@ extension NatalChartDrawingView {
     func drawPlanetListing(_ planetArray: [PlanetCell], _ trueDegree: Double) {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
         var fontSize = 12.0
-        var spread = viewModel.radius * 0.115
-        var firstSpread = 1.7
+        let spreadInfo = viewModel.getNatalWheelSpread()
+        let spread = spreadInfo.0
+        let firstSpread = spreadInfo.1
 #if os(iOS)
         if idiom != .pad {
-            spread = spread * 1.45
-            firstSpread = 1.5
             fontSize = 10.0
         }
-        
-#else
-        spread = spread * 1.1
 #endif
         
         var i = 0

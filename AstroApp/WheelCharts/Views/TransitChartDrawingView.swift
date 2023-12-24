@@ -91,19 +91,13 @@ extension TransitChartDrawingView {
     func drawUpperPlanetListing(_ planetArray: [PlanetCell], _ trueDegree: Double) {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
         var fontSize = 12.0
-        var spread = viewModel.radius * 0.083
-        var firstSpread = 1.8
+        let spreadInfo = viewModel.getUpperWheelSpread()
+        let spread = spreadInfo.0
+        let firstSpread = spreadInfo.1
 #if os(iOS)
         if idiom != .pad {
-            spread = spread * 1.4
-            firstSpread = 1.8
             fontSize = 10.0
-        } else {
-            firstSpread = 1.7
         }
-        
-#else
-        spread = spread * 1.1
 #endif
         
         var i = 0
@@ -131,19 +125,14 @@ extension TransitChartDrawingView {
     func drawLowerPlanetListing(_ planetArray: [PlanetCell], _ trueDegree: Double) {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
         var fontSize = 12.0
-        var spread = viewModel.interiorRadius * 0.065
-        var firstSpread = 2.5
+        let spreadInfo = viewModel.getLowerWheelSpread()
+        let spread = spreadInfo.0
+        let firstSpread = spreadInfo.1
 #if os(iOS)
         if idiom != .pad {
-            spread = spread * 1.7
-            firstSpread = 2.3
             fontSize = 10.0
         }
-        
-#else
-        spread = spread * 1.5
 #endif
-        
         var i = 0
         for planet in sortedArray {
             if planet.planet == .Ascendent || planet.planet == .MC {

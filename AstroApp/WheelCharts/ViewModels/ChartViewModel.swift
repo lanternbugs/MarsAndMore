@@ -16,7 +16,7 @@
 import Foundation
 #if os(iOS)
 import UIKit
-private var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
 #endif
 enum PrintSize { case small, regular, large}
 
@@ -534,4 +534,48 @@ class ChartViewModel {
         return queue
     }
     
+    func getUpperWheelSpread() -> (Double, Double) {
+        var spread = radius * 0.083
+        var firstSpread = 1.8
+#if os(iOS)
+        if idiom != .pad {
+            spread = spread * 1.4
+            firstSpread = 1.8
+        } else {
+            firstSpread = 1.7
+        }
+        
+#else
+        spread = spread * 1.1
+#endif
+        return (spread, firstSpread)
+    }
+    
+    func getLowerWheelSpread() -> (Double, Double) {
+        var spread = interiorRadius * 0.065
+        var firstSpread = 2.5
+#if os(iOS)
+        if idiom != .pad {
+            spread = spread * 1.7
+            firstSpread = 2.3
+        }
+#else
+        spread = spread * 1.5
+#endif
+        return (spread,firstSpread)
+    }
+    
+    func getNatalWheelSpread() -> (Double, Double) {
+        var spread = radius * 0.115
+        var firstSpread = 1.7
+#if os(iOS)
+        if idiom != .pad {
+            spread = spread * 1.45
+            firstSpread = 1.5
+        }
+#else
+        spread = spread * 1.1
+#endif
+        return (spread, firstSpread)
+    }
 }
