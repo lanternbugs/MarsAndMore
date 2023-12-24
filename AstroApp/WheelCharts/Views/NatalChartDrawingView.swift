@@ -14,10 +14,10 @@
 //
 
 import Foundation
+enum Colors { case black, red, orange }
 #if os(iOS)
 import UIKit
 class NatalChartDrawingView: UIView {
-    typealias NSColor = UIColor
     typealias NSBezierPath = UIBezierPath
     
     var viewModel: ChartViewModel
@@ -47,6 +47,7 @@ class NatalChartDrawingView: UIView {
 import Cocoa
 class NatalChartDrawingView: NSView {
     var viewModel: ChartViewModel
+    typealias UIColor = NSColor
     override init(frame frameRect: NSRect) {
         viewModel = ChartViewModel(chartName: "none", chartType: .Natal)
         super.init(frame: frameRect);
@@ -192,8 +193,9 @@ extension NatalChartDrawingView {
             let printInfo = viewModel.getNatalPrintingDegree()
             let printDegree = printInfo.0
             let printSize = printInfo.1
+            let colorChoice = planet.planet == .Sun ? Colors.orange : Colors.black
             
-            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, printInfo: printSize)
+            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printSize)
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), planet.sign.getAstroDotCharacter(), trueDegree)
 
@@ -439,7 +441,7 @@ extension NatalChartDrawingView {
         }
     }
 
-    func printSign(_ coordinates: (Int, Int), _ character: Character, _ degree: Double, useRed: Bool = false, printInfo: PrintSize = .regular) {
+    func printSign(_ coordinates: (Int, Int), _ character: Character, _ degree: Double, colorChoice: Colors = .black, printInfo: PrintSize = .regular) {
         var coordinate = coordinates
         var size = 21.0
 #if os(iOS)
@@ -462,28 +464,23 @@ extension NatalChartDrawingView {
         coordinate = viewModel.justifyCoordinate(inputCoordinate: coordinate, radians: radians, size: size)
         
 #if os(iOS)
-        if let font = UIFont(name: "AstroDotBasic", size: size) {
-            let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
-            if useRed {
-                String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.red])
-            } else {
-                String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
-            }
-            
-
+        guard let font = UIFont(name: "AstroDotBasic", size: size) else {
+            return
         }
 #else
-        if let font = NSFont(name: "AstroDotBasic", size: size) {
-            let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
-            if useRed {
-                String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: NSColor.red])
-            } else {
-                String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
-            }
-            
-
+        guard let font = NSFont(name: "AstroDotBasic", size: size) else {
+            return
         }
 #endif
+        let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
+        switch colorChoice {
+        case .red:
+            String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.red])
+        case .orange:
+            String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.orange])
+        case .black:
+            String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+        }
     }
     
     func printText(_ coordinates: (Int, Int), _ text: String, _ degree: Double, _ extraJustify: Bool,  _ size: Double = 16.0 ) {

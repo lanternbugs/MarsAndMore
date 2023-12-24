@@ -108,8 +108,9 @@ extension TransitChartDrawingView {
             
             let printInfo = viewModel.getUpperPrintingDegree()
             let printDegree = printInfo.0
+            let colorChoice = Colors.red
 
-            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, useRed: true, printInfo: printInfo.1)
+            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             if planet.retrograde {
                 printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), "R", trueDegree, false, fontSize)
@@ -140,8 +141,9 @@ extension TransitChartDrawingView {
             }
             let printInfo = viewModel.getLowerPrintingDegree()
             let printDegree = printInfo.0
+            let colorChoice = planet.planet == .Sun ? Colors.orange : Colors.black
 
-            printSign(viewModel.getXYFromPolar(viewModel.interiorRadius - spread - 2, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, printInfo: printInfo.1)
+            printSign(viewModel.getXYFromPolar(viewModel.interiorRadius - spread - 2, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
             printText(viewModel.getXYFromPolar(viewModel.interiorRadius - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             if planet.retrograde {
                 printText(viewModel.getXYFromPolar(viewModel.interiorRadius - spread * 3.2, printDegree), "R", trueDegree, false, fontSize)
