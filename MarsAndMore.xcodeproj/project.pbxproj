@@ -797,10 +797,9 @@
 				763CFC0327B1E4C4004A73B8 /* BirthDataManager */,
 				7679FF6F27AF184F007911C9 /* Astrobot */,
 				76620A9527AC793C009094DC /* Readings */,
-				761DEE52279B9EB100A71938 /* MarsAndMoreApp.swift */,
+				765CF0B12B37BEF300CFCF6D /* WheelCharts */,
 				76620A9F27AC801C009094DC /* Views */,
-				76D54B5A2B194A9000E5269B /* ViewModels */,
-				76859E8A2B1A641E0007FED1 /* UIViews+NS */,
+				761DEE52279B9EB100A71938 /* MarsAndMoreApp.swift */,
 				761DEE54279B9EB100A71938 /* Persistence.swift */,
 				761DEE53279B9EB100A71938 /* ContentView.swift */,
 				761DEE55279B9EB200A71938 /* Assets.xcassets */,
@@ -1008,6 +1007,15 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		765CF0B12B37BEF300CFCF6D /* WheelCharts */ = {
+			isa = PBXGroup;
+			children = (
+				76859E8A2B1A641E0007FED1 /* Views */,
+				76D54B5A2B194A9000E5269B /* ViewModels */,
+			);
+			path = WheelCharts;
+			sourceTree = "<group>";
+		};
 		76620A9527AC793C009094DC /* Readings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1143,13 +1151,13 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
-		76859E8A2B1A641E0007FED1 /* UIViews+NS */ = {
+		76859E8A2B1A641E0007FED1 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				76859E8B2B1A64A40007FED1 /* NatalChartDrawingView.swift */,
 				76CFDDA12B3230A60079E09E /* TransitChartDrawingView.swift */,
 			);
-			path = "UIViews+NS";
+			path = Views;
 			sourceTree = "<group>";
 		};
 		7694464D27CD9B9E00D61758 /* extensions */ = {
