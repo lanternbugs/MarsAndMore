@@ -18,6 +18,7 @@ enum Colors { case black, red, orange }
 #if os(iOS)
 import UIKit
 class NatalChartDrawingView: UIView {
+    typealias NSColor = UIColor
     typealias NSBezierPath = UIBezierPath
     
     var viewModel: ChartViewModel
