@@ -447,9 +447,9 @@ extension NatalChartDrawingView {
         var size = 21.0
 #if os(iOS)
         if idiom != .pad {
-            size = 14.0
+            size = 18.0
             if printInfo == .large {
-                size += 6
+                size += 7
             }
         } else if printInfo == .large {
             size = 24
