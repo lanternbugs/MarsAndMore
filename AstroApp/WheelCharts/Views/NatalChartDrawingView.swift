@@ -36,7 +36,12 @@ class NatalChartDrawingView: UIView {
     init(model: ChartViewModel) {
         self.viewModel = model
         super.init(frame: CGRect.zero)
-        backgroundColor = NSColor.white
+        if viewModel.manager?.chartWheelColorType ?? .Light == .Light {
+            backgroundColor = NSColor.white
+        } else {
+            backgroundColor = NSColor.black
+        }
+        
     }
     
     override func draw(_ rect: CGRect) {
@@ -66,7 +71,12 @@ class NatalChartDrawingView: NSView {
     
     override func draw(_ dirtyRect: NSRect) {
         wantsLayer = true
-        layer?.backgroundColor = NSColor.white.cgColor
+        if viewModel.manager?.chartWheelColorType ?? .Light == ChartWheelColorType.Light {
+            layer?.backgroundColor = NSColor.white.cgColor
+        } else {
+            layer?.backgroundColor = NSColor.black.cgColor
+        }
+        
         drawChart()
     }
 }

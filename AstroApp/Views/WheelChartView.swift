@@ -17,6 +17,8 @@ import SwiftUI
 
 struct WheelChartView: View {
     let viewModel: ChartViewModel
+    @EnvironmentObject var manager:BirthDataManager
+
     var body: some View {
         ScrollView {
             VStack {
@@ -24,12 +26,32 @@ struct WheelChartView: View {
                     Spacer()
                     Text(viewModel.chartName)
                     Spacer()
+                    if manager.chartWheelColorType == .Light {
+                        Button(action:  { manager.chartWheelColorType = .Dark }) {
+                            Text("Dark Chart")
+                        }
+                    } else {
+                        Button(action:  { manager.chartWheelColorType = .Light }) {
+                            Text("Light Chart")
+                        }
+                    }
+                    Spacer()
                 }
+                if manager.chartWheelColorType == .Light {
 #if os(macOS)
                 NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6)
 #elseif os(iOS)
                 NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: getScreenWidth())
 #endif
+                } else {
+                    
+#if os(macOS)
+                NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6)
+#elseif os(iOS)
+                NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: getScreenWidth())
+#endif
+            }
+
                 
             }
         }

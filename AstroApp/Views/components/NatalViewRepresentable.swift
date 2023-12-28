@@ -22,9 +22,9 @@ struct NatalViewRepresentable: UIViewRepresentable {
 
     func makeUIView(context: Context) -> NatalChartDrawingView {
         if model.chart == .Transit {
-            TransitChartDrawingView(model: model)
+            TransitChartDrawingView(model: model, colorType: type)
         } else {
-            NatalChartDrawingView(model: model)
+            NatalChartDrawingView(model: model, colorType: type)
         }
         
     }
@@ -47,7 +47,7 @@ struct NatalViewRepresentable: NSViewRepresentable {
     }
     
     func updateNSView(_ nsView: NatalChartDrawingView, context: Context) {
-        
+        nsView.setNeedsDisplay(nsView.frame)
     }
     
     typealias NSViewType = NatalChartDrawingView

@@ -45,6 +45,11 @@ enum AppTab: Int {
 enum Charts {
     case Natal, Transit, Synastry
 }
+
+enum ChartWheelColorType: Int {
+    case Light, Dark
+}
+
 enum  ImagePhotoType:String {
     case NasaPhotoOfDay, Curiosity, Opportunity, Spirit, MarsArt, VenusArt, Library
 }
