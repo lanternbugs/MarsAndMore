@@ -21,10 +21,10 @@ struct NatalViewRepresentable: UIViewRepresentable {
     let model: ChartViewModel
 
     func makeUIView(context: Context) -> NatalChartDrawingView {
-        if model.chart == .Transit {
-            TransitChartDrawingView(model: model, colorType: type)
+        if model.chart ==  .Transit {
+            TransitChartDrawingView(model: model)
         } else {
-            NatalChartDrawingView(model: model, colorType: type)
+            NatalChartDrawingView(model: model)
         }
         
     }

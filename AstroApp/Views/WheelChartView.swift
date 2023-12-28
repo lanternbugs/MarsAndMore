@@ -35,7 +35,6 @@ struct WheelChartView: View {
                             Text("Light Chart")
                         }
                     }
-                    Spacer()
                 }
                 if manager.chartWheelColorType == .Light {
 #if os(macOS)

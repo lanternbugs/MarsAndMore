@@ -14,7 +14,7 @@
 //
 
 import Foundation
-enum Colors { case black, red, orange }
+enum Colors { case black, red, orange, blackOnly }
 #if os(iOS)
 import UIKit
 class NatalChartDrawingView: UIView {
@@ -270,29 +270,25 @@ extension NatalChartDrawingView {
         let aPath = UIBezierPath()
         aPath.move(to: CGPoint(x:coordinate1.0, y:coordinate1.1))
         aPath.addLine(to: CGPoint(x: coordinate2.0, y: coordinate2.1))
-        aPath.close()
-        if useRed {
-            UIColor.red.set()
-        } else {
-            UIColor.black.set()
-        }
-        
-        aPath.lineWidth = CGFloat(thickness)
-        aPath.stroke()
 #else
         let aPath = NSBezierPath.init()
         aPath.move(to: CGPoint(x:coordinate1.0, y:coordinate1.1))
         aPath.line(to: CGPoint(x: coordinate2.0, y: coordinate2.1))
+#endif
         aPath.close()
         if useRed {
-            NSColor.red.set()
+            UIColor.red.set()
         } else {
-            NSColor.black.set()
+            if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
+                UIColor.white.set()
+            } else {
+                UIColor.black.set()
+            }
         }
         aPath.lineWidth = CGFloat(thickness)
         aPath.stroke()
-#endif
-        
+
+        aPath.close()
     }
     
     func drawAspect(coordinate1: (Int, Int), coordinate2: (Int, Int), aspect: Aspects, thickness: Int) {
@@ -310,7 +306,11 @@ extension NatalChartDrawingView {
         case .Square, .Opposition:
             UIColor.red.set()
         default:
-            UIColor.black.set()
+            if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
+                UIColor.white.set()
+            } else {
+                UIColor.black.set()
+            }
         }
         
         aPath.lineWidth = CGFloat(thickness)
@@ -328,7 +328,11 @@ extension NatalChartDrawingView {
         case .Square, .Opposition:
             NSColor.red.set()
         default:
-            NSColor.black.set()
+            if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
+                NSColor.white.set()
+            } else {
+                NSColor.black.set()
+            }
         }
         aPath.lineWidth = CGFloat(thickness)
         aPath.stroke()
@@ -338,8 +342,12 @@ extension NatalChartDrawingView {
     
     
     func drawCircle(_ center: (Double, Double), radius: Double, lineWidth: Double = 1) {
-        let fillColor: NSColor = NSColor.white
-        let strokeColor: NSColor = NSColor.black
+        var fillColor: NSColor = NSColor.white
+        var strokeColor: NSColor = NSColor.black
+        if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
+            fillColor = NSColor.black
+            strokeColor = NSColor.white
+        }
         let oval = NSBezierPath.init(ovalIn: CGRect(x: frame.width / 2.0 - radius, y: frame.height / 2.0 - radius, width: radius * 2, height: radius * 2))
         oval.close()
             oval.lineWidth = lineWidth
@@ -446,7 +454,7 @@ extension NatalChartDrawingView {
             }
             var offSet: Double = 0
             offSet = 15.0
-            printSign(viewModel.getXYFromPolar(radius, endAngleRadian + offSet), sign.getAstroDotCharacter(), endAngleRadian + offSet)
+            printSign(viewModel.getXYFromPolar(radius, endAngleRadian + offSet), sign.getAstroDotCharacter(), endAngleRadian + offSet, colorChoice: .blackOnly)
             startAngleRadian = endAngleRadian
             endAngleRadian -= 30.0
         }
@@ -489,8 +497,15 @@ extension NatalChartDrawingView {
             String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.red])
         case .orange:
             String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.orange])
+        case .blackOnly:
+            String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.black])
         case .black:
-            String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+            if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
+                String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.green])
+            } else {
+                String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+            }
+            
         }
     }
     
@@ -505,13 +520,22 @@ extension NatalChartDrawingView {
 #if os(iOS)
         if let font = UIFont(name: "Arial", size: size) {
             let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
-            text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+            if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
+                text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.white])
+            } else {
+                text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+            }
+            
 
         }
 #else
         if let font = NSFont(name: "Arial", size: size) {
             let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
-            text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+            if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
+                text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.white])
+            } else {
+                text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+            }
 
         }
 #endif

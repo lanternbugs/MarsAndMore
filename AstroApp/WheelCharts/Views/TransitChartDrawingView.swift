@@ -23,12 +23,21 @@ import Cocoa
 class TransitChartDrawingView: NatalChartDrawingView {
 #if os(iOS)
     override func draw(_ rect: CGRect) {
+        if viewModel.manager?.chartWheelColorType ?? .Light == .Light {
+            backgroundColor = NSColor.white
+        } else {
+            backgroundColor = NSColor.black
+        }
         drawTransitChart()
     }
 #else
     override func draw(_ dirtyRect: NSRect) {
         wantsLayer = true
-        layer?.backgroundColor = NSColor.white.cgColor
+        if viewModel.manager?.chartWheelColorType ?? .Light == ChartWheelColorType.Light {
+            layer?.backgroundColor = NSColor.white.cgColor
+        } else {
+            layer?.backgroundColor = NSColor.black.cgColor
+        }
         drawTransitChart()
     }
 #endif
