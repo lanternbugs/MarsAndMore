@@ -470,7 +470,7 @@ extension NatalChartDrawingView {
                 size += 7
             }
         } else if printInfo == .large {
-            size = 24
+            size = 28
             size += 10
         }
 #else
