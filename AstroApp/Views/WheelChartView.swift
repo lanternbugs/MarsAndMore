@@ -26,15 +26,27 @@ struct WheelChartView: View {
                     Spacer()
                     Text(viewModel.chartName)
                     Spacer()
+#if os(macOS)
                     if manager.chartWheelColorType == .Light {
-                        Button(action:  { manager.chartWheelColorType = .Dark }) {
-                            Text("Dark Chart")
-                        }
-                    } else {
-                        Button(action:  { manager.chartWheelColorType = .Light }) {
-                            Text("Light Chart")
-                        }
-                    }
+                                            Button(action:  { manager.chartWheelColorType = .Dark }) {
+                                                Text("Dark Chart")
+                                            }
+                                        } else {
+                                            Button(action:  { manager.chartWheelColorType = .Light }) {
+                                                Text("Light Chart")
+                                            }
+                                        }
+#elseif os(iOS)
+                    if manager.chartWheelColorType == .Light {
+                                            Button(action:  { manager.chartWheelColorType = .Dark }) {
+                                                Text("Dark Chart")
+                                            }.padding(.top)
+                                        } else {
+                                            Button(action:  { manager.chartWheelColorType = .Light }) {
+                                                Text("Light Chart")
+                                            }.padding(.top)
+                                        }
+#endif
                 }
                 if manager.chartWheelColorType == .Light {
 #if os(macOS)

@@ -15,10 +15,21 @@ import SwiftUI
 
 struct ChartSettings: View {
     @EnvironmentObject private var manager: BirthDataManager
+    @Environment(\.roomState) private var roomState
     @State var toggleValues = [Bool]()
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
+#if os(macOS)
+                Button(action:  { roomState.wrappedValue = .About }) {
+                    Text("About App")
+                }
+#elseif os(iOS)
+                Button(action:  { roomState.wrappedValue = .About }) {
+                    Text("About App")
+                }.padding(.top)
+
+#endif
                 Toggle("Show Planet Reading Buttons", isOn: $manager.showPlanetReadingButtons)
                 Toggle("Tropical", isOn: $manager.tropical)
                 Text("Turn off for Sidereal. Sign readings intended for Tropical.")

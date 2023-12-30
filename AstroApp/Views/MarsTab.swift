@@ -21,61 +21,74 @@ struct MarsTab: View, AstrobotReadingInterface {
     @State private var moonData: RoomState = .Entry
     @State private var mercuryData: RoomState = .Entry
     @State private var readingInitialized = false
-    
+    @State private var roomState: RoomState = .Mars
     @ViewBuilder
     var body: some View {
-        
-        VStack {
-            HStack {
-                DatePicker(
-                  "Birthdate",
-                  selection: $birthdate,
-                  displayedComponents: .date
-                ).datePickerStyle(DefaultDatePickerStyle())
-                Button(action: pickedDate) {
-                    Text("Go").font(.title)
+        switch roomState {
+        case .About:
+            VStack {
+                DoneView(newRoomState: .Mars).environment(\.roomState, $roomState)
+                ReadingView(state: $roomState)
+            }
+        default:
+            VStack {
+                HStack {
+                    
+                    Button(action:  { $roomState.wrappedValue = .About }) {
+                        Text("About")
+                    }
+                    Spacer()
+                    DatePicker(
+                      "Birthdate",
+                      selection: $birthdate,
+                      displayedComponents: .date
+                    ).datePickerStyle(DefaultDatePickerStyle())
+                    Button(action: pickedDate) {
+                        Text("Go").font(.title)
+                    }
                 }
-            }
-            if case .Reading(let planet, let sign) = sunData
-            {
-                Text("\(planet.getName()) in \(sign.getName())").font(.headline)
-            } else {
-                Text("Sun").font(.headline)
-            }
-            Picker(selection: $planetChoice, label: Text("Choice")) {
-                Text("Sun").tag(Planets.Sun)
-
-                Text("Moon").tag(Planets.Moon)
-                Text("Mercury").tag(Planets.Mercury)
-                Text("Venus").tag(Planets.Venus)
-
-                Text("Mars").tag(Planets.Mars)
-
-                
-
-            }.pickerStyle(SegmentedPickerStyle())
-            if readingInitialized {
-                switch(planetChoice) {
-                case .Sun:
-                    ReadingView(state: $sunData)
-                case .Moon:
-                    ReadingView(state: $moonData)
-                case .Mercury:
-                    ReadingView(state: $mercuryData)
-                case .Venus:
-                    ReadingView(state: $venusData)
-                case .Mars:
-                    ReadingView(state: $marsData)
-                default:
-                    Text("Error, there is no reading for this planet ")
+                if case .Reading(let planet, let sign) = sunData
+                {
+                    Text("\(planet.getName()) in \(sign.getName())").font(.headline)
+                } else {
+                    Text("Sun").font(.headline)
                 }
-            } else {
-                DefaultReadingContent()
+                Picker(selection: $planetChoice, label: Text("Choice")) {
+                    Text("Sun").tag(Planets.Sun)
+
+                    Text("Moon").tag(Planets.Moon)
+                    Text("Mercury").tag(Planets.Mercury)
+                    Text("Venus").tag(Planets.Venus)
+
+                    Text("Mars").tag(Planets.Mars)
+
+                    
+
+                }.pickerStyle(SegmentedPickerStyle())
+                if readingInitialized {
+                    switch(planetChoice) {
+                    case .Sun:
+                        ReadingView(state: $sunData)
+                    case .Moon:
+                        ReadingView(state: $moonData)
+                    case .Mercury:
+                        ReadingView(state: $mercuryData)
+                    case .Venus:
+                        ReadingView(state: $venusData)
+                    case .Mars:
+                        ReadingView(state: $marsData)
+                    default:
+                        Text("Error, there is no reading for this planet ")
+                    }
+                } else {
+                    DefaultReadingContent()
+                    
+                }
+                Spacer()
                 
             }
-            Spacer()
-            
         }
+        
     }
 }
 

@@ -36,6 +36,8 @@ indirect enum RoomState: Equatable {
     case Mundane(transits: [TransitTime], date: Date)
     case TransitsView(transits: [TransitTime], skyTransits: [TransitTime], date: Date, chartName: String, transitData: TransitTimeData)
     case NatalView(onDismiss: RoomState, viewModel: ChartViewModel)
+    case About
+    case Mars
 }
 
 enum AppTab: Int {

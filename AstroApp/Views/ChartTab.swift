@@ -67,6 +67,11 @@ struct ChartTab: View {
                 DoneView(newRoomState: dismissal)
                 WheelChartView(viewModel: viewModel)
             }
+        case .About:
+            VStack {
+                DoneView(newRoomState: .ChartSettings)
+                ReadingView(state: roomState)
+            }
         default:
             ChartRoom(planetData: $data)
             

@@ -51,6 +51,10 @@ extension RoomState: AstroReading {
             return "Transits View"
         case .NatalView:
             return "Natal Chart"
+        case .About:
+            return "About App"
+        case .Mars:
+            return "Mars Room"
         }
     }
     func getReading()-> [ReadingEntry] {
@@ -58,6 +62,8 @@ extension RoomState: AstroReading {
         case .Reading(let planet, let sign):
             let file = fileForPlanet(planet: planet, andSign: sign)
             return readingForFile(file)
+        case .About:
+               return readingForFile("aboutmarsandmore")
         default:
             let errorCase = ReadingEntry(text: "Sorry no reading is avaialble for this type", id: 0)
             return [errorCase]

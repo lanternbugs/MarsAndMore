@@ -23,6 +23,9 @@ struct ReadingView: View {
                 if case .Reading(let planet, let sign) = state
                 {
                     Text("\(planet.getName()) in \(sign.getName())").padding()
+                } else  if case .About = state
+                {
+                    Text("About Mars & Astrology and More").padding()
                 }
                 
                 ForEach(reading, id: \.id) { entry in
@@ -54,7 +57,7 @@ struct ReadingView: View {
                     }
                 
                 } 
-                else {
+                else if state != .About {
                     ReadingCreditsView(book: .YourPlaceStars)
                 }
                 

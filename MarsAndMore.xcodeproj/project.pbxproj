@@ -263,6 +263,8 @@
 		7646F7CC28C7FBE5007FC924 /* ArtLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */; };
 		7646F7CE28C7FC04007FC924 /* ArtTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CD28C7FC04007FC924 /* ArtTab.swift */; };
 		7646F7CF28C7FC04007FC924 /* ArtTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CD28C7FC04007FC924 /* ArtTab.swift */; };
+		764DF5F32B3F928D003054ED /* aboutmarsandmore.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764DF5F22B3F928D003054ED /* aboutmarsandmore.txt */; };
+		764DF5F52B3F92B7003054ED /* aboutmarsandmore.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764DF5F42B3F92B7003054ED /* aboutmarsandmore.txt */; };
 		764EF76027ACA6E0008A15F1 /* mars-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75427ACA6E0008A15F1 /* mars-taurus.txt */; };
 		764EF76127ACA6E0008A15F1 /* mars-libra.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75527ACA6E0008A15F1 /* mars-libra.txt */; };
 		764EF76227ACA6E0008A15F1 /* mars-capricorn.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75627ACA6E0008A15F1 /* mars-capricorn.txt */; };
@@ -585,6 +587,9 @@
 		763CFC0C27B1E535004A73B8 /* BirthDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDataModels.swift; sourceTree = "<group>"; };
 		7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtLibraryView.swift; sourceTree = "<group>"; };
 		7646F7CD28C7FC04007FC924 /* ArtTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtTab.swift; sourceTree = "<group>"; };
+		764DF5EE2B3F8D88003054ED /* aboutmarsandmore.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aboutmarsandmore.txt; sourceTree = "<group>"; };
+		764DF5F22B3F928D003054ED /* aboutmarsandmore.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = aboutmarsandmore.txt; path = AstroApp/aboutmarsandmore.txt; sourceTree = "<group>"; };
+		764DF5F42B3F92B7003054ED /* aboutmarsandmore.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = aboutmarsandmore.txt; path = AstroApp/aboutmarsandmore.txt; sourceTree = "<group>"; };
 		764EF75427ACA6E0008A15F1 /* mars-taurus.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-taurus.txt"; sourceTree = "<group>"; };
 		764EF75527ACA6E0008A15F1 /* mars-libra.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-libra.txt"; sourceTree = "<group>"; };
 		764EF75627ACA6E0008A15F1 /* mars-capricorn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-capricorn.txt"; sourceTree = "<group>"; };
@@ -776,6 +781,8 @@
 		761DEE4A279B9EB000A71938 = {
 			isa = PBXGroup;
 			children = (
+				764DF5F22B3F928D003054ED /* aboutmarsandmore.txt */,
+				764DF5F42B3F92B7003054ED /* aboutmarsandmore.txt */,
 				76C622AD2B1E7BF300694871 /* astrodot-info.txt */,
 				76C622A32B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf */,
 				76F7C34D288F1B8100F097AB /* MarsAndMore--iOS--Info.plist */,
@@ -791,6 +798,7 @@
 		761DEE4F279B9EB100A71938 /* AstroApp */ = {
 			isa = PBXGroup;
 			children = (
+				764DF5EE2B3F8D88003054ED /* aboutmarsandmore.txt */,
 				761DEE52279B9EB100A71938 /* MarsAndMoreApp.swift */,
 				761DEE54279B9EB100A71938 /* Persistence.swift */,
 				761DEE53279B9EB100A71938 /* ContentView.swift */,
@@ -1330,6 +1338,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764DF5F32B3F928D003054ED /* aboutmarsandmore.txt in Resources */,
 				7614A3F92AE9B849005AEC82 /* mercury-capricorn.txt in Resources */,
 				7614A4052AE9B849005AEC82 /* mercury-leo.txt in Resources */,
 				76AF1D5E27AE1E7400CB4E97 /* venus-cancer.txt in Resources */,
@@ -1419,6 +1428,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				764DF5F52B3F92B7003054ED /* aboutmarsandmore.txt in Resources */,
 				76C622AC2B1E7BC200694871 /* Astrodotbasic-ow3Pd.ttf in Resources */,
 				7614A3FA2AE9B849005AEC82 /* mercury-capricorn.txt in Resources */,
 				7614A4062AE9B849005AEC82 /* mercury-leo.txt in Resources */,
@@ -1951,7 +1961,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 76;
+				CURRENT_PROJECT_VERSION = 77;
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -1966,7 +1976,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.96;
+				MARKETING_VERSION = 2.01;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = iphoneos;
@@ -1985,7 +1995,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 76;
+				CURRENT_PROJECT_VERSION = 77;
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -2000,7 +2010,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.96;
+				MARKETING_VERSION = 2.01;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = iphoneos;

@@ -44,6 +44,11 @@ struct PlanetsTab: View {
                 DoneView(newRoomState: .Planets)
                 CitiesView()
             }
+        case .About:
+            VStack {
+                DoneView(newRoomState: .ChartSettings)
+                ReadingView(state: roomState)
+            }
         default:
             PlanetRoom(data: $data, roomState: roomState)
             
