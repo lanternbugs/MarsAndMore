@@ -472,6 +472,8 @@ extension NatalChartDrawingView {
         } else if printInfo == .large {
             size = 28
             size += 10
+        } else if idiom == .pad {
+            size = 28
         }
 #else
         if printInfo == .large {
