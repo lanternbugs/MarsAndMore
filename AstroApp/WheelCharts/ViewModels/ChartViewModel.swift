@@ -269,7 +269,7 @@ class ChartViewModel {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
         var i = 0
         for planet in sortedArray {
-            if (!showAscendent() && planet.planet == .Ascendent) || (!showMC() && planet.planet == .MC) {
+            if (planet.planet == .Ascendent) || (planet.planet == .MC) {
                 continue
             }
             var printDegree = trueDegree
@@ -413,7 +413,7 @@ class ChartViewModel {
             if let planetArray = secondaryPlanetsDictionary[a] {
                 let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
                 if !usersPlanets.isEmpty {
-                    if !usersPlanets.filter({($0.planet != .Ascendent || showAscendent()) && ($0.planet != .MC || showMC())}).isEmpty {
+                    if !usersPlanets.filter({($0.planet != .Ascendent) && ($0.planet != .MC)}).isEmpty {
                         computeUpperSeperation(usersPlanets, trueDegree)
                     }
                 }
