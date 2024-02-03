@@ -305,7 +305,7 @@ class ChartViewModel {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
         var i = 0
         for planet in sortedArray {
-            if (!showAscendent() && planet.planet == .Ascendent) || (!showMC() && planet.planet == .MC) {
+            if (planet.planet == .Ascendent && !showAscendent()) || (planet.planet == .MC && !showMC()) {
                 continue
             }
             var printDegree = trueDegree
@@ -341,7 +341,7 @@ class ChartViewModel {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
         var i = 0
         for planet in sortedArray {
-            if (!showAscendent() && planet.planet == .Ascendent) || (!showMC() && planet.planet == .MC)  {
+            if (planet.planet == .Ascendent && !showAscendent()) || (planet.planet == .MC && !showMC())  {
                 continue
             }
             var printDegree = trueDegree
