@@ -337,6 +337,72 @@
 		76908C9B27C050CA00806F9D /* SelectedNameModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9927C050CA00806F9D /* SelectedNameModifier.swift */; };
 		7691C5F42B0D42850024613D /* TransitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691C5F32B0D42850024613D /* TransitsView.swift */; };
 		7691C5F52B0D42850024613D /* TransitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691C5F32B0D42850024613D /* TransitsView.swift */; };
+		76930B762B7ACE9B0033D957 /* AppLevelModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76190A5728A5D9A500FBF4D2 /* AppLevelModels.swift */; };
+		76930B772B7ACEB50033D957 /* NatalChartDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76859E8B2B1A64A40007FED1 /* NatalChartDrawingView.swift */; };
+		76930B782B7ACEB50033D957 /* TransitChartDrawingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76CFDDA12B3230A60079E09E /* TransitChartDrawingView.swift */; };
+		76930B792B7ACEB50033D957 /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B5B2B194AC700E5269B /* ChartViewModel.swift */; };
+		76930B7A2B7ACF3B0033D957 /* MarsAndMoreApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE52279B9EB100A71938 /* MarsAndMoreApp.swift */; };
+		76930B7B2B7ACF3B0033D957 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE54279B9EB100A71938 /* Persistence.swift */; };
+		76930B7C2B7ACF3B0033D957 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761DEE53279B9EB100A71938 /* ContentView.swift */; };
+		76930B7D2B7ACF3B0033D957 /* ArtDataManager+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E7402D28AD982700D8D699 /* ArtDataManager+.swift */; };
+		76930B7E2B7ACF3B0033D957 /* MetModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76305DF028A48B97001B8AC8 /* MetModels.swift */; };
+		76930B7F2B7ACF3B0033D957 /* ArtDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED44B28A5951F001374AB /* ArtDataManager.swift */; };
+		76930B802B7ACF3B0033D957 /* SpaceDataManager+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E0C65288DC6E8008B825A /* SpaceDataManager+.swift */; };
+		76930B812B7ACF3B0033D957 /* NASAPhotoType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E0C68288DCA30008B825A /* NASAPhotoType+.swift */; };
+		76930B822B7ACF3B0033D957 /* NasaFeed.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF8B28833F4A007DB4A9 /* NasaFeed.swift */; };
+		76930B832B7ACF3B0033D957 /* DownloadImageBinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF912884C75C007DB4A9 /* DownloadImageBinder.swift */; };
+		76930B842B7ACF3B0033D957 /* SpaceModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF8828833F11007DB4A9 /* SpaceModels.swift */; };
+		76930B852B7ACF3B0033D957 /* SpaceDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76282AE328863C94000D2465 /* SpaceDataManager.swift */; };
+		76930B862B7ACF3B0033D957 /* PlanetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C89D4287F8A5100E437A7 /* PlanetButtons.swift */; };
+		76930B872B7ACF3B0033D957 /* PlanetsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */; };
+		76930B882B7ACF3B0033D957 /* AspectsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763B3F9C27BDB00C007A2690 /* AspectsEntry.swift */; };
+		76930B892B7ACF3B0033D957 /* HousesEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669E1D72898609900B8628D /* HousesEntry.swift */; };
+		76930B8A2B7ACF3B0033D957 /* FeaturedPlanetsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */; };
+		76930B8B2B7ACF3B0033D957 /* AstroButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6827AB986A00EA59E8 /* AstroButtons.swift */; };
+		76930B8C2B7ACF3B0033D957 /* ReadingCredits.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */; };
+		76930B8D2B7ACF3B0033D957 /* DefaultReadingContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */; };
+		76930B8E2B7ACF3B0033D957 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B9127B2264D00533BD2 /* DoneView.swift */; };
+		76930B8F2B7ACF3B0033D957 /* NamesTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9327C04F2900806F9D /* NamesTextModifier.swift */; };
+		76930B902B7ACF3B0033D957 /* SelectedNameModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9927C050CA00806F9D /* SelectedNameModifier.swift */; };
+		76930B912B7ACF3B0033D957 /* TransitsButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7667125327D00D7F00644429 /* TransitsButtonControl.swift */; };
+		76930B922B7ACF3B0033D957 /* SelectedNameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ADD2C427E12B2D00261505 /* SelectedNameView.swift */; };
+		76930B932B7ACF3B0033D957 /* ChartTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ECF73B287F5DDD00AE7B34 /* ChartTitle.swift */; };
+		76930B942B7ACF3B0033D957 /* DelayedImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF8E2884C579007DB4A9 /* DelayedImageView.swift */; };
+		76930B952B7ACF3B0033D957 /* ArtDisplayView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C2878128AB2C4800DB0A2E /* ArtDisplayView.swift */; };
+		76930B962B7ACF3B0033D957 /* MundanePlanetsRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612B4802B0AA0DB0062D829 /* MundanePlanetsRow.swift */; };
+		76930B972B7ACF3B0033D957 /* TransitTimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677BB312B0DBED10021F047 /* TransitTimesView.swift */; };
+		76930B982B7ACF3B0033D957 /* NatalViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76859E872B1A621E0007FED1 /* NatalViewRepresentable.swift */; };
+		76930B992B7ACF3B0033D957 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E27A27AB14DA00C72FAB /* MainView.swift */; };
+		76930B9A2B7ACF3B0033D957 /* MarsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28027AB18A900C72FAB /* MarsTab.swift */; };
+		76930B9B2B7ACF3B0033D957 /* PlanetsTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7656279C287E000A00A63C8B /* PlanetsTab.swift */; };
+		76930B9C2B7ACF3B0033D957 /* ChartTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7635723627B6FC7D00C2E5A6 /* ChartTab.swift */; };
+		76930B9D2B7ACF3B0033D957 /* ChartRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E28327AB18BF00C72FAB /* ChartRoom.swift */; };
+		76930B9E2B7ACF3B0033D957 /* ChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7606E29627AB54E300C72FAB /* ChartView.swift */; };
+		76930B9F2B7ACF3B0033D957 /* PlanetRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ECF738287F585400AE7B34 /* PlanetRoom.swift */; };
+		76930BA02B7ACF3B0033D957 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EF76C27ACA897008A15F1 /* ReadingView.swift */; };
+		76930BA12B7ACF3B0033D957 /* NamesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7618A97327ADB6AA008C6508 /* NamesView.swift */; };
+		76930BA22B7ACF3B0033D957 /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DAC8A627B2016700852872 /* CitiesView.swift */; };
+		76930BA32B7ACF3B0033D957 /* NameDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B8E27B224E400533BD2 /* NameDataView.swift */; };
+		76930BA42B7ACF3B0033D957 /* ChartSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7615428B27D1456600B0E781 /* ChartSettings.swift */; };
+		76930BA52B7ACF3B0033D957 /* ResourcesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76165BDF27D19A4700C2F709 /* ResourcesView.swift */; };
+		76930BA62B7ACF3B0033D957 /* SpaceTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76311181289089B000912263 /* SpaceTab.swift */; };
+		76930BA72B7ACF3B0033D957 /* SpaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762EAF942884C8AD007DB4A9 /* SpaceView.swift */; };
+		76930BA82B7ACF3B0033D957 /* NasaPhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7631117E289082A800912263 /* NasaPhotoView.swift */; };
+		76930BA92B7ACF3B0033D957 /* ArtTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CD28C7FC04007FC924 /* ArtTab.swift */; };
+		76930BAA2B7ACF3B0033D957 /* ArtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED44E28A595C0001374AB /* ArtView.swift */; };
+		76930BAB2B7ACF3B0033D957 /* ArtLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */; };
+		76930BAC2B7ACF3B0033D957 /* MundaneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7612B4832B0AA1260062D829 /* MundaneView.swift */; };
+		76930BAD2B7ACF3B0033D957 /* TransitsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7691C5F32B0D42850024613D /* TransitsView.swift */; };
+		76930BAE2B7ACF3B0033D957 /* WheelChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B572B194A7D00E5269B /* WheelChartView.swift */; };
+		76930BAF2B7ACF7E0033D957 /* Houses+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76038DD7289869CB00F6DA0F /* Houses+.swift */; };
+		76930BB02B7ACF7E0033D957 /* HouseSystem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768453C0289C709D0086B37C /* HouseSystem+.swift */; };
+		76930BB12B7ACF7E0033D957 /* OrbType+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7611E8A228CFFB1400D510DC /* OrbType+.swift */; };
+		76930BB22B7ACF7E0033D957 /* SiderealSystem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765C04F32AFC38AB0068482B /* SiderealSystem+.swift */; };
+		76930BB32B7ACF7E0033D957 /* TransitTime+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76C5C3642B0D342D00CD287A /* TransitTime+.swift */; };
+		76930BB42B7ACF7E0033D957 /* Image+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 761CF35828877919008FC865 /* Image+Extensions.swift */; };
+		76930BB52B7ACF7E0033D957 /* UIDevice+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 760A35CF27ACEA0700BCFE81 /* UIDevice+Extensions.swift */; };
+		76930BB62B7ACF7E0033D957 /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9627C04FCC00806F9D /* View+Extensions.swift */; };
+		76930BB72B7ACF7E0033D957 /* Environment+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */; };
 		7694464F27CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */; };
 		7694465027CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */; };
 		76AA33882B0ACBE500451FC3 /* TransitFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AA33872B0ACBE500451FC3 /* TransitFinder.swift */; };
@@ -1781,6 +1847,72 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76930BAF2B7ACF7E0033D957 /* Houses+.swift in Sources */,
+				76930BB02B7ACF7E0033D957 /* HouseSystem+.swift in Sources */,
+				76930BB12B7ACF7E0033D957 /* OrbType+.swift in Sources */,
+				76930BB22B7ACF7E0033D957 /* SiderealSystem+.swift in Sources */,
+				76930BB32B7ACF7E0033D957 /* TransitTime+.swift in Sources */,
+				76930BB42B7ACF7E0033D957 /* Image+Extensions.swift in Sources */,
+				76930BB52B7ACF7E0033D957 /* UIDevice+Extensions.swift in Sources */,
+				76930BB62B7ACF7E0033D957 /* View+Extensions.swift in Sources */,
+				76930BB72B7ACF7E0033D957 /* Environment+Extensions.swift in Sources */,
+				76930B7A2B7ACF3B0033D957 /* MarsAndMoreApp.swift in Sources */,
+				76930B7B2B7ACF3B0033D957 /* Persistence.swift in Sources */,
+				76930B7C2B7ACF3B0033D957 /* ContentView.swift in Sources */,
+				76930B7D2B7ACF3B0033D957 /* ArtDataManager+.swift in Sources */,
+				76930B7E2B7ACF3B0033D957 /* MetModels.swift in Sources */,
+				76930B7F2B7ACF3B0033D957 /* ArtDataManager.swift in Sources */,
+				76930B802B7ACF3B0033D957 /* SpaceDataManager+.swift in Sources */,
+				76930B812B7ACF3B0033D957 /* NASAPhotoType+.swift in Sources */,
+				76930B822B7ACF3B0033D957 /* NasaFeed.swift in Sources */,
+				76930B832B7ACF3B0033D957 /* DownloadImageBinder.swift in Sources */,
+				76930B842B7ACF3B0033D957 /* SpaceModels.swift in Sources */,
+				76930B852B7ACF3B0033D957 /* SpaceDataManager.swift in Sources */,
+				76930B862B7ACF3B0033D957 /* PlanetButtons.swift in Sources */,
+				76930B872B7ACF3B0033D957 /* PlanetsEntry.swift in Sources */,
+				76930B882B7ACF3B0033D957 /* AspectsEntry.swift in Sources */,
+				76930B892B7ACF3B0033D957 /* HousesEntry.swift in Sources */,
+				76930B8A2B7ACF3B0033D957 /* FeaturedPlanetsEntry.swift in Sources */,
+				76930B8B2B7ACF3B0033D957 /* AstroButtons.swift in Sources */,
+				76930B8C2B7ACF3B0033D957 /* ReadingCredits.swift in Sources */,
+				76930B8D2B7ACF3B0033D957 /* DefaultReadingContent.swift in Sources */,
+				76930B8E2B7ACF3B0033D957 /* DoneView.swift in Sources */,
+				76930B8F2B7ACF3B0033D957 /* NamesTextModifier.swift in Sources */,
+				76930B902B7ACF3B0033D957 /* SelectedNameModifier.swift in Sources */,
+				76930B912B7ACF3B0033D957 /* TransitsButtonControl.swift in Sources */,
+				76930B922B7ACF3B0033D957 /* SelectedNameView.swift in Sources */,
+				76930B932B7ACF3B0033D957 /* ChartTitle.swift in Sources */,
+				76930B942B7ACF3B0033D957 /* DelayedImageView.swift in Sources */,
+				76930B952B7ACF3B0033D957 /* ArtDisplayView.swift in Sources */,
+				76930B962B7ACF3B0033D957 /* MundanePlanetsRow.swift in Sources */,
+				76930B972B7ACF3B0033D957 /* TransitTimesView.swift in Sources */,
+				76930B982B7ACF3B0033D957 /* NatalViewRepresentable.swift in Sources */,
+				76930B992B7ACF3B0033D957 /* MainView.swift in Sources */,
+				76930B9A2B7ACF3B0033D957 /* MarsTab.swift in Sources */,
+				76930B9B2B7ACF3B0033D957 /* PlanetsTab.swift in Sources */,
+				76930B9C2B7ACF3B0033D957 /* ChartTab.swift in Sources */,
+				76930B9D2B7ACF3B0033D957 /* ChartRoom.swift in Sources */,
+				76930B9E2B7ACF3B0033D957 /* ChartView.swift in Sources */,
+				76930B9F2B7ACF3B0033D957 /* PlanetRoom.swift in Sources */,
+				76930BA02B7ACF3B0033D957 /* ReadingView.swift in Sources */,
+				76930BA12B7ACF3B0033D957 /* NamesView.swift in Sources */,
+				76930BA22B7ACF3B0033D957 /* CitiesView.swift in Sources */,
+				76930BA32B7ACF3B0033D957 /* NameDataView.swift in Sources */,
+				76930BA42B7ACF3B0033D957 /* ChartSettings.swift in Sources */,
+				76930BA52B7ACF3B0033D957 /* ResourcesView.swift in Sources */,
+				76930BA62B7ACF3B0033D957 /* SpaceTab.swift in Sources */,
+				76930BA72B7ACF3B0033D957 /* SpaceView.swift in Sources */,
+				76930BA82B7ACF3B0033D957 /* NasaPhotoView.swift in Sources */,
+				76930BA92B7ACF3B0033D957 /* ArtTab.swift in Sources */,
+				76930BAA2B7ACF3B0033D957 /* ArtView.swift in Sources */,
+				76930BAB2B7ACF3B0033D957 /* ArtLibraryView.swift in Sources */,
+				76930BAC2B7ACF3B0033D957 /* MundaneView.swift in Sources */,
+				76930BAD2B7ACF3B0033D957 /* TransitsView.swift in Sources */,
+				76930BAE2B7ACF3B0033D957 /* WheelChartView.swift in Sources */,
+				76930B772B7ACEB50033D957 /* NatalChartDrawingView.swift in Sources */,
+				76930B782B7ACEB50033D957 /* TransitChartDrawingView.swift in Sources */,
+				76930B792B7ACEB50033D957 /* ChartViewModel.swift in Sources */,
+				76930B762B7ACE9B0033D957 /* AppLevelModels.swift in Sources */,
 				76221487288096D100E0FC65 /* MarsAndMore.xcdatamodeld in Sources */,
 				762214842880968400E0FC65 /* RoomState+Extensions.swift in Sources */,
 				762214852880968400E0FC65 /* AstrobotReadingInterface+Extensions.swift in Sources */,
