@@ -405,6 +405,9 @@
 		76930BB72B7ACF7E0033D957 /* Environment+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */; };
 		7694464F27CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */; };
 		7694465027CD9BCB00D61758 /* BirthDataManager+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */; };
+		76A204D52BA8B369002D4BC8 /* SynastryChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A204D42BA8B369002D4BC8 /* SynastryChooserView.swift */; };
+		76A204D62BA8B369002D4BC8 /* SynastryChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A204D42BA8B369002D4BC8 /* SynastryChooserView.swift */; };
+		76A204D72BA8B369002D4BC8 /* SynastryChooserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76A204D42BA8B369002D4BC8 /* SynastryChooserView.swift */; };
 		76AA33882B0ACBE500451FC3 /* TransitFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AA33872B0ACBE500451FC3 /* TransitFinder.swift */; };
 		76AA33892B0ACBE500451FC3 /* TransitFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AA33872B0ACBE500451FC3 /* TransitFinder.swift */; };
 		76AA338A2B0ACBE500451FC3 /* TransitFinder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76AA33872B0ACBE500451FC3 /* TransitFinder.swift */; };
@@ -701,6 +704,7 @@
 		76908C9927C050CA00806F9D /* SelectedNameModifier.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNameModifier.swift; sourceTree = "<group>"; };
 		7691C5F32B0D42850024613D /* TransitsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitsView.swift; sourceTree = "<group>"; };
 		7694464E27CD9BCB00D61758 /* BirthDataManager+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirthDataManager+Extensions.swift"; sourceTree = "<group>"; };
+		76A204D42BA8B369002D4BC8 /* SynastryChooserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynastryChooserView.swift; sourceTree = "<group>"; };
 		76AA33872B0ACBE500451FC3 /* TransitFinder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitFinder.swift; sourceTree = "<group>"; };
 		76AB623027B0A9CF00FEFBD4 /* ReadingCredits.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingCredits.swift; sourceTree = "<group>"; };
 		76ADD2C427E12B2D00261505 /* SelectedNameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SelectedNameView.swift; sourceTree = "<group>"; };
@@ -1159,6 +1163,7 @@
 				7612B4832B0AA1260062D829 /* MundaneView.swift */,
 				7691C5F32B0D42850024613D /* TransitsView.swift */,
 				76D54B572B194A7D00E5269B /* WheelChartView.swift */,
+				76A204D42BA8B369002D4BC8 /* SynastryChooserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1691,6 +1696,7 @@
 				7679FF7927AF184F007911C9 /* AstrobotInterface.swift in Sources */,
 				763CFC0D27B1E535004A73B8 /* BirthDataModels.swift in Sources */,
 				76D54B5C2B194AC700E5269B /* ChartViewModel.swift in Sources */,
+				76A204D52BA8B369002D4BC8 /* SynastryChooserView.swift in Sources */,
 				7615428C27D1456600B0E781 /* ChartSettings.swift in Sources */,
 				76EBE03627AF9ED20010CB62 /* String+Extensions.swift in Sources */,
 				762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */,
@@ -1796,6 +1802,7 @@
 				7679FF7A27AF184F007911C9 /* AstrobotInterface.swift in Sources */,
 				763CFC0E27B1E535004A73B8 /* BirthDataModels.swift in Sources */,
 				76D54B5D2B194AC700E5269B /* ChartViewModel.swift in Sources */,
+				76A204D62BA8B369002D4BC8 /* SynastryChooserView.swift in Sources */,
 				7615428D27D1456600B0E781 /* ChartSettings.swift in Sources */,
 				76EBE03727AF9ED20010CB62 /* String+Extensions.swift in Sources */,
 				76B34ED527AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,
@@ -1873,6 +1880,7 @@
 				76930B882B7ACF3B0033D957 /* AspectsEntry.swift in Sources */,
 				76930B892B7ACF3B0033D957 /* HousesEntry.swift in Sources */,
 				76930B8A2B7ACF3B0033D957 /* FeaturedPlanetsEntry.swift in Sources */,
+				76A204D72BA8B369002D4BC8 /* SynastryChooserView.swift in Sources */,
 				76930B8B2B7ACF3B0033D957 /* AstroButtons.swift in Sources */,
 				76930B8C2B7ACF3B0033D957 /* ReadingCredits.swift in Sources */,
 				76930B8D2B7ACF3B0033D957 /* DefaultReadingContent.swift in Sources */,

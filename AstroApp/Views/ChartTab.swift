@@ -27,10 +27,10 @@ struct ChartTab: View {
                 ReadingView(state: roomState)
             }
             
-        case .Cities:
+        case .Cities(let onDismiss):
             VStack {
-                DoneView(newRoomState: .Names)
-                CitiesView()
+                DoneView(newRoomState: .Names(onDismiss: onDismiss))
+                CitiesView(dismissView: onDismiss)
             }
         case .PlanetsCity:
             VStack {
@@ -39,13 +39,13 @@ struct ChartTab: View {
             }
         case .UpdateCity:
             VStack {
-                DoneView(newRoomState: .EditName)
+                DoneView(newRoomState: .EditName(onDismiss: .Chart))
                 CitiesView()
             }
-        case .Names, .EditName:
+        case .Names(let onDismiss), .EditName(let onDismiss):
             VStack {
-                DoneView(newRoomState: .Chart)
-                NameDataView()
+                DoneView(newRoomState: onDismiss)
+                NameDataView(dismissView: onDismiss)
             }
         case .ChartSettings:
             VStack {
@@ -71,6 +71,11 @@ struct ChartTab: View {
             VStack {
                 DoneView(newRoomState: .ChartSettings)
                 ReadingView(state: roomState)
+            }
+        case .SynastryChooser:
+            VStack {
+                DoneView(newRoomState: .Chart)
+                SynastryChooserView()
             }
         default:
             ChartRoom(planetData: $data)

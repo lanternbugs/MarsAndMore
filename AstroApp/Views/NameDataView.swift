@@ -18,10 +18,11 @@ struct NameDataView: View {
     @Environment(\.roomState) private var roomState
     @State var birthDataError: String?
     @State private var showRemovalAlert = false
+    var dismissView: RoomState = .Chart
     @ViewBuilder
     var body: some View {
         VStack {
-            if roomState.wrappedValue == .EditName {
+            if roomState.wrappedValue == .EditName(onDismiss: .Chart) {
                 HStack {
                     Text("Edit \(manager.userNameSelection)").font(.title)
                     Spacer()
@@ -33,7 +34,7 @@ struct NameDataView: View {
                 }
             }
             
-            if roomState.wrappedValue == .EditName {
+            if roomState.wrappedValue == .EditName(onDismiss: .Chart) {
                 if showRemovalAlert {
                     HStack {
                         Spacer()
@@ -44,7 +45,7 @@ struct NameDataView: View {
                             manager.removeUserBirthData(selection: manager.selectedName)
                             manager.resetSpecificUserData()
                             manager.selectedName = nil
-                            roomState.wrappedValue = .Chart
+                            roomState.wrappedValue = dismissView
                         }) {
                             HStack {
                                 Text("Remove \(manager.userNameSelection)?").foregroundColor(Color.red)
@@ -119,7 +120,7 @@ struct NameDataView: View {
                             case .EditName:
                                 roomState.wrappedValue = .UpdateCity
                             default:
-                                roomState.wrappedValue = .Cities
+                                roomState.wrappedValue = .Cities(onDismiss: dismissView)
                             }
                             
                         }) {
@@ -174,7 +175,7 @@ extension NameDataView {
                     manager.userNameSelection = ""
                     manager.userLocationData = nil
                     manager.selectedName = birthData.id
-                    roomState.wrappedValue = .Chart
+                    roomState.wrappedValue = dismissView
                 } catch BuildErrors.NoName(let mes) {
                     birthDataError = mes
                 } catch BuildErrors.DuplicateName(let mes) {

@@ -21,9 +21,9 @@ indirect enum RoomState: Equatable {
     case Entry
     case Chart
     case Planets
-    case Names
-    case EditName
-    case Cities
+    case Names(onDismiss: RoomState)
+    case EditName(onDismiss: RoomState)
+    case Cities(onDismiss: RoomState)
     case UpdateCity
     case PlanetsCity
     case ChartSettings
@@ -38,6 +38,7 @@ indirect enum RoomState: Equatable {
     case NatalView(onDismiss: RoomState, viewModel: ChartViewModel)
     case About
     case Mars
+    case SynastryChooser
 }
 
 enum AppTab: Int {

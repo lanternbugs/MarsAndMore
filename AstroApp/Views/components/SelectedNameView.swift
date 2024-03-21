@@ -28,7 +28,7 @@ struct SelectedNameView: View {
                 
                 Button(action: {
                     setSelectedNameData()
-                    roomState.wrappedValue = .EditName
+                    roomState.wrappedValue = .EditName(onDismiss: .Chart)
                 }) {
                     Text("Edit").font(.headline).padding([.leading, .trailing]).selectedNameColor()
                 }

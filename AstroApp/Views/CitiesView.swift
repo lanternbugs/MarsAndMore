@@ -17,6 +17,7 @@ struct CitiesView: View {
     @EnvironmentObject var manager:BirthDataManager
     @State private var city = ""
     @Environment(\.roomState) private var roomState
+    var dismissView: RoomState = .Chart
     var displayCities: [City] {
         if let  cities = manager.cityInfo?.cities
         {
@@ -56,11 +57,11 @@ struct CitiesView: View {
                         
                         switch(roomState.wrappedValue) {
                         case .UpdateCity:
-                            roomState.wrappedValue = .EditName
+                            roomState.wrappedValue = .EditName(onDismiss: .Chart)
                         case .PlanetsCity:
                             roomState.wrappedValue = .Planets
                         default:
-                            roomState.wrappedValue = .Names
+                            roomState.wrappedValue = .Names(onDismiss: dismissView)
                         }
                     })}
                 )
@@ -70,8 +71,4 @@ struct CitiesView: View {
     }
 }
 
-struct CitiesView_Previews: PreviewProvider {
-    static var previews: some View {
-        CitiesView()
-    }
-}
+
