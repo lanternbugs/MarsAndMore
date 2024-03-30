@@ -36,16 +36,19 @@ struct CalendarDate {
     let birthDate: Date
     let exactTime: Bool
 }
-struct BirthDate {
+struct BirthDate: Hashable {
     let year: Int32
     let month: Int32
     let day: Int32
 }
-struct LocationData {
+struct LocationData: Hashable {
     let latitude: String
     let longitude: String
 }
-struct BirthData {
+struct BirthData: Hashable {
+    static func == (lhs: BirthData, rhs: BirthData) -> Bool {
+        return lhs.id == rhs.id
+    }
     let name: String
     let birthDate: BirthDate
     let birthTime: Date?

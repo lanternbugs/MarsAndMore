@@ -75,7 +75,12 @@ struct ChartTab: View {
         case .SynastryChooser:
             VStack {
                 DoneView(newRoomState: .Chart)
-                SynastryChooserView()
+                if manager.birthDates.count < 2 {
+                    SynastryChooserView(selectedNameOne: "mike", selectedNameTwo: "jane")
+                } else {
+                    SynastryChooserView(selectedNameOne: manager.birthDates[0].name, selectedNameTwo: manager.birthDates[1].name)
+                }
+                
             }
         default:
             ChartRoom(planetData: $data)

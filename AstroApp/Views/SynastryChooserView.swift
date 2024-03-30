@@ -17,6 +17,8 @@ import SwiftUI
 struct SynastryChooserView: View {
     @EnvironmentObject private var manager: BirthDataManager
     @Environment(\.roomState) private var roomState
+    @State var selectedNameOne: String
+    @State var selectedNameTwo: String
     var body: some View {
         if manager.birthDates.isEmpty {
             HStack {
@@ -60,7 +62,27 @@ struct SynastryChooserView: View {
             }
             
         } else {
-            Text("Lets go")
+            HStack {
+                Spacer()
+                VStack {
+                    Text("Select Person One and Two for a synastry chart")
+                    Picker("Person one", selection: $selectedNameOne) {
+                        ForEach(manager.birthDates, id: \.self) {
+                            Text($0.name).tag($0.name)
+                                    }
+                    }
+                    Picker("Person two", selection: $selectedNameTwo) {
+                        ForEach(manager.birthDates, id: \.self) {
+                            Text($0.name).tag($0.name)
+                                    }
+                    }
+                    Button(action: getChart) {
+                        Text("Get Chart").font(Font.title.weight(.bold))
+                    }
+                    Spacer()
+                }
+                Spacer()
+            }
         }
         
     }
@@ -68,11 +90,14 @@ struct SynastryChooserView: View {
 
 extension SynastryChooserView {
     func addName() {
-        // need .Names to have a back value
         roomState.wrappedValue = .Names(onDismiss: .SynastryChooser)
+    }
+    
+    func getChart() {
+        
     }
 }
 
 #Preview {
-    SynastryChooserView()
+    SynastryChooserView(selectedNameOne: "mike", selectedNameTwo: "jane")
 }
