@@ -14,7 +14,7 @@
 
 import SwiftUI
 
-struct SynastryChooserView: View {
+struct SynastryChooserView: View, AstrobotInterface {
     @EnvironmentObject private var manager: BirthDataManager
     @Environment(\.roomState) private var roomState
     @State var selectedNameOne: String
@@ -94,7 +94,52 @@ extension SynastryChooserView {
     }
     
     func getChart() {
+        guard let data1 = manager.birthDates.first(where:  { $0.name == selectedNameOne })
+        else {
+            return
+        }
+        guard let data2 = manager.birthDates.first(where:  { $0.name == selectedNameTwo })
+        else {
+            return
+        }
         
+        let viewModel = ChartViewModel(chartName: "Snastry", chartType: .Natal)
+        viewModel.manager = manager
+        viewModel.planetData = getPlanetData(data: data1)
+        //TODO: change aspects to transit data
+        viewModel.aspectsData = getAspectsData(data: data1)
+        viewModel.houseData = getHouseData(data: data1)
+        
+        viewModel.secondaryPlanetData = getPlanetData(data: data2)
+        viewModel.secondaryHouseData = getHouseData(data: data2)
+    }
+
+    func getPlanetData(data: BirthData) -> [PlanetCell] {
+        let row = getPlanets(time: data.getAstroTime(), location: manager.planetsLocationData, calculationSettings: manager.calculationSettings)
+        
+        if let planets = row.planets as? [PlanetCell] {
+            return planets
+        }
+        return [PlanetCell]()
+    }
+    
+    func getAspectsData(data: BirthData) -> [TransitCell] {
+        let aspectsRow = getAspects(time: data.getAstroTime(), with: nil, and: manager.planetsLocationData, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
+        
+        if let aspects = aspectsRow.planets as? [TransitCell] {
+            return aspects
+        }
+        return [TransitCell]()
+    }
+    
+    func getHouseData(data: BirthData) -> [HouseCell] {
+        if let location = data.location {
+            let housesRow = getHouses(time: data.getAstroTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
+            if let planets = housesRow.planets as? [HouseCell] {
+                return planets
+            }
+        }
+        return [HouseCell]()
     }
 }
 

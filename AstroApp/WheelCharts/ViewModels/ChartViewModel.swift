@@ -24,6 +24,7 @@ class ChartViewModel {
     let chartName: String
     var manager: BirthDataManager?
     var houseData = [HouseCell]()
+    var secondaryHouseData = [HouseCell]()
     var planetData = [PlanetCell]()
     var secondaryPlanetData = [PlanetCell]()
     var aspectsData = [TransitCell]()
