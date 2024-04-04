@@ -19,6 +19,8 @@ struct SynastryChooserView: View, AstrobotInterface {
     @Environment(\.roomState) private var roomState
     @State var selectedNameOne: String
     @State var selectedNameTwo: String
+    @AppStorage("synastrynameone") var name1: String = ""
+    @AppStorage("synastrynametwo") var name2: String = ""
     var body: some View {
         if manager.birthDates.isEmpty {
             HStack {
@@ -82,6 +84,13 @@ struct SynastryChooserView: View, AstrobotInterface {
                     Spacer()
                 }
                 Spacer()
+            }.onAppear() {
+                if manager.birthDates.first(where: { $0.name == name1 }) != nil {
+                    selectedNameOne = name1
+                }
+                if manager.birthDates.first(where: { $0.name == name2 }) != nil {
+                    selectedNameTwo = name2
+                }
             }
         }
         
@@ -103,7 +112,7 @@ extension SynastryChooserView {
             return
         }
         
-        let viewModel = ChartViewModel(chartName: "Snastry", chartType: .Natal)
+        let viewModel = ChartViewModel(chartName: data1.name + " + " + data2.name, chartType: .Transit)
         viewModel.manager = manager
         viewModel.planetData = getPlanetData(data: data1)
         //TODO: change aspects to transit data
@@ -112,6 +121,9 @@ extension SynastryChooserView {
         
         viewModel.secondaryPlanetData = getPlanetData(data: data2)
         viewModel.secondaryHouseData = getHouseData(data: data2)
+        name1 = selectedNameOne
+        name2 = selectedNameTwo
+        roomState.wrappedValue = .NatalView(onDismiss: .SynastryChooser, viewModel: viewModel)
     }
 
     func getPlanetData(data: BirthData) -> [PlanetCell] {
