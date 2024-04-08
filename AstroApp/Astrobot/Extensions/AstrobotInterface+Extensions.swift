@@ -96,13 +96,13 @@ extension AstrobotBaseInterface {
 
 extension AstrobotInterface {
     
-    func getAspects(time: Double, with time2: Double?, and location: LocationData?, type: OrbType = OrbType.MediumOrbs, calculationSettings: CalculationSettings)->PlanetRow
+    func getAspects(time: Double, with time2: Double?, and location: LocationData?, location2: LocationData? = nil, type: OrbType = OrbType.MediumOrbs, calculationSettings: CalculationSettings)->PlanetRow
     {
         let fetchType: PlanetFetchType = time2 == nil ? .Aspects(orbs: type.getShortName()) : .Transits(date: "none", orbs: "none", transitData: TransitTimeData(), chartName: "none", chartModel: ChartViewModel(chartName: "none", chartType: .Transit))
         var transitPlanets: [TransitingPlanet]?
         let natalPlanets = getTransitingPlanets(for: time, and: location, calculationSettings: CalculationSettings( houseSystem: calculationSettings.houseSystem))
         if let time2 = time2 {
-            transitPlanets = getTransitingPlanets(for: time2, and: nil, calculationSettings: CalculationSettings(houseSystem: calculationSettings.houseSystem))
+            transitPlanets = getTransitingPlanets(for: time2, and: location2, calculationSettings: CalculationSettings(houseSystem: calculationSettings.houseSystem))
         } else {
             transitPlanets = natalPlanets
         }
@@ -119,7 +119,7 @@ extension AstrobotInterface {
                 if planet2.planet.rawValue < startPlanet.rawValue && time2 == nil {
                     continue
                 }
-                else if let aspect = getAspect(planet1: $0, planet2: planet2, with: time2, withOrbType: type) {
+                else if let aspect = getAspect(planet1: $0, planet2: planet2, with: time2, location2: location2, withOrbType: type) {
                     let movement: Movement = $0.degree.getApplying(with: $0.laterDegree, otherDegree: planet2.degree, for: aspect, type: fetchType)
                     transits.append(TransitCell(planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect, movement: movement))
                 }
@@ -185,14 +185,22 @@ extension AstrobotInterface {
         return transitPlanets
     }
     
-    func getAspect(planet1: TransitingPlanet, planet2: TransitingPlanet, with time2: Double?, withOrbType type: OrbType = OrbType.MediumOrbs)->Aspects? {
+    func getAspect(planet1: TransitingPlanet, planet2: TransitingPlanet, with time2: Double?, location2: LocationData?, withOrbType type: OrbType = OrbType.MediumOrbs)->Aspects? {
         
         var degree = abs(planet1.degree - planet2.degree)
         if degree > 180 {
             degree = 360 - degree
         }
         for aspect in Aspects.allCases {
-            let orb = time2 == nil ? planet1.planet.getNatalOrb(type: type, with: aspect) : planet1.planet.getTransitOrb(type: type, with: aspect)
+            var orb =  planet1.planet.getNatalOrb(type: type, with: aspect)
+            if time2 != nil {
+                if location2 != nil {
+                    orb = planet1.planet.getTransitOrb(type: type, with: aspect)
+                } else {
+                    orb = planet1.planet.getSynastryOrb(type: type, with: aspect)
+                }
+                
+            }
             if abs(degree - aspect.rawValue) <  orb {
                 return aspect
             }

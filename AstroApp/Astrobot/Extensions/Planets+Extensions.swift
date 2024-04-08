@@ -223,6 +223,34 @@ extension Planets {
         
     }
     
+    func getSynastryOrb(type: OrbType, with aspect: Aspects) -> Double
+    {
+        if aspect.isMajor() {
+            var moonBonus: Double = 0
+            if self == .Moon {
+                moonBonus = 1.5
+            }
+            switch type {
+            case .NarrowOrbs:
+                return 2.0 + moonBonus
+            case .MediumOrbs:
+                return 3.0 + moonBonus
+            case .WideOrbs:
+                return 5.0 + moonBonus
+            }
+        } else {
+            switch type {
+            case .NarrowOrbs:
+                return 0.5
+            case .MediumOrbs:
+                return 1.0
+            case .WideOrbs:
+                return 1.5
+            }
+        }
+        
+    }
+    
     func getIndex()->Int {
         var i = 0
         for val in Planets.allCases {

@@ -116,7 +116,7 @@ extension SynastryChooserView {
         viewModel.manager = manager
         viewModel.planetData = getPlanetData(data: data1)
         //TODO: change aspects to transit data
-        viewModel.aspectsData = getAspectsData(data: data1)
+        viewModel.aspectsData = getAspectsData(data: data1, data2: data2)
         viewModel.houseData = getHouseData(data: data1)
         
         viewModel.secondaryPlanetData = getPlanetData(data: data2)
@@ -135,8 +135,8 @@ extension SynastryChooserView {
         return [PlanetCell]()
     }
     
-    func getAspectsData(data: BirthData) -> [TransitCell] {
-        let aspectsRow = getAspects(time: data.getAstroTime(), with: nil, and: manager.planetsLocationData, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
+    func getAspectsData(data: BirthData, data2: BirthData) -> [TransitCell] {
+        let aspectsRow = getAspects(time: data.getAstroTime(), with: data2.getAstroTime(), and: data.location, location2: data2.location, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
         
         if let aspects = aspectsRow.planets as? [TransitCell] {
             return aspects
