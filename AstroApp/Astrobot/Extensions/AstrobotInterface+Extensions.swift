@@ -195,9 +195,9 @@ extension AstrobotInterface {
             var orb =  planet1.planet.getNatalOrb(type: type, with: aspect)
             if time2 != nil {
                 if location2 != nil {
-                    orb = planet1.planet.getTransitOrb(type: type, with: aspect)
-                } else {
                     orb = planet1.planet.getSynastryOrb(type: type, with: aspect)
+                } else {
+                    orb = planet1.planet.getTransitOrb(type: type, with: aspect)
                 }
                 
             }
