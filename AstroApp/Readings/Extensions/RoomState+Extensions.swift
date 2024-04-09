@@ -56,7 +56,7 @@ extension RoomState: AstroReading {
         case .Mars:
             return "Mars Room"
         case .SynastryChooser:
-            return "Synastry"
+            return "Synastry Chooser"
         }
     }
     func getReading()-> [ReadingEntry] {
