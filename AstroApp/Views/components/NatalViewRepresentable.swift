@@ -21,7 +21,7 @@ struct NatalViewRepresentable: UIViewRepresentable {
     let model: ChartViewModel
 
     func makeUIView(context: Context) -> NatalChartDrawingView {
-        if model.chart ==  .Transit {
+        if model.chart ==  .Transit || model.chart == .Synastry {
             TransitChartDrawingView(model: model)
         } else {
             NatalChartDrawingView(model: model)
@@ -39,7 +39,7 @@ struct NatalViewRepresentable: NSViewRepresentable {
     let model: ChartViewModel
     
     func makeNSView(context: Context) -> NatalChartDrawingView {
-        if model.chart == .Transit {
+        if model.chart == .Transit || model.chart == .Synastry {
             TransitChartDrawingView(model: model)
         } else {
             NatalChartDrawingView(model: model)
