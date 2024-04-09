@@ -41,6 +41,9 @@ struct MundanePlanetsRow: View, AstrobotInterface {
                 Text("Mundane")
             }
             Spacer()
+            Button(action: { roomState.wrappedValue = .SynastryChooser }) {
+                Text("Synastry").font(Font.subheadline)
+            }
         }
     }
 }

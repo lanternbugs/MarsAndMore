@@ -15,6 +15,7 @@ import SwiftUI
 
 struct PlanetsTab: View {
     @Environment(\.roomState) private var roomState
+    @EnvironmentObject var manager: BirthDataManager
     @State private var data: [DisplayPlanetRow] = Array<DisplayPlanetRow>()
     @ViewBuilder
     var body: some View {
@@ -39,6 +40,11 @@ struct PlanetsTab: View {
                 DoneView(newRoomState: dismissal)
                 WheelChartView(viewModel: viewModel)
             }
+        case .Cities(let onDismiss):
+            VStack {
+                DoneView(newRoomState: .Names(onDismiss: onDismiss))
+                CitiesView(dismissView: onDismiss)
+            }
         case .PlanetsCity:
             VStack {
                 DoneView(newRoomState: .Planets)
@@ -48,6 +54,21 @@ struct PlanetsTab: View {
             VStack {
                 DoneView(newRoomState: .ChartSettings)
                 ReadingView(state: roomState)
+            }
+        case .Names(let onDismiss), .EditName(let onDismiss):
+            VStack {
+                DoneView(newRoomState: onDismiss)
+                NameDataView(dismissView: onDismiss)
+            }
+        case .SynastryChooser:
+            VStack {
+                DoneView(newRoomState: .Planets)
+                if manager.birthDates.count < 2 {
+                    SynastryChooserView(selectedNameOne: "mike", selectedNameTwo: "jane")
+                } else {
+                    SynastryChooserView(selectedNameOne: manager.birthDates[0].name, selectedNameTwo: manager.birthDates[1].name)
+                }
+                
             }
         default:
             PlanetRoom(data: $data, roomState: roomState)
