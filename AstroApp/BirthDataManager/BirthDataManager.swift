@@ -26,6 +26,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @AppStorage("siderealSystem") var siderealSystem: SiderealSystem = SiderealSystem.Lahiri
     @AppStorage("orbType") var orbSelection: OrbType = OrbType.MediumOrbs
     @AppStorage("transitOrbType") var transitOrbSelection: OrbType = OrbType.NarrowOrbs
+    @AppStorage("synastryOrbType") var synastryOrbSelection: OrbType = OrbType.NarrowOrbs
     @AppStorage("showPlanetReadingButtons") var showPlanetReadingButtons: Bool = true
     @AppStorage("tropical") var tropical: Bool = true
     @AppStorage("showMinorAspects") var showMinorAspects: Bool = false

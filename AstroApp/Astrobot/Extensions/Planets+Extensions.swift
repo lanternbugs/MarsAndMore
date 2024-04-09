@@ -226,17 +226,14 @@ extension Planets {
     func getSynastryOrb(type: OrbType, with aspect: Aspects) -> Double
     {
         if aspect.isMajor() {
-            var moonBonus: Double = 0
-            if self == .Moon {
-                moonBonus = 1.5
-            }
+            
             switch type {
             case .NarrowOrbs:
-                return 2.0 + moonBonus
+                return 3.0
             case .MediumOrbs:
-                return 3.0 + moonBonus
+                return 6.0
             case .WideOrbs:
-                return 5.0 + moonBonus
+                return 10.0
             }
         } else {
             switch type {

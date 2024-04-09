@@ -102,14 +102,21 @@ struct ChartSettings: View {
                             }
                         }.pickerStyle(RadioGroupPickerStyle())
                         Spacer()
-                        Picker(selection: manager.$orbSelection, label: Text("Choose Aspects Orbs Type")) {
+                        Picker(selection: manager.$orbSelection, label: Text("Choose Aspects Orbs")) {
                             ForEach(OrbType.allCases, id: \.rawValue) {
                                 orbs in
                                 Text(orbs.rawValue).tag(orbs)
                             }
                         }.pickerStyle(RadioGroupPickerStyle())
                         Spacer()
-                        Picker(selection: manager.$transitOrbSelection, label: Text("Transits Orbs Type")) {
+                        Picker(selection: manager.$transitOrbSelection, label: Text("Transits Orbs")) {
+                            ForEach(OrbType.allCases, id: \.rawValue) {
+                                orbs in
+                                Text(orbs.rawValue).tag(orbs)
+                            }
+                        }.pickerStyle(RadioGroupPickerStyle())
+                        Spacer()
+                        Picker(selection: manager.$synastryOrbSelection, label: Text("Synastry Orbs")) {
                             ForEach(OrbType.allCases, id: \.rawValue) {
                                 orbs in
                                 Text(orbs.rawValue).tag(orbs)
@@ -131,15 +138,23 @@ struct ChartSettings: View {
                             
                             Text("Choose Aspects Orbs Type")
                             Spacer()
-                            Picker(selection: manager.$orbSelection, label: Text("Choose Aspects Orbs Type")) {
+                            Picker(selection: manager.$orbSelection, label: Text("Choose Aspects Orbs")) {
                                 ForEach(OrbType.allCases, id: \.rawValue) {
                                     orbs in
                                     Text(orbs.rawValue).tag(orbs)
                                 }
                             }
-                            Text("Transits Orbs Type")
+                            Text("Transits Orbs")
                             Spacer()
                             Picker(selection: manager.$transitOrbSelection, label: Text("Transits Orbs Type")) {
+                                ForEach(OrbType.allCases, id: \.rawValue) {
+                                    orbs in
+                                    Text(orbs.rawValue).tag(orbs)
+                                }
+                            }
+                            Text("Synastry Orbs")
+                            Spacer()
+                            Picker(selection: manager.$synastryOrbSelection, label: Text("Synastry Orbs")) {
                                 ForEach(OrbType.allCases, id: \.rawValue) {
                                     orbs in
                                     Text(orbs.rawValue).tag(orbs)

@@ -138,7 +138,7 @@ extension SynastryChooserView {
     }
     
     func getAspectsData(data: BirthData, data2: BirthData) -> [TransitCell] {
-        let aspectsRow = getAspects(time: data.getAstroTime(), with: data2.getAstroTime(), and: data.location, location2: data2.location, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
+        let aspectsRow = getAspects(time: data.getAstroTime(), with: data2.getAstroTime(), and: data.location, location2: data2.location, type: manager.synastryOrbSelection, calculationSettings: manager.calculationSettings)
         
         if let aspects = aspectsRow.planets as? [TransitCell] {
             return aspects
