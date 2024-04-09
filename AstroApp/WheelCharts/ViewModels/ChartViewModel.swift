@@ -29,6 +29,7 @@ class ChartViewModel {
     var secondaryPlanetData = [PlanetCell]()
     var aspectsData = [TransitCell]()
     var houseDictionary = [Int: (Int, Signs)]()
+    var secondaryHouseDictionary = [Int: (Int, Signs)]()
     var planetsDictionary = [Int: [PlanetCell]]()
     var secondaryPlanetsDictionary = [Int: [PlanetCell]]()
     var planetToDegreeMap = [Planets: Int]()
@@ -63,6 +64,15 @@ class ChartViewModel {
                     a = 12
                 }
                 houseDictionary[Int(houseData[a - 1].numericDegree)] = (a, houseData[a - 1].sign)
+            }
+        }
+        if secondaryHouseData.count > 0 {
+            for i in 0...secondaryHouseData.count - 1 {
+                var a = i
+                if a == 0 {
+                    a = 12
+                }
+                secondaryHouseDictionary[Int(secondaryHouseData[a - 1].numericDegree)] = (a, secondaryHouseData[a - 1].sign)
             }
         }
         if planetData.count > 0 {
