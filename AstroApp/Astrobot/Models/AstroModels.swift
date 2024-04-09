@@ -66,8 +66,7 @@ struct PlanetCell: AstroRowCell {
     let sign: Signs
     let retrograde: Bool
     let numericDegree: Double
-    
-    
+    let id = UUID()
 }
 
 struct TransitCell: AstroRowCell {
