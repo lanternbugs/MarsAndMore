@@ -103,6 +103,9 @@ extension SynastryChooserView {
     }
     
     func getChart() {
+        if selectedNameOne.isEmpty || selectedNameTwo.isEmpty {
+            return
+        }
         guard let data1 = manager.birthDates.first(where:  { $0.name == selectedNameOne })
         else {
             return
