@@ -76,6 +76,7 @@ struct TransitCell: AstroRowCell {
     let degree: String
     let aspect: Aspects
     let movement: Movement
+    let id = UUID()
 }
 
 struct TransitTime {

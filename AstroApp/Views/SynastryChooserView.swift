@@ -112,10 +112,9 @@ extension SynastryChooserView {
             return
         }
         
-        let viewModel = ChartViewModel(chartName: data1.name + " + " + data2.name, chartType: .Transit)
+        let viewModel = ChartViewModel(chartName: data1.name + " + " + data2.name, chartType: .Synastry)
         viewModel.manager = manager
         viewModel.planetData = getPlanetData(data: data1)
-        //TODO: change aspects to transit data
         viewModel.aspectsData = getAspectsData(data: data1, data2: data2)
         viewModel.houseData = getHouseData(data: data1)
         

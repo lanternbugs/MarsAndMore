@@ -29,12 +29,12 @@ struct NamesView: View {
                     Spacer()
                     
                 }
-                Button(action: { roomState.wrappedValue = .SynastryChooser }) {
-                    Text("Synastry").font(Font.subheadline)
-                }
-                Divider()
                 Button(action: { roomState.wrappedValue = .ChartSettings }) {
                     Text("Chart Settings").font(Font.subheadline)
+                }
+                Divider()
+                Button(action: { roomState.wrappedValue = .SynastryChooser }) {
+                    Text("Synastry").font(Font.subheadline)
                 }
                 
                 Divider()
