@@ -116,7 +116,21 @@ class ChartViewModel {
 
         return value
     }
-    
+    var innerHouseThickness: Double {
+        if chart != .Synastry {
+            return 0
+        }
+#if os(iOS)
+        let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom
+        if idiom == .pad {
+            return 15
+        }
+        return 10
+        
+#else
+        return 15
+#endif
+    }
     var interiorRadius: Double {
 #if os(iOS)
         let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom

@@ -56,6 +56,9 @@ extension TransitChartDrawingView {
 #endif
         printSigns(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
         drawCircle(viewModel.center, radius: viewModel.interiorRadius)
+        if viewModel.chart == .Synastry {
+            drawCircle(viewModel.center, radius: viewModel.interiorRadius - viewModel.innerHouseThickness)
+        }
         drawCircle(viewModel.center, radius: viewModel.innerRadius)
         drawSpoke()
         drawTwoPlanetSets()
@@ -75,7 +78,7 @@ extension TransitChartDrawingView {
                 if !usersPlanets.isEmpty {
                     if !usersPlanets.filter({($0.planet != .Ascendent) && ($0.planet != .MC)}).isEmpty {
                         drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 8, thickness: thickness, useRed: true)
-                        drawLine(degree: trueDegree, radius: viewModel.interiorRadius + 5, length: 5, thickness: thickness, useRed: true)
+                        drawLine(degree: trueDegree, radius: viewModel.interiorRadius + 5 , length: 5, thickness: thickness, useRed: true)
                         drawUpperPlanetListing(usersPlanets, trueDegree)
                     }
                     drawAspects(usersPlanets, trueDegree, a)
@@ -88,7 +91,7 @@ extension TransitChartDrawingView {
                 let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
                 if !usersPlanets.isEmpty {
                     if !usersPlanets.filter({($0.planet != .Ascendent || viewModel.showAscendent()) && ($0.planet != .MC || viewModel.showMC())}).isEmpty {
-                        drawLine(degree: trueDegree, radius: viewModel.interiorRadius, length: 8, thickness: thickness)
+                        drawLine(degree: trueDegree, radius: viewModel.interiorRadius - viewModel.innerHouseThickness, length: 8, thickness: thickness)
                         drawLine(degree: trueDegree, radius: viewModel.innerRadius + 5, length: 5, thickness: thickness)
                         drawLowerPlanetListing(usersPlanets, trueDegree)
                     }
@@ -151,18 +154,19 @@ extension TransitChartDrawingView {
             let printInfo = viewModel.getLowerPrintingDegree()
             let printDegree = printInfo.0
             let colorChoice = planet.planet == .Sun ? Colors.orange : Colors.black
+            let placement = viewModel.interiorRadius - (viewModel.innerHouseThickness / 2)
 
             if planet.planet == .Ascendent {
-                printText(viewModel.getXYFromPolar(viewModel.interiorRadius - spread - 2, printDegree), "Asc", trueDegree, false, fontSize)
+                printText(viewModel.getXYFromPolar(placement - spread - 2, printDegree), "Asc", trueDegree, false, fontSize)
             } else if planet.planet == .MC {
-                printText(viewModel.getXYFromPolar(viewModel.interiorRadius - spread - 2, printDegree), "MC", trueDegree, false, fontSize)
+                printText(viewModel.getXYFromPolar(placement - spread - 2, printDegree), "MC", trueDegree, false, fontSize)
             } else {
-                printSign(viewModel.getXYFromPolar(viewModel.interiorRadius - spread - 2, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
+                printSign(viewModel.getXYFromPolar(placement - spread - 2, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
             }
             
-            printText(viewModel.getXYFromPolar(viewModel.interiorRadius - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
+            printText(viewModel.getXYFromPolar(placement - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             if planet.retrograde {
-                printText(viewModel.getXYFromPolar(viewModel.interiorRadius - spread * 3.2, printDegree), "R", trueDegree, false, fontSize)
+                printText(viewModel.getXYFromPolar(placement - spread * 3.2, printDegree), "R", trueDegree, false, fontSize)
             }
             
             i += 1
