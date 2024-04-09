@@ -317,6 +317,9 @@ extension NatalChartDrawingView {
         
 #if os(iOS)
         textOffsetFromRadius = 8
+        if viewModel.chart == .Synastry {
+            textOffsetFromRadius = 0
+        }
         #else
         if viewModel.chart == .Natal {
             textOffsetFromRadius = 6
