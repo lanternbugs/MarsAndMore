@@ -153,7 +153,12 @@ extension NatalChartDrawingView {
             if let signTupple = viewModel.houseDictionary[houseDegree] {
                 drawHouseInfo(at: houseDegree, for: trueDegree, house: String(signTupple.0), sign: signTupple.1 )
             } else if viewModel.houseData.isEmpty && a % 30 == 0 {
-                drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.innerRadius - viewModel.getArcStrokeWidth()), thickness: 1)
+                if viewModel.chart == .Synastry {
+                    drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.interiorRadius - viewModel.getArcStrokeWidth()), thickness: 1)
+                } else {
+                    drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.innerRadius - viewModel.getArcStrokeWidth()), thickness: 1)
+                }
+                
             }
         }
     }
@@ -231,7 +236,11 @@ extension NatalChartDrawingView {
     }
     
     func drawHouseInfo(at houseDegree: Int, for trueDegree: Double, house: String, sign: Signs) {
-        drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.innerRadius - viewModel.getArcStrokeWidth()), thickness: 1)
+        if viewModel.chart == .Synastry {
+            drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.interiorRadius - viewModel.getArcStrokeWidth()), thickness: 1)
+        } else {
+            drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.innerRadius - viewModel.getArcStrokeWidth()), thickness: 1)
+        }
         drawLine(degree: Double(trueDegree), radius: viewModel.radius + 5, length: 5, thickness: 1)
         var fontSize = 12.0
         if viewModel.chart != .Natal {
