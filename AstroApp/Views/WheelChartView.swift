@@ -62,6 +62,28 @@ struct WheelChartView: View {
                 NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: getScreenWidth())
 #endif
             }
+                if !viewModel.aspectsData.isEmpty {
+                    HStack {
+                        Spacer()
+                        if viewModel.chart == .Synastry {
+                            Text("Aspects").font(.title2)
+                        } else {
+                            Text("Transits").font(.title2)
+                        }
+                        
+                        Spacer()
+                    }
+                    ForEach(viewModel.aspectsData.sorted(by: { $0.planet2.rawValue < $1.planet2.rawValue }), id: \.degree) {
+                        data in
+                        HStack {
+                            if data.aspect.isMajor() && manager.bodiesToShow.contains(data.planet) && manager.bodiesToShow.contains(data.planet2){
+                                Text(getAspectRow(data))
+                                Spacer()
+                            }
+                            
+                        }
+                }
+                }
 
                 
             }
@@ -70,6 +92,9 @@ struct WheelChartView: View {
 }
 
 extension WheelChartView {
+    func getAspectRow(_ data: TransitCell) -> String {
+        return data.planet2.getName() + " " + data.aspect.getName() + " " + data.planet.getName() + " " + data.degree
+    }
     func getScreenWidth()->Double
     {
 #if os(macOS)
