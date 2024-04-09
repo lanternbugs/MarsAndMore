@@ -45,14 +45,7 @@ struct WheelChartData: View {
                         
                         Spacer()
                     }
-                    ForEach(viewModel.aspectsData.sorted(by: {
-                        if $0.planet2 == .MC && $1.planet2 == .Ascendent  {
-                            return false
-                        }
-                        if $0.planet2 == .Ascendent && $1.planet2 == .MC  {
-                            return true
-                        }
-                        return $0.planet2.rawValue < $1.planet2.rawValue }), id: \.id) {
+                    ForEach(getAspectsData(), id: \.id) {
                         data in
                         HStack {
                             if data.aspect.isMajor() && manager.bodiesToShow.contains(data.planet) && manager.bodiesToShow.contains(data.planet2){
@@ -69,6 +62,20 @@ struct WheelChartData: View {
 }
 
 extension WheelChartData {
+    func getAspectsData() -> [TransitCell] {
+        if viewModel.chart == .Natal || viewModel.chart == .Synastry {
+            return viewModel.aspectsData.sorted(by: {
+                if $0.planet2 == .MC && $1.planet2 == .Ascendent  {
+                    return false
+                }
+                if $0.planet2 == .Ascendent && $1.planet2 == .MC  {
+                    return true
+                }
+                return $0.planet2.rawValue < $1.planet2.rawValue })
+        }
+        return viewModel.aspectsData.sorted(by: {
+            return $0.planet.rawValue < $1.planet.rawValue })
+    }
     func getPlanetRow(_ data: PlanetCell) -> String {
         var text =  data.planet.getName().uppercased() + " " + data.sign.getName() + " " + data.degree
         if data.retrograde {
