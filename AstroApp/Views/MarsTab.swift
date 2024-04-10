@@ -68,7 +68,9 @@ struct MarsTab: View, AstrobotReadingInterface {
                 if readingInitialized {
                     switch(planetChoice) {
                     case .Sun:
-                        ReadingView(state: $sunData)
+                        if sunData != .Entry {
+                            ReadingView(state: $sunData)
+                        }
                     case .Moon:
                         ReadingView(state: $moonData)
                     case .Mercury:
@@ -94,6 +96,12 @@ struct MarsTab: View, AstrobotReadingInterface {
 
 extension MarsTab {
    private func pickedDate()  {
+       print(birthdate.getAstroTime())
+       sunData = .Entry
+       marsData = .Entry
+       venusData = .Entry
+       moonData = .Entry
+       mercuryData = .Entry
         marsData = getPlanet(type: .Mars, time: birthdate.getAstroTime(), calculationSettings: CalculationSettings())
         venusData = getPlanet(type: .Venus, time: birthdate.getAstroTime(), calculationSettings: CalculationSettings())
         sunData = getPlanet(type: .Sun, time: birthdate.getAstroTime(), calculationSettings: CalculationSettings())
