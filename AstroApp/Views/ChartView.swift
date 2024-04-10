@@ -69,6 +69,10 @@ struct ChartView: View {
                                 if data.count > 0 {
                                     value.scrollTo(data.count - 1)
                                 }
+                            }.onAppear() {
+                                if data.count > 0 {
+                                    value.scrollTo(data.count - 1)
+                                }
                             }
                         }
                         
