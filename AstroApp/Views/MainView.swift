@@ -15,7 +15,7 @@ import SwiftUI
 
 struct MainView: View {
     @Environment(\.managedObjectContext) private var viewContext
-    @AppStorage("currentTab") private var currentTab: Int = 0
+    @AppStorage("currentTab") private var currentTab: Int = AppTab.ChartTab.rawValue
     @StateObject private var birthDataManager = BirthDataManager()
     @StateObject private var spaceDataManager = SpaceDataManager()
     @StateObject private var artDataManager = ArtDataManager()
