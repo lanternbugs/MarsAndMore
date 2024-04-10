@@ -63,7 +63,35 @@ struct WheelChartData: View {
 
 extension WheelChartData {
     func getAspectsData() -> [TransitCell] {
-        if viewModel.chart == .Natal || viewModel.chart == .Synastry {
+        if viewModel.chart == .Natal {
+            return viewModel.aspectsData.sorted(by: {
+                if  $0.planet.rawValue < $1.planet.rawValue {
+                    if $0.planet.rawValue < $1.planet2.rawValue {
+                        return true
+                    } else {
+                        if $0.planet2.rawValue < $1.planet2.rawValue {
+                            return true
+                        }
+                        return false
+                    }
+                } else {
+                    if $0.planet2.rawValue < $1.planet.rawValue {
+                        if $0.planet2.rawValue < $1.planet2.rawValue {
+                            return true
+                        }
+                        return false
+                    } else {
+                        if $1.planet.rawValue < $0.planet.rawValue {
+                            return false
+                        }
+                        return false
+                    }
+                }
+                        
+                        
+            })
+        }
+        if viewModel.chart == .Synastry {
             return viewModel.aspectsData.sorted(by: {
                 if $0.planet2 == .MC && $1.planet2 == .Ascendent  {
                     return false
@@ -87,6 +115,13 @@ extension WheelChartData {
     func getAspectRow(_ data: TransitCell) -> String {
         if viewModel.chart == .Transit {
             return data.planet.getName() + " " + data.aspect.getName() + " " + data.planet2.getName() + " " + data.degree
+        }
+        if viewModel.chart == .Natal {
+            if data.planet.rawValue < data.planet2.rawValue {
+                return data.planet.getName() + " " + data.aspect.getName() + " " + data.planet2.getName() + " " + data.degree
+            } else {
+                return data.planet2.getName() + " " + data.aspect.getName() + " " + data.planet.getName() + " " + data.degree
+            }
         }
         return data.planet2.getName() + " " + data.aspect.getName() + " " + data.planet.getName() + " " + data.degree
     }
