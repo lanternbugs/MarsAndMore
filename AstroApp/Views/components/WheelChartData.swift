@@ -13,26 +13,7 @@ struct WheelChartData: View {
     var body: some View {
         VStack {
             if viewModel.chart == .Natal {
-                HStack {
-                    Spacer()
-                    Text("Planets").font(.title2)
-                    Spacer()
-                }
-                ForEach(viewModel.planetData.sorted(by: { if $0.planet == .MC && $1.planet == .Ascendent {
-                    return false
-                } else if $0.planet == .Ascendent && $1.planet == .MC {
-                    return true
-                }
-                   return $0.planet.rawValue < $1.planet.rawValue }), id: \.id) {
-                    data in
-                    HStack {
-                        if manager.bodiesToShow.contains(data.planet) {
-                            Text(getPlanetRow(data))
-                            Spacer()
-                        }
-                        
-                    }
-                }
+                WheelChartPlanetListing(planetData: viewModel.planetData, chartTitle: "Planets")
             }
                 if !viewModel.aspectsData.isEmpty {
                     HStack {
@@ -55,7 +36,22 @@ struct WheelChartData: View {
                             
                         }
                     }
+                    if viewModel.chart == .Transit {
+                        Text("")
+                        HStack {
+                            Text("* for Applying").font(.title3)
+                            Spacer()
+                        }
+                    }
                 }
+            if viewModel.chart == .Synastry {
+                WheelChartPlanetListing(planetData: viewModel.planetData, chartTitle: viewModel.name1)
+                Text("")
+            }
+            
+            if viewModel.chart == .Synastry {
+                WheelChartPlanetListing(planetData: viewModel.secondaryPlanetData, chartTitle: viewModel.name2)
+            }
            
         }
     }
@@ -104,17 +100,14 @@ extension WheelChartData {
         return viewModel.aspectsData.sorted(by: {
             return $0.planet.rawValue < $1.planet.rawValue })
     }
-    func getPlanetRow(_ data: PlanetCell) -> String {
-        var text =  data.planet.getName().uppercased() + " " + data.sign.getName() + " " + data.degree
-        if data.retrograde {
-            text = text + " " + "R"
-        }
-        
-        return text
-    }
+    
     func getAspectRow(_ data: TransitCell) -> String {
         if viewModel.chart == .Transit {
-            return data.planet.getName() + " " + data.aspect.getName() + " " + data.planet2.getName() + " " + data.degree
+            var tempo =   data.planet.getName() + " " + data.aspect.getName() + " " + data.planet2.getName() + " " + data.degree
+            if data.movement == .Applying {
+                tempo = "*" + tempo
+            }
+            return tempo
         }
         if viewModel.chart == .Natal {
             if data.planet.rawValue < data.planet2.rawValue {

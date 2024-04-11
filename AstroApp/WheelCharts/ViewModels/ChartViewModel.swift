@@ -22,6 +22,8 @@ enum PrintSize { case small, regular, large}
 
 class ChartViewModel {
     let chartName: String
+    var name1 = ""
+    var name2 = ""
     var manager: BirthDataManager?
     var houseData = [HouseCell]()
     var secondaryHouseData = [HouseCell]()

@@ -117,6 +117,8 @@ extension SynastryChooserView {
         
         let viewModel = ChartViewModel(chartName: data1.name + " + " + data2.name, chartType: .Synastry)
         viewModel.manager = manager
+        viewModel.name1 = selectedNameOne
+        viewModel.name2 = selectedNameTwo
         viewModel.planetData = getPlanetData(data: data1)
         viewModel.aspectsData = getAspectsData(data: data1, data2: data2)
         viewModel.houseData = getHouseData(data: data1)
@@ -129,7 +131,7 @@ extension SynastryChooserView {
     }
 
     func getPlanetData(data: BirthData) -> [PlanetCell] {
-        let row = getPlanets(time: data.getAstroTime(), location: manager.planetsLocationData, calculationSettings: manager.calculationSettings)
+        let row = getPlanets(time: data.getAstroTime(), location: data.location, calculationSettings: manager.calculationSettings)
         
         if let planets = row.planets as? [PlanetCell] {
             return planets
