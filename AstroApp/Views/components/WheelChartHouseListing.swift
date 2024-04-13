@@ -26,6 +26,12 @@ struct WheelChartHouseListing: View {
                         Text("Asc " + asc.degree + " " + asc.sign.getName())
                         Spacer()
                     }
+                    if let mc = planetData.first(where: { $0.planet == .MC }) {
+                        HStack {
+                            Text("MC  " + mc.degree + " " + mc.sign.getName())
+                            Spacer()
+                        }
+                    }
                     
                 }
             }
