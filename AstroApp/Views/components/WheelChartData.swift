@@ -14,6 +14,9 @@ struct WheelChartData: View {
         VStack {
             if viewModel.chart == .Natal {
                 WheelChartPlanetListing(planetData: viewModel.planetData, chartTitle: "Planets")
+                if !viewModel.houseData.isEmpty {
+                    WheelChartHouseListing(houseData: viewModel.houseData, chartTitle: "Houses")
+                } 
             }
                 if !viewModel.aspectsData.isEmpty {
                     HStack {
@@ -44,15 +47,24 @@ struct WheelChartData: View {
                         }
                     }
                 }
+            
+            
             if viewModel.chart == .Synastry {
                 WheelChartPlanetListing(planetData: viewModel.planetData, chartTitle: viewModel.name1)
-                Text("")
+                if !viewModel.houseData.isEmpty {
+                    Text("")
+                    WheelChartHouseListing(houseData: viewModel.houseData, chartTitle: "")
+                }
             }
             
             if viewModel.chart == .Synastry {
                 WheelChartPlanetListing(planetData: viewModel.secondaryPlanetData, chartTitle: viewModel.name2)
+                if !viewModel.secondaryHouseData.isEmpty {
+                    Text("")
+                    WheelChartHouseListing(houseData: viewModel.secondaryHouseData, chartTitle: "")
+                }
             }
-           
+            Text("")
         }
     }
 }

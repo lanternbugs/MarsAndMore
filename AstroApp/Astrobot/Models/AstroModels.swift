@@ -58,6 +58,7 @@ struct HouseCell: AstroRowCell {
     let sign: Signs
     let house: Houses
     let numericDegree: Double
+    let id = UUID()
 }
 
 struct PlanetCell: AstroRowCell {

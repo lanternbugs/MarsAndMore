@@ -27,8 +27,11 @@ struct WheelChartPlanetListing: View {
                 data in
                 HStack {
                     if manager.bodiesToShow.contains(data.planet) {
-                        Text(getPlanetRow(data))
-                        Spacer()
+                        if data.planet != .MC && data.planet != .Ascendent {
+                            Text(getPlanetRow(data))
+                            Spacer()
+                        }
+                        
                     }
                     
                 }

@@ -314,6 +314,9 @@
 		766C89D6287F8A5100E437A7 /* PlanetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C89D4287F8A5100E437A7 /* PlanetButtons.swift */; };
 		7677BB322B0DBED10021F047 /* TransitTimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677BB312B0DBED10021F047 /* TransitTimesView.swift */; };
 		7677BB332B0DBED10021F047 /* TransitTimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677BB312B0DBED10021F047 /* TransitTimesView.swift */; };
+		7678A8C62BCB0D4D000E92A1 /* WheelChartHouseListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */; };
+		7678A8C72BCB0D4D000E92A1 /* WheelChartHouseListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */; };
+		7678A8C82BCB0D4D000E92A1 /* WheelChartHouseListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */; };
 		7679FF7927AF184F007911C9 /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
 		7679FF7A27AF184F007911C9 /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
 		7679FF7D27AF1850007911C9 /* AdapterToEphemeris.m in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */; };
@@ -695,6 +698,7 @@
 		7669E1D72898609900B8628D /* HousesEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousesEntry.swift; sourceTree = "<group>"; };
 		766C89D4287F8A5100E437A7 /* PlanetButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetButtons.swift; sourceTree = "<group>"; };
 		7677BB312B0DBED10021F047 /* TransitTimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitTimesView.swift; sourceTree = "<group>"; };
+		7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartHouseListing.swift; sourceTree = "<group>"; };
 		7679FF7027AF184F007911C9 /* AstrobotInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstrobotInterface.swift; sourceTree = "<group>"; };
 		7679FF7427AF184F007911C9 /* AdapterToEphemeris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdapterToEphemeris.h; sourceTree = "<group>"; };
 		7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdapterToEphemeris.m; sourceTree = "<group>"; };
@@ -1008,6 +1012,7 @@
 				76859E872B1A621E0007FED1 /* NatalViewRepresentable.swift */,
 				7655B2C22BC5A5F800C97B68 /* WheelChartData.swift */,
 				765275B62BC763BA00D52589 /* WheelChartPlanetListing.swift */,
+				7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -1714,6 +1719,7 @@
 				7691C5F42B0D42850024613D /* TransitsView.swift in Sources */,
 				761DEEC9279B9EF900A71938 /* swemplan.c in Sources */,
 				76860B8F27B224E400533BD2 /* NameDataView.swift in Sources */,
+				7678A8C62BCB0D4D000E92A1 /* WheelChartHouseListing.swift in Sources */,
 				7631117F289082A800912263 /* NasaPhotoView.swift in Sources */,
 				762E0C66288DC6E8008B825A /* SpaceDataManager+.swift in Sources */,
 				7677BB322B0DBED10021F047 /* TransitTimesView.swift in Sources */,
@@ -1822,6 +1828,7 @@
 				7691C5F52B0D42850024613D /* TransitsView.swift in Sources */,
 				761DEEC6279B9EF900A71938 /* sweph.c in Sources */,
 				76860B9027B224E400533BD2 /* NameDataView.swift in Sources */,
+				7678A8C72BCB0D4D000E92A1 /* WheelChartHouseListing.swift in Sources */,
 				76311180289082A800912263 /* NasaPhotoView.swift in Sources */,
 				762E0C67288DC6E8008B825A /* SpaceDataManager+.swift in Sources */,
 				7677BB332B0DBED10021F047 /* TransitTimesView.swift in Sources */,
@@ -1896,6 +1903,7 @@
 				76930B892B7ACF3B0033D957 /* HousesEntry.swift in Sources */,
 				76930B8A2B7ACF3B0033D957 /* FeaturedPlanetsEntry.swift in Sources */,
 				76A204D72BA8B369002D4BC8 /* SynastryChooserView.swift in Sources */,
+				7678A8C82BCB0D4D000E92A1 /* WheelChartHouseListing.swift in Sources */,
 				76930B8B2B7ACF3B0033D957 /* AstroButtons.swift in Sources */,
 				76930B8C2B7ACF3B0033D957 /* ReadingCredits.swift in Sources */,
 				76930B8D2B7ACF3B0033D957 /* DefaultReadingContent.swift in Sources */,

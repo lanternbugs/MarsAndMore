@@ -20,6 +20,10 @@ extension Houses
         switch self {
         case .H1:
             return "Asc"
+        case .H4:
+            return "IC"
+        case .H7:
+            return "DC"
         case .H10:
             return "MC"
         default:
