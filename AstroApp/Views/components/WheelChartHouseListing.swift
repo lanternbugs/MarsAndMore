@@ -26,14 +26,15 @@ struct WheelChartHouseListing: View {
                         Text("Asc " + asc.degree + " " + asc.sign.getName())
                         Spacer()
                     }
-                    if let mc = planetData.first(where: { $0.planet == .MC }) {
-                        HStack {
-                            Text("MC  " + mc.degree + " " + mc.sign.getName())
-                            Spacer()
-                        }
-                    }
-                    
                 }
+            }
+            if let mc = planetData.first(where: { $0.planet == .MC }) {
+                if mc.numericDegree != houseData[9].numericDegree {
+                    HStack {
+                        Text("MC  " + mc.degree + " " + mc.sign.getName())
+                        Spacer()
+                    }
+                }  
             }
             ForEach(houseData, id: \.id) {
                 data in

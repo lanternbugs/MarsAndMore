@@ -21,7 +21,12 @@ struct HousesEntry: View {
         var display = ""
         if let houseData = data.planets as? [HouseCell] {
             for val in houseData {
-                display += val.house.getHouseShortName() + ": " + val.degree + " " + val.sign.getNameShort() + "; "
+                if data.calculationSettings.houseSystem == "W" || data.calculationSettings.houseSystem == "E" {
+                    display += val.house.getHouseNumericName() + ": " + val.degree + " " + val.sign.getNameShort() + "; "
+                } else {
+                    display += val.house.getHouseShortName() + ": " + val.degree + " " + val.sign.getNameShort() + "; "
+                }
+                
             }
           return display
         }
