@@ -8,8 +8,9 @@
 import SwiftUI
 
 struct WheelChartHouseListing: View {
-    var houseData: [HouseCell]
-    var chartTitle: String
+    let houseData: [HouseCell]
+    let planetData: [PlanetCell]
+    let chartTitle: String
     var body: some View {
         VStack {
             if !chartTitle.isEmpty {
@@ -19,7 +20,15 @@ struct WheelChartHouseListing: View {
                     Spacer()
                 }
             }
-            
+            if let asc = planetData.first(where: { $0.planet == .Ascendent }) {
+                if asc.numericDegree != houseData[0].numericDegree {
+                    HStack {
+                        Text("Asc " + asc.degree + " " + asc.sign.getName())
+                        Spacer()
+                    }
+                    
+                }
+            }
             ForEach(houseData, id: \.id) {
                 data in
                 HStack {
@@ -37,6 +46,21 @@ struct WheelChartHouseListing: View {
 
 extension WheelChartHouseListing {
     func getHouseRow(_ data: HouseCell) -> String {
+        if let asc = planetData.first(where: { $0.planet == .Ascendent }) {
+            if asc.numericDegree != houseData[0].numericDegree {
+                return data.house.getHouseNumericName() + "  " + data.degree + " " + data.sign.getName()
+                
+            }
+        }
+        if let asc = planetData.first(where: { $0.planet == .MC }) {
+            if asc.numericDegree != houseData[9].numericDegree {
+                if data.house.getHouseShortName() == houseData[0].house.getHouseShortName() {
+                    return data.house.getHouseShortName() + " " + data.degree + " " + data.sign.getName()
+                }
+                return data.house.getHouseNumericName() + "  " + data.degree + " " + data.sign.getName()
+                
+            }
+        }
         if data.house.getHouseShortName().count == 3 {
             return data.house.getHouseShortName() + " " + data.degree + " " + data.sign.getName()
         } else {
@@ -47,5 +71,5 @@ extension WheelChartHouseListing {
 }
 
 #Preview {
-    WheelChartHouseListing(houseData: [HouseCell](), chartTitle: "chart")
+    WheelChartHouseListing(houseData: [HouseCell](), planetData: [PlanetCell](), chartTitle: "chart")
 }

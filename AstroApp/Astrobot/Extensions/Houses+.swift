@@ -15,7 +15,7 @@
 import Foundation
 extension Houses
 {
-    func getHouseShortName()->String
+    func getHouseShortName() -> String
     {
         switch self {
         case .H1:
@@ -29,5 +29,9 @@ extension Houses
         default:
             return "H" + String(self.rawValue)
         }
+    }
+    
+    func getHouseNumericName() -> String {
+        "H" + String(self.rawValue)
     }
 }
