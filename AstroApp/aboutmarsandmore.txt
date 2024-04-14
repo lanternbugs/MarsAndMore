@@ -2,4 +2,6 @@ I hope everyone enjoys this program.  Its author is a Capricorn born 12-28-70 ar
 
 I started app development at the end of December in 2009 with my first chess app, Lantern Chess.  Over the years I added more chess apps and now have 4 in the App Store. and the original Lantern Chess, a desktop app on a web page, lanternchess.com. I also started working as a professional app developer in this period. 12 years later, about one rotation of Jupiter, I started Mars and More, this time in January 2022.  I wanted to move on to a new area of programming in my personal apps. Something in lifestyle not games.  I had some prior astro programming experience with a bot.
 
+It can be fun when the discussion about an app is two ways, both the author and users.  If interested, leave a rating or review on the App Store or feel free to reach out via the email on the App Store Support page.
+
 Mike Adams
