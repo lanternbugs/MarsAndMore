@@ -13,7 +13,7 @@ struct WheelChartData: View {
     var body: some View {
         VStack {
             if viewModel.chart == .Natal {
-                WheelChartPlanetListing(planetData: viewModel.planetData, chartTitle: "Planets")
+                WheelChartPlanetListing(planetData: viewModel.planetData, houseData: viewModel.houseData, chartTitle: "Planets")
                 if !viewModel.houseData.isEmpty {
                     WheelChartHouseListing(houseData: viewModel.houseData, planetData: viewModel.planetData, chartTitle: "Houses")
                 }
@@ -50,7 +50,7 @@ struct WheelChartData: View {
             
             
             if viewModel.chart == .Synastry {
-                WheelChartPlanetListing(planetData: viewModel.planetData, chartTitle: viewModel.name1)
+                WheelChartPlanetListing(planetData: viewModel.planetData, houseData: viewModel.houseData, chartTitle: viewModel.name1)
                 if !viewModel.houseData.isEmpty {
                     Text("")
                     WheelChartHouseListing(houseData: viewModel.houseData, planetData: viewModel.planetData, chartTitle: "")
@@ -58,7 +58,7 @@ struct WheelChartData: View {
             }
             
             if viewModel.chart == .Synastry {
-                WheelChartPlanetListing(planetData: viewModel.secondaryPlanetData, chartTitle: viewModel.name2)
+                WheelChartPlanetListing(planetData: viewModel.secondaryPlanetData, houseData: viewModel.secondaryHouseData, chartTitle: viewModel.name2)
                 if !viewModel.secondaryHouseData.isEmpty {
                     Text("")
                     WheelChartHouseListing(houseData: viewModel.secondaryHouseData, planetData: viewModel.secondaryPlanetData, chartTitle: "")
