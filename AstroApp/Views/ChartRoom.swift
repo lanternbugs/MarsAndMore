@@ -19,7 +19,7 @@ struct ChartRoom: View {
     
     var body: some View {
         VStack {
-            AstroButtons(data: $planetData).padding([.top], 20)
+            AstroButtons(viewModel: AstroPlanetButtonsViewModel(data: $planetData)).padding([.top], 20)
             Divider()
                    .padding([.top, .bottom], 3)
             HStack {

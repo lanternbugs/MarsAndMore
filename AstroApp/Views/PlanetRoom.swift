@@ -18,7 +18,7 @@ struct PlanetRoom: View {
     @Binding var roomState: RoomState
     var body: some View {
         VStack {
-            PlanetButtons(data: $data).padding([.top], 20)
+            PlanetButtons(viewModel: AstroPlanetButtonsViewModel(data: $data)).padding([.top], 20)
             MundanePlanetsRow()
             Divider().padding([.top, .bottom], 3)
             ScrollView {

@@ -16,22 +16,21 @@ import SwiftUI
 struct AstroButtons: View, AstrobotInterface {
     
     @EnvironmentObject private var manager: BirthDataManager
-    @Binding var data: [DisplayPlanetRow]
-    @State private var astroButtonsEnabled = true
+    let viewModel: AstroPlanetButtonsViewModel
     @ViewBuilder
     var body: some View {
         VStack {
             HStack(alignment: .top) {
                 Spacer()
-                Button(action: planets) {
+                Button(action: astroPlanets) {
                     Text("Planets")
                 }
                 Spacer()
-                Button(action: aspects) {
+                Button(action: astroAspects) {
                     Text("Aspects")
                 }
                 Spacer()
-                if data.count > 0 {
+                if viewModel.data.wrappedValue.count > 0 {
                     Button(action: clearData) {
                         Text("Clear")
                     }
@@ -39,71 +38,33 @@ struct AstroButtons: View, AstrobotInterface {
                 }
             }
             if let _ = manager.selectedName {
-                TransitsButtonControl(data: $data).padding([.top])
+                TransitsButtonControl(viewModel: AstroPlanetButtonsViewModel(data: viewModel.data)).padding([.top])
             }
         }
         
     }
 }
 
-
-
 extension AstroButtons {
-    func temporaryDisableButtons()->Void
-    {
-        astroButtonsEnabled = false
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
-            astroButtonsEnabled = true
-        }
-    }
-    func planets()
-    {
-        guard astroButtonsEnabled else {
-            return
-        }
-        temporaryDisableButtons()
-        
-        let row = getPlanets(time: manager.getSelectionTime(), location: manager.getSelectionLocation(), calculationSettings: manager.calculationSettings)
-        let viewModel = ChartViewModel(chartName: manager.getCurrentName(), chartType: .Natal)
-        viewModel.manager = manager
-        if let planets = row.planets as? [PlanetCell] {
-            viewModel.planetData = planets
-        }
-        if let location = manager.getSelectionLocation() {
-            let housesRow = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
-            if let planets = housesRow.planets as? [HouseCell] {
-                viewModel.houseData = planets
-            }
-        }
-        
-        let aspectsRow = getAspects(time: manager.getSelectionTime(), with: nil, and: manager.getSelectionLocation(), type: manager.orbSelection, calculationSettings: manager.calculationSettings)
-        
-        if let aspects = aspectsRow.planets as? [TransitCell] {
-            viewModel.aspectsData = aspects
-        }
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Planets(chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
-        data.append(displayRow)
+    
+    func astroPlanets() {
+        viewModel.astroPlanets(manager: manager)
     }
     
-    func aspects()
-    {
-        guard astroButtonsEnabled else {
-            return
-        }
-        temporaryDisableButtons()
-        let row = getAspects(time: manager.getSelectionTime(), with: nil, and: manager.getSelectionLocation(), type: manager.orbSelection, calculationSettings: manager.calculationSettings)
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.count, type: .Aspects(orbs: manager.orbSelection.getShortName()), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
-        data.append(displayRow)
+    func astroAspects() {
+        viewModel.astroAspects(manager: manager)
     }
     
     func clearData()
     {
-        data.removeAll()
+        viewModel.clearData()
     }
 }
-struct AstroButtons_Previews: PreviewProvider {
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: ChartViewModel(chartName: "mike", chartType: .Natal)), name: "Mike", calculationSettings: CalculationSettings())]
-    static var previews: some View {
-        AstroButtons(data: $row)
-    }
-}
+
+ struct AstroButtons_Previews: PreviewProvider {
+ @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: ChartViewModel(chartName: "mike", chartType: .Natal)), name: "Mike", calculationSettings: CalculationSettings())]
+ static var previews: some View {
+ AstroButtons(viewModel: AstroPlanetButtonsViewModel(data: $row))
+ }
+ }
+ 

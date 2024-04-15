@@ -330,6 +330,8 @@
 		7679FF8027AF1850007911C9 /* AstrobotInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7727AF184F007911C9 /* AstrobotInterface+Extensions.swift */; };
 		7679FF8127AF1850007911C9 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7827AF184F007911C9 /* Double+Extensions.swift */; };
 		7679FF8227AF1850007911C9 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7827AF184F007911C9 /* Double+Extensions.swift */; };
+		767C3A8D2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C3A8C2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift */; };
+		767C3A8E2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C3A8C2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift */; };
 		768453C1289C709D0086B37C /* HouseSystem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768453C0289C709D0086B37C /* HouseSystem+.swift */; };
 		768453C2289C709D0086B37C /* HouseSystem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768453C0289C709D0086B37C /* HouseSystem+.swift */; };
 		76859E882B1A621E0007FED1 /* NatalViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76859E872B1A621E0007FED1 /* NatalViewRepresentable.swift */; };
@@ -711,6 +713,7 @@
 		7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdapterToEphemeris.m; sourceTree = "<group>"; };
 		7679FF7727AF184F007911C9 /* AstrobotInterface+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AstrobotInterface+Extensions.swift"; sourceTree = "<group>"; };
 		7679FF7827AF184F007911C9 /* Double+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
+		767C3A8C2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroPlanetButtonsViewModel.swift; sourceTree = "<group>"; };
 		768453C0289C709D0086B37C /* HouseSystem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HouseSystem+.swift"; sourceTree = "<group>"; };
 		76859E872B1A621E0007FED1 /* NatalViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatalViewRepresentable.swift; sourceTree = "<group>"; };
 		76859E8B2B1A64A40007FED1 /* NatalChartDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatalChartDrawingView.swift; sourceTree = "<group>"; };
@@ -1113,6 +1116,7 @@
 			isa = PBXGroup;
 			children = (
 				76525B3F2BCDAFC6004DC658 /* WheelChartDataViewModel.swift */,
+				767C3A8C2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1768,6 +1772,7 @@
 				762D4A6927AB986A00EA59E8 /* AstroButtons.swift in Sources */,
 				7618A97427ADB6AA008C6508 /* NamesView.swift in Sources */,
 				76908C9427C04F2900806F9D /* NamesTextModifier.swift in Sources */,
+				767C3A8D2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift in Sources */,
 				76B34ED427AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,
 				76AB623127B0A9CF00FEFBD4 /* ReadingCredits.swift in Sources */,
 				762EAF8F2884C579007DB4A9 /* DelayedImageView.swift in Sources */,
@@ -1879,6 +1884,7 @@
 				7606E28227AB18A900C72FAB /* MarsTab.swift in Sources */,
 				761DEEB4279B9EF900A71938 /* swemmoon.c in Sources */,
 				76908C9527C04F2900806F9D /* NamesTextModifier.swift in Sources */,
+				767C3A8E2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift in Sources */,
 				7618A97527ADB6AA008C6508 /* NamesView.swift in Sources */,
 				76AB623227B0A9CF00FEFBD4 /* ReadingCredits.swift in Sources */,
 				762EAF902884C579007DB4A9 /* DelayedImageView.swift in Sources */,
