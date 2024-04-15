@@ -47,57 +47,10 @@ extension WheelChartPlanetListing {
         if data.retrograde {
             text = text + " " + "R"
         }
-        // in house data off for now due to boundary condition between pisces and aries 
-        //text = text + getInHouseData(data)
-        
         return text
     }
     
-    func getInHouseData(_ data: PlanetCell) -> String {
-        if houseData.isEmpty {
-            return ""
-        }
-        let num = data.numericDegree
-        return " in " + getHouseNumber(num)
-    }
     
-    func getHouseNumber(_ num: Double) -> String {
-        for i in 1...11 {
-            if houseData[i - 1].numericDegree > houseData[i].numericDegree {
-                if num < houseData[i].numericDegree {
-                    if num > houseData[i].numericDegree  - 1 {
-                        return "H" + String(i) + "/H" + String(i + 1)
-                    }
-                    return "H" + String(i)
-                } else if num > houseData[i - 1].numericDegree {
-                    return "H" + String(i)
-                }
-            }
-            if num >= houseData[i - 1].numericDegree && num < houseData[i].numericDegree {
-                if i == 9 && num >= houseData[i].numericDegree - 2.0 {
-                    return "H9/10"
-                } else if num >= houseData[i].numericDegree - 1.0  {
-                    return "H" + String(i) + "/" + String(i + 1)
-                }
-                    
-                else  {
-                    if i == 1 {
-                        return "H1"
-                    }
-                    return "H" + String(i)
-                }
-            }
-            
-        }
-        
-        // fix wrap
-        if houseData[1].numericDegree < houseData[0].numericDegree {
-            return "H12"
-        } else if num > houseData[0].numericDegree - 2 && num < houseData[0].numericDegree {
-            return "H12/1"
-        }
-        return "H12"
-    }
 }
 
 #Preview {

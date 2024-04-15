@@ -295,6 +295,9 @@
 		765ED44D28A5951F001374AB /* ArtDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED44B28A5951F001374AB /* ArtDataManager.swift */; };
 		765ED44F28A595C0001374AB /* ArtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED44E28A595C0001374AB /* ArtView.swift */; };
 		765ED45028A595C0001374AB /* ArtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED44E28A595C0001374AB /* ArtView.swift */; };
+		7660AE352BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */; };
+		7660AE362BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */; };
+		7660AE372BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */; };
 		76620A9B27AC79D8009094DC /* AstroReadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9A27AC79D8009094DC /* AstroReadingModel.swift */; };
 		76620A9D27AC7C51009094DC /* RoomState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */; };
 		76620A9E27AC7C51009094DC /* RoomState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */; };
@@ -688,6 +691,7 @@
 		765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirthData+Extensions.swift"; sourceTree = "<group>"; };
 		765ED44B28A5951F001374AB /* ArtDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDataManager.swift; sourceTree = "<group>"; };
 		765ED44E28A595C0001374AB /* ArtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtView.swift; sourceTree = "<group>"; };
+		7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartAspectsListing.swift; sourceTree = "<group>"; };
 		76620A9A27AC79D8009094DC /* AstroReadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroReadingModel.swift; sourceTree = "<group>"; };
 		76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomState+Extensions.swift"; sourceTree = "<group>"; };
 		76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Extensions.swift"; sourceTree = "<group>"; };
@@ -1013,6 +1017,7 @@
 				7655B2C22BC5A5F800C97B68 /* WheelChartData.swift */,
 				765275B62BC763BA00D52589 /* WheelChartPlanetListing.swift */,
 				7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */,
+				7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */,
 			);
 			path = components;
 			sourceTree = "<group>";
@@ -1679,6 +1684,7 @@
 				7646F7CE28C7FC04007FC924 /* ArtTab.swift in Sources */,
 				76038DD8289869CB00F6DA0F /* Houses+.swift in Sources */,
 				761DEEBB279B9EF900A71938 /* swepdate.c in Sources */,
+				7660AE352BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */,
 				762E0C69288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
 				76CFDDA22B3230A60079E09E /* TransitChartDrawingView.swift in Sources */,
 				76D45B1C27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
@@ -1788,6 +1794,7 @@
 				7646F7CF28C7FC04007FC924 /* ArtTab.swift in Sources */,
 				76038DD9289869CB00F6DA0F /* Houses+.swift in Sources */,
 				76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */,
+				7660AE362BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */,
 				762E0C6A288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
 				76CFDDA32B3230A60079E09E /* TransitChartDrawingView.swift in Sources */,
 				76D45B1D27B0E028008186BF /* DefaultReadingContent.swift in Sources */,
@@ -1947,6 +1954,7 @@
 				76930B762B7ACE9B0033D957 /* AppLevelModels.swift in Sources */,
 				76221487288096D100E0FC65 /* MarsAndMore.xcdatamodeld in Sources */,
 				762214842880968400E0FC65 /* RoomState+Extensions.swift in Sources */,
+				7660AE372BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */,
 				762214852880968400E0FC65 /* AstrobotReadingInterface+Extensions.swift in Sources */,
 				762214862880968400E0FC65 /* AstroReadingModel.swift in Sources */,
 				762214822880963800E0FC65 /* BirthDataManager+Extensions.swift in Sources */,
