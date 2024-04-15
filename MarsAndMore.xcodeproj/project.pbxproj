@@ -259,6 +259,8 @@
 		763CFC0A27B1E4E8004A73B8 /* BirthDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0827B1E4E8004A73B8 /* BirthDataManager.swift */; };
 		763CFC0D27B1E535004A73B8 /* BirthDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0C27B1E535004A73B8 /* BirthDataModels.swift */; };
 		763CFC0E27B1E535004A73B8 /* BirthDataModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 763CFC0C27B1E535004A73B8 /* BirthDataModels.swift */; };
+		76407C7B2BCDD8D100AEC890 /* SynastryChooserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76407C7A2BCDD8D100AEC890 /* SynastryChooserViewModel.swift */; };
+		76407C7C2BCDD8D100AEC890 /* SynastryChooserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76407C7A2BCDD8D100AEC890 /* SynastryChooserViewModel.swift */; };
 		7646F7CB28C7FBE5007FC924 /* ArtLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */; };
 		7646F7CC28C7FBE5007FC924 /* ArtLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */; };
 		7646F7CE28C7FC04007FC924 /* ArtTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CD28C7FC04007FC924 /* ArtTab.swift */; };
@@ -670,6 +672,7 @@
 		763CFC0527B1E4C4004A73B8 /* cities.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = cities.json; sourceTree = "<group>"; };
 		763CFC0827B1E4E8004A73B8 /* BirthDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDataManager.swift; sourceTree = "<group>"; };
 		763CFC0C27B1E535004A73B8 /* BirthDataModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BirthDataModels.swift; sourceTree = "<group>"; };
+		76407C7A2BCDD8D100AEC890 /* SynastryChooserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynastryChooserViewModel.swift; sourceTree = "<group>"; };
 		7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtLibraryView.swift; sourceTree = "<group>"; };
 		7646F7CD28C7FC04007FC924 /* ArtTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtTab.swift; sourceTree = "<group>"; };
 		764DF5EE2B3F8D88003054ED /* aboutmarsandmore.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aboutmarsandmore.txt; sourceTree = "<group>"; };
@@ -1117,6 +1120,7 @@
 			children = (
 				76525B3F2BCDAFC6004DC658 /* WheelChartDataViewModel.swift */,
 				767C3A8C2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift */,
+				76407C7A2BCDD8D100AEC890 /* SynastryChooserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1687,6 +1691,7 @@
 				763B3FA027BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */,
 				7669E1D82898609900B8628D /* HousesEntry.swift in Sources */,
 				7617DAB627AFA8A70064B98E /* AstroModels.swift in Sources */,
+				76407C7B2BCDD8D100AEC890 /* SynastryChooserViewModel.swift in Sources */,
 				76ECF739287F585400AE7B34 /* PlanetRoom.swift in Sources */,
 				76860B9227B2264D00533BD2 /* DoneView.swift in Sources */,
 				7689C6B327D02FDD00B38E4A /* PlanetFetchType+Extensions.swift in Sources */,
@@ -1799,6 +1804,7 @@
 				763B3FA127BDB2BA007A2690 /* Aspects+Extensions.swift in Sources */,
 				7669E1D92898609900B8628D /* HousesEntry.swift in Sources */,
 				7617DAB727AFA8A70064B98E /* AstroModels.swift in Sources */,
+				76407C7C2BCDD8D100AEC890 /* SynastryChooserViewModel.swift in Sources */,
 				76ECF73A287F585400AE7B34 /* PlanetRoom.swift in Sources */,
 				76860B9327B2264D00533BD2 /* DoneView.swift in Sources */,
 				7689C6B427D02FDD00B38E4A /* PlanetFetchType+Extensions.swift in Sources */,

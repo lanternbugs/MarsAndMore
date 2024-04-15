@@ -14,13 +14,12 @@
 
 import SwiftUI
 
-struct SynastryChooserView: View, AstrobotInterface {
+struct SynastryChooserView: View {
     @EnvironmentObject private var manager: BirthDataManager
     @Environment(\.roomState) private var roomState
     @State var selectedNameOne: String
     @State var selectedNameTwo: String
-    @AppStorage("synastrynameone") var name1: String = ""
-    @AppStorage("synastrynametwo") var name2: String = ""
+    let viewModel = SynastryChooserViewModel()
     var body: some View {
         if manager.birthDates.isEmpty {
             HStack {
@@ -85,11 +84,11 @@ struct SynastryChooserView: View, AstrobotInterface {
                 }
                 Spacer()
             }.onAppear() {
-                if manager.birthDates.first(where: { $0.name == name1 }) != nil {
-                    selectedNameOne = name1
+                if manager.birthDates.first(where: { $0.name == viewModel.name1 }) != nil {
+                    selectedNameOne = viewModel.name1
                 }
-                if manager.birthDates.first(where: { $0.name == name2 }) != nil {
-                    selectedNameTwo = name2
+                if manager.birthDates.first(where: { $0.name == viewModel.name2 }) != nil {
+                    selectedNameTwo = viewModel.name2
                 }
             }
         }
@@ -103,59 +102,9 @@ extension SynastryChooserView {
     }
     
     func getChart() {
-        if selectedNameOne.isEmpty || selectedNameTwo.isEmpty {
-            return
+        if let vModel = viewModel.getChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo, manager: manager) {
+            roomState.wrappedValue = .NatalView(onDismiss: .SynastryChooser, viewModel: vModel)
         }
-        guard let data1 = manager.birthDates.first(where:  { $0.name == selectedNameOne })
-        else {
-            return
-        }
-        guard let data2 = manager.birthDates.first(where:  { $0.name == selectedNameTwo })
-        else {
-            return
-        }
-        
-        let viewModel = ChartViewModel(chartName: data1.name + " + " + data2.name, chartType: .Synastry)
-        viewModel.manager = manager
-        viewModel.name1 = selectedNameOne
-        viewModel.name2 = selectedNameTwo
-        viewModel.planetData = getPlanetData(data: data1)
-        viewModel.aspectsData = getAspectsData(data: data1, data2: data2)
-        viewModel.houseData = getHouseData(data: data1)
-        
-        viewModel.secondaryPlanetData = getPlanetData(data: data2)
-        viewModel.secondaryHouseData = getHouseData(data: data2)
-        name1 = selectedNameOne
-        name2 = selectedNameTwo
-        roomState.wrappedValue = .NatalView(onDismiss: .SynastryChooser, viewModel: viewModel)
-    }
-
-    func getPlanetData(data: BirthData) -> [PlanetCell] {
-        let row = getPlanets(time: data.getAstroTime(), location: data.location, calculationSettings: manager.calculationSettings)
-        
-        if let planets = row.planets as? [PlanetCell] {
-            return planets
-        }
-        return [PlanetCell]()
-    }
-    
-    func getAspectsData(data: BirthData, data2: BirthData) -> [TransitCell] {
-        let aspectsRow = getAspects(time: data.getAstroTime(), with: data2.getAstroTime(), and: data.location, location2: data2.location, type: manager.synastryOrbSelection, calculationSettings: manager.calculationSettings)
-        
-        if let aspects = aspectsRow.planets as? [TransitCell] {
-            return aspects
-        }
-        return [TransitCell]()
-    }
-    
-    func getHouseData(data: BirthData) -> [HouseCell] {
-        if let location = data.location {
-            let housesRow = getHouses(time: data.getAstroTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
-            if let planets = housesRow.planets as? [HouseCell] {
-                return planets
-            }
-        }
-        return [HouseCell]()
     }
 }
 
