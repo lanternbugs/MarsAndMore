@@ -13,7 +13,7 @@
 
 import SwiftUI
 
-struct AstroButtons: View, AstrobotInterface {
+struct AstroButtons: View {
     
     @EnvironmentObject private var manager: BirthDataManager
     let viewModel: AstroPlanetButtonsViewModel

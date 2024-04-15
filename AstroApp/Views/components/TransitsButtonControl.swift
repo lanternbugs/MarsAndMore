@@ -13,7 +13,7 @@
 
 import SwiftUI
 
-struct TransitsButtonControl: View, AstrobotInterface {
+struct TransitsButtonControl: View {
     
     @EnvironmentObject private var manager: BirthDataManager
     @Environment(\.roomState) private var roomState
