@@ -279,6 +279,8 @@
 		764EF76B27ACA6E0008A15F1 /* mars-gemini.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75F27ACA6E0008A15F1 /* mars-gemini.txt */; };
 		764EF76D27ACA897008A15F1 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EF76C27ACA897008A15F1 /* ReadingView.swift */; };
 		764EF76E27ACA897008A15F1 /* ReadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 764EF76C27ACA897008A15F1 /* ReadingView.swift */; };
+		76525B402BCDAFC6004DC658 /* WheelChartDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76525B3F2BCDAFC6004DC658 /* WheelChartDataViewModel.swift */; };
+		76525B412BCDAFC6004DC658 /* WheelChartDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76525B3F2BCDAFC6004DC658 /* WheelChartDataViewModel.swift */; };
 		765275B72BC763BA00D52589 /* WheelChartPlanetListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765275B62BC763BA00D52589 /* WheelChartPlanetListing.swift */; };
 		765275B82BC763BA00D52589 /* WheelChartPlanetListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765275B62BC763BA00D52589 /* WheelChartPlanetListing.swift */; };
 		765275B92BC763BA00D52589 /* WheelChartPlanetListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765275B62BC763BA00D52589 /* WheelChartPlanetListing.swift */; };
@@ -684,6 +686,7 @@
 		764EF75E27ACA6E0008A15F1 /* mars-scorpio.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-scorpio.txt"; sourceTree = "<group>"; };
 		764EF75F27ACA6E0008A15F1 /* mars-gemini.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "mars-gemini.txt"; sourceTree = "<group>"; };
 		764EF76C27ACA897008A15F1 /* ReadingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReadingView.swift; sourceTree = "<group>"; };
+		76525B3F2BCDAFC6004DC658 /* WheelChartDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartDataViewModel.swift; sourceTree = "<group>"; };
 		765275B62BC763BA00D52589 /* WheelChartPlanetListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartPlanetListing.swift; sourceTree = "<group>"; };
 		7655B2C22BC5A5F800C97B68 /* WheelChartData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartData.swift; sourceTree = "<group>"; };
 		7656279C287E000A00A63C8B /* PlanetsTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsTab.swift; sourceTree = "<group>"; };
@@ -895,6 +898,7 @@
 				763CFC0327B1E4C4004A73B8 /* BirthDataManager */,
 				7679FF6F27AF184F007911C9 /* Astrobot */,
 				765CF0B12B37BEF300CFCF6D /* WheelCharts */,
+				76525B3E2BCDAF84004DC658 /* ViewModels */,
 				76620A9F27AC801C009094DC /* Views */,
 				761DEE55279B9EB200A71938 /* Assets.xcassets */,
 				761DEE50279B9EB100A71938 /* MarsAndMore.xcdatamodeld */,
@@ -1103,6 +1107,14 @@
 				763CFC0C27B1E535004A73B8 /* BirthDataModels.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		76525B3E2BCDAF84004DC658 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				76525B3F2BCDAFC6004DC658 /* WheelChartDataViewModel.swift */,
+			);
+			path = ViewModels;
 			sourceTree = "<group>";
 		};
 		765CF0B12B37BEF300CFCF6D /* WheelCharts */ = {
@@ -1683,6 +1695,7 @@
 				76C2878228AB2C4800DB0A2E /* ArtDisplayView.swift in Sources */,
 				7646F7CE28C7FC04007FC924 /* ArtTab.swift in Sources */,
 				76038DD8289869CB00F6DA0F /* Houses+.swift in Sources */,
+				76525B402BCDAFC6004DC658 /* WheelChartDataViewModel.swift in Sources */,
 				761DEEBB279B9EF900A71938 /* swepdate.c in Sources */,
 				7660AE352BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */,
 				762E0C69288DCA30008B825A /* NASAPhotoType+.swift in Sources */,
@@ -1793,6 +1806,7 @@
 				76C2878328AB2C4800DB0A2E /* ArtDisplayView.swift in Sources */,
 				7646F7CF28C7FC04007FC924 /* ArtTab.swift in Sources */,
 				76038DD9289869CB00F6DA0F /* Houses+.swift in Sources */,
+				76525B412BCDAFC6004DC658 /* WheelChartDataViewModel.swift in Sources */,
 				76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */,
 				7660AE362BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */,
 				762E0C6A288DCA30008B825A /* NASAPhotoType+.swift in Sources */,

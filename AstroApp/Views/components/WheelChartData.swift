@@ -13,26 +13,26 @@ struct WheelChartData: View {
     var body: some View {
         VStack {
             if viewModel.chart == .Natal {
-                WheelChartPlanetListing(planetData: viewModel.planetData, houseData: viewModel.houseData, chartTitle: "Planets")
+                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: .Natal, title: "Planets"))
                 if !viewModel.houseData.isEmpty {
-                    WheelChartHouseListing(houseData: viewModel.houseData, planetData: viewModel.planetData, chartTitle: "Houses")
+                    WheelChartHouseListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: .Natal, title: "Houses"))
                 }
             }
             
             if !viewModel.aspectsData.isEmpty {
-                WheelChartAspectsListing(chart: viewModel.chart, aspectsData: viewModel.aspectsData)
+                WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: "Aspects"))
             }
 
             if viewModel.chart == .Synastry {
-                WheelChartPlanetListing(planetData: viewModel.planetData, houseData: viewModel.houseData, chartTitle: viewModel.name1)
+                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: viewModel.name1))
                 if !viewModel.houseData.isEmpty {
                     Text("")
-                    WheelChartHouseListing(houseData: viewModel.houseData, planetData: viewModel.planetData, chartTitle: "")
+                    WheelChartHouseListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: ""))
                 }
-                WheelChartPlanetListing(planetData: viewModel.secondaryPlanetData, houseData: viewModel.secondaryHouseData, chartTitle: viewModel.name2)
+                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.aspectsData, houses: viewModel.secondaryHouseData, chart: viewModel.chart, title: viewModel.name2))
                 if !viewModel.secondaryHouseData.isEmpty {
                     Text("")
-                    WheelChartHouseListing(houseData: viewModel.secondaryHouseData, planetData: viewModel.secondaryPlanetData, chartTitle: "")
+                    WheelChartHouseListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.aspectsData, houses: viewModel.secondaryHouseData, chart: viewModel.chart, title: ""))
                 }
             }
             Text("")
