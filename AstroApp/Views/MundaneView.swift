@@ -16,9 +16,7 @@
 import SwiftUI
 
 struct MundaneView: View, AstrobotInterface {
-    @State var transits: [TransitTime]
-    @State var date: Date
-    @EnvironmentObject private var manager: BirthDataManager
+    @ObservedObject var viewModel: TransitMundaneViewModel
     var body: some View {
         VStack {
             HStack {
@@ -27,13 +25,13 @@ struct MundaneView: View, AstrobotInterface {
                 Spacer()
             }
             HStack {
-                Button(action: previousDay) {
+                Button(action: viewModel.previousDay) {
                     Text("<<").font(.title)
                 }
                 Spacer()
-                Text("\(date.getLongDateTitleString())").font(.title2)
+                Text("\(viewModel.date.getLongDateTitleString())").font(.title2)
                 Spacer()
-                Button(action: nextDay) {
+                Button(action: viewModel.nextDay) {
                     Text(">>").font(.title)
                 }
             }
@@ -44,45 +42,19 @@ struct MundaneView: View, AstrobotInterface {
                         Text("Planetary Transits").font(.title)
                         Spacer()
                     }
-                    TransitTimesView(transits: $transits, viewModel: TransitTimesViewModel(transitToShow: .Planetary))
+                    TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Planetary))
                     Text(" ")
                     HStack {
                         Text("Moon Transits").font(.title)
                         Spacer()
                     }
-                    TransitTimesView(transits: $transits, viewModel: TransitTimesViewModel(transitToShow: .Moon))
+                    TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Moon))
                 }
             }
-            
-        }
-        
-    }
-}
-
-extension MundaneView {
-    func previousDay() {
-        let calendar = Calendar.current
-        let newDate = calendar.date(byAdding: .day, value: -1, to: date)
-        if let newDate = newDate {
-            transits = getTransitTimes(start_time: newDate.getAstroTime(), end_time: date.getAstroTime(), manager: manager)
-            date = newDate
-        }
-    }
-    
-    func nextDay() {
-        let calendar = Calendar.current
-        let newDate = calendar.date(byAdding: .day, value: 1, to: date)
-        if let newDate = newDate {
-            let endDate = calendar.date(byAdding: .day, value: 1, to: newDate)
-            if let endDate = endDate {
-                transits = getTransitTimes(start_time: newDate.getAstroTime(), end_time: endDate.getAstroTime(), manager: manager)
-                date = newDate
-            }
         }
     }
 }
-
 
 #Preview {
-    MundaneView(transits: [], date: Date())
+    MundaneView(viewModel: TransitMundaneViewModel(transits: [], skyTransits: [], transitData: TransitTimeData(), date: Date(), manager: BirthDataManager()))
 }

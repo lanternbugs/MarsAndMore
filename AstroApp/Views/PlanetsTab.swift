@@ -33,7 +33,7 @@ struct PlanetsTab: View {
         case .Mundane(let transits, let date):
             VStack {
                 DoneView(newRoomState: .Planets)
-                MundaneView(transits: transits, date: date)
+                MundaneView(viewModel: TransitMundaneViewModel(transits: [], skyTransits: transits, transitData: nil, date: date, manager: manager))
             }
         case .NatalView(let dismissal, let viewModel):
             VStack {

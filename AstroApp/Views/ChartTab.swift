@@ -60,7 +60,7 @@ struct ChartTab: View {
         case .TransitsView(let transits, let skyTransits, let date, let chartName, let transitData):
             VStack {
                 DoneView(newRoomState: .Chart)
-                TransitsView(transits: transits, skyTransits: skyTransits, date: date, chartName: chartName, transitData: transitData)
+                TransitsView(viewModel: TransitMundaneViewModel(transits: transits, skyTransits: skyTransits, transitData: transitData, date: date, manager: manager),  chartName: chartName)
             }
         case .NatalView(let dismissal, let viewModel):
             VStack {

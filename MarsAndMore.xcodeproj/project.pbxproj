@@ -317,6 +317,8 @@
 		7667C45C2888A96400D4DF06 /* curiosity-manifest.json in Resources */ = {isa = PBXBuildFile; fileRef = 7667C4562888A96400D4DF06 /* curiosity-manifest.json */; };
 		7669E1D82898609900B8628D /* HousesEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669E1D72898609900B8628D /* HousesEntry.swift */; };
 		7669E1D92898609900B8628D /* HousesEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7669E1D72898609900B8628D /* HousesEntry.swift */; };
+		766B30452BCF256600836F5A /* TransitMundaneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766B30442BCF256600836F5A /* TransitMundaneViewModel.swift */; };
+		766B30462BCF256600836F5A /* TransitMundaneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766B30442BCF256600836F5A /* TransitMundaneViewModel.swift */; };
 		766C89D5287F8A5100E437A7 /* PlanetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C89D4287F8A5100E437A7 /* PlanetButtons.swift */; };
 		766C89D6287F8A5100E437A7 /* PlanetButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766C89D4287F8A5100E437A7 /* PlanetButtons.swift */; };
 		7677BB322B0DBED10021F047 /* TransitTimesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7677BB312B0DBED10021F047 /* TransitTimesView.swift */; };
@@ -710,6 +712,7 @@
 		7667C4552888A96400D4DF06 /* spirit-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "spirit-manifest.json"; sourceTree = "<group>"; };
 		7667C4562888A96400D4DF06 /* curiosity-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "curiosity-manifest.json"; sourceTree = "<group>"; };
 		7669E1D72898609900B8628D /* HousesEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HousesEntry.swift; sourceTree = "<group>"; };
+		766B30442BCF256600836F5A /* TransitMundaneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitMundaneViewModel.swift; sourceTree = "<group>"; };
 		766C89D4287F8A5100E437A7 /* PlanetButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetButtons.swift; sourceTree = "<group>"; };
 		7677BB312B0DBED10021F047 /* TransitTimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitTimesView.swift; sourceTree = "<group>"; };
 		7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartHouseListing.swift; sourceTree = "<group>"; };
@@ -1125,6 +1128,7 @@
 				767C3A8C2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift */,
 				76407C7A2BCDD8D100AEC890 /* SynastryChooserViewModel.swift */,
 				768060B12BCF207100B135C9 /* TransitTimesViewModel.swift */,
+				766B30442BCF256600836F5A /* TransitMundaneViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1707,6 +1711,7 @@
 				761DEEC1279B9EF900A71938 /* swehouse.c in Sources */,
 				76C2878228AB2C4800DB0A2E /* ArtDisplayView.swift in Sources */,
 				7646F7CE28C7FC04007FC924 /* ArtTab.swift in Sources */,
+				766B30452BCF256600836F5A /* TransitMundaneViewModel.swift in Sources */,
 				76038DD8289869CB00F6DA0F /* Houses+.swift in Sources */,
 				76525B402BCDAFC6004DC658 /* WheelChartDataViewModel.swift in Sources */,
 				761DEEBB279B9EF900A71938 /* swepdate.c in Sources */,
@@ -1821,6 +1826,7 @@
 				76BEF3F727ACB0EF001C9AD0 /* AstroReadingModel.swift in Sources */,
 				76C2878328AB2C4800DB0A2E /* ArtDisplayView.swift in Sources */,
 				7646F7CF28C7FC04007FC924 /* ArtTab.swift in Sources */,
+				766B30462BCF256600836F5A /* TransitMundaneViewModel.swift in Sources */,
 				76038DD9289869CB00F6DA0F /* Houses+.swift in Sources */,
 				76525B412BCDAFC6004DC658 /* WheelChartDataViewModel.swift in Sources */,
 				76BEF3F827ACB0EF001C9AD0 /* AstroButtons.swift in Sources */,
