@@ -16,7 +16,7 @@ import SwiftUI
 struct AstroButtons: View {
     
     @EnvironmentObject private var manager: BirthDataManager
-    let viewModel: AstroPlanetButtonsViewModel
+    @ObservedObject var viewModel: AstroPlanetButtonsViewModel
     @ViewBuilder
     var body: some View {
         VStack {

@@ -8,7 +8,7 @@
 import Foundation
 import SwiftUI
 class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
-    @Published var buttonsEnabled = true
+    var buttonsEnabled = true
     let manager: BirthDataManager
     var data: Binding<[DisplayPlanetRow]>
     

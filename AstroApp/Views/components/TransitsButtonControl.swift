@@ -18,7 +18,7 @@ struct TransitsButtonControl: View {
     @EnvironmentObject private var manager: BirthDataManager
     @Environment(\.roomState) private var roomState
     @State private var transitDate: Date = Date()
-    let viewModel: AstroPlanetButtonsViewModel
+    @ObservedObject var viewModel: AstroPlanetButtonsViewModel
     
     var body: some View {
         VStack {
