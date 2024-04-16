@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
     @Published var buttonsEnabled = true
-   var data: Binding<[DisplayPlanetRow]>
+    var data: Binding<[DisplayPlanetRow]>
     
     
     init(data: Binding<[DisplayPlanetRow]>) {
@@ -35,19 +35,33 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         if let planets = row.planets as? [PlanetCell] {
             viewModel.planetData = planets
         }
-        let aspectsRow = getAspects(time: savedDate.planetsDateChoice.getAstroTime(), with: nil, and: manager.planetsLocationData, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
         
-        if let aspects = aspectsRow.planets as? [TransitCell] {
-            viewModel.aspectsData = aspects
-        }
-        if let location = manager.planetsLocationData {
-            let housesRow = getHouses(time: savedDate.planetsDateChoice.getAstroTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
-            if let planets = housesRow.planets as? [HouseCell] {
-                viewModel.houseData = planets
-            }
-        }
+        
+        viewModel.aspectsData = populateAspectsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData, manager)
+        viewModel.houseData = populateHouseData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData, manager)
+        
+        
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.wrappedValue.count, type: .Planets(chartModel: viewModel), name: getStringDate(savedDate: savedDate), calculationSettings: manager.calculationSettings)
         data.wrappedValue.append(displayRow)
+    }
+    
+    func populateHouseData(_ date: Double, _ location: LocationData?, _ manager: BirthDataManager) -> [HouseCell] {
+        if let location = location {
+            let housesRow = getHouses(time: date, location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
+            if let planets = housesRow.planets as? [HouseCell] {
+                return planets
+            }
+        }
+        return [HouseCell]()
+    }
+    
+    func populateAspectsData(_ date: Double, _ location: LocationData?, _ manager: BirthDataManager) -> [TransitCell] {
+        let aspectsRow = getAspects(time: date, with: nil, and: location, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
+        
+        if let aspects = aspectsRow.planets as? [TransitCell] {
+             return aspects
+        }
+        return [TransitCell]()
     }
     
     func aspects(savedDate: PlanetsDate, manager: BirthDataManager)
@@ -89,18 +103,11 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         if let planets = row.planets as? [PlanetCell] {
             viewModel.planetData = planets
         }
-        if let location = manager.getSelectionLocation() {
-            let housesRow = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
-            if let planets = housesRow.planets as? [HouseCell] {
-                viewModel.houseData = planets
-            }
-        }
         
-        let aspectsRow = getAspects(time: manager.getSelectionTime(), with: nil, and: manager.getSelectionLocation(), type: manager.orbSelection, calculationSettings: manager.calculationSettings)
         
-        if let aspects = aspectsRow.planets as? [TransitCell] {
-            viewModel.aspectsData = aspects
-        }
+        viewModel.houseData = populateHouseData(manager.getSelectionTime(), manager.getSelectionLocation(), manager)
+        viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), manager.getSelectionLocation(), manager)
+        
         let displayRow = DisplayPlanetRow(planets: row.planets, id: data.wrappedValue.count, type: .Planets(chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
         data.wrappedValue.append(displayRow)
     }
@@ -134,11 +141,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
                 viewModel.planetData = planets
             }
             
-            let aspectsRow = getAspects(time: manager.getSelectionTime(), with: nil, and: location, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
-            
-            if let aspects = aspectsRow.planets as? [TransitCell] {
-                viewModel.aspectsData = aspects
-            }
+            viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), location, manager)
             
             let displayRow = DisplayPlanetRow(planets: row.planets, id: data.wrappedValue.count, type: .Houses(system: manager.houseSystem, chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
             data.wrappedValue.append(displayRow)
@@ -163,14 +166,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         
         let viewModel = ChartViewModel(chartName: "\(manager.getCurrentName()) + \(dateFormater.string(from: transitDate))", chartType: .Transit)
         viewModel.manager = manager
-        
-        if let location = manager.getSelectionLocation() {
-            let row = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
-            
-            if let planets = row.planets as? [HouseCell] {
-                viewModel.houseData = planets
-            }
-        }
+        viewModel.houseData = populateHouseData(manager.getSelectionTime(), manager.getSelectionLocation(), manager)
         
         let planetsRow = getPlanets(time: manager.getSelectionTime(), location: manager.getSelectionLocation(), calculationSettings: manager.calculationSettings)
         if let planets = planetsRow.planets as? [PlanetCell] {
