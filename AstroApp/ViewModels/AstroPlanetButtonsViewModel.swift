@@ -9,12 +9,15 @@ import Foundation
 import SwiftUI
 class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
     @Published var buttonsEnabled = true
+    let manager: BirthDataManager
     var data: Binding<[DisplayPlanetRow]>
     
     
-    init(data: Binding<[DisplayPlanetRow]>) {
+    init(data: Binding<[DisplayPlanetRow]>, manager: BirthDataManager) {
         self.data = data
+        self.manager = manager
     }
+    
     func temporaryDisableButtons()->Void
     {
         buttonsEnabled = false
@@ -22,40 +25,18 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
             self?.buttonsEnabled = true
         }
     }
-    func planets(savedDate: PlanetsDate, manager: BirthDataManager)
-    {
-        guard buttonsEnabled else {
-            return
-        }
-        temporaryDisableButtons()
-        
-        let row = getPlanets(time: savedDate.planetsDateChoice.getAstroTime(), location: manager.planetsLocationData, calculationSettings: manager.calculationSettings)
-        let viewModel = ChartViewModel(chartName: savedDate.planetsDateChoice.description, chartType: .Natal)
-        viewModel.manager = manager
-        if let planets = row.planets as? [PlanetCell] {
-            viewModel.planetData = planets
-        }
-        
-        
-        viewModel.aspectsData = populateAspectsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData, manager)
-        viewModel.houseData = populateHouseData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData, manager)
-        
-        
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.wrappedValue.count, type: .Planets(chartModel: viewModel), name: getStringDate(savedDate: savedDate), calculationSettings: manager.calculationSettings)
-        data.wrappedValue.append(displayRow)
-    }
     
-    func populateHouseData(_ date: Double, _ location: LocationData?, _ manager: BirthDataManager) -> [HouseCell] {
+    func populateHouseData(_ date: Double, _ location: LocationData?) -> [HouseCell] {
         if let location = location {
             let housesRow = getHouses(time: date, location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
-            if let planets = housesRow.planets as? [HouseCell] {
-                return planets
+            if let houses = housesRow.planets as? [HouseCell] {
+                return houses
             }
         }
         return [HouseCell]()
     }
     
-    func populateAspectsData(_ date: Double, _ location: LocationData?, _ manager: BirthDataManager) -> [TransitCell] {
+    func populateAspectsData(_ date: Double, _ location: LocationData?) -> [TransitCell] {
         let aspectsRow = getAspects(time: date, with: nil, and: location, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
         
         if let aspects = aspectsRow.planets as? [TransitCell] {
@@ -64,7 +45,34 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         return [TransitCell]()
     }
     
-    func aspects(savedDate: PlanetsDate, manager: BirthDataManager)
+    func populatePlanetsData(_ date: Double, _ location: LocationData?) -> [PlanetCell] {
+        let row = getPlanets(time: date, location: location, calculationSettings: manager.calculationSettings)
+        if let planets = row.planets as? [PlanetCell] {
+            return planets
+        }
+        return [PlanetCell]()
+    }
+    
+    func planets(savedDate: PlanetsDate)
+    {
+        guard buttonsEnabled else {
+            return
+        }
+        temporaryDisableButtons()
+        
+        let viewModel = ChartViewModel(chartName: savedDate.planetsDateChoice.description, chartType: .Natal)
+        viewModel.manager = manager
+        
+        viewModel.planetData = populatePlanetsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
+        viewModel.aspectsData = populateAspectsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
+        viewModel.houseData = populateHouseData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
+        
+        
+        let displayRow = DisplayPlanetRow(planets: viewModel.planetData, id: data.wrappedValue.count, type: .Planets(chartModel: viewModel), name: getStringDate(savedDate: savedDate), calculationSettings: manager.calculationSettings)
+        data.wrappedValue.append(displayRow)
+    }
+    
+    func aspects(savedDate: PlanetsDate)
     {
         guard buttonsEnabled else {
             return
@@ -90,29 +98,30 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         return dateFormatter.string(from: savedDate.planetsDateChoice)
     }
     
-    func astroPlanets(manager: BirthDataManager)
+    func getChartViewModel(name: String, type: Charts) -> ChartViewModel {
+        let viewModel = ChartViewModel(chartName: name, chartType: type)
+        viewModel.manager = manager
+        return viewModel
+    }
+    
+    func astroPlanets()
     {
         guard buttonsEnabled else {
             return
         }
         temporaryDisableButtons()
+
+        let viewModel = getChartViewModel(name: manager.getCurrentName(), type: .Natal)
         
-        let row = getPlanets(time: manager.getSelectionTime(), location: manager.getSelectionLocation(), calculationSettings: manager.calculationSettings)
-        let viewModel = ChartViewModel(chartName: manager.getCurrentName(), chartType: .Natal)
-        viewModel.manager = manager
-        if let planets = row.planets as? [PlanetCell] {
-            viewModel.planetData = planets
-        }
+        viewModel.planetData = populatePlanetsData(manager.getSelectionTime(), manager.getSelectionLocation())
+        viewModel.houseData = populateHouseData(manager.getSelectionTime(), manager.getSelectionLocation())
+        viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), manager.getSelectionLocation())
         
-        
-        viewModel.houseData = populateHouseData(manager.getSelectionTime(), manager.getSelectionLocation(), manager)
-        viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), manager.getSelectionLocation(), manager)
-        
-        let displayRow = DisplayPlanetRow(planets: row.planets, id: data.wrappedValue.count, type: .Planets(chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
+        let displayRow = DisplayPlanetRow(planets: viewModel.planetData, id: data.wrappedValue.count, type: .Planets(chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
         data.wrappedValue.append(displayRow)
     }
     
-    func astroAspects(manager: BirthDataManager)
+    func astroAspects()
     {
         guard buttonsEnabled else {
             return
@@ -123,27 +132,20 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         data.wrappedValue.append(displayRow)
     }
     
-    func houses(manager: BirthDataManager) -> ChartViewModel?
+    func houses() -> ChartViewModel?
     {
         guard buttonsEnabled else {
             return nil
         }
         temporaryDisableButtons()
         if let location = manager.getSelectionLocation() {
-            let row = getHouses(time: manager.getSelectionTime(), location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
-            let viewModel = ChartViewModel(chartName: manager.getCurrentName(), chartType: .Natal)
-            viewModel.manager = manager
-            if let planets = row.planets as? [HouseCell] {
-                viewModel.houseData = planets
-            }
-            let planetsRow = getPlanets(time: manager.getSelectionTime(), location: location, calculationSettings: manager.calculationSettings)
-            if let planets = planetsRow.planets as? [PlanetCell] {
-                viewModel.planetData = planets
-            }
+            let viewModel = getChartViewModel(name: manager.getCurrentName(), type: .Natal)
+
+            viewModel.houseData = populateHouseData(manager.getSelectionTime(), location)
+            viewModel.planetData = populatePlanetsData(manager.getSelectionTime(), location)
+            viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), location)
             
-            viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), location, manager)
-            
-            let displayRow = DisplayPlanetRow(planets: row.planets, id: data.wrappedValue.count, type: .Houses(system: manager.houseSystem, chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
+            let displayRow = DisplayPlanetRow(planets: viewModel.houseData, id: data.wrappedValue.count, type: .Houses(system: manager.houseSystem, chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
             data.wrappedValue.append(displayRow)
             return viewModel
         }
@@ -151,7 +153,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         
     }
     
-    func transits(manager: BirthDataManager, transitDate: Date)
+    func transits(transitDate: Date)
     {
         guard buttonsEnabled else {
             return
@@ -163,20 +165,10 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         dateFormater.locale   = Locale(identifier: "en_US_POSIX")
         dateFormater.dateFormat = "YY/MM/dd h:m"
         let transitData = TransitTimeData(calculationSettings: manager.calculationSettings, time: manager.getSelectionTime(), transitTime: transitDate, location: manager.getSelectionLocation())
-        
-        let viewModel = ChartViewModel(chartName: "\(manager.getCurrentName()) + \(dateFormater.string(from: transitDate))", chartType: .Transit)
-        viewModel.manager = manager
-        viewModel.houseData = populateHouseData(manager.getSelectionTime(), manager.getSelectionLocation(), manager)
-        
-        let planetsRow = getPlanets(time: manager.getSelectionTime(), location: manager.getSelectionLocation(), calculationSettings: manager.calculationSettings)
-        if let planets = planetsRow.planets as? [PlanetCell] {
-            viewModel.planetData = planets
-        }
-        
-        let planetsRowTwo = getPlanets(time: transitDate.getAstroTime(), location: nil, calculationSettings: manager.calculationSettings)
-        if let planets = planetsRowTwo.planets as? [PlanetCell] {
-            viewModel.secondaryPlanetData = planets
-        }
+        let viewModel = getChartViewModel(name: "\(manager.getCurrentName()) + \(dateFormater.string(from: transitDate))", type: .Transit)
+        viewModel.houseData = populateHouseData(manager.getSelectionTime(), manager.getSelectionLocation())
+        viewModel.planetData = populatePlanetsData(manager.getSelectionTime(), manager.getSelectionLocation())
+        viewModel.secondaryPlanetData = populatePlanetsData(transitDate.getAstroTime(), nil)
         
         
         if let aspects = row.planets as? [TransitCell] {

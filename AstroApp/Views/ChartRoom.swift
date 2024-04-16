@@ -16,10 +16,11 @@ import SwiftUI
 struct ChartRoom: View {
     @Environment(\.roomState) private var readingState
     @Binding var planetData: [DisplayPlanetRow]
+    @EnvironmentObject private var manager: BirthDataManager
     
     var body: some View {
         VStack {
-            AstroButtons(viewModel: AstroPlanetButtonsViewModel(data: $planetData)).padding([.top], 20)
+            AstroButtons(viewModel: AstroPlanetButtonsViewModel(data: $planetData, manager: manager)).padding([.top], 20)
             Divider()
                    .padding([.top, .bottom], 3)
             HStack {

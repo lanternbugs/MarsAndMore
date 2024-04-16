@@ -38,7 +38,7 @@ struct AstroButtons: View {
                 }
             }
             if let _ = manager.selectedName {
-                TransitsButtonControl(viewModel: AstroPlanetButtonsViewModel(data: viewModel.data)).padding([.top])
+                TransitsButtonControl(viewModel: AstroPlanetButtonsViewModel(data: viewModel.data, manager: manager)).padding([.top])
             }
         }
         
@@ -48,11 +48,11 @@ struct AstroButtons: View {
 extension AstroButtons {
     
     func astroPlanets() {
-        viewModel.astroPlanets(manager: manager)
+        viewModel.astroPlanets()
     }
     
     func astroAspects() {
-        viewModel.astroAspects(manager: manager)
+        viewModel.astroAspects()
     }
     
     func clearData()
@@ -64,7 +64,7 @@ extension AstroButtons {
  struct AstroButtons_Previews: PreviewProvider {
  @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: ChartViewModel(chartName: "mike", chartType: .Natal)), name: "Mike", calculationSettings: CalculationSettings())]
  static var previews: some View {
- AstroButtons(viewModel: AstroPlanetButtonsViewModel(data: $row))
+     AstroButtons(viewModel: AstroPlanetButtonsViewModel(data: $row, manager: BirthDataManager()))
  }
  }
  

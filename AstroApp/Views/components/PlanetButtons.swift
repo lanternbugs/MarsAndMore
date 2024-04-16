@@ -75,11 +75,11 @@ struct PlanetButtons: View {
 
 extension PlanetButtons {
     func planets() {
-        viewModel.planets(savedDate: savedDate, manager: manager)
+        viewModel.planets(savedDate: savedDate)
     }
     
     func aspects() {
-        viewModel.aspects(savedDate: savedDate, manager: manager)
+        viewModel.aspects(savedDate: savedDate)
     }
     
     func clearData() {
@@ -90,6 +90,6 @@ extension PlanetButtons {
 struct PlanetButtons_Previews: PreviewProvider {
     @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: ChartViewModel(chartName: "mike", chartType: .Natal)), name: "Mike", calculationSettings: CalculationSettings())]
     static var previews: some View {
-        AstroButtons(viewModel: AstroPlanetButtonsViewModel(data: $row))
+        AstroButtons(viewModel: AstroPlanetButtonsViewModel(data: $row, manager: BirthDataManager()))
     }
 }

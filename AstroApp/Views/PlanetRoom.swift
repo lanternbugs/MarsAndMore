@@ -16,9 +16,10 @@ import SwiftUI
 struct PlanetRoom: View {
     @Binding var data: [DisplayPlanetRow]
     @Binding var roomState: RoomState
+    @EnvironmentObject private var manager: BirthDataManager
     var body: some View {
         VStack {
-            PlanetButtons(viewModel: AstroPlanetButtonsViewModel(data: $data)).padding([.top], 20)
+            PlanetButtons(viewModel: AstroPlanetButtonsViewModel(data: $data, manager: manager)).padding([.top], 20)
             MundanePlanetsRow()
             Divider().padding([.top, .bottom], 3)
             ScrollView {
