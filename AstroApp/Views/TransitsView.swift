@@ -37,22 +37,28 @@ struct TransitsView: View, AstrobotInterface {
                     }
                 }
                 HStack {
-                    Text("Transits for \(chartName)").font(.title)
+                    Text("Plantary Transits for \(chartName)").font(.title)
                     Spacer()
                 }
-                TransitTimesView(transits: $transits, transitToShow: .All)
+                TransitTimesView(transits: $transits, viewModel: TransitTimesViewModel(transitToShow: .Planetary))
+                Text(" ")
+                HStack {
+                    Text("Moon Transits for \(chartName)").font(.title)
+                    Spacer()
+                }
+                TransitTimesView(transits: $transits, viewModel: TransitTimesViewModel(transitToShow: .Moon))
                 Text(" ")
                 HStack {
                     Text("Planetary Transits").font(.title)
                     Spacer()
                 }
-                TransitTimesView(transits: $skyTransits, transitToShow: .Planetary)
+                TransitTimesView(transits: $skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Planetary))
                 Text(" ")
                 HStack {
                     Text("Moon Transits").font(.title)
                     Spacer()
                 }
-                TransitTimesView(transits: $skyTransits, transitToShow: .Moon)
+                TransitTimesView(transits: $skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Moon))
             }
         }
     }

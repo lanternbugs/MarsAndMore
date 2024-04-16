@@ -44,13 +44,13 @@ struct MundaneView: View, AstrobotInterface {
                         Text("Planetary Transits").font(.title)
                         Spacer()
                     }
-                    TransitTimesView(transits: $transits, transitToShow: .Planetary)
+                    TransitTimesView(transits: $transits, viewModel: TransitTimesViewModel(transitToShow: .Planetary))
                     Text(" ")
                     HStack {
                         Text("Moon Transits").font(.title)
                         Spacer()
                     }
-                    TransitTimesView(transits: $transits, transitToShow: .Moon)
+                    TransitTimesView(transits: $transits, viewModel: TransitTimesViewModel(transitToShow: .Moon))
                 }
             }
             

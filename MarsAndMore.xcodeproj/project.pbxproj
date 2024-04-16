@@ -334,6 +334,8 @@
 		7679FF8227AF1850007911C9 /* Double+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7827AF184F007911C9 /* Double+Extensions.swift */; };
 		767C3A8D2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C3A8C2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift */; };
 		767C3A8E2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C3A8C2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift */; };
+		768060B22BCF207100B135C9 /* TransitTimesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768060B12BCF207100B135C9 /* TransitTimesViewModel.swift */; };
+		768060B32BCF207100B135C9 /* TransitTimesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768060B12BCF207100B135C9 /* TransitTimesViewModel.swift */; };
 		768453C1289C709D0086B37C /* HouseSystem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768453C0289C709D0086B37C /* HouseSystem+.swift */; };
 		768453C2289C709D0086B37C /* HouseSystem+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768453C0289C709D0086B37C /* HouseSystem+.swift */; };
 		76859E882B1A621E0007FED1 /* NatalViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76859E872B1A621E0007FED1 /* NatalViewRepresentable.swift */; };
@@ -717,6 +719,7 @@
 		7679FF7727AF184F007911C9 /* AstrobotInterface+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AstrobotInterface+Extensions.swift"; sourceTree = "<group>"; };
 		7679FF7827AF184F007911C9 /* Double+Extensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Double+Extensions.swift"; sourceTree = "<group>"; };
 		767C3A8C2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroPlanetButtonsViewModel.swift; sourceTree = "<group>"; };
+		768060B12BCF207100B135C9 /* TransitTimesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitTimesViewModel.swift; sourceTree = "<group>"; };
 		768453C0289C709D0086B37C /* HouseSystem+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "HouseSystem+.swift"; sourceTree = "<group>"; };
 		76859E872B1A621E0007FED1 /* NatalViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatalViewRepresentable.swift; sourceTree = "<group>"; };
 		76859E8B2B1A64A40007FED1 /* NatalChartDrawingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NatalChartDrawingView.swift; sourceTree = "<group>"; };
@@ -1121,6 +1124,7 @@
 				76525B3F2BCDAFC6004DC658 /* WheelChartDataViewModel.swift */,
 				767C3A8C2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift */,
 				76407C7A2BCDD8D100AEC890 /* SynastryChooserViewModel.swift */,
+				768060B12BCF207100B135C9 /* TransitTimesViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1769,6 +1773,7 @@
 				761DEEBD279B9EF900A71938 /* swepcalc.c in Sources */,
 				761DEECD279B9EF900A71938 /* swejpl.c in Sources */,
 				762EAF8928833F11007DB4A9 /* SpaceModels.swift in Sources */,
+				768060B22BCF207100B135C9 /* TransitTimesViewModel.swift in Sources */,
 				76908C9727C04FCC00806F9D /* View+Extensions.swift in Sources */,
 				7646F7CB28C7FBE5007FC924 /* ArtLibraryView.swift in Sources */,
 				76F5BDC427AF43F30075FCEC /* Date+Extensions.swift in Sources */,
@@ -1882,6 +1887,7 @@
 				761DEE7E279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */,
 				761DEEC8279B9EF900A71938 /* swedate.c in Sources */,
 				762EAF8A28833F11007DB4A9 /* SpaceModels.swift in Sources */,
+				768060B32BCF207100B135C9 /* TransitTimesViewModel.swift in Sources */,
 				76908C9827C04FCC00806F9D /* View+Extensions.swift in Sources */,
 				7646F7CC28C7FBE5007FC924 /* ArtLibraryView.swift in Sources */,
 				76F5BDC527AF43F30075FCEC /* Date+Extensions.swift in Sources */,
