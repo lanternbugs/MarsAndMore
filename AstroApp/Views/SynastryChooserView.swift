@@ -1,5 +1,5 @@
 /*
-*  Copyright (C) 2022 Michael R Adams.
+*  Copyright (C) 2022-2024 Michael R Adams.
 *  All rights reserved.
 *
 * This program can be redistributed and/or modified under
