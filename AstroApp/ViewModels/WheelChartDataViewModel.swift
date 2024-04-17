@@ -39,7 +39,7 @@ class WheelChartDataViewModel {
     }
     
     func getInHouseInfo(_ data: PlanetCell) -> String {
-        if houseData.isEmpty {
+        if houseData.isEmpty || houseData.count < 12 {
             return ""
         }
         if data.planet == .Ascendent || data.planet == .MC {
@@ -56,7 +56,9 @@ class WheelChartDataViewModel {
             var planetDegree = data.numericDegree
             if nextHouseDegree < previousHouseDegree {
                 nextHouseDegree += 360.0
-                planetDegree += 360.0
+                if planetDegree < 180.0 {
+                    planetDegree += 360.0
+                }
             }
             if isInHouse(planetDegree: planetDegree, nextDegree: nextHouseDegree, prevDegree: previousHouseDegree) {
                 if isOnHouseCusp(planetDegree: planetDegree, nextDegree: nextHouseDegree, house: i) {
