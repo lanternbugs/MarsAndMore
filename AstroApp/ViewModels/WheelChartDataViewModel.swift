@@ -109,7 +109,7 @@ class WheelChartDataViewModel {
     func getHouseRow(_ data: HouseCell) -> String {
         if let asc = planetData.first(where: { $0.planet == .Ascendent }) {
             if asc.numericDegree != houseData[0].numericDegree {
-                return data.house.getHouseNumericName() + "  " + data.degree + " " + data.sign.getName()
+                return data.house.getHouseNumericName(type: data.type) + "  " + data.degree + " " + data.sign.getName()
                 
             }
         }
@@ -118,7 +118,7 @@ class WheelChartDataViewModel {
                 if data.house.getHouseShortName() == houseData[0].house.getHouseShortName() {
                     return data.house.getHouseShortName() + " " + data.degree + " " + data.sign.getName()
                 }
-                return data.house.getHouseNumericName() + "  " + data.degree + " " + data.sign.getName()
+                return data.house.getHouseNumericName(type: data.type) + "  " + data.degree + " " + data.sign.getName()
                 
             }
         }

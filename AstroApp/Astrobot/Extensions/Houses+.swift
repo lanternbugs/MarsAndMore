@@ -31,7 +31,14 @@ extension Houses
         }
     }
     
-    func getHouseNumericName() -> String {
-        "H" + String(self.rawValue)
+    func getHouseNumericName(type: HouseCellType) -> String {
+        switch type {
+        case .House:
+            return "H" + String(self.rawValue)
+        case .ASC:
+            return type.rawValue
+        case .MC:
+            return type.rawValue
+        }
     }
 }

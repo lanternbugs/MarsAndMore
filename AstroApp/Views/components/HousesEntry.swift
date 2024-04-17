@@ -20,9 +20,22 @@ struct HousesEntry: View {
     var displayString: String {
         var display = ""
         if let houseData = data.planets as? [HouseCell] {
-            for val in houseData {
+            for val in houseData.sorted(by: {
+                if $0.type == .ASC {
+                 return true
+                } else if $0.type == .MC && $1.type != .ASC {
+                    return true
+                }
+                if $0.type == .MC && $1.type == .House {
+                    return true
+                }
+                if $0.type == .House && $1.type == .House {
+                    return $0.house.rawValue < $1.house.rawValue
+                }
+                return false
+            }) {
                 if data.calculationSettings.houseSystem == "W" || data.calculationSettings.houseSystem == "E" {
-                    display += val.house.getHouseNumericName() + ": " + val.degree + " " + val.sign.getNameShort() + "; "
+                    display += val.house.getHouseNumericName(type: val.type) + ": " + val.degree + " " + val.sign.getNameShort() + "; "
                 } else {
                     display += val.house.getHouseShortName() + ": " + val.degree + " " + val.sign.getNameShort() + "; "
                 }

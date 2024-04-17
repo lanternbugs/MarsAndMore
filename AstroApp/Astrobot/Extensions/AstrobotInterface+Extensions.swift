@@ -212,11 +212,24 @@ extension AstrobotInterface {
     {
         let adapter = AdapterToEphemeris()
         var row = PlanetRow()
+        let ascDegree = getAscendentDegree(time: time, from: location, calculationSettings: calculationSettings)
+        let mcDegree = getMCDegree(time: time, from: location, calculationSettings: calculationSettings)
         for house in Houses.allCases {
             let val =  adapter.getHouse(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), Int32(house.rawValue),
                                         system.utf8CString[0], calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
-            row.planets.append(HouseCell(degree: val.getAstroDegree(),sign: val.getAstroSign(),  house: house, numericDegree: val))
+            row.planets.append(HouseCell(degree: val.getAstroDegree(),sign: val.getAstroSign(),  house: house, numericDegree: val, type: .House))
         }
+        
+        if let houses = row.planets as? [HouseCell] {
+            if houses[0].numericDegree != ascDegree {
+                row.planets.append(HouseCell(degree: ascDegree.getAstroDegree(),sign: ascDegree.getAstroSign(),  house: .H1, numericDegree: ascDegree, type: .ASC))
+            }
+            if houses[9].numericDegree != mcDegree {
+                row.planets.append(HouseCell(degree: mcDegree.getAstroDegree(),sign: mcDegree.getAstroSign(),  house: .H10, numericDegree: mcDegree, type: .MC))
+            }
+        }
+            
+            
         
         return row
     }

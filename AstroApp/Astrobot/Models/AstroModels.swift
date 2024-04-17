@@ -52,12 +52,15 @@ struct TransitingPlanet {
     let degree: Double
     let laterDegree: Double
 }
-
+enum HouseCellType:String {
+    case House, MC, ASC
+}
 struct HouseCell: AstroRowCell {
     let degree: String
     let sign: Signs
     let house: Houses
     let numericDegree: Double
+    let type: HouseCellType
     let id = UUID()
 }
 

@@ -34,14 +34,21 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         }
     }
     
-    func populateHouseData(_ date: Double, _ location: LocationData?) -> [HouseCell] {
+    func populateHouseData(_ date: Double, _ location: LocationData?, housesOnly: Bool = true) -> [HouseCell] {
         if let location = location {
-            let housesRow = getHouses(time: date, location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
-            if let houses = housesRow.planets as? [HouseCell] {
+            let houseRow = getHouses(time: date, location: location, system: manager.houseSystem.getHouseCode(), calculationSettings:  manager.calculationSettings)
+            if let houses = houseRow.planets as? [HouseCell] {
+                if housesOnly {
+                    return reduceHouses(houses)
+                }
                 return houses
             }
         }
         return [HouseCell]()
+    }
+    
+    func reduceHouses(_ houseArray: [HouseCell]) -> [HouseCell] {
+        return houseArray.filter( { $0.type == HouseCellType.House })
     }
     
     func populateAspectsData(_ date: Double, _ location: LocationData?, secondTime: Double? = nil) -> [TransitCell] {
@@ -149,11 +156,12 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         if let location = manager.getSelectionLocation() {
             let viewModel = getChartViewModel(name: manager.getCurrentName(), type: .Natal)
 
-            viewModel.houseData = populateHouseData(manager.getSelectionTime(), location)
+            viewModel.houseData = populateHouseData(manager.getSelectionTime(), location, housesOnly: false)
             viewModel.planetData = populatePlanetsData(manager.getSelectionTime(), location)
             viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), location)
-            
-            let displayRow = DisplayPlanetRow(planets: viewModel.houseData, id: data.wrappedValue.count, type: .Houses(system: manager.houseSystem, chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
+            let displayHouseData = viewModel.houseData
+            viewModel.houseData = reduceHouses(viewModel.houseData)
+            let displayRow = DisplayPlanetRow(planets: displayHouseData, id: data.wrappedValue.count, type: .Houses(system: manager.houseSystem, chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
             data.wrappedValue.append(displayRow)
             return viewModel
         }
