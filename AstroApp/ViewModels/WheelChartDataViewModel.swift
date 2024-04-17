@@ -35,7 +35,66 @@ class WheelChartDataViewModel {
         if data.retrograde {
             text = text + " " + "R"
         }
-        return text
+        return text + getInHouseInfo(data)
+    }
+    
+    func getInHouseInfo(_ data: PlanetCell) -> String {
+        if houseData.isEmpty {
+            return ""
+        }
+        if data.planet == .Ascendent || data.planet == .MC {
+            return ""
+        }
+        for i in 1...12 {
+            var nextHouseDegree = houseData[i - 1].numericDegree
+            var previousHouseDegree = 1.0
+            if i == 1 {
+                previousHouseDegree = houseData[11].numericDegree
+            } else {
+                previousHouseDegree = houseData[i - 2].numericDegree
+            }
+            var planetDegree = data.numericDegree
+            if nextHouseDegree < previousHouseDegree {
+                nextHouseDegree += 360.0
+                planetDegree += 360.0
+            }
+            if isInHouse(planetDegree: planetDegree, nextDegree: nextHouseDegree, prevDegree: previousHouseDegree) {
+                if isOnHouseCusp(planetDegree: planetDegree, nextDegree: nextHouseDegree, house: i) {
+                    if i == 1 {
+                        return " in H12/1"
+                    }
+                    return " in H" + String(i - 1) + "/" + String(i)
+                } else {
+                    if i == 1 {
+                        return " in H12"
+                    }
+                    return " in H" + String(i - 1)
+                }
+            }
+        }
+        return ""
+    }
+    
+    func isInHouse(planetDegree: Double, nextDegree: Double, prevDegree: Double) -> Bool {
+        if planetDegree < nextDegree && planetDegree >= prevDegree {
+            return true
+        }
+        return false
+    }
+    
+    func isOnHouseCusp(planetDegree: Double, nextDegree: Double, house: Int) -> Bool {
+        
+        if house == 1 || house == 10 {
+            if planetDegree > nextDegree - 2.0 {
+                return true
+            } else {
+                return false
+            }
+        }
+        if planetDegree > nextDegree - 1.0 {
+            return true
+        }
+        return false
     }
     
     func getAspectsData() -> [TransitCell] {
