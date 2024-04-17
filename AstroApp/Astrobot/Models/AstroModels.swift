@@ -53,7 +53,7 @@ struct TransitingPlanet {
     let laterDegree: Double
 }
 enum HouseCellType:String {
-    case House, MC, ASC
+    case House, MC, ASC = "Asc"
 }
 struct HouseCell: AstroRowCell {
     let degree: String
