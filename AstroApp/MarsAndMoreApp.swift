@@ -20,7 +20,7 @@ struct MarsAndMoreApp: App {
     var body: some Scene {
         WindowGroup {
 #if os(macOS)
-            MainView().frame(minWidth: 720, idealWidth: 1300, maxWidth: .infinity, minHeight: 500, idealHeight: 700, maxHeight: .infinity)
+            MainView().frame(minWidth: 720, idealWidth: 1300, maxWidth: .infinity, minHeight: 500, idealHeight: 900, maxHeight: .infinity)
                 .environment(\.managedObjectContext, persistenceController.container.viewContext)
 #else
             MainView().environment(\.managedObjectContext, persistenceController.container.viewContext)
