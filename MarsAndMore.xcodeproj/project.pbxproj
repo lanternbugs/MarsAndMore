@@ -351,6 +351,11 @@
 		7688E0B127AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688E0AF27AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift */; };
 		7689C6B327D02FDD00B38E4A /* PlanetFetchType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689C6B227D02FDD00B38E4A /* PlanetFetchType+Extensions.swift */; };
 		7689C6B427D02FDD00B38E4A /* PlanetFetchType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689C6B227D02FDD00B38E4A /* PlanetFetchType+Extensions.swift */; };
+		768B2D822BD6D32C008184C3 /* WheelChartDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76525B3F2BCDAFC6004DC658 /* WheelChartDataViewModel.swift */; };
+		768B2D832BD6D32C008184C3 /* AstroPlanetButtonsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767C3A8C2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift */; };
+		768B2D842BD6D32C008184C3 /* SynastryChooserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76407C7A2BCDD8D100AEC890 /* SynastryChooserViewModel.swift */; };
+		768B2D852BD6D32C008184C3 /* TransitTimesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 768060B12BCF207100B135C9 /* TransitTimesViewModel.swift */; };
+		768B2D862BD6D32C008184C3 /* TransitMundaneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 766B30442BCF256600836F5A /* TransitMundaneViewModel.swift */; };
 		76908C9427C04F2900806F9D /* NamesTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9327C04F2900806F9D /* NamesTextModifier.swift */; };
 		76908C9527C04F2900806F9D /* NamesTextModifier.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9327C04F2900806F9D /* NamesTextModifier.swift */; };
 		76908C9727C04FCC00806F9D /* View+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76908C9627C04FCC00806F9D /* View+Extensions.swift */; };
@@ -1920,6 +1925,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				768B2D822BD6D32C008184C3 /* WheelChartDataViewModel.swift in Sources */,
+				768B2D832BD6D32C008184C3 /* AstroPlanetButtonsViewModel.swift in Sources */,
+				768B2D842BD6D32C008184C3 /* SynastryChooserViewModel.swift in Sources */,
+				768B2D852BD6D32C008184C3 /* TransitTimesViewModel.swift in Sources */,
+				768B2D862BD6D32C008184C3 /* TransitMundaneViewModel.swift in Sources */,
 				76930BAF2B7ACF7E0033D957 /* Houses+.swift in Sources */,
 				76930BB02B7ACF7E0033D957 /* HouseSystem+.swift in Sources */,
 				76930BB12B7ACF7E0033D957 /* OrbType+.swift in Sources */,
