@@ -19,60 +19,42 @@ struct PlanetsTab: View {
     @State private var data: [DisplayPlanetRow] = Array<DisplayPlanetRow>()
     @ViewBuilder
     var body: some View {
-        switch(roomState.wrappedValue) {
-        case .Reading:
-            VStack {
+        VStack {
+            switch(roomState.wrappedValue) {
+            case .Reading:
                 DoneView(newRoomState: .Planets)
                 ReadingView(state: roomState)
-            }
-        case .ChartSettings:
-            VStack {
+            case .ChartSettings:
                 DoneView(newRoomState: .Planets)
                 ChartSettings()
-            }
-        case .Mundane(let transits, let date):
-            VStack {
+            case .Mundane(let transits, let date):
                 DoneView(newRoomState: .Planets)
                 MundaneView(viewModel: TransitMundaneViewModel(transits: [], skyTransits: transits, transitData: nil, date: date, manager: manager))
-            }
-        case .NatalView(let dismissal, let viewModel):
-            VStack {
+            case .NatalView(let dismissal, let viewModel):
                 DoneView(newRoomState: dismissal)
                 WheelChartView(viewModel: viewModel)
-            }
-        case .Cities(let onDismiss):
-            VStack {
+            case .Cities(let onDismiss):
                 DoneView(newRoomState: .Names(onDismiss: onDismiss))
                 CitiesView(dismissView: onDismiss)
-            }
-        case .PlanetsCity:
-            VStack {
+            case .PlanetsCity:
                 DoneView(newRoomState: .Planets)
                 CitiesView()
-            }
-        case .About:
-            VStack {
+            case .About:
                 DoneView(newRoomState: .ChartSettings)
                 ReadingView(state: roomState)
-            }
-        case .Names(let onDismiss), .EditName(let onDismiss):
-            VStack {
+            case .Names(let onDismiss), .EditName(let onDismiss):
                 DoneView(newRoomState: onDismiss)
                 NameDataView(dismissView: onDismiss)
-            }
-        case .SynastryChooser:
-            VStack {
+            case .SynastryChooser:
                 DoneView(newRoomState: .Planets)
                 if manager.birthDates.count < 2 {
                     SynastryChooserView(selectedNameOne: "mike", selectedNameTwo: "jane")
                 } else {
                     SynastryChooserView(selectedNameOne: manager.birthDates[0].name, selectedNameTwo: manager.birthDates[1].name)
                 }
-                
+            default:
+                PlanetRoom(data: $data, roomState: roomState)
             }
-        default:
-            PlanetRoom(data: $data, roomState: roomState)
-            
         }
     }
 }

@@ -17,14 +17,14 @@ import SwiftUI
 struct ArtTab: View {
     @Environment(\.roomState) private var artState
     var body: some View {
-        switch(artState.wrappedValue) {
-        case .Library:
-            VStack {
+        VStack {
+            switch(artState.wrappedValue) {
+            case .Library:
                 DoneView(newRoomState: .Art)
                 ArtLibraryView()
+            default:
+                ArtView()
             }
-        default:
-            ArtView()
         }
     }
 }

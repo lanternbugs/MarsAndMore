@@ -20,71 +20,53 @@ struct ChartTab: View {
     @State private var data: [DisplayPlanetRow] = Array<DisplayPlanetRow>()
     @ViewBuilder
     var body: some View {
-        switch(roomState.wrappedValue) {
-        case .Reading:
-            VStack {
+        VStack {
+            switch(roomState.wrappedValue) {
+            case .Reading:
                 DoneView(newRoomState: .Chart)
                 ReadingView(state: roomState)
-            }
-            
-        case .Cities(let onDismiss):
-            VStack {
+                
+                    
+               
+                
+            case .Cities(let onDismiss):
                 DoneView(newRoomState: .Names(onDismiss: onDismiss))
                 CitiesView(dismissView: onDismiss)
-            }
-        case .PlanetsCity:
-            VStack {
+            case .PlanetsCity:
                 DoneView(newRoomState: .Planets)
                 CitiesView()
-            }
-        case .UpdateCity:
-            VStack {
+            case .UpdateCity:
                 DoneView(newRoomState: .EditName(onDismiss: .Chart))
                 CitiesView()
-            }
-        case .Names(let onDismiss), .EditName(let onDismiss):
-            VStack {
+            case .Names(let onDismiss), .EditName(let onDismiss):
                 DoneView(newRoomState: onDismiss)
                 NameDataView(dismissView: onDismiss)
-            }
-        case .ChartSettings:
-            VStack {
+            case .ChartSettings:
                 DoneView(newRoomState: .Chart)
                 ChartSettings()
-            }
-        case .Resources:
-            VStack {
+            case .Resources:
                 DoneView(newRoomState: .Chart)
                 ResourcesView()
-            }
-        case .TransitsView(let transits, let skyTransits, let date, let chartName, let transitData):
-            VStack {
+            case .TransitsView(let transits, let skyTransits, let date, let chartName, let transitData):
                 DoneView(newRoomState: .Chart)
                 TransitsView(viewModel: TransitMundaneViewModel(transits: transits, skyTransits: skyTransits, transitData: transitData, date: date, manager: manager),  chartName: chartName)
-            }
-        case .NatalView(let dismissal, let viewModel):
-            VStack {
+            case .NatalView(let dismissal, let viewModel):
                 DoneView(newRoomState: dismissal)
                 WheelChartView(viewModel: viewModel)
-            }
-        case .About:
-            VStack {
+            case .About:
                 DoneView(newRoomState: .ChartSettings)
                 ReadingView(state: roomState)
-            }
-        case .SynastryChooser:
-            VStack {
+            case .SynastryChooser:
                 DoneView(newRoomState: .Chart)
                 if manager.birthDates.count < 2 {
                     SynastryChooserView(selectedNameOne: "mike", selectedNameTwo: "jane")
                 } else {
                     SynastryChooserView(selectedNameOne: manager.birthDates[0].name, selectedNameTwo: manager.birthDates[1].name)
                 }
+            default:
+                ChartRoom(planetData: $data)
                 
             }
-        default:
-            ChartRoom(planetData: $data)
-            
         }
     }
 }
