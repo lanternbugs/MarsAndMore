@@ -24,11 +24,7 @@ struct ChartTab: View {
             switch(roomState.wrappedValue) {
             case .Reading:
                 DoneView(newRoomState: .Chart)
-                ReadingView(state: roomState)
-                
-                    
-               
-                
+                ReadingView(state: roomState)    
             case .Cities(let onDismiss):
                 DoneView(newRoomState: .Names(onDismiss: onDismiss))
                 CitiesView(dismissView: onDismiss)
