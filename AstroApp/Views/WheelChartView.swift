@@ -18,6 +18,8 @@ import SwiftUI
 struct WheelChartView: View {
     let viewModel: ChartViewModel
     @EnvironmentObject var manager:BirthDataManager
+    @State var opaqueValue = 0.0
+    let easeDuration = 0.5
 
     var body: some View {
         ScrollView {
@@ -50,20 +52,22 @@ struct WheelChartView: View {
                 }
                 if manager.chartWheelColorType == .Light {
 #if os(macOS)
-                NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6)
+                    NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #elseif os(iOS)
-                NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: getScreenWidth())
+                NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #endif
                 } else {
                     
 #if os(macOS)
-                NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6)
+                NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #elseif os(iOS)
-                NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: getScreenWidth())
+                NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #endif
             }
              WheelChartData(viewModel: viewModel) 
             }
+        }.onAppear() {
+            opaqueValue = 1.0
         }
     }
 }
