@@ -18,6 +18,9 @@ struct SpaceView: View {
     @EnvironmentObject private var manager: SpaceDataManager
     @Environment(\.roomState) private var spaceState
     @AppStorage("roverChoice") private var roverChoice: ImagePhotoType = ImagePhotoType.Curiosity
+    @State var scaleFactor = 3.0
+    @State var opaqueValue = 0.0
+    @State var rotationAngle = 4.0
     var body: some View {
         ScrollView {
             LazyVStack {
@@ -39,7 +42,7 @@ struct SpaceView: View {
                     case .Picture:
                         Button(action:  { spaceState.wrappedValue = RoomState.Picture }) {
                             Text("Nasa Picture of Day")
-                        }
+                        }.scaleEffect(CGSize(width: scaleFactor, height: scaleFactor)).opacity(opaqueValue).rotationEffect(.radians(rotationAngle))
                     }
                     
                 }
@@ -79,6 +82,12 @@ struct SpaceView: View {
                     Text("Error, invalid picker choice ")
                 }
             }
+        }.onAppear() {
+            withAnimation(.easeIn(duration: 0.4)) {
+                  scaleFactor = 1.0
+                  opaqueValue = 1.0
+                  rotationAngle = 0.0
+              }
         }
     }
 }
