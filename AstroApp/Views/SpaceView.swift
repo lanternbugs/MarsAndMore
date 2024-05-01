@@ -42,7 +42,7 @@ struct SpaceView: View {
                     case .Picture:
                         Button(action:  { spaceState.wrappedValue = RoomState.Picture }) {
                             Text("Nasa Picture of Day")
-                        }.scaleEffect(CGSize(width: scaleFactor, height: scaleFactor)).opacity(opaqueValue).rotationEffect(.radians(rotationAngle))
+                        }.scaleEffect(manager.nasaPhotoAnimationRan ? CGSize(width: 1.0, height: 1.0) : CGSize(width: scaleFactor, height: scaleFactor)).opacity(manager.nasaPhotoAnimationRan ? 1 : opaqueValue).rotationEffect(.radians(manager.nasaPhotoAnimationRan ? 0 : rotationAngle))
                     }
                     
                 }
@@ -84,9 +84,7 @@ struct SpaceView: View {
             }
         }.onAppear() {
             withAnimation(.easeIn(duration: 0.4)) {
-                  scaleFactor = 1.0
-                  opaqueValue = 1.0
-                  rotationAngle = 0.0
+                manager.nasaPhotoAnimationRan = true
               }
         }
     }

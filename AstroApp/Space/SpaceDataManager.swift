@@ -20,6 +20,7 @@ class SpaceDataManager: ObservableObject
     @Published var curiosityPhotos: [ImageInfo] = []
     @Published var opportunityPhotos: [ImageInfo] = []
     @Published var spiritPhotos: [ImageInfo] = []
+    @Published var nasaPhotoAnimationRan = false
     var curiosityManifest: RoverManifest?
     var opportunityManifest: RoverManifest?
     var spiritManifest: RoverManifest?
