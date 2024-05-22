@@ -48,39 +48,18 @@ struct SpaceView: View {
                 }
                 HStack {
                     Spacer()
-                    Text("Mars Rovers").font(.title)
+                    Text("Curiosity Rover").font(.title)
                     Spacer()
                 }
-                Picker(selection: $roverChoice, label: Text("Rover")) {
-                    Text(ImagePhotoType.Curiosity.rawValue).tag(ImagePhotoType.Curiosity)
-                    Text(ImagePhotoType.Opportunity.rawValue).tag(ImagePhotoType.Opportunity)
-                    Text(ImagePhotoType.Spirit.rawValue).tag(ImagePhotoType.Spirit)
-                }.pickerStyle(SegmentedPickerStyle())
-                switch(roverChoice) {
-                case .Curiosity:
-                    ForEach(manager.curiosityPhotos, id: \.id) {
-                        imageInfo in
-                        Text(imageInfo.title).font(Font.headline.weight(.semibold)).id(UUID())
-                        Text(imageInfo.description).font(Font.headline.weight(.regular)).id(UUID())
-                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Curiosity, id: imageInfo.id, enity: .Nasa)).id(UUID())
-                    }
-                case .Opportunity:
-                    ForEach(manager.opportunityPhotos, id: \.id) {
-                        imageInfo in
-                        Text(imageInfo.title).font(Font.headline.weight(.semibold)).id(UUID())
-                        Text(imageInfo.description).font(Font.headline.weight(.regular)).id(UUID())
-                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Opportunity, id: imageInfo.id, enity: .Nasa)).id(UUID())
-                    }
-                case .Spirit:
-                    ForEach(manager.spiritPhotos, id: \.id) {
-                        imageInfo in
-                        Text(imageInfo.title).font(Font.headline.weight(.semibold)).id(UUID())
-                        Text(imageInfo.description).font(Font.headline.weight(.regular)).id(UUID())
-                        DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Spirit, id: imageInfo.id, enity: .Nasa)).id(UUID())
-                    }
-                default:
-                    Text("Error, invalid picker choice ")
+                ForEach(manager.curiosityPhotos, id: \.id) {
+                    imageInfo in
+                    Text(imageInfo.title).font(Font.headline.weight(.semibold)).id(UUID())
+                    Text(imageInfo.description).font(Font.headline.weight(.regular)).id(UUID())
+                    DelayedImageView(url: imageInfo.url, key: PhotoKey(type: .Curiosity, id: imageInfo.id, enity: .Nasa)).id(UUID())
+                    
                 }
+                    
+                   
             }
         }.onAppear() {
             withAnimation(.easeIn(duration: 0.4)) {
