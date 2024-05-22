@@ -50,5 +50,5 @@ struct WheelChartHouseListing: View {
 }
 
 #Preview {
-    WheelChartHouseListing(viewModel: WheelChartDataViewModel(planets: [PlanetCell](), aspects: [TransitCell](), houses: [HouseCell](), chart: .Natal, title: "chart"))
+    WheelChartHouseListing(viewModel: WheelChartDataViewModel(planets: [PlanetCell](), aspects: [TransitCell](), houses: [HouseCell](), chart: .Natal, title: "chart", houseSystem: HouseSystem.Whole))
 }

@@ -20,13 +20,15 @@ class WheelChartDataViewModel {
     let aspectsData: [TransitCell]
     let chartTitle: String
     let chart: Charts
+    let houseSystem: HouseSystem
     
-    init(planets: [PlanetCell], aspects: [TransitCell], houses: [HouseCell], chart: Charts, title: String) {
+    init(planets: [PlanetCell], aspects: [TransitCell], houses: [HouseCell], chart: Charts, title: String, houseSystem: HouseSystem) {
         planetData = planets
         aspectsData = aspects
         houseData = houses
         chartTitle = title
         self.chart = chart
+        self.houseSystem = houseSystem
         
     }
     
@@ -86,6 +88,9 @@ class WheelChartDataViewModel {
     
     func isOnHouseCusp(planetDegree: Double, nextDegree: Double, house: Int) -> Bool {
         
+        if houseSystem == HouseSystem.Whole || houseSystem == HouseSystem.Equal {
+            return false
+        }
         if house == 1 || house == 10 {
             if planetDegree > nextDegree - 2.0 {
                 return true
