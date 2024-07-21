@@ -1,9 +1,13 @@
 # MarsAndMore
-App not available in the US market till January 1st, 2026 due to use of material from a 1930 book. Those in US who wish to run it can compile from source on Mac by hitting the play button and inputing code signing. No further setup will be needed. https://apps.apple.com/gb/app/mars-and-more/id1615627889 Mars and More is a GPL Swift App that uses Swift UI for the user Interface. It uses one third party C library discussed below under GPL for its ephemeris.  Releasing outside USA as reading material is currently under copyright for 2 more years in US. If the project is downloaded and run in Xcode it should be set up to run as a Mac App by hitting play. My previous app Diamond Chess, used Objective-c, with some Swift View Controllers, and Auto Layout for most scenes. And I thought it would be interesting to do an app in Swift with SwiftUI.
+GPL and On the App store on both Mac and iOS at https://apps.apple.com/gb/app/mars-and-more/id1615627889
+
+To run, one can compile from source on Mac by hitting the play button and inputing code signing. No further setup will be needed.  Mars and More is a GPL Swift App that uses Swift UI for the user Interface. It uses one third party C library discussed below under GPL for its ephemeris. My previous app Diamond Chess, used Objective-c, with some Swift View Controllers, and Auto Layout for most scenes. I thought it would be interesting to do an app in Swift with SwiftUI to teach myself SwiftUI.
+
+The app shows three different kinds of astro chart wheels: natal, synastry, and transit. It also shows the time of day in local time for when planets/comets make exact angles to each other for any day. The major angles are used, 0, 60, 90, 120, 180, but the minor angle transit times that were advanced by Kepler can also be shown if enabled in settings.  See the resource view in app for exactly which minor angles are included. The app's models make extensive use of enums.
 
 Mars and More git is managed on Dropbox and Master is pushed to Github.
 
-In 1.1 update shows Mars Rover photo's with images using the NASA API on the Space Tab. Starting this with NASA Photo of day at top option then the three choices of five rover photos each day for Curiosity, Opportunity and Spirit. Photos will update daily and current data is saved with Core Data. Comming up, 1.3  in planning will have an Art Tab with mars and venus themed art to update each day from the MET.
+The app as of 1.1 has Mars Curiosity Rover photo's with images using the NASA API on the Space Tab. There is also an option to see the NASA Photo of day at top of Space tab. Photos will update daily at midnight and current data is saved with Core Data. 1.3 has an Art Tab with Mars and Venus themed art that updates each day from the MET. There is an option to save art images that the user likes to a library similar to a like feature.
 
 This program, or parts, can be redistributed and/or modified under the terms of the GNU General Public License; either version 2 of the License, or (at your option) any later version.
 
