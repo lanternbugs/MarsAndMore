@@ -1,5 +1,5 @@
 # MarsAndMore
-GPL and On the App store on both Mac and iOS at https://apps.apple.com/gb/app/mars-and-more/id1615627889
+GPL and On the App store on both Mac and iOS at https://apps.apple.com/gb/app/mars-more-astro-charts/id1615627889
 
 To run, one can compile from source on Mac by hitting the play button and inputing code signing. No further setup will be needed.  Mars and More is a GPL Swift App that uses Swift UI for the user Interface. It uses one third party C library discussed below under GPL for its ephemeris. My previous app Diamond Chess, used Objective-c, with some Swift View Controllers, and Auto Layout for most scenes. I thought it would be interesting to do an app in Swift with SwiftUI to teach myself SwiftUI.
 
