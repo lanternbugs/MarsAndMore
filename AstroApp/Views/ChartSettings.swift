@@ -30,9 +30,9 @@ struct ChartSettings: View {
                 }.padding(.top)
 
 #endif
-                Toggle("Show Planet Reading Buttons", isOn: $manager.showPlanetReadingButtons)
+                //Toggle("Show Planet Reading Buttons", isOn: $manager.showPlanetReadingButtons)
                 Toggle("Tropical", isOn: $manager.tropical)
-                Text("Turn off for Sidereal. Sign readings intended for Tropical.")
+                Text("Turn off for Sidereal options")
                 if !manager.tropical {
 #if os(macOS)
                         Spacer()

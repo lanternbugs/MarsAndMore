@@ -47,13 +47,15 @@ struct MarsTab: View, AstrobotReadingInterface {
                         Text("Go").font(.title)
                     }
                 }
+                /*
                 if case .Reading(let planet, let sign) = sunData
                 {
                     Text("\(planet.getName()) in \(sign.getName())").font(.headline)
                 } else {
                     Text("Sun").font(.headline)
                 }
-                Picker(selection: $planetChoice, label: Text("Choice")) {
+                 */
+               /* Picker(selection: $planetChoice, label: Text("Choice")) {
                     Text("Sun").tag(Planets.Sun)
 
                     Text("Moon").tag(Planets.Moon)
@@ -65,8 +67,14 @@ struct MarsTab: View, AstrobotReadingInterface {
                     
 
                 }.pickerStyle(SegmentedPickerStyle())
+                */
                 if readingInitialized {
-                    switch(planetChoice) {
+                    if case .Reading(let planet, let sign) = marsData
+                    {
+                        Text("\(planet.getName()) in \(sign.getName())").font(.headline)
+                    }
+                    ReadingView(state: $sunData)
+                   /* switch(planetChoice) {
                     case .Sun:
                         ReadingView(state: $sunData)
                     case .Moon:
@@ -80,6 +88,7 @@ struct MarsTab: View, AstrobotReadingInterface {
                     default:
                         Text("Error, there is no reading for this planet ")
                     }
+                    */
                 } else {
                     DefaultReadingContent()
                     

@@ -27,7 +27,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @AppStorage("orbType") var orbSelection: OrbType = OrbType.MediumOrbs
     @AppStorage("transitOrbType") var transitOrbSelection: OrbType = OrbType.NarrowOrbs
     @AppStorage("synastryOrbType") var synastryOrbSelection: OrbType = OrbType.NarrowOrbs
-    @AppStorage("showPlanetReadingButtons") var showPlanetReadingButtons: Bool = true
+    /*@AppStorage("showPlanetReadingButtons")*/ var showPlanetReadingButtons: Bool = false
     @AppStorage("tropical") var tropical: Bool = true
     @AppStorage("showMinorAspects") var showMinorAspects: Bool = false
     @AppStorage("chartWheelColorType") var chartWheelColorType:ChartWheelColorType = ChartWheelColorType.Light
