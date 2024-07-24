@@ -32,7 +32,7 @@ class TransitTimesViewModel {
             }
         }
         if transitToShow == .Planetary {
-            if transit.planet != .Moon && transit.planet2 != .Moon {
+            if transit.planet != .Moon {
                 return true
             }
         }
