@@ -91,7 +91,7 @@ class WheelChartDataViewModel {
         if houseSystem == HouseSystem.Whole || houseSystem == HouseSystem.Equal {
             return false
         }
-        if house == 1 || house == 10 {
+        if house == 1 || house == 10 || house == 7 || house == 4 {
             if planetDegree > nextDegree - 2.0 {
                 return true
             } else {
