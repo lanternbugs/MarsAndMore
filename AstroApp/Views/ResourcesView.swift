@@ -17,6 +17,8 @@ struct ResourcesView: View {
     let astrologyKingAspects = "https://astrologyking.com/aspects/"
     let astrologyKingTransits = "https://astrologyking.com/transits/"
     let cafeAstrology = "https://cafeastrology.com/siteindex.html"
+    let columns: [GridItem] =
+                 Array(repeating: .init(.flexible()), count: 2)
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -68,6 +70,40 @@ struct ResourcesView: View {
                         Spacer()
                     }
                 }
+            }
+            Text("")
+            HStack {
+                Text("Wheel Chart Planet Symbols").font(.title2)
+                Spacer()
+            }
+
+            LazyVGrid(columns: columns) {
+                ForEach(Planets.allCases, id: \.self) { planet in
+                    switch(planet) {
+                    case .Pholus:
+                        HStack {
+                            Text(" \(planet.getName()) - No Symbol")
+                            Spacer()
+                        }
+                    case .Ascendent:
+                        HStack {
+                            Text(" \(planet.getName()) - Ascendent")
+                            Spacer()
+                        }
+                    case .MC:
+                        HStack {
+                            Text(" \(planet.getName()) - Medium Coeli")
+                            Spacer()
+                        }
+                    default:
+                        HStack {
+                            Text(" \(planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: 20))
+                            Text(planet.getName())
+                            Spacer()
+                        }
+                    }
+                }
+                Text("")
             }
         }
         
