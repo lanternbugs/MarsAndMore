@@ -103,8 +103,31 @@ struct ResourcesView: View {
                         }
                     }
                 }
-                Text("")
             }
+            Text("")
+            HStack {
+                Text("Wheel Chart Sign Symbols").font(.title2)
+                Spacer()
+            }
+
+            LazyVGrid(columns: columns) {
+                ForEach(Signs.allCases, id: \.self) { sign in
+                    switch(sign) {
+                    case .None:
+                        HStack {
+                            Text("")
+                            Spacer()
+                        }
+                    default:
+                        HStack {
+                            Text(" \(sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: 20))
+                            Text(sign.getName())
+                            Spacer()
+                        }
+                    }
+                }
+            }
+            Text("")
         }
         
     }
