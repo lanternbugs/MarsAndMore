@@ -18,7 +18,7 @@ struct WheelChartHouseListing: View {
                     Spacer()
                 }
             }
-            if let asc = viewModel.planetData.first(where: { $0.planet == .Ascendent }) {
+            if let asc = viewModel.planetData.first(where: { $0.planet == .Ascendant }) {
                 if asc.numericDegree != viewModel.houseData[0].numericDegree {
                     HStack {
                         Text("Asc " + asc.degree + " " + asc.sign.getName())

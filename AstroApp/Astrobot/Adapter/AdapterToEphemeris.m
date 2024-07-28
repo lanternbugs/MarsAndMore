@@ -37,7 +37,7 @@
     return xx[0];
 }
 
--(double) getAscendent:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem
+-(double) getAscendant:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem
 {
     double cusp[16];  /* empty + 12 houses */
     double ascmc[10];    /* asc, mc, armc, vertex .. */

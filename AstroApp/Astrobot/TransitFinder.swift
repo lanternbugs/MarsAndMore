@@ -18,7 +18,7 @@ struct TransitFinder {
     let tolerance = 0.0001
     let timeDifferential: Double = 1.0/1000000.0
     static var adapterCalls = 0
-    let orbitalDictionary: [Planets: Int] = [.Ascendent: 0, .MC: 1, .Moon: 2, .Sun: 3, .Mercury: 4, .Venus: 5, .Mars: 6, .Vesta: 7, .Juno: 8, .Ceres: 9, .Pallas: 10, .Jupiter: 11, .TrueNode: 12, .SouthNode: 13, .Saturn: 14, .Chiron: 15, .Uranus: 16, .Pholus: 17, .Neptune: 18, .Pluto: 19]
+    let orbitalDictionary: [Planets: Int] = [.Ascendant: 0, .MC: 1, .Moon: 2, .Sun: 3, .Mercury: 4, .Venus: 5, .Mars: 6, .Vesta: 7, .Juno: 8, .Ceres: 9, .Pallas: 10, .Jupiter: 11, .TrueNode: 12, .SouthNode: 13, .Saturn: 14, .Chiron: 15, .Uranus: 16, .Pholus: 17, .Neptune: 18, .Pluto: 19]
     
     func getMoonTransitsOfDay(start_time: Double, end_time: Double, manager: BirthDataManager) -> [TransitTime] {
         let adapter = AdapterToEphemeris()
@@ -38,7 +38,7 @@ struct TransitFinder {
         }
         // Transits
         for planet in Planets.allCases {
-            if planet == .Moon || planet == .MC || planet == .Ascendent || !manager.bodiesToShow.contains(planet) {
+            if planet == .Moon || planet == .MC || planet == .Ascendant || !manager.bodiesToShow.contains(planet) {
                 continue
             }
             var planetDegree: (Double, Double) = (0,0)
@@ -73,7 +73,7 @@ struct TransitFinder {
         
         // sign changes
         for planet in Planets.allCases {
-            if planet == .Moon || planet == .MC || planet == .Ascendent || !manager.bodiesToShow.contains(planet) {
+            if planet == .Moon || planet == .MC || planet == .Ascendant || !manager.bodiesToShow.contains(planet) {
                 continue
             }
             var planetDegree: (Double, Double) = (0, 0)
@@ -92,11 +92,11 @@ struct TransitFinder {
         }
         // transits
      for planet in Planets.getPlanetsByOrbitalPeriod() {
-            if planet == .Moon || planet == .MC || planet == .Ascendent || !manager.bodiesToShow.contains(planet) {
+            if planet == .Moon || planet == .MC || planet == .Ascendant || !manager.bodiesToShow.contains(planet) {
                 continue
             }
             for transitingPlanet  in Planets.getPlanetsByOrbitalPeriod() {
-                if transitingPlanet == .Moon || transitingPlanet == .MC || transitingPlanet == .Ascendent || !manager.bodiesToShow.contains(transitingPlanet) {
+                if transitingPlanet == .Moon || transitingPlanet == .MC || transitingPlanet == .Ascendant || !manager.bodiesToShow.contains(transitingPlanet) {
                     continue
                 }
                 if getOrbitalSpot(transitingPlanet) <= getOrbitalSpot(planet) {
@@ -244,7 +244,7 @@ struct TransitFinder {
         var transitTimes = [TransitTime]()
         let natalDictionary = getNatalDictionary(transitTimeData)
         for planet in Planets.getPlanetsByOrbitalPeriod() {
-            if planet == .MC || planet == .Ascendent || !manager.bodiesToShow.contains(planet) {
+            if planet == .MC || planet == .Ascendant || !manager.bodiesToShow.contains(planet) {
                 continue
             }
             for natalPlanet  in Planets.allCases {
@@ -282,15 +282,15 @@ struct TransitFinder {
         let adapter = AdapterToEphemeris()
         var natalDictionary = [Planets: Double]()
         for planet in Planets.allCases {
-            if planet != .MC && planet != .Ascendent {
+            if planet != .MC && planet != .Ascendant {
                 natalDictionary[planet] = adapter.getPlanetDegree(transitTimeData.time, Int32(planet.getAstroIndex()), true, 0)
                 TransitFinder.adapterCalls += 1
             } else {
                 guard let location =  transitTimeData.location else {
                         continue
                 }
-                if planet == .Ascendent {
-                    natalDictionary[planet] = adapter.getAscendent(transitTimeData.time, location.latitude.getLatLongAsDouble(), location.longitude.getLatLongAsDouble(), transitTimeData.calculationSettings.houseSystem.utf8CString[0], true, 0)
+                if planet == .Ascendant {
+                    natalDictionary[planet] = adapter.getAscendant(transitTimeData.time, location.latitude.getLatLongAsDouble(), location.longitude.getLatLongAsDouble(), transitTimeData.calculationSettings.houseSystem.utf8CString[0], true, 0)
                 } else if planet == .MC {
                     natalDictionary[planet] = adapter.getMC(transitTimeData.time, location.latitude.getLatLongAsDouble(), location.longitude.getLatLongAsDouble(), transitTimeData.calculationSettings.houseSystem.utf8CString[0], true, 0)
                 }

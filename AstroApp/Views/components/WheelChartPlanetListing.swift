@@ -17,9 +17,9 @@ struct WheelChartPlanetListing: View {
                 Text(viewModel.chartTitle).font(.title2)
                 Spacer()
             }
-            ForEach(viewModel.planetData.sorted(by: { if $0.planet == .MC && $1.planet == .Ascendent {
+            ForEach(viewModel.planetData.sorted(by: { if $0.planet == .MC && $1.planet == .Ascendant {
                 return false
-            } else if $0.planet == .Ascendent && $1.planet == .MC {
+            } else if $0.planet == .Ascendant && $1.planet == .MC {
                 return true
             }
                return $0.planet.rawValue < $1.planet.rawValue }), id: \.id) {

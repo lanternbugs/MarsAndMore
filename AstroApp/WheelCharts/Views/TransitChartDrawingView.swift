@@ -76,7 +76,7 @@ extension TransitChartDrawingView {
             if let planetArray = viewModel.secondaryPlanetsDictionary[a] {
                 let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
                 if !usersPlanets.isEmpty {
-                    if !usersPlanets.filter({($0.planet != .Ascendent) && ($0.planet != .MC)}).isEmpty {
+                    if !usersPlanets.filter({($0.planet != .Ascendant) && ($0.planet != .MC)}).isEmpty {
                         drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 8, thickness: thickness, useRed: true)
                         drawLine(degree: trueDegree, radius: viewModel.interiorRadius + 5 , length: 5, thickness: thickness, useRed: true)
                         drawUpperPlanetListing(usersPlanets, trueDegree)
@@ -90,7 +90,7 @@ extension TransitChartDrawingView {
             if let planetArray = viewModel.planetsDictionary[a] {
                 let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
                 if !usersPlanets.isEmpty {
-                    if !usersPlanets.filter({($0.planet != .Ascendent || viewModel.showAscendent()) && ($0.planet != .MC || viewModel.showMC())}).isEmpty {
+                    if !usersPlanets.filter({($0.planet != .Ascendant || viewModel.showAscendant()) && ($0.planet != .MC || viewModel.showMC())}).isEmpty {
                         drawLine(degree: trueDegree, radius: viewModel.interiorRadius - viewModel.innerHouseThickness, length: 8, thickness: thickness)
                         drawLine(degree: trueDegree, radius: viewModel.innerRadius + 5, length: 5, thickness: thickness)
                         drawLowerPlanetListing(usersPlanets, trueDegree)
@@ -114,7 +114,7 @@ extension TransitChartDrawingView {
         
         var i = 0
         for planet in sortedArray {
-            if (planet.planet == .Ascendent) || (planet.planet == .MC) {
+            if (planet.planet == .Ascendant) || (planet.planet == .MC) {
                 continue
             }
             
@@ -148,7 +148,7 @@ extension TransitChartDrawingView {
 #endif
         var i = 0
         for planet in sortedArray {
-            if (planet.planet == .Ascendent && !viewModel.showAscendent()) || (planet.planet == .MC && !viewModel.showMC()) {
+            if (planet.planet == .Ascendant && !viewModel.showAscendant()) || (planet.planet == .MC && !viewModel.showMC()) {
                 continue
             }
             let printInfo = viewModel.getLowerPrintingDegree()
@@ -156,7 +156,7 @@ extension TransitChartDrawingView {
             let colorChoice = planet.planet == .Sun ? Colors.orange : Colors.black
             let placement = viewModel.interiorRadius - (viewModel.innerHouseThickness / 2)
 
-            if planet.planet == .Ascendent {
+            if planet.planet == .Ascendant {
                 printText(viewModel.getXYFromPolar(placement - spread - 2, printDegree), "Asc", trueDegree, false, fontSize)
             } else if planet.planet == .MC {
                 printText(viewModel.getXYFromPolar(placement - spread - 2, printDegree), "MC", trueDegree, false, fontSize)

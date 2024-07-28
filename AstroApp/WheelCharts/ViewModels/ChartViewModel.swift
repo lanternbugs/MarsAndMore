@@ -267,11 +267,11 @@ class ChartViewModel {
 #endif
     }
     
-    func showAscendent() -> Bool {
+    func showAscendant() -> Bool {
         if houseData.isEmpty {
             return false
         }
-        let ascendentDegree = planetData.filter( { $0.planet == .Ascendent} )
+        let ascendentDegree = planetData.filter( { $0.planet == .Ascendant} )
         if !ascendentDegree.isEmpty {
             if ascendentDegree[0].numericDegree != houseData[0].numericDegree {
                 return true
@@ -296,7 +296,7 @@ class ChartViewModel {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
         var i = 0
         for planet in sortedArray {
-            if (planet.planet == .Ascendent) || (planet.planet == .MC) {
+            if (planet.planet == .Ascendant) || (planet.planet == .MC) {
                 continue
             }
             var printDegree = trueDegree
@@ -332,7 +332,7 @@ class ChartViewModel {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
         var i = 0
         for planet in sortedArray {
-            if (planet.planet == .Ascendent && !showAscendent()) || (planet.planet == .MC && !showMC()) {
+            if (planet.planet == .Ascendant && !showAscendant()) || (planet.planet == .MC && !showMC()) {
                 continue
             }
             var printDegree = trueDegree
@@ -368,7 +368,7 @@ class ChartViewModel {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
         var i = 0
         for planet in sortedArray {
-            if (planet.planet == .Ascendent && !showAscendent()) || (planet.planet == .MC && !showMC())  {
+            if (planet.planet == .Ascendant && !showAscendant()) || (planet.planet == .MC && !showMC())  {
                 continue
             }
             var printDegree = trueDegree
@@ -413,7 +413,7 @@ class ChartViewModel {
             if let planetArray = planetsDictionary[a] {
                 let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
                 if !usersPlanets.isEmpty {
-                    if !usersPlanets.filter({($0.planet != .Ascendent || showAscendent()) && ($0.planet != .MC || showMC())}).isEmpty {
+                    if !usersPlanets.filter({($0.planet != .Ascendant || showAscendant()) && ($0.planet != .MC || showMC())}).isEmpty {
                         computeNatalSeperation(usersPlanets, trueDegree)
                     }
                 }
@@ -440,7 +440,7 @@ class ChartViewModel {
             if let planetArray = secondaryPlanetsDictionary[a] {
                 let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
                 if !usersPlanets.isEmpty {
-                    if !usersPlanets.filter({($0.planet != .Ascendent) && ($0.planet != .MC)}).isEmpty {
+                    if !usersPlanets.filter({($0.planet != .Ascendant) && ($0.planet != .MC)}).isEmpty {
                         computeUpperSeperation(usersPlanets, trueDegree)
                     }
                 }
@@ -449,7 +449,7 @@ class ChartViewModel {
             if let planetArray =  planetsDictionary[a] {
                 let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
                 if !usersPlanets.isEmpty {
-                    if !usersPlanets.filter({($0.planet != .Ascendent || showAscendent()) && ($0.planet != .MC || showMC())}).isEmpty {
+                    if !usersPlanets.filter({($0.planet != .Ascendant || showAscendant()) && ($0.planet != .MC || showMC())}).isEmpty {
                         computeLowerSeperation(usersPlanets, trueDegree)
                     }
                 }

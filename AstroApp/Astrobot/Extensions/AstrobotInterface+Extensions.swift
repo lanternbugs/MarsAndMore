@@ -20,7 +20,7 @@ extension AstrobotBaseInterface {
         let interval: Double = 0.1
         for type in Planets.allCases
         {
-            if type == .Ascendent {
+            if type == .Ascendant {
                 guard let location = location else {
                     continue
                 }
@@ -73,13 +73,13 @@ extension AstrobotBaseInterface {
     
     func calculateASC(time: Double, location: LocationData, calculationSettings: CalculationSettings)->PlanetCell
     {
-        let degree = getAscendentDegree(time: time, from: location, calculationSettings: calculationSettings)
-        return  PlanetCell(planet: .Ascendent, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false, numericDegree: degree)
+        let degree = getAscendantDegree(time: time, from: location, calculationSettings: calculationSettings)
+        return  PlanetCell(planet: .Ascendant, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false, numericDegree: degree)
     }
     
-    func getAscendentDegree(time: Double, from location: LocationData, calculationSettings: CalculationSettings)->Double {
+    func getAscendantDegree(time: Double, from location: LocationData, calculationSettings: CalculationSettings)->Double {
         let adapter = AdapterToEphemeris()
-        return adapter.getAscendent(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), calculationSettings.houseSystem.utf8CString[0], calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
+        return adapter.getAscendant(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), calculationSettings.houseSystem.utf8CString[0], calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
     }
     
     func calculateMC(time: Double, location: LocationData, calculationSettings: CalculationSettings)->PlanetCell
@@ -145,11 +145,11 @@ extension AstrobotInterface {
         var transitPlanets = [TransitingPlanet]()
         for type in Planets.allCases
         {
-            if type == .Ascendent {
+            if type == .Ascendant {
                 guard let location = location else {
                     continue
                 }
-                let degree = getAscendentDegree(time: time, from: location, calculationSettings: calculationSettings)
+                let degree = getAscendantDegree(time: time, from: location, calculationSettings: calculationSettings)
                 transitPlanets.append(TransitingPlanet(planet: type, degree: degree, laterDegree: degree))
 
             }
@@ -212,7 +212,7 @@ extension AstrobotInterface {
     {
         let adapter = AdapterToEphemeris()
         var row = PlanetRow()
-        let ascDegree = getAscendentDegree(time: time, from: location, calculationSettings: calculationSettings)
+        let ascDegree = getAscendantDegree(time: time, from: location, calculationSettings: calculationSettings)
         let mcDegree = getMCDegree(time: time, from: location, calculationSettings: calculationSettings)
         for house in Houses.allCases {
             let val =  adapter.getHouse(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), Int32(house.rawValue),

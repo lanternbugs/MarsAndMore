@@ -92,9 +92,9 @@ struct ResourcesView: View {
                             Text(" \(planet.getName()) - No Symbol").font(.body)
                             Spacer()
                         }
-                    case .Ascendent:
+                    case .Ascendant:
                         HStack {
-                            Text(" \(planet.getName()) - Ascendent").font(.body)
+                            Text(" \(planet.getName()) - Ascendant").font(.body)
                             Spacer()
                         }
                     case .MC:

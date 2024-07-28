@@ -44,7 +44,7 @@ class WheelChartDataViewModel {
         if houseData.isEmpty || houseData.count < 12 {
             return ""
         }
-        if data.planet == .Ascendent || data.planet == .MC {
+        if data.planet == .Ascendant || data.planet == .MC {
             return ""
         }
         for i in 1...12 {
@@ -135,10 +135,10 @@ class WheelChartDataViewModel {
         }
         if chart == .Synastry {
             return aspectsData.sorted(by: {
-                if $0.planet2 == .MC && $1.planet2 == .Ascendent  {
+                if $0.planet2 == .MC && $1.planet2 == .Ascendant  {
                     return false
                 }
-                if $0.planet2 == .Ascendent && $1.planet2 == .MC  {
+                if $0.planet2 == .Ascendant && $1.planet2 == .MC  {
                     return true
                 }
                 return $0.planet2.rawValue < $1.planet2.rawValue })
@@ -173,7 +173,7 @@ class WheelChartDataViewModel {
     }
     
     func getHouseRow(_ data: HouseCell) -> String {
-        if let asc = planetData.first(where: { $0.planet == .Ascendent }) {
+        if let asc = planetData.first(where: { $0.planet == .Ascendant }) {
             if asc.numericDegree != houseData[0].numericDegree {
                 return data.house.getHouseNumericName(type: data.type) + "  " + data.degree + " " + data.sign.getName()
                 

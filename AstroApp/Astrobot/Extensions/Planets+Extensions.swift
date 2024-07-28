@@ -17,7 +17,7 @@ extension Planets {
         switch(self) {
         case .MC:
             return "MC"
-        case .Ascendent:
+        case .Ascendant:
             return "Asc"
         case .Sun:
             return "Sun"
@@ -100,7 +100,7 @@ extension Planets {
     }
     
     static func getPlanetsByOrbitalPeriod() -> [Planets] {
-        [.Ascendent, .MC, .Moon, .Sun, .Mercury, .Venus, .Mars, .Vesta, .Juno, .Ceres, .Pallas, .Jupiter, .TrueNode, .SouthNode, .Saturn, .Chiron, .Uranus, .Pholus, .Neptune, .Pluto]
+        [.Ascendant, .MC, .Moon, .Sun, .Mercury, .Venus, .Mars, .Vesta, .Juno, .Ceres, .Pallas, .Jupiter, .TrueNode, .SouthNode, .Saturn, .Chiron, .Uranus, .Pholus, .Neptune, .Pluto]
     }
     
     func getNatalOrb(type: OrbType, with aspect: Aspects)->Double
@@ -132,7 +132,7 @@ extension Planets {
         switch(self) {
         case .Sun, .Moon:
             return 4.0
-        case .Mars, .Venus, .Mercury, .Ascendent:
+        case .Mars, .Venus, .Mercury, .Ascendant:
             return 3.0
         default:
             return 2.0
@@ -143,7 +143,7 @@ extension Planets {
         switch(self) {
         case .Sun, .Moon:
             return 8.0
-        case .Mars, .Venus, .Mercury, .Ascendent:
+        case .Mars, .Venus, .Mercury, .Ascendant:
             return 6.0
         default:
             return 5.0
@@ -154,7 +154,7 @@ extension Planets {
         switch(self) {
         case .Sun, .Moon:
             return 10.0
-        case .Mars, .Venus, .Mercury, .Ascendent:
+        case .Mars, .Venus, .Mercury, .Ascendant:
             return 8.0
         default:
             return 6.0
@@ -165,7 +165,7 @@ extension Planets {
         switch(self) {
         case .Sun, .Moon:
             return 3.0
-        case .Mars, .Venus, .Mercury, .Ascendent:
+        case .Mars, .Venus, .Mercury, .Ascendant:
             return 2.0
         default:
             return 1.0
@@ -176,7 +176,7 @@ extension Planets {
         switch(self) {
         case .Sun, .Moon:
             return 5.0
-        case .Mars, .Venus, .Mercury, .Ascendent:
+        case .Mars, .Venus, .Mercury, .Ascendant:
             return 4.0
         default:
             return 3.0
@@ -187,7 +187,7 @@ extension Planets {
         switch(self) {
         case .Sun, .Moon:
             return 6.0
-        case .Mars, .Venus, .Mercury, .Ascendent:
+        case .Mars, .Venus, .Mercury, .Ascendant:
             return 5.0
         default:
             return 5.0
@@ -264,7 +264,7 @@ extension Planets {
         switch(self) {
         case .MC:
             return -2
-        case .Ascendent:
+        case .Ascendant:
             return -1
         case .Sun:
             return 0
@@ -311,7 +311,7 @@ extension Planets {
         case -2:
             return .MC
         case -1:
-            return .Ascendent
+            return .Ascendant
         case 0:
             return .Sun
         case 1:

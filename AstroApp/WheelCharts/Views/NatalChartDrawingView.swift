@@ -112,7 +112,7 @@ extension NatalChartDrawingView {
                 let usersPlanets = planetArray.filter { manager.bodiesToShow.contains($0.planet) }
                 if !usersPlanets.isEmpty {
                     if !usersPlanets.filter({
-                        ($0.planet != .Ascendent || viewModel.showAscendent()) && ($0.planet != .MC || viewModel.showMC())
+                        ($0.planet != .Ascendant || viewModel.showAscendant()) && ($0.planet != .MC || viewModel.showMC())
                     }).isEmpty {
                         drawLine(degree: trueDegree, radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: 16, thickness: thickness)
                         drawLine(degree: trueDegree, radius: viewModel.innerRadius + 6, length: 6, thickness: thickness)
@@ -211,7 +211,7 @@ extension NatalChartDrawingView {
         
         var i = 0
         for planet in sortedArray {
-            if (planet.planet == .Ascendent && !viewModel.showAscendent()) || (planet.planet == .MC && !viewModel.showMC()) {
+            if (planet.planet == .Ascendant && !viewModel.showAscendant()) || (planet.planet == .MC && !viewModel.showMC()) {
                 continue
             }
             let printInfo = viewModel.getNatalPrintingDegree()
@@ -219,7 +219,7 @@ extension NatalChartDrawingView {
             let printSize = printInfo.1
             let colorChoice = planet.planet == .Sun ? Colors.orange : Colors.black
             
-            if planet.planet == .Ascendent {
+            if planet.planet == .Ascendant {
                 printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), "Asc", trueDegree, false, fontSize)
             } else if planet.planet == .MC {
                 printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), "MC", trueDegree, false, fontSize)
