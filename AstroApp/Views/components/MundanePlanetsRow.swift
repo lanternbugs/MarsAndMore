@@ -26,14 +26,14 @@ struct MundanePlanetsRow: View, AstrobotInterface {
                     manager.planetsLocationData = nil
                 }) {
                     Text("Remove City")
-                }
+                }.padding(.leading)
                 Text(" \(location.latitude) \(location.longitude)")
             } else {
                 Button(action: {
                         roomState.wrappedValue = .PlanetsCity
                 }) {
                     Text("+City")
-                }
+                }.padding(.leading)
                 
             }
             Spacer()
@@ -41,9 +41,32 @@ struct MundanePlanetsRow: View, AstrobotInterface {
                 Text("Mundane")
             }
             Spacer()
+#if os(macOS)
+            Button(action: { roomState.wrappedValue = .Ephemeris }) {
+                Text("Ephemeris").font(Font.subheadline)
+            }
+            Spacer()
             Button(action: { roomState.wrappedValue = .SynastryChooser }) {
                 Text("Synastry").font(Font.subheadline)
+            }.padding(.trailing)
+            
+            
+#elseif os(iOS)  
+            if idiom == .pad {
+                Button(action: { roomState.wrappedValue = .Ephemeris }) {
+                    Text("Ephemeris").font(Font.subheadline).padding(.trailing)
+                }
+                Spacer()
+                Button(action: { roomState.wrappedValue = .SynastryChooser }) {
+                    Text("Synastry").font(Font.subheadline).padding(.trailing)
+                }
+            } else {
+                Button(action: { roomState.wrappedValue = .Ephemeris }) {
+                    Text("Ephemeris").font(Font.subheadline).padding(.trailing)
+                }.padding(.trailing)
             }
+#endif
+            
         }
     }
 }

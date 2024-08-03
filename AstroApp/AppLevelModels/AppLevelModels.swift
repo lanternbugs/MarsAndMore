@@ -39,6 +39,7 @@ indirect enum RoomState: Equatable {
     case About
     case Mars
     case SynastryChooser
+    case Ephemeris
 }
 
 enum AppTab: Int {
