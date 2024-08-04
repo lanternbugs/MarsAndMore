@@ -541,6 +541,8 @@
 		76ECF73D287F5DDD00AE7B34 /* ChartTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76ECF73B287F5DDD00AE7B34 /* ChartTitle.swift */; };
 		76F5BDC427AF43F30075FCEC /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */; };
 		76F5BDC527AF43F30075FCEC /* Date+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */; };
+		76F822D42C60275C00F6C099 /* EphemerisModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F822D32C60275C00F6C099 /* EphemerisModels.swift */; };
+		76F822D52C60275C00F6C099 /* EphemerisModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F822D32C60275C00F6C099 /* EphemerisModels.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -780,6 +782,7 @@
 		76F5BDC327AF43F30075FCEC /* Date+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extensions.swift"; sourceTree = "<group>"; };
 		76F7C34C288F196900F097AB /* MarsAndMore--macOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MarsAndMore--macOS--Info.plist"; sourceTree = "<group>"; };
 		76F7C34D288F1B8100F097AB /* MarsAndMore--iOS--Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = "MarsAndMore--iOS--Info.plist"; sourceTree = "<group>"; };
+		76F822D32C60275C00F6C099 /* EphemerisModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EphemerisModels.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -1158,6 +1161,7 @@
 		76586AAF2C5ED3E500938CC6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				76F822D32C60275C00F6C099 /* EphemerisModels.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1825,6 +1829,7 @@
 				765275B72BC763BA00D52589 /* WheelChartPlanetListing.swift in Sources */,
 				762D4A6927AB986A00EA59E8 /* AstroButtons.swift in Sources */,
 				7618A97427ADB6AA008C6508 /* NamesView.swift in Sources */,
+				76F822D42C60275C00F6C099 /* EphemerisModels.swift in Sources */,
 				76908C9427C04F2900806F9D /* NamesTextModifier.swift in Sources */,
 				767C3A8D2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift in Sources */,
 				76B34ED427AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,
@@ -1942,6 +1947,7 @@
 				765275B82BC763BA00D52589 /* WheelChartPlanetListing.swift in Sources */,
 				7606E28227AB18A900C72FAB /* MarsTab.swift in Sources */,
 				761DEEB4279B9EF900A71938 /* swemmoon.c in Sources */,
+				76F822D52C60275C00F6C099 /* EphemerisModels.swift in Sources */,
 				76908C9527C04F2900806F9D /* NamesTextModifier.swift in Sources */,
 				767C3A8E2BCDBDF200AE6022 /* AstroPlanetButtonsViewModel.swift in Sources */,
 				7618A97527ADB6AA008C6508 /* NamesView.swift in Sources */,
