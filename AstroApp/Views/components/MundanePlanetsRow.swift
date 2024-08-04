@@ -42,7 +42,7 @@ struct MundanePlanetsRow: View, AstrobotInterface {
             }
             Spacer()
 #if os(macOS)
-            Button(action: { roomState.wrappedValue = .Ephemeris }) {
+            Button(action: { roomState.wrappedValue = .Ephemeris(date: savedDate.planetsDateChoice) }) {
                 Text("Ephemeris").font(Font.subheadline)
             }
             Spacer()

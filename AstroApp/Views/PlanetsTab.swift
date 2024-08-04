@@ -52,9 +52,9 @@ struct PlanetsTab: View {
                 } else {
                     SynastryChooserView(selectedNameOne: manager.birthDates[0].name, selectedNameTwo: manager.birthDates[1].name)
                 }
-            case .Ephemeris:
+            case .Ephemeris(let date):
                 DoneView(newRoomState: .Planets)
-                EphemerisView()
+                EphemerisView(viewModel: .init(date: date))
             default:
                 PlanetRoom(data: $data, roomState: roomState)
             }

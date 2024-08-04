@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct EphemerisView: View {
+    let viewModel: EphemerisViewModel
     var body: some View {
         VStack {
             ScrollView {
@@ -20,5 +21,5 @@ struct EphemerisView: View {
 }
 
 #Preview {
-    EphemerisView()
+    EphemerisView(viewModel: EphemerisViewModel(date :Date()))
 }
