@@ -9,9 +9,11 @@ import Foundation
 class EphemerisViewModel: AstrobotInterface {
     var date: Date
     var planetCells = [PlanetRow]()
+    let calculationSettings: CalculationSettings
     
-    init(date: Date) {
+    init(date: Date, calculationSettings: CalculationSettings) {
         let calendar = Calendar.current
+        self.calculationSettings = calculationSettings
         self.date = calendar.startOfDay(for: date)
         setDateToStartOfMonth()
         calculateMonthsPlanetData()
@@ -20,7 +22,7 @@ class EphemerisViewModel: AstrobotInterface {
     func calculateMonthsPlanetData() {
         let dates = getDatesForDaysOfMonth()
         for date in dates {
-            planetCells.append(getPlanets(time: date.getAstroTime(), location: nil, calculationSettings: CalculationSettings()))
+            planetCells.append(getPlanets(time: date.getAstroTime(), location: nil, calculationSettings: calculationSettings))
         }
     }
     

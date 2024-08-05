@@ -21,5 +21,5 @@ struct EphemerisView: View {
 }
 
 #Preview {
-    EphemerisView(viewModel: EphemerisViewModel(date :Date()))
+    EphemerisView(viewModel: EphemerisViewModel(date :Date(), calculationSettings: CalculationSettings()))
 }
