@@ -20,6 +20,7 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
     }
     
     func calculateMonthsPlanetData() {
+        planetCells.removeAll()
         let dates = getDatesForDaysOfMonth()
         for date in dates {
             planetCells.append(getPlanets(time: date.getAstroTime(), location: nil, calculationSettings: calculationSettings))
@@ -58,6 +59,7 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
         if let newDate = newDate {
             date = newDate
         }
+        calculateMonthsPlanetData()
     }
     
     func nextMonth() {
@@ -66,16 +68,47 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
         if let newDate = newDate {
             date = newDate
         }
+        calculateMonthsPlanetData()
+    }
+    
+    func getPlanetsArray(planets: PlanetRow) -> [PlanetCell] {
+        if let displayPlanets = planets.planets as? [PlanetCell] {
+            let filteredPlanets = displayPlanets.filter { $0.planet != .Pholus && $0.planet != .SouthNode && $0.planet.rawValue < Planets.Uranus.rawValue }
+            return filteredPlanets
+        }
+        return [PlanetCell]()
     }
     
     func getPlanetRow(planets: PlanetRow) -> String {
         var planetsString = ""
         if let displayPlanets = planets.planets as? [PlanetCell] {
-            let filteredPlanets = displayPlanets.filter { $0.planet != .Pholus && $0.planet != .SouthNode }
+            let filteredPlanets = displayPlanets.filter { $0.planet != .Pholus && $0.planet != .SouthNode && $0.planet.rawValue < Planets.Uranus.rawValue }
             for cell in filteredPlanets {
                 planetsString += " " + cell.planet.getName() + " " + cell.degree + " " + cell.sign.getName()
             }
         }
         return planetsString
+    }
+    
+    func getPlanetString(cell: PlanetCell) -> String {
+        " " + cell.planet.getName() + " " + cell.degree + " " + cell.sign.getName()
+    }
+}
+
+extension Date {
+    func getMonthYearDisplayDate() -> String {
+        let formatter = DateFormatter()
+#if os(macOS)
+        formatter.dateFormat = "MMMM YYYY"
+#elseif os(iOS)
+    if idiom == .pad {
+        formatter.dateFormat = "MMMM YYYY"
+        
+    } else {
+        formatter.dateFormat = "MM-YYYY"
+    }
+#endif
+        let monthYear = formatter.string(from: self)
+        return monthYear
     }
 }
