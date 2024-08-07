@@ -8,13 +8,24 @@
 import SwiftUI
 
 struct EphemerisView: View {
-    let viewModel: EphemerisViewModel
+    @ObservedObject var viewModel: EphemerisViewModel
     var body: some View {
         VStack {
             ScrollView {
                 HStack {
                     Text("Ephemeris")
                 }
+                ScrollView(.horizontal) {
+                    ForEach($viewModel.planetCells , id:\.id)
+                    { $planetRow in
+                        HStack {
+                            Text(viewModel.getPlanetRow(planets: planetRow)).lineLimit(1)
+                            Spacer()
+                        }
+                        
+                    }
+                }
+                
             }
         }
     }

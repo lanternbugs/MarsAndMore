@@ -6,9 +6,9 @@
 //
 
 import Foundation
-class EphemerisViewModel: AstrobotInterface {
+class EphemerisViewModel: AstrobotInterface, ObservableObject {
     var date: Date
-    var planetCells = [PlanetRow]()
+    @Published var planetCells = [PlanetRow]()
     let calculationSettings: CalculationSettings
     
     init(date: Date, calculationSettings: CalculationSettings) {
@@ -66,5 +66,16 @@ class EphemerisViewModel: AstrobotInterface {
         if let newDate = newDate {
             date = newDate
         }
+    }
+    
+    func getPlanetRow(planets: PlanetRow) -> String {
+        var planetsString = ""
+        if let displayPlanets = planets.planets as? [PlanetCell] {
+            let filteredPlanets = displayPlanets.filter { $0.planet != .Pholus && $0.planet != .SouthNode }
+            for cell in filteredPlanets {
+                planetsString += " " + cell.planet.getName() + " " + cell.degree + " " + cell.sign.getName()
+            }
+        }
+        return planetsString
     }
 }

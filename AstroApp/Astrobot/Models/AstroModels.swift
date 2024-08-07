@@ -109,8 +109,9 @@ struct CalculationSettings {
     var houseSystem: String = "P"
 }
 
-struct PlanetRow {
+struct PlanetRow: Identifiable {
     var planets = Array<AstroRowCell>()
+    let id = UUID()
 }
 
 struct DisplayPlanetRow {
