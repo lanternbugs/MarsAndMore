@@ -1,15 +1,27 @@
-//
-//  EphemerisViewModel.swift
-//  MarsAndMore
-//
+/*
+*  Copyright (C) 2022-24 Michael R Adams.
+*  All rights reserved.
+*
+* This program can be redistributed and/or modified under
+* the terms of the GNU General Public License; either
+* version 2 of the License, or (at your option) any later version.
+*
+*  This code is distributed in the hope that it will
+*  be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+*  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+*/
 //  Created by Michael Adams on 8/3/24.
 //
 
 import Foundation
+import SwiftUI
 class EphemerisViewModel: AstrobotInterface, ObservableObject {
+    @Published var planetGrid = [PlanetCell]()
     var date: Date
-    @Published var planetCells = [PlanetRow]()
+    var numbersOfDays = 30
     let calculationSettings: CalculationSettings
+    @AppStorage("showEphemerisSymbols") var showEphemerisSymbols: Bool = false
+    @AppStorage("showModernEphemeris")  var showModernEphemeris: Bool = false
     
     init(date: Date, calculationSettings: CalculationSettings) {
         let calendar = Calendar.current
@@ -20,11 +32,40 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
     }
     
     func calculateMonthsPlanetData() {
-        planetCells.removeAll()
+        var planetCells = [PlanetRow]()
         let dates = getDatesForDaysOfMonth()
         for date in dates {
             planetCells.append(getPlanets(time: date.getAstroTime(), location: nil, calculationSettings: calculationSettings))
         }
+        
+       populatePlanetGrid(planetCells: planetCells)
+    }
+    
+    func populatePlanetGrid(planetCells: [PlanetRow]) {
+        planetGrid.removeAll()
+        var basePlanetGrid = [PlanetCell]()
+        for cell in planetCells {
+            if let displayPlanets = cell.planets as? [PlanetCell] {
+                let filteredPlanets = getFilteredPlanets(displayPlanets)
+                for planet in filteredPlanets {
+                    basePlanetGrid.append(planet)
+                }
+            }
+        }
+        let rows = numbersOfDays
+        let columns = Int(basePlanetGrid.count / rows)
+        for x in 0..<columns {
+            for y in 0..<rows {
+                planetGrid.append(basePlanetGrid[y * columns + x])
+            }
+        }
+    }
+    func getFilteredPlanets(_ displayPlanets: [PlanetCell]) -> [PlanetCell] {
+        displayPlanets.filter { ($0.planet != .Pholus || !showEphemerisSymbols) && $0.planet != .SouthNode && ($0.planet.rawValue < Planets.Uranus.rawValue || showModernEphemeris || $0.planet.rawValue == Planets.TrueNode.rawValue) }
+    }
+    
+    func getPlanetString(cell: PlanetCell) -> String {
+        " " + cell.planet.getName() + " " + cell.degree + " " + cell.sign.getName()
     }
     
     func getDatesForDaysOfMonth() -> [Date] {
@@ -39,7 +80,7 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
             currentDate = getNextDay(currentDate)
             currentMonth = formatter.string(from: currentDate)
         } while(currentMonth == month)
-        
+        numbersOfDays = dates.count
         return dates
     }
     
@@ -70,42 +111,19 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
         }
         calculateMonthsPlanetData()
     }
-    
-    func getPlanetsArray(planets: PlanetRow) -> [PlanetCell] {
-        if let displayPlanets = planets.planets as? [PlanetCell] {
-            let filteredPlanets = displayPlanets.filter { $0.planet != .Pholus && $0.planet != .SouthNode && $0.planet.rawValue < Planets.Uranus.rawValue }
-            return filteredPlanets
-        }
-        return [PlanetCell]()
-    }
-    
-    func getPlanetRow(planets: PlanetRow) -> String {
-        var planetsString = ""
-        if let displayPlanets = planets.planets as? [PlanetCell] {
-            let filteredPlanets = displayPlanets.filter { $0.planet != .Pholus && $0.planet != .SouthNode && $0.planet.rawValue < Planets.Uranus.rawValue }
-            for cell in filteredPlanets {
-                planetsString += " " + cell.planet.getName() + " " + cell.degree + " " + cell.sign.getName()
-            }
-        }
-        return planetsString
-    }
-    
-    func getPlanetString(cell: PlanetCell) -> String {
-        " " + cell.planet.getName() + " " + cell.degree + " " + cell.sign.getName()
-    }
 }
 
 extension Date {
     func getMonthYearDisplayDate() -> String {
         let formatter = DateFormatter()
 #if os(macOS)
-        formatter.dateFormat = "MMMM YYYY"
+        formatter.dateFormat = "MMMM YYYY HH:mm ZZZ"
 #elseif os(iOS)
     if idiom == .pad {
-        formatter.dateFormat = "MMMM YYYY"
+        formatter.dateFormat = "MMMM YYYY HH:mm ZZZ"
         
     } else {
-        formatter.dateFormat = "MM-YYYY"
+        formatter.dateFormat = "MM-YYYY HH:mm ZZZ"
     }
 #endif
         let monthYear = formatter.string(from: self)
