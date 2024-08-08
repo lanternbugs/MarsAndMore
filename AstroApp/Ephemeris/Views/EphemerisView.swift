@@ -69,17 +69,34 @@ struct EphemerisView: View {
                     ForEach(0 ..< count, id: \.self) { i in
                         HStack {
                             if viewModel.showEphemerisSymbols {
-                                if i < viewModel.numbersOfDays {
-                                    Text("\(i + 1) ") +
-                                    Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                                    + Text(" \(viewModel.planetGrid[i].degree) ")
-                                    + Text(" \(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                                    
-                                    
+                                if viewModel.planetGrid[i].retrograde && viewModel.planetGrid[i].planet != Planets.TrueNode {
+                                    if i < viewModel.numbersOfDays {
+                                        Text("\(i + 1) ") +
+                                        Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                        + Text(" \(viewModel.planetGrid[i].degree) ")
+                                        + Text(" \(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                        + Text(" R")
+                                        
+                                        
+                                    } else {
+                                        Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                        + Text(" \(viewModel.planetGrid[i].degree) ")
+                                        + Text(" \(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                        + Text(" R")
+                                    }
                                 } else {
-                                    Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                                    + Text(" \(viewModel.planetGrid[i].degree) ")
-                                    + Text(" \(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                    if i < viewModel.numbersOfDays {
+                                        Text("\(i + 1) ") +
+                                        Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                        + Text(" \(viewModel.planetGrid[i].degree) ")
+                                        + Text(" \(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                        
+                                        
+                                    } else {
+                                        Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                        + Text(" \(viewModel.planetGrid[i].degree) ")
+                                        + Text(" \(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                    }
                                 }
                             } else {
                                 if i < viewModel.numbersOfDays {

@@ -65,7 +65,11 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
     }
     
     func getPlanetString(cell: PlanetCell) -> String {
-        " " + cell.planet.getName() + " " + cell.degree + " " + cell.sign.getName()
+        var string = " " + cell.planet.getName() + " " + cell.degree + " " + cell.sign.getName()
+        if cell.retrograde && cell.planet != Planets.TrueNode {
+            string = string + " R"
+        }
+        return string
     }
     
     func getDatesForDaysOfMonth() -> [Date] {
