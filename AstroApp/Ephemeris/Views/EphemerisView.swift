@@ -17,6 +17,11 @@ import SwiftUI
 
 struct EphemerisView: View {
     @ObservedObject var viewModel: EphemerisViewModel
+#if os(iOS)
+    let symbolFontSize = UIDevice.current.userInterfaceIdiom == .pad ? 24.0 : 18.0
+#else
+    let symbolFontSize = 20.0
+#endif
     
     var body: some View {
         VStack(alignment: .leading) {
@@ -35,12 +40,12 @@ struct EphemerisView: View {
                 if viewModel.showEphemerisSymbols {
                     Button(action:  { viewModel.showEphemerisSymbols = !viewModel.showEphemerisSymbols
                         viewModel.calculateMonthsPlanetData()}) {
-                        Text("Symbols")
+                        Text("Text")
                         }.padding([.top, .leading])
                 } else {
                     Button(action:  { viewModel.showEphemerisSymbols = !viewModel.showEphemerisSymbols 
                         viewModel.calculateMonthsPlanetData()}) {
-                        Text("Text")
+                        Text("Symbols")
                         }.padding([.top, .leading])
                 }
                 Spacer()
@@ -58,12 +63,25 @@ struct EphemerisView: View {
             }
 
             ScrollView([.horizontal, .vertical]) {
-                VStack (alignment: .leading) {
-                    let rows: [GridItem] = Array(repeating: .init(.flexible()), count: viewModel.numbersOfDays)
-                    LazyHGrid(rows: rows) {
-                        let count = viewModel.planetGrid.count
-                        ForEach(0 ..< count, id: \.self) { i in
-                            HStack {
+                let rows: [GridItem] = Array(repeating: .init(.flexible()), count: viewModel.numbersOfDays)
+                LazyHGrid(rows: rows) {
+                    let count = viewModel.planetGrid.count
+                    ForEach(0 ..< count, id: \.self) { i in
+                        HStack {
+                            if viewModel.showEphemerisSymbols {
+                                if i < viewModel.numbersOfDays {
+                                    Text("\(i + 1) ") +
+                                    Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                    + Text(" \(viewModel.planetGrid[i].degree) ")
+                                    + Text(" \(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                    
+                                    
+                                } else {
+                                    Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                    + Text(" \(viewModel.planetGrid[i].degree) ")
+                                    + Text(" \(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                }
+                            } else {
                                 if i < viewModel.numbersOfDays {
                                     Text("\(i + 1) ") +
                                     Text(viewModel.getPlanetString(cell: viewModel.planetGrid[i]))
@@ -71,11 +89,13 @@ struct EphemerisView: View {
                                 } else {
                                     Text(viewModel.getPlanetString(cell: viewModel.planetGrid[i]))
                                 }
-                                
                             }
+                            
+                            
                         }
-                    }.padding(4)
-                }
+                    }
+                }.padding(4)
+                    
             }
         }
     }
