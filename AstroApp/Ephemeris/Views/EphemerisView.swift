@@ -49,6 +49,21 @@ struct EphemerisView: View {
                         }.padding([.top, .leading])
                 }
                 Spacer()
+                if viewModel.showEphemerisSymbols {
+                    if viewModel.showEphemerisKey {
+                        Button(action:  { viewModel.showEphemerisKey = !viewModel.showEphemerisKey
+                            viewModel.calculateMonthsPlanetData()}) {
+                            Text("Hide Key")
+                            }.padding([.top, .leading])
+                    } else {
+                        Button(action:  { viewModel.showEphemerisKey = !viewModel.showEphemerisKey
+                            viewModel.calculateMonthsPlanetData()}) {
+                            Text("Key")
+                            }.padding([.top, .leading])
+                    }
+                    Spacer()
+                }
+                
                 if viewModel.showModernEphemeris {
                     Button(action:  { viewModel.showModernEphemeris = !viewModel.showModernEphemeris
                         viewModel.calculateMonthsPlanetData()}) {
@@ -61,8 +76,12 @@ struct EphemerisView: View {
                         }.padding([.top, .trailing])
                 }
             }
+            
 
             ScrollView([.horizontal, .vertical]) {
+                if viewModel.showEphemerisKey && viewModel.showEphemerisSymbols {
+                    AstroSymbolsKey()
+                }
                 let rows: [GridItem] = Array(repeating: .init(.flexible()), count: viewModel.numbersOfDays)
                 LazyHGrid(rows: rows) {
                     let count = viewModel.planetGrid.count

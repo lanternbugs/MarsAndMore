@@ -22,6 +22,7 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
     let calculationSettings: CalculationSettings
     @AppStorage("showEphemerisSymbols") var showEphemerisSymbols: Bool = true
     @AppStorage("showModernEphemeris")  var showModernEphemeris: Bool = true
+    var showEphemerisKey: Bool = false
     
     init(date: Date, calculationSettings: CalculationSettings) {
         let calendar = Calendar.current
