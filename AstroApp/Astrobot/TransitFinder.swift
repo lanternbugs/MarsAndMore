@@ -113,6 +113,7 @@ struct TransitFinder {
                 for aspect in Aspects.allCases {
                     if aspect.isMajor() || manager.showMinorAspects {
                         if canMakeAspect(planetDegree, with: planet2Degree, aspect: aspect, low: start_time, high: end_time) {
+                            
                             let time = findAspect(planet, with: transitingPlanet, aspect: aspect, low: start_time, high: end_time)
                             if time > 0 {
                                 let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
@@ -126,6 +127,12 @@ struct TransitFinder {
                                 } else {
                                     //print("missed aspect with \(planet.getName()) and \(aspect.getName()) and \(transitingPlanet.getName())")
                                 }
+                            }
+                        } else if canMakeAspect(planet2Degree, with: planetDegree, aspect: aspect, low: start_time, high: end_time)  {
+                            let time = findAspect(transitingPlanet, with: planet, aspect: aspect, low: start_time, high: end_time)
+                            if time > 0 {
+                                let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
+                                transitTimes.append(transitTime)
                             }
                         }
                     }
