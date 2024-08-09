@@ -16,7 +16,7 @@ import SwiftUI
 struct DefaultReadingContent: View {
     let defaultReadingMessage = "Pick a date and select go for an Evengeline Adams(ghostwriter Crowley) Sun Reading and sign Mars is in on this date."
     let defaultReadingSecondaryMessage = "When reading the planet/sign interpretation, be aware as stated by Adams, \"Of course, the usual modifications caused by aspects are always to be considered.\"."
-    let defaultReadingThirdMessage =  "These interpretations were written in the 1930s. An older mindset was involved, though progressive for its time using Astrology"
+    let defaultReadingThirdMessage =  "These interpretations were written in the 1920s. An older mindset was involved, though progressive for its time using Astrology"
     var body: some View {
         VStack(alignment: .leading) {
             Text(defaultReadingMessage)
