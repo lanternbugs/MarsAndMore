@@ -10,29 +10,39 @@ import SwiftUI
 struct WheelChartAspectsListing: View {
     let viewModel: WheelChartDataViewModel
     @EnvironmentObject var manager:BirthDataManager
+    let major: Bool
     var body: some View {
         VStack {
             HStack {
                 Spacer()
-                if viewModel.chart == .Synastry || viewModel.chart == .Natal {
-                    Text("Aspects").font(.title2)
+                if major {
+                    if viewModel.chart == .Synastry || viewModel.chart == .Natal {
+                        Text("Aspects").font(.title2)
+                    } else {
+                        Text("Transits").font(.title2)
+                    }
                 } else {
-                    Text("Transits").font(.title2)
+                    if viewModel.chart == .Synastry || viewModel.chart == .Natal {
+                        Text("Minor Aspects").font(.title2)
+                    } else {
+                        Text("Minor Transits").font(.title2)
+                    }
                 }
+                
                 
                 Spacer()
             }
             ForEach(viewModel.getAspectsData(), id: \.id) {
                 data in
                 HStack {
-                    if viewModel.showAspect(data: data, manager: manager){
+                    if viewModel.showAspect(data: data, manager: manager, major: major){
                         Text(viewModel.getAspectRow(data))
                         Spacer()
                     }
                     
                 }
             }
-            if viewModel.chart == .Transit {
+            if viewModel.chart == .Transit && major {
                 Text("")
                 HStack {
                     Text("* for Applying").font(.title3)
@@ -45,5 +55,5 @@ struct WheelChartAspectsListing: View {
 
 
 #Preview {
-    WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: [PlanetCell](), aspects: [TransitCell](), houses: [HouseCell](), chart: .Natal, title: "chart", houseSystem: HouseSystem.Placidus))
+    WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: [PlanetCell](), aspects: [TransitCell](), houses: [HouseCell](), chart: .Natal, title: "chart", houseSystem: HouseSystem.Placidus), major: true)
 }

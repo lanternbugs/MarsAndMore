@@ -165,8 +165,8 @@ class WheelChartDataViewModel {
         return data.planet2.getName() + " " + data.aspect.getName() + " " + data.planet.getName() + " " + data.degree
     }
     
-    func showAspect(data: TransitCell, manager: BirthDataManager) -> Bool {
-        if data.aspect.isMajor() && manager.bodiesToShow.contains(data.planet) && manager.bodiesToShow.contains(data.planet2) {
+    func showAspect(data: TransitCell, manager: BirthDataManager, major: Bool) -> Bool {
+        if data.aspect.isMajor() == major && manager.bodiesToShow.contains(data.planet) && manager.bodiesToShow.contains(data.planet2) {
             return true
         }
         return false

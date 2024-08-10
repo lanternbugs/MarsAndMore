@@ -20,7 +20,11 @@ struct WheelChartData: View {
             }
             
             if !viewModel.aspectsData.isEmpty {
-                WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: "Aspects", houseSystem: manager.houseSystem))
+                WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: "Aspects", houseSystem: manager.houseSystem), major: true)
+                
+                if manager.showMinorAspects {
+                    WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: "Aspects", houseSystem: manager.houseSystem), major: false)
+                }
             }
 
             if viewModel.chart == .Synastry {
