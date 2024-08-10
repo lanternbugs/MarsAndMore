@@ -14,6 +14,9 @@
 
 import Foundation
 import CoreData
+#if os(macOS)
+import Cocoa
+#endif
 class SpaceDataManager: ObservableObject
 {
     @Published var imageOfDayData: [ImageInfo] = []
@@ -25,7 +28,7 @@ class SpaceDataManager: ObservableObject
     var opportunityManifest: RoverManifest?
     var spiritManifest: RoverManifest?
     static let saveMode = false
-    let maxSaveQuerries = 2
+    let maxSaveQuerries = 1
     let semaphor = DispatchSemaphore(value: 1)
     
     init()
@@ -264,4 +267,38 @@ class SpaceDataManager: ObservableObject
         let querry =  "https://api.nasa.gov/mars-photos/api/v1/rovers/" + rover + "/photos?sol=" + solDay + "&api_key="
         return querry
     }
+    
+#if os(macOS)
+    static func saveNasaPhotoToFile(image: NSImage, url: URL) {
+        let fileName = url.relativeString
+        let fileArray = fileName.components(separatedBy: "/")
+        let finalFileName = fileArray.last
+        if let finalFileName = finalFileName {
+            SpaceDataManager.saveToDisk(image: image, path: finalFileName )
+        }
+    }
+    static func jpegDataFrom(image:NSImage) -> Data {
+            let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)!
+            let bitmapRep = NSBitmapImageRep(cgImage: cgImage)
+        let options: [NSBitmapImageRep.PropertyKey: Any] = [
+            .compressionFactor: 0.4
+                ]
+            let jpegData = bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: options)!
+            return jpegData
+        }
+    static func saveToDisk(image: NSImage, path: String) {
+        if #available(macOS 13.0, *) {
+
+            let data = jpegDataFrom(image: image)
+            let archiveURL = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+            let url = archiveURL.appending(path: path)
+            do {
+                try data.write(to: url)
+                // ~/Library/Containers/mike.MarsAndMore/Data/Documents/
+            } catch  {
+                print(error.localizedDescription)
+            }
+        }
+    }
+#endif
 }
