@@ -24,6 +24,9 @@ class SpaceDataManager: ObservableObject
     var curiosityManifest: RoverManifest?
     var opportunityManifest: RoverManifest?
     var spiritManifest: RoverManifest?
+    static let saveMode = false
+    let maxSaveQuerries = 2
+    let semaphor = DispatchSemaphore(value: 1)
     
     init()
     {
@@ -89,9 +92,53 @@ class SpaceDataManager: ObservableObject
         }
     }
     
+    func fetchCuriosityPhotosToSave() {
+        if let list: [PhotoData] = curiosityManifest?.photo_manifest.photos.filter({ photo in
+            // 2020 2021 2022 etc
+            photo.total_photos > 4 && photo.earth_date.hasPrefix("202") &&  photo.cameras.first { $0 == "NAVCAM" } != nil
+        }) {
+            for _ in 0..<maxSaveQuerries {
+                do {
+                    sleep(4)
+                }
+                NasaFeed.getMarsPhotos(with: getMarsQuerry(from: list, with: "curiosity")) { [weak self] photoInfo in
+                    DispatchQueue.main.async { [weak self] in
+                        self?.semaphor.wait()
+                        defer {
+                            self?.semaphor.signal()
+                        }
+                        var count = 0
+                        if let mastPhoto = photoInfo.photos.first(where: { $0.camera.name == "NAVCAM" }) {
+                            let info = ImageInfo(url: mastPhoto.img_src, description: mastPhoto.camera.full_name, title: mastPhoto.earth_date, id: self?.curiosityPhotos.count ?? 0, mediaType: .Picture)
+                            self?.curiosityPhotos.append(info)
+                            count += 1
+                            for photo in photoInfo.photos {
+                                if photo.img_src == mastPhoto.img_src {
+                                    continue
+                                }
+                                let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.curiosityPhotos.count ?? 0, mediaType: .Picture)
+                                self?.curiosityPhotos.append(info)
+                                count += 1
+                                let roverType = ImagePhotoType.Curiosity
+                                if count  >= roverType.getMaxPhotos() {
+                                    break
+                                }
+                                
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+    
+    
     func fetchCuriosityPhotos()
     {
-        
+        if SpaceDataManager.saveMode {
+            fetchCuriosityPhotosToSave()
+            return
+        }
         if let list: [PhotoData] = curiosityManifest?.photo_manifest.photos.filter({ photo in
             // 2020 2021 2022 etc
             photo.total_photos > 4 && photo.earth_date.hasPrefix("202") &&  photo.cameras.first { $0 == "NAVCAM" } != nil
