@@ -58,6 +58,9 @@ struct ChartSettings: View {
 #endif
                 }
                 Toggle("Show Minor Aspects", isOn: $manager.showMinorAspects)
+                if manager.showMinorAspects {
+                    Text("See Chart Tab's Resources for minor aspects shown")
+                }
                 Section {
                     HStack {
                         Spacer()
