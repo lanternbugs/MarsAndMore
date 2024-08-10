@@ -42,13 +42,30 @@ struct WheelChartAspectsListing: View {
                     
                 }
             }
-            if viewModel.chart == .Transit && major {
-                Text("")
-                HStack {
-                    Text("* for Applying").font(.title3)
-                    Spacer()
+            if major {
+                if viewModel.chart == .Transit  {
+                    Text("")
+                    HStack {
+                        Text("* for Applying").font(.title3)
+                        Spacer()
+                    }
+                }
+            } else {
+                if viewModel.chart == .Transit  {
+                    Text("")
+                    HStack {
+                        Text("Minor Transits do not show on Wheel").font(.body)
+                        Spacer()
+                    }
+                } else {
+                    Text("")
+                    HStack {
+                        Text("Minor Aspects do not show on Wheel").font(.body)
+                        Spacer()
+                    }
                 }
             }
+            
         }
     }
 }
