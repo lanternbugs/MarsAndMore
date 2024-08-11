@@ -769,6 +769,7 @@
 		76AF1D5027AE1E7400CB4E97 /* venus-pisces.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-pisces.txt"; sourceTree = "<group>"; };
 		76AF1D5127AE1E7400CB4E97 /* venus-capricorn.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "venus-capricorn.txt"; sourceTree = "<group>"; };
 		76B34ED327AC95C50040983E /* FeaturedPlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeaturedPlanetsEntry.swift; sourceTree = "<group>"; };
+		76B97B432C6973A2004EBBE0 /* astrodot-basic.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "astrodot-basic.png"; sourceTree = "<group>"; };
 		76C2878128AB2C4800DB0A2E /* ArtDisplayView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDisplayView.swift; sourceTree = "<group>"; };
 		76C5C3642B0D342D00CD287A /* TransitTime+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "TransitTime+.swift"; sourceTree = "<group>"; };
 		76C622A32B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Astrodotbasic-ow3Pd.ttf"; sourceTree = "<group>"; };
@@ -903,6 +904,7 @@
 				764DF5F22B3F928D003054ED /* aboutmarsandmore.txt */,
 				764DF5F42B3F92B7003054ED /* aboutmarsandmore.txt */,
 				76C622AD2B1E7BF300694871 /* astrodot-info.txt */,
+				76B97B432C6973A2004EBBE0 /* astrodot-basic.png */,
 				76C622A32B1E78C900694871 /* Astrodotbasic-ow3Pd.ttf */,
 				76F7C34D288F1B8100F097AB /* MarsAndMore--iOS--Info.plist */,
 				76F7C34C288F196900F097AB /* MarsAndMore--macOS--Info.plist */,
@@ -2246,7 +2248,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.90;
+				MARKETING_VERSION = 3.00;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = iphoneos;
@@ -2280,7 +2282,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 2.90;
+				MARKETING_VERSION = 3.00;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = iphoneos;
@@ -2301,7 +2303,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 121;
+				CURRENT_PROJECT_VERSION = 122;
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -2313,7 +2315,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2.91;
+				MARKETING_VERSION = 3.00;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = macosx;
@@ -2333,7 +2335,7 @@
 				CODE_SIGN_ENTITLEMENTS = macOS/macOS.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				COMBINE_HIDPI_IMAGES = YES;
-				CURRENT_PROJECT_VERSION = 121;
+				CURRENT_PROJECT_VERSION = 122;
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_HARDENED_RUNTIME = YES;
 				ENABLE_PREVIEWS = YES;
@@ -2345,7 +2347,7 @@
 					"@executable_path/../Frameworks",
 				);
 				MACOSX_DEPLOYMENT_TARGET = 11.0;
-				MARKETING_VERSION = 2.91;
+				MARKETING_VERSION = 3.00;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = macosx;

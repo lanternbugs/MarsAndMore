@@ -35,7 +35,7 @@ enum SiderealSystem: Int, CaseIterable {
 
 enum Aspects: Double, CaseIterable {
     case Trine = 120, Conjunction = 0, Sextile = 60, Square = 90, Opposition = 180,
-    Semisextile = 30, Semiquintile = 36, Semisquare = 45, Quintile = 72, Sesquisquare = 135,
+    Semisextile = 30, Semisquare = 45, Quintile = 72, Sesquisquare = 135,
          Biquintile = 144, Quincunx = 150
 }
 

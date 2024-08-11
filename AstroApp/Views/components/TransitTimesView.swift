@@ -17,8 +17,8 @@ import SwiftUI
 
 struct TransitTimesView: View {
     @Binding var transits: [TransitTime]
-    @EnvironmentObject private var manager: BirthDataManager
     let viewModel: TransitTimesViewModel
+    let shouldShowTransitModel: TransitMundaneViewModel
 #if os(iOS)
     let symbolFontSize = UIDevice.current.userInterfaceIdiom == .pad ? 24.0 : 18.0
 #else
@@ -42,9 +42,9 @@ extension TransitTimesView {
             let displayTime = viewModel.getDisplayTime(transit: transit)
             var centerText = transit.sign != nil ? "Enters" : transit.aspect.getName()
             var finalText = transit.sign != nil ? transit.sign!.getName() : transit.planet2.getName()
-            if manager.showTransitTimeSymbols && transit.planet != .Pholus && transit.aspect.isMajor() {
+            if shouldShowTransitModel.showTransitTimeSymbols && transit.planet != .Pholus {
                 if transit.sign != nil {
-                    Text(" \(transit.planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(centerText) ") + Text(" \(transit.sign!.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text("  \(displayTime)")
+                    Text(" \(transit.planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(centerText) ") + Text("\(transit.sign!.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text("  \(displayTime)")
                 } else {
                     if (transit.planet2 != .Pholus && transit.planet2 != .Ascendant && transit.planet2 != .MC) {
                         Text(" \(transit.planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(transit.aspect.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(transit.planet2.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text("  \(displayTime)")
@@ -74,13 +74,5 @@ extension TransitTimesView {
         }
     }
 }
-extension TransitTimesView {
-    
-}
 
-struct TransitTimesView_Previews: PreviewProvider {
-    @State static var row: [TransitTime] = []
-    static var previews: some View {
-        TransitTimesView(transits: $row, viewModel: TransitTimesViewModel(transitToShow: TransitsToShow.All))
-    }
-}
+

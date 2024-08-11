@@ -28,8 +28,6 @@ extension Aspects {
             return "Square"
         case .Semisextile:
             return "Semisextile"
-        case .Semiquintile:
-            return "Semiquintile"
         case .Semisquare:
             return "Semisquare"
         case .Quintile:
@@ -64,8 +62,18 @@ extension Aspects {
             return "p"
         case .Sextile:
             return "q"
-        default:
-            return "a"
+        case .Semisextile:
+            return "r"
+        case .Quincunx:
+            return "s"
+        case .Semisquare:
+            return "t"
+        case .Sesquisquare:
+            return "u"
+        case .Biquintile:
+            return "v"
+        case .Quintile:
+            return "w"
         }
     }
 }

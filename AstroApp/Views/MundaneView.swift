@@ -17,19 +17,18 @@ import SwiftUI
 
 struct MundaneView: View, AstrobotInterface {
     @ObservedObject var viewModel: TransitMundaneViewModel
-    @EnvironmentObject private var manager: BirthDataManager
     var body: some View {
         VStack {
             HStack {
-                if manager.showTransitTimeSymbols {
-                    Button(action:  { manager.showTransitTimeSymbols.toggle()
-                        viewModel.reload()
+                if viewModel.showTransitTimeSymbols {
+                    Button(action:  { viewModel.showTransitTimeSymbols.toggle()
+                        //viewModel.reload()
                         }) {
                         Text("Text")
                         }.padding([.top, .leading])
                 } else {
-                    Button(action:  { manager.showTransitTimeSymbols.toggle()
-                        viewModel.reload()
+                    Button(action:  { viewModel.showTransitTimeSymbols.toggle()
+                        //viewModel.reload()
                         }) {
                         Text("Symbols")
                         }.padding([.top, .leading])
@@ -56,13 +55,13 @@ struct MundaneView: View, AstrobotInterface {
                         Text("Planetary Transits").font(.title)
                         Spacer()
                     }
-                    TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Planetary))
+                    TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Planetary), shouldShowTransitModel: viewModel)
                     Text(" ")
                     HStack {
                         Text("Moon Transits").font(.title)
                         Spacer()
                     }
-                    TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Moon))
+                    TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Moon), shouldShowTransitModel: viewModel)
                 }
             }
         }

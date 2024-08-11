@@ -14,11 +14,13 @@
 //
 
 import Foundation
+import SwiftUI
 
 class TransitMundaneViewModel: ObservableObject, AstrobotInterface {
     @Published var transits: [TransitTime] = [TransitTime]()
     @Published var skyTransits: [TransitTime]
     @Published var date: Date
+    @AppStorage("showTransitTimeSymbols") var showTransitTimeSymbols: Bool = false
     let transitData: TransitTimeData?
     let manager: BirthDataManager
     
@@ -28,18 +30,6 @@ class TransitMundaneViewModel: ObservableObject, AstrobotInterface {
         self.transitData = transitData
         self.date = date
         self.manager = manager
-    }
-    
-    func reload() {
-        let calendar = Calendar.current
-        let newDate = calendar.date(byAdding: .day, value: 0, to: date)
-        if let newDate = newDate {
-            skyTransits = getTransitTimes(start_time: newDate.getAstroTime(), end_time: date.getAstroTime(), manager: manager)
-            if let transitData = transitData {
-                transits = getNatalTransitTimes(start_time: newDate.getAstroTime(), end_time: date.getAstroTime(), manager: manager, transitTimeData: transitData)
-            }
-            date = newDate
-        }
     }
     
     func previousDay() {
