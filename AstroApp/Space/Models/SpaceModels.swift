@@ -20,7 +20,13 @@ struct ImageInfo {
     let mediaType: MediaType
 }
 
-enum MediaType: String {
+struct SavedImageInfo: Codable {
+    let fileName: String
+    let title: String
+    let description: String
+}
+
+enum MediaType: String, Codable {
     case Video = "video", Picture = "image"
 }
 

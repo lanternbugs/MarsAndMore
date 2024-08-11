@@ -28,7 +28,8 @@ class SpaceDataManager: ObservableObject
     var opportunityManifest: RoverManifest?
     var spiritManifest: RoverManifest?
     static let saveMode = false
-    let maxSaveQuerries = 1
+    let maxSaveQuerries = 10
+    var photosSaved = 0
     let semaphor = DispatchSemaphore(value: 1)
     
     init()
@@ -96,6 +97,7 @@ class SpaceDataManager: ObservableObject
     }
     
     func fetchCuriosityPhotosToSave() {
+#if os(macOS)
         if let list: [PhotoData] = curiosityManifest?.photo_manifest.photos.filter({ photo in
             // 2020 2021 2022 etc
             photo.total_photos > 4 && photo.earth_date.hasPrefix("202") &&  photo.cameras.first { $0 == "NAVCAM" } != nil
@@ -115,6 +117,7 @@ class SpaceDataManager: ObservableObject
                             let info = ImageInfo(url: mastPhoto.img_src, description: mastPhoto.camera.full_name, title: mastPhoto.earth_date, id: self?.curiosityPhotos.count ?? 0, mediaType: .Picture)
                             self?.curiosityPhotos.append(info)
                             count += 1
+                            self?.photosSaved += 1
                             for photo in photoInfo.photos {
                                 if photo.img_src == mastPhoto.img_src {
                                     continue
@@ -122,8 +125,16 @@ class SpaceDataManager: ObservableObject
                                 let info = ImageInfo(url: photo.img_src, description: photo.camera.full_name, title: photo.earth_date, id: self?.curiosityPhotos.count ?? 0, mediaType: .Picture)
                                 self?.curiosityPhotos.append(info)
                                 count += 1
+                                self?.photosSaved += 1
                                 let roverType = ImagePhotoType.Curiosity
                                 if count  >= roverType.getMaxPhotos() {
+                                    if let self = self {
+                                        if self.photosSaved == self.maxSaveQuerries * 5 {
+                                            if SpaceDataManager.saveMode {
+                                                SpaceDataManager.savePhotosJson(self.curiosityPhotos)
+                                            }
+                                        }
+                                    }
                                     break
                                 }
                                 
@@ -133,6 +144,7 @@ class SpaceDataManager: ObservableObject
                 }
             }
         }
+#endif
     }
     
     
@@ -269,6 +281,30 @@ class SpaceDataManager: ObservableObject
     }
     
 #if os(macOS)
+    static func savePhotosJson(_ photos: [ImageInfo] ) {
+        var savedInfo = [SavedImageInfo]()
+        for info in photos {
+            let fileName = info.url.relativeString
+            let fileArray = fileName.components(separatedBy: "/")
+            if let finalFileName = fileArray.last {
+                let newInfo = SavedImageInfo(fileName: finalFileName, title: info.title, description: info.description)
+                savedInfo.append(newInfo)
+            }
+        }
+        if #available(macOS 13.0, *) {
+            do {
+                let jsonEncoder = JSONEncoder()
+                let jsonData = try jsonEncoder.encode(savedInfo)
+                let archiveURL = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
+                let url = archiveURL.appending(path: "savedMarsPhotoData.json")
+                try jsonData.write(to: url)
+                
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
+        
+    }
     static func saveNasaPhotoToFile(image: NSImage, url: URL) {
         let fileName = url.relativeString
         let fileArray = fileName.components(separatedBy: "/")
