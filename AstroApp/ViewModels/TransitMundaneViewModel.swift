@@ -30,6 +30,18 @@ class TransitMundaneViewModel: ObservableObject, AstrobotInterface {
         self.manager = manager
     }
     
+    func reload() {
+        let calendar = Calendar.current
+        let newDate = calendar.date(byAdding: .day, value: 0, to: date)
+        if let newDate = newDate {
+            skyTransits = getTransitTimes(start_time: newDate.getAstroTime(), end_time: date.getAstroTime(), manager: manager)
+            if let transitData = transitData {
+                transits = getNatalTransitTimes(start_time: newDate.getAstroTime(), end_time: date.getAstroTime(), manager: manager, transitTimeData: transitData)
+            }
+            date = newDate
+        }
+    }
+    
     func previousDay() {
         let calendar = Calendar.current
         let newDate = calendar.date(byAdding: .day, value: -1, to: date)

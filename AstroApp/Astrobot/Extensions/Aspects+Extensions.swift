@@ -51,4 +51,21 @@ extension Aspects {
            return false
         }
     }
+    
+    func getAstroDotCharacter() -> Character {
+        switch self {
+        case .Conjunction:
+            return "m"
+        case .Opposition:
+            return "n"
+        case .Square:
+            return "o"
+        case .Trine:
+            return "p"
+        case .Sextile:
+            return "q"
+        default:
+            return "a"
+        }
+    }
 }

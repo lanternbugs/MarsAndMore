@@ -17,9 +17,23 @@ import SwiftUI
 
 struct MundaneView: View, AstrobotInterface {
     @ObservedObject var viewModel: TransitMundaneViewModel
+    @EnvironmentObject private var manager: BirthDataManager
     var body: some View {
         VStack {
             HStack {
+                if manager.showTransitTimeSymbols {
+                    Button(action:  { manager.showTransitTimeSymbols.toggle()
+                        viewModel.reload()
+                        }) {
+                        Text("Text")
+                        }.padding([.top, .leading])
+                } else {
+                    Button(action:  { manager.showTransitTimeSymbols.toggle()
+                        viewModel.reload()
+                        }) {
+                        Text("Symbols")
+                        }.padding([.top, .leading])
+                }
                 Spacer()
                 Text("Mundane").font(.title)
                 Spacer()

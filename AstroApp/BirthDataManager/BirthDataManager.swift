@@ -30,6 +30,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     /*@AppStorage("showPlanetReadingButtons")*/ var showPlanetReadingButtons: Bool = false
     @AppStorage("tropical") var tropical: Bool = true
     @AppStorage("showMinorAspects") var showMinorAspects: Bool = false
+    @AppStorage("showTransitTimeSymbols") var showTransitTimeSymbols: Bool = false
     @AppStorage("chartWheelColorType") var chartWheelColorType:ChartWheelColorType = ChartWheelColorType.Light
     @Published var userLocationData: LocationData?
     @Published var planetsLocationData: LocationData?

@@ -34,6 +34,22 @@ struct TransitsView: View {
                     }
                 }
                 HStack {
+                    if manager.showTransitTimeSymbols {
+                        Button(action:  { manager.showTransitTimeSymbols.toggle()
+                            viewModel.reload()
+                            }) {
+                            Text("Text")
+                            }.padding([.top, .leading])
+                    } else {
+                        Button(action:  { manager.showTransitTimeSymbols.toggle()
+                            viewModel.reload()
+                            }) {
+                            Text("Symbols")
+                            }.padding([.top, .leading])
+                    }
+                    Spacer()
+                }
+                HStack {
                     Text("Plantary Transits for \(chartName)").font(.title)
                     Spacer()
                 }

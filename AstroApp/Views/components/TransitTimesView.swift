@@ -17,7 +17,13 @@ import SwiftUI
 
 struct TransitTimesView: View {
     @Binding var transits: [TransitTime]
+    @EnvironmentObject private var manager: BirthDataManager
     let viewModel: TransitTimesViewModel
+#if os(iOS)
+    let symbolFontSize = UIDevice.current.userInterfaceIdiom == .pad ? 24.0 : 18.0
+#else
+    let symbolFontSize = 20.0
+#endif
     var body: some View {
         VStack {
             ForEach(transits.sorted(), id: \.time) {
@@ -34,53 +40,41 @@ extension TransitTimesView {
     func printTransit(_ transit: TransitTime) -> some View {
         if viewModel.shouldShowTransit(transit) {
             let displayTime = viewModel.getDisplayTime(transit: transit)
-            
-                if let sign = transit.sign {
-#if os(macOS)
-
-    if #available(macOS 12.0, *) {
-        Text("\(transit.planet.getName()) Enters \(sign.getName()) \(displayTime)").textSelection(.enabled)
-
-    } else {
-        Text("\(transit.planet.getName()) Enters \(sign.getName()) \(displayTime)")
-    }
-
-#else
-
-    if #available(iOS 15.0, *) {
-        Text("\(transit.planet.getName()) Enters \(sign.getName()) \(displayTime)").textSelection(.enabled)
-    } else {
-        Text("\(transit.planet.getName()) Enters \(sign.getName()) \(displayTime)")
-    }
-
-#endif
+            var centerText = transit.sign != nil ? "Enters" : transit.aspect.getName()
+            var finalText = transit.sign != nil ? transit.sign!.getName() : transit.planet2.getName()
+            if manager.showTransitTimeSymbols && transit.planet != .Pholus && transit.aspect.isMajor() {
+                if transit.sign != nil {
+                    Text(" \(transit.planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(centerText) ") + Text(" \(transit.sign!.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text("  \(displayTime)")
                 } else {
-#if os(macOS)
-
-    if #available(macOS 12.0, *) {
-        Text("\(transit.planet.getName()) \(transit.aspect.getName()) \(transit.planet2.getName()) \(displayTime)").textSelection(.enabled)
-
-    } else {
-        Text("\(transit.planet.getName()) \(transit.aspect.getName()) \(transit.planet2.getName()) \(displayTime)")
-    }
-
-#else
-
-    if #available(iOS 15.0, *) {
-        Text("\(transit.planet.getName()) \(transit.aspect.getName()) \(transit.planet2.getName()) \(displayTime)").textSelection(.enabled)
-    } else {
-        Text("\(transit.planet.getName()) \(transit.aspect.getName()) \(transit.planet2.getName()) \(displayTime)")
-    }
-
-#endif
+                    if (transit.planet2 != .Pholus && transit.planet2 != .Ascendant && transit.planet2 != .MC) {
+                        Text(" \(transit.planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(transit.aspect.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(transit.planet2.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text("  \(displayTime)")
+                        
+                    } else {
+                        Text(" \(transit.planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(transit.aspect.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(finalText)") + Text("  \(displayTime)")
+                    }
                 }
+                Text(" ")
+            } else {
+#if os(macOS)
+                if #available(macOS 12.0, *) {
+                    Text("\(transit.planet.getName()) \(centerText) \(finalText) \(displayTime)").textSelection(.enabled)
 
-                Spacer()
+                } else {
+                    Text("\(transit.planet.getName()) \(centerText) \(finalText) \(displayTime)")
+                }
+#else
+                if #available(iOS 15.0, *) {
+                    Text("\(transit.planet.getName()) \(centerText) \(finalText) \(displayTime)").textSelection(.enabled)
+                } else {
+                    Text("\(transit.planet.getName()) \(centerText) \(finalText) \(displayTime)")
+                }
+#endif
             }
+            Spacer()
         }
+    }
 }
 extension TransitTimesView {
-    
     
 }
 
