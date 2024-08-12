@@ -264,6 +264,10 @@ extension NatalChartDrawingView {
             }
         }
         
+        #else
+        if viewModel.chart == .Natal {
+            fontSize = 14.0
+        }
         
 #endif
         var printingHouse = Int(house)
