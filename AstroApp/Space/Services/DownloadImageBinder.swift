@@ -24,7 +24,11 @@ class DownloadImageBinder: ObservableObject {
     private var subscription: AnyCancellable?
     @Published private(set) var image: UIImage?
     func load(url: URL, key: PhotoKey?) {
-        if !SpaceDataManager.saveMode, let key = key, let uiimage = SpaceDataManager.getPhotoForKeyOrNil(key: key) {
+        var saveMode = false
+#if DEBUG
+        saveMode = SpaceDataManager.saveMode
+#endif
+        if !saveMode, let key = key, let uiimage = SpaceDataManager.getPhotoForKeyOrNil(key: key) {
            image = uiimage
             switch key.type {
             case .MarsArt, .VenusArt:
@@ -40,11 +44,13 @@ class DownloadImageBinder: ObservableObject {
                                .replaceError(with: nil)
                                .handleEvents(receiveOutput: {
 #if os(macOS)
+                                   #if DEBUG
                                    if SpaceDataManager.saveMode {
                                            if let img = $0  {
                                                SpaceDataManager.saveNasaPhotoToFile(image: img, url: url)
                                            }
                                    }
+                                   #endif
 #endif
                                    if let img = $0, let key = key {
                                        switch key.type {

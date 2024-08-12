@@ -38,12 +38,12 @@ struct EphemerisView: View {
             }
             HStack {
                 if viewModel.showEphemerisSymbols {
-                    Button(action:  { viewModel.showEphemerisSymbols = !viewModel.showEphemerisSymbols
+                    Button(action:  { viewModel.showEphemerisSymbols.toggle()
                         viewModel.calculateMonthsPlanetData()}) {
                         Text("Text")
                         }.padding([.top, .leading])
                 } else {
-                    Button(action:  { viewModel.showEphemerisSymbols = !viewModel.showEphemerisSymbols 
+                    Button(action:  { viewModel.showEphemerisSymbols.toggle()
                         viewModel.calculateMonthsPlanetData()}) {
                         Text("Symbols")
                         }.padding([.top, .leading])
@@ -51,12 +51,12 @@ struct EphemerisView: View {
                 Spacer()
                 if viewModel.showEphemerisSymbols {
                     if viewModel.showEphemerisKey {
-                        Button(action:  { viewModel.showEphemerisKey = !viewModel.showEphemerisKey
+                        Button(action:  { viewModel.showEphemerisKey.toggle()
                             viewModel.calculateMonthsPlanetData()}) {
                             Text("Hide Key")
                             }.padding([.top, .leading])
                     } else {
-                        Button(action:  { viewModel.showEphemerisKey = !viewModel.showEphemerisKey
+                        Button(action:  { viewModel.showEphemerisKey.toggle()
                             viewModel.calculateMonthsPlanetData()}) {
                             Text("Key")
                             }.padding([.top, .leading])
@@ -65,12 +65,12 @@ struct EphemerisView: View {
                 }
                 
                 if viewModel.showModernEphemeris {
-                    Button(action:  { viewModel.showModernEphemeris = !viewModel.showModernEphemeris
+                    Button(action:  { viewModel.showModernEphemeris.toggle()
                         viewModel.calculateMonthsPlanetData()}) {
                         Text("Classical")
                         }.padding([.top, .trailing])
                 } else {
-                    Button(action:  { viewModel.showModernEphemeris = !viewModel.showModernEphemeris
+                    Button(action:  { viewModel.showModernEphemeris.toggle()
                         viewModel.calculateMonthsPlanetData()}) {
                         Text("Modern")
                         }.padding([.top, .trailing])

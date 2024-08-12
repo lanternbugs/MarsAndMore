@@ -27,10 +27,12 @@ class SpaceDataManager: ObservableObject
     var curiosityManifest: RoverManifest?
     var opportunityManifest: RoverManifest?
     var spiritManifest: RoverManifest?
+    #if DEBUG
     static let saveMode = false
     let maxSaveQuerries = 10
     var photosSaved = 0
     let semaphor = DispatchSemaphore(value: 1)
+    #endif
     
     init()
     {
@@ -95,7 +97,7 @@ class SpaceDataManager: ObservableObject
             }
         }
     }
-    
+    #if DEBUG
     func fetchCuriosityPhotosToSave() {
 #if os(macOS)
         if let list: [PhotoData] = curiosityManifest?.photo_manifest.photos.filter({ photo in
@@ -146,14 +148,17 @@ class SpaceDataManager: ObservableObject
         }
 #endif
     }
+    #endif
     
     
     func fetchCuriosityPhotos()
     {
+        #if DEBUG
         if SpaceDataManager.saveMode {
             fetchCuriosityPhotosToSave()
             return
         }
+        #endif
         if let list: [PhotoData] = curiosityManifest?.photo_manifest.photos.filter({ photo in
             // 2020 2021 2022 etc
             photo.total_photos > 4 && photo.earth_date.hasPrefix("202") &&  photo.cameras.first { $0 == "NAVCAM" } != nil
@@ -281,7 +286,9 @@ class SpaceDataManager: ObservableObject
     }
     
 #if os(macOS)
+    #if DEBUG
     static func savePhotosJson(_ photos: [ImageInfo] ) {
+        #if DEBUG
         var savedInfo = [SavedImageInfo]()
         for info in photos {
             let fileName = info.url.relativeString
@@ -303,6 +310,7 @@ class SpaceDataManager: ObservableObject
                 print(error.localizedDescription)
             }
         }
+        #endif
         
     }
     static func saveNasaPhotoToFile(image: NSImage, url: URL) {
@@ -313,7 +321,9 @@ class SpaceDataManager: ObservableObject
             SpaceDataManager.saveToDisk(image: image, path: finalFileName )
         }
     }
+    
     static func jpegDataFrom(image:NSImage) -> Data {
+        
             let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)!
             let bitmapRep = NSBitmapImageRep(cgImage: cgImage)
         let options: [NSBitmapImageRep.PropertyKey: Any] = [
@@ -336,5 +346,6 @@ class SpaceDataManager: ObservableObject
             }
         }
     }
+    #endif
 #endif
 }

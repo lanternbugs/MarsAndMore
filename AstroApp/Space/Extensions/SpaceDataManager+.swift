@@ -77,9 +77,11 @@ extension SpaceDataManager {
                 dateChange = true
             }
         }
+        #if DEBUG
         if SpaceDataManager.saveMode {
             dateChange = true
         }
+        #endif
         
         if !SpaceDataManager.checkAllDataExists(type: .Curiosity) || dateChange {
             
