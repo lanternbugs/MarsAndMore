@@ -125,7 +125,13 @@ extension TransitChartDrawingView {
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             if planet.retrograde {
-                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), "R", trueDegree, colorChoice: colorChoice)
+#if os(macOS)
+                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.3, printDegree), "R", trueDegree, colorChoice: colorChoice, printInfo: .small)
+#else
+                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), "R", trueDegree, colorChoice: colorChoice, printInfo: .small)
+#endif
+    
+                
             }
             i += 1
             
@@ -160,7 +166,7 @@ extension TransitChartDrawingView {
             
             printText(viewModel.getXYFromPolar(placement - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             if planet.retrograde {
-                printSign(viewModel.getXYFromPolar(placement - spread * 3.2, printDegree), "R", trueDegree, colorChoice: colorChoice)
+                printSign(viewModel.getXYFromPolar(placement - spread * 3.2, printDegree), "R", trueDegree, colorChoice: colorChoice, printInfo: .small)
             }
             
             i += 1

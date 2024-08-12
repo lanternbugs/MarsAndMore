@@ -227,9 +227,9 @@ extension NatalChartDrawingView {
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.0, printDegree), planet.numericDegree.getAstroMinute(), trueDegree, false, fontSize)
             if planet.retrograde {
                 #if os(iOS)
-                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.5, printDegree), "R", trueDegree)
+                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.5, printDegree), "R", trueDegree, printInfo: .small)
                 #else
-                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.4, printDegree), "R", trueDegree)
+                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.4, printDegree), "R", trueDegree, printInfo: .small)
                 #endif
                 
             }
@@ -565,6 +565,8 @@ extension NatalChartDrawingView {
 #else
         if printInfo == .large {
             size += 6
+        } else if printInfo == .small {
+            size -= 4
         }
 #endif
         
