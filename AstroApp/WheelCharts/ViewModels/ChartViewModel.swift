@@ -112,6 +112,8 @@ class ChartViewModel {
         if chart == .Natal {
             if houseData.isEmpty {
                 value += 30
+            } else {
+                value += 10
             }
     #if os(iOS)
             let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom

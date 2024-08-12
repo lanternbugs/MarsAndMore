@@ -247,16 +247,23 @@ extension NatalChartDrawingView {
             drawLine(degree: Double(trueDegree), radius: viewModel.radius - viewModel.getArcStrokeWidth(), length: Int(viewModel.radius - viewModel.innerRadius - viewModel.getArcStrokeWidth()), thickness: 1)
         }
         drawLine(degree: Double(trueDegree), radius: viewModel.radius + 5, length: 5, thickness: 1)
-        var fontSize = 12.0
-        if viewModel.chart != .Natal {
-            fontSize = 10.0
-        }
+        var fontSize = 10.0
+        
 #if os(iOS)
-        if idiom != .pad {
-            fontSize = 10.0
+        if viewModel.chart == .Natal {
+            if idiom != .pad {
+                fontSize = 12.0
+            } else {
+                fontSize = 14.0
+            }
         } else {
-            fontSize = 12.0
+            if idiom != .pad {
+                fontSize = 10.0
+            } else {
+                fontSize = 12.0
+            }
         }
+        
         
 #endif
         var printingHouse = Int(house)
@@ -273,20 +280,14 @@ extension NatalChartDrawingView {
             textOffsetFromRadius = 6
         }
 #endif
-        if viewModel.chart != .Natal {
-            printText(viewModel.getXYFromPolar(viewModel.radius + textOffsetFromRadius, trueDegree + 4.0), Double(houseDegree).getAstroDegreeOnly(), trueDegree + 4.0, false, fontSize)
-        }
+        printText(viewModel.getXYFromPolar(viewModel.radius + textOffsetFromRadius, trueDegree + 4.0), Double(houseDegree).getAstroDegreeOnly(), trueDegree + 4.0, false, fontSize)
         if viewModel.chart == .Synastry {
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - 12, trueDegree + 3.0), String(printingHouse ?? 1), trueDegree + 3.0, false, fontSize)
         } else {
             printText(viewModel.getXYFromPolar(viewModel.innerRadius + textOffsetFromRadius, trueDegree + 6.0), String(printingHouse ?? 1), trueDegree + 6.0, false, fontSize)
         }
         
-        if viewModel.chart == .Natal {
-            printSign(viewModel.getXYFromPolar(viewModel.radius + 15, trueDegree), Double(houseDegree).getAstroSign().getAstroDotCharacter(), trueDegree)
-            let signDegreeText = viewModel.houseData[(Int(house) ?? 1) - 1].numericDegree.getAstroDegree()
-            printText(viewModel.getXYFromPolar(viewModel.radius + 20, trueDegree - 6), signDegreeText, trueDegree - 6, true, fontSize)
-        }
+        
     }
     
     func drawSecondaryHouseInfo(at houseDegree: Int, for trueDegree: Double, house: String, sign: Signs) {
