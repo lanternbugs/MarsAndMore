@@ -52,7 +52,8 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
     }
     
     func populateAspectsData(_ date: Double, _ location: LocationData?, secondTime: Double? = nil) -> [TransitCell] {
-        let aspectsRow = getAspects(time: date, with: secondTime, and: location, type: manager.orbSelection, calculationSettings: manager.calculationSettings)
+        let orbSelection = secondTime != nil ? manager.transitOrbSelection : manager.orbSelection
+        let aspectsRow = getAspects(time: date, with: secondTime, and: location, type: orbSelection, calculationSettings: manager.calculationSettings)
         
         if let aspects = aspectsRow.planets as? [TransitCell] {
              return aspects
