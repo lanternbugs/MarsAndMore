@@ -219,20 +219,19 @@ extension NatalChartDrawingView {
             let printSize = printInfo.1
             let colorChoice = planet.planet == .Sun ? Colors.orange : Colors.black
             
-            if planet.planet == .Ascendant {
-                printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), "Asc", trueDegree, false, fontSize)
-            } else if planet.planet == .MC {
-                printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), "MC", trueDegree, false, fontSize)
-            } else {
-                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printSize)
-            }
+            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printSize)
             
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), planet.sign.getAstroDotCharacter(), trueDegree)
 
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.0, printDegree), planet.numericDegree.getAstroMinute(), trueDegree, false, fontSize)
             if planet.retrograde {
-                printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.4, printDegree), "R", trueDegree, false, fontSize)
+                #if os(iOS)
+                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.5, printDegree), "R", trueDegree)
+                #else
+                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.4, printDegree), "R", trueDegree)
+                #endif
+                
             }
             
             i += 1

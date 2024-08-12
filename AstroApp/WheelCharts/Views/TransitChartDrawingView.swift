@@ -125,7 +125,7 @@ extension TransitChartDrawingView {
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             if planet.retrograde {
-                printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), "R", trueDegree, false, fontSize)
+                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), "R", trueDegree)
             }
             i += 1
             
@@ -156,17 +156,11 @@ extension TransitChartDrawingView {
             let colorChoice = planet.planet == .Sun ? Colors.orange : Colors.black
             let placement = viewModel.interiorRadius - (viewModel.innerHouseThickness / 2)
 
-            if planet.planet == .Ascendant {
-                printText(viewModel.getXYFromPolar(placement - spread - 2, printDegree), "Asc", trueDegree, false, fontSize)
-            } else if planet.planet == .MC {
-                printText(viewModel.getXYFromPolar(placement - spread - 2, printDegree), "MC", trueDegree, false, fontSize)
-            } else {
-                printSign(viewModel.getXYFromPolar(placement - spread - 2, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
-            }
+            printSign(viewModel.getXYFromPolar(placement - spread - 2, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
             
             printText(viewModel.getXYFromPolar(placement - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             if planet.retrograde {
-                printText(viewModel.getXYFromPolar(placement - spread * 3.2, printDegree), "R", trueDegree, false, fontSize)
+                printSign(viewModel.getXYFromPolar(placement - spread * 3.2, printDegree), "R", trueDegree)
             }
             
             i += 1
