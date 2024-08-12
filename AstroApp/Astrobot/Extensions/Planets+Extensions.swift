@@ -94,6 +94,10 @@ extension Planets {
             return "L"
         case .SouthNode:
             return "M"
+        case .Ascendant:
+            return "P"
+        case .MC:
+            return "Q"
         default:
             return "Y" // no pholus
         }

@@ -94,14 +94,14 @@ struct EphemerisView: View {
                                         Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
                                         + Text(" \(viewModel.planetGrid[i].degree) ")
                                         + Text("\(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                                        + Text(" R ")
+                                        + Text(" R ").font(Font.custom("AstroDotBasic", size: symbolFontSize))
                                         
                                         
                                     } else {
                                         Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
                                         + Text(" \(viewModel.planetGrid[i].degree) ")
                                         + Text("\(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                                        + Text(" R ")
+                                        + Text(" R ").font(Font.custom("AstroDotBasic", size: symbolFontSize))
                                     }
                                 } else {
                                     if i < viewModel.numbersOfDays {

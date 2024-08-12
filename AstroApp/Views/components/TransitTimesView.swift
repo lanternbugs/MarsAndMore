@@ -46,7 +46,7 @@ extension TransitTimesView {
                 if transit.sign != nil {
                     Text(" \(transit.planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(centerText) ") + Text("\(transit.sign!.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text("  \(displayTime)")
                 } else {
-                    if (transit.planet2 != .Pholus && transit.planet2 != .Ascendant && transit.planet2 != .MC) {
+                    if (transit.planet2 != .Pholus) {
                         Text(" \(transit.planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(transit.aspect.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(transit.planet2.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text("  \(displayTime)")
                         
                     } else {
