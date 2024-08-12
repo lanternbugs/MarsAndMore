@@ -266,7 +266,7 @@ extension NatalChartDrawingView {
         
         #else
         if viewModel.chart == .Natal {
-            fontSize = 14.0
+            fontSize = 12.0
         }
         
 #endif
@@ -284,12 +284,26 @@ extension NatalChartDrawingView {
             textOffsetFromRadius = 6
         }
 #endif
+        
+#if os(iOS)
         printText(viewModel.getXYFromPolar(viewModel.radius + textOffsetFromRadius, trueDegree + 4.0), Double(houseDegree).getAstroDegreeOnly(), trueDegree + 4.0, false, fontSize)
+        #else
+        if viewModel.chart != .Natal {
+            printText(viewModel.getXYFromPolar(viewModel.radius + textOffsetFromRadius, trueDegree + 4.0), Double(houseDegree).getAstroDegreeOnly(), trueDegree + 4.0, false, fontSize)
+        }
+        #endif
         if viewModel.chart == .Synastry {
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - 12, trueDegree + 3.0), String(printingHouse ?? 1), trueDegree + 3.0, false, fontSize)
         } else {
             printText(viewModel.getXYFromPolar(viewModel.innerRadius + textOffsetFromRadius, trueDegree + 6.0), String(printingHouse ?? 1), trueDegree + 6.0, false, fontSize)
         }
+#if os(macOS)
+        if viewModel.chart == .Natal {
+                    printSign(viewModel.getXYFromPolar(viewModel.radius + 15, trueDegree), Double(houseDegree).getAstroSign().getAstroDotCharacter(), trueDegree)
+                    let signDegreeText = viewModel.houseData[(Int(house) ?? 1) - 1].numericDegree.getAstroDegree()
+                    printText(viewModel.getXYFromPolar(viewModel.radius + 20, trueDegree - 6), signDegreeText, trueDegree - 6, true, fontSize)
+                }
+#endif
         
         
     }

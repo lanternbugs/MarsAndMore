@@ -114,11 +114,9 @@ class ChartViewModel {
                 value += 30
             } else {
                 
-                #if os(macOS)
-                value += 15
-                #else
+     #if os(iOS)
                 value += 10
-                #endif
+    #endif
             }
     #if os(iOS)
             let idiom : UIUserInterfaceIdiom = UIDevice.current.userInterfaceIdiom
