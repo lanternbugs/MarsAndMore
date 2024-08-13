@@ -10,6 +10,7 @@ import SwiftUI
 struct AstroSymbolsKey: View {
     let columns: [GridItem] =
                  Array(repeating: .init(.flexible()), count: 2)
+    let showAspectsSymbols: Bool
 #if os(iOS)
     let symbolFontSize = UIDevice.current.userInterfaceIdiom == .pad ? 32.0 : 20.0
 #else
@@ -28,16 +29,6 @@ struct AstroSymbolsKey: View {
                     case .Pholus:
                         HStack {
                             Text(" \(planet.getName()) - No Symbol").font(.body)
-                            Spacer()
-                        }
-                    case .Ascendant:
-                        HStack {
-                            Text(" \(planet.getName()) - Ascendant").font(.body)
-                            Spacer()
-                        }
-                    case .MC:
-                        HStack {
-                            Text(" \(planet.getName()) - Medium Coeli").font(.body)
                             Spacer()
                         }
                     default:
@@ -72,10 +63,29 @@ struct AstroSymbolsKey: View {
                     }
                 }
             }
+            
+            if showAspectsSymbols {
+                Text("")
+                HStack {
+                    Text("Aspect Symbols").font(.title2)
+                    Spacer()
+                }
+
+                LazyVGrid(columns: columns) {
+                    ForEach(Aspects.allCases, id: \.rawValue) {
+                        aspect in
+                        HStack {
+                            Text(" \(aspect.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                            Text("  \(aspect.getName())").font(.body)
+                            Spacer()
+                        }
+                    }
+                }
+            }
         }
     }
 }
 
 #Preview {
-    AstroSymbolsKey()
+    AstroSymbolsKey(showAspectsSymbols: false)
 }

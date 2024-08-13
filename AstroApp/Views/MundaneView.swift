@@ -22,13 +22,11 @@ struct MundaneView: View, AstrobotInterface {
             HStack {
                 if viewModel.showTransitTimeSymbols {
                     Button(action:  { viewModel.showTransitTimeSymbols.toggle()
-                        //viewModel.reload()
                         }) {
                         Text("Text")
                         }.padding([.top, .leading])
                 } else {
                     Button(action:  { viewModel.showTransitTimeSymbols.toggle()
-                        //viewModel.reload()
                         }) {
                         Text("Symbols")
                         }.padding([.top, .leading])
@@ -36,6 +34,20 @@ struct MundaneView: View, AstrobotInterface {
                 Spacer()
                 Text("Mundane").font(.title)
                 Spacer()
+                if viewModel.showTransitTimeSymbols {
+                    if viewModel.showTransitSymbolKey {
+                        Button(action:  { viewModel.showTransitSymbolKey.toggle()
+                            }) {
+                            Text("Hide Key")
+                            }.padding([.top, .leading])
+                    } else {
+                        Button(action:  { viewModel.showTransitSymbolKey.toggle()
+                            }) {
+                            Text("Key")
+                            }.padding([.top, .leading])
+                    }
+                }
+                
             }
             HStack {
                 Button(action: viewModel.previousDay) {
@@ -51,6 +63,9 @@ struct MundaneView: View, AstrobotInterface {
             
             ScrollView {
                 VStack {
+                    if viewModel.showTransitSymbolKey && viewModel.showTransitTimeSymbols {
+                        AstroSymbolsKey(showAspectsSymbols: true)
+                    }
                     HStack {
                         Text("Planetary Transits").font(.title)
                         Spacer()

@@ -80,7 +80,7 @@ struct EphemerisView: View {
 
             ScrollView([.horizontal, .vertical]) {
                 if viewModel.showEphemerisKey && viewModel.showEphemerisSymbols {
-                    AstroSymbolsKey()
+                    AstroSymbolsKey(showAspectsSymbols: false)
                 }
                 let rows: [GridItem] = Array(repeating: .init(.flexible()), count: viewModel.numbersOfDays)
                 LazyHGrid(rows: rows) {

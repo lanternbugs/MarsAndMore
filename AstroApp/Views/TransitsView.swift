@@ -46,6 +46,22 @@ struct TransitsView: View {
                             }.padding([.top, .leading])
                     }
                     Spacer()
+                    if viewModel.showTransitTimeSymbols {
+                        if viewModel.showTransitSymbolKey {
+                            Button(action:  { viewModel.showTransitSymbolKey.toggle()
+                                }) {
+                                Text("Hide Key")
+                                }.padding([.top, .leading])
+                        } else {
+                            Button(action:  { viewModel.showTransitSymbolKey.toggle()
+                                }) {
+                                Text("Key")
+                                }.padding([.top, .leading])
+                        }
+                    }
+                }
+                if viewModel.showTransitSymbolKey && viewModel.showTransitTimeSymbols {
+                    AstroSymbolsKey(showAspectsSymbols: true)
                 }
                 HStack {
                     Text("Plantary Transits for \(chartName)").font(.title)

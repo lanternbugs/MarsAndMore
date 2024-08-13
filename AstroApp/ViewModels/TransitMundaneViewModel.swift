@@ -21,6 +21,7 @@ class TransitMundaneViewModel: ObservableObject, AstrobotInterface {
     @Published var skyTransits: [TransitTime]
     @Published var date: Date
     @AppStorage("showTransitTimeSymbols") var showTransitTimeSymbols: Bool = false
+    @Published var showTransitSymbolKey: Bool = false
     let transitData: TransitTimeData?
     let manager: BirthDataManager
     

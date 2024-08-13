@@ -72,7 +72,7 @@ struct ResourcesView: View {
             }
 
             Text("")
-            AstroSymbolsKey()
+            AstroSymbolsKey(showAspectsSymbols: true)
             Text("")
         }
         
