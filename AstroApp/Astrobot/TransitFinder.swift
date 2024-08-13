@@ -84,7 +84,7 @@ struct TransitFinder {
             if canMakeNatalAspect(planetDegree, with: signChangeDegree, aspect: .Conjunction, low: start_time, high: end_time) {
                 let time = findNatalAspect(planet, with: signChangeDegree, aspect: .Conjunction, low: start_time, high: end_time)
                 if time > 0 {
-                    let transitTime = TransitTime(planet: planet, planet2: planet, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: signChangeDegree.getAstroSign())
+                    let transitTime = TransitTime(planet: planet, planet2: planet, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: getNewSign(start: planetDegree.0, end: planetDegree.1, changeDegree: signChangeDegree))
                     transitTimes.append(transitTime)
                 }
                 
@@ -144,6 +144,18 @@ struct TransitFinder {
      TransitFinder.adapterCalls = 0
         return transitTimes
     }
+    
+    func getNewSign(start: Double, end: Double, changeDegree: Double) -> Signs {
+     
+        if end > start && end > 5.0 {
+            return changeDegree.getAstroSign()
+        }
+        if changeDegree.getAstroSign() == .Aries {
+            return .Pisces
+        }
+        return (changeDegree - 30.0).getAstroSign()
+    }
+    
     
     func getOrbitalSpot(_ planet: Planets) -> Int {
         if let order = orbitalDictionary[planet] {
