@@ -228,7 +228,13 @@ struct TransitFinder {
        
         let planetDegree = adapter.getPlanetDegree(mid, Int32(planet1.getAstroIndex()), true, 0)
         let planetLaterDegree = adapter.getPlanetDegree(mid + 0.025, Int32(planet1.getAstroIndex()), true, 0)
-        let direct = planetLaterDegree > planetDegree ? true : false
+        var direct = planetLaterDegree > planetDegree ? true : false
+        if planet1 == .Sun || planet1 == .Moon {
+            direct = true
+        }
+        if planetDegree > 359.5 && Int(planetLaterDegree) == 0 {
+          direct = true
+        }
         let planet2Degree = adapter.getPlanetDegree(mid, Int32(planet2.getAstroIndex()), true, 0)
         var orb = planetDegree - planet2Degree
         TransitFinder.adapterCalls += 3
