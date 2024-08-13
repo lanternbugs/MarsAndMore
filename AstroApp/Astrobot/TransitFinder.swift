@@ -164,6 +164,11 @@ struct TransitFinder {
             if planetDegree < planet2Degree && endPlanetDegree > endPlanet2Degree {
                 return true
             }
+            if planetDegree > endPlanetDegree && endPlanetDegree > 2.0 {
+                if planetDegree > planet2Degree && endPlanetDegree < endPlanet2Degree {
+                    return true
+                }
+            }
         }
         return false
     }
@@ -310,7 +315,11 @@ struct TransitFinder {
         let adapter = AdapterToEphemeris()
         let planetDegree = adapter.getPlanetDegree(low, Int32(planet.getAstroIndex()), true, 0)
         let intDegree = Int(planetDegree)
-        let changeDegree = planetDegree + (30.0 - Double(intDegree % 30) -  (planetDegree - Double(intDegree)))
+        var changeDegree = planetDegree + (30.0 - Double(intDegree % 30) -  (planetDegree - Double(intDegree)))
+        let planetDegree2 = adapter.getPlanetDegree(low + 0.1, Int32(planet.getAstroIndex()), true, 0)
+        if planetDegree2 < planetDegree && Int(planetDegree2) != 0 {
+            changeDegree = Double(Int(planetDegree) - Int(planetDegree) % 30)
+        }
         if changeDegree == 360 {
             return 0
         } else {
