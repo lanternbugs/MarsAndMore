@@ -24,12 +24,12 @@ struct MundaneView: View, AstrobotInterface {
                     Button(action:  { viewModel.showTransitTimeSymbols.toggle()
                         }) {
                         Text("Text")
-                        }.padding([.top, .leading])
+                        }.padding([.top, .bottom, .leading])
                 } else {
                     Button(action:  { viewModel.showTransitTimeSymbols.toggle()
                         }) {
                         Text("Symbols")
-                        }.padding([.top, .leading])
+                        }.padding([.top, .bottom, .leading])
                 }
                 Spacer()
                 Text("Mundane").font(.title)
@@ -39,12 +39,12 @@ struct MundaneView: View, AstrobotInterface {
                         Button(action:  { viewModel.showTransitSymbolKey.toggle()
                             }) {
                             Text("Hide Key")
-                            }.padding([.top, .trailing])
+                            }.padding([.top, .bottom, .trailing])
                     } else {
                         Button(action:  { viewModel.showTransitSymbolKey.toggle()
                             }) {
                             Text("Key")
-                            }.padding([.top, .trailing])
+                            }.padding([.top, .bottom, .trailing])
                     }
                 }
                 

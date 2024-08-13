@@ -25,13 +25,13 @@ struct TransitsView: View {
                 HStack {
                     Button(action: viewModel.previousDay) {
                         Text("<<").font(.title)
-                    }
+                    }.font(.title).padding(.top)
                     Spacer()
                     Text("\(viewModel.date.getLongDateTitleString())").font(.title2)
                     Spacer()
                     Button(action: viewModel.nextDay) {
-                        Text(">>").font(.title)
-                    }
+                        Text(">>")
+                    }.font(.title).padding(.top)
                 }
                 HStack {
                     if viewModel.showTransitTimeSymbols {
