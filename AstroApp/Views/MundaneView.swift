@@ -39,12 +39,12 @@ struct MundaneView: View, AstrobotInterface {
                         Button(action:  { viewModel.showTransitSymbolKey.toggle()
                             }) {
                             Text("Hide Key")
-                            }.padding([.top, .leading])
+                            }.padding([.top, .trailing])
                     } else {
                         Button(action:  { viewModel.showTransitSymbolKey.toggle()
                             }) {
                             Text("Key")
-                            }.padding([.top, .leading])
+                            }.padding([.top, .trailing])
                     }
                 }
                 
