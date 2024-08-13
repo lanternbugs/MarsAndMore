@@ -147,7 +147,7 @@ struct TransitFinder {
     
     func getNewSign(start: Double, end: Double, changeDegree: Double) -> Signs {
      
-        if end > start && end > 5.0 {
+        if end > start || end < 5.0 {
             return changeDegree.getAstroSign()
         }
         if changeDegree.getAstroSign() == .Aries {
@@ -329,9 +329,12 @@ struct TransitFinder {
         let intDegree = Int(planetDegree)
         var changeDegree = planetDegree + (30.0 - Double(intDegree % 30) -  (planetDegree - Double(intDegree)))
         let planetDegree2 = adapter.getPlanetDegree(low + 0.1, Int32(planet.getAstroIndex()), true, 0)
-        if planetDegree2 < planetDegree && Int(planetDegree2) != 0 {
-            changeDegree = Double(Int(planetDegree) - Int(planetDegree) % 30)
+        if planet != .Sun && planet != .Moon {
+            if planetDegree2 < planetDegree && Int(planetDegree2) != 0 {
+                changeDegree = Double(Int(planetDegree) - Int(planetDegree) % 30)
+            }
         }
+        
         if changeDegree == 360 {
             return 0
         } else {
@@ -387,6 +390,9 @@ struct TransitFinder {
         if planet1 != .Sun && planet1 != .Moon {
             let planetLaterDegree = adapter.getPlanetDegree(mid + 0.025, Int32(planet1.getAstroIndex()), true, 0)
             direct = planetLaterDegree > planetDegree ? true : false
+            if planetDegree > 359.5 && Int(planetLaterDegree) == 0 {
+              direct = true
+            }
         }
         TransitFinder.adapterCalls += 2
         
