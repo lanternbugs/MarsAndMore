@@ -17,7 +17,7 @@ extension AstrobotBaseInterface {
     {
         var row = PlanetRow()
         let adapter = AdapterToEphemeris()
-        let interval: Double = 0.1
+        let interval: Double = 0.025
         for type in Planets.allCases
         {
             if type == .Ascendant {
@@ -62,10 +62,13 @@ extension AstrobotBaseInterface {
     func checkRetrograde(val: Double, past: Double)->Bool
     {
         let duration  = val - past
-        if duration > 180 {
+        if Int(past) == 0 && Int(val) == 359 {
             return true // this much it wrapped, aries to pisces
         }
         else if duration < 0 {
+            if Int(past) == 359 && Int(val) == 0 {
+                return false
+            }
             return true
         }
         return false

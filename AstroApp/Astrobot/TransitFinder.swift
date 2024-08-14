@@ -229,6 +229,9 @@ struct TransitFinder {
         let planetDegree = adapter.getPlanetDegree(mid, Int32(planet1.getAstroIndex()), true, 0)
         let planetLaterDegree = adapter.getPlanetDegree(mid + 0.025, Int32(planet1.getAstroIndex()), true, 0)
         var direct = planetLaterDegree > planetDegree ? true : false
+        if Int(planetLaterDegree) == 359 && Int(planetDegree) == 0 {
+            direct = false
+        }
         if planet1 == .Sun || planet1 == .Moon {
             direct = true
         }
@@ -336,8 +339,14 @@ struct TransitFinder {
         var changeDegree = planetDegree + (30.0 - Double(intDegree % 30) -  (planetDegree - Double(intDegree)))
         let planetDegree2 = adapter.getPlanetDegree(low + 0.1, Int32(planet.getAstroIndex()), true, 0)
         if planet != .Sun && planet != .Moon {
-            if planetDegree2 < planetDegree && Int(planetDegree2) != 0 {
+            if planetDegree2 < planetDegree && !(Int(planetDegree2) == 0 && Int(planetDegree) == 359) {
                 changeDegree = Double(Int(planetDegree) - Int(planetDegree) % 30)
+                if Int(planetDegree2) == 0 && Int(planetDegree) == 0 {
+                    changeDegree = 0
+                }
+            }
+            if Int(planetDegree2) == 359 && Int(planetDegree) == 0 {
+                changeDegree = 0
             }
         }
         
@@ -360,6 +369,9 @@ struct TransitFinder {
         let endPlanet2Degree = natalDegree
         var endDistance = abs(endPlanetDegree - endPlanet2Degree)
         if aspect == .Conjunction {
+            if Int(beginDistance) == 0 && Int(endDistance) == 359 && natalDegree == 0 {
+                return true
+            }
             if aspect == .Conjunction {
                 return canMakeConjunction(planetDegree, endPlanetDegree: endPlanetDegree, planet2Degree: planet2Degree, endPlanet2Degree: endPlanet2Degree)
             }
@@ -396,6 +408,9 @@ struct TransitFinder {
         if planet1 != .Sun && planet1 != .Moon {
             let planetLaterDegree = adapter.getPlanetDegree(mid + 0.025, Int32(planet1.getAstroIndex()), true, 0)
             direct = planetLaterDegree > planetDegree ? true : false
+            if Int(planetLaterDegree) == 359 && Int(planetDegree) == 0 {
+                direct = false
+            }
             if planetDegree > 359.5 && Int(planetLaterDegree) == 0 {
               direct = true
             }
