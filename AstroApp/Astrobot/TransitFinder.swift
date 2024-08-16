@@ -18,7 +18,6 @@ struct TransitFinder {
     let tolerance = 0.0001
     let timeDifferential: Double = 1.0/1000000.0
     static var adapterCalls = 0
-    let orbitalDictionary: [Planets: Int] = [.Ascendant: 0, .MC: 1, .Moon: 2, .Sun: 3, .Mercury: 4, .Venus: 5, .Mars: 6, .Vesta: 7, .Juno: 8, .Ceres: 9, .Pallas: 10, .Jupiter: 11, .TrueNode: 12, .SouthNode: 13, .Saturn: 14, .Chiron: 15, .Uranus: 16, .Pholus: 17, .Neptune: 18, .Pluto: 19]
     
     func getMoonTransitsOfDay(start_time: Double, end_time: Double, manager: BirthDataManager) -> [TransitTime] {
         let adapter = AdapterToEphemeris()
@@ -99,7 +98,7 @@ struct TransitFinder {
                 if transitingPlanet == .Moon || transitingPlanet == .MC || transitingPlanet == .Ascendant || !manager.bodiesToShow.contains(transitingPlanet) {
                     continue
                 }
-                if getOrbitalSpot(transitingPlanet) <= getOrbitalSpot(planet) {
+                if transitingPlanet.getOrbitalSpot() <= planet.getOrbitalSpot() {
                     continue;
                 }
                 var planetDegree: (Double, Double) = (0,0)
@@ -154,14 +153,6 @@ struct TransitFinder {
             return .Pisces
         }
         return (changeDegree - 30.0).getAstroSign()
-    }
-    
-    
-    func getOrbitalSpot(_ planet: Planets) -> Int {
-        if let order = orbitalDictionary[planet] {
-            return order
-        }
-        return 0
     }
     
     func canMakeConjunction(_ planetDegree: Double, endPlanetDegree: Double, planet2Degree: Double, endPlanet2Degree: Double) -> Bool {
@@ -228,16 +219,17 @@ struct TransitFinder {
        
         let planetDegree = adapter.getPlanetDegree(mid, Int32(planet1.getAstroIndex()), true, 0)
         let planetLaterDegree = adapter.getPlanetDegree(mid + 0.025, Int32(planet1.getAstroIndex()), true, 0)
-        var direct = planetLaterDegree > planetDegree ? true : false
-        if Int(planetLaterDegree) == 359 && Int(planetDegree) == 0 {
-            direct = false
+        var direct = true
+        if planet1 != .Sun && planet1 != .Moon {
+            direct = planetLaterDegree > planetDegree ? true : false
+            if Int(planetLaterDegree) == 359 && Int(planetDegree) == 0 {
+                direct = false
+            }
+            if planetDegree > 359.5 && Int(planetLaterDegree) == 0 {
+              direct = true
+            }
         }
-        if planet1 == .Sun || planet1 == .Moon {
-            direct = true
-        }
-        if planetDegree > 359.5 && Int(planetLaterDegree) == 0 {
-          direct = true
-        }
+        
         let planet2Degree = adapter.getPlanetDegree(mid, Int32(planet2.getAstroIndex()), true, 0)
         var orb = planetDegree - planet2Degree
         TransitFinder.adapterCalls += 3

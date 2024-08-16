@@ -107,6 +107,51 @@ extension Planets {
         [.Ascendant, .MC, .Moon, .Sun, .Mercury, .Venus, .Mars, .Vesta, .Juno, .Ceres, .Pallas, .Jupiter, .TrueNode, .SouthNode, .Saturn, .Chiron, .Uranus, .Pholus, .Neptune, .Pluto]
     }
     
+    func getOrbitalSpot() -> Int {
+        switch(self) {
+        case .Ascendant:
+            return 0
+        case .MC:
+            return 1
+        case .Moon:
+            return 2
+        case .Sun:
+            return 3
+        case .Mercury:
+            return 4
+        case .Venus:
+            return 5
+        case .Mars:
+            return 6
+        case .Vesta:
+            return 7
+        case .Juno:
+            return 8
+        case .Ceres:
+            return 9
+        case .Pallas:
+            return 10
+        case .Jupiter:
+            return 11
+        case .TrueNode:
+            return 12
+        case .SouthNode:
+            return 13
+        case .Saturn:
+            return 14
+        case .Chiron:
+            return 15
+        case .Uranus:
+            return 16
+        case .Pholus:
+            return 17
+        case .Neptune:
+            return 18
+        case .Pluto:
+            return 19
+        }
+    }
+    
     func getNatalOrb(type: OrbType, with aspect: Aspects)->Double
     {
         // no longer using differnt orb for sextile aspect
