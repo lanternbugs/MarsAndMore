@@ -30,9 +30,7 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
         setDateToStartOfMonth()
         calculateMonthsPlanetData()
     }
-    
-   
-    
+
     func toggleEphemerisSymbols() {
         model.showEphemerisSymbols.toggle()
     }
