@@ -23,7 +23,7 @@ struct EphemerisButtonsView: View {
                 }
             }
             HStack {
-                if viewModel.getShowEphemerisSymbols() {
+                if viewModel.showEphemerisSymbols {
                     Button(action:  { viewModel.toggleEphemerisSymbols()
                         viewModel.calculateMonthsPlanetData()}) {
                             Text("Text")
@@ -35,8 +35,8 @@ struct EphemerisButtonsView: View {
                         }.padding([.top, .leading])
                 }
                 Spacer()
-                if viewModel.getShowEphemerisSymbols() {
-                    if viewModel.getShowEphemerisKey() {
+                if viewModel.showEphemerisSymbols {
+                    if viewModel.showEphemerisKey {
                         Button(action:  { viewModel.toggleEphemerisKey()
                             viewModel.calculateMonthsPlanetData()}) {
                                 Text("Hide Key")
@@ -50,7 +50,7 @@ struct EphemerisButtonsView: View {
                     Spacer()
                 }
                 
-                if viewModel.getShowModernEphemeris() {
+                if viewModel.showModernEphemeris {
                     Button(action:  { viewModel.toggleModernEphemeris()
                         viewModel.calculateMonthsPlanetData()}) {
                             Text("Classical")

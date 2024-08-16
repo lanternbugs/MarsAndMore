@@ -66,4 +66,20 @@ extension Date {
         let dateString = dateFormatter.string(from: self)
         return self.getDayOfWeek() + " " + dateString
     }
+    
+    func getMonthYearDisplayDate() -> String {
+        let formatter = DateFormatter()
+#if os(macOS)
+        formatter.dateFormat = "MMMM YYYY HH:mm ZZZ"
+#elseif os(iOS)
+    if idiom == .pad {
+        formatter.dateFormat = "MMMM YYYY HH:mm ZZZ"
+        
+    } else {
+        formatter.dateFormat = "MM-YYYY HH:mm ZZZ"
+    }
+#endif
+        let monthYear = formatter.string(from: self)
+        return monthYear
+    }
 }

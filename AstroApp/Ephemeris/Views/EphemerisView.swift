@@ -22,14 +22,14 @@ struct EphemerisView: View {
             EphemerisButtonsView().environmentObject(viewModel)
 
             ScrollView([.horizontal, .vertical]) {
-                if viewModel.getShowEphemerisKey() && viewModel.getShowEphemerisSymbols() {
+                if viewModel.showEphemerisKey && viewModel.showEphemerisSymbols {
                     AstroSymbolsKey(showAspectsSymbols: false)
                 }
                 let rows: [GridItem] = Array(repeating: .init(.flexible()), count: viewModel.numbersOfDays)
                 LazyHGrid(rows: rows) {
                     let count: Int = viewModel.planetGrid.count
                     ForEach(0 ..< count, id: \.self) { i in
-                        if viewModel.getShowEphemerisSymbols() {
+                        if viewModel.showEphemerisSymbols {
                             if i < viewModel.numbersOfDays {
                                 HStack {
                                     Text("\(i + 1) ") +

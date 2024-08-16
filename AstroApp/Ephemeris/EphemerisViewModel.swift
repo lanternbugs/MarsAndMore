@@ -21,6 +21,9 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
     var date: Date { model.date }
     var numbersOfDays: Int { model.numbersOfDays }
     var symbolFontSize: Double { model.symbolFontSize }
+    var showEphemerisSymbols: Bool { model.showEphemerisSymbols }
+    var showEphemerisKey: Bool { model.showEphemerisKey }
+    var showModernEphemeris: Bool { model.showModernEphemeris }
     init(date: Date, calculationSettings: CalculationSettings) {
         let calendar = Calendar.current
         self.model = EphemerisModel(date: calendar.startOfDay(for: date), calculationSettings: calculationSettings)
@@ -28,26 +31,16 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
         calculateMonthsPlanetData()
     }
     
-    func getShowEphemerisSymbols() -> Bool {
-        model.showEphemerisSymbols
-    }
+   
     
     func toggleEphemerisSymbols() {
         model.showEphemerisSymbols.toggle()
-    }
-    
-    func getShowEphemerisKey() -> Bool {
-        model.showEphemerisKey
     }
     
     func toggleEphemerisKey() {
         model.showEphemerisKey.toggle()
     }
     
-    func getShowModernEphemeris() -> Bool {
-        model.showModernEphemeris
-    }
-       
     func toggleModernEphemeris() {
         model.showModernEphemeris.toggle()
     }
@@ -138,20 +131,3 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
     }
 }
 
-extension Date {
-    func getMonthYearDisplayDate() -> String {
-        let formatter = DateFormatter()
-#if os(macOS)
-        formatter.dateFormat = "MMMM YYYY HH:mm ZZZ"
-#elseif os(iOS)
-    if idiom == .pad {
-        formatter.dateFormat = "MMMM YYYY HH:mm ZZZ"
-        
-    } else {
-        formatter.dateFormat = "MM-YYYY HH:mm ZZZ"
-    }
-#endif
-        let monthYear = formatter.string(from: self)
-        return monthYear
-    }
-}
