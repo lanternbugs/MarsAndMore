@@ -17,26 +17,46 @@ import Foundation
 import SwiftUI
 class EphemerisViewModel: AstrobotInterface, ObservableObject {
     @Published var planetGrid = [PlanetCell]()
-    var date: Date
-    var numbersOfDays = 30
-    let calculationSettings: CalculationSettings
-    @AppStorage("showEphemerisSymbols") var showEphemerisSymbols: Bool = true
-    @AppStorage("showModernEphemeris")  var showModernEphemeris: Bool = true
-    var showEphemerisKey: Bool = false
-    
+    let model: EphemerisModel
+    var date: Date { model.date }
+    var numbersOfDays: Int { model.numbersOfDays }
+    var symbolFontSize: Double { model.symbolFontSize }
     init(date: Date, calculationSettings: CalculationSettings) {
         let calendar = Calendar.current
-        self.calculationSettings = calculationSettings
-        self.date = calendar.startOfDay(for: date)
+        self.model = EphemerisModel(date: calendar.startOfDay(for: date), calculationSettings: calculationSettings)
         setDateToStartOfMonth()
         calculateMonthsPlanetData()
+    }
+    
+    func getShowEphemerisSymbols() -> Bool {
+        model.showEphemerisSymbols
+    }
+    
+    func toggleEphemerisSymbols() {
+        model.showEphemerisSymbols.toggle()
+    }
+    
+    func getShowEphemerisKey() -> Bool {
+        model.showEphemerisKey
+    }
+    
+    func toggleEphemerisKey() {
+        model.showEphemerisKey.toggle()
+    }
+    
+    func getShowModernEphemeris() -> Bool {
+        model.showModernEphemeris
+    }
+       
+    func toggleModernEphemeris() {
+        model.showModernEphemeris.toggle()
     }
     
     func calculateMonthsPlanetData() {
         var planetCells = [PlanetRow]()
         let dates = getDatesForDaysOfMonth()
         for date in dates {
-            planetCells.append(getPlanets(time: date.getAstroTime(), location: nil, calculationSettings: calculationSettings))
+            planetCells.append(getPlanets(time: date.getAstroTime(), location: nil, calculationSettings: model.calculationSettings))
         }
         
        populatePlanetGrid(planetCells: planetCells)
@@ -53,7 +73,7 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
                 }
             }
         }
-        let rows = numbersOfDays
+        let rows = model.numbersOfDays
         let columns = Int(basePlanetGrid.count / rows)
         for x in 0..<columns {
             for y in 0..<rows {
@@ -62,7 +82,7 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
         }
     }
     func getFilteredPlanets(_ displayPlanets: [PlanetCell]) -> [PlanetCell] {
-        displayPlanets.filter { ($0.planet != .Pholus || !showEphemerisSymbols) && $0.planet != .SouthNode && ($0.planet.rawValue < Planets.Uranus.rawValue || showModernEphemeris || $0.planet.rawValue == Planets.TrueNode.rawValue) }
+        displayPlanets.filter { ($0.planet != .Pholus || !model.showEphemerisSymbols) && $0.planet != .SouthNode && ($0.planet.rawValue < Planets.Uranus.rawValue || model.showModernEphemeris || $0.planet.rawValue == Planets.TrueNode.rawValue) }
     }
     
     func getPlanetString(cell: PlanetCell) -> String {
@@ -85,13 +105,13 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
             currentDate = getNextDay(currentDate)
             currentMonth = formatter.string(from: currentDate)
         } while(currentMonth == month)
-        numbersOfDays = dates.count
+        model.numbersOfDays = dates.count
         return dates
     }
     
     func setDateToStartOfMonth() {
         let components = Calendar.current.dateComponents([.year, .month], from: date)
-        date = Calendar.current.date(from: components)!
+        model.date = Calendar.current.date(from: components)!
     }
     
     func getNextDay(_ currentDate: Date) -> Date {
@@ -103,7 +123,7 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
         let calendar = Calendar.current
         let newDate = calendar.date(byAdding: .month, value: -1, to: date)
         if let newDate = newDate {
-            date = newDate
+            model.date = newDate
         }
         calculateMonthsPlanetData()
     }
@@ -112,7 +132,7 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
         let calendar = Calendar.current
         let newDate = calendar.date(byAdding: .month, value: 1, to: date)
         if let newDate = newDate {
-            date = newDate
+            model.date = newDate
         }
         calculateMonthsPlanetData()
     }

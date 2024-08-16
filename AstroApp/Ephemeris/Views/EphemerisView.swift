@@ -17,119 +17,57 @@ import SwiftUI
 
 struct EphemerisView: View {
     @ObservedObject var viewModel: EphemerisViewModel
-#if os(iOS)
-    let symbolFontSize = UIDevice.current.userInterfaceIdiom == .pad ? 24.0 : 18.0
-#else
-    let symbolFontSize = 20.0
-#endif
-    
     var body: some View {
         VStack(alignment: .leading) {
-            HStack {
-                Button(action: { viewModel.previousMonth() }) {
-                    Text("Prev Month").font(Font.subheadline).padding(.leading)
-                }
-                Spacer()
-                Text(viewModel.date.getMonthYearDisplayDate())
-                Spacer()
-                Button(action: { viewModel.nextMonth() }) {
-                    Text("Next Month").font(Font.subheadline).padding(.trailing)
-                }
-            }
-            HStack {
-                if viewModel.showEphemerisSymbols {
-                    Button(action:  { viewModel.showEphemerisSymbols.toggle()
-                        viewModel.calculateMonthsPlanetData()}) {
-                        Text("Text")
-                        }.padding([.top, .leading])
-                } else {
-                    Button(action:  { viewModel.showEphemerisSymbols.toggle()
-                        viewModel.calculateMonthsPlanetData()}) {
-                        Text("Symbols")
-                        }.padding([.top, .leading])
-                }
-                Spacer()
-                if viewModel.showEphemerisSymbols {
-                    if viewModel.showEphemerisKey {
-                        Button(action:  { viewModel.showEphemerisKey.toggle()
-                            viewModel.calculateMonthsPlanetData()}) {
-                            Text("Hide Key")
-                            }.padding([.top, .leading])
-                    } else {
-                        Button(action:  { viewModel.showEphemerisKey.toggle()
-                            viewModel.calculateMonthsPlanetData()}) {
-                            Text("Key")
-                            }.padding([.top, .leading])
-                    }
-                    Spacer()
-                }
-                
-                if viewModel.showModernEphemeris {
-                    Button(action:  { viewModel.showModernEphemeris.toggle()
-                        viewModel.calculateMonthsPlanetData()}) {
-                        Text("Classical")
-                        }.padding([.top, .trailing])
-                } else {
-                    Button(action:  { viewModel.showModernEphemeris.toggle()
-                        viewModel.calculateMonthsPlanetData()}) {
-                        Text("Modern")
-                        }.padding([.top, .trailing])
-                }
-            }
-            
+            EphemerisButtonsView().environmentObject(viewModel)
 
             ScrollView([.horizontal, .vertical]) {
-                if viewModel.showEphemerisKey && viewModel.showEphemerisSymbols {
+                if viewModel.getShowEphemerisKey() && viewModel.getShowEphemerisSymbols() {
                     AstroSymbolsKey(showAspectsSymbols: false)
                 }
                 let rows: [GridItem] = Array(repeating: .init(.flexible()), count: viewModel.numbersOfDays)
                 LazyHGrid(rows: rows) {
-                    let count = viewModel.planetGrid.count
+                    let count: Int = viewModel.planetGrid.count
                     ForEach(0 ..< count, id: \.self) { i in
-                        HStack {
-                            if viewModel.showEphemerisSymbols {
+                        if viewModel.getShowEphemerisSymbols() {
+                            if i < viewModel.numbersOfDays {
+                                HStack {
+                                    Text("\(i + 1) ") +
+                                    Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: viewModel.symbolFontSize))
+                                    + Text(" \(viewModel.planetGrid[i].degree) ")
+                                    + Text("\(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: viewModel.symbolFontSize))
+                                    + Text(" ")
+                                }
+                                
+                            } else {
                                 if viewModel.planetGrid[i].retrograde && viewModel.planetGrid[i].planet != Planets.TrueNode {
-                                    if i < viewModel.numbersOfDays {
-                                        Text("\(i + 1) ") +
-                                        Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                    HStack {
+                                        Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: viewModel.symbolFontSize))
                                         + Text(" \(viewModel.planetGrid[i].degree) ")
-                                        + Text("\(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                                        + Text(" R ").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                                        
-                                        
-                                    } else {
-                                        Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                                        + Text(" \(viewModel.planetGrid[i].degree) ")
-                                        + Text("\(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                                        + Text(" R ").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                        + Text("\(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: viewModel.symbolFontSize))
+                                        + Text(" R ").font(Font.custom("AstroDotBasic", size: viewModel.symbolFontSize))
                                     }
+                                
                                 } else {
-                                    if i < viewModel.numbersOfDays {
-                                        Text("\(i + 1) ") +
-                                        Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                    HStack {
+                                        Text("\(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: viewModel.symbolFontSize))
                                         + Text(" \(viewModel.planetGrid[i].degree) ")
-                                        + Text("\(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                                        + Text(" ")
-                                        
-                                        
-                                    } else {
-                                        Text("\(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                                        + Text(" \(viewModel.planetGrid[i].degree) ")
-                                        + Text("\(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                                        + Text("\(viewModel.planetGrid[i].sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: viewModel.symbolFontSize))
                                         + Text(" ")
                                     }
                                 }
-                            } else {
-                                if i < viewModel.numbersOfDays {
+                            } 
+                        } else {
+                            if i < viewModel.numbersOfDays {
+                                HStack {
                                     Text("\(i + 1) ") +
                                     Text(viewModel.getPlanetString(cell: viewModel.planetGrid[i]))
-                                    
-                                } else {
+                                }
+                            } else {
+                                HStack {
                                     Text(viewModel.getPlanetString(cell: viewModel.planetGrid[i]))
                                 }
                             }
-                            
-                            
                         }
                     }
                 }.padding(4)
@@ -142,3 +80,8 @@ struct EphemerisView: View {
 #Preview {
     EphemerisView(viewModel: EphemerisViewModel(date :Date(), calculationSettings: CalculationSettings()))
 }
+
+
+/*
+ 
+ */

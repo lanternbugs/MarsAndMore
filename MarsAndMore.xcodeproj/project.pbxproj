@@ -225,6 +225,8 @@
 		762428CE27C343950002F5B3 /* seas_18.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 762428CC27C343950002F5B3 /* seas_18.se1 */; };
 		76282AE428863C94000D2465 /* SpaceDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76282AE328863C94000D2465 /* SpaceDataManager.swift */; };
 		76282AE528863C94000D2465 /* SpaceDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76282AE328863C94000D2465 /* SpaceDataManager.swift */; };
+		762BD3C82C6FD957001E40FF /* EphemerisButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BD3C72C6FD957001E40FF /* EphemerisButtonsView.swift */; };
+		762BD3C92C6FD957001E40FF /* EphemerisButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BD3C72C6FD957001E40FF /* EphemerisButtonsView.swift */; };
 		762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */; };
 		762D4A6927AB986A00EA59E8 /* AstroButtons.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762D4A6827AB986A00EA59E8 /* AstroButtons.swift */; };
 		762E0C66288DC6E8008B825A /* SpaceDataManager+.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762E0C65288DC6E8008B825A /* SpaceDataManager+.swift */; };
@@ -672,6 +674,7 @@
 		762428AF27C342F20002F5B3 /* seas_24.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_24.se1; sourceTree = "<group>"; };
 		762428CC27C343950002F5B3 /* seas_18.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = seas_18.se1; sourceTree = "<group>"; };
 		76282AE328863C94000D2465 /* SpaceDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpaceDataManager.swift; sourceTree = "<group>"; };
+		762BD3C72C6FD957001E40FF /* EphemerisButtonsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EphemerisButtonsView.swift; sourceTree = "<group>"; };
 		762D4A6627AB964A00EA59E8 /* PlanetsEntry.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlanetsEntry.swift; sourceTree = "<group>"; };
 		762D4A6827AB986A00EA59E8 /* AstroButtons.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroButtons.swift; sourceTree = "<group>"; };
 		762E0C65288DC6E8008B825A /* SpaceDataManager+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SpaceDataManager+.swift"; sourceTree = "<group>"; };
@@ -1176,6 +1179,7 @@
 		76586AB02C5ED3F800938CC6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				762BD3C72C6FD957001E40FF /* EphemerisButtonsView.swift */,
 				76586AB42C5ED47500938CC6 /* EphemerisView.swift */,
 			);
 			path = Views;
@@ -1803,6 +1807,7 @@
 				762D4A6727AB964A00EA59E8 /* PlanetsEntry.swift in Sources */,
 				7691C5F42B0D42850024613D /* TransitsView.swift in Sources */,
 				761DEEC9279B9EF900A71938 /* swemplan.c in Sources */,
+				762BD3C82C6FD957001E40FF /* EphemerisButtonsView.swift in Sources */,
 				76860B8F27B224E400533BD2 /* NameDataView.swift in Sources */,
 				7678A8C62BCB0D4D000E92A1 /* WheelChartHouseListing.swift in Sources */,
 				7631117F289082A800912263 /* NasaPhotoView.swift in Sources */,
@@ -1922,6 +1927,7 @@
 				76B34ED527AC95C50040983E /* FeaturedPlanetsEntry.swift in Sources */,
 				7691C5F52B0D42850024613D /* TransitsView.swift in Sources */,
 				761DEEC6279B9EF900A71938 /* sweph.c in Sources */,
+				762BD3C92C6FD957001E40FF /* EphemerisButtonsView.swift in Sources */,
 				76860B9027B224E400533BD2 /* NameDataView.swift in Sources */,
 				7678A8C72BCB0D4D000E92A1 /* WheelChartHouseListing.swift in Sources */,
 				76311180289082A800912263 /* NasaPhotoView.swift in Sources */,
