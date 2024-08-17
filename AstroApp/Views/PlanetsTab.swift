@@ -48,9 +48,9 @@ struct PlanetsTab: View {
             case .SynastryChooser:
                 DoneView(newRoomState: .Planets)
                 if manager.birthDates.count < 2 {
-                    SynastryChooserView(selectedNameOne: "mike", selectedNameTwo: "jane")
+                    SynastryChooserView(selectedNameOne: "mike", selectedNameTwo: "jane", viewModel: SynastryChooserViewModel(manager: manager))
                 } else {
-                    SynastryChooserView(selectedNameOne: manager.birthDates[0].name, selectedNameTwo: manager.birthDates[1].name)
+                    SynastryChooserView(selectedNameOne: manager.birthDates[0].name, selectedNameTwo: manager.birthDates[1].name, viewModel: SynastryChooserViewModel(manager: manager))
                 }
             case .Ephemeris(let date, let calculationSettings):
                 DoneView(newRoomState: .Planets)

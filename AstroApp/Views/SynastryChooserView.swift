@@ -15,13 +15,12 @@
 import SwiftUI
 
 struct SynastryChooserView: View {
-    @EnvironmentObject private var manager: BirthDataManager
     @Environment(\.roomState) private var roomState
     @State var selectedNameOne: String
     @State var selectedNameTwo: String
-    let viewModel = SynastryChooserViewModel()
+    let viewModel: SynastryChooserViewModel
     var body: some View {
-        if manager.birthDates.isEmpty {
+        if viewModel.manager.birthDates.isEmpty {
             HStack {
                 Spacer()
                 VStack {
@@ -41,7 +40,7 @@ struct SynastryChooserView: View {
                 }
                 Spacer()
             }
-        } else if manager.birthDates.count == 1 {
+        } else if viewModel.manager.birthDates.count == 1 {
             HStack {
                 Spacer()
                 VStack {
@@ -68,12 +67,12 @@ struct SynastryChooserView: View {
                 VStack {
                     Text("Select Person One and Two for a synastry chart")
                     Picker("Person one", selection: $selectedNameOne) {
-                        ForEach(manager.birthDates, id: \.self) {
+                        ForEach(viewModel.manager.birthDates, id: \.self) {
                             Text($0.name).tag($0.name)
                                     }
                     }
                     Picker("Person two", selection: $selectedNameTwo) {
-                        ForEach(manager.birthDates, id: \.self) {
+                        ForEach(viewModel.manager.birthDates, id: \.self) {
                             Text($0.name).tag($0.name)
                                     }
                     }
@@ -84,10 +83,10 @@ struct SynastryChooserView: View {
                 }
                 Spacer()
             }.onAppear() {
-                if manager.birthDates.first(where: { $0.name == viewModel.name1 }) != nil {
+                if viewModel.manager.birthDates.first(where: { $0.name == viewModel.name1 }) != nil {
                     selectedNameOne = viewModel.name1
                 }
-                if manager.birthDates.first(where: { $0.name == viewModel.name2 }) != nil {
+                if viewModel.manager.birthDates.first(where: { $0.name == viewModel.name2 }) != nil {
                     selectedNameTwo = viewModel.name2
                 }
             }
@@ -102,12 +101,12 @@ extension SynastryChooserView {
     }
     
     func getChart() {
-        if let vModel = viewModel.getChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo, manager: manager) {
+        if let vModel = viewModel.getChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) {
             roomState.wrappedValue = .NatalView(onDismiss: .SynastryChooser, viewModel: vModel)
         }
     }
 }
 
 #Preview {
-    SynastryChooserView(selectedNameOne: "mike", selectedNameTwo: "jane")
+    SynastryChooserView(selectedNameOne: "mike", selectedNameTwo: "jane", viewModel: SynastryChooserViewModel(manager: BirthDataManager()))
 }

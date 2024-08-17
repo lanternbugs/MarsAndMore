@@ -55,9 +55,9 @@ struct ChartTab: View {
             case .SynastryChooser:
                 DoneView(newRoomState: .Chart)
                 if manager.birthDates.count < 2 {
-                    SynastryChooserView(selectedNameOne: "mike", selectedNameTwo: "jane")
+                    SynastryChooserView(selectedNameOne: "mike", selectedNameTwo: "jane", viewModel: SynastryChooserViewModel(manager: manager))
                 } else {
-                    SynastryChooserView(selectedNameOne: manager.birthDates[0].name, selectedNameTwo: manager.birthDates[1].name)
+                    SynastryChooserView(selectedNameOne: manager.birthDates[0].name, selectedNameTwo: manager.birthDates[1].name, viewModel: SynastryChooserViewModel(manager: manager))
                 }
             default:
                 ChartRoom(planetData: $data)
