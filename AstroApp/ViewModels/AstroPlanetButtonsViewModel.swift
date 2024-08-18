@@ -76,8 +76,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         }
         temporaryDisableButtons()
         
-        let viewModel = ChartViewModel(chartName: savedDate.planetsDateChoice.description, chartType: .Natal)
-        viewModel.manager = manager
+        let viewModel = ChartViewModel(chartName: savedDate.planetsDateChoice.description, chartType: .Natal, manager: manager)
         
         viewModel.planetData = populatePlanetsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
         viewModel.aspectsData = populateAspectsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
@@ -115,8 +114,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
     }
     
     func getChartViewModel(name: String, type: Charts) -> ChartViewModel {
-        let viewModel = ChartViewModel(chartName: name, chartType: type)
-        viewModel.manager = manager
+        let viewModel = ChartViewModel(chartName: name, chartType: type, manager: manager)
         return viewModel
     }
     

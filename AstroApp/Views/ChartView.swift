@@ -105,7 +105,7 @@ extension ChartView: AstrobotInterface {
 
 struct ChartView_Previews: PreviewProvider {
     @State static var state: RoomState = .Chart
-    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: ChartViewModel(chartName: "mike", chartType: .Natal)), name: "Mike", calculationSettings: CalculationSettings())]
+    @State static var row = [DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: ChartViewModel(chartName: "mike", chartType: .Natal, manager: BirthDataManager())), name: "Mike", calculationSettings: CalculationSettings())]
     static var previews: some View {
         ChartView(data: $row)
     }

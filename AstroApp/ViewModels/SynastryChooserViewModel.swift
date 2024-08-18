@@ -36,8 +36,7 @@ class SynastryChooserViewModel: AstrobotInterface {
             return nil
         }
         
-        let viewModel = ChartViewModel(chartName: data1.name + " + " + data2.name, chartType: .Synastry)
-        viewModel.manager = manager
+        let viewModel = ChartViewModel(chartName: data1.name + " + " + data2.name, chartType: .Synastry, manager: manager)
         viewModel.name1 = selectedNameOne
         viewModel.name2 = selectedNameTwo
         viewModel.planetData = getPlanetData(data: data1)

@@ -53,5 +53,5 @@ struct WheelChartData: View {
 }
 
 #Preview {
-    WheelChartData(viewModel: ChartViewModel(chartName: "mike", chartType: .Natal))
+    WheelChartData(viewModel: ChartViewModel(chartName: "mike", chartType: .Natal, manager: BirthDataManager()))
 }

@@ -332,6 +332,8 @@
 		7678A8C62BCB0D4D000E92A1 /* WheelChartHouseListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */; };
 		7678A8C72BCB0D4D000E92A1 /* WheelChartHouseListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */; };
 		7678A8C82BCB0D4D000E92A1 /* WheelChartHouseListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */; };
+		7679634F2C72A4E500A6EFC1 /* WheelChartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679634E2C72A4E500A6EFC1 /* WheelChartModels.swift */; };
+		767963502C72A4E500A6EFC1 /* WheelChartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679634E2C72A4E500A6EFC1 /* WheelChartModels.swift */; };
 		7679FF7927AF184F007911C9 /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
 		7679FF7A27AF184F007911C9 /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
 		7679FF7D27AF1850007911C9 /* AdapterToEphemeris.m in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */; };
@@ -735,6 +737,7 @@
 		766C89D4287F8A5100E437A7 /* PlanetButtons.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PlanetButtons.swift; sourceTree = "<group>"; };
 		7677BB312B0DBED10021F047 /* TransitTimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitTimesView.swift; sourceTree = "<group>"; };
 		7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartHouseListing.swift; sourceTree = "<group>"; };
+		7679634E2C72A4E500A6EFC1 /* WheelChartModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartModels.swift; sourceTree = "<group>"; };
 		7679FF7027AF184F007911C9 /* AstrobotInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstrobotInterface.swift; sourceTree = "<group>"; };
 		7679FF7427AF184F007911C9 /* AdapterToEphemeris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdapterToEphemeris.h; sourceTree = "<group>"; };
 		7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdapterToEphemeris.m; sourceTree = "<group>"; };
@@ -1190,6 +1193,7 @@
 			children = (
 				76859E8A2B1A641E0007FED1 /* Views */,
 				76D54B5A2B194A9000E5269B /* ViewModels */,
+				7679634D2C72A4BA00A6EFC1 /* Models */,
 			);
 			path = WheelCharts;
 			sourceTree = "<group>";
@@ -1276,6 +1280,14 @@
 				7667C4552888A96400D4DF06 /* spirit-manifest.json */,
 			);
 			path = Data;
+			sourceTree = "<group>";
+		};
+		7679634D2C72A4BA00A6EFC1 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				7679634E2C72A4E500A6EFC1 /* WheelChartModels.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		7679FF6F27AF184F007911C9 /* Astrobot */ = {
@@ -1797,6 +1809,7 @@
 				762EAF922884C75C007DB4A9 /* DownloadImageBinder.swift in Sources */,
 				7679FF7D27AF1850007911C9 /* AdapterToEphemeris.m in Sources */,
 				765ED44C28A5951F001374AB /* ArtDataManager.swift in Sources */,
+				7679634F2C72A4E500A6EFC1 /* WheelChartModels.swift in Sources */,
 				76ECF73C287F5DDD00AE7B34 /* ChartTitle.swift in Sources */,
 				7679FF7927AF184F007911C9 /* AstrobotInterface.swift in Sources */,
 				763CFC0D27B1E535004A73B8 /* BirthDataModels.swift in Sources */,
@@ -1917,6 +1930,7 @@
 				762EAF932884C75C007DB4A9 /* DownloadImageBinder.swift in Sources */,
 				7679FF7E27AF1850007911C9 /* AdapterToEphemeris.m in Sources */,
 				765ED44D28A5951F001374AB /* ArtDataManager.swift in Sources */,
+				767963502C72A4E500A6EFC1 /* WheelChartModels.swift in Sources */,
 				76ECF73D287F5DDD00AE7B34 /* ChartTitle.swift in Sources */,
 				7679FF7A27AF184F007911C9 /* AstrobotInterface.swift in Sources */,
 				763CFC0E27B1E535004A73B8 /* BirthDataModels.swift in Sources */,

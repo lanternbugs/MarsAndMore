@@ -24,12 +24,12 @@ class NatalChartDrawingView: UIView {
     var viewModel: ChartViewModel
     var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
     override init(frame frameRect: CGRect) {
-        viewModel = ChartViewModel(chartName: "none", chartType: .Natal)
+        viewModel = ChartViewModel(chartName: "none", chartType: .Natal, manager: BirthDataManager())
         super.init(frame: frameRect)
     }
 
     required init(coder: NSCoder) {
-        viewModel = ChartViewModel(chartName: "none", chartType: .Natal)
+        viewModel = ChartViewModel(chartName: "none", chartType: .Natal, manager: BirthDataManager())
         super.init(coder: coder)!
     }
 
@@ -55,12 +55,12 @@ class NatalChartDrawingView: NSView {
     var viewModel: ChartViewModel
     typealias UIColor = NSColor
     override init(frame frameRect: NSRect) {
-        viewModel = ChartViewModel(chartName: "none", chartType: .Natal)
+        viewModel = ChartViewModel(chartName: "none", chartType: .Natal, manager: BirthDataManager())
         super.init(frame: frameRect);
     }
 
     required init(coder: NSCoder) {
-        viewModel = ChartViewModel(chartName: "none", chartType: .Natal)
+        viewModel = ChartViewModel(chartName: "none", chartType: .Natal, manager: BirthDataManager())
         super.init(coder: coder)!
     }
 

@@ -21,36 +21,148 @@ var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
 enum PrintSize { case small, regular, large}
 
 class ChartViewModel {
-    let chartName: String
-    var name1 = ""
-    var name2 = ""
-    var manager: BirthDataManager?
-    var houseData = [HouseCell]()
-    var secondaryHouseData = [HouseCell]()
-    var planetData = [PlanetCell]()
-    var secondaryPlanetData = [PlanetCell]()
-    var aspectsData = [TransitCell]()
-    var houseDictionary = [Int: (Int, Signs)]()
-    var secondaryHouseDictionary = [Int: (Int, Signs)]()
-    var planetsDictionary = [Int: [PlanetCell]]()
-    var secondaryPlanetsDictionary = [Int: [PlanetCell]]()
-    var planetToDegreeMap = [Planets: Int]()
-    var secondaryPlanetToDegreeMap = [Planets: Int]()
-    var width: Double = 2
-    var height: Double = 2
-    let chart: Charts
+    let model: WheelChartModel
     var secondaryLastPrintingDegree = -Int.max
     var secondaryPrintingStack = [Int]()
     var lastPrintingDegree = -Int.max
     var printingStack = [Int]()
+    
+    var chartName: String {
+        model.chartName
+    }
+    var name1: String  {
+        get {
+            model.name1
+        }
+        set(newValue) {
+            model.name1 = newValue
+        }
+    }
+    var name2: String {
+        get {
+            model.name2
+        }
+        set(newValue) {
+            model.name2 = newValue
+        }
+    }
+    var manager: BirthDataManager? {
+        model.manager
+    }
+    var houseData: [HouseCell] {
+        get {
+            model.houseData
+        }
+        set(newValue) {
+            model.houseData = newValue
+        }
+    }
+    var secondaryHouseData: [HouseCell] {
+        get {
+            model.secondaryHouseData
+        }
+        set(newValue) {
+            model.secondaryHouseData = newValue
+        }
+    }
+    var planetData: [PlanetCell] {
+        get {
+            model.planetData
+        }
+        set(newValue) {
+            model.planetData = newValue
+        }
+    }
+    var secondaryPlanetData: [PlanetCell] {
+        get {
+            model.secondaryPlanetData
+        }
+        set(newValue) {
+            model.secondaryPlanetData = newValue
+        }
+    }
+    var aspectsData: [TransitCell] {
+        get {
+            model.aspectsData
+        }
+        set(newValue) {
+            model.aspectsData = newValue
+        }
+    }
+    var houseDictionary: [Int: (Int, Signs)] {
+        get {
+            model.houseDictionary
+        }
+        set(newValue) {
+            model.houseDictionary = newValue
+        }
+    }
+    var secondaryHouseDictionary: [Int: (Int, Signs)] {
+        get {
+            model.secondaryHouseDictionary
+        }
+        set(newValue) {
+            model.secondaryHouseDictionary = newValue
+        }
+    }
+    var planetsDictionary: [Int: [PlanetCell]] {
+        get {
+            model.planetsDictionary
+        } set(newValue) {
+            model.planetsDictionary = newValue
+        }
+    }
+    var secondaryPlanetsDictionary: [Int: [PlanetCell]] {
+        get {
+            model.secondaryPlanetsDictionary
+        }
+        set(newValue) {
+            model.secondaryPlanetsDictionary = newValue
+        }
+    }
+    var planetToDegreeMap: [Planets: Int] {
+        get {
+            model.planetToDegreeMap
+        }
+        set(newValue) {
+            model.planetToDegreeMap = newValue
+        }
+    }
+    var secondaryPlanetToDegreeMap: [Planets: Int] {
+        get {
+            model.secondaryPlanetToDegreeMap
+        }
+        set(newValue) {
+            model.secondaryPlanetToDegreeMap = newValue
+        }
+    }
+    var width: Double  {
+        get {
+            model.width
+        }
+        set(newValue) {
+            model.width = newValue
+        }
+    }
+    var height: Double {
+        get {
+            model.height
+        }
+        set(newValue) {
+            model.height = newValue
+        }
+    }
+    var chart: Charts {
+        model.chart
+    }
+    
     var upperPrintingQueue = [((Double, Int), PrintSize)]()
     var lowerPrintingQueue = [((Double, Int), PrintSize)]()
     var natalPrintingQueue = [((Double, Int), PrintSize)]()
     
     
-    init(chartName: String, chartType: Charts) {
-        self.chartName = chartName
-        self.chart = chartType
+    init(chartName: String, chartType: Charts, manager: BirthDataManager) {
+        self.model = WheelChartModel(chartName: chartName, chart: chartType, manager: manager)
     }
     func populateData() {
         if !planetsDictionary.isEmpty {
