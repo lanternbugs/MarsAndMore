@@ -161,8 +161,8 @@ class ChartViewModel {
     var natalPrintingQueue = [((Double, Int), PrintSize)]()
     
     
-    init(chartName: String, chartType: Charts, manager: BirthDataManager) {
-        self.model = WheelChartModel(chartName: chartName, chart: chartType, manager: manager)
+    init(model: WheelChartModel) {
+        self.model = model
     }
     func populateData() {
         if !planetsDictionary.isEmpty {

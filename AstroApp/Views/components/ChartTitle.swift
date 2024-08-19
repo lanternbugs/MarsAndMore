@@ -48,7 +48,7 @@ struct ChartTitle: View {
 }
 
 struct ChartTitle_Previews: PreviewProvider {
-    @State static var row: DisplayPlanetRow = DisplayPlanetRow(planets: [], id: 0, type: .Planets(chartModel: ChartViewModel(chartName: "mike", chartType: .Natal, manager: BirthDataManager())), name: "mike", calculationSettings: CalculationSettings())
+    @State static var row: DisplayPlanetRow = DisplayPlanetRow(planets: [], id: 0, type: .Planets(viewModel: ChartViewModel(model: WheelChartModel(chartName: "mike", chart: .Natal, manager: BirthDataManager()))), name: "mike", calculationSettings: CalculationSettings())
     static var previews: some View {
         ChartTitle(planetRow: $row)
     }

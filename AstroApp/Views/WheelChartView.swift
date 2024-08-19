@@ -92,5 +92,5 @@ extension WheelChartView {
 }
 
 #Preview {
-    WheelChartView(viewModel: ChartViewModel(chartName: "mike", chartType: .Natal, manager: BirthDataManager()))
+    WheelChartView(viewModel: ChartViewModel(model: WheelChartModel(chartName: "mike", chart: .Natal, manager: BirthDataManager())))
 }

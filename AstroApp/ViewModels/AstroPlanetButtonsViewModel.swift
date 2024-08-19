@@ -76,14 +76,14 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         }
         temporaryDisableButtons()
         
-        let viewModel = ChartViewModel(chartName: savedDate.planetsDateChoice.description, chartType: .Natal, manager: manager)
+        let viewModel = ChartViewModel(model: WheelChartModel(chartName: savedDate.planetsDateChoice.description, chart: .Natal, manager: manager))
         
         viewModel.planetData = populatePlanetsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
         viewModel.aspectsData = populateAspectsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
         viewModel.houseData = populateHouseData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
         
         
-        let displayRow = DisplayPlanetRow(planets: viewModel.planetData, id: data.wrappedValue.count, type: .Planets(chartModel: viewModel), name: getStringDate(savedDate: savedDate), calculationSettings: manager.calculationSettings)
+        let displayRow = DisplayPlanetRow(planets: viewModel.planetData, id: data.wrappedValue.count, type: .Planets(viewModel: viewModel), name: getStringDate(savedDate: savedDate), calculationSettings: manager.calculationSettings)
         data.wrappedValue.append(displayRow)
     }
     
@@ -114,7 +114,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
     }
     
     func getChartViewModel(name: String, type: Charts) -> ChartViewModel {
-        let viewModel = ChartViewModel(chartName: name, chartType: type, manager: manager)
+        let viewModel = ChartViewModel(model: WheelChartModel(chartName: name, chart: type, manager: manager))
         return viewModel
     }
     
@@ -131,7 +131,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         viewModel.houseData = populateHouseData(manager.getSelectionTime(), manager.getSelectionLocation())
         viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), manager.getSelectionLocation())
         
-        let displayRow = DisplayPlanetRow(planets: viewModel.planetData, id: data.wrappedValue.count, type: .Planets(chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
+        let displayRow = DisplayPlanetRow(planets: viewModel.planetData, id: data.wrappedValue.count, type: .Planets(viewModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
         data.wrappedValue.append(displayRow)
     }
     
@@ -160,7 +160,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
             viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), location)
             let displayHouseData = viewModel.houseData
             viewModel.houseData = reduceHouses(viewModel.houseData)
-            let displayRow = DisplayPlanetRow(planets: displayHouseData, id: data.wrappedValue.count, type: .Houses(system: manager.houseSystem, chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
+            let displayRow = DisplayPlanetRow(planets: displayHouseData, id: data.wrappedValue.count, type: .Houses(system: manager.houseSystem, viewModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
             data.wrappedValue.append(displayRow)
             return viewModel
         }
@@ -186,7 +186,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         viewModel.planetData = populatePlanetsData(manager.getSelectionTime(), manager.getSelectionLocation())
         viewModel.secondaryPlanetData = populatePlanetsData(transitDate.getAstroTime(), nil)
         
-        let displayRow = DisplayPlanetRow(planets: viewModel.aspectsData, id: data.wrappedValue.count, type: .Transits(date: dateFormater.string(from: transitDate), orbs: manager.transitOrbSelection.getShortName(), transitData: transitData, chartName: manager.getCurrentName(), chartModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
+        let displayRow = DisplayPlanetRow(planets: viewModel.aspectsData, id: data.wrappedValue.count, type: .Transits(date: dateFormater.string(from: transitDate), orbs: manager.transitOrbSelection.getShortName(), transitData: transitData, chartName: manager.getCurrentName(), viewModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
         data.wrappedValue.append(displayRow)
     }
 }

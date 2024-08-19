@@ -66,7 +66,7 @@ struct HousesEntry: View {
 
 struct HousesEntry_Previews: PreviewProvider {
     static var previews: some View {
-        let row = DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(chartModel: ChartViewModel(chartName: "mike", chartType: .Natal, manager: BirthDataManager())), name: "Mike", calculationSettings: CalculationSettings())
+        let row = DisplayPlanetRow(planets: [], id: 0, type: PlanetFetchType.Planets(viewModel: ChartViewModel(model: WheelChartModel(chartName: "mike", chart: .Natal, manager: BirthDataManager()))), name: "Mike", calculationSettings: CalculationSettings())
         HousesEntry(data: row)
     }
 }
