@@ -17,7 +17,7 @@ extension AstrobotBaseInterface {
     {
         var row = PlanetRow()
         let adapter = AdapterToEphemeris()
-        let interval: Double = 0.025
+        let interval: Double = 0.00025
         for type in Planets.allCases
         {
             if type == .Ascendant {
