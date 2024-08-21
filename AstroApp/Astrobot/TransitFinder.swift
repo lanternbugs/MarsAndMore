@@ -189,6 +189,13 @@ struct TransitFinder {
         if endDistance > 180 && aspect != .Opposition {
             endDistance = 360 - endDistance
         }
+        if planetDegree.getAstroSign() == .Pisces && endPlanetDegree.getAstroSign() == .Aries {
+            if aspect == .Opposition && planet2Degree.getAstroSign() == .Virgo {
+                if beginDistance < 180 {
+                    return true
+                }
+            }
+        }
         if aspect == .Conjunction {
             return canMakeConjunction(planetDegree, endPlanetDegree: endPlanetDegree, planet2Degree: planet2Degree, endPlanet2Degree: endPlanet2Degree)
             
@@ -368,6 +375,14 @@ struct TransitFinder {
                 return canMakeConjunction(planetDegree, endPlanetDegree: endPlanetDegree, planet2Degree: planet2Degree, endPlanet2Degree: endPlanet2Degree)
             }
         }
+        if planetDegree.getAstroSign() == .Pisces && endPlanetDegree.getAstroSign() == .Aries {
+            if aspect == .Opposition && planet2Degree.getAstroSign() == .Virgo {
+                if beginDistance < 180 {
+                    return true
+                }
+            }
+        }
+        
         if endDistance > 180 && aspect != .Opposition {
             endDistance = 360 - endDistance
         }
