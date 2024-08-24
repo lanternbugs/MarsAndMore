@@ -78,7 +78,7 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
     
     func getPlanetString(cell: PlanetCell) -> String {
         var string = " " + cell.planet.getName() + " " + cell.degree + " " + cell.sign.getName()
-        if cell.retrograde && cell.planet != Planets.TrueNode {
+        if cell.retrograde {
             string = string + " R"
         }
         return string

@@ -40,7 +40,7 @@ struct EphemerisView: View {
                                 }
                                 
                             } else {
-                                if viewModel.planetGrid[i].retrograde && viewModel.planetGrid[i].planet != Planets.TrueNode {
+                                if viewModel.planetGrid[i].retrograde {
                                     HStack {
                                         Text(" \(viewModel.planetGrid[i].planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: viewModel.symbolFontSize))
                                         + Text(" \(viewModel.planetGrid[i].degree) ")
