@@ -219,7 +219,12 @@ extension NatalChartDrawingView {
             let printSize = printInfo.1
             let colorChoice = planet.planet == .Sun ? Colors.orange : Colors.black
             
-            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printSize)
+            if planet.planet != .Pholus {
+                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printSize)
+            } else {
+                printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), "Ph", trueDegree, false, fontSize)
+            }
+            
             
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), planet.sign.getAstroDotCharacter(), trueDegree)
@@ -604,7 +609,7 @@ extension NatalChartDrawingView {
         }
     }
     
-    func printText(_ coordinates: (Int, Int), _ text: String, _ degree: Double, _ extraJustify: Bool,  _ size: Double = 16.0 ) {
+    func printText(_ coordinates: (Int, Int), _ text: String, _ degree: Double, _ extraJustify: Bool,  _ size: Double = 16.0, outerPlanet: Bool = false ) {
         var coordinate = coordinates
         let radians = degree * ( .pi / 180.0 )
         if text.count < 2 && extraJustify {
@@ -615,7 +620,10 @@ extension NatalChartDrawingView {
 #if os(iOS)
         if let font = UIFont(name: "Arial", size: size) {
             let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
-            if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
+            if outerPlanet {
+                text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.red])
+            }
+            else if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
                 text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.white])
             } else {
                 text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
@@ -626,7 +634,10 @@ extension NatalChartDrawingView {
 #else
         if let font = NSFont(name: "Arial", size: size) {
             let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
-            if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
+            if outerPlanet {
+                text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.red])
+            }
+            else if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
                 text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.white])
             } else {
                 text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])

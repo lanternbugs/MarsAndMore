@@ -168,9 +168,7 @@ class ChartViewModel {
         if !planetsDictionary.isEmpty {
             return
         }
-        // we dont currently have a font image for Pholus
-        planetData = planetData.filter( { $0.planet != .Pholus })
-        aspectsData = aspectsData.filter( { $0.planet != .Pholus && $0.planet2 != .Pholus })
+        
         if houseData.count > 0 {
             for i in 0...houseData.count - 1 {
                 var a = i
