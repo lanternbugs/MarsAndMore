@@ -146,6 +146,7 @@ extension BirthDataManager {
     func setContext(_ context: NSManagedObjectContext) {
         self.managedContext = context
         addInitialBodyData()
+        addInitialAspectData()
         loadUserBodiesToShowInfo()
         loadBirthData()
     }
@@ -153,6 +154,17 @@ extension BirthDataManager {
 
 //Mark: Core Data functoins around Bodies to show
 extension BirthDataManager {
+    
+    func addInitialAspectData() {
+        guard let context = self.managedContext else {
+            return
+        }
+        
+        for val in defaultAspectsToShow {
+            aspectsToShow.insert(val)
+        }
+        
+    }
     
     func addInitialBodyData() {
         guard let context = self.managedContext else {

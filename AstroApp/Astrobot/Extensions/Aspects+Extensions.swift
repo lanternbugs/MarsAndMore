@@ -50,6 +50,17 @@ extension Aspects {
         }
     }
     
+    func getIndex()->Int {
+        var i = 0
+        for val in Aspects.allCases {
+            if val == self {
+                return i
+            }
+            i += 1
+        }
+        return 0
+    }
+    
     func getAstroDotCharacter() -> Character {
         switch self {
         case .Conjunction:

@@ -21,6 +21,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var userNameSelection: String = ""
     @Published var userDateSelection: Date = Date(timeIntervalSince1970: 0)
     @Published var userExactTimeSelection: Bool = false
+    @AppStorage("showMinorAspectTransitTimes") var showMinorAspectTransitTimes: Bool = true
     @AppStorage("utcTimeChoice") var userUTCTimeSelection: Bool = false
     @AppStorage("houseSystem") var houseSystem: HouseSystem = HouseSystem.Placidus
     @AppStorage("siderealSystem") var siderealSystem: SiderealSystem = SiderealSystem.Lahiri
@@ -34,7 +35,9 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var userLocationData: LocationData?
     @Published var planetsLocationData: LocationData?
     var bodiesToShow = Set<Planets>()
+    var aspectsToShow = Set<Aspects>()
     var defaultBodiesToShow = Set<Planets>()
+    var defaultAspectsToShow = Set<Aspects>()
     let builder = BirthDataBuilder()
     var managedContext: NSManagedObjectContext?
     var citiesParsedCompletionHandler: (()->Void)?
@@ -44,6 +47,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     
     init() {
         self.initializeDefaultBodiesToShow()
+        self.initializeDefaultAspectsToShow()
         builder.managerInterface = self
         DispatchQueue.global().async {
             let decoder = JSONDecoder()
@@ -80,7 +84,12 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
             if body.rawValue <= Planets.Chiron.rawValue {
                 defaultBodiesToShow.insert(body)
             }
-            
+        }
+    }
+    
+    func initializeDefaultAspectsToShow() {
+        for aspect in Aspects.allCases {
+            defaultAspectsToShow.insert(aspect)
         }
     }
     

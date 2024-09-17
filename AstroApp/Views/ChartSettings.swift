@@ -17,6 +17,7 @@ struct ChartSettings: View {
     @EnvironmentObject private var manager: BirthDataManager
     @Environment(\.roomState) private var roomState
     @State var toggleValues = [Bool]()
+    @State var aspectsToggleValues = [Bool]()
     var body: some View {
         ScrollView {
             VStack(alignment: .leading) {
@@ -59,7 +60,26 @@ struct ChartSettings: View {
                 }
                 Toggle("Show Minor Aspects", isOn: $manager.showMinorAspects)
                 if manager.showMinorAspects {
-                    Text("See Chart Tab's Resources for minor aspects shown")
+                    ForEach(Aspects.allCases, id: \.rawValue) {
+                        aspect in
+                        if !aspect.isMajor() {
+                            HStack() {
+                                if aspectsToggleValues.count > aspect.getIndex() {
+                                    Toggle("Show", isOn: $aspectsToggleValues[aspect.getIndex()]).onChange(of: aspectsToggleValues[aspect.getIndex()]) { _ in
+                                        if manager.aspectsToShow.contains(aspect) {
+                                            manager.aspectsToShow.remove(aspect)
+                                            //manager.removeBodyFromPersistentStorage(body: planet)
+                                        } else {
+                                            manager.aspectsToShow.insert(aspect)
+                                           // manager.addBodyToPersistentStorage(body: planet)
+                                        }
+                                    }.namesStyle()
+                                        .padding([.trailing, .leading])
+                                }
+                                Text("\(aspect.getName())").namesStyle().padding([.trailing,.leading])
+                            }
+                        }
+                    }
                 }
                 Section {
                     HStack {
@@ -179,6 +199,7 @@ struct ChartSettings: View {
             
         }.onAppear {
             updateToggles()
+            updateAspectsToggles()
         }
     }
 }
@@ -190,6 +211,16 @@ extension ChartSettings {
                 toggleValues.append(true)
             } else {
                 toggleValues.append(false)
+            }
+        }
+    }
+    
+    func updateAspectsToggles() {
+        for val in Aspects.allCases {
+            if manager.aspectsToShow.contains(val) {
+                aspectsToggleValues.append(true)
+            } else {
+                aspectsToggleValues.append(false)
             }
         }
     }
