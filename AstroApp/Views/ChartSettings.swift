@@ -60,6 +60,7 @@ struct ChartSettings: View {
                 }
                 Toggle("Show Minor Aspects", isOn: $manager.showMinorAspects)
                 if manager.showMinorAspects {
+                    Toggle("Show in Transit Times", isOn: $manager.showMinorAspectTransitTimes)
                     ForEach(Aspects.allCases, id: \.rawValue) {
                         aspect in
                         if !aspect.isMajor() {

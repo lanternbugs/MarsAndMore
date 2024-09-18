@@ -166,9 +166,19 @@ class WheelChartDataViewModel {
     }
     
     func showAspect(data: TransitCell, manager: BirthDataManager, major: Bool) -> Bool {
-        if data.aspect.isMajor() == major && manager.bodiesToShow.contains(data.planet) && manager.bodiesToShow.contains(data.planet2) {
-            return true
+        if data.aspect.isMajor() == major && major {
+            if manager.bodiesToShow.contains(data.planet) && manager.bodiesToShow.contains(data.planet2) {
+                return true
+            }
         }
+        else if data.aspect.isMajor() == major && !major {
+            if manager.showMinorAspects && manager.aspectsToShow.contains(data.aspect) {
+                if manager.bodiesToShow.contains(data.planet) && manager.bodiesToShow.contains(data.planet2) {
+                    return true
+                }
+            }
+        }
+            
         return false
     }
     

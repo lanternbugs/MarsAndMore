@@ -19,6 +19,20 @@ struct TransitFinder {
     let timeDifferential: Double = 1.0/1000000.0
     static var adapterCalls = 0
     
+    func shouldShowAspect(_ aspect: Aspects, manager: BirthDataManager) -> Bool {
+        if aspect.isMajor() {
+            return true
+        }
+        if !manager.showMinorAspects || !manager.showMinorAspectTransitTimes {
+            return false
+        }
+        if manager.aspectsToShow.contains(aspect) {
+            return true
+        }
+        
+        return false
+    }
+    
     func getMoonTransitsOfDay(start_time: Double, end_time: Double, manager: BirthDataManager) -> [TransitTime] {
         let adapter = AdapterToEphemeris()
         var transitTimes = [TransitTime]()
@@ -48,7 +62,7 @@ struct TransitFinder {
             planetDegree.1 = adapter.getPlanetDegree(end_time, Int32(planet.getAstroIndex()), true, 0)
             planet2Degree.1 = adapter.getPlanetDegree(end_time, Int32(Planets.Moon.getAstroIndex()), true, 0)
             for aspect in Aspects.allCases {
-                if aspect.isMajor() || manager.showMinorAspects {
+                if shouldShowAspect(aspect, manager: manager) {
                     if canMakeAspect(planet2Degree, with: planetDegree, aspect: aspect, low: start_time, high: end_time) {
                         let time = findAspect(.Moon, with: planet, aspect: aspect, low: start_time, high: end_time)
                         if time > 0 {
@@ -110,7 +124,7 @@ struct TransitFinder {
                 planet2Degree.1 = adapter.getPlanetDegree(end_time, Int32(transitingPlanet.getAstroIndex()), true, 0)
                 TransitFinder.adapterCalls += 2
                 for aspect in Aspects.allCases {
-                    if aspect.isMajor() || manager.showMinorAspects {
+                    if shouldShowAspect(aspect, manager: manager) {
                         if canMakeAspect(planetDegree, with: planet2Degree, aspect: aspect, low: start_time, high: end_time) {
                             
                             let time = findAspect(planet, with: transitingPlanet, aspect: aspect, low: start_time, high: end_time)
@@ -295,7 +309,7 @@ struct TransitFinder {
                 planetDegree.1 = adapter.getPlanetDegree(end_time, Int32(planet.getAstroIndex()), true, 0)
                 TransitFinder.adapterCalls += 2
                 for aspect in Aspects.allCases {
-                    if aspect.isMajor() || manager.showMinorAspects {
+                    if shouldShowAspect(aspect, manager: manager) {
                         if canMakeNatalAspect(planetDegree, with: natalDegree, aspect: aspect, low: start_time, high: end_time) {
                             let time = findNatalAspect(planet, with: natalDegree, aspect: aspect, low: start_time, high: end_time)
                             if time > 0 {

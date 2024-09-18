@@ -60,7 +60,7 @@ struct AspectsEntry: View {
 }
 extension AspectsEntry {
     func showAspect(aspect: Aspects) -> Bool {
-        if manager.showMinorAspects  {
+        if manager.showMinorAspects && manager.aspectsToShow.contains(aspect)  {
             return true
         }
         if aspect.isMajor() {
