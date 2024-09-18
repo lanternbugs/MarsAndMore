@@ -59,8 +59,18 @@ struct ChartSettings: View {
 #endif
                 }
                 Toggle("Show Minor Aspects", isOn: $manager.showMinorAspects)
-                if manager.showMinorAspects {
-                    Toggle("Show in Transit Times", isOn: $manager.showMinorAspectTransitTimes)
+                if !manager.showMinorAspects {
+                    HStack {
+                        Text("More Options when Enabled")
+                        Spacer()
+                    }
+                } else
+                {
+                    Toggle("Show in Transit Times", isOn: $manager.showMinorAspectTransitTimes).padding(.leading)
+                    HStack {
+                        Text("Aspects to Show")
+                        Spacer()
+                    }
                     ForEach(Aspects.allCases, id: \.rawValue) {
                         aspect in
                         if !aspect.isMajor() {
@@ -77,7 +87,7 @@ struct ChartSettings: View {
                                     }.namesStyle()
                                         .padding([.trailing, .leading])
                                 }
-                                Text("\(aspect.getName())").namesStyle().padding([.trailing,.leading])
+                                Text("\(aspect.getName())").namesStyle().padding([.trailing, .leading])
                             }
                         }
                     }
