@@ -79,10 +79,10 @@ struct ChartSettings: View {
                                     Toggle("Show", isOn: $aspectsToggleValues[aspect.getIndex()]).onChange(of: aspectsToggleValues[aspect.getIndex()]) { _ in
                                         if manager.aspectsToShow.contains(aspect) {
                                             manager.aspectsToShow.remove(aspect)
-                                            //manager.removeBodyFromPersistentStorage(body: planet)
+                                            manager.removeAspectFromPersistentStorage(aspect: aspect)
                                         } else {
                                             manager.aspectsToShow.insert(aspect)
-                                           // manager.addBodyToPersistentStorage(body: planet)
+                                            manager.addAspectToPersistentStorage(aspect: aspect)
                                         }
                                     }.namesStyle()
                                         .padding([.trailing, .leading])

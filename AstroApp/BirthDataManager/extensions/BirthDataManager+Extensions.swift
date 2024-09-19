@@ -148,6 +148,7 @@ extension BirthDataManager {
         addInitialBodyData()
         addInitialAspectData()
         loadUserBodiesToShowInfo()
+        loadUserAspectsToShowInfo()
         loadBirthData()
     }
 }
@@ -160,10 +161,101 @@ extension BirthDataManager {
             return
         }
         
-        for val in defaultAspectsToShow {
-            aspectsToShow.insert(val)
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AspectsVisibility")
+        do {
+            if let aspects =  try context.fetch(fetchRequest) as? [AspectsVisibility] {
+                if aspects.count == 0 {
+                    for val in defaultAspectsToShow {
+                        addAspectToPersistentStorage(aspect: val)
+                    }
+                }
+            }
+        }
+        catch let error as NSError  {
+                    print("Could not load \(error), \(error.userInfo)")
         }
         
+    }
+    
+    func addAspectToPersistentStorage(aspect: Aspects) -> Void
+    {
+        guard let context = self.managedContext else {
+            return
+        }
+        
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AspectsVisibility")
+        do {
+            if let aspects =  try context.fetch(fetchRequest) as? [AspectsVisibility] {
+                let aspectSet: Set<Double> = Set(aspects.map {
+                    $0.aspectType
+                })
+                
+                if aspectSet.contains(aspect.rawValue) {
+                    return
+                }
+                let index = aspect.rawValue
+                let body =  AspectsVisibility(context: context)
+                body.aspectType = index
+                try context.save()
+                
+            }
+        }
+        catch let error as NSError  {
+                    print("Could not load \(error), \(error.userInfo)")
+        }
+         
+      
+    }
+    
+    func removeAspectFromPersistentStorage(aspect: Aspects) -> Void
+    {
+        guard let context = self.managedContext else {
+            return
+        }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AspectsVisibility")
+        do {
+            if let aspects =  try context.fetch(fetchRequest) as? [AspectsVisibility] {
+                
+                for astroAspect in aspects {
+                    if aspect.rawValue == astroAspect.aspectType {
+                        context.delete(astroAspect)
+                        try context.save()
+                        return
+                    }
+                    
+                }
+            }
+        }
+        catch let error as NSError  {
+                    print("Could not load \(error), \(error.userInfo)")
+        }
+    }
+    
+    func loadUserAspectsToShowInfo()
+    {
+        guard let context = self.managedContext else {
+            return
+        }
+        
+        let fetchRequest = NSFetchRequest<NSFetchRequestResult>(entityName: "AspectsVisibility")
+        do {
+            if let aspects =  try context.fetch(fetchRequest) as? [AspectsVisibility] {
+                for aspect in aspects {
+                    if let aspectType = Aspects(rawValue: aspect.aspectType) {
+                        if aspectsToShow.contains(aspectType) {
+                            continue
+                        }
+                        aspectsToShow.insert(aspectType)
+                    }
+                }
+                
+            }
+        }
+        catch let error as NSError  {
+                    print("Could not load \(error), \(error.userInfo)")
+        }
     }
     
     func addInitialBodyData() {
