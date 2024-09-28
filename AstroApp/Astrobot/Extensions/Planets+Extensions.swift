@@ -36,7 +36,7 @@ extension Planets {
         case .Uranus:
             return "Uranus"
         case .Neptune:
-            return "Nepune"
+            return "Neptune"
         case .Pluto:
             return "Pluto"
         case .Chiron:
