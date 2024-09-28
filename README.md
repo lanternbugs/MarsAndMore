@@ -13,5 +13,5 @@ This program, or parts, can be redistributed and/or modified under the terms of 
 
 Mars and More uses the Swiss Ephemeris located at AstroApp/Astrobot/Ephemeris. This is a C library. We currently are using 4 API calls from AstroApp/Astrobot/Adapter/AdapterToEphemeris.m implementation to the Swiss Ephemeris.  Its data files are at AstroApp/Astrobot/ephe. Its license is located next to ours in outer folder, swiss-ephemeris-license. It is compatible with GPL and Mars and More uses it under GPL. It also has a dual license. And for those interested in just the Ephemeris there is also a GPL Java port by Thomas Mack.
 
-City data in cities.json for latitude and longitude is from KStars, https://edu.kde.org/kstars/ and used under GPL. 
+Most all cities data used from https://simplemaps.com/data/world-cities under the Creative Commons Attribution 4.0 licence. This is about 45,600 cities. About 1200 latitudes and longitudes are still used for US and Canadian cities from the app's old data source, KStars, https://edu.kde.org/kstars/ and used under GPL. 
 
