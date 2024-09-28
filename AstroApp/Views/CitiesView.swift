@@ -25,7 +25,7 @@ struct CitiesView: View {
                 if cities.isEmpty {
                     return true
                 }
-                return $0.name.lowercased().hasPrefix(city.lowercased())
+                return $0.city.lowercased().hasPrefix(city.lowercased())
             }
             return data
         }
@@ -41,7 +41,7 @@ struct CitiesView: View {
                 city in
                 HStack {
                     Spacer()
-                    Text("\(city.name)").frame(maxWidth: .infinity, alignment: .leading)
+                    Text("\(city.city)").frame(maxWidth: .infinity, alignment: .leading)
                     Spacer()
                     Text("\(city.country)").frame(maxWidth: .infinity, alignment: .leading)
                     Spacer()

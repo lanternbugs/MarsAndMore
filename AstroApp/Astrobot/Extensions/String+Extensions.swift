@@ -43,6 +43,10 @@ extension String {
                     return degree + minute / 60.0
                 }
             }
+        } else {
+            if let value = Double(trimmed) {
+                return value
+            }
         }
         return 0
     }

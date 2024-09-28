@@ -134,7 +134,7 @@ struct NameDataView: View {
                 if let city = manager.builder.cityData {
                     HStack {
                         Spacer()
-                        Text("\(city.name)").font(.headline).padding()
+                        Text("\(city.city)").font(.headline).padding()
                         Spacer()
                     }
                 }

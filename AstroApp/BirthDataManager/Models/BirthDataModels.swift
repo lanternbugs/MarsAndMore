@@ -19,14 +19,11 @@ enum BuildErrors: Error {
 }
 
 struct City: Codable {
-    var name: String
+    var city: String
     var country: String
     var latitude: String
     var longitude: String
     var id: Int
-    enum CodingKeys: String, CodingKey {
-        case name = "city", country, latitude, longitude, id
-    }
 }
 
 struct CityInfo: Codable {

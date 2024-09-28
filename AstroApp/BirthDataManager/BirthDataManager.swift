@@ -51,7 +51,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
         builder.managerInterface = self
         DispatchQueue.global().async {
             let decoder = JSONDecoder()
-            if let citiesPath = Bundle(for: type(of: self)).url(forResource: "cities", withExtension: "json") {
+            if let citiesPath = Bundle(for: type(of: self)).url(forResource: "world-cities", withExtension: "json") {
                 do {
                     let cities = try String(contentsOf: citiesPath)
                     if let data = cities.data(using: .utf8) {
