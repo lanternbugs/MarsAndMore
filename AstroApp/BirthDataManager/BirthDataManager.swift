@@ -17,6 +17,7 @@ import SwiftUI
 class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var birthDates = [BirthData]()
     @Published var cityInfo: CityInfo?
+    var subCityInfo =  [CityInfo]()
     @Published var selectedName: Int?
     @Published var userNameSelection: String = ""
     @Published var userDateSelection: Date = Date(timeIntervalSince1970: 0)
@@ -76,6 +77,34 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
             } else {
                 print("no bundle url")
             }
+        }
+        
+        DispatchQueue.global().async {
+            for i in 0..<13 {
+                let decoder = JSONDecoder()
+                if let citiesPath = Bundle(for: type(of: self)).url(forResource: "world-cities-" + String(i), withExtension: "json") {
+                    do {
+                        let cities = try String(contentsOf: citiesPath)
+                        if let data = cities.data(using: .utf8) {
+                            do {
+                                let cityData = try decoder.decode(CityInfo.self, from: data)
+                                DispatchQueue.main.async { [weak self] in
+                                    self?.subCityInfo.append(cityData)
+                                    
+                                }
+                            } catch {
+                                print(error)
+                            }
+                        }
+                    }
+                    catch {
+                        print("failed to read file")
+                    }
+                } else {
+                    print("no bundle url")
+                }
+            }
+            
         }
     }
     

@@ -19,8 +19,50 @@ struct CitiesView: View {
     @Environment(\.roomState) private var roomState
     var dismissView: RoomState = .Chart
     var displayCities: [City] {
-        if let  cities = manager.cityInfo?.cities
+        if city == "" {
+            if let  cities = manager.cityInfo?.cities
+            {
+                let data = cities.filter {
+                    if cities.isEmpty {
+                        return true
+                    }
+                    return $0.city.lowercased().hasPrefix(city.lowercased())
+                }
+                return data
+            }
+        }
+        let input = city.lowercased()
+        var i = 0
+        if input.starts(with: "c") || input.starts(with: "d") {
+            i = 1
+        } else if input.starts(with: "e") || input.starts(with: "f") {
+            i = 2
+        } else if input.starts(with: "g") || input.starts(with: "h") {
+            i = 3
+        } else if input.starts(with: "i") || input.starts(with: "j") {
+            i = 4
+        } else if input.starts(with: "k") || input.starts(with: "l") {
+            i = 5
+        } else if input.starts(with: "m") || input.starts(with: "n") {
+            i = 6
+        } else if input.starts(with: "o") || input.starts(with: "p") {
+            i = 7
+        } else if input.starts(with: "q") || input.starts(with: "r") {
+            i = 8
+        } else if input.starts(with: "s") || input.starts(with: "t") {
+            i = 9
+        } else if input.starts(with: "u") || input.starts(with: "v") {
+            i = 10
+        } else if input.starts(with: "w") || input.starts(with: "x") {
+            i = 11
+        } else if input.starts(with: "y") || input.starts(with: "z") {
+            i = 12
+        } else {
+            i = 0
+        }
+        if manager.subCityInfo.count > i
         {
+            let  cities = manager.subCityInfo[i].cities
             let data = cities.filter {
                 if cities.isEmpty {
                     return true
