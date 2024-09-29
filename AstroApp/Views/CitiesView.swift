@@ -20,15 +20,9 @@ struct CitiesView: View {
     var dismissView: RoomState = .Chart
     var displayCities: [City] {
         if city == "" {
-            if let  cities = manager.cityInfo?.cities
+            if !manager.subCityInfo.isEmpty
             {
-                let data = cities.filter {
-                    if cities.isEmpty {
-                        return true
-                    }
-                    return $0.city.lowercased().hasPrefix(city.lowercased())
-                }
-                return data
+                return manager.subCityInfo[0].cities
             }
         }
         let input = city.lowercased()

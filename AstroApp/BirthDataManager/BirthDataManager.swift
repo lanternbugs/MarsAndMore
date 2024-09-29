@@ -16,7 +16,6 @@ import CoreData
 import SwiftUI
 class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var birthDates = [BirthData]()
-    @Published var cityInfo: CityInfo?
     var subCityInfo =  [CityInfo]()
     @Published var selectedName: Int?
     @Published var userNameSelection: String = ""
@@ -50,7 +49,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
         self.initializeDefaultBodiesToShow()
         self.initializeDefaultAspectsToShow()
         builder.managerInterface = self
-        DispatchQueue.global().async {
+        /*DispatchQueue.global().async {
             let decoder = JSONDecoder()
             if let citiesPath = Bundle(for: type(of: self)).url(forResource: "world-cities", withExtension: "json") {
                 do {
@@ -78,6 +77,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
                 print("no bundle url")
             }
         }
+         */
         
         DispatchQueue.global().async {
             for i in 0..<13 {
