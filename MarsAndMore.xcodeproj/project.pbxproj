@@ -305,6 +305,45 @@
 		765ED44D28A5951F001374AB /* ArtDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED44B28A5951F001374AB /* ArtDataManager.swift */; };
 		765ED44F28A595C0001374AB /* ArtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED44E28A595C0001374AB /* ArtView.swift */; };
 		765ED45028A595C0001374AB /* ArtView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 765ED44E28A595C0001374AB /* ArtView.swift */; };
+		7660693F2CAA02120091A83C /* world-cities-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069352CAA02120091A83C /* world-cities-3.json */; };
+		766069402CAA02120091A83C /* world-cities-6.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069382CAA02120091A83C /* world-cities-6.json */; };
+		766069412CAA02120091A83C /* world-cities-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069342CAA02120091A83C /* world-cities-2.json */; };
+		766069422CAA02120091A83C /* world-cities-7.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069392CAA02120091A83C /* world-cities-7.json */; };
+		766069432CAA02120091A83C /* world-cities-5.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069372CAA02120091A83C /* world-cities-5.json */; };
+		766069442CAA02120091A83C /* world-cities-9.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693B2CAA02120091A83C /* world-cities-9.json */; };
+		766069452CAA02120091A83C /* world-cities-12.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693E2CAA02120091A83C /* world-cities-12.json */; };
+		766069462CAA02120091A83C /* world-cities-11.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693D2CAA02120091A83C /* world-cities-11.json */; };
+		766069472CAA02120091A83C /* world-cities-4.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069362CAA02120091A83C /* world-cities-4.json */; };
+		766069482CAA02120091A83C /* world-cities-8.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693A2CAA02120091A83C /* world-cities-8.json */; };
+		766069492CAA02120091A83C /* world-cities-0.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069322CAA02120091A83C /* world-cities-0.json */; };
+		7660694A2CAA02120091A83C /* world-cities-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069332CAA02120091A83C /* world-cities-1.json */; };
+		7660694B2CAA02120091A83C /* world-cities-10.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693C2CAA02120091A83C /* world-cities-10.json */; };
+		7660694C2CAA02120091A83C /* world-cities-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069352CAA02120091A83C /* world-cities-3.json */; };
+		7660694D2CAA02120091A83C /* world-cities-6.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069382CAA02120091A83C /* world-cities-6.json */; };
+		7660694E2CAA02120091A83C /* world-cities-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069342CAA02120091A83C /* world-cities-2.json */; };
+		7660694F2CAA02120091A83C /* world-cities-7.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069392CAA02120091A83C /* world-cities-7.json */; };
+		766069502CAA02120091A83C /* world-cities-5.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069372CAA02120091A83C /* world-cities-5.json */; };
+		766069512CAA02120091A83C /* world-cities-9.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693B2CAA02120091A83C /* world-cities-9.json */; };
+		766069522CAA02120091A83C /* world-cities-12.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693E2CAA02120091A83C /* world-cities-12.json */; };
+		766069532CAA02120091A83C /* world-cities-11.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693D2CAA02120091A83C /* world-cities-11.json */; };
+		766069542CAA02120091A83C /* world-cities-4.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069362CAA02120091A83C /* world-cities-4.json */; };
+		766069552CAA02120091A83C /* world-cities-8.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693A2CAA02120091A83C /* world-cities-8.json */; };
+		766069562CAA02120091A83C /* world-cities-0.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069322CAA02120091A83C /* world-cities-0.json */; };
+		766069572CAA02120091A83C /* world-cities-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069332CAA02120091A83C /* world-cities-1.json */; };
+		766069582CAA02120091A83C /* world-cities-10.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693C2CAA02120091A83C /* world-cities-10.json */; };
+		766069592CAA02120091A83C /* world-cities-3.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069352CAA02120091A83C /* world-cities-3.json */; };
+		7660695A2CAA02120091A83C /* world-cities-6.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069382CAA02120091A83C /* world-cities-6.json */; };
+		7660695B2CAA02120091A83C /* world-cities-2.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069342CAA02120091A83C /* world-cities-2.json */; };
+		7660695C2CAA02120091A83C /* world-cities-7.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069392CAA02120091A83C /* world-cities-7.json */; };
+		7660695D2CAA02120091A83C /* world-cities-5.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069372CAA02120091A83C /* world-cities-5.json */; };
+		7660695E2CAA02120091A83C /* world-cities-9.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693B2CAA02120091A83C /* world-cities-9.json */; };
+		7660695F2CAA02120091A83C /* world-cities-12.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693E2CAA02120091A83C /* world-cities-12.json */; };
+		766069602CAA02120091A83C /* world-cities-11.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693D2CAA02120091A83C /* world-cities-11.json */; };
+		766069612CAA02120091A83C /* world-cities-4.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069362CAA02120091A83C /* world-cities-4.json */; };
+		766069622CAA02120091A83C /* world-cities-8.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693A2CAA02120091A83C /* world-cities-8.json */; };
+		766069632CAA02120091A83C /* world-cities-0.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069322CAA02120091A83C /* world-cities-0.json */; };
+		766069642CAA02120091A83C /* world-cities-1.json in Resources */ = {isa = PBXBuildFile; fileRef = 766069332CAA02120091A83C /* world-cities-1.json */; };
+		766069652CAA02120091A83C /* world-cities-10.json in Resources */ = {isa = PBXBuildFile; fileRef = 7660693C2CAA02120091A83C /* world-cities-10.json */; };
 		7660AE352BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */; };
 		7660AE362BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */; };
 		7660AE372BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */; };
@@ -727,6 +766,19 @@
 		765D83C727BAFBDC00EE1CD9 /* BirthData+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "BirthData+Extensions.swift"; sourceTree = "<group>"; };
 		765ED44B28A5951F001374AB /* ArtDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtDataManager.swift; sourceTree = "<group>"; };
 		765ED44E28A595C0001374AB /* ArtView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtView.swift; sourceTree = "<group>"; };
+		766069322CAA02120091A83C /* world-cities-0.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-0.json"; sourceTree = "<group>"; };
+		766069332CAA02120091A83C /* world-cities-1.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-1.json"; sourceTree = "<group>"; };
+		766069342CAA02120091A83C /* world-cities-2.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-2.json"; sourceTree = "<group>"; };
+		766069352CAA02120091A83C /* world-cities-3.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-3.json"; sourceTree = "<group>"; };
+		766069362CAA02120091A83C /* world-cities-4.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-4.json"; sourceTree = "<group>"; };
+		766069372CAA02120091A83C /* world-cities-5.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-5.json"; sourceTree = "<group>"; };
+		766069382CAA02120091A83C /* world-cities-6.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-6.json"; sourceTree = "<group>"; };
+		766069392CAA02120091A83C /* world-cities-7.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-7.json"; sourceTree = "<group>"; };
+		7660693A2CAA02120091A83C /* world-cities-8.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-8.json"; sourceTree = "<group>"; };
+		7660693B2CAA02120091A83C /* world-cities-9.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-9.json"; sourceTree = "<group>"; };
+		7660693C2CAA02120091A83C /* world-cities-10.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-10.json"; sourceTree = "<group>"; };
+		7660693D2CAA02120091A83C /* world-cities-11.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-11.json"; sourceTree = "<group>"; };
+		7660693E2CAA02120091A83C /* world-cities-12.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-12.json"; sourceTree = "<group>"; };
 		7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartAspectsListing.swift; sourceTree = "<group>"; };
 		76620A9A27AC79D8009094DC /* AstroReadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroReadingModel.swift; sourceTree = "<group>"; };
 		76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomState+Extensions.swift"; sourceTree = "<group>"; };
@@ -1140,6 +1192,19 @@
 		763CFC0427B1E4C4004A73B8 /* Data */ = {
 			isa = PBXGroup;
 			children = (
+				766069322CAA02120091A83C /* world-cities-0.json */,
+				766069332CAA02120091A83C /* world-cities-1.json */,
+				766069342CAA02120091A83C /* world-cities-2.json */,
+				766069352CAA02120091A83C /* world-cities-3.json */,
+				766069362CAA02120091A83C /* world-cities-4.json */,
+				766069372CAA02120091A83C /* world-cities-5.json */,
+				766069382CAA02120091A83C /* world-cities-6.json */,
+				766069392CAA02120091A83C /* world-cities-7.json */,
+				7660693A2CAA02120091A83C /* world-cities-8.json */,
+				7660693B2CAA02120091A83C /* world-cities-9.json */,
+				7660693C2CAA02120091A83C /* world-cities-10.json */,
+				7660693D2CAA02120091A83C /* world-cities-11.json */,
+				7660693E2CAA02120091A83C /* world-cities-12.json */,
 				76FDBE192CA7831D002260C1 /* world-cities.json */,
 				763CFC0527B1E4C4004A73B8 /* cities.json */,
 			);
@@ -1589,6 +1654,19 @@
 				76AF1D5427AE1E7400CB4E97 /* venus-taurus.txt in Resources */,
 				7614A3C92AE9B849005AEC82 /* moon-taurus.txt in Resources */,
 				76AF1D6627AE1E7400CB4E97 /* venus-pisces.txt in Resources */,
+				7660693F2CAA02120091A83C /* world-cities-3.json in Resources */,
+				766069402CAA02120091A83C /* world-cities-6.json in Resources */,
+				766069412CAA02120091A83C /* world-cities-2.json in Resources */,
+				766069422CAA02120091A83C /* world-cities-7.json in Resources */,
+				766069432CAA02120091A83C /* world-cities-5.json in Resources */,
+				766069442CAA02120091A83C /* world-cities-9.json in Resources */,
+				766069452CAA02120091A83C /* world-cities-12.json in Resources */,
+				766069462CAA02120091A83C /* world-cities-11.json in Resources */,
+				766069472CAA02120091A83C /* world-cities-4.json in Resources */,
+				766069482CAA02120091A83C /* world-cities-8.json in Resources */,
+				766069492CAA02120091A83C /* world-cities-0.json in Resources */,
+				7660694A2CAA02120091A83C /* world-cities-1.json in Resources */,
+				7660694B2CAA02120091A83C /* world-cities-10.json in Resources */,
 				76AF1D5827AE1E7400CB4E97 /* venus-aquarius.txt in Resources */,
 				761DEEB5279B9EF900A71938 /* sedeltat.txt.inactive in Resources */,
 				762428B227C342F20002F5B3 /* seas_24.se1 in Resources */,
@@ -1681,6 +1759,19 @@
 				76AF1D6727AE1E7400CB4E97 /* venus-pisces.txt in Resources */,
 				76AF1D5927AE1E7400CB4E97 /* venus-aquarius.txt in Resources */,
 				76BEF40527ACB4B8001C9AD0 /* mars-virgo.txt in Resources */,
+				7660694C2CAA02120091A83C /* world-cities-3.json in Resources */,
+				7660694D2CAA02120091A83C /* world-cities-6.json in Resources */,
+				7660694E2CAA02120091A83C /* world-cities-2.json in Resources */,
+				7660694F2CAA02120091A83C /* world-cities-7.json in Resources */,
+				766069502CAA02120091A83C /* world-cities-5.json in Resources */,
+				766069512CAA02120091A83C /* world-cities-9.json in Resources */,
+				766069522CAA02120091A83C /* world-cities-12.json in Resources */,
+				766069532CAA02120091A83C /* world-cities-11.json in Resources */,
+				766069542CAA02120091A83C /* world-cities-4.json in Resources */,
+				766069552CAA02120091A83C /* world-cities-8.json in Resources */,
+				766069562CAA02120091A83C /* world-cities-0.json in Resources */,
+				766069572CAA02120091A83C /* world-cities-1.json in Resources */,
+				766069582CAA02120091A83C /* world-cities-10.json in Resources */,
 				762428B327C342F20002F5B3 /* seas_24.se1 in Resources */,
 				761DEEC0279B9EF900A71938 /* seleapsec.txt in Resources */,
 				7614A3DC2AE9B849005AEC82 /* sun-pisces.txt in Resources */,
@@ -1723,6 +1814,19 @@
 				7614A4042AE9B849005AEC82 /* mercury-virgo.txt in Resources */,
 				7614A3C22AE9B849005AEC82 /* moon-sagitarius.txt in Resources */,
 				7614A3D42AE9B849005AEC82 /* sun-gemini.txt in Resources */,
+				766069592CAA02120091A83C /* world-cities-3.json in Resources */,
+				7660695A2CAA02120091A83C /* world-cities-6.json in Resources */,
+				7660695B2CAA02120091A83C /* world-cities-2.json in Resources */,
+				7660695C2CAA02120091A83C /* world-cities-7.json in Resources */,
+				7660695D2CAA02120091A83C /* world-cities-5.json in Resources */,
+				7660695E2CAA02120091A83C /* world-cities-9.json in Resources */,
+				7660695F2CAA02120091A83C /* world-cities-12.json in Resources */,
+				766069602CAA02120091A83C /* world-cities-11.json in Resources */,
+				766069612CAA02120091A83C /* world-cities-4.json in Resources */,
+				766069622CAA02120091A83C /* world-cities-8.json in Resources */,
+				766069632CAA02120091A83C /* world-cities-0.json in Resources */,
+				766069642CAA02120091A83C /* world-cities-1.json in Resources */,
+				766069652CAA02120091A83C /* world-cities-10.json in Resources */,
 				7614A3DA2AE9B849005AEC82 /* sun-libra.txt in Resources */,
 				7614A3DD2AE9B849005AEC82 /* sun-pisces.txt in Resources */,
 				7614A40D2AE9B849005AEC82 /* mercury-aries.txt in Resources */,
