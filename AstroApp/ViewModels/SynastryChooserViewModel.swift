@@ -142,14 +142,19 @@ class SynastryChooserViewModel: AstrobotInterface {
         var degree1 = degreeOne
         var degree2 = degreeTwo
         if degree1 < 180.0 && degree2 > 180.0 {
-            degree1 = degree1 + 360.0
-        } else if degree2 < 180.0 && degree2 > 180.0 {
-            degree2 = degree2 + 360.0
+            if degree2 > degree1 + 180 {
+                degree2 = degree2 - 360
+            }
+        } else if degree2 < 180.0 && degree1 > 180.0 {
+            if degree1 > degree2 + 180 {
+               degree1 = degree1 - 360
+            }
         }
         var degree = (degree1 + degree2) / 2
-        if degree > 360.0 {
-            degree = degree - 360.0
+        if degree < 0 {
+            degree = 360 + degree
         }
+        
         return degree
     }
 }
