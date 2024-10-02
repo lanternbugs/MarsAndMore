@@ -167,7 +167,7 @@ extension AstrobotInterface {
             }
             var transits = [TransitCell]()
             for planet2 in natalPlanets {
-                if planet2.planet.rawValue < startPlanet.rawValue {
+                if planet2.planet.rawValue < startPlanet.rawValue && time2 == nil {
                     continue
                 }
                 else if let aspect = getAspect(planet1: $0, planet2: planet2, with:  time2, location2: nil, withOrbType: type) {
