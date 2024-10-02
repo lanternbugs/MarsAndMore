@@ -143,6 +143,50 @@ extension AstrobotInterface {
         return transitsRow
     }
     
+    func getAspectsFromPlanets(_ planets: [PlanetCell],  type: OrbType = OrbType.MediumOrbs) -> PlanetRow
+    {
+        
+        var natalPlanets: [TransitingPlanet] = [TransitingPlanet]()
+        for planet in planets {
+            natalPlanets.append(TransitingPlanet(planet: planet.planet, degree: planet.numericDegree, laterDegree: planet.numericDegree))
+        }
+        let transitPlanets: [TransitingPlanet]? = natalPlanets
+        
+
+        guard let transitPlanets = transitPlanets else {
+            return PlanetRow()
+        }
+
+        let planetRow: [[TransitCell]?] = transitPlanets.map {
+            guard let startPlanet = Planets(rawValue: $0.planet.rawValue + 1) else {
+                return []
+            }
+            var transits = [TransitCell]()
+            for planet2 in natalPlanets {
+                if planet2.planet.rawValue < startPlanet.rawValue {
+                    continue
+                }
+                else if let aspect = getAspect(planet1: $0, planet2: planet2, with:  nil, location2: nil, withOrbType: type) {
+                    let movement: Movement = $0.degree.getApplying(with: $0.laterDegree, otherDegree: planet2.degree, for: aspect, type: .Aspects(orbs: type.getShortName()))
+                    transits.append(TransitCell(planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect, movement: movement))
+                }
+            }
+            
+            return transits
+        }
+
+        var transitsRow =  PlanetRow()
+        for val in planetRow {
+            if let val = val {
+                for val2 in val {
+                    transitsRow.planets.append(val2)
+                }
+            }
+        }
+        
+        return transitsRow
+    }
+    
     func getTransitingPlanets(for time: Double, and location: LocationData?, type withOrbType: OrbType = OrbType.MediumOrbs, calculationSettings: CalculationSettings)->[TransitingPlanet] {
         let adapter = AdapterToEphemeris()
         var transitPlanets = [TransitingPlanet]()

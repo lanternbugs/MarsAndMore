@@ -70,7 +70,13 @@ class SynastryChooserViewModel: AstrobotInterface {
         let planetDataTwo = getPlanetData(data: data2)
         viewModel.planetData = getMidPointPlanetData(dataOne: planetDataOne, dataTwo: planetDataTwo)
         
-        viewModel.aspectsData = [TransitCell]()
+        let aspectsRow = getAspectsFromPlanets(viewModel.planetData, type: manager.orbSelection)
+        if let aspects = aspectsRow.planets as? [TransitCell] {
+            viewModel.aspectsData = aspects
+        } else {
+            viewModel.aspectsData = [TransitCell]()
+        }
+        
         let houseDataOne = getHouseData(data: data1)
         let houseDataTwo = getHouseData(data: data2)
         viewModel.houseData = getMidPointHouseData(dataOne: houseDataOne, dataTwo: houseDataTwo)
