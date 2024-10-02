@@ -47,7 +47,7 @@ struct MundanePlanetsRow: View, AstrobotInterface {
             }
             Spacer()
             Button(action: { roomState.wrappedValue = .SynastryChooser }) {
-                Text("Partner").font(Font.subheadline)
+                Text("Partner").font(Font.headline)
             }.padding(.trailing)
             
             
@@ -58,7 +58,7 @@ struct MundanePlanetsRow: View, AstrobotInterface {
                 }
                 Spacer()
                 Button(action: { roomState.wrappedValue = .SynastryChooser }) {
-                    Text("Partner").font(Font.subheadline).padding(.trailing)
+                    Text("Partner").font(Font.headline).padding(.trailing)
                 }
             } else {
                 Button(action: { roomState.wrappedValue = .Ephemeris(date: savedDate.planetsDateChoice, calculationSettings: manager.calculationSettings) }) {

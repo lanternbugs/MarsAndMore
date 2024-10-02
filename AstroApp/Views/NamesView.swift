@@ -34,7 +34,7 @@ struct NamesView: View {
                 }
                 Divider()
                 Button(action: { roomState.wrappedValue = .SynastryChooser }) {
-                    Text("Partner").font(Font.subheadline)
+                    Text("Partner").font(Font.headline)
                 }
                 
                 Divider()

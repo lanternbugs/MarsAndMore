@@ -25,7 +25,7 @@ struct SynastryChooserView: View {
                 Spacer()
                 VStack {
                     Spacer()
-                    Text("Input Birth Data for two People to do Synastry.")
+                    Text("Input Birth Data for two People to do Synastry or Composite Charts.")
                     HStack() {
                         Spacer()
                         Text("Name").font(Font.headline.weight(.semibold))
@@ -45,7 +45,7 @@ struct SynastryChooserView: View {
                 Spacer()
                 VStack {
                     Spacer()
-                    Text("One person's Birth Data has been entered. Enter a second to do Snyastry.")
+                    Text("One person's Birth Data has been entered. Enter a second to do Snyastry or Composite Charts.")
                     HStack() {
                         Spacer()
                         Text("Name").font(Font.headline.weight(.semibold))
