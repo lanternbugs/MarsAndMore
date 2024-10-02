@@ -143,7 +143,7 @@ extension AstrobotInterface {
         return transitsRow
     }
     
-    func getAspectsFromPlanets(_ planets: [PlanetCell], with time2: Double?,  type: OrbType = OrbType.MediumOrbs) -> PlanetRow
+    func getAspectsFromPlanets(_ planets: [PlanetCell], with time2: Double?,  type: OrbType) -> PlanetRow
     {
         
         var natalPlanets: [TransitingPlanet] = [TransitingPlanet]()
@@ -170,7 +170,7 @@ extension AstrobotInterface {
                 if planet2.planet.rawValue < startPlanet.rawValue {
                     continue
                 }
-                else if let aspect = getAspect(planet1: $0, planet2: planet2, with:  nil, location2: nil, withOrbType: type) {
+                else if let aspect = getAspect(planet1: $0, planet2: planet2, with:  time2, location2: nil, withOrbType: type) {
                     let movement: Movement = $0.degree.getApplying(with: $0.laterDegree, otherDegree: planet2.degree, for: aspect, type: .Aspects(orbs: type.getShortName()))
                     transits.append(TransitCell(planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect, movement: movement))
                 }
