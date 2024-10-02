@@ -143,15 +143,19 @@ extension AstrobotInterface {
         return transitsRow
     }
     
-    func getAspectsFromPlanets(_ planets: [PlanetCell],  type: OrbType = OrbType.MediumOrbs) -> PlanetRow
+    func getAspectsFromPlanets(_ planets: [PlanetCell], with time2: Double?,  type: OrbType = OrbType.MediumOrbs) -> PlanetRow
     {
         
         var natalPlanets: [TransitingPlanet] = [TransitingPlanet]()
         for planet in planets {
             natalPlanets.append(TransitingPlanet(planet: planet.planet, degree: planet.numericDegree, laterDegree: planet.numericDegree))
         }
-        let transitPlanets: [TransitingPlanet]? = natalPlanets
-        
+        let transitPlanets: [TransitingPlanet]?
+        if let time2 = time2 {
+            transitPlanets = getTransitingPlanets(for: time2, and: nil, calculationSettings: CalculationSettings(houseSystem: ""))
+        } else {
+            transitPlanets = natalPlanets
+        }
 
         guard let transitPlanets = transitPlanets else {
             return PlanetRow()

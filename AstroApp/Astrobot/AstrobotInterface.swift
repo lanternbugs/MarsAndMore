@@ -18,7 +18,7 @@ protocol AstrobotBaseInterface {
 
 protocol AstrobotInterface: AstrobotBaseInterface {
     func getAspects(time: Double, with time2: Double?, and location: LocationData?, location2: LocationData?, type: OrbType, calculationSettings: CalculationSettings) -> PlanetRow
-    func getAspectsFromPlanets(_ planets: [PlanetCell],  type: OrbType) -> PlanetRow
+    func getAspectsFromPlanets(_ planets: [PlanetCell], with time2: Double?,  type: OrbType) -> PlanetRow
     func getHouses(time: Double, location: LocationData, system: String, calculationSettings: CalculationSettings) -> PlanetRow
     func getTransitTimes(start_time: Double, end_time: Double, manager: BirthDataManager) -> [TransitTime]
     func getNatalTransitTimes(start_time: Double, end_time: Double, manager: BirthDataManager, transitTimeData: TransitTimeData) -> [TransitTime]

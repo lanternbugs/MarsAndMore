@@ -83,6 +83,10 @@ struct SynastryChooserView: View {
                     Button(action: getCompositeChart) {
                         Text("Composite Chart").font(Font.title)
                     }.padding(.top)
+                    
+                    Button(action: getCompositePlusNowChart) {
+                        Text("Composite + Now").font(Font.title)
+                    }.padding(.top)
                     Spacer()
                 }
                 Spacer()
@@ -112,6 +116,12 @@ extension SynastryChooserView {
     
     func getCompositeChart() {
         if let vModel = viewModel.getCompositeChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) {
+            roomState.wrappedValue = .NatalView(onDismiss: .SynastryChooser, viewModel: vModel)
+        }
+    }
+    
+    func getCompositePlusNowChart() {
+        if let vModel = viewModel.getCompositePlusNowChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) {
             roomState.wrappedValue = .NatalView(onDismiss: .SynastryChooser, viewModel: vModel)
         }
     }

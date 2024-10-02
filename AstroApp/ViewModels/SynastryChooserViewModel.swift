@@ -50,6 +50,49 @@ class SynastryChooserViewModel: AstrobotInterface {
         return viewModel
     }
     
+    func getCompositePlusNowChart(selectedNameOne: String, selectedNameTwo: String) -> ChartViewModel? {
+        if selectedNameOne.isEmpty || selectedNameTwo.isEmpty {
+            return nil
+        }
+        guard let data1 = manager.birthDates.first(where:  { $0.name == selectedNameOne })
+        else {
+            return nil
+        }
+        guard let data2 = manager.birthDates.first(where:  { $0.name == selectedNameTwo })
+        else {
+            return nil
+        }
+        let dateFormater = DateFormatter()
+        dateFormater.locale   = Locale(identifier: "en_US_POSIX")
+        dateFormater.dateFormat = "YY/MM/dd h:m"
+        let transitDate = Date()
+        let viewModel = ChartViewModel(model: WheelChartModel(chartName: data1.name + " + " + data2.name + " + " + dateFormater.string(from: transitDate), chart: .Transit, manager: manager))
+        viewModel.name1 = selectedNameOne
+        viewModel.name2 = selectedNameTwo
+        guard let compositeModel = getCompositeChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) else {
+            return nil
+        }
+        let aspectsRow = getAspectsFromPlanets(compositeModel.planetData, with: transitDate.getAstroTime(), type: manager.transitOrbSelection)
+        if let aspects = aspectsRow.planets as? [TransitCell] {
+            viewModel.aspectsData = aspects
+        } else {
+            viewModel.aspectsData = [TransitCell]()
+        }
+        viewModel.houseData = compositeModel.houseData
+        viewModel.planetData = compositeModel.planetData
+        viewModel.secondaryPlanetData = populatePlanetsData(transitDate.getAstroTime(), nil)
+        return viewModel
+        
+    }
+    
+    func populatePlanetsData(_ date: Double, _ location: LocationData?) -> [PlanetCell] {
+        let row = getPlanets(time: date, location: location, calculationSettings: manager.calculationSettings)
+        if let planets = row.planets as? [PlanetCell] {
+            return planets
+        }
+        return [PlanetCell]()
+    }
+    
     func getCompositeChart(selectedNameOne: String, selectedNameTwo: String) -> ChartViewModel? {
         if selectedNameOne.isEmpty || selectedNameTwo.isEmpty {
             return nil
@@ -70,7 +113,7 @@ class SynastryChooserViewModel: AstrobotInterface {
         let planetDataTwo = getPlanetData(data: data2)
         viewModel.planetData = getMidPointPlanetData(dataOne: planetDataOne, dataTwo: planetDataTwo)
         
-        let aspectsRow = getAspectsFromPlanets(viewModel.planetData, type: manager.orbSelection)
+        let aspectsRow = getAspectsFromPlanets(viewModel.planetData, with: nil, type: manager.orbSelection)
         if let aspects = aspectsRow.planets as? [TransitCell] {
             viewModel.aspectsData = aspects
         } else {
