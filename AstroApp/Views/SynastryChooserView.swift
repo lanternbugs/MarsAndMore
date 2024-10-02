@@ -65,7 +65,7 @@ struct SynastryChooserView: View {
             HStack {
                 Spacer()
                 VStack {
-                    Text("Select Person One and Two for a synastry chart")
+                    Text("Select Person One and Two for a synastry or composite chart")
                     Picker("Person one", selection: $selectedNameOne) {
                         ForEach(viewModel.manager.birthDates, id: \.self) {
                             Text($0.name).tag($0.name)
@@ -76,9 +76,13 @@ struct SynastryChooserView: View {
                             Text($0.name).tag($0.name)
                                     }
                     }
-                    Button(action: getChart) {
-                        Text("Get Chart").font(Font.title.weight(.bold))
-                    }
+                    Button(action: getSynastryChart) {
+                        Text("Synastry Chart").font(Font.title)
+                    }.padding(.top)
+                    
+                    Button(action: getCompositeChart) {
+                        Text("Composite Chart").font(Font.title)
+                    }.padding(.top)
                     Spacer()
                 }
                 Spacer()
@@ -100,8 +104,14 @@ extension SynastryChooserView {
         roomState.wrappedValue = .Names(onDismiss: .SynastryChooser)
     }
     
-    func getChart() {
-        if let vModel = viewModel.getChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) {
+    func getSynastryChart() {
+        if let vModel = viewModel.getSynastryChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) {
+            roomState.wrappedValue = .NatalView(onDismiss: .SynastryChooser, viewModel: vModel)
+        }
+    }
+    
+    func getCompositeChart() {
+        if let vModel = viewModel.getCompositeChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) {
             roomState.wrappedValue = .NatalView(onDismiss: .SynastryChooser, viewModel: vModel)
         }
     }

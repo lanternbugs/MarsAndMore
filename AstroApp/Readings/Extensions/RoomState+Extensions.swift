@@ -56,7 +56,7 @@ extension RoomState: AstroReading {
         case .Mars:
             return "Mars Room"
         case .SynastryChooser:
-            return "Synastry Chooser"
+            return "Partner Chooser"
         case .Ephemeris:
             return "Ephemeris"
         }

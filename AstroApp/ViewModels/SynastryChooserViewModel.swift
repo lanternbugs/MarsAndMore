@@ -23,7 +23,7 @@ class SynastryChooserViewModel: AstrobotInterface {
     init(manager: BirthDataManager) {
         self.manager = manager
     }
-    func getChart(selectedNameOne: String, selectedNameTwo: String) -> ChartViewModel? {
+    func getSynastryChart(selectedNameOne: String, selectedNameTwo: String) -> ChartViewModel? {
         if selectedNameOne.isEmpty || selectedNameTwo.isEmpty {
             return nil
         }
@@ -45,6 +45,35 @@ class SynastryChooserViewModel: AstrobotInterface {
         
         viewModel.secondaryPlanetData = getPlanetData(data: data2)
         viewModel.secondaryHouseData = getHouseData(data: data2)
+        name1 = selectedNameOne
+        name2 = selectedNameTwo
+        return viewModel
+    }
+    
+    func getCompositeChart(selectedNameOne: String, selectedNameTwo: String) -> ChartViewModel? {
+        if selectedNameOne.isEmpty || selectedNameTwo.isEmpty {
+            return nil
+        }
+        guard let data1 = manager.birthDates.first(where:  { $0.name == selectedNameOne })
+        else {
+            return nil
+        }
+        guard let data2 = manager.birthDates.first(where:  { $0.name == selectedNameTwo })
+        else {
+            return nil
+        }
+        
+        let viewModel = ChartViewModel(model: WheelChartModel(chartName: data1.name + " + " + data2.name, chart: .Natal, manager: manager))
+        viewModel.name1 = selectedNameOne
+        viewModel.name2 = selectedNameTwo
+        let planetDataOne = getPlanetData(data: data1)
+        let planetDataTwo = getPlanetData(data: data2)
+        viewModel.planetData = getMidPointPlanetData(dataOne: planetDataOne, dataTwo: planetDataTwo)
+        
+        viewModel.aspectsData = [TransitCell]()
+        let houseDataOne = getHouseData(data: data1)
+        let houseDataTwo = getHouseData(data: data2)
+        viewModel.houseData = getMidPointHouseData(dataOne: houseDataOne, dataTwo: houseDataTwo)
         name1 = selectedNameOne
         name2 = selectedNameTwo
         return viewModel
@@ -76,5 +105,51 @@ class SynastryChooserViewModel: AstrobotInterface {
             }
         }
         return [HouseCell]()
+    }
+    
+    func getMidPointPlanetData(dataOne: [PlanetCell], dataTwo: [PlanetCell]) -> [PlanetCell] {
+        var newData = [PlanetCell]()
+        for planet in Planets.allCases {
+            let planet1 = dataOne.first { $0.planet == planet }
+            let planet2 = dataTwo.first { $0.planet == planet }
+            if planet1 == nil ||  planet2 == nil {
+                continue
+            }
+            let degree = getMidPointDegreee(planet1!.numericDegree, planet2!.numericDegree)
+            let planetCell = PlanetCell(planet: planet1!.planet, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false, numericDegree: degree)
+            newData.append(planetCell)
+        }
+        return newData
+    }
+    
+    func getMidPointHouseData(dataOne: [HouseCell], dataTwo: [HouseCell]) -> [HouseCell] {
+        if dataOne.isEmpty || dataTwo.isEmpty {
+            return [HouseCell]()
+        }
+        var newData = [HouseCell]()
+        for i in 0..<dataOne.count {
+            
+            let degree = getMidPointDegreee(dataOne[i].numericDegree, dataTwo[i].numericDegree)
+            let houseCell = HouseCell(degree: degree.getAstroDegree(), sign: degree.getAstroSign(), house: dataOne[i].house, numericDegree: degree, type: dataOne[i].type)
+            if houseCell.type == .House {
+                newData.append(houseCell)
+            }
+        }
+        return newData
+    }
+    
+    func getMidPointDegreee(_ degreeOne: Double, _ degreeTwo: Double) -> Double {
+        var degree1 = degreeOne
+        var degree2 = degreeTwo
+        if degree1 < 180.0 && degree2 > 180.0 {
+            degree1 = degree1 + 360.0
+        } else if degree2 < 180.0 && degree2 > 180.0 {
+            degree2 = degree2 + 360.0
+        }
+        var degree = (degree1 + degree2) / 2
+        if degree > 360.0 {
+            degree = degree - 360.0
+        }
+        return degree
     }
 }
