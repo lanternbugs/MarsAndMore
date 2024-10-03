@@ -17,6 +17,7 @@ struct ResourcesView: View {
     let astrologyKingAspects = "https://astrologyking.com/aspects/"
     let astrologyKingTransits = "https://astrologyking.com/transits/"
     let cafeAstrology = "https://cafeastrology.com/siteindex.html"
+    let compositeCharts = "https://www.astrolearn.com/astrology-articles/relationshipastrology3/"
     
     var body: some View {
         ScrollView {
@@ -24,9 +25,10 @@ struct ResourcesView: View {
                 Text("For those new to Astrological Charts and wondering what does it mean, this page hopes to offer a few resources and tips").font(.headline)
                 Text("First enter a name with a birth date in chart room by tapping + button to begin.").font(.body)
                 Text("Planets button used with that name selected gives the signs the planets were in at birth or what is called the Natal Chart.").font(.body).padding([.bottom])
-                Text("Signs are shortened to first three letters so Sco is Scorpio. If it says Jupiter is in Scorpio then users can Google natal jupiter scorpio").font(.headline)
+                Text("Signs are shortened to first three letters so Sco is Scorpio. If it says Jupiter is in Scorpio then users can Google natal jupiter scorpio. If it's a transit, google for example mars trine venus transit. If it's synastry for example do mars trine venus synastry in google.").font(.headline)
                 Text("Also two sites that come up near top of Google I've noticed for general info on all aspects or transits are astrologyking.com and cafeastrology.com. MarsAndMore has no affiliation with them.").font(.body)
                 Text("Users can find text descriptions of Planets, Aspects and Transits that are shown in Chart Room at these three links below, versus just searching in a search engine.").font(.body)
+                Text("I've also included an article on composite charts found under the Partner button.").font(.body)
                 Button(action: {
                     self.openLink(link: cafeAstrology)
                 }) {
@@ -41,6 +43,12 @@ struct ResourcesView: View {
                     self.openLink(link: astrologyKingTransits)
                 }) {
                     Text(astrologyKingTransits).font(.body).foregroundColor(Color.blue)
+                }.padding()
+                Text("Info on composite charts").padding()
+                Button(action: {
+                    self.openLink(link: compositeCharts)
+                }) {
+                    Text(compositeCharts).font(.body).foregroundColor(Color.blue)
                 }.padding()
             }.padding([.trailing, .leading])
             HStack {
