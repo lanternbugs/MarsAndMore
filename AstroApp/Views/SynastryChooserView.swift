@@ -104,6 +104,7 @@ struct SynastryChooserView: View {
                         ).datePickerStyle(DefaultDatePickerStyle())
                         Spacer()
                     }
+                    Text("There is some info on Composite Charts in the Resources View.")
                     Spacer()
                 }
                 Spacer()
