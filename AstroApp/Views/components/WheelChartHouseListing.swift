@@ -29,7 +29,21 @@ struct WheelChartHouseListing: View {
             if let asc = viewModel.planetData.first(where: { $0.planet == .Ascendant }) {
                 if asc.numericDegree != viewModel.houseData[0].numericDegree {
                     HStack {
-                        Text("Asc " + asc.degree + " " + asc.sign.getName())
+#if os(macOS)
+            if #available(macOS 12.0, *) {
+                Text("Asc " + asc.degree + " " + asc.sign.getName()).textSelection(.enabled).padding(.leading)
+            }
+            else {
+                Text("Asc " + asc.degree + " " + asc.sign.getName()).padding(.leading)
+                }
+#else
+            if #available(iOS 15.0, *) {
+                Text("Asc " + asc.degree + " " + asc.sign.getName()).textSelection(.enabled).padding(.leading)
+            }
+            else {
+                Text("Asc " + asc.degree + " " + asc.sign.getName()).padding(.leading)
+                }
+#endif
                         Spacer()
                     }
                 }
@@ -37,7 +51,21 @@ struct WheelChartHouseListing: View {
             if let mc = viewModel.planetData.first(where: { $0.planet == .MC }) {
                 if mc.numericDegree != viewModel.houseData[9].numericDegree {
                     HStack {
-                        Text("MC  " + mc.degree + " " + mc.sign.getName())
+#if os(macOS)
+            if #available(macOS 12.0, *) {
+                Text("MC  " + mc.degree + " " + mc.sign.getName()).textSelection(.enabled).padding(.leading)
+            }
+            else {
+                Text("MC  " + mc.degree + " " + mc.sign.getName()).padding(.leading)
+                }
+#else
+            if #available(iOS 15.0, *) {
+                Text("MC  " + mc.degree + " " + mc.sign.getName()).textSelection(.enabled).padding(.leading)
+            }
+            else {
+                Text("MC  " + mc.degree + " " + mc.sign.getName()).padding(.leading)
+                }
+#endif
                         Spacer()
                     }
                 }  
@@ -45,7 +73,21 @@ struct WheelChartHouseListing: View {
             ForEach(viewModel.houseData, id: \.id) {
                 data in
                 HStack {
-                    Text(viewModel.getHouseRow(data))
+#if os(macOS)
+            if #available(macOS 12.0, *) {
+                Text(viewModel.getHouseRow(data)).textSelection(.enabled).padding(.leading)
+            }
+            else {
+                Text(viewModel.getHouseRow(data)).padding(.leading)
+                }
+#else
+            if #available(iOS 15.0, *) {
+                Text(viewModel.getHouseRow(data)).textSelection(.enabled).padding(.leading)
+            }
+            else {
+                Text(viewModel.getHouseRow(data)).padding(.leading)
+                }
+#endif
                     Spacer()
                     
                         
