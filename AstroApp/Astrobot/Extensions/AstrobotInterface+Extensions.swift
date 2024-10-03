@@ -145,7 +145,7 @@ extension AstrobotInterface {
     
     func getAspectsFromPlanets(_ planets: [PlanetCell], with time2: Double?,  type: OrbType) -> PlanetRow
     {
-        
+        let fetchType: PlanetFetchType = time2 == nil ? .Aspects(orbs: type.getShortName()) : .Transits(date: "none", orbs: "none", transitData: TransitTimeData(), chartName: "none", viewModel: ChartViewModel(model: WheelChartModel(chartName: "none", chart: .Transit, manager: BirthDataManager())))
         var natalPlanets: [TransitingPlanet] = [TransitingPlanet]()
         for planet in planets {
             natalPlanets.append(TransitingPlanet(planet: planet.planet, degree: planet.numericDegree, laterDegree: planet.numericDegree))
@@ -171,7 +171,7 @@ extension AstrobotInterface {
                     continue
                 }
                 else if let aspect = getAspect(planet1: $0, planet2: planet2, with:  time2, location2: nil, withOrbType: type) {
-                    let movement: Movement = $0.degree.getApplying(with: $0.laterDegree, otherDegree: planet2.degree, for: aspect, type: .Aspects(orbs: type.getShortName()))
+                    let movement: Movement = $0.degree.getApplying(with: $0.laterDegree, otherDegree: planet2.degree, for: aspect, type: fetchType)
                     transits.append(TransitCell(planet: $0.planet, planet2: planet2.planet, degree: $0.degree.getTransitDegree(with: planet2.degree, for: aspect), aspect: aspect, movement: movement))
                 }
             }
