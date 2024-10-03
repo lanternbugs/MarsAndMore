@@ -19,7 +19,6 @@ struct SynastryChooserView: View {
     @EnvironmentObject private var manager: BirthDataManager
     @State var selectedNameOne: String
     @State var selectedNameTwo: String
-    @State var exactCompositeTime = false
     let viewModel: SynastryChooserViewModel
     var body: some View {
         if viewModel.manager.birthDates.isEmpty {
@@ -86,10 +85,14 @@ struct SynastryChooserView: View {
                         Text("Composite Chart").font(Font.title)
                     }.padding(.top)
                     
-                    Button(action: getCompositePlusNowChart) {
+                    Button(action: {
+                        getCompositePlusDateChart(transitDate: Date())})
+                    {
                         Text("Composite + Now").font(Font.title)
                     }.padding(.top)
-                    Button(action: getCompositePlusDateChart) {
+                    Button(action: {
+                        getCompositePlusDateChart(transitDate: manager.compositeDate)})
+                    {
                         Text("Composite + Date").font(Font.title)
                     }.padding(.top)
                     HStack(alignment: .top) {
@@ -134,14 +137,8 @@ extension SynastryChooserView {
         }
     }
     
-    func getCompositePlusNowChart() {
-        if let vModel = viewModel.getCompositePlusDateChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) {
-            roomState.wrappedValue = .NatalView(onDismiss: .SynastryChooser, viewModel: vModel)
-        }
-    }
-    
-    func getCompositePlusDateChart() {
-        if let vModel = viewModel.getCompositePlusDateChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo, transitDate: manager.compositeDate) {
+    func getCompositePlusDateChart(transitDate: Date) {
+        if let vModel = viewModel.getCompositePlusDateChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo, transitDate: transitDate) {
             roomState.wrappedValue = .NatalView(onDismiss: .SynastryChooser, viewModel: vModel)
         }
     }
