@@ -16,8 +16,10 @@ import SwiftUI
 
 struct SynastryChooserView: View {
     @Environment(\.roomState) private var roomState
+    @EnvironmentObject private var manager: BirthDataManager
     @State var selectedNameOne: String
     @State var selectedNameTwo: String
+    @State var exactCompositeTime = false
     let viewModel: SynastryChooserViewModel
     var body: some View {
         if viewModel.manager.birthDates.isEmpty {
@@ -87,6 +89,18 @@ struct SynastryChooserView: View {
                     Button(action: getCompositePlusNowChart) {
                         Text("Composite + Now").font(Font.title)
                     }.padding(.top)
+                    Button(action: getCompositePlusDateChart) {
+                        Text("Composite + Date").font(Font.title)
+                    }.padding(.top)
+                    HStack(alignment: .top) {
+                        Spacer()
+                        DatePicker(
+                          "Date",
+                          selection: $manager.compositeDate,
+                          displayedComponents: [.date, .hourAndMinute]
+                        ).datePickerStyle(DefaultDatePickerStyle())
+                        Spacer()
+                    }
                     Spacer()
                 }
                 Spacer()
@@ -121,7 +135,13 @@ extension SynastryChooserView {
     }
     
     func getCompositePlusNowChart() {
-        if let vModel = viewModel.getCompositePlusNowChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) {
+        if let vModel = viewModel.getCompositePlusDateChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) {
+            roomState.wrappedValue = .NatalView(onDismiss: .SynastryChooser, viewModel: vModel)
+        }
+    }
+    
+    func getCompositePlusDateChart() {
+        if let vModel = viewModel.getCompositePlusDateChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo, transitDate: manager.compositeDate) {
             roomState.wrappedValue = .NatalView(onDismiss: .SynastryChooser, viewModel: vModel)
         }
     }

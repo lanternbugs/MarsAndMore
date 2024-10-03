@@ -20,6 +20,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var selectedName: Int?
     @Published var userNameSelection: String = ""
     @Published var userDateSelection: Date = Date(timeIntervalSince1970: 0)
+    var compositeDate = Date()
     @Published var userExactTimeSelection: Bool = false
     @AppStorage("showMinorAspectTransitTimes") var showMinorAspectTransitTimes: Bool = true
     @AppStorage("utcTimeChoice") var userUTCTimeSelection: Bool = false

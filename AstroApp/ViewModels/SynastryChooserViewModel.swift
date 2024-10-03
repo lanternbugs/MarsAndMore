@@ -50,7 +50,7 @@ class SynastryChooserViewModel: AstrobotInterface {
         return viewModel
     }
     
-    func getCompositePlusNowChart(selectedNameOne: String, selectedNameTwo: String) -> ChartViewModel? {
+    func getCompositePlusDateChart(selectedNameOne: String, selectedNameTwo: String, transitDate: Date = Date()) -> ChartViewModel? {
         if selectedNameOne.isEmpty || selectedNameTwo.isEmpty {
             return nil
         }
@@ -65,7 +65,6 @@ class SynastryChooserViewModel: AstrobotInterface {
         let dateFormater = DateFormatter()
         dateFormater.locale   = Locale(identifier: "en_US_POSIX")
         dateFormater.dateFormat = "YY/MM/dd h:m"
-        let transitDate = Date()
         let viewModel = ChartViewModel(model: WheelChartModel(chartName: data1.name + " + " + data2.name + " + " + dateFormater.string(from: transitDate), chart: .Transit, manager: manager))
         viewModel.name1 = selectedNameOne
         viewModel.name2 = selectedNameTwo
