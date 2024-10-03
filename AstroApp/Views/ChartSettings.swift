@@ -87,7 +87,7 @@ struct ChartSettings: View {
                                     }.namesStyle()
                                         .padding([.trailing, .leading])
                                 }
-                                Text("\(aspect.getName())").namesStyle().padding([.trailing, .leading])
+                                Text("\(aspect.getName()) \(Int(aspect.rawValue))").namesStyle().padding([.trailing, .leading])
                             }
                         }
                     }
