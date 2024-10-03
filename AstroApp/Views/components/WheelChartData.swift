@@ -48,6 +48,9 @@ struct WheelChartData: View {
                 }
             }
             Text("")
+            if viewModel.showIndividualCompositeData {
+                IndividualCompositeDataView(viewModel: viewModel)
+            }
         }
     }
 }

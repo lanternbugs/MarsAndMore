@@ -10,6 +10,13 @@ class WheelChartModel {
     let chartName: String
     var name1 = ""
     var name2 = ""
+    var showIndividualCompositeData = false
+    var personOneHouseData = [HouseCell]()
+    var personTwoHouseData = [HouseCell]()
+    var personOnePlanetData = [PlanetCell]()
+    var personTwoPlanetData = [PlanetCell]()
+    var personOneAspectsData = [TransitCell]()
+    var personTwoAspectsData = [TransitCell]()
     var manager: BirthDataManager
     var houseData = [HouseCell]()
     var secondaryHouseData = [HouseCell]()

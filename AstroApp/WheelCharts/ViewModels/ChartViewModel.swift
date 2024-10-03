@@ -30,6 +30,14 @@ class ChartViewModel {
     var chartName: String {
         model.chartName
     }
+    var showIndividualCompositeData: Bool {
+        get {
+            model.showIndividualCompositeData
+        }
+        set(newValue) {
+            model.showIndividualCompositeData = newValue
+        }
+    }
     var name1: String  {
         get {
             model.name1
@@ -57,6 +65,22 @@ class ChartViewModel {
             model.houseData = newValue
         }
     }
+    var personOneHouseData: [HouseCell] {
+        get {
+            model.personOneHouseData
+        }
+        set(newValue) {
+            model.personOneHouseData = newValue
+        }
+    }
+    var personTwoHouseData: [HouseCell] {
+        get {
+            model.personTwoHouseData
+        }
+        set(newValue) {
+            model.personTwoHouseData = newValue
+        }
+    }
     var secondaryHouseData: [HouseCell] {
         get {
             model.secondaryHouseData
@@ -73,6 +97,22 @@ class ChartViewModel {
             model.planetData = newValue
         }
     }
+    var personOnePlanetData: [PlanetCell] {
+        get {
+            model.personOnePlanetData
+        }
+        set(newValue) {
+            model.personOnePlanetData = newValue
+        }
+    }
+    var personTwoPlanetData: [PlanetCell] {
+        get {
+            model.personTwoPlanetData
+        }
+        set(newValue) {
+            model.personTwoPlanetData = newValue
+        }
+    }
     var secondaryPlanetData: [PlanetCell] {
         get {
             model.secondaryPlanetData
@@ -87,6 +127,22 @@ class ChartViewModel {
         }
         set(newValue) {
             model.aspectsData = newValue
+        }
+    }
+    var personOneAspectsData: [TransitCell] {
+        get {
+            model.personOneAspectsData
+        }
+        set(newValue) {
+            model.personOneAspectsData = newValue
+        }
+    }
+    var personTwoAspectsData: [TransitCell] {
+        get {
+            model.personTwoAspectsData
+        }
+        set(newValue) {
+            model.personTwoAspectsData = newValue
         }
     }
     var houseDictionary: [Int: (Int, Signs)] {

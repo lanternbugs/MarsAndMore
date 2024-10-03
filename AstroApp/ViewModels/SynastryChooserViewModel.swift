@@ -71,6 +71,7 @@ class SynastryChooserViewModel: AstrobotInterface {
         guard let compositeModel = getCompositeChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) else {
             return nil
         }
+        
         let aspectsRow = getAspectsFromPlanets(compositeModel.planetData, with: transitDate.getAstroTime(), type: manager.transitOrbSelection)
         if let aspects = aspectsRow.planets as? [TransitCell] {
             viewModel.aspectsData = aspects
@@ -92,6 +93,16 @@ class SynastryChooserViewModel: AstrobotInterface {
         return [PlanetCell]()
     }
     
+    func populateAspectsData(_ date: Double, _ location: LocationData?, secondTime: Double? = nil) -> [TransitCell] {
+        let orbSelection = secondTime != nil ? manager.transitOrbSelection : manager.orbSelection
+        let aspectsRow = getAspects(time: date, with: secondTime, and: location, type: orbSelection, calculationSettings: manager.calculationSettings)
+        
+        if let aspects = aspectsRow.planets as? [TransitCell] {
+             return aspects
+        }
+        return [TransitCell]()
+    }
+    
     func getCompositeChart(selectedNameOne: String, selectedNameTwo: String) -> ChartViewModel? {
         if selectedNameOne.isEmpty || selectedNameTwo.isEmpty {
             return nil
@@ -108,8 +119,13 @@ class SynastryChooserViewModel: AstrobotInterface {
         let viewModel = ChartViewModel(model: WheelChartModel(chartName: data1.name + " + " + data2.name, chart: .Natal, manager: manager))
         viewModel.name1 = selectedNameOne
         viewModel.name2 = selectedNameTwo
+        viewModel.showIndividualCompositeData = true
         let planetDataOne = getPlanetData(data: data1)
         let planetDataTwo = getPlanetData(data: data2)
+        viewModel.personOnePlanetData = planetDataOne
+        viewModel.personTwoPlanetData = planetDataTwo
+        viewModel.personOneAspectsData = populateAspectsData(data1.getAstroTime(), data1.location)
+        viewModel.personTwoAspectsData = populateAspectsData(data2.getAstroTime(), data2.location)
         viewModel.planetData = getMidPointPlanetData(dataOne: planetDataOne, dataTwo: planetDataTwo)
         
         let aspectsRow = getAspectsFromPlanets(viewModel.planetData, with: nil, type: manager.orbSelection)
@@ -121,6 +137,8 @@ class SynastryChooserViewModel: AstrobotInterface {
         
         let houseDataOne = getHouseData(data: data1)
         let houseDataTwo = getHouseData(data: data2)
+        viewModel.personOneHouseData = houseDataOne
+        viewModel.personTwoHouseData = houseDataTwo
         viewModel.houseData = getMidPointHouseData(dataOne: houseDataOne, dataTwo: houseDataTwo)
         name1 = selectedNameOne
         name2 = selectedNameTwo
