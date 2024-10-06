@@ -95,7 +95,7 @@ struct ChartSettings: View {
                 Section {
                     HStack {
                         Spacer()
-                        Text("Bodies to Show").font(.title)
+                        Text("Things to Show").font(.title)
                         Spacer()
                     }
                     ForEach(Planets.allCases, id: \.rawValue) {

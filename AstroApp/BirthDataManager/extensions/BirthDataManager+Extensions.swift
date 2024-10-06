@@ -153,7 +153,7 @@ extension BirthDataManager {
     }
 }
 
-//Mark: Core Data functoins around Bodies to show
+//Mark: Core Data functoins around Things to show
 extension BirthDataManager {
     
     func addInitialAspectData() {
