@@ -42,7 +42,7 @@ struct AstroSymbolsKey: View {
                     default:
                         HStack {
                             Text(" \(planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                            Text(planet.getName()).font(.body)
+                            Text(planet.getLongName()).font(.body)
                             Spacer()
                         }
                     }

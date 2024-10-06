@@ -16,7 +16,7 @@ extension Planets {
     func getLongName() -> String {
         switch(self) {
         case .Lilith:
-            return "Lilith(Lunar)"
+            return "Lilith(Black Moon)"
         default:
             return getName()
         }
