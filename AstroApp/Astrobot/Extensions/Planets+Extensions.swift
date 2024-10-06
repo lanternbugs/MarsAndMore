@@ -13,6 +13,14 @@
 
 import Foundation
 extension Planets {
+    func getLongName() -> String {
+        switch(self) {
+        case .Lilith:
+            return "Lilith(Lunar)"
+        default:
+            return getName()
+        }
+    }
     func getName()->String {
         switch(self) {
         case .MC:
@@ -55,6 +63,8 @@ extension Planets {
             return "True Node"
         case .SouthNode:
             return "South Node"
+        case .Lilith:
+            return "Lilith"
         }
     }
     
@@ -98,13 +108,15 @@ extension Planets {
             return "P"
         case .MC:
             return "Q"
+        case .Lilith:
+            return "T"
         default:
             return "Y" // no pholus
         }
     }
     
     static func getPlanetsByOrbitalPeriod() -> [Planets] {
-        [.Ascendant, .MC, .Moon, .Sun, .Mercury, .Venus, .Mars, .Vesta, .Juno, .Ceres, .Pallas, .Jupiter, .TrueNode, .SouthNode, .Saturn, .Chiron, .Uranus, .Pholus, .Neptune, .Pluto]
+        [.Ascendant, .MC, .Moon, .Sun, .Mercury, .Venus, .Mars, .Vesta, .Juno, .Ceres, .Pallas, .Jupiter, .TrueNode, .SouthNode, .Lilith, .Saturn, .Chiron, .Uranus, .Pholus, .Neptune, .Pluto]
     }
     
     func getOrbitalSpot() -> Int {
@@ -137,18 +149,20 @@ extension Planets {
             return 12
         case .SouthNode:
             return 13
-        case .Saturn:
+        case .Lilith:
             return 14
-        case .Chiron:
+        case .Saturn:
             return 15
-        case .Uranus:
+        case .Chiron:
             return 16
-        case .Pholus:
+        case .Uranus:
             return 17
-        case .Neptune:
+        case .Pholus:
             return 18
-        case .Pluto:
+        case .Neptune:
             return 19
+        case .Pluto:
+            return 20
         }
     }
     
@@ -339,6 +353,8 @@ extension Planets {
             return 10
         case .TrueNode:
             return 11
+        case .Lilith:
+            return 12
         case .Chiron:
             return 15
         case .Pholus:
@@ -385,6 +401,8 @@ extension Planets {
             return .SouthNode
         case 11:
             return .TrueNode
+        case 12:
+            return .Lilith
         case 15:
             return .Chiron
         case 16:

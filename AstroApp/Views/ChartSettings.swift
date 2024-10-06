@@ -113,7 +113,7 @@ struct ChartSettings: View {
                                 }.namesStyle()
                                     .padding([.trailing, .leading])
                             }
-                            Text("\(planet.getName())").namesStyle().padding([.trailing,.leading])
+                            Text("\(planet.getLongName())").namesStyle().padding([.trailing,.leading])
                         }
                         
                         
