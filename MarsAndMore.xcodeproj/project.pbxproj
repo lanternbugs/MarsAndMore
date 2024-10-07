@@ -347,6 +347,12 @@
 		7660AE352BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */; };
 		7660AE362BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */; };
 		7660AE372BCCB68500BC9F15 /* WheelChartAspectsListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */; };
+		76617BB02CB456D3008A2892 /* EditLocationDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76617BAF2CB456D3008A2892 /* EditLocationDataViewModel.swift */; };
+		76617BB12CB456D3008A2892 /* EditLocationDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76617BAF2CB456D3008A2892 /* EditLocationDataViewModel.swift */; };
+		76617BB22CB456D3008A2892 /* EditLocationDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76617BAF2CB456D3008A2892 /* EditLocationDataViewModel.swift */; };
+		76617BB42CB456FC008A2892 /* EditLocationDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76617BB32CB456FC008A2892 /* EditLocationDataView.swift */; };
+		76617BB52CB456FC008A2892 /* EditLocationDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76617BB32CB456FC008A2892 /* EditLocationDataView.swift */; };
+		76617BB62CB456FC008A2892 /* EditLocationDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76617BB32CB456FC008A2892 /* EditLocationDataView.swift */; };
 		76620A9B27AC79D8009094DC /* AstroReadingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9A27AC79D8009094DC /* AstroReadingModel.swift */; };
 		76620A9D27AC7C51009094DC /* RoomState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */; };
 		76620A9E27AC7C51009094DC /* RoomState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */; };
@@ -780,6 +786,8 @@
 		7660693D2CAA02120091A83C /* world-cities-11.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-11.json"; sourceTree = "<group>"; };
 		7660693E2CAA02120091A83C /* world-cities-12.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = "world-cities-12.json"; sourceTree = "<group>"; };
 		7660AE342BCCB68500BC9F15 /* WheelChartAspectsListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartAspectsListing.swift; sourceTree = "<group>"; };
+		76617BAF2CB456D3008A2892 /* EditLocationDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLocationDataViewModel.swift; sourceTree = "<group>"; };
+		76617BB32CB456FC008A2892 /* EditLocationDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditLocationDataView.swift; sourceTree = "<group>"; };
 		76620A9A27AC79D8009094DC /* AstroReadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroReadingModel.swift; sourceTree = "<group>"; };
 		76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomState+Extensions.swift"; sourceTree = "<group>"; };
 		76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Extensions.swift"; sourceTree = "<group>"; };
@@ -1227,6 +1235,7 @@
 				76407C7A2BCDD8D100AEC890 /* SynastryChooserViewModel.swift */,
 				768060B12BCF207100B135C9 /* TransitTimesViewModel.swift */,
 				766B30442BCF256600836F5A /* TransitMundaneViewModel.swift */,
+				76617BAF2CB456D3008A2892 /* EditLocationDataViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -1338,6 +1347,7 @@
 				7691C5F32B0D42850024613D /* TransitsView.swift */,
 				76D54B572B194A7D00E5269B /* WheelChartView.swift */,
 				76A204D42BA8B369002D4BC8 /* SynastryChooserView.swift */,
+				76617BB32CB456FC008A2892 /* EditLocationDataView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1950,6 +1960,7 @@
 				76CDFD6F2CAF32F2008D1AC9 /* IndividualCompositeDataView.swift in Sources */,
 				7617DAB927AFA9320064B98E /* Planets+Extensions.swift in Sources */,
 				763CFC0927B1E4E8004A73B8 /* BirthDataManager.swift in Sources */,
+				76617BB22CB456D3008A2892 /* EditLocationDataViewModel.swift in Sources */,
 				761DEEC7279B9EF900A71938 /* swedate.c in Sources */,
 				762EAF8C28833F4A007DB4A9 /* NasaFeed.swift in Sources */,
 				761DEEB3279B9EF900A71938 /* swemmoon.c in Sources */,
@@ -1963,6 +1974,7 @@
 				76908C9A27C050CA00806F9D /* SelectedNameModifier.swift in Sources */,
 				765275B72BC763BA00D52589 /* WheelChartPlanetListing.swift in Sources */,
 				762D4A6927AB986A00EA59E8 /* AstroButtons.swift in Sources */,
+				76617BB52CB456FC008A2892 /* EditLocationDataView.swift in Sources */,
 				7618A97427ADB6AA008C6508 /* NamesView.swift in Sources */,
 				76F822D42C60275C00F6C099 /* EphemerisModels.swift in Sources */,
 				76908C9427C04F2900806F9D /* NamesTextModifier.swift in Sources */,
@@ -2072,6 +2084,7 @@
 				76CDFD702CAF32F2008D1AC9 /* IndividualCompositeDataView.swift in Sources */,
 				7617DABA27AFA9320064B98E /* Planets+Extensions.swift in Sources */,
 				763CFC0A27B1E4E8004A73B8 /* BirthDataManager.swift in Sources */,
+				76617BB02CB456D3008A2892 /* EditLocationDataViewModel.swift in Sources */,
 				761DEE7C279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */,
 				762EAF8D28833F4A007DB4A9 /* NasaFeed.swift in Sources */,
 				761DEE82279B9EB200A71938 /* Persistence.swift in Sources */,
@@ -2085,6 +2098,7 @@
 				76908C9B27C050CA00806F9D /* SelectedNameModifier.swift in Sources */,
 				765275B82BC763BA00D52589 /* WheelChartPlanetListing.swift in Sources */,
 				7606E28227AB18A900C72FAB /* MarsTab.swift in Sources */,
+				76617BB42CB456FC008A2892 /* EditLocationDataView.swift in Sources */,
 				761DEEB4279B9EF900A71938 /* swemmoon.c in Sources */,
 				76F822D52C60275C00F6C099 /* EphemerisModels.swift in Sources */,
 				76908C9527C04F2900806F9D /* NamesTextModifier.swift in Sources */,
@@ -2154,6 +2168,7 @@
 				76930B942B7ACF3B0033D957 /* DelayedImageView.swift in Sources */,
 				76930B952B7ACF3B0033D957 /* ArtDisplayView.swift in Sources */,
 				76930B962B7ACF3B0033D957 /* MundanePlanetsRow.swift in Sources */,
+				76617BB62CB456FC008A2892 /* EditLocationDataView.swift in Sources */,
 				76930B972B7ACF3B0033D957 /* TransitTimesView.swift in Sources */,
 				76930B982B7ACF3B0033D957 /* NatalViewRepresentable.swift in Sources */,
 				767D1ABD2C66C62300F7110F /* AstroSymbolsKey.swift in Sources */,
@@ -2180,6 +2195,7 @@
 				76930BAC2B7ACF3B0033D957 /* MundaneView.swift in Sources */,
 				76930BAD2B7ACF3B0033D957 /* TransitsView.swift in Sources */,
 				76930BAE2B7ACF3B0033D957 /* WheelChartView.swift in Sources */,
+				76617BB12CB456D3008A2892 /* EditLocationDataViewModel.swift in Sources */,
 				76930B772B7ACEB50033D957 /* NatalChartDrawingView.swift in Sources */,
 				76930B782B7ACEB50033D957 /* TransitChartDrawingView.swift in Sources */,
 				76930B792B7ACEB50033D957 /* ChartViewModel.swift in Sources */,
