@@ -103,14 +103,14 @@ struct NameDataView: View {
                 HStack {
                     if let locationData = manager.userLocationData {
                         VStack {
-                            Text("Location set to \(locationData.latitude) latitude and \(locationData.longitude) longitude").font(.subheadline)
+                            Text("Location set to \(locationData.latitude) latitude and \(locationData.longitude) longitude").font(.subheadline).padding(.top)
                             Button(action: {
                                 manager.builder.removeLocation()
                                 manager.userLocationData = nil
                                 
                             }) {
                                 Text("Remove Location")
-                            }
+                            }.padding(.bottom)
                             HStack {
                                 Text("Advanced").font(.headline).padding(.leading)
                                 Button(action: {
@@ -173,7 +173,7 @@ struct NameDataView: View {
                 submitBirthData()
             }) {
                 Text("Submit Birth Data")
-            }
+            }.padding(.top)
             
             Spacer()
         }
