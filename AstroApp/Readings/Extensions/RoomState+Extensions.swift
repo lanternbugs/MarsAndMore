@@ -23,6 +23,8 @@ extension RoomState: AstroReading {
             return "Planets Room"
         case .Cities:
             return "Cities"
+        case .EditLocation:
+            return "Edit Location Data"
         case .UpdateCity:
             return "Update City"
         case .PlanetsCity:

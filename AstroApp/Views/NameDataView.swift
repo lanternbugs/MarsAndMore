@@ -111,10 +111,25 @@ struct NameDataView: View {
                             }) {
                                 Text("Remove Location")
                             }
+                            HStack {
+                                Text("Advanced").font(.headline).padding(.leading)
+                                Button(action: {
+                                    roomState.wrappedValue = .EditLocation(onDismiss: roomState.wrappedValue)
+                                }) {
+                                    Text("Edit Coordinates")
+                                }
+                            }
+                            Text("Edit changes user data not global city data")
+                            
                         }
                         
                     } else {
-                        Text("Add a birth city to calculate Ascendant and Houses").font(.subheadline)
+                        if let _ = manager.builder.cityData {
+                            Text("Change City").font(.subheadline)
+                        } else {
+                            Text("Add a birth city to calculate Ascendant and Houses").font(.subheadline)
+                        }
+                        
                         Button(action: {
                             switch(roomState.wrappedValue) {
                             case .EditName:
@@ -135,8 +150,16 @@ struct NameDataView: View {
                     HStack {
                         Spacer()
                         Text("\(city.city)").font(.headline).padding()
+                        
+                        Text("Advanced").font(.headline).padding(.leading)
+                        Button(action: {
+                            roomState.wrappedValue = .EditLocation(onDismiss: roomState.wrappedValue)
+                        }) {
+                            Text("Edit Coordinates")
+                        }
                         Spacer()
                     }
+                    Text("Edit changes user data not global city data")
                 }
             }
             if let error = birthDataError {
