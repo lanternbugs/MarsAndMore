@@ -143,13 +143,13 @@ extension Planets {
             return 9
         case .Pallas:
             return 10
-        case .Jupiter:
-            return 11
-        case .TrueNode:
-            return 12
-        case .SouthNode:
-            return 13
         case .Lilith:
+            return 11
+        case .Jupiter:
+            return 12
+        case .TrueNode:
+            return 13
+        case .SouthNode:
             return 14
         case .Saturn:
             return 15
