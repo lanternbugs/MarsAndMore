@@ -15,6 +15,10 @@ import Foundation
 extension Planets {
     func getLongName() -> String {
         switch(self) {
+        case .MC:
+            return "Medium Coeli"
+        case .Ascendant:
+            return "Ascendant"
         case .Lilith:
             return "Lilith - Black Moon"
         default:
