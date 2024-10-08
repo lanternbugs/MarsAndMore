@@ -106,7 +106,7 @@ struct CitiesView: View {
                 )
             }
             if roomState.wrappedValue != .PlanetsCity {
-                Text("*City may be under a local name. For example Welsh cities under their Welsh name.")
+                Text("*City may be under a local name. For example Welsh cities are under their Welsh names.")
             }
         }
         
