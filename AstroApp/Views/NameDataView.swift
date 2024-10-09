@@ -12,6 +12,7 @@
 */
 
 import SwiftUI
+import MapKit
 
 struct NameDataView: View {
     @EnvironmentObject private var manager: BirthDataManager
@@ -176,6 +177,19 @@ struct NameDataView: View {
             }.padding(.top)
             
             Spacer()
+        }.onAppear {
+            if let city = manager.builder.cityData {
+                DispatchQueue.global().async {
+                    let location = CLLocation(latitude: city.latitude.getLatLongAsDouble(), longitude: city.longitude.getLatLongAsDouble())
+                    let geoCoder = CLGeocoder()
+                    geoCoder.reverseGeocodeLocation(location) { (placemarks, err) in
+                         if let placemark = placemarks?[0] {
+                            // print(placemark.timeZone?.abbreviation() ?? "unknown time zone")
+                         }
+                    }
+                }
+                
+            }
         }
     }
 }
