@@ -112,6 +112,7 @@ struct NameDataView: View {
                             }) {
                                 Text("Remove Location")
                             }.padding(.bottom)
+                            /*
                             HStack {
                                 Text("Advanced").font(.headline).padding(.leading)
                                 Button(action: {
@@ -121,6 +122,7 @@ struct NameDataView: View {
                                 }
                             }
                             Text("Edit changes user data not global city data")
+                             */
                             
                         }
                         
@@ -151,16 +153,19 @@ struct NameDataView: View {
                     HStack {
                         Spacer()
                         Text("\(city.city)").font(.headline).padding()
-                        
+                        /*
                         Text("Advanced").font(.headline).padding(.leading)
                         Button(action: {
                             roomState.wrappedValue = .EditLocation(onDismiss: roomState.wrappedValue)
                         }) {
                             Text("Edit Coordinates")
                         }
+                         */
                         Spacer()
                     }
+                    /*
                     Text("Edit changes user data not global city data")
+                     */
                 }
             }
             if let error = birthDataError {
