@@ -82,9 +82,9 @@ extension Aspects {
         case .Sesquisquare:
             return "u"
         case .Biquintile:
-            return "v"
-        case .Quintile:
             return "w"
+        case .Quintile:
+            return "v"
         }
     }
 }
