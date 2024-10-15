@@ -177,8 +177,8 @@ struct NameDataView: View {
             
             Spacer()
         }.onAppear {
+            /*
             if let city = manager.builder.cityData {
-                /*
                 DispatchQueue.global().async {
                     let location = CLLocation(latitude: city.latitude.getLatLongAsDouble(), longitude: city.longitude.getLatLongAsDouble())
                     let geoCoder = CLGeocoder()
@@ -188,9 +188,8 @@ struct NameDataView: View {
                          }
                     }
                 }
-                */
-                
             }
+            */
         }
     }
 }
