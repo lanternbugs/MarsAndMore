@@ -22,7 +22,7 @@ class EditLocationDataViewModel {
     let longDegreeOffset = 500
     let longMinuteOffset = 2000
     let longSecondOffset = 20000
-    var manager: BirthDataManager?
+    var manager: BirthDataManager
     var editMode = false
     enum MeasurementTypes { case latDirection, latDegree, latMinute, latSecond, longDirection, longDegree, longMinute, longSecond }
     
@@ -47,7 +47,8 @@ class EditLocationDataViewModel {
         getValue(type: MeasurementTypes.longDegree)
     }
     
-    init() {
+    init(manager: BirthDataManager) {
+        self.manager = manager
         populateChoices()
     }
     
@@ -55,15 +56,13 @@ class EditLocationDataViewModel {
         
         var latitude: Double = 0
         var longitude: Double = 0
-        if let manager = self.manager {
-            if editMode {
-                if let locationData = manager.userLocationData {
-                    latitude = locationData.latitude.getLatLongAsDouble()
-                    longitude = locationData.longitude.getLatLongAsDouble()
-                }
+        if editMode {
+            if let locationData = manager.userLocationData {
+                latitude = locationData.latitude.getLatLongAsDouble()
+                longitude = locationData.longitude.getLatLongAsDouble()
             }
         } else {
-            if let city = manager?.builder.cityData {
+            if let city = manager.builder.cityData {
                 latitude = city.latitude.getLatLongAsDouble()
                 longitude = city.longitude.getLatLongAsDouble()
             }
@@ -81,8 +80,7 @@ class EditLocationDataViewModel {
         return 0
     }
     
-    func setManagerAndMode(manager: BirthDataManager, editMode: Bool) {
-        self.manager = manager
+    func setMode(editMode: Bool) {
         self.editMode = editMode
     }
     

@@ -141,7 +141,7 @@ extension BirthDataManager {
     
     func resetSpecificUserData() {
         userNameSelection = ""
-        userExactTimeSelection = false
+        userExactTimeSelection = true
         userLocationData = nil
         builder.removeLocation()
     }

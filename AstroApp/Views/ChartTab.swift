@@ -35,7 +35,7 @@ struct ChartTab: View {
                 default:
                     DoneView(newRoomState: .EditName(onDismiss: .Chart))
                 }
-                EditLocationDataView(editingUserData: editingUserData)
+                EditLocationDataView(editingUserData: editingUserData, viewModel: EditLocationDataViewModel(manager: manager))
             case .PlanetsCity:
                 DoneView(newRoomState: .Planets)
                 CitiesView()

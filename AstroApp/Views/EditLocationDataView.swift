@@ -19,7 +19,7 @@ struct EditLocationDataView: View {
     @State var longitudeDirection = "E"
     let editingUserData: Bool
     
-    let viewModel = EditLocationDataViewModel()
+    let viewModel: EditLocationDataViewModel
     var body: some View {
         VStack {
             Text("Latitude")
@@ -73,7 +73,7 @@ struct EditLocationDataView: View {
             }
             Spacer()
         }.onAppear() {
-            viewModel.setManagerAndMode(manager: manager, editMode: editingUserData)
+            viewModel.setMode(editMode: editingUserData)
             latitudeDirection = viewModel.latitudeDirection
             longitudeDirection = viewModel.longitudeDirection
             latDegree = viewModel.latitudeDegree
@@ -85,5 +85,5 @@ struct EditLocationDataView: View {
 
 
 #Preview {
-    EditLocationDataView(editingUserData: false)
+    EditLocationDataView(editingUserData: false, viewModel: EditLocationDataViewModel(manager: BirthDataManager()))
 }
