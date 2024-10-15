@@ -24,7 +24,7 @@ indirect enum RoomState: Equatable {
     case Names(onDismiss: RoomState)
     case EditName(onDismiss: RoomState)
     case Cities(onDismiss: RoomState)
-    case EditLocation(onDismiss: RoomState)
+    case EditLocation(onDismiss: RoomState, editingUserData: Bool)
     case UpdateCity
     case PlanetsCity
     case ChartSettings

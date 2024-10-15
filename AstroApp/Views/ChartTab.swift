@@ -28,14 +28,14 @@ struct ChartTab: View {
             case .Cities(let onDismiss):
                 DoneView(newRoomState: .Names(onDismiss: onDismiss))
                 CitiesView(dismissView: onDismiss)
-            case .EditLocation(let onDismiss):
+            case .EditLocation(let onDismiss, let editingUserData):
                 switch(onDismiss) {
                 case .Names(let onDismiss):
                     DoneView(newRoomState: .Names(onDismiss: .Chart))
                 default:
                     DoneView(newRoomState: .EditName(onDismiss: .Chart))
                 }
-                EditLocationDataView()
+                EditLocationDataView(editingUserData: editingUserData)
             case .PlanetsCity:
                 DoneView(newRoomState: .Planets)
                 CitiesView()
