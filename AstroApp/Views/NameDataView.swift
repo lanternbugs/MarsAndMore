@@ -178,15 +178,17 @@ struct NameDataView: View {
             Spacer()
         }.onAppear {
             if let city = manager.builder.cityData {
+                /*
                 DispatchQueue.global().async {
                     let location = CLLocation(latitude: city.latitude.getLatLongAsDouble(), longitude: city.longitude.getLatLongAsDouble())
                     let geoCoder = CLGeocoder()
                     geoCoder.reverseGeocodeLocation(location) { (placemarks, err) in
                          if let placemark = placemarks?[0] {
-                            // print(placemark.timeZone?.abbreviation() ?? "unknown time zone")
+                            print(placemark.timeZone?.abbreviation() ?? "unknown time zone")
                          }
                     }
                 }
+                */
                 
             }
         }
