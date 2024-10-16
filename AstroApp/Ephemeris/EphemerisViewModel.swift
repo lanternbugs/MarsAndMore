@@ -73,7 +73,7 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
         }
     }
     func getFilteredPlanets(_ displayPlanets: [PlanetCell]) -> [PlanetCell] {
-        displayPlanets.filter { ($0.planet != .Pholus || !model.showEphemerisSymbols) && $0.planet != .SouthNode && ($0.planet.rawValue < Planets.Uranus.rawValue || model.showModernEphemeris || $0.planet.rawValue == Planets.TrueNode.rawValue) }
+        displayPlanets.filter { $0.planet != .SouthNode && ($0.planet.rawValue < Planets.Uranus.rawValue || model.showModernEphemeris || $0.planet.rawValue == Planets.TrueNode.rawValue) }
     }
     
     func getPlanetString(cell: PlanetCell) -> String {
