@@ -122,17 +122,13 @@ extension TransitChartDrawingView {
             let printDegree = printInfo.0
             let colorChoice = Colors.red
 
-            if planet.planet != .Pholus {
-                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
-            } else {
-                printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), "Ph", trueDegree, false, fontSize, outerPlanet: true)
-            }
+            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             if planet.retrograde {
 #if os(macOS)
-                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.3, printDegree), "R", trueDegree, colorChoice: colorChoice, printInfo: .small)
+                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.3, printDegree), ("R", "AstroDotBasic"), trueDegree, colorChoice: colorChoice, printInfo: .small)
 #else
-                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), "R", trueDegree, colorChoice: colorChoice, printInfo: .small)
+                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), ("R", "AstroDotBasic"), trueDegree, colorChoice: colorChoice, printInfo: .small)
 #endif
     
                 
@@ -166,15 +162,11 @@ extension TransitChartDrawingView {
             let colorChoice = planet.planet == .Sun ? Colors.orange : Colors.black
             let placement = viewModel.interiorRadius - (viewModel.innerHouseThickness / 2)
 
-            if planet.planet != .Pholus {
-                printSign(viewModel.getXYFromPolar(placement - spread - 2, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
-            } else {
-                printText(viewModel.getXYFromPolar(placement - spread - 2, printDegree), "Ph", trueDegree, false, fontSize)
-            }
+            printSign(viewModel.getXYFromPolar(placement - spread - 2, printDegree), planet.planet.getAstroCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
             
             printText(viewModel.getXYFromPolar(placement - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
             if planet.retrograde {
-                printSign(viewModel.getXYFromPolar(placement - spread * 3.2, printDegree), "R", trueDegree, colorChoice: colorChoice, printInfo: .small)
+                printSign(viewModel.getXYFromPolar(placement - spread * 3.2, printDegree), ("R", "AstroDotBasic"), trueDegree, colorChoice: colorChoice, printInfo: .small)
             }
             
             i += 1

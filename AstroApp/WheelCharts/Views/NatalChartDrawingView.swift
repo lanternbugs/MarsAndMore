@@ -219,22 +219,18 @@ extension NatalChartDrawingView {
             let printSize = printInfo.1
             let colorChoice = planet.planet == .Sun ? Colors.orange : Colors.black
             
-            if planet.planet != .Pholus {
-                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroDotCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printSize)
-            } else {
-                printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), "Ph", trueDegree, false, fontSize)
-            }
+            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread, printDegree), planet.planet.getAstroCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printSize)
             
             
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
-            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), planet.sign.getAstroDotCharacter(), trueDegree)
+            printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 2.2, printDegree), planet.sign.getAstroCharacter(), trueDegree)
 
             printText(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.0, printDegree), planet.numericDegree.getAstroMinute(), trueDegree, false, fontSize)
             if planet.retrograde {
                 #if os(iOS)
-                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.5, printDegree), "R", trueDegree, printInfo: .small)
+                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.5, printDegree), ("R", "AstroDotBasic"), trueDegree, printInfo: .small)
                 #else
-                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.4, printDegree), "R", trueDegree, printInfo: .small)
+                printSign(viewModel.getXYFromPolar(viewModel.radius - viewModel.getArcStrokeWidth() - spread * 3.4, printDegree), ("R", "AstroDotBasic"), trueDegree, printInfo: .small)
                 #endif
                 
             }
@@ -304,7 +300,7 @@ extension NatalChartDrawingView {
         }
 #if os(macOS)
         if viewModel.chart == .Natal {
-                    printSign(viewModel.getXYFromPolar(viewModel.radius + 15, trueDegree), Double(houseDegree).getAstroSign().getAstroDotCharacter(), trueDegree)
+                    printSign(viewModel.getXYFromPolar(viewModel.radius + 15, trueDegree), Double(houseDegree).getAstroSign().getAstroCharacter(), trueDegree)
                     let signDegreeText = viewModel.houseData[(Int(house) ?? 1) - 1].numericDegree.getAstroDegree()
                     printText(viewModel.getXYFromPolar(viewModel.radius + 20, trueDegree - 6), signDegreeText, trueDegree - 6, true, fontSize)
                 }
@@ -546,13 +542,13 @@ extension NatalChartDrawingView {
             }
             var offSet: Double = 0
             offSet = 15.0
-            printSign(viewModel.getXYFromPolar(radius, endAngleRadian + offSet), sign.getAstroDotCharacter(), endAngleRadian + offSet, colorChoice: .blackOnly)
+            printSign(viewModel.getXYFromPolar(radius, endAngleRadian + offSet), sign.getAstroCharacter(), endAngleRadian + offSet, colorChoice: .blackOnly)
             startAngleRadian = endAngleRadian
             endAngleRadian -= 30.0
         }
     }
 
-    func printSign(_ coordinates: (Int, Int), _ character: Character, _ degree: Double, colorChoice: Colors = .black, printInfo: PrintSize = .regular) {
+    func printSign(_ coordinates: (Int, Int), _ character: (Character, String), _ degree: Double, colorChoice: Colors = .black, printInfo: PrintSize = .regular) {
         var coordinate = coordinates
         var size = 21.0
 #if os(iOS)
@@ -583,27 +579,27 @@ extension NatalChartDrawingView {
         coordinate = viewModel.justifyCoordinate(inputCoordinate: coordinate, radians: radians, size: size)
         
 #if os(iOS)
-        guard let font = UIFont(name: "AstroDotBasic", size: size) else {
+        guard let font = UIFont(name: character.1, size: size) else {
             return
         }
 #else
-        guard let font = NSFont(name: "AstroDotBasic", size: size) else {
+        guard let font = NSFont(name: character.1, size: size) else {
             return
         }
 #endif
         let textPoint = CGPoint(x: coordinate.0, y: coordinate.1)
         switch colorChoice {
         case .red:
-            String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.red])
+            String(character.0).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.red])
         case .orange:
-            String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.orange])
+            String(character.0).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.orange])
         case .blackOnly:
-            String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.black])
+            String(character.0).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.black])
         case .black:
             if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
-                String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.green])
+                String(character.0).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.green])
             } else {
-                String(character).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+                String(character.0).draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
             }
             
         }

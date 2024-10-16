@@ -61,6 +61,10 @@ extension Signs {
         }
     }
     
+    func getAstroCharacter() -> (Character, String) {
+        return (getAstroDotCharacter(), "AstroDotBasic")
+    }
+    
     func getAstroDotCharacter() -> Character {
         switch self {
         case .Aries:

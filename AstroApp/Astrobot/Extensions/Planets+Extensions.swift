@@ -72,6 +72,15 @@ extension Planets {
         }
     }
     
+    func getAstroCharacter() -> (Character, String) {
+        switch self {
+        case .Pholus:
+            return ("r", "Astronomicon")
+        default:
+            return (getAstroDotCharacter(), "AstroDotBasic")
+        }
+    }
+    
     func getAstroDotCharacter() -> Character {
         switch self {
         case .Sun:
