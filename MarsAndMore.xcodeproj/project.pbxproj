@@ -559,6 +559,9 @@
 		76D54B592B194A7D00E5269B /* WheelChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B572B194A7D00E5269B /* WheelChartView.swift */; };
 		76D54B5C2B194AC700E5269B /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B5B2B194AC700E5269B /* ChartViewModel.swift */; };
 		76D54B5D2B194AC700E5269B /* ChartViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76D54B5B2B194AC700E5269B /* ChartViewModel.swift */; };
+		76D57C012CC0587F00C56579 /* Astronomicon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76D57C002CC0587F00C56579 /* Astronomicon.ttf */; };
+		76D57C022CC0587F00C56579 /* Astronomicon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76D57C002CC0587F00C56579 /* Astronomicon.ttf */; };
+		76D57C032CC0587F00C56579 /* Astronomicon.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 76D57C002CC0587F00C56579 /* Astronomicon.ttf */; };
 		76DAC8A727B2016700852872 /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DAC8A627B2016700852872 /* CitiesView.swift */; };
 		76DAC8A827B2016700852872 /* CitiesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76DAC8A627B2016700852872 /* CitiesView.swift */; };
 		76E6FFD7287A19090057825F /* AstrobotUnitTesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76E6FFD6287A19090057825F /* AstrobotUnitTesting.swift */; };
@@ -848,6 +851,7 @@
 		76D45B1B27B0E028008186BF /* DefaultReadingContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultReadingContent.swift; sourceTree = "<group>"; };
 		76D54B572B194A7D00E5269B /* WheelChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartView.swift; sourceTree = "<group>"; };
 		76D54B5B2B194AC700E5269B /* ChartViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartViewModel.swift; sourceTree = "<group>"; };
+		76D57C002CC0587F00C56579 /* Astronomicon.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = Astronomicon.ttf; sourceTree = "<group>"; };
 		76DAC8A627B2016700852872 /* CitiesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CitiesView.swift; sourceTree = "<group>"; };
 		76E6FFD6287A19090057825F /* AstrobotUnitTesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstrobotUnitTesting.swift; sourceTree = "<group>"; };
 		76E7402D28AD982700D8D699 /* ArtDataManager+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "ArtDataManager+.swift"; sourceTree = "<group>"; };
@@ -971,6 +975,7 @@
 		761DEE4A279B9EB000A71938 = {
 			isa = PBXGroup;
 			children = (
+				76D57C002CC0587F00C56579 /* Astronomicon.ttf */,
 				764DF5F22B3F928D003054ED /* aboutmarsandmore.txt */,
 				764DF5F42B3F92B7003054ED /* aboutmarsandmore.txt */,
 				76C622AD2B1E7BF300694871 /* astrodot-info.txt */,
@@ -1610,6 +1615,7 @@
 				764EF76B27ACA6E0008A15F1 /* mars-gemini.txt in Resources */,
 				7614A3B42AE9B849005AEC82 /* moon-aquarius.txt in Resources */,
 				761DEEBF279B9EF900A71938 /* seleapsec.txt in Resources */,
+				76D57C032CC0587F00C56579 /* Astronomicon.ttf in Resources */,
 				7614A40B2AE9B849005AEC82 /* mercury-aries.txt in Resources */,
 				7614A3C02AE9B849005AEC82 /* moon-sagitarius.txt in Resources */,
 				76AF1D5A27AE1E7400CB4E97 /* venus-virgo.txt in Resources */,
@@ -1776,6 +1782,7 @@
 				766069522CAA02120091A83C /* world-cities-12.json in Resources */,
 				766069532CAA02120091A83C /* world-cities-11.json in Resources */,
 				766069542CAA02120091A83C /* world-cities-4.json in Resources */,
+				76D57C012CC0587F00C56579 /* Astronomicon.ttf in Resources */,
 				766069552CAA02120091A83C /* world-cities-8.json in Resources */,
 				766069562CAA02120091A83C /* world-cities-0.json in Resources */,
 				766069572CAA02120091A83C /* world-cities-1.json in Resources */,
@@ -1818,6 +1825,7 @@
 				7614A4132AE9B849005AEC82 /* mercury-aquarius.txt in Resources */,
 				7614A3B62AE9B849005AEC82 /* moon-aquarius.txt in Resources */,
 				7614A3C52AE9B849005AEC82 /* moon-aries.txt in Resources */,
+				76D57C022CC0587F00C56579 /* Astronomicon.ttf in Resources */,
 				7614A3B92AE9B849005AEC82 /* moon-gemini.txt in Resources */,
 				7614A4042AE9B849005AEC82 /* mercury-virgo.txt in Resources */,
 				7614A3C22AE9B849005AEC82 /* moon-sagitarius.txt in Resources */,
@@ -2457,6 +2465,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MarsAndMore--macOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2489,6 +2498,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "MarsAndMore--macOS--Info.plist";
+				INFOPLIST_KEY_CFBundleDisplayName = "";
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.lifestyle";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",

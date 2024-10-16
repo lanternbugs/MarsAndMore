@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>ATSApplicationFontsPath</key>
-	<string>Astrodotbasic-ow3Pd.ttf</string>
+	<string></string>
 	<key>NSAppTransportSecurity</key>
 	<dict>
 		<key>NSExceptionDomains</key>
@@ -20,6 +20,7 @@
 	<key>UIAppFonts</key>
 	<array>
 		<string>Astrodotbasic-ow3Pd.ttf</string>
+		<string>Astronomicon.ttf</string>
 	</array>
 </dict>
 </plist>
