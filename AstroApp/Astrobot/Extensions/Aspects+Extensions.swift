@@ -61,6 +61,10 @@ extension Aspects {
         return 0
     }
     
+    func getAstroCharacter() -> (Character, String) {
+        return (getAstroDotCharacter(), "AstroDotBasic")
+    }
+    
     func getAstroDotCharacter() -> Character {
         switch self {
         case .Conjunction:

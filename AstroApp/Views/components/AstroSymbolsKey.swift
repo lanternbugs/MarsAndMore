@@ -33,18 +33,10 @@ struct AstroSymbolsKey: View {
 
             LazyVGrid(columns: columns) {
                 ForEach(Planets.allCases, id: \.self) { planet in
-                    switch(planet) {
-                    case .Pholus:
-                        HStack {
-                            Text(" \(planet.getName()) - No Symbol").font(.body)
-                            Spacer()
-                        }
-                    default:
-                        HStack {
-                            Text(" \(planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
-                            Text(planet.getLongName()).font(.body)
-                            Spacer()
-                        }
+                    HStack {
+                        Text(" \(planet.getAstroCharacter().0)").font(Font.custom(planet.getAstroCharacter().1, size: symbolFontSize))
+                        Text(planet.getLongName()).font(.body)
+                        Spacer()
                     }
                 }
             }
@@ -64,7 +56,7 @@ struct AstroSymbolsKey: View {
                         }
                     default:
                         HStack {
-                            Text(" \(sign.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                            Text(" \(sign.getAstroCharacter().0)").font(Font.custom(sign.getAstroCharacter().1, size: symbolFontSize))
                             Text(sign.getName()).font(.body)
                             Spacer()
                         }
@@ -83,7 +75,7 @@ struct AstroSymbolsKey: View {
                     ForEach(Aspects.allCases, id: \.rawValue) {
                         aspect in
                         HStack {
-                            Text(" \(aspect.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize))
+                            Text(" \(aspect.getAstroCharacter().0)").font(Font.custom(aspect.getAstroCharacter().1, size: symbolFontSize))
                             Text("  \(aspect.getName())").font(.body)
                             Spacer()
                         }
