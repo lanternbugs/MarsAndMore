@@ -42,16 +42,11 @@ extension TransitTimesView {
             let displayTime = viewModel.getDisplayTime(transit: transit)
             var centerText = transit.sign != nil ? "Enters" : transit.aspect.getName()
             var finalText = transit.sign != nil ? transit.sign!.getName() : transit.planet2.getName()
-            if shouldShowTransitModel.showTransitTimeSymbols && transit.planet != .Pholus {
+            if shouldShowTransitModel.showTransitTimeSymbols {
                 if transit.sign != nil {
-                    Text(" \(transit.planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(centerText) ") + Text("\(transit.sign!.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text("  \(displayTime)")
+                    Text(" \(transit.planet.getAstroCharacter().0)").font(Font.custom(transit.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(centerText) ") + Text("\(transit.sign!.getAstroCharacter().0)").font(Font.custom(transit.sign!.getAstroCharacter().1, size: symbolFontSize)) + Text("  \(displayTime)")
                 } else {
-                    if (transit.planet2 != .Pholus) {
-                        Text(" \(transit.planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(transit.aspect.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(transit.planet2.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text("  \(displayTime)")
-                        
-                    } else {
-                        Text(" \(transit.planet.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(transit.aspect.getAstroDotCharacter())").font(Font.custom("AstroDotBasic", size: symbolFontSize)) + Text(" \(finalText)") + Text("  \(displayTime)")
-                    }
+                    Text(" \(transit.planet.getAstroCharacter().0)").font(Font.custom(transit.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(transit.aspect.getAstroCharacter().0)").font(Font.custom(transit.aspect.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(transit.planet2.getAstroCharacter().0)").font(Font.custom(transit.planet2.getAstroCharacter().1, size: symbolFontSize)) + Text("  \(displayTime)")
                 }
                 Text(" ")
             } else {
