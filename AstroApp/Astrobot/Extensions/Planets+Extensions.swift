@@ -63,6 +63,8 @@ extension Planets {
             return "Juno"
         case .Vesta:
             return "Vesta"
+        case .Eris:
+            return "Eris"
         case .TrueNode:
             return "True Node"
         case .SouthNode:
@@ -76,6 +78,8 @@ extension Planets {
         switch self {
         case .Pholus:
             return ("r", "Astronomicon")
+        case .Eris:
+            return ("s", "Astronomicon")
         default:
             return (getAstroDotCharacter(), "AstroDotBasic")
         }
@@ -129,7 +133,7 @@ extension Planets {
     }
     
     static func getPlanetsByOrbitalPeriod() -> [Planets] {
-        [.Ascendant, .MC, .Moon, .Sun, .Mercury, .Venus, .Mars, .Vesta, .Juno, .Ceres, .Pallas, .Jupiter, .TrueNode, .SouthNode, .Lilith, .Saturn, .Chiron, .Uranus, .Pholus, .Neptune, .Pluto]
+        [.Ascendant, .MC, .Moon, .Sun, .Mercury, .Venus, .Mars, .Vesta, .Juno, .Ceres, .Pallas, .Jupiter, .TrueNode, .SouthNode, .Lilith, .Saturn, .Chiron, .Uranus, .Pholus, .Neptune, .Pluto, .Eris]
     }
     
     func getOrbitalSpot() -> Int {
@@ -176,6 +180,8 @@ extension Planets {
             return 19
         case .Pluto:
             return 20
+        case .Eris:
+            return 21
         }
     }
     
@@ -380,6 +386,8 @@ extension Planets {
             return 19
         case .Vesta:
             return 20
+        case .Eris:
+            return 146199
         }
     }
     
@@ -428,6 +436,8 @@ extension Planets {
             return .Juno
         case 20:
             return .Vesta
+        case 146199:
+            return .Eris
         default:
             return nil
         }
