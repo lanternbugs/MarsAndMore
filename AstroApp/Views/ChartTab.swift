@@ -30,7 +30,7 @@ struct ChartTab: View {
                 CitiesView(dismissView: onDismiss)
             case .EditLocation(let onDismiss, let editingUserData):
                 switch(onDismiss) {
-                case .Names(let onDismiss):
+                case .Names(_):
                     DoneView(newRoomState: .Names(onDismiss: .Chart))
                 default:
                     DoneView(newRoomState: .EditName(onDismiss: .Chart))
