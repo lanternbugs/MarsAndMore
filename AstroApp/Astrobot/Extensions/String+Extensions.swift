@@ -30,6 +30,7 @@ extension String {
         let trimmed = self.trimmingCharacters(in: .whitespacesAndNewlines)
         let degreeSymobol: Character = "°"
         let minuteSymbol: Character = "'"
+        let secondSymbol: Character = "\""
         if let degSymbIndex = trimmed.firstIndex(of: degreeSymobol), let minSymbIndex = trimmed.firstIndex(of: minuteSymbol)  {
             let minStartIndex = trimmed.index(degSymbIndex, offsetBy: 1)
             let range = minStartIndex..<minSymbIndex
@@ -37,11 +38,25 @@ extension String {
             let minuteSubstring = trimmed[range]  // play
             if let degree = Double(trimmed.prefix(upTo: degSymbIndex)), let minute = Double(minuteSubstring.trimmingCharacters(in: .whitespacesAndNewlines))
             {
-                if degree < 0 {
-                    return degree - minute / 60.0
+                if let secSymbIndex = trimmed.firstIndex(of: secondSymbol) {
+                    let secStartIndex = trimmed.index(minSymbIndex, offsetBy: 1)
+                    let range = secStartIndex..<secSymbIndex
+                    let secondSubstring = trimmed[range]
+                    if let second = Double(secondSubstring.trimmingCharacters(in: .whitespacesAndNewlines)) {
+                        if degree < 0 {
+                            return degree - minute / 60.0 - second / 3600.0
+                        } else {
+                            return degree + minute / 60.0 + second / 3600.0
+                        }
+                    }
                 } else {
-                    return degree + minute / 60.0
+                    if degree < 0 {
+                        return degree - minute / 60.0
+                    } else {
+                        return degree + minute / 60.0
+                    }
                 }
+                
             }
         } else {
             if let value = Double(trimmed) {
