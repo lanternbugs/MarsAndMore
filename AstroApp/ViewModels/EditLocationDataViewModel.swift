@@ -61,6 +61,13 @@ class EditLocationDataViewModel {
         getValue(type: MeasurementTypes.longSecond)
     }
     
+    var dismissState: RoomState {
+        if editMode {
+            return RoomState.EditName(onDismiss: .Chart)
+        }
+        return RoomState.Names(onDismiss: .Chart)
+    }
+    
     init(manager: BirthDataManager) {
         self.manager = manager
         populateChoices()
@@ -113,7 +120,11 @@ class EditLocationDataViewModel {
         let decimalDiff = abs(value) - Double(degree)
         let minutes = getMinutes(value)
         let secondsDiff = decimalDiff - Double(minutes) / 60.0
-        return Int((secondsDiff * 3600.00).rounded())
+        let seconds = Int((secondsDiff * 3600.00).rounded())
+        if seconds > 59 {
+            return 59
+        }
+        return seconds
     }
     
     func setMode(editMode: Bool) {
@@ -133,5 +144,23 @@ class EditLocationDataViewModel {
         for i in 0...179 {
             longDegreeChoices.append((i, i + longDegreeOffset))
         }
+    }
+    
+    func submit(latDirection: String, latDegree: Int, latMinute: Int, latSecond: Int, longDirection: String, longDegree: Int, longMinute: Int, longSecond: Int)
+    {
+        var latitude = String(latDegree - latDegreeOffset) + "° " + String(latMinute - latMinuteOffset) + "' " + String(latSecond - latSecondOffset) + "\""
+        var longitude = String(longDegree - longDegreeOffset) + "° " + String(longMinute - longMinuteOffset) + "' " + String(longSecond - longSecondOffset) + "\""
+        if latDirection == "S" {
+            latitude = "-" + latitude
+        }
+        if longDirection == "W" {
+            longitude = "-" + longitude
+        }
+        let city = City(city: "Custom", country: "Custom", latitude: latitude, longitude: longitude, id: 0)
+        manager.builder.removeLocation()
+        manager.userLocationData = nil
+        manager.builder.addCity(city)
+        
+        
     }
 }

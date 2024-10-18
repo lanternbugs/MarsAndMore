@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditLocationDataView: View {
     @EnvironmentObject private var manager: BirthDataManager
+    @Environment(\.roomState) private var roomState
     @State var latDegree = 100
     @State var latMinute = 1000
     @State var latSecond = 10000
@@ -71,6 +72,11 @@ struct EditLocationDataView: View {
                     Text(String(choice.0))
                 }
             }
+            Button(action: {
+                submitChanges()
+            }) {
+                Text("Submit Changes")
+            }.padding(.top)
             Spacer()
         }.onAppear() {
             viewModel.setMode(editMode: editingUserData)
@@ -84,6 +90,11 @@ struct EditLocationDataView: View {
             longSecond = viewModel.longitudeSecond
         }
         
+    }
+    
+    func submitChanges() {
+        viewModel.submit(latDirection: latitudeDirection, latDegree: latDegree, latMinute: latMinute, latSecond: latSecond, longDirection: longitudeDirection, longDegree: longDegree, longMinute: longMinute, longSecond: longSecond)
+        roomState.wrappedValue = viewModel.dismissState
     }
 }
 
