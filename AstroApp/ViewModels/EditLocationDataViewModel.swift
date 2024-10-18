@@ -47,6 +47,20 @@ class EditLocationDataViewModel {
         getValue(type: MeasurementTypes.longDegree)
     }
     
+    var latitudeMinute: Int {
+        getValue(type: MeasurementTypes.latMinute)
+    }
+    var longitudeMinute: Int {
+        getValue(type: MeasurementTypes.longMinute)
+    }
+    
+    var latitudeSecond: Int {
+        getValue(type: MeasurementTypes.latSecond)
+    }
+    var longitudeSecond: Int {
+        getValue(type: MeasurementTypes.longSecond)
+    }
+    
     init(manager: BirthDataManager) {
         self.manager = manager
         populateChoices()
@@ -75,9 +89,31 @@ class EditLocationDataViewModel {
             return abs(Int(latitude)) + latDegreeOffset
         } else if type == .longDegree {
             return abs(Int(longitude)) + longDegreeOffset
+        } else if type == .latMinute {
+            return getMinutes(latitude) + latMinuteOffset
+        }  else if type == .longMinute {
+            return getMinutes(longitude) + longMinuteOffset
+        } else if type == .latSecond {
+            return getSeconds(latitude) + latSecondOffset
+        }  else if type == .longSecond {
+            return getSeconds(longitude) + longSecondOffset
         }
         
         return 0
+    }
+    
+    func getMinutes(_ value: Double) -> Int {
+        let degree = abs(Int(value))
+        let decimalDiff = abs(value) - Double(degree)
+        return Int(decimalDiff * 60.0)
+    }
+    
+    func getSeconds(_ value: Double) -> Int {
+        let degree = abs(Int(value))
+        let decimalDiff = abs(value) - Double(degree)
+        let minutes = getMinutes(value)
+        let secondsDiff = decimalDiff - Double(minutes) / 60.0
+        return Int((secondsDiff * 3600.00).rounded())
     }
     
     func setMode(editMode: Bool) {

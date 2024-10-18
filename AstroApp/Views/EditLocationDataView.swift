@@ -78,6 +78,10 @@ struct EditLocationDataView: View {
             longitudeDirection = viewModel.longitudeDirection
             latDegree = viewModel.latitudeDegree
             longDegree = viewModel.longitudeDegree
+            latMinute = viewModel.latitudeMinute
+            longMinute = viewModel.longitudeMinute
+            latSecond = viewModel.latitudeSecond
+            longSecond = viewModel.longitudeSecond
         }
         
     }
