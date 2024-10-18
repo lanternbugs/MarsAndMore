@@ -73,7 +73,7 @@ struct CitiesView: View {
             // text could be in search bar with searchable but this is to work in ios 14 too
             Text("Cities & Places").font(.title.weight(.bold))
             if roomState.wrappedValue != .PlanetsCity {
-                Text("Can't find it? Latitude and Longitude can be edited after a city is chosen.*")
+                Text("Can't find it? Latitude and Longitude can be edited after a city is chosen.")
             }
             TextField("City", text: $city)
             List(displayCities, id: \.id) {
