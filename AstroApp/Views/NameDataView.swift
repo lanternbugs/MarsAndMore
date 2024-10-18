@@ -104,7 +104,21 @@ struct NameDataView: View {
                 HStack {
                     if let locationData = manager.userLocationData {
                         VStack {
-                            Text("Location set to \(locationData.latitude) latitude and \(locationData.longitude) longitude").font(.subheadline).padding(.top)
+#if os(macOS)
+            if #available(macOS 12.0, *) {
+                Text("Location set to \(locationData.latitude) latitude and \(locationData.longitude) longitude").textSelection(.enabled).font(.subheadline).padding(.top)
+            }
+            else {
+                Text("Location set to \(locationData.latitude) latitude and \(locationData.longitude) longitude").font(.subheadline).padding(.top)
+                }
+#else
+            if #available(iOS 15.0, *) {
+                Text("Location set to \(locationData.latitude) latitude and \(locationData.longitude) longitude").textSelection(.enabled).font(.subheadline).padding(.top)
+            }
+            else {
+                Text("Location set to \(locationData.latitude) latitude and \(locationData.longitude) longitude").font(.subheadline).padding(.top)
+                }
+#endif
                             Button(action: {
                                 manager.builder.removeLocation()
                                 manager.userLocationData = nil
