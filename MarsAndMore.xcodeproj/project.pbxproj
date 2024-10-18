@@ -267,6 +267,12 @@
 		7646F7CC28C7FBE5007FC924 /* ArtLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */; };
 		7646F7CE28C7FC04007FC924 /* ArtTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CD28C7FC04007FC924 /* ArtTab.swift */; };
 		7646F7CF28C7FC04007FC924 /* ArtTab.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7646F7CD28C7FC04007FC924 /* ArtTab.swift */; };
+		76497F602CC3185A00BF6CD6 /* s136199.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 76497F5E2CC3185A00BF6CD6 /* s136199.se1 */; };
+		76497F612CC3185A00BF6CD6 /* s136199s.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 76497F5F2CC3185A00BF6CD6 /* s136199s.se1 */; };
+		76497F622CC3185A00BF6CD6 /* s136199.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 76497F5E2CC3185A00BF6CD6 /* s136199.se1 */; };
+		76497F632CC3185A00BF6CD6 /* s136199s.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 76497F5F2CC3185A00BF6CD6 /* s136199s.se1 */; };
+		76497F642CC3185A00BF6CD6 /* s136199.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 76497F5E2CC3185A00BF6CD6 /* s136199.se1 */; };
+		76497F652CC3185A00BF6CD6 /* s136199s.se1 in Resources */ = {isa = PBXBuildFile; fileRef = 76497F5F2CC3185A00BF6CD6 /* s136199s.se1 */; };
 		764DF5F32B3F928D003054ED /* aboutmarsandmore.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764DF5F22B3F928D003054ED /* aboutmarsandmore.txt */; };
 		764DF5F52B3F92B7003054ED /* aboutmarsandmore.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764DF5F42B3F92B7003054ED /* aboutmarsandmore.txt */; };
 		764EF76027ACA6E0008A15F1 /* mars-taurus.txt in Resources */ = {isa = PBXBuildFile; fileRef = 764EF75427ACA6E0008A15F1 /* mars-taurus.txt */; };
@@ -749,6 +755,8 @@
 		76407C7A2BCDD8D100AEC890 /* SynastryChooserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SynastryChooserViewModel.swift; sourceTree = "<group>"; };
 		7646F7CA28C7FBE5007FC924 /* ArtLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtLibraryView.swift; sourceTree = "<group>"; };
 		7646F7CD28C7FC04007FC924 /* ArtTab.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ArtTab.swift; sourceTree = "<group>"; };
+		76497F5E2CC3185A00BF6CD6 /* s136199.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = s136199.se1; sourceTree = "<group>"; };
+		76497F5F2CC3185A00BF6CD6 /* s136199s.se1 */ = {isa = PBXFileReference; lastKnownFileType = file; path = s136199s.se1; sourceTree = "<group>"; };
 		764DF5EE2B3F8D88003054ED /* aboutmarsandmore.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = aboutmarsandmore.txt; sourceTree = "<group>"; };
 		764DF5F22B3F928D003054ED /* aboutmarsandmore.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = aboutmarsandmore.txt; path = AstroApp/aboutmarsandmore.txt; sourceTree = "<group>"; };
 		764DF5F42B3F92B7003054ED /* aboutmarsandmore.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = aboutmarsandmore.txt; path = AstroApp/aboutmarsandmore.txt; sourceTree = "<group>"; };
@@ -1088,6 +1096,8 @@
 		762427B427C334DD0002F5B3 /* ephe */ = {
 			isa = PBXGroup;
 			children = (
+				76497F5E2CC3185A00BF6CD6 /* s136199.se1 */,
+				76497F5F2CC3185A00BF6CD6 /* s136199s.se1 */,
 				762428CC27C343950002F5B3 /* seas_18.se1 */,
 				762428AF27C342F20002F5B3 /* seas_24.se1 */,
 				7624289C27C341C60002F5B3 /* seas_30.se1 */,
@@ -1666,6 +1676,8 @@
 				7614A3F32AE9B849005AEC82 /* sun-aquarius.txt in Resources */,
 				764EF76027ACA6E0008A15F1 /* mars-taurus.txt in Resources */,
 				7614A3DE2AE9B849005AEC82 /* sun-scorpio.txt in Resources */,
+				76497F602CC3185A00BF6CD6 /* s136199.se1 in Resources */,
+				76497F612CC3185A00BF6CD6 /* s136199s.se1 in Resources */,
 				76AF1D5427AE1E7400CB4E97 /* venus-taurus.txt in Resources */,
 				7614A3C92AE9B849005AEC82 /* moon-taurus.txt in Resources */,
 				76AF1D6627AE1E7400CB4E97 /* venus-pisces.txt in Resources */,
@@ -1777,6 +1789,8 @@
 				7660694D2CAA02120091A83C /* world-cities-6.json in Resources */,
 				7660694E2CAA02120091A83C /* world-cities-2.json in Resources */,
 				7660694F2CAA02120091A83C /* world-cities-7.json in Resources */,
+				76497F642CC3185A00BF6CD6 /* s136199.se1 in Resources */,
+				76497F652CC3185A00BF6CD6 /* s136199s.se1 in Resources */,
 				766069502CAA02120091A83C /* world-cities-5.json in Resources */,
 				766069512CAA02120091A83C /* world-cities-9.json in Resources */,
 				766069522CAA02120091A83C /* world-cities-12.json in Resources */,
@@ -1857,6 +1871,8 @@
 				7614A4072AE9B849005AEC82 /* mercury-leo.txt in Resources */,
 				7614A3F22AE9B849005AEC82 /* sun-cancer.txt in Resources */,
 				7614A3CE2AE9B849005AEC82 /* moon-virgo.txt in Resources */,
+				76497F622CC3185A00BF6CD6 /* s136199.se1 in Resources */,
+				76497F632CC3185A00BF6CD6 /* s136199s.se1 in Resources */,
 				7614A3FE2AE9B849005AEC82 /* mercury-scorpio.txt in Resources */,
 				7614A3D12AE9B849005AEC82 /* moon-cancer.txt in Resources */,
 				7614A40A2AE9B849005AEC82 /* mercury-libra.txt in Resources */,
