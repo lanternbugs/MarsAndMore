@@ -51,7 +51,7 @@ struct TransitFinder {
         }
         // Transits
         for planet in Planets.allCases {
-            if planet == .Moon || planet == .MC || planet == .Ascendant || !manager.bodiesToShow.contains(planet) {
+            if planet == .Moon || planet == .MC || planet == .Ascendant || planet == .Vertex || !manager.bodiesToShow.contains(planet) {
                 continue
             }
             var planetDegree: (Double, Double) = (0,0)
@@ -86,7 +86,7 @@ struct TransitFinder {
         
         // sign changes
         for planet in Planets.allCases {
-            if planet == .Moon || planet == .MC || planet == .Ascendant || !manager.bodiesToShow.contains(planet) {
+            if planet == .Moon || planet == .MC || planet == .Ascendant || planet == .Vertex || !manager.bodiesToShow.contains(planet) {
                 continue
             }
             var planetDegree: (Double, Double) = (0, 0)
@@ -105,11 +105,11 @@ struct TransitFinder {
         }
         // transits
      for planet in Planets.getPlanetsByOrbitalPeriod() {
-            if planet == .Moon || planet == .MC || planet == .Ascendant || !manager.bodiesToShow.contains(planet) {
-                continue
-            }
-            for transitingPlanet  in Planets.getPlanetsByOrbitalPeriod() {
-                if transitingPlanet == .Moon || transitingPlanet == .MC || transitingPlanet == .Ascendant || !manager.bodiesToShow.contains(transitingPlanet) {
+         if planet == .Moon || planet == .MC || planet == .Ascendant || planet == .Vertex || !manager.bodiesToShow.contains(planet) {
+             continue
+         }
+         for transitingPlanet  in Planets.getPlanetsByOrbitalPeriod() {
+             if transitingPlanet == .Moon || transitingPlanet == .MC || transitingPlanet == .Ascendant || transitingPlanet == .Vertex || !manager.bodiesToShow.contains(transitingPlanet) {
                     continue
                 }
                 if transitingPlanet.getOrbitalSpot() <= planet.getOrbitalSpot() {
@@ -293,7 +293,7 @@ struct TransitFinder {
         var transitTimes = [TransitTime]()
         let natalDictionary = getNatalDictionary(transitTimeData)
         for planet in Planets.getPlanetsByOrbitalPeriod() {
-            if planet == .MC || planet == .Ascendant || !manager.bodiesToShow.contains(planet) {
+            if planet == .MC || planet == .Ascendant || planet == .Vertex || !manager.bodiesToShow.contains(planet) {
                 continue
             }
             for natalPlanet  in Planets.allCases {
@@ -331,7 +331,7 @@ struct TransitFinder {
         let adapter = AdapterToEphemeris()
         var natalDictionary = [Planets: Double]()
         for planet in Planets.allCases {
-            if planet != .MC && planet != .Ascendant {
+            if planet != .MC && planet != .Ascendant && planet != .Vertex {
                 natalDictionary[planet] = adapter.getPlanetDegree(transitTimeData.time, Int32(planet.getAstroIndex()), true, 0)
                 TransitFinder.adapterCalls += 1
             } else {
@@ -342,6 +342,8 @@ struct TransitFinder {
                     natalDictionary[planet] = adapter.getAscendant(transitTimeData.time, location.latitude.getLatLongAsDouble(), location.longitude.getLatLongAsDouble(), transitTimeData.calculationSettings.houseSystem.utf8CString[0], true, 0)
                 } else if planet == .MC {
                     natalDictionary[planet] = adapter.getMC(transitTimeData.time, location.latitude.getLatLongAsDouble(), location.longitude.getLatLongAsDouble(), transitTimeData.calculationSettings.houseSystem.utf8CString[0], true, 0)
+                } else if planet == .Vertex {
+                    natalDictionary[planet] = adapter.getVertex(transitTimeData.time, location.latitude.getLatLongAsDouble(), location.longitude.getLatLongAsDouble(), transitTimeData.calculationSettings.houseSystem.utf8CString[0], true, 0)
                 }
             }
         }

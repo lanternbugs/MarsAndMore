@@ -27,6 +27,7 @@
 -(double) getPlanetDegree:(double) astroTime : (int) type : (BOOL) tropical : (int) siderealSystem;
 -(double) getSweJulianDay:(int) year : (int) month : (int) day : (double) time;
 -(double) getAscendant:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem;
+-(double) getVertex:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem;
 -(double) getMC:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem;
 -(double) getHouse:(double) time : (double) latitude : (double) longitude : (int) house : (char) system : (BOOL) tropical : (int) siderealSystem;
 -(TransitTimeObject *) convertSweDate:(double) time;

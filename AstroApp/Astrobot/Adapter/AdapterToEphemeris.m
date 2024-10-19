@@ -55,6 +55,22 @@
     return cusp[1];
 }
 
+-(double) getVertex:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem
+{
+    double cusp[16];  /* empty + 12 houses */
+    double ascmc[10];    /* asc, mc, armc, vertex .. */
+     // int val =swe_houses(time, latitude, longitude, system, cusp,  ascmc); regular
+    // swe_set_sid_mode(SE_SIDM_LAHIRI, 0, 0); int val =swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, system, cusp,  ascmc); sidreal
+    if(tropical) {
+        swe_houses(time, latitude, longitude, system, cusp,  ascmc);
+    } else {
+        swe_set_sid_mode(siderealSystem, 0, 0);
+        swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, system, cusp,  ascmc);
+    }
+    
+    return ascmc[3];
+}
+
 -(double) getMC:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem
 {
     double cusp[16];  /* empty + 12 houses */

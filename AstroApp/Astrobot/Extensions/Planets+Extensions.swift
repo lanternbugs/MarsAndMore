@@ -21,6 +21,8 @@ extension Planets {
             return "Ascendant"
         case .Lilith:
             return "Lilith - Black Moon"
+        case .Vertex:
+            return "Vertex"
         default:
             return getName()
         }
@@ -31,6 +33,8 @@ extension Planets {
             return "MC"
         case .Ascendant:
             return "Asc"
+        case .Vertex:
+            return "Vx"
         case .Sun:
             return "Sun"
         case .Moon:
@@ -76,6 +80,8 @@ extension Planets {
     
     func getAstroCharacter() -> (Character, String) {
         switch self {
+        case .Vertex:
+            return ("k", "Astronomicon")
         case .Pholus:
             return ("r", "Astronomicon")
         case .Eris:
@@ -133,7 +139,7 @@ extension Planets {
     }
     
     static func getPlanetsByOrbitalPeriod() -> [Planets] {
-        [.Ascendant, .MC, .Moon, .Sun, .Mercury, .Venus, .Mars, .Vesta, .Juno, .Ceres, .Pallas, .Jupiter, .TrueNode, .SouthNode, .Lilith, .Saturn, .Chiron, .Uranus, .Pholus, .Neptune, .Pluto, .Eris]
+        [.Ascendant, .MC, .Vertex, .Moon, .Sun, .Mercury, .Venus, .Mars, .Vesta, .Juno, .Ceres, .Pallas, .Jupiter, .TrueNode, .SouthNode, .Lilith, .Saturn, .Chiron, .Uranus, .Pholus, .Neptune, .Pluto, .Eris]
     }
     
     func getOrbitalSpot() -> Int {
@@ -142,46 +148,48 @@ extension Planets {
             return 0
         case .MC:
             return 1
-        case .Moon:
+        case .Vertex:
             return 2
-        case .Sun:
+        case .Moon:
             return 3
-        case .Mercury:
+        case .Sun:
             return 4
-        case .Venus:
+        case .Mercury:
             return 5
-        case .Mars:
+        case .Venus:
             return 6
-        case .Vesta:
+        case .Mars:
             return 7
-        case .Juno:
+        case .Vesta:
             return 8
-        case .Ceres:
+        case .Juno:
             return 9
-        case .Pallas:
+        case .Ceres:
             return 10
-        case .Lilith:
+        case .Pallas:
             return 11
-        case .Jupiter:
+        case .Lilith:
             return 12
-        case .TrueNode:
+        case .Jupiter:
             return 13
-        case .SouthNode:
+        case .TrueNode:
             return 14
-        case .Saturn:
+        case .SouthNode:
             return 15
-        case .Chiron:
+        case .Saturn:
             return 16
-        case .Uranus:
+        case .Chiron:
             return 17
-        case .Pholus:
+        case .Uranus:
             return 18
-        case .Neptune:
+        case .Pholus:
             return 19
-        case .Pluto:
+        case .Neptune:
             return 20
-        case .Eris:
+        case .Pluto:
             return 21
+        case .Eris:
+            return 22
         }
     }
     
@@ -344,6 +352,8 @@ extension Planets {
     func getAstroIndex()->Int
     {
         switch(self) {
+        case .Vertex:
+            return -3
         case .MC:
             return -2
         case .Ascendant:
@@ -394,6 +404,8 @@ extension Planets {
     static func getPlanetForAstroIndex(val: Int32)->Planets?
     {
         switch(val) {
+        case -3:
+            return .Vertex
         case -2:
             return .MC
         case -1:

@@ -32,6 +32,12 @@ extension AstrobotBaseInterface {
                 }
                 row.planets.append(calculateMC(time: time, location: location, calculationSettings: calculationSettings))
 
+            } else if type == .Vertex {
+                guard let location = location else {
+                    continue
+                }
+                row.planets.append(calculateVertex(time: time, location: location, calculationSettings: calculationSettings))
+
             } else {
                 let lookupType = type != .SouthNode ? type : .TrueNode
                 var val = adapter.getPlanetDegree(time, Int32(lookupType.getAstroIndex()), calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
@@ -94,6 +100,17 @@ extension AstrobotBaseInterface {
     func getMCDegree(time: Double, from location: LocationData, calculationSettings: CalculationSettings)->Double {
         let adapter = AdapterToEphemeris()
         return adapter.getMC(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), calculationSettings.houseSystem.utf8CString[0], calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
+    }
+    
+    func calculateVertex(time: Double, location: LocationData, calculationSettings: CalculationSettings)->PlanetCell
+    {
+        let degree = getVertexDegree(time: time, from: location, calculationSettings: calculationSettings)
+        return  PlanetCell(planet: .Vertex, degree: degree.getAstroDegree(), sign: degree.getAstroSign(), retrograde: false, numericDegree: degree)
+    }
+    
+    func getVertexDegree(time: Double, from location: LocationData, calculationSettings: CalculationSettings)->Double {
+        let adapter = AdapterToEphemeris()
+        return adapter.getVertex(time, location.latitude.getLatLongAsDouble(),  location.longitude.getLatLongAsDouble(), calculationSettings.houseSystem.utf8CString[0], calculationSettings.tropical, Int32(calculationSettings.siderealSystem.rawValue))
     }
 }
 
@@ -209,6 +226,13 @@ extension AstrobotInterface {
                     continue
                 }
                 let degree = getMCDegree(time: time, from: location, calculationSettings: calculationSettings)
+                transitPlanets.append(TransitingPlanet(planet: type, degree: degree, laterDegree: degree))
+
+            } else if type == .Vertex {
+                guard let location = location else {
+                    continue
+                }
+                let degree = getVertexDegree(time: time, from: location, calculationSettings: calculationSettings)
                 transitPlanets.append(TransitingPlanet(planet: type, degree: degree, laterDegree: degree))
 
             }

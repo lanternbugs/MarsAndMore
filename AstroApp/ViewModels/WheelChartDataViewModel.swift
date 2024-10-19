@@ -34,6 +34,9 @@ class WheelChartDataViewModel {
     
     func getPlanetRow(_ data: PlanetCell) -> String {
         var text =  data.planet.getName().uppercased() + " " + data.sign.getName() + " " + data.degree
+        if data.planet == .Vertex {
+            text = data.planet.getName() + " " + data.sign.getName() + " " + data.degree
+        }
         if data.retrograde {
             text = text + " " + "R"
         }

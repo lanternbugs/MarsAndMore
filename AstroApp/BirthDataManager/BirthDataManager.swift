@@ -112,6 +112,9 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     func initializeDefaultBodiesToShow() {
         for body in Planets.allCases {
             if body.rawValue <= Planets.Chiron.rawValue {
+                if body.rawValue == Planets.Vertex.rawValue {
+                    continue
+                }
                 defaultBodiesToShow.insert(body)
             }
         }
