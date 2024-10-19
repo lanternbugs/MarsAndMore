@@ -211,7 +211,7 @@ class WheelChartDataViewModel {
     
     func showPlanet(data: PlanetCell, manager: BirthDataManager) -> Bool {
         if manager.bodiesToShow.contains(data.planet) {
-            if data.planet != .MC {
+            if data.planet != .MC && data.planet != .Vertex {
                 return true
             }
         }

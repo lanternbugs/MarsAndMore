@@ -95,6 +95,28 @@ struct WheelChartHouseListing: View {
                     
                 }
             }
+            if let vertex = viewModel.planetData.first(where: { $0.planet == .Vertex }) {
+                if vertex.numericDegree != viewModel.houseData[0].numericDegree {
+                    HStack {
+#if os(macOS)
+            if #available(macOS 12.0, *) {
+                Text("\(vertex.planet.getLongName()) " + vertex.degree + " " + vertex.sign.getName()).textSelection(.enabled).padding(.leading)
+            }
+            else {
+                Text("\(vertex.planet.getLongName()) " + vertex.degree + " " + vertex.sign.getName()).padding(.leading)
+                }
+#else
+            if #available(iOS 15.0, *) {
+                Text("\(vertex.planet.getLongName()) " + vertex.degree + " " + vertex.sign.getName()).textSelection(.enabled).padding(.leading)
+            }
+            else {
+                Text("\(vertex.planet.getLongName()) " + vertex.degree + " " + vertex.sign.getName()).padding(.leading)
+                }
+#endif
+                        Spacer()
+                    }
+                }
+            }
         }
     }
 }
