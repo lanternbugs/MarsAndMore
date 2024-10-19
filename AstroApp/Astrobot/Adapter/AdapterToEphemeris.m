@@ -44,15 +44,14 @@
     //char system = 'P'; // house system Placidius
      // int val =swe_houses(time, latitude, longitude, system, cusp,  ascmc); regular
     // swe_set_sid_mode(SE_SIDM_LAHIRI, 0, 0); int val =swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, system, cusp,  ascmc); sidreal
-    // System set to P now always becuase this is correct ASC. whole sign would retrieve a house cusp not ASC
     if(tropical) {
-         swe_houses(time, latitude, longitude, 'P', cusp,  ascmc);
+         swe_houses(time, latitude, longitude, system, cusp,  ascmc);
     } else {
         swe_set_sid_mode(siderealSystem, 0, 0);
-        swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, 'P', cusp,  ascmc);
+        swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, system, cusp,  ascmc);
     }
     
-    return cusp[1];
+    return ascmc[0];
 }
 
 -(double) getVertex:(double) time : (double) latitude : (double) longitude : (char) system : (BOOL) tropical : (int) siderealSystem
@@ -78,15 +77,14 @@
     //char system = 'P'; // house system Placidius
      // int val =swe_houses(time, latitude, longitude, system, cusp,  ascmc); regular
     // swe_set_sid_mode(SE_SIDM_LAHIRI, 0, 0); int val =swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, system, cusp,  ascmc); sidreal
-    // System set to P now always becuase this is correct ASC. whole sign would retrieve a house cusp not ASC
     if(tropical) {
-         swe_houses(time, latitude, longitude, 'P', cusp,  ascmc);
+        swe_houses(time, latitude, longitude, system, cusp,  ascmc);
     } else {
         swe_set_sid_mode(siderealSystem, 0, 0);
-        swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, 'P', cusp,  ascmc);
+        swe_houses_ex(time, SEFLG_SIDEREAL, latitude, longitude, system, cusp,  ascmc);
     }
     
-    return cusp[10];
+    return ascmc[1];
 }
 
 
