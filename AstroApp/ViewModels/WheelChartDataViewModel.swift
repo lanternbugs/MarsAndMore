@@ -14,6 +14,7 @@
 //
 
 import Foundation
+import SwiftUI
 class WheelChartDataViewModel {
     let planetData: [PlanetCell]
     let houseData: [HouseCell]
@@ -21,6 +22,11 @@ class WheelChartDataViewModel {
     let chartTitle: String
     let chart: Charts
     let houseSystem: HouseSystem
+#if os(macOS)
+    let symbolFontSize = 20.0
+#else
+    let symbolFontSize = 22.0
+#endif
     
     init(planets: [PlanetCell], aspects: [TransitCell], houses: [HouseCell], chart: Charts, title: String, houseSystem: HouseSystem) {
         planetData = planets
@@ -31,7 +37,14 @@ class WheelChartDataViewModel {
         self.houseSystem = houseSystem
         
     }
-    
+    func getSymbolPlanetRow(_ data: PlanetCell) -> some View {
+        var row =  Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.numericDegree.getAstroSign().getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
+        if data.retrograde {
+            row = row + Text(" R")
+        }
+        row = row + Text("\(getInHouseInfo(data))")
+        return HStack { row }
+    }
     func getPlanetRow(_ data: PlanetCell) -> String {
         var text =  data.planet.getName().uppercased() + " " + data.sign.getName() + " " + data.degree
         if data.planet == .Vertex {

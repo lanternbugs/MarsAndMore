@@ -34,6 +34,9 @@ struct WheelChartPlanetListing: View {
                 data in
                 HStack {
                     if viewModel.showPlanet(data: data, manager: manager) {
+                        if manager.chartDataSymbols {
+                            viewModel.getSymbolPlanetRow(data).padding(.leading)
+                        } else {
 #if os(macOS)
             if #available(macOS 12.0, *) {
                 Text(viewModel.getPlanetRow(data)).textSelection(.enabled).padding(.leading)
@@ -49,6 +52,10 @@ struct WheelChartPlanetListing: View {
                 Text(viewModel.getPlanetRow(data)).padding(.leading)
                 }
 #endif
+
+                        }
+
+
 
                         
                             Spacer()

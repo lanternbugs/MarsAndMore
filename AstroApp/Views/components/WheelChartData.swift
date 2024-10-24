@@ -20,6 +20,18 @@ struct WheelChartData: View {
     @EnvironmentObject var manager:BirthDataManager
     var body: some View {
         VStack {
+            HStack {
+                if manager.chartDataSymbols {
+                    Button(action:  { manager.chartDataSymbols = false }) {
+                                            Text("Text")
+                                        }
+                                    } else {
+                                        Button(action:  { manager.chartDataSymbols = true }) {
+                                            Text("Symbols")
+                                        }
+                                    }
+                Spacer()
+            }
             if viewModel.chart == .Natal {
                 WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: .Natal, title: "Planets", houseSystem: manager.houseSystem))
                 if !viewModel.houseData.isEmpty {
