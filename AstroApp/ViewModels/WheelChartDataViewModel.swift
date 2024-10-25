@@ -169,16 +169,16 @@ class WheelChartDataViewModel {
             if data.movement == .Applying {
                 tempo = Text("*") + tempo
             }
-            return tempo
+            return HStack { tempo }
         }
         if chart == .Natal {
             if data.planet.rawValue < data.planet2.rawValue {
-                return Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.aspect.getAstroCharacter().0)").font(Font.custom(data.aspect.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.planet2.getAstroCharacter().0)").font(Font.custom(data.planet2.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
+                return HStack { Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.aspect.getAstroCharacter().0)").font(Font.custom(data.aspect.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.planet2.getAstroCharacter().0)").font(Font.custom(data.planet2.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)") }
             } else {
-                return Text("\(data.planet2.getAstroCharacter().0)").font(Font.custom(data.planet2.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.aspect.getAstroCharacter().0)").font(Font.custom(data.aspect.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
+                return HStack { Text("\(data.planet2.getAstroCharacter().0)").font(Font.custom(data.planet2.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.aspect.getAstroCharacter().0)").font(Font.custom(data.aspect.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)") }
             }
         }
-        return Text("\(data.planet2.getAstroCharacter().0)").font(Font.custom(data.planet2.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.aspect.getAstroCharacter().0)").font(Font.custom(data.aspect.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
+        return HStack { Text("\(data.planet2.getAstroCharacter().0)").font(Font.custom(data.planet2.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.aspect.getAstroCharacter().0)").font(Font.custom(data.aspect.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)") }
     }
     
     func getAspectRow(_ data: TransitCell) -> String {

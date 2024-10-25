@@ -45,7 +45,7 @@ struct WheelChartAspectsListing: View {
                 HStack {
                     if viewModel.showAspect(data: data, manager: manager, major: major){
                         if manager.chartDataSymbols {
-                            viewModel.getAspectSymbolRow(data)
+                            viewModel.getAspectSymbolRow(data).padding(.leading)
                         } else {
 #if os(macOS)
             if #available(macOS 12.0, *) {
