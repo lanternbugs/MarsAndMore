@@ -35,7 +35,7 @@ struct WheelChartPlanetListing: View {
                 HStack {
                     if viewModel.showPlanet(data: data, manager: manager) {
                         if manager.chartDataSymbols {
-                            viewModel.getSymbolPlanetRow(data).padding(.leading)
+                            viewModel.getPlanetSymbolRow(data).padding(.leading)
                         } else {
 #if os(macOS)
             if #available(macOS 12.0, *) {

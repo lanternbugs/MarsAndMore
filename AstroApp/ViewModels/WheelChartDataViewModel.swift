@@ -37,7 +37,7 @@ class WheelChartDataViewModel {
         self.houseSystem = houseSystem
         
     }
-    func getSymbolPlanetRow(_ data: PlanetCell) -> some View {
+    func getPlanetSymbolRow(_ data: PlanetCell) -> some View {
         var row =  Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.numericDegree.getAstroSign().getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
         if data.retrograde {
             row = row + Text(" R")
@@ -161,6 +161,24 @@ class WheelChartDataViewModel {
         }
         return aspectsData.sorted(by: {
             return $0.planet.rawValue < $1.planet.rawValue })
+    }
+    
+    func getAspectSymbolRow(_ data: TransitCell) -> some View {
+        if chart == .Transit {
+            var tempo =   Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.aspect.getAstroCharacter().0)").font(Font.custom(data.aspect.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.planet2.getAstroCharacter().0)").font(Font.custom(data.planet2.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
+            if data.movement == .Applying {
+                tempo = Text("*") + tempo
+            }
+            return tempo
+        }
+        if chart == .Natal {
+            if data.planet.rawValue < data.planet2.rawValue {
+                return Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.aspect.getAstroCharacter().0)").font(Font.custom(data.aspect.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.planet2.getAstroCharacter().0)").font(Font.custom(data.planet2.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
+            } else {
+                return Text("\(data.planet2.getAstroCharacter().0)").font(Font.custom(data.planet2.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.aspect.getAstroCharacter().0)").font(Font.custom(data.aspect.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
+            }
+        }
+        return Text("\(data.planet2.getAstroCharacter().0)").font(Font.custom(data.planet2.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.aspect.getAstroCharacter().0)").font(Font.custom(data.aspect.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
     }
     
     func getAspectRow(_ data: TransitCell) -> String {
