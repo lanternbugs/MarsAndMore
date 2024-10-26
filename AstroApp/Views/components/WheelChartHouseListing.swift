@@ -17,6 +17,7 @@ import SwiftUI
 
 struct WheelChartHouseListing: View {
     let viewModel: WheelChartDataViewModel
+    @EnvironmentObject var manager:BirthDataManager
     var body: some View {
         VStack {
             if !viewModel.chartTitle.isEmpty {
@@ -29,6 +30,9 @@ struct WheelChartHouseListing: View {
             if let asc = viewModel.planetData.first(where: { $0.planet == .Ascendant }) {
                 if asc.numericDegree != viewModel.houseData[0].numericDegree {
                     HStack {
+                        if manager.chartDataSymbols {
+                            viewModel.getPlanetSymbolRow(asc).padding(.leading)
+                        } else {
 #if os(macOS)
             if #available(macOS 12.0, *) {
                 Text("Asc " + asc.degree + " " + asc.sign.getName()).textSelection(.enabled).padding(.leading)
@@ -44,6 +48,8 @@ struct WheelChartHouseListing: View {
                 Text("Asc " + asc.degree + " " + asc.sign.getName()).padding(.leading)
                 }
 #endif
+                        }
+
                         Spacer()
                     }
                 }
@@ -51,6 +57,9 @@ struct WheelChartHouseListing: View {
             if let mc = viewModel.planetData.first(where: { $0.planet == .MC }) {
                 if mc.numericDegree != viewModel.houseData[9].numericDegree {
                     HStack {
+                        if manager.chartDataSymbols {
+                            viewModel.getPlanetSymbolRow(mc).padding(.leading)
+                        } else {
 #if os(macOS)
             if #available(macOS 12.0, *) {
                 Text("MC  " + mc.degree + " " + mc.sign.getName()).textSelection(.enabled).padding(.leading)
@@ -66,6 +75,8 @@ struct WheelChartHouseListing: View {
                 Text("MC  " + mc.degree + " " + mc.sign.getName()).padding(.leading)
                 }
 #endif
+                        }
+
                         Spacer()
                     }
                 }  
@@ -73,6 +84,9 @@ struct WheelChartHouseListing: View {
             ForEach(viewModel.houseData, id: \.id) {
                 data in
                 HStack {
+                    if manager.chartDataSymbols {
+                        viewModel.getHouseSymbolRow(data).padding(.leading)
+                    } else {
 #if os(macOS)
             if #available(macOS 12.0, *) {
                 Text(viewModel.getHouseRow(data)).textSelection(.enabled).padding(.leading)
@@ -88,6 +102,8 @@ struct WheelChartHouseListing: View {
                 Text(viewModel.getHouseRow(data)).padding(.leading)
                 }
 #endif
+                    }
+
                     Spacer()
                     
                         
@@ -97,6 +113,9 @@ struct WheelChartHouseListing: View {
             }
             if let vertex = viewModel.planetData.first(where: { $0.planet == .Vertex }) {
                 HStack {
+                    if manager.chartDataSymbols {
+                        viewModel.getPlanetSymbolRow(vertex).padding(.leading)
+                    } else {
 #if os(macOS)
         if #available(macOS 12.0, *) {
             Text("\(vertex.planet.getLongName()) " + vertex.degree + " " + vertex.sign.getName()).textSelection(.enabled).padding(.leading)
@@ -112,6 +131,8 @@ struct WheelChartHouseListing: View {
             Text("\(vertex.planet.getLongName()) " + vertex.degree + " " + vertex.sign.getName()).padding(.leading)
             }
 #endif
+                    }
+
                     Spacer()
                 }
             }

@@ -43,7 +43,7 @@ struct MundanePlanetsRow: View, AstrobotInterface {
             Spacer()
 #if os(macOS)
             Button(action: { roomState.wrappedValue = .Ephemeris(date: savedDate.planetsDateChoice, calculationSettings: manager.calculationSettings) }) {
-                Text("Ephemeris").font(Font.subheadline)
+                Text("Ephemeris").font(Font.headline)
             }
             Spacer()
             Button(action: { roomState.wrappedValue = .SynastryChooser }) {
@@ -54,7 +54,7 @@ struct MundanePlanetsRow: View, AstrobotInterface {
 #elseif os(iOS)  
             if idiom == .pad {
                 Button(action: { roomState.wrappedValue = .Ephemeris(date: savedDate.planetsDateChoice, calculationSettings: manager.calculationSettings) }) {
-                    Text("Ephemeris").font(Font.subheadline).padding(.trailing)
+                    Text("Ephemeris").font(Font.headline).padding(.trailing)
                 }
                 Spacer()
                 Button(action: { roomState.wrappedValue = .SynastryChooser }) {
@@ -62,7 +62,7 @@ struct MundanePlanetsRow: View, AstrobotInterface {
                 }
             } else {
                 Button(action: { roomState.wrappedValue = .Ephemeris(date: savedDate.planetsDateChoice, calculationSettings: manager.calculationSettings) }) {
-                    Text("Ephemeris").font(Font.subheadline).padding(.trailing)
+                    Text("Ephemeris").font(Font.headline).padding(.trailing)
                 }.padding(.trailing)
             }
 #endif

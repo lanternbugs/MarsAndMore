@@ -38,7 +38,7 @@ class WheelChartDataViewModel {
         
     }
     func getPlanetSymbolRow(_ data: PlanetCell) -> some View {
-        var row =  Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.numericDegree.getAstroSign().getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
+        var row =  Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.sign.getAstroCharacter().0)").font(Font.custom(data.sign.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
         if data.retrograde {
             row = row + Text(" R")
         }
@@ -214,6 +214,30 @@ class WheelChartDataViewModel {
         }
             
         return false
+    }
+    
+    func getHouseSymbolRow(_ data: HouseCell) -> some View {
+        if let asc = planetData.first(where: { $0.planet == .Ascendant }) {
+            if asc.numericDegree != houseData[0].numericDegree {
+                return HStack { Text("\(data.house.getHouseNumericName(type: data.type))  ") + Text("\(data.degree) ") + Text("\(data.sign.getAstroCharacter().0)").font(Font.custom(data.sign.getAstroCharacter().1, size: symbolFontSize)) }
+                
+            }
+        }
+        if let asc = planetData.first(where: { $0.planet == .MC }) {
+            if asc.numericDegree != houseData[9].numericDegree {
+                if data.house.getHouseShortName() == houseData[0].house.getHouseShortName() {
+                    return HStack { Text("\(data.house.getHouseShortName()) ") + Text("\(data.degree) ") + Text("\(data.sign.getAstroCharacter().0)").font(Font.custom(data.sign.getAstroCharacter().1, size: symbolFontSize)) }
+                }
+                return HStack { Text("\(data.house.getHouseNumericName(type: data.type))  ") + Text("\(data.degree) ") + Text("\(data.sign.getAstroCharacter().0)").font(Font.custom(data.sign.getAstroCharacter().1, size: symbolFontSize)) }
+                
+            }
+        }
+        if data.house.getHouseShortName().count == 3 {
+            return HStack { Text("\(data.house.getHouseShortName()) ") + Text("\(data.degree) ") + Text("\(data.sign.getAstroCharacter().0)").font(Font.custom(data.sign.getAstroCharacter().1, size: symbolFontSize)) }
+        } else {
+            return HStack { Text("\(data.house.getHouseShortName())  ") + Text("\(data.degree) ") + Text("\(data.sign.getAstroCharacter().0)").font(Font.custom(data.sign.getAstroCharacter().1, size: symbolFontSize)) }
+        }
+        
     }
     
     func getHouseRow(_ data: HouseCell) -> String {
