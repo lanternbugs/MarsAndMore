@@ -40,7 +40,7 @@ class WheelChartDataViewModel {
     func getPlanetSymbolRow(_ data: PlanetCell) -> some View {
         var row =  Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.sign.getAstroCharacter().0)").font(Font.custom(data.sign.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
         if data.retrograde {
-            row = row + Text(" R")
+            row = row + Text(" R").font(Font.custom("AstroDotBasic", size: symbolFontSize))
         }
         row = row + Text("\(getInHouseInfo(data))")
         return HStack { row }
