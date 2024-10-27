@@ -25,64 +25,63 @@ struct AstroSymbolsKey: View {
     let symbolFontSize = 32.0
 #endif
     var body: some View {
-        VStack {
-            HStack {
-                Text("Chart Planet Symbols").font(.title2)
-                Spacer()
-            }
+        HStack {
+            Text("Chart Planet Symbols").font(.title2)
+            Spacer()
+        }
 
-            LazyVGrid(columns: columns) {
-                ForEach(Planets.allCases, id: \.self) { planet in
+        LazyVGrid(columns: columns) {
+            ForEach(Planets.allCases, id: \.self) { planet in
+                HStack {
+                    Text(" \(planet.getAstroCharacter().0)").font(Font.custom(planet.getAstroCharacter().1, size: symbolFontSize))
+                    Text(planet.getLongName()).font(.body)
+                    Spacer()
+                }
+            }
+        }
+        Text("")
+        HStack {
+            Text("Chart Sign Symbols").font(.title2)
+            Spacer()
+        }
+
+        LazyVGrid(columns: columns) {
+            ForEach(Signs.allCases, id: \.self) { sign in
+                switch(sign) {
+                case .None:
                     HStack {
-                        Text(" \(planet.getAstroCharacter().0)").font(Font.custom(planet.getAstroCharacter().1, size: symbolFontSize))
-                        Text(planet.getLongName()).font(.body)
+                        Text("")
+                        Spacer()
+                    }
+                default:
+                    HStack {
+                        Text(" \(sign.getAstroCharacter().0)").font(Font.custom(sign.getAstroCharacter().1, size: symbolFontSize))
+                        Text(sign.getName()).font(.body)
                         Spacer()
                     }
                 }
             }
+        }
+        
+        if showAspectsSymbols {
             Text("")
             HStack {
-                Text("Chart Sign Symbols").font(.title2)
+                Text("Aspect Symbols").font(.title2)
                 Spacer()
             }
 
             LazyVGrid(columns: columns) {
-                ForEach(Signs.allCases, id: \.self) { sign in
-                    switch(sign) {
-                    case .None:
-                        HStack {
-                            Text("")
-                            Spacer()
-                        }
-                    default:
-                        HStack {
-                            Text(" \(sign.getAstroCharacter().0)").font(Font.custom(sign.getAstroCharacter().1, size: symbolFontSize))
-                            Text(sign.getName()).font(.body)
-                            Spacer()
-                        }
-                    }
-                }
-            }
-            
-            if showAspectsSymbols {
-                Text("")
-                HStack {
-                    Text("Aspect Symbols").font(.title2)
-                    Spacer()
-                }
-
-                LazyVGrid(columns: columns) {
-                    ForEach(Aspects.allCases, id: \.rawValue) {
-                        aspect in
-                        HStack {
-                            Text(" \(aspect.getAstroCharacter().0)").font(Font.custom(aspect.getAstroCharacter().1, size: symbolFontSize))
-                            Text("  \(aspect.getName())").font(.body)
-                            Spacer()
-                        }
+                ForEach(Aspects.allCases, id: \.rawValue) {
+                    aspect in
+                    HStack {
+                        Text(" \(aspect.getAstroCharacter().0)").font(Font.custom(aspect.getAstroCharacter().1, size: symbolFontSize))
+                        Text("  \(aspect.getName())").font(.body)
+                        Spacer()
                     }
                 }
             }
         }
+            
     }
 }
 

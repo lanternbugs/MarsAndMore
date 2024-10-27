@@ -23,7 +23,7 @@ struct WheelChartView: View {
 
     var body: some View {
         ScrollView {
-            VStack {
+            
                 HStack {
                     Spacer()
                     Text(viewModel.chartName)
@@ -64,8 +64,9 @@ struct WheelChartView: View {
                 NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #endif
             }
-             WheelChartData(viewModel: viewModel) 
-            }
+             
+            
+            WheelChartData(viewModel: viewModel)
         }.onAppear() {
             opaqueValue = 1.0
         }
