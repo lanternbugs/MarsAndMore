@@ -21,72 +21,70 @@ struct TransitsView: View {
     @EnvironmentObject private var manager: BirthDataManager
     var body: some View {
         ScrollView {
-            VStack {
-                HStack {
-                    Button(action: viewModel.previousDay) {
-                        Text("<<").font(.title)
-                    }.font(.title).padding(.top)
-                    Spacer()
-                    Text("\(viewModel.date.getLongDateTitleString())").font(.title2)
-                    Spacer()
-                    Button(action: viewModel.nextDay) {
-                        Text(">>")
-                    }.font(.title).padding(.top)
-                }
-                HStack {
-                    if viewModel.showTransitTimeSymbols {
-                        Button(action:  { viewModel.showTransitTimeSymbols.toggle()
-                            }) {
-                            Text("Text")
-                            }.padding([.top, .leading])
-                    } else {
-                        Button(action:  { viewModel.showTransitTimeSymbols.toggle()
-                            }) {
-                            Text("Symbols")
-                            }.padding([.top, .leading])
-                    }
-                    Spacer()
-                    if viewModel.showTransitTimeSymbols {
-                        if viewModel.showTransitSymbolKey {
-                            Button(action:  { viewModel.showTransitSymbolKey.toggle()
-                                }) {
-                                Text("Hide Key")
-                                }.padding([.top, .trailing])
-                        } else {
-                            Button(action:  { viewModel.showTransitSymbolKey.toggle()
-                                }) {
-                                Text("Key")
-                                }.padding([.top, .trailing])
-                        }
-                    }
-                }
-                if viewModel.showTransitSymbolKey && viewModel.showTransitTimeSymbols {
-                    AstroSymbolsKey(showAspectsSymbols: true)
-                }
-                HStack {
-                    Text("Plantary Transits for \(chartName)").font(.title)
-                    Spacer()
-                }
-                TransitTimesView(transits: $viewModel.transits, viewModel: TransitTimesViewModel(transitToShow: .Planetary), shouldShowTransitModel: viewModel)
-                Text(" ")
-                HStack {
-                    Text("Moon Transits for \(chartName)").font(.title)
-                    Spacer()
-                }
-                TransitTimesView(transits: $viewModel.transits, viewModel: TransitTimesViewModel(transitToShow: .Moon), shouldShowTransitModel: viewModel)
-                Text(" ")
-                HStack {
-                    Text("Planetary Transits").font(.title)
-                    Spacer()
-                }
-                TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Planetary), shouldShowTransitModel: viewModel)
-                Text(" ")
-                HStack {
-                    Text("Moon Transits").font(.title)
-                    Spacer()
-                }
-                TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Moon), shouldShowTransitModel: viewModel)
+            HStack {
+                Button(action: viewModel.previousDay) {
+                    Text("<<").font(.title)
+                }.font(.title).padding(.top)
+                Spacer()
+                Text("\(viewModel.date.getLongDateTitleString())").font(.title2)
+                Spacer()
+                Button(action: viewModel.nextDay) {
+                    Text(">>")
+                }.font(.title).padding(.top)
             }
+            HStack {
+                if viewModel.showTransitTimeSymbols {
+                    Button(action:  { viewModel.showTransitTimeSymbols.toggle()
+                        }) {
+                        Text("Text")
+                        }.padding([.top, .leading])
+                } else {
+                    Button(action:  { viewModel.showTransitTimeSymbols.toggle()
+                        }) {
+                        Text("Symbols")
+                        }.padding([.top, .leading])
+                }
+                Spacer()
+                if viewModel.showTransitTimeSymbols {
+                    if viewModel.showTransitSymbolKey {
+                        Button(action:  { viewModel.showTransitSymbolKey.toggle()
+                            }) {
+                            Text("Hide Key")
+                            }.padding([.top, .trailing])
+                    } else {
+                        Button(action:  { viewModel.showTransitSymbolKey.toggle()
+                            }) {
+                            Text("Key")
+                            }.padding([.top, .trailing])
+                    }
+                }
+            }
+            if viewModel.showTransitSymbolKey && viewModel.showTransitTimeSymbols {
+                AstroSymbolsKey(showAspectsSymbols: true)
+            }
+            HStack {
+                Text("Plantary Transits for \(chartName)").font(.title)
+                Spacer()
+            }
+            TransitTimesView(transits: $viewModel.transits, viewModel: TransitTimesViewModel(transitToShow: .Planetary), shouldShowTransitModel: viewModel)
+            Text(" ")
+            HStack {
+                Text("Moon Transits for \(chartName)").font(.title)
+                Spacer()
+            }
+            TransitTimesView(transits: $viewModel.transits, viewModel: TransitTimesViewModel(transitToShow: .Moon), shouldShowTransitModel: viewModel)
+            Text(" ")
+            HStack {
+                Text("Planetary Transits").font(.title)
+                Spacer()
+            }
+            TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Planetary), shouldShowTransitModel: viewModel)
+            Text(" ")
+            HStack {
+                Text("Moon Transits").font(.title)
+                Spacer()
+            }
+            TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Moon), shouldShowTransitModel: viewModel)
         }
     }
 }

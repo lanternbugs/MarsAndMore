@@ -62,22 +62,20 @@ struct MundaneView: View, AstrobotInterface {
             }
             
             ScrollView {
-                VStack {
-                    if viewModel.showTransitSymbolKey && viewModel.showTransitTimeSymbols {
-                        AstroSymbolsKey(showAspectsSymbols: true)
-                    }
-                    HStack {
-                        Text("Planetary Transits").font(.title)
-                        Spacer()
-                    }
-                    TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Planetary), shouldShowTransitModel: viewModel)
-                    Text(" ")
-                    HStack {
-                        Text("Moon Transits").font(.title)
-                        Spacer()
-                    }
-                    TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Moon), shouldShowTransitModel: viewModel)
+                if viewModel.showTransitSymbolKey && viewModel.showTransitTimeSymbols {
+                    AstroSymbolsKey(showAspectsSymbols: true)
                 }
+                HStack {
+                    Text("Planetary Transits").font(.title)
+                    Spacer()
+                }
+                TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Planetary), shouldShowTransitModel: viewModel)
+                Text(" ")
+                HStack {
+                    Text("Moon Transits").font(.title)
+                    Spacer()
+                }
+                TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Moon), shouldShowTransitModel: viewModel)
             }
         }
     }

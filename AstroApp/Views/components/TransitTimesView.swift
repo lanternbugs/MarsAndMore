@@ -25,12 +25,10 @@ struct TransitTimesView: View {
     let symbolFontSize = 20.0
 #endif
     var body: some View {
-        VStack {
-            ForEach(transits.sorted(), id: \.time) {
-                transit in
-                HStack {
-                    printTransit(transit)
-                }
+        ForEach(transits.sorted(), id: \.time) {
+            transit in
+            HStack {
+                printTransit(transit)
             }
         }
     }
