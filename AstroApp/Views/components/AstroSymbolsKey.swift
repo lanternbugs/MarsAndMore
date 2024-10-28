@@ -33,8 +33,14 @@ struct AstroSymbolsKey: View {
         LazyVGrid(columns: columns) {
             ForEach(Planets.allCases, id: \.self) { planet in
                 HStack {
-                    Text(" \(planet.getAstroCharacter().0)").font(Font.custom(planet.getAstroCharacter().1, size: symbolFontSize))
-                    Text(planet.getLongName()).font(.body)
+                    if planet == .Lilith {
+                        Text(" \(planet.getAstroCharacter().0)").font(Font.custom(planet.getAstroCharacter().1, size: symbolFontSize)) +
+                        Text(" \(planet.getName())").font(.body)
+                    } else {
+                        Text(" \(planet.getAstroCharacter().0)").font(Font.custom(planet.getAstroCharacter().1, size: symbolFontSize)) +
+                        Text(" \(planet.getLongName())").font(.body)
+                    }
+                    
                     Spacer()
                 }
             }
@@ -55,8 +61,8 @@ struct AstroSymbolsKey: View {
                     }
                 default:
                     HStack {
-                        Text(" \(sign.getAstroCharacter().0)").font(Font.custom(sign.getAstroCharacter().1, size: symbolFontSize))
-                        Text(sign.getName()).font(.body)
+                        Text(" \(sign.getAstroCharacter().0)").font(Font.custom(sign.getAstroCharacter().1, size: symbolFontSize)) +
+                        Text(" \(sign.getName())").font(.body)
                         Spacer()
                     }
                 }
@@ -74,7 +80,7 @@ struct AstroSymbolsKey: View {
                 ForEach(Aspects.allCases, id: \.rawValue) {
                     aspect in
                     HStack {
-                        Text(" \(aspect.getAstroCharacter().0)").font(Font.custom(aspect.getAstroCharacter().1, size: symbolFontSize))
+                        Text(" \(aspect.getAstroCharacter().0)").font(Font.custom(aspect.getAstroCharacter().1, size: symbolFontSize)) +
                         Text("  \(aspect.getName())").font(.body)
                         Spacer()
                     }
