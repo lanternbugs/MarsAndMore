@@ -18,65 +18,63 @@ import SwiftUI
 struct MundaneView: View, AstrobotInterface {
     @ObservedObject var viewModel: TransitMundaneViewModel
     var body: some View {
-        VStack {
-            HStack {
-                if viewModel.showTransitTimeSymbols {
-                    Button(action:  { viewModel.showTransitTimeSymbols.toggle()
-                        }) {
-                        Text("Text")
-                        }.padding([.top, .bottom, .leading])
-                } else {
-                    Button(action:  { viewModel.showTransitTimeSymbols.toggle()
-                        }) {
-                        Text("Symbols")
-                        }.padding([.top, .bottom, .leading])
-                }
-                Spacer()
-                Text("Mundane").font(.title)
-                Spacer()
-                if viewModel.showTransitTimeSymbols {
-                    if viewModel.showTransitSymbolKey {
-                        Button(action:  { viewModel.showTransitSymbolKey.toggle()
-                            }) {
-                            Text("Hide Key")
-                            }.padding([.top, .bottom, .trailing])
-                    } else {
-                        Button(action:  { viewModel.showTransitSymbolKey.toggle()
-                            }) {
-                            Text("Key")
-                            }.padding([.top, .bottom, .trailing])
-                    }
-                }
-                
+        HStack {
+            if viewModel.showTransitTimeSymbols {
+                Button(action:  { viewModel.showTransitTimeSymbols.toggle()
+                    }) {
+                    Text("Text")
+                    }.padding([.top, .bottom, .leading])
+            } else {
+                Button(action:  { viewModel.showTransitTimeSymbols.toggle()
+                    }) {
+                    Text("Symbols")
+                    }.padding([.top, .bottom, .leading])
             }
-            HStack {
-                Button(action: viewModel.previousDay) {
-                    Text("<<").font(.title)
-                }
-                Spacer()
-                Text("\(viewModel.date.getLongDateTitleString())").font(.title2)
-                Spacer()
-                Button(action: viewModel.nextDay) {
-                    Text(">>").font(.title)
+            Spacer()
+            Text("Mundane").font(.title)
+            Spacer()
+            if viewModel.showTransitTimeSymbols {
+                if viewModel.showTransitSymbolKey {
+                    Button(action:  { viewModel.showTransitSymbolKey.toggle()
+                        }) {
+                        Text("Hide Key")
+                        }.padding([.top, .bottom, .trailing])
+                } else {
+                    Button(action:  { viewModel.showTransitSymbolKey.toggle()
+                        }) {
+                        Text("Key")
+                        }.padding([.top, .bottom, .trailing])
                 }
             }
             
-            ScrollView {
-                if viewModel.showTransitSymbolKey && viewModel.showTransitTimeSymbols {
-                    AstroSymbolsKey(showAspectsSymbols: true)
-                }
-                HStack {
-                    Text("Planetary Transits").font(.title)
-                    Spacer()
-                }
-                TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Planetary), shouldShowTransitModel: viewModel)
-                Text(" ")
-                HStack {
-                    Text("Moon Transits").font(.title)
-                    Spacer()
-                }
-                TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Moon), shouldShowTransitModel: viewModel)
+        }
+        HStack {
+            Button(action: viewModel.previousDay) {
+                Text("<<").font(.title)
             }
+            Spacer()
+            Text("\(viewModel.date.getLongDateTitleString())").font(.title2)
+            Spacer()
+            Button(action: viewModel.nextDay) {
+                Text(">>").font(.title)
+            }
+        }
+        
+        ScrollView {
+            if viewModel.showTransitSymbolKey && viewModel.showTransitTimeSymbols {
+                AstroSymbolsKey(showAspectsSymbols: true)
+            }
+            HStack {
+                Text("Planetary Transits").font(.title)
+                Spacer()
+            }
+            TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Planetary), shouldShowTransitModel: viewModel)
+            Text(" ")
+            HStack {
+                Text("Moon Transits").font(.title)
+                Spacer()
+            }
+            TransitTimesView(transits: $viewModel.skyTransits, viewModel: TransitTimesViewModel(transitToShow: .Moon), shouldShowTransitModel: viewModel)
         }
     }
 }
