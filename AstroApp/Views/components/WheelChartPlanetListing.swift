@@ -19,47 +19,45 @@ struct WheelChartPlanetListing: View {
     let viewModel: WheelChartDataViewModel
     @EnvironmentObject var manager:BirthDataManager
     var body: some View {
-        VStack {
+        HStack {
+            Spacer()
+            Text(viewModel.chartTitle).font(.title2)
+            Spacer()
+        }
+        ForEach(viewModel.planetData.sorted(by: { if $0.planet == .MC && $1.planet == .Ascendant {
+            return false
+        } else if $0.planet == .Ascendant && $1.planet == .MC {
+            return true
+        }
+           return $0.planet.rawValue < $1.planet.rawValue }), id: \.id) {
+            data in
             HStack {
-                Spacer()
-                Text(viewModel.chartTitle).font(.title2)
-                Spacer()
-            }
-            ForEach(viewModel.planetData.sorted(by: { if $0.planet == .MC && $1.planet == .Ascendant {
-                return false
-            } else if $0.planet == .Ascendant && $1.planet == .MC {
-                return true
-            }
-               return $0.planet.rawValue < $1.planet.rawValue }), id: \.id) {
-                data in
-                HStack {
-                    if viewModel.showPlanet(data: data, manager: manager) {
-                        if manager.chartDataSymbols {
-                            viewModel.getPlanetSymbolRow(data).padding(.leading)
-                        } else {
+                if viewModel.showPlanet(data: data, manager: manager) {
+                    if manager.chartDataSymbols {
+                        viewModel.getPlanetSymbolRow(data).padding(.leading)
+                    } else {
 #if os(macOS)
-            if #available(macOS 12.0, *) {
-                Text(viewModel.getPlanetRow(data)).textSelection(.enabled).padding(.leading)
+        if #available(macOS 12.0, *) {
+            Text(viewModel.getPlanetRow(data)).textSelection(.enabled).padding(.leading)
+        }
+        else {
+            Text(viewModel.getPlanetRow(data)).padding(.leading)
             }
-            else {
-                Text(viewModel.getPlanetRow(data)).padding(.leading)
-                }
 #else
-            if #available(iOS 15.0, *) {
-                Text(viewModel.getPlanetRow(data)).textSelection(.enabled).padding(.leading)
+        if #available(iOS 15.0, *) {
+            Text(viewModel.getPlanetRow(data)).textSelection(.enabled).padding(.leading)
+        }
+        else {
+            Text(viewModel.getPlanetRow(data)).padding(.leading)
             }
-            else {
-                Text(viewModel.getPlanetRow(data)).padding(.leading)
-                }
 #endif
 
-                        }
-
-
-
-                        
-                            Spacer()
                     }
+
+
+
+                    
+                        Spacer()
                 }
             }
         }
