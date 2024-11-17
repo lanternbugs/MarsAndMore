@@ -20,6 +20,7 @@ struct WheelChartData: View {
     let viewModel: ChartViewModel
     @EnvironmentObject var manager:BirthDataManager
     var body: some View {
+#if os(macOS)
         HStack {
             if manager.chartDataSymbols {
                 Button(action:  { manager.chartDataSymbols = false }) {
@@ -45,6 +46,29 @@ struct WheelChartData: View {
                 }
             }
         }
+        
+#else
+        if manager.chartDataSymbols {
+            HStack {
+                
+                Spacer()
+                if manager.chartDataSymbols {
+                    if showSymbolKey {
+                        Button(action:  { showSymbolKey.toggle()
+                            }) {
+                            Text("Hide Key")
+                            }.padding(.trailing)
+                    } else {
+                        Button(action:  { showSymbolKey.toggle()
+                            }) {
+                            Text("Key")
+                            }.padding(.trailing)
+                    }
+                }
+            }
+        }
+        
+#endif
         if manager.chartDataSymbols && showSymbolKey {
             AstroSymbolsKey(showAspectsSymbols: true)
         }

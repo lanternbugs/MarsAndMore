@@ -25,6 +25,17 @@ struct WheelChartView: View {
         ScrollView {
             
                 HStack {
+#if os(iOS)
+                    if manager.chartDataSymbols {
+                        Button(action:  { manager.chartDataSymbols = false }) {
+                                                Text("Text")
+                        }.padding(.leading)
+                                        } else {
+                                            Button(action:  { manager.chartDataSymbols = true }) {
+                                                Text("Symbols")
+                                            }.padding(.leading)
+                                        }
+#endif
                     Spacer()
                     Text(viewModel.chartName)
                     Spacer()
