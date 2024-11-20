@@ -409,6 +409,11 @@
 		76860B9027B224E400533BD2 /* NameDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B8E27B224E400533BD2 /* NameDataView.swift */; };
 		76860B9227B2264D00533BD2 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B9127B2264D00533BD2 /* DoneView.swift */; };
 		76860B9327B2264D00533BD2 /* DoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76860B9127B2264D00533BD2 /* DoneView.swift */; };
+		76863B712CEE791600CF2C43 /* WheelChartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679634E2C72A4E500A6EFC1 /* WheelChartModels.swift */; };
+		76863B722CEE795500CF2C43 /* EphemerisView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76586AB42C5ED47500938CC6 /* EphemerisView.swift */; };
+		76863B732CEE797300CF2C43 /* EphemerisViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76586AB12C5ED45B00938CC6 /* EphemerisViewModel.swift */; };
+		76863B742CEE79BA00CF2C43 /* EphemerisModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76F822D32C60275C00F6C099 /* EphemerisModels.swift */; };
+		76863B752CEE79DC00CF2C43 /* EphemerisButtonsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 762BD3C72C6FD957001E40FF /* EphemerisButtonsView.swift */; };
 		7688E0B027AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688E0AF27AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift */; };
 		7688E0B127AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7688E0AF27AF0F8F0028DA5E /* AstrobotReadingInterface+Extensions.swift */; };
 		7689C6B327D02FDD00B38E4A /* PlanetFetchType+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7689C6B227D02FDD00B38E4A /* PlanetFetchType+Extensions.swift */; };
@@ -2145,6 +2150,11 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76863B752CEE79DC00CF2C43 /* EphemerisButtonsView.swift in Sources */,
+				76863B742CEE79BA00CF2C43 /* EphemerisModels.swift in Sources */,
+				76863B732CEE797300CF2C43 /* EphemerisViewModel.swift in Sources */,
+				76863B722CEE795500CF2C43 /* EphemerisView.swift in Sources */,
+				76863B712CEE791600CF2C43 /* WheelChartModels.swift in Sources */,
 				768B2D822BD6D32C008184C3 /* WheelChartDataViewModel.swift in Sources */,
 				768B2D832BD6D32C008184C3 /* AstroPlanetButtonsViewModel.swift in Sources */,
 				768B2D842BD6D32C008184C3 /* SynastryChooserViewModel.swift in Sources */,

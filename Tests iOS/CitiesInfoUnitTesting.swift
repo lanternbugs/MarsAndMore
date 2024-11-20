@@ -35,53 +35,47 @@ class CitiesInfoUnitTesting: XCTestCase {
         try super.tearDownWithError()
     }
 
-    func testCitiesDataNotNil() throws {
-        wait(for: [expected], timeout: 5)
-        XCTAssertNotNil(sut.cityInfo)
-    }
+    
     
     func testThereAreCities() throws {
         wait(for: [expected], timeout: 5)
-        guard let cities = sut.cityInfo?.cities  else {
-            XCTAssertNotNil(sut.cityInfo)
-            return
-        }
+        let cities = sut.subCityInfo
         XCTAssertGreaterThan(cities.count, 0)
     }
     
     func testLatitudeLongitudeNotZeroZero() throws {
         wait(for: [expected], timeout: 5)
-        guard let cities = sut.cityInfo?.cities  else {
-            XCTAssertNotNil(sut.cityInfo)
-            return
-        }
-        for city in cities {
-            let zeroZero = city.latitude.getLatLongAsDouble() == 0 && city.longitude.getLatLongAsDouble() == 0 ? true : false
-            XCTAssertNotEqual(zeroZero, true)
+        let cities = sut.subCityInfo
+        for group in cities {
+            for city in group.cities {
+                let zeroZero = city.latitude.getLatLongAsDouble() == 0 && city.longitude.getLatLongAsDouble() == 0 ? true : false
+                XCTAssertNotEqual(zeroZero, true)
+            }
+            
         }
     }
     
     func testLatitudeInRange() throws {
         wait(for: [expected], timeout: 5)
-        guard let cities = sut.cityInfo?.cities  else {
-            XCTAssertNotNil(sut.cityInfo)
-            return
-        }
-        for city in cities {
-            let outOfRange = city.latitude.getLatLongAsDouble() >= -90 && city.latitude.getLatLongAsDouble() <= 90 ? false : true
-            XCTAssertNotEqual(outOfRange, true)
+        let cities = sut.subCityInfo
+        for group in cities {
+            for city in group.cities {
+                let outOfRange = city.latitude.getLatLongAsDouble() >= -90 && city.latitude.getLatLongAsDouble() <= 90 ? false : true
+                XCTAssertNotEqual(outOfRange, true)
+            }
+
         }
     }
     
     func testLongitudeInRange() throws {
         wait(for: [expected], timeout: 5)
-        guard let cities = sut.cityInfo?.cities  else {
-            XCTAssertNotNil(sut.cityInfo)
-            return
-        }
-        for city in cities {
-            let outOfRange = city.longitude.getLatLongAsDouble() >= -180 && city.longitude.getLatLongAsDouble() <= 180 ? false : true
-            XCTAssertNotEqual(outOfRange, true)
+        let cities = sut.subCityInfo
+        for group in cities {
+            for city in group.cities {
+                let outOfRange = city.longitude.getLatLongAsDouble() >= -180 && city.longitude.getLatLongAsDouble() <= 180 ? false : true
+                XCTAssertNotEqual(outOfRange, true)
+            }
+            
         }
     }
 

@@ -81,10 +81,10 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
         }
          */
         
-        DispatchQueue.global().async {
+        DispatchQueue.global().async { [weak self] in
             for i in 0..<13 {
                 let decoder = JSONDecoder()
-                if let citiesPath = Bundle(for: type(of: self)).url(forResource: "world-cities-" + String(i), withExtension: "json") {
+                if let self = self, let citiesPath = Bundle(for: type(of: self)).url(forResource: "world-cities-" + String(i), withExtension: "json") {
                     do {
                         let cities = try String(contentsOf: citiesPath)
                         if let data = cities.data(using: .utf8) {
@@ -105,6 +105,11 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
                 } else {
                     print("no bundle url")
                 }
+            }
+            if let citiesParsedCompletionHandler = self?.citiesParsedCompletionHandler
+            {
+                citiesParsedCompletionHandler()
+                self?.citiesParsedCompletionHandler = nil
             }
             
         }
