@@ -8,33 +8,35 @@
 import XCTest
 
 final class ChartRoomUITesting: XCTestCase {
+    var app: XCUIApplication!
 
     override func setUpWithError() throws {
-
-        // In UI tests it is usually best to stop immediately when a failure occurs.
+        app = XCUIApplication()
         continueAfterFailure = false
-
-        // In UI tests it’s important to set the initial state - such as interface orientation - required for your tests before they run. The setUp method is a good place to do this.
+        app.launch()
+        let chartTab = app.tabBars["Tab Bar"].buttons["Charts"]
+        chartTab.tap()
     }
 
     override func tearDownWithError() throws {
         
     }
 
-    func testExample() throws {
-        // UI tests must launch the application that they test.
-        let app = XCUIApplication()
-        app.launch()
-
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testNameVsTimeNow() throws {
+        let elementsQuery = app.scrollViews.otherElements
+        let elementsQuery2 = elementsQuery.scrollViews.otherElements
+        let timeNow = elementsQuery.staticTexts["Time Now"]
+        let johnas = elementsQuery2.staticTexts["Johnas"]
+        let edit = elementsQuery2.buttons["Edit"]
+        let transitsButton = app.buttons["Transits"]
+        
+        timeNow.tap()
+        XCTAssertFalse(edit.exists)
+        XCTAssertFalse(transitsButton.exists)
+        johnas.tap()
+        XCTAssertTrue(transitsButton.exists)
+        XCTAssertTrue(edit.exists)
     }
 
-    func testLaunchPerformance() throws {
-        if #available(macOS 10.15, iOS 13.0, tvOS 13.0, watchOS 7.0, *) {
-            // This measures how long it takes to launch your application.
-            measure(metrics: [XCTApplicationLaunchMetric()]) {
-                XCUIApplication().launch()
-            }
-        }
-    }
+    
 }
