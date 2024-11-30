@@ -37,6 +37,39 @@ final class ChartRoomUITesting: XCTestCase {
         XCTAssertTrue(transitsButton.exists)
         XCTAssertTrue(edit.exists)
     }
-
     
+    
+    func testSettingsGoesBackToChartRoom() throws {
+        let settingsButton = app.buttons["Chart Settings"]
+        let chartRoomButton = app.buttons["<Chart Room"]
+        let elementsQuery = app.scrollViews.otherElements
+        let timeNow = elementsQuery.staticTexts["Time Now"]
+        settingsButton.tap()
+        XCTAssertTrue(chartRoomButton.exists)
+        chartRoomButton.tap()
+        XCTAssertTrue(timeNow.exists)
+                
+    }
+    
+    func testResourcesGoesBackToChartRoom() throws {
+        let resourcesButton = app.buttons["Resources"]
+        let chartRoomButton = app.buttons["<Chart Room"]
+        let elementsQuery = app.scrollViews.otherElements
+        let timeNow = elementsQuery.staticTexts["Time Now"]
+        resourcesButton.tap()
+        XCTAssertTrue(chartRoomButton.exists)
+        chartRoomButton.tap()
+        XCTAssertTrue(timeNow.exists)
+    }
+    
+    func testPartnerGoesBackToChartRoom() throws {
+        let partnerButton = app.buttons["Partner"]
+        let chartRoomButton = app.buttons["<Chart Room"]
+        let elementsQuery = app.scrollViews.otherElements
+        let timeNow = elementsQuery.staticTexts["Time Now"]
+        partnerButton.tap()
+        XCTAssertTrue(chartRoomButton.exists)
+        chartRoomButton.tap()
+        XCTAssertTrue(timeNow.exists)
+    }
 }
