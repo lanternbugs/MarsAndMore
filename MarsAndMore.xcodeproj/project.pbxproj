@@ -363,6 +363,7 @@
 		76620A9D27AC7C51009094DC /* RoomState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */; };
 		76620A9E27AC7C51009094DC /* RoomState+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */; };
 		7664B8802CEEA11A00CDCD0E /* ChartRoomUITesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7664B87F2CEEA11A00CDCD0E /* ChartRoomUITesting.swift */; };
+		76651DF12CFB7A8300301ABF /* MarsRoomUITesting.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76651DF02CFB7A8300301ABF /* MarsRoomUITesting.swift */; };
 		76664B3027CC4B2A002A4235 /* Environment+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */; };
 		76664B3127CC4B2A002A4235 /* Environment+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */; };
 		7667125427D00D7F00644429 /* TransitsButtonControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7667125327D00D7F00644429 /* TransitsButtonControl.swift */; };
@@ -808,6 +809,7 @@
 		76620A9A27AC79D8009094DC /* AstroReadingModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AstroReadingModel.swift; sourceTree = "<group>"; };
 		76620A9C27AC7C51009094DC /* RoomState+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "RoomState+Extensions.swift"; sourceTree = "<group>"; };
 		7664B87F2CEEA11A00CDCD0E /* ChartRoomUITesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChartRoomUITesting.swift; sourceTree = "<group>"; };
+		76651DF02CFB7A8300301ABF /* MarsRoomUITesting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarsRoomUITesting.swift; sourceTree = "<group>"; };
 		76664B2F27CC4B2A002A4235 /* Environment+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Environment+Extensions.swift"; sourceTree = "<group>"; };
 		7667125327D00D7F00644429 /* TransitsButtonControl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitsButtonControl.swift; sourceTree = "<group>"; };
 		7667C4542888A96400D4DF06 /* opportunity-manifest.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = "opportunity-manifest.json"; sourceTree = "<group>"; };
@@ -1055,6 +1057,7 @@
 				76E6FFD6287A19090057825F /* AstrobotUnitTesting.swift */,
 				762214802880955300E0FC65 /* CitiesInfoUnitTesting.swift */,
 				7664B87F2CEEA11A00CDCD0E /* ChartRoomUITesting.swift */,
+				76651DF02CFB7A8300301ABF /* MarsRoomUITesting.swift */,
 			);
 			path = "Tests iOS";
 			sourceTree = "<group>";
@@ -2234,6 +2237,7 @@
 				76930BAD2B7ACF3B0033D957 /* TransitsView.swift in Sources */,
 				76930BAE2B7ACF3B0033D957 /* WheelChartView.swift in Sources */,
 				76617BB12CB456D3008A2892 /* EditLocationDataViewModel.swift in Sources */,
+				76651DF12CFB7A8300301ABF /* MarsRoomUITesting.swift in Sources */,
 				76930B772B7ACEB50033D957 /* NatalChartDrawingView.swift in Sources */,
 				76930B782B7ACEB50033D957 /* TransitChartDrawingView.swift in Sources */,
 				76930B792B7ACEB50033D957 /* ChartViewModel.swift in Sources */,
