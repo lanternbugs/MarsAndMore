@@ -25,7 +25,7 @@ struct WheelChartView: View {
         ScrollView {
             
                 HStack {
-#if os(iOS)
+
                     if manager.chartDataSymbols {
                         Button(action:  { manager.chartDataSymbols = false }) {
                                                 Text("Text")
@@ -35,21 +35,11 @@ struct WheelChartView: View {
                                                 Text("Symbols")
                                             }.padding(.leading)
                                         }
-#endif
+
                     Spacer()
                     Text(viewModel.chartName)
                     Spacer()
-#if os(macOS)
-                    if manager.chartWheelColorType == .Light {
-                                            Button(action:  { manager.chartWheelColorType = .Dark }) {
-                                                Text("Dark Chart")
-                                            }
-                                        } else {
-                                            Button(action:  { manager.chartWheelColorType = .Light }) {
-                                                Text("Light Chart")
-                                            }
-                                        }
-#elseif os(iOS)
+
                     if manager.chartWheelColorType == .Light {
                                             Button(action:  { manager.chartWheelColorType = .Dark }) {
                                                 Text("Dark Chart")
@@ -59,7 +49,7 @@ struct WheelChartView: View {
                                                 Text("Light Chart")
                                             }.padding(.top)
                                         }
-#endif
+
                 }
                 if manager.chartWheelColorType == .Light {
 #if os(macOS)
