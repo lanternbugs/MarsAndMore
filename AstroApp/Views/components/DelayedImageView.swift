@@ -16,7 +16,9 @@ import SwiftUI
 
 struct DelayedImageView: View {
     @ObservedObject var binder = DownloadImageBinder()
+    var imageName = ""
     init(url: URL, key: PhotoKey?) {
+        imageName = getNameFromURL(url: url)
         binder.load(url: url, key: key)
     }
     var body: some View {
@@ -35,13 +37,39 @@ struct DelayedImageView: View {
             } else {
                 HStack {
                     Spacer()
-                    Image("placeholder", bundle: nil).imageModifierFitScreen()
+                    if let placeImage = getPlaceholderImage() {
+#if os(macOS)
+                Image(nsImage: placeImage)
+                    .imageModifierFitScreen()
+                    
+#elseif os(iOS)
+                Image(uiImage: placeImage)
+                    .imageModifierFitScreen()
+#endif
+                    } else {
+                        Image("placeholder", bundle: nil).imageModifierFitScreen()
+                    }
+                    
                     Spacer()
                 }
             }
                     
         }.onAppear {  }
                 
+    }
+    
+    func getPlaceholderImage() -> UIImage? {
+        return UIImage(named: imageName)
+    }
+    
+    func getNameFromURL(url: URL) -> String {
+        let fileName = url.relativeString.lowercased()
+        let fileArray = fileName.components(separatedBy: "/")
+        let finalFileName = fileArray.last
+        if let finalFileName = finalFileName {
+            return finalFileName
+        }
+        return "none"
     }
 }
 
