@@ -77,10 +77,6 @@ extension ArtDataManager {
             }
         }
         
-        if SpaceDataManager.artSaving {
-            dateChange = true
-        }
-        
         if !SpaceDataManager.checkAllDataExists(type: .MarsArt, enity: ImageEnities.Met.rawValue) || dateChange {
             
             tempMarsArtData.removeAll()
@@ -89,14 +85,7 @@ extension ArtDataManager {
                 marsArtData = loadArtResponse(type: .MarsArt)
                 loadMarsArt(objects: getRandomArtObjects(objects: marsObjects))
             } else {
-                if !SpaceDataManager.artSaving {
-                    loadMarsArt(objects: getRandomArtObjects(objects: marsObjects))
-                } else {
-                    print("mars objects count \(marsObjects.count)")
-                    loadSelectArt(from: marsObjects)
-                }
-                
-                
+                loadMarsArt(objects: getRandomArtObjects(objects: marsObjects)) 
             }
             
         } else {
