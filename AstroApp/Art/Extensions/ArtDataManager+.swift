@@ -69,11 +69,16 @@ extension ArtDataManager {
     
     func loadMarsArt()
     {
+        
         var dateChange = false
         if let date = SpaceDataManager.getSaveDateOrNil(type: .MarsArt, enity: ImageEnities.Met.rawValue) {
             if date != SpaceDataManager.getDateInYYYYMMDD() {
                 dateChange = true
             }
+        }
+        
+        if SpaceDataManager.artSaving {
+            dateChange = true
         }
         
         if !SpaceDataManager.checkAllDataExists(type: .MarsArt, enity: ImageEnities.Met.rawValue) || dateChange {
@@ -84,7 +89,14 @@ extension ArtDataManager {
                 marsArtData = loadArtResponse(type: .MarsArt)
                 loadMarsArt(objects: getRandomArtObjects(objects: marsObjects))
             } else {
-                loadMarsArt(objects: getRandomArtObjects(objects: marsObjects))
+                if !SpaceDataManager.artSaving {
+                    loadMarsArt(objects: getRandomArtObjects(objects: marsObjects))
+                } else {
+                    print("mars objects count \(marsObjects.count)")
+                    loadSelectArt(from: marsObjects)
+                }
+                
+                
             }
             
         } else {

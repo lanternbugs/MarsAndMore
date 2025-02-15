@@ -29,6 +29,7 @@ class SpaceDataManager: ObservableObject
     var spiritManifest: RoverManifest?
     #if DEBUG
     static let saveMode = false
+    static let  artSaving = false
     let maxSaveQuerries = 10
     var photosSaved = 0
     let semaphor = DispatchSemaphore(value: 1)
@@ -314,7 +315,10 @@ class SpaceDataManager: ObservableObject
         
     }
     static func saveNasaPhotoToFile(image: NSImage, url: URL) {
-        let fileName = url.relativeString
+        var fileName = url.relativeString
+        if SpaceDataManager.artSaving {
+            fileName = fileName.lowercased()
+        }
         let fileArray = fileName.components(separatedBy: "/")
         let finalFileName = fileArray.last
         if let finalFileName = finalFileName {
@@ -327,24 +331,41 @@ class SpaceDataManager: ObservableObject
             let cgImage = image.cgImage(forProposedRect: nil, context: nil, hints: nil)!
             let bitmapRep = NSBitmapImageRep(cgImage: cgImage)
         let options: [NSBitmapImageRep.PropertyKey: Any] = [
-            .compressionFactor: 0.4
+            .compressionFactor: SpaceDataManager.artSaving  ? 0 : 0.4 // mars photoes used .4
                 ]
             let jpegData = bitmapRep.representation(using: NSBitmapImageRep.FileType.jpeg, properties: options)!
             return jpegData
         }
     static func saveToDisk(image: NSImage, path: String) {
         if #available(macOS 13.0, *) {
+            
+            let imageSize = image.size
+            let newImage = resizeImage(image: image, w: Int(imageSize.width) / 2, h: Int(imageSize.height) / 2)
 
-            let data = jpegDataFrom(image: image)
+            let data = jpegDataFrom(image: SpaceDataManager.artSaving  ? newImage : image)
             let archiveURL = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
             let url = archiveURL.appending(path: path)
             do {
                 try data.write(to: url)
+                print(url.absoluteString)
                 // ~/Library/Containers/mike.MarsAndMore/Data/Documents/
             } catch  {
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    static func resizeImage(image: NSImage, w: Int, h: Int) -> NSImage {
+        if !SpaceDataManager.artSaving  {
+            return image
+        }
+        let destSize = NSMakeSize(CGFloat(w), CGFloat(h))
+        let newImage = NSImage(size: destSize)
+        newImage.lockFocus()
+        image.draw(in: NSMakeRect(0, 0, destSize.width, destSize.height), from: NSMakeRect(0, 0, image.size.width, image.size.height), operation: NSCompositingOperation.copy, fraction: CGFloat(1))
+        newImage.unlockFocus()
+        newImage.size = destSize
+        return newImage // return NSImage(data: newImage.tiffRepresentation!)!
     }
     #endif
 #endif
