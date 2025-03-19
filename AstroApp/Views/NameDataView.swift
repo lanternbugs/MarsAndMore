@@ -191,7 +191,7 @@ struct NameDataView: View {
             
             Spacer()
         }.onAppear {
-            /*
+            
             if let city = manager.builder.cityData {
                 DispatchQueue.global().async {
                     let location = CLLocation(latitude: city.latitude.getLatLongAsDouble(), longitude: city.longitude.getLatLongAsDouble())
@@ -199,11 +199,17 @@ struct NameDataView: View {
                     geoCoder.reverseGeocodeLocation(location) { (placemarks, err) in
                          if let placemark = placemarks?[0] {
                             print(placemark.timeZone?.abbreviation() ?? "unknown time zone")
+                             if let zone = placemark.timeZone {
+                                 manager.setCityUtcOffset(zone)
+                                 if let offset = manager.cityUtcOffset {
+                                     print("city utc offset i.e. seconds from gmt is \(offset)")
+                                 }
+                             }
+                             
                          }
                     }
                 }
             }
-            */
         }
     }
 }

@@ -46,6 +46,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     var calculationSettings: CalculationSettings {
         CalculationSettings(tropical: tropical, siderealSystem: siderealSystem, houseSystem: houseSystem.getHouseCode())
     }
+    var cityUtcOffset: Double?
     
     init() {
         self.initializeDefaultBodiesToShow()

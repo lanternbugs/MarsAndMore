@@ -17,6 +17,11 @@ import CoreData
 //Mark: Core Data functions around Birthdates
 extension BirthDataManager {
     
+    func setCityUtcOffset(_ zone: TimeZone) {
+        var date = Date()
+        cityUtcOffset = Double(zone.secondsFromGMT(for: date))   
+    }
+    
     func addBirthData(data: BirthData) {
         birthDates.append(data)
         addPersonToPersistentStorage(with: data)
