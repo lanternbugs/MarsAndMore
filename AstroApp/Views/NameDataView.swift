@@ -95,16 +95,8 @@ struct NameDataView: View {
             if manager.userExactTimeSelection {
                 if manager.userUTCTimeSelection {
                     Text("UTC time used.").font(.headline)
-                    if let data = manager.builder.cityData, let tz = manager.cityUtcOffset {
-                        Text("Time Zone info for \(data.city)")
-                        if tz.0 >= 0 {
-                            Text("Time Zone Now \(tz.1), GMT Offset: +\(tz.0 / 3600)")
-                        } else {
-                            Text("Time Zone Now \(tz.1), GMT Offset: \(tz.0 / 3600)")
-                        }
-                    }
                 } else {
-                    Text("Local time used. Adjust time as needed.").font(.headline)
+                    Text("Your local time used. Adjust time as needed.").font(.headline)
                 }
                 
                 Toggle("UTC Time", isOn: $manager.userUTCTimeSelection)
@@ -181,7 +173,15 @@ struct NameDataView: View {
                         }
                         Spacer()
                     }
-                    Text("Edit changes user data not global city data")
+                    Text("Edit changes user data not global city data").padding(.bottom)
+                    if let data = manager.builder.cityData, let tz = manager.cityUtcOffset {
+                        Text("Time Zone info for \(data.city)")
+                        if tz.0 >= 0 {
+                            Text("Time Zone Now \(tz.1), GMT Offset: +\(tz.0 / 3600)")
+                        } else {
+                            Text("Time Zone Now \(tz.1), GMT Offset: \(tz.0 / 3600)")
+                        }
+                    }
                 }
             }
             if let error = birthDataError {
@@ -206,11 +206,11 @@ struct NameDataView: View {
                     let geoCoder = CLGeocoder()
                     geoCoder.reverseGeocodeLocation(location) { (placemarks, err) in
                          if let placemark = placemarks?[0] {
-                            print(placemark.timeZone?.abbreviation() ?? "unknown time zone")
+                            //print(placemark.timeZone?.abbreviation() ?? "unknown time zone")
                              if let zone = placemark.timeZone {
                                  manager.setCityUtcOffset(zone)
                                  if let offset = manager.cityUtcOffset {
-                                     print("city utc offset is \(offset.0) and tz is \(offset.1)")
+                                     //print("city utc offset is \(offset.0) and tz is \(offset.1)")
                                  }
                              }
                              
