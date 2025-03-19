@@ -95,6 +95,14 @@ struct NameDataView: View {
             if manager.userExactTimeSelection {
                 if manager.userUTCTimeSelection {
                     Text("UTC time used.").font(.headline)
+                    if let data = manager.builder.cityData, let tz = manager.cityUtcOffset {
+                        Text("Time Zone info for \(data.city)")
+                        if tz.0 >= 0 {
+                            Text("Time Zone Now \(tz.1), GMT Offset: +\(tz.0 / 3600)")
+                        } else {
+                            Text("Time Zone Now \(tz.1), GMT Offset: \(tz.0 / 3600)")
+                        }
+                    }
                 } else {
                     Text("Local time used. Adjust time as needed.").font(.headline)
                 }

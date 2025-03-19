@@ -18,10 +18,11 @@ import CoreData
 extension BirthDataManager {
     
     func setCityUtcOffset(_ zone: TimeZone) {
-        var date = Date()
+        cityUtcOffset = nil
+        let date = Date()
         if let abreviation = zone.abbreviation() {
             cityUtcOffset = (Double(zone.secondsFromGMT(for: date)), abreviation)
-        } 
+        }
     }
     
     func addBirthData(data: BirthData) {
