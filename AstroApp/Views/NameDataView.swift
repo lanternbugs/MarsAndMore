@@ -202,7 +202,7 @@ struct NameDataView: View {
                              if let zone = placemark.timeZone {
                                  manager.setCityUtcOffset(zone)
                                  if let offset = manager.cityUtcOffset {
-                                     print("city utc offset i.e. seconds from gmt is \(offset)")
+                                     print("city utc offset is \(offset.0) and tz is \(offset.1)")
                                  }
                              }
                              

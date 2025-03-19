@@ -19,7 +19,9 @@ extension BirthDataManager {
     
     func setCityUtcOffset(_ zone: TimeZone) {
         var date = Date()
-        cityUtcOffset = Double(zone.secondsFromGMT(for: date))   
+        if let abreviation = zone.abbreviation() {
+            cityUtcOffset = (Double(zone.secondsFromGMT(for: date)), abreviation)
+        } 
     }
     
     func addBirthData(data: BirthData) {
