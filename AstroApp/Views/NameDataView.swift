@@ -68,129 +68,38 @@ struct NameDataView: View {
                 }
                 
             }
-            if !manager.userExactTimeSelection {
+            if manager.userUTCTimeSelection {
                 DatePicker(
                   "Birthdate",
                   selection: $manager.userDateSelection,
-                  displayedComponents: .date
+                  displayedComponents: [.date, .hourAndMinute]
                 ).datePickerStyle(DefaultDatePickerStyle())
+                    .environment(\.timeZone, TimeZone(secondsFromGMT: 0)!)
             } else {
-                if manager.userUTCTimeSelection {
-                    DatePicker(
-                      "Birthdate",
-                      selection: $manager.userDateSelection,
-                      displayedComponents: [.date, .hourAndMinute]
-                    ).datePickerStyle(DefaultDatePickerStyle())
-                        .environment(\.timeZone, TimeZone(secondsFromGMT: 0)!)
-                } else {
-                    DatePicker(
-                      "Birthdate",
-                      selection: $manager.userDateSelection,
-                      displayedComponents: [.date, .hourAndMinute]
-                    ).datePickerStyle(DefaultDatePickerStyle())
-                }
-                
+                DatePicker(
+                  "Birthdate",
+                  selection: $manager.userDateSelection,
+                  displayedComponents: [.date, .hourAndMinute]
+                ).datePickerStyle(DefaultDatePickerStyle())
             }
-            Toggle("Exact Time", isOn: $manager.userExactTimeSelection)
-            if manager.userExactTimeSelection {
-                if manager.userUTCTimeSelection {
-                    Text("UTC time used.").font(.headline)
-                } else {
-                    Text("Your local time used. Adjust time as needed.").font(.headline)
-                }
-                
-                Toggle("UTC Time", isOn: $manager.userUTCTimeSelection)
-                
-                HStack {
-                    if let locationData = manager.userLocationData {
-                        VStack {
-#if os(macOS)
-            if #available(macOS 12.0, *) {
-                Text("Location set to \(locationData.latitude) latitude and \(locationData.longitude) longitude").textSelection(.enabled).font(.subheadline).padding(.top)
+            
+            if manager.userUTCTimeSelection {
+                Text("UTC time used.").font(.headline)
+            } else {
+                Text("Your local time used. Adjust time as needed.").font(.headline)
             }
-            else {
-                Text("Location set to \(locationData.latitude) latitude and \(locationData.longitude) longitude").font(.subheadline).padding(.top)
-                }
-#else
-            if #available(iOS 15.0, *) {
-                Text("Location set to \(locationData.latitude) latitude and \(locationData.longitude) longitude").textSelection(.enabled).font(.subheadline).padding(.top)
-            }
-            else {
-                Text("Location set to \(locationData.latitude) latitude and \(locationData.longitude) longitude").font(.subheadline).padding(.top)
-                }
-#endif
-                            Button(action: {
-                                manager.builder.removeLocation()
-                                manager.userLocationData = nil
-                                
-                            }) {
-                                Text("Remove Location")
-                            }.padding(.bottom)
-                            HStack {
-                                Text("Advanced").font(.headline).padding(.leading)
-                                Button(action: {
-                                    roomState.wrappedValue = .EditLocation(onDismiss: roomState.wrappedValue, editingUserData: true)
-                                }) {
-                                    Text("Edit Coordinates")
-                                }
-                            }
-                            Text("Edit changes user data not global city data")
-                            
-                        }
-                        
-                    } else {
-                        if let _ = manager.builder.cityData {
-                            Text("Change City").font(.subheadline)
-                        } else {
-                            Text("Add a birth city to calculate Ascendant and Houses").font(.subheadline)
-                        }
-                        
-                        Button(action: {
-                            switch(roomState.wrappedValue) {
-                            case .EditName:
-                                roomState.wrappedValue = .UpdateCity
-                            default:
-                                roomState.wrappedValue = .Cities(onDismiss: dismissView)
-                            }
-                            
-                        }) {
-                            Text("+City")
-                        }
-                    }
-                    
-                }
-            }
-            if manager.userExactTimeSelection  {
-                if let city = manager.builder.cityData {
-                    HStack {
-                        Spacer()
-                        Text("\(city.city)").font(.headline).padding()
-                        Text("Advanced").font(.headline).padding(.leading)
-                        Button(action: {
-                            roomState.wrappedValue = .EditLocation(onDismiss: roomState.wrappedValue, editingUserData: false)
-                        }) {
-                            Text("Edit Coordinates")
-                        }
-                        Spacer()
-                    }
-                    Text("Edit changes user data not global city data").padding(.bottom)
-                    if let data = manager.builder.cityData, let tz = manager.cityUtcOffset {
-                        Text("Time Zone info for \(data.city)")
-                        if tz.0 >= 0 {
-                            Text("Time Zone \(tz.1), Suggested GMT Offset: +\(tz.0 / 3600)")
-                        } else {
-                            Text("Time Zone \(tz.1), Suggested GMT Offset: \(tz.0 / 3600)")
-                        }
-                    }
-                }
-            }
+            
+            Toggle("UTC Time", isOn: $manager.userUTCTimeSelection)
+            
+            
+            
             if let error = birthDataError {
                 HStack {
                     Text(error)
                     Spacer()
                 }
             }
-            
+            NameDataLocationView(dismissView: dismissView)
             Button(action: {
                 submitBirthData()
             }) {
@@ -227,7 +136,7 @@ extension NameDataView {
         if let location = manager.userLocationData {
             manager.builder.addLocation(location)
         }
-               manager.builder.addNameDate(manager.userNameSelection, birthdate: CalendarDate(birthDate: manager.userDateSelection, exactTime: manager.userExactTimeSelection))
+        manager.builder.addNameDate(manager.userNameSelection, birthdate: CalendarDate(birthDate: manager.userDateSelection, exactTime: true))
 
                 do {
                     let birthData = try manager.builder.build(mode: roomState.wrappedValue)

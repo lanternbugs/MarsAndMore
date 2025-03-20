@@ -21,7 +21,6 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @Published var userNameSelection: String = ""
     @Published var userDateSelection: Date = Date(timeIntervalSince1970: 0)
     var compositeDate = Date()
-    @Published var userExactTimeSelection: Bool = true
     @AppStorage("showMinorAspectTransitTimes") var showMinorAspectTransitTimes: Bool = true
     @AppStorage("utcTimeChoice") var userUTCTimeSelection: Bool = false
     @AppStorage("houseSystem") var houseSystem: HouseSystem = HouseSystem.Placidus
@@ -151,7 +150,6 @@ extension BirthDataManager {
     
     func resetSpecificUserData() {
         userNameSelection = ""
-        userExactTimeSelection = true
         userLocationData = nil
         builder.removeLocation()
     }
