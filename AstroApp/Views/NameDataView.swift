@@ -68,7 +68,15 @@ struct NameDataView: View {
                 }
                 
             }
-            if manager.userUTCTimeSelection {
+            if let data = manager.cityUtcOffset, manager.useSelectedUTCOffset {
+                DatePicker(
+                  "Birthdate",
+                  selection: $manager.userDateSelection,
+                  displayedComponents: [.date, .hourAndMinute]
+                ).datePickerStyle(DefaultDatePickerStyle())
+                    .environment(\.timeZone, TimeZone(secondsFromGMT: Int(data.0))!)
+            }
+            else if manager.userUTCTimeSelection {
                 DatePicker(
                   "Birthdate",
                   selection: $manager.userDateSelection,
@@ -82,14 +90,39 @@ struct NameDataView: View {
                   displayedComponents: [.date, .hourAndMinute]
                 ).datePickerStyle(DefaultDatePickerStyle())
             }
-            
-            if manager.userUTCTimeSelection {
-                Text("UTC time used.").font(.headline)
+            if let utcInfo = manager.cityUtcOffset {
+                if manager.useSelectedUTCOffset {
+                    if utcInfo.0 >= 0 {
+                        Text("UTC offset of +\(utcInfo.1) used")
+                    } else {
+                        Text("UTC offset of \(utcInfo.1) used")
+                    }
+                }
+                else if manager.userUTCTimeSelection {
+                    Text("UTC time used.").font(.headline)
+                } else {
+                    Text("Your local time used. Adjust time as needed.").font(.headline)
+                }
+                if utcInfo.0 >= 0 {
+                    Toggle("Use offset +\(utcInfo.1)", isOn: $manager.useSelectedUTCOffset)
+                } else {
+                    Toggle("Use offset \(utcInfo.1)", isOn: $manager.useSelectedUTCOffset)
+                }
+                if !manager.useSelectedUTCOffset {
+                    Toggle("UTC Time", isOn: $manager.userUTCTimeSelection)
+                }
+                
             } else {
-                Text("Your local time used. Adjust time as needed.").font(.headline)
+                if manager.userUTCTimeSelection {
+                    Text("UTC time used.").font(.headline)
+                } else {
+                    Text("Your local time used. Adjust time as needed.").font(.headline)
+                }
+                
+                
+                Toggle("UTC Time", isOn: $manager.userUTCTimeSelection)
             }
             
-            Toggle("UTC Time", isOn: $manager.userUTCTimeSelection)
             
             
             
@@ -126,6 +159,7 @@ struct NameDataView: View {
                             //print(placemark.timeZone?.abbreviation() ?? "unknown time zone")
                              if let zone = placemark.timeZone {
                                  manager.setCityUtcOffset(zone)
+                                 manager.useSelectedUTCOffset = false
                                  if let offset = manager.cityUtcOffset {
                                      //print("city utc offset is \(offset.0) and tz is \(offset.1)")
                                  }
@@ -133,6 +167,8 @@ struct NameDataView: View {
                          }
                     }
                 }
+            } else {
+                manager.cityUtcOffset = nil
             }
         }
     }

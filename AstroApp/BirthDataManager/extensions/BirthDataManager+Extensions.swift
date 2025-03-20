@@ -22,7 +22,7 @@ extension BirthDataManager {
         let date = userDateSelection
         if let abreviation = zone.abbreviation() {
             DispatchQueue.main.async { [weak self] in
-                self?.cityUtcOffset = (Double(zone.secondsFromGMT(for: date)), abreviation)
+                self?.cityUtcOffset = (Double(zone.secondsFromGMT(for: date)), String(format: "%.2f", Double(zone.secondsFromGMT(for: date) / 3600)))
             }
         }
     }
