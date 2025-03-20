@@ -50,7 +50,13 @@ struct NameDataLocationView: View {
                         }
                     }
                     Text("Edit changes user data not global city data")
-                    
+                    if let tz = manager.cityUtcOffset, manager.userUTCTimeSelection {
+                        if tz.0 >= 0 {
+                            Text("Suggested GMT Offset: +\(tz.0 / 3600)")
+                        } else {
+                            Text("Suggested GMT Offset: \(tz.0 / 3600)")
+                        }
+                    }
                 }
                 
             } else {
@@ -88,12 +94,12 @@ struct NameDataLocationView: View {
                 Spacer()
             }
             Text("Edit changes user data not global city data").padding(.bottom)
-            if let data = manager.builder.cityData, let tz = manager.cityUtcOffset {
-                Text("Time Zone info for \(data.city)")
+            if let data = manager.builder.cityData, let tz = manager.cityUtcOffset, manager.userUTCTimeSelection {
+                Text("GMT offset info for \(data.city)")
                 if tz.0 >= 0 {
-                    Text("Time Zone \(tz.1), Suggested GMT Offset: +\(tz.0 / 3600)")
+                    Text("Suggested GMT Offset: +\(tz.0 / 3600)")
                 } else {
-                    Text("Time Zone \(tz.1), Suggested GMT Offset: \(tz.0 / 3600)")
+                    Text("Suggested GMT Offset: \(tz.0 / 3600)")
                 }
             }
         }

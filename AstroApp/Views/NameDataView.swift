@@ -108,10 +108,18 @@ struct NameDataView: View {
             
             Spacer()
         }.onAppear {
-            
-            if let city = manager.builder.cityData {
+            var lat: Double?
+            var long: Double?
+            if let locationData = manager.userLocationData {
+                lat = locationData.latitude.getLatLongAsDouble()
+                long = locationData.longitude.getLatLongAsDouble()
+            } else if let city = manager.builder.cityData {
+                lat = city.latitude.getLatLongAsDouble()
+                long = city.longitude.getLatLongAsDouble()
+            }
+            if let latitude = lat, let longitude = long {
                 DispatchQueue.global().async {
-                    let location = CLLocation(latitude: city.latitude.getLatLongAsDouble(), longitude: city.longitude.getLatLongAsDouble())
+                    let location = CLLocation(latitude: latitude, longitude: longitude)
                     let geoCoder = CLGeocoder()
                     geoCoder.reverseGeocodeLocation(location) { (placemarks, err) in
                          if let placemark = placemarks?[0] {
@@ -122,7 +130,6 @@ struct NameDataView: View {
                                      //print("city utc offset is \(offset.0) and tz is \(offset.1)")
                                  }
                              }
-                             
                          }
                     }
                 }
