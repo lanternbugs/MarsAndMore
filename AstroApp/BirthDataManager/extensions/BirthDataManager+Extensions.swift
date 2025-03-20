@@ -21,7 +21,9 @@ extension BirthDataManager {
         cityUtcOffset = nil
         let date = Date()
         if let abreviation = zone.abbreviation() {
-            cityUtcOffset = (Double(zone.secondsFromGMT(for: date)), abreviation)
+            DispatchQueue.main.async { [weak self] in
+                self?.cityUtcOffset = (Double(zone.secondsFromGMT(for: date)), abreviation)
+            }
         }
     }
     
