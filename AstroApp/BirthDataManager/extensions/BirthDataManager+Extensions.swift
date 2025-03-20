@@ -19,7 +19,7 @@ extension BirthDataManager {
     
     func setCityUtcOffset(_ zone: TimeZone) {
         cityUtcOffset = nil
-        let date = Date()
+        let date = userDateSelection
         if let abreviation = zone.abbreviation() {
             DispatchQueue.main.async { [weak self] in
                 self?.cityUtcOffset = (Double(zone.secondsFromGMT(for: date)), abreviation)

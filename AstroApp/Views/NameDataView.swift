@@ -177,9 +177,9 @@ struct NameDataView: View {
                     if let data = manager.builder.cityData, let tz = manager.cityUtcOffset {
                         Text("Time Zone info for \(data.city)")
                         if tz.0 >= 0 {
-                            Text("Time Zone Now \(tz.1), GMT Offset: +\(tz.0 / 3600)")
+                            Text("Time Zone \(tz.1), Suggested GMT Offset: +\(tz.0 / 3600)")
                         } else {
-                            Text("Time Zone Now \(tz.1), GMT Offset: \(tz.0 / 3600)")
+                            Text("Time Zone \(tz.1), Suggested GMT Offset: \(tz.0 / 3600)")
                         }
                     }
                 }
