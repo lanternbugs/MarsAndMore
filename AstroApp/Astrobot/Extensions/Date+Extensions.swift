@@ -85,16 +85,7 @@ extension Date {
     
     func getMonthYearDateNoTime() -> String {
         let formatter = DateFormatter()
-#if os(macOS)
         formatter.dateFormat = "MMMM YYYY"
-#elseif os(iOS)
-    if idiom == .pad {
-        formatter.dateFormat = "MMMM YYYY"
-        
-    } else {
-        formatter.dateFormat = "MM-YYYY"
-    }
-#endif
         let monthYear = formatter.string(from: self)
         return monthYear
     }
