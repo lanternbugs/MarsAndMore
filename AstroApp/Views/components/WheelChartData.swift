@@ -73,6 +73,10 @@ struct WheelChartData: View {
                     WheelChartHouseListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.aspectsData, houses: viewModel.secondaryHouseData, chart: viewModel.chart, title: "", houseSystem: manager.houseSystem))
                 }
             }
+            else if viewModel.chart == .Transit {
+                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.aspectsData, houses: viewModel.secondaryHouseData, chart: viewModel.chart, title: viewModel.name2, houseSystem: manager.houseSystem))
+                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: viewModel.name1, houseSystem: manager.houseSystem)) 
+            }
             Text("")
             if viewModel.showIndividualCompositeData {
                 IndividualCompositeDataView(viewModel: viewModel)
