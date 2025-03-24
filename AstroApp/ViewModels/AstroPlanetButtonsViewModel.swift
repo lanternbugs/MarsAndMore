@@ -184,6 +184,8 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         viewModel.name2 = dateFormater.string(from: transitDate)
         viewModel.name1 = manager.getCurrentName()
         viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), manager.getSelectionLocation(), secondTime: transitDate.getAstroTime())
+        viewModel.personOneAspectsData = populateAspectsData(manager.getSelectionTime(), manager.getSelectionLocation())
+        viewModel.personTwoAspectsData = populateAspectsData(transitDate.getAstroTime(), nil)
         viewModel.houseData = populateHouseData(manager.getSelectionTime(), manager.getSelectionLocation())
         viewModel.planetData = populatePlanetsData(manager.getSelectionTime(), manager.getSelectionLocation())
         viewModel.secondaryPlanetData = populatePlanetsData(transitDate.getAstroTime(), nil)

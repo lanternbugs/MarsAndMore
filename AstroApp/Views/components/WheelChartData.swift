@@ -75,7 +75,21 @@ struct WheelChartData: View {
             }
             else if viewModel.chart == .Transit {
                 WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.aspectsData, houses: viewModel.secondaryHouseData, chart: viewModel.chart, title: viewModel.name2, houseSystem: manager.houseSystem))
-                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: viewModel.name1, houseSystem: manager.houseSystem)) 
+                if !viewModel.personTwoAspectsData.isEmpty {
+                    WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.personTwoAspectsData, houses: viewModel.secondaryHouseData, chart: .Natal, title: "Aspects", houseSystem: manager.houseSystem), major: true)
+                    
+                    if manager.showMinorAspects {
+                        WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.personTwoAspectsData, houses: viewModel.secondaryHouseData, chart: .Natal, title: "Aspects", houseSystem: manager.houseSystem), major: false)
+                    }
+                }
+                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: viewModel.name1, houseSystem: manager.houseSystem))
+                if !viewModel.personOneAspectsData.isEmpty {
+                    WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.personOneAspectsData, houses: viewModel.houseData, chart: .Natal, title: "Aspects", houseSystem: manager.houseSystem), major: true)
+                    
+                    if manager.showMinorAspects {
+                        WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.personOneAspectsData, houses: viewModel.houseData, chart: .Natal, title: "Aspects", houseSystem: manager.houseSystem), major: false)
+                    }
+                }
             }
             Text("")
             if viewModel.showIndividualCompositeData {
