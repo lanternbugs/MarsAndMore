@@ -45,7 +45,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     var calculationSettings: CalculationSettings {
         CalculationSettings(tropical: tropical, siderealSystem: siderealSystem, houseSystem: houseSystem.getHouseCode())
     }
-    @Published var cityUtcOffset: (Double, String)?
+    @Published var cityUtcOffset: (Double, (String, String))?
     @Published var useSelectedUTCOffset: Bool = false
     
     init() {

@@ -21,7 +21,7 @@ extension BirthDataManager {
         cityUtcOffset = nil
         let date = userDateSelection
         DispatchQueue.main.async { [weak self] in
-            self?.cityUtcOffset = (Double(zone.secondsFromGMT(for: date)), String(format: "%.2f", Double(zone.secondsFromGMT(for: date) / 3600)))
+            self?.cityUtcOffset = (Double(zone.secondsFromGMT(for: date)), (String(format: "%.2f", Double(zone.secondsFromGMT(for: date) / 3600)), date.getMonthYearDateNoTime()))
         }
     }
     

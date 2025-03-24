@@ -93,9 +93,13 @@ struct NameDataView: View {
             if let utcInfo = manager.cityUtcOffset {
                 if manager.useSelectedUTCOffset {
                     if utcInfo.0 >= 0 {
-                        Text("UTC offset of +\(utcInfo.1) used")
+                        Text("UTC offset of +\(utcInfo.1.0) used").font(Font.headline.weight(.bold))
                     } else {
-                        Text("UTC offset of \(utcInfo.1) used")
+                            Text("UTC offset of \(utcInfo.1.0) used").font(Font.headline.weight(.bold))
+                    }
+                    if let _ = manager.builder.cityData {
+                        Text("offset calculated for \(utcInfo.1.1)")
+                        Text("Re-pick city to update offset")
                     }
                 }
                 else if manager.userUTCTimeSelection {
@@ -104,9 +108,9 @@ struct NameDataView: View {
                     Text("Your local time used. Adjust time as needed.").font(.headline)
                 }
                 if utcInfo.0 >= 0 {
-                    Toggle("Use offset +\(utcInfo.1)", isOn: $manager.useSelectedUTCOffset)
+                    Toggle("Use offset +\(utcInfo.1.0)", isOn: $manager.useSelectedUTCOffset)
                 } else {
-                    Toggle("Use offset \(utcInfo.1)", isOn: $manager.useSelectedUTCOffset)
+                    Toggle("Use offset \(utcInfo.1.0)", isOn: $manager.useSelectedUTCOffset)
                 }
                 if !manager.useSelectedUTCOffset {
                     Toggle("UTC Time", isOn: $manager.userUTCTimeSelection)
