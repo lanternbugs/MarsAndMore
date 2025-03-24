@@ -145,6 +145,9 @@ struct NameDataView: View {
             
             Spacer()
         }.onAppear {
+            if roomState.wrappedValue == .Names(onDismiss: .Chart) {
+                manager.userDateSelection = Date(timeIntervalSince1970: manager.defaultBirthInterval)
+            }
             var lat: Double?
             var long: Double?
             if let locationData = manager.userLocationData {
