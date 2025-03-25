@@ -20,7 +20,9 @@ extension BirthDataManager {
     func setCityUtcOffset(_ zone: TimeZone) {
         cityUtcOffset = nil
         let date = userDateSelection
-        let stringDate = date.getMonthYearDateNoTime()
+        let components = Calendar.current.dateComponents([.year, .month], from: date)
+        let startOfMonthDate = Calendar.current.date(from: components)!
+        let stringDate = startOfMonthDate.getMonthYearDateNoTime()
         DispatchQueue.main.async { [weak self] in
             self?.cityUtcOffset = (Double(zone.secondsFromGMT(for: date)), (String(format: "%.2f", Double(zone.secondsFromGMT(for: date) / 3600)), stringDate))
         }
