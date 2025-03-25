@@ -108,6 +108,7 @@ extension NamesView {
     }
     
     func addName() {
+        manager.userDateSelection = Date(timeIntervalSince1970: manager.defaultBirthInterval)
         roomState.wrappedValue = .Names(onDismiss: .Chart)
     }
 }
