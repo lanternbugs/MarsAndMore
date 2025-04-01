@@ -18,6 +18,7 @@ struct CitiesView: View {
     @State private var city = ""
     @Environment(\.roomState) private var roomState
     var dismissView: RoomState = .Chart
+    @State var didTap = false
     var displayCities: [City] {
         if city == "" {
             if !manager.subCityInfo.isEmpty
@@ -86,6 +87,11 @@ struct CitiesView: View {
                     Spacer()
                 }.gesture(TapGesture().onEnded {
                     withAnimation(.easeIn, {
+                        if didTap {
+                            return
+                        } else {
+                            didTap = true
+                        }
                         switch(roomState.wrappedValue) {
                         case .PlanetsCity:
                             manager.planetsLocationData = LocationData(latitude: city.latitude, longitude: city.longitude)
