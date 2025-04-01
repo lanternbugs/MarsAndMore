@@ -161,7 +161,7 @@ struct TransitFinder {
     func getNewSign(start: Double, end: Double, changeDegree: Double) -> Signs {
      
         if end > start || end < 5.0 {
-            return changeDegree.getAstroSign()
+            return end.getAstroSign()
         }
         if changeDegree.getAstroSign() == .Aries {
             return .Pisces
