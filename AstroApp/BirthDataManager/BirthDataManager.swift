@@ -105,7 +105,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
                         print("failed to read file")
                     }
                 } else {
-                    print("no bundle url")
+                    //print("no bundle url")
                 }
             }
             if let citiesParsedCompletionHandler = self?.citiesParsedCompletionHandler

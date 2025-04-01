@@ -41,6 +41,8 @@ class SynastryChooserViewModel: AstrobotInterface {
         viewModel.name2 = selectedNameTwo
         viewModel.planetData = getPlanetData(data: data1)
         viewModel.aspectsData = getAspectsData(data: data1, data2: data2)
+        viewModel.personOneAspectsData = populateAspectsData(data1.getAstroTime(), data1.location)
+        viewModel.personTwoAspectsData = populateAspectsData(data2.getAstroTime(), data2.location)
         viewModel.houseData = getHouseData(data: data1)
         
         viewModel.secondaryPlanetData = getPlanetData(data: data2)
