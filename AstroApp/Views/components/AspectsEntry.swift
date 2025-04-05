@@ -47,33 +47,33 @@ struct AspectsEntry: View {
         
 #if os(macOS)
             if #available(macOS 12.0, *) {
-                Text(majorDisplayString).textSelection(.enabled).padding([.top,.bottom])
+                Text(majorDisplayString).textSelection(.enabled).padding([.bottom])
                 if manager.showMinorAspects {
                     Text("Minor").font(.headline)
-                    Text(minorDisplayString).textSelection(.enabled).padding([.top,.bottom])
+                    Text(minorDisplayString).textSelection(.enabled).padding([.bottom])
                 }
             }
             else {
-                Text(majorDisplayString).padding([.top,.bottom])
+                Text(majorDisplayString).padding([.bottom])
                 if manager.showMinorAspects {
                     Text("Minor").font(.headline)
-                    Text(minorDisplayString).padding([.top,.bottom])
+                    Text(minorDisplayString).padding([.bottom])
                 }
             }
         
 #else
             if #available(iOS 15.0, *) {
-                Text(majorDisplayString).textSelection(.enabled).padding([.top,.bottom])
+                Text(majorDisplayString).textSelection(.enabled).padding([.bottom])
                 if manager.showMinorAspects {
                     Text("Minor").font(.headline)
-                    Text(minorDisplayString).textSelection(.enabled).padding([.top,.bottom])
+                    Text(minorDisplayString).textSelection(.enabled).padding([.bottom])
                 }
             }
             else {
-                Text(majorDisplayString).padding([.top,.bottom])
+                Text(majorDisplayString).padding([.bottom])
                 if manager.showMinorAspects {
                     Text("Minor").font(.headline)
-                    Text(minorDisplayString).padding([.top,.bottom])
+                    Text(minorDisplayString).padding([.bottom])
                 }
             }
 #endif
