@@ -68,8 +68,8 @@ class SynastryChooserViewModel: AstrobotInterface {
         dateFormater.locale   = Locale(identifier: "en_US_POSIX")
         dateFormater.dateFormat = "YY/MM/dd h:m"
         let viewModel = ChartViewModel(model: WheelChartModel(chartName: data1.name + " + " + data2.name + " + " + dateFormater.string(from: transitDate), chart: .Transit, manager: manager))
-        viewModel.name1 = selectedNameOne
-        viewModel.name2 = selectedNameTwo
+        viewModel.name2 = dateFormater.string(from: transitDate)
+        viewModel.name1 = selectedNameOne + " + " + selectedNameTwo
         guard let compositeModel = getCompositeChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) else {
             return nil
         }
