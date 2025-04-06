@@ -50,30 +50,30 @@ struct AspectsEntry: View {
                 Text(majorDisplayString).textSelection(.enabled)
                 if manager.showMinorAspects {
                     Text("Minor").font(.headline)
-                    Text(minorDisplayString).textSelection(.enabled).padding([.bottom])
+                    Text(minorDisplayString).textSelection(.enabled)
                 }
             }
             else {
-                Text(majorDisplayString).padding([.bottom])
+                Text(majorDisplayString)
                 if manager.showMinorAspects {
                     Text("Minor").font(.headline)
-                    Text(minorDisplayString).padding([.bottom])
+                    Text(minorDisplayString)
                 }
             }
         
 #else
             if #available(iOS 15.0, *) {
-                Text(majorDisplayString).textSelection(.enabled).padding([.bottom])
+                Text(majorDisplayString).textSelection(.enabled)
                 if manager.showMinorAspects {
                     Text("Minor").font(.headline)
-                    Text(minorDisplayString).textSelection(.enabled).padding([.bottom])
+                    Text(minorDisplayString).textSelection(.enabled)
                 }
             }
             else {
-                Text(majorDisplayString).padding([.bottom])
+                Text(majorDisplayString)
                 if manager.showMinorAspects {
                     Text("Minor").font(.headline)
-                    Text(minorDisplayString).padding([.bottom])
+                    Text(minorDisplayString)
                 }
             }
 #endif
