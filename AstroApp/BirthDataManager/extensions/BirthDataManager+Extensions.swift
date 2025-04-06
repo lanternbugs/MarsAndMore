@@ -129,7 +129,7 @@ extension BirthDataManager {
             if let birthDates =  try context.fetch(fetchRequest) as? [BirthDates] {
                 let dates = birthDates.sorted {
                     if let name1 = $0.name, let name2 = $1.name {
-                        return name2 > name1
+                        return name2.lowercased() > name1.lowercased()
                     }
                     return true
                 }
