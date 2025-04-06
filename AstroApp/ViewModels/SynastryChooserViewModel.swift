@@ -83,6 +83,8 @@ class SynastryChooserViewModel: AstrobotInterface {
         viewModel.houseData = compositeModel.houseData
         viewModel.planetData = compositeModel.planetData
         viewModel.secondaryPlanetData = populatePlanetsData(transitDate.getAstroTime(), nil)
+        viewModel.personOneAspectsData = compositeModel.aspectsData
+        viewModel.personTwoAspectsData = populateAspectsData(transitDate.getAstroTime(), nil)
         return viewModel
         
     }
