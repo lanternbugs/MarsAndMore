@@ -479,7 +479,7 @@ class ChartViewModel {
             
 #endif
             
-            if lastPrintingDegree != -Int.max && abs((lastPrintingDegree - Int(printDegree))) < Int(seperation) {
+            /*if lastPrintingDegree != -Int.max && abs((lastPrintingDegree - Int(printDegree))) < Int(seperation) {
                 if i == 1 && printingStack.count < 2 {
                     printDegree = Double((lastPrintingDegree - Int(seperation)))
                 } else if i == 1 && abs(printingStack[printingStack.count - 2] - (lastPrintingDegree + Int(seperation))) > 2  {
@@ -490,12 +490,28 @@ class ChartViewModel {
                 
             } else {
                 printDegree = trueDegree
-            }
+            }*/
+            printDegree = trueDegree
             lastPrintingDegree = Int(printDegree)
             printingStack.append(lastPrintingDegree)
             upperPrintingQueue.append(((printDegree, upperPrintingQueue.count), .regular))
+            justifyUpperPrintingQueue(seperation: seperation)
             i += 1
             
+        }
+    }
+    
+    func justifyUpperPrintingQueue(seperation: Double) {
+        if upperPrintingQueue.count < 2 {
+            return
+        }
+        for i in 0..<upperPrintingQueue.count - 1 {
+            let j = upperPrintingQueue.count - 2 - i
+            if (upperPrintingQueue[j].0.0 + seperation) > upperPrintingQueue[j + 1].0.0 {
+                upperPrintingQueue[j].0.0 = upperPrintingQueue[j + 1].0.0 - seperation
+            } else {
+                break
+            }
         }
     }
     
@@ -515,7 +531,7 @@ class ChartViewModel {
             
 #endif
             
-            if secondaryLastPrintingDegree != -Int.max && abs((secondaryLastPrintingDegree - Int(printDegree))) < Int(seperation) {
+            /*if secondaryLastPrintingDegree != -Int.max && abs((secondaryLastPrintingDegree - Int(printDegree))) < Int(seperation) {
                 if i == 1 && secondaryPrintingStack.count < 2 {
                     printDegree = Double((secondaryLastPrintingDegree - Int(seperation)))
                 } else if i == 1 && abs(secondaryPrintingStack[secondaryPrintingStack.count - 2] - (secondaryLastPrintingDegree + Int(seperation))) > 2  {
@@ -526,14 +542,32 @@ class ChartViewModel {
                 
             } else {
                 printDegree = trueDegree
-            }
+            }*/
+            printDegree = trueDegree
             secondaryLastPrintingDegree = Int(printDegree)
             secondaryPrintingStack.append(secondaryLastPrintingDegree)
             lowerPrintingQueue.append(((printDegree, lowerPrintingQueue.count), .regular))
             i += 1
+            justifyLowerPrintingQueue(seperation: seperation)
         }
         
     }
+    
+    func justifyLowerPrintingQueue(seperation: Double) {
+        if lowerPrintingQueue.count < 2 {
+            return
+        }
+        for i in 0..<lowerPrintingQueue.count - 1 {
+            let j = lowerPrintingQueue.count - 2 - i
+            if (lowerPrintingQueue[j].0.0 + seperation) > lowerPrintingQueue[j + 1].0.0 {
+                lowerPrintingQueue[j].0.0 = lowerPrintingQueue[j + 1].0.0 - seperation
+            } else {
+                break
+            }
+        }
+    }
+    
+    
     
     func computeNatalSeperation(_ planetArray: [PlanetCell], _ trueDegree: Double) {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
@@ -551,7 +585,7 @@ class ChartViewModel {
             
 #endif
             
-            if lastPrintingDegree != -Int.max && abs((lastPrintingDegree - Int(printDegree))) < Int(seperation) {
+            /*if lastPrintingDegree != -Int.max && abs((lastPrintingDegree - Int(printDegree))) < Int(seperation) {
                 if i == 1 && printingStack.count < 2 {
                     printDegree = Double((lastPrintingDegree - Int(seperation)))
                 } else if i == 1 && abs(printingStack[printingStack.count - 2] - (lastPrintingDegree + Int(seperation))) > 2  {
@@ -562,14 +596,30 @@ class ChartViewModel {
                 
             } else {
                 printDegree = trueDegree
-            }
+            }*/
+            printDegree = trueDegree
             lastPrintingDegree = Int(printDegree)
             printingStack.append(lastPrintingDegree)
             natalPrintingQueue.append(((printDegree, natalPrintingQueue.count), .regular))
+            justifyNatalPrintingQueue(seperation: seperation)
             
             i += 1
         }
         
+    }
+    
+    func justifyNatalPrintingQueue(seperation: Double) {
+        if natalPrintingQueue.count < 2 {
+            return
+        }
+        for i in 0..<natalPrintingQueue.count - 1 {
+            let j = natalPrintingQueue.count - 2 - i
+            if (natalPrintingQueue[j].0.0 + seperation) > natalPrintingQueue[j + 1].0.0 {
+                natalPrintingQueue[j].0.0 = natalPrintingQueue[j + 1].0.0 - seperation
+            } else {
+                break
+            }
+        }
     }
     
     func computeNatalPrintingQueue() {
