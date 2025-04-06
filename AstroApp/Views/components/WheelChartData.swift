@@ -104,6 +104,9 @@ struct WheelChartData: View {
                         WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.personOneAspectsData, houses: viewModel.houseData, chart: .Natal, title: "Aspects", houseSystem: manager.houseSystem), major: false)
                     }
                 }
+                if !viewModel.houseData.isEmpty {
+                    WheelChartHouseListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: "Houses", houseSystem: manager.houseSystem))
+                }
             }
             Text("")
             if viewModel.showIndividualCompositeData {
