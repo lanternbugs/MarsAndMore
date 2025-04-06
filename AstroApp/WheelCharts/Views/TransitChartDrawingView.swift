@@ -101,7 +101,7 @@ extension TransitChartDrawingView {
     }
     
     func drawUpperPlanetListing(_ planetArray: [PlanetCell], _ trueDegree: Double) {
-        let sortedArray = planetArray.sorted(by: {$0.numericDegree > $1.numericDegree })
+        let sortedArray = planetArray.sorted(by: {$0.numericDegree < $1.numericDegree })
         var fontSize = 12.0
         let spreadInfo = viewModel.getUpperWheelSpread()
         let spread = spreadInfo.0
