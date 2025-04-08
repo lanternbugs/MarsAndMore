@@ -471,26 +471,13 @@ class ChartViewModel {
                 continue
             }
             var printDegree = trueDegree
-            var seperation = 3.0
+            var seperation = 4.5
 #if os(iOS)
             if idiom != .pad {
-                seperation = 4.0
+                seperation = 5.6
             }
             
 #endif
-            
-            /*if lastPrintingDegree != -Int.max && abs((lastPrintingDegree - Int(printDegree))) < Int(seperation) {
-                if i == 1 && printingStack.count < 2 {
-                    printDegree = Double((lastPrintingDegree - Int(seperation)))
-                } else if i == 1 && abs(printingStack[printingStack.count - 2] - (lastPrintingDegree + Int(seperation))) > 2  {
-                    printDegree = Double((lastPrintingDegree - Int(seperation)))
-                } else {
-                    printDegree = Double((lastPrintingDegree + Int(seperation + 1.0)))
-                }
-                
-            } else {
-                printDegree = trueDegree
-            }*/
             printDegree = trueDegree
             lastPrintingDegree = Int(printDegree)
             printingStack.append(lastPrintingDegree)
@@ -523,26 +510,13 @@ class ChartViewModel {
                 continue
             }
             var printDegree = trueDegree
-            var seperation = 3.0
+            var seperation = 4.5
 #if os(iOS)
             if idiom != .pad {
-                seperation = 5
+                seperation = 5.6
             }
             
 #endif
-            
-            /*if secondaryLastPrintingDegree != -Int.max && abs((secondaryLastPrintingDegree - Int(printDegree))) < Int(seperation) {
-                if i == 1 && secondaryPrintingStack.count < 2 {
-                    printDegree = Double((secondaryLastPrintingDegree - Int(seperation)))
-                } else if i == 1 && abs(secondaryPrintingStack[secondaryPrintingStack.count - 2] - (secondaryLastPrintingDegree + Int(seperation))) > 2  {
-                    printDegree = Double((secondaryLastPrintingDegree - Int(seperation)))
-                } else {
-                    printDegree = Double((secondaryLastPrintingDegree + Int(seperation + 1.5)))
-                }
-                
-            } else {
-                printDegree = trueDegree
-            }*/
             printDegree = trueDegree
             secondaryLastPrintingDegree = Int(printDegree)
             secondaryPrintingStack.append(secondaryLastPrintingDegree)
@@ -577,26 +551,13 @@ class ChartViewModel {
                 continue
             }
             var printDegree = trueDegree
-            var seperation = 3.0
+            var seperation = 4.5
 #if os(iOS)
             if idiom != .pad {
-                seperation = 4.0
+                seperation = 5.6
             }
             
 #endif
-            
-            /*if lastPrintingDegree != -Int.max && abs((lastPrintingDegree - Int(printDegree))) < Int(seperation) {
-                if i == 1 && printingStack.count < 2 {
-                    printDegree = Double((lastPrintingDegree - Int(seperation)))
-                } else if i == 1 && abs(printingStack[printingStack.count - 2] - (lastPrintingDegree + Int(seperation))) > 2  {
-                    printDegree = Double((lastPrintingDegree - Int(seperation)))
-                } else {
-                    printDegree = Double((lastPrintingDegree + Int(seperation + 1.0)))
-                }
-                
-            } else {
-                printDegree = trueDegree
-            }*/
             printDegree = trueDegree
             lastPrintingDegree = Int(printDegree)
             printingStack.append(lastPrintingDegree)
@@ -643,7 +604,7 @@ class ChartViewModel {
         
         natalPrintingQueue = fixPrintDegreeSeperation(inputQueue: natalPrintingQueue)
         natalPrintingQueue = computePrintingSizes(queue: natalPrintingQueue)
-        natalPrintingQueue = enforceMinimumSeperation(inputQueue: natalPrintingQueue)
+        //natalPrintingQueue = enforceMinimumSeperation(inputQueue: natalPrintingQueue)
     }
     
     func computePrintingQueues() {
@@ -681,8 +642,8 @@ class ChartViewModel {
         lowerPrintingQueue = fixPrintDegreeSeperation(inputQueue: lowerPrintingQueue)
         upperPrintingQueue = computePrintingSizes(queue: upperPrintingQueue)
         lowerPrintingQueue = computePrintingSizes(queue: lowerPrintingQueue)
-        lowerPrintingQueue = enforceMinimumSeperation(inputQueue: lowerPrintingQueue)
-        upperPrintingQueue = enforceMinimumSeperation(inputQueue: upperPrintingQueue)
+        //lowerPrintingQueue = enforceMinimumSeperation(inputQueue: lowerPrintingQueue)
+        //upperPrintingQueue = enforceMinimumSeperation(inputQueue: upperPrintingQueue)
         
     }
     
@@ -831,7 +792,7 @@ class ChartViewModel {
             }
             
             queue1 = queue1.sorted(by: { $0.0.1 < $1.0.1 })
-            var qFirst = queue1[0].0.0
+            /*var qFirst = queue1[0].0.0
             var qLast = queue1[queue1.count - 1].0.0
             if qLast > qFirst + 360.0 {
                 qFirst += 360.0
@@ -841,6 +802,7 @@ class ChartViewModel {
                     queue1 = queue1.sorted(by: { $0.0.1 < $1.0.1 })
                 }
             }
+            */
             return queue1
         }
         return inputQueue
