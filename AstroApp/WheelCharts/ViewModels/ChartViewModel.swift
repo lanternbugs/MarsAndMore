@@ -829,7 +829,19 @@ class ChartViewModel {
                     fixes += 1
                 }
             }
-            return queue1.sorted(by: { $0.0.1 < $1.0.1 })
+            
+            queue1 = queue1.sorted(by: { $0.0.1 < $1.0.1 })
+            var qFirst = queue1[0].0.0
+            var qLast = queue1[queue1.count - 1].0.0
+            if qLast > qFirst + 360.0 {
+                qFirst += 360.0
+                if qLast - qFirst < desiredSpace && qLast - qFirst > 0 {
+                    let space = desiredSpace - (qFirst - qLast)
+                    queue1[0].0.0 += space
+                    queue1 = queue1.sorted(by: { $0.0.1 < $1.0.1 })
+                }
+            }
+            return queue1
         }
         return inputQueue
         
