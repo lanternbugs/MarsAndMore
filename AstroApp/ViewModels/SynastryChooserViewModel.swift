@@ -47,6 +47,7 @@ class SynastryChooserViewModel: AstrobotInterface {
         
         viewModel.secondaryPlanetData = getPlanetData(data: data2)
         viewModel.secondaryHouseData = getHouseData(data: data2)
+        viewModel.houseSystemName = manager.houseSystem.rawValue
         name1 = selectedNameOne
         name2 = selectedNameTwo
         return viewModel
@@ -81,6 +82,7 @@ class SynastryChooserViewModel: AstrobotInterface {
             viewModel.aspectsData = [TransitCell]()
         }
         viewModel.houseData = compositeModel.houseData
+        viewModel.houseSystemName = manager.houseSystem.rawValue
         viewModel.planetData = compositeModel.planetData
         viewModel.secondaryPlanetData = populatePlanetsData(transitDate.getAstroTime(), nil)
         viewModel.personOneAspectsData = compositeModel.aspectsData
@@ -141,6 +143,7 @@ class SynastryChooserViewModel: AstrobotInterface {
         
         let houseDataOne = getHouseData(data: data1)
         let houseDataTwo = getHouseData(data: data2)
+        viewModel.houseSystemName = manager.houseSystem.rawValue
         viewModel.personOneHouseData = houseDataOne
         viewModel.personTwoHouseData = houseDataTwo
         viewModel.houseData = getMidPointHouseData(dataOne: houseDataOne, dataTwo: houseDataTwo)

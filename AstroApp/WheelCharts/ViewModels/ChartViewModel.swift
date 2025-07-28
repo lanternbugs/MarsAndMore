@@ -30,6 +30,14 @@ class ChartViewModel {
     var chartName: String {
         model.chartName
     }
+    var houseSystemName: String {
+        get {
+            model.houseSystemName
+        }
+        set(newValue) {
+            model.houseSystemName = newValue
+        }
+    }
     var showIndividualCompositeData: Bool {
         get {
             model.showIndividualCompositeData
