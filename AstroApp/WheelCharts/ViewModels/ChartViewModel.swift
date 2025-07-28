@@ -38,6 +38,14 @@ class ChartViewModel {
             model.houseSystemName = newValue
         }
     }
+    var tropical: Bool {
+        get {
+            model.tropical
+        }
+        set(newValue) {
+            model.tropical = newValue
+        }
+    }
     var showIndividualCompositeData: Bool {
         get {
             model.showIndividualCompositeData

@@ -18,13 +18,14 @@ import SwiftUI
 struct WheelChartPlanetListing: View {
     let viewModel: WheelChartDataViewModel
     @EnvironmentObject var manager:BirthDataManager
+    let tropical: Bool
     var body: some View {
         HStack {
             Spacer()
             Text(viewModel.chartTitle).font(.title2)
             Spacer()
         }
-        if !manager.tropical {
+        if !tropical {
             HStack {
 #if os(macOS)
         if #available(macOS 12.0, *) {
@@ -85,5 +86,5 @@ struct WheelChartPlanetListing: View {
 }
 
 #Preview {
-    WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: [PlanetCell](), aspects: [TransitCell](), houses: [HouseCell](), chart: .Natal, title: "chart", houseSystem: HouseSystem.Placidus))
+    WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: [PlanetCell](), aspects: [TransitCell](), houses: [HouseCell](), chart: .Natal, title: "chart", houseSystem: HouseSystem.Placidus), tropical: true)
 }

@@ -47,7 +47,7 @@ struct WheelChartData: View {
         }
         VStack {
             if viewModel.chart == .Natal {
-                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: .Natal, title: "Planets", houseSystem: manager.houseSystem))
+                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: .Natal, title: "Planets", houseSystem: manager.houseSystem), tropical: viewModel.tropical)
                 if !viewModel.houseData.isEmpty {
                     WheelChartHouseListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: .Natal, title: viewModel.houseSystemName + " Houses", houseSystem: manager.houseSystem))
                 }
@@ -62,7 +62,7 @@ struct WheelChartData: View {
             }
 
             if viewModel.chart == .Synastry {
-                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: viewModel.name1, houseSystem: manager.houseSystem))
+                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: viewModel.name1, houseSystem: manager.houseSystem), tropical: viewModel.tropical)
                 if !viewModel.houseData.isEmpty {
                     Text("")
                     WheelChartHouseListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: viewModel.houseSystemName + " Houses", houseSystem: manager.houseSystem))
@@ -74,7 +74,7 @@ struct WheelChartData: View {
                         WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.personOneAspectsData, houses: viewModel.houseData, chart: .Natal, title: "Aspects", houseSystem: manager.houseSystem), major: false)
                     }
                 }
-                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.aspectsData, houses: viewModel.secondaryHouseData, chart: viewModel.chart, title: viewModel.name2, houseSystem: manager.houseSystem))
+                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.aspectsData, houses: viewModel.secondaryHouseData, chart: viewModel.chart, title: viewModel.name2, houseSystem: manager.houseSystem), tropical: viewModel.tropical)
                 if !viewModel.secondaryHouseData.isEmpty {
                     Text("")
                     WheelChartHouseListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.aspectsData, houses: viewModel.secondaryHouseData, chart: viewModel.chart, title: viewModel.houseSystemName + " Houses", houseSystem: manager.houseSystem))
@@ -88,7 +88,7 @@ struct WheelChartData: View {
                 }
             }
             else if viewModel.chart == .Transit {
-                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.aspectsData, houses: viewModel.secondaryHouseData, chart: viewModel.chart, title: viewModel.name2, houseSystem: manager.houseSystem))
+                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.aspectsData, houses: viewModel.secondaryHouseData, chart: viewModel.chart, title: viewModel.name2, houseSystem: manager.houseSystem), tropical: viewModel.tropical)
                 if !viewModel.personTwoAspectsData.isEmpty {
                     WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.personTwoAspectsData, houses: viewModel.secondaryHouseData, chart: .Natal, title: "Aspects", houseSystem: manager.houseSystem), major: true)
                     
@@ -96,7 +96,7 @@ struct WheelChartData: View {
                         WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.personTwoAspectsData, houses: viewModel.secondaryHouseData, chart: .Natal, title: "Aspects", houseSystem: manager.houseSystem), major: false)
                     }
                 }
-                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: viewModel.name1, houseSystem: manager.houseSystem))
+                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.aspectsData, houses: viewModel.houseData, chart: viewModel.chart, title: viewModel.name1, houseSystem: manager.houseSystem), tropical: viewModel.tropical)
                 if !viewModel.personOneAspectsData.isEmpty {
                     WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.planetData, aspects: viewModel.personOneAspectsData, houses: viewModel.houseData, chart: .Natal, title: "Aspects", houseSystem: manager.houseSystem), major: true)
                     

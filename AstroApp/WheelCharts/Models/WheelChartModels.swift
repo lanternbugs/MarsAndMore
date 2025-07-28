@@ -9,6 +9,7 @@ import Foundation
 class WheelChartModel {
     let chartName: String
     var houseSystemName = ""
+    var tropical = true
     var name1 = ""
     var name2 = ""
     var showIndividualCompositeData = false
