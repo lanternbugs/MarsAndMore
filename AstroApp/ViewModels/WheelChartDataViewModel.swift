@@ -272,4 +272,18 @@ class WheelChartDataViewModel {
         }
         return false
     }
+    
+    func getNakshatra() -> String {
+        for cell in planetData {
+            if cell.planet == .Moon {
+                let degree = cell.numericDegree
+                let naka = Int(degree / 13.3333333)
+                if naka >= 0 && naka < nakshatras.count {
+                    return nakshatras[naka]
+                }
+            }
+        }
+        return "none"
+        
+    }
 }

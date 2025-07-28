@@ -24,6 +24,26 @@ struct WheelChartPlanetListing: View {
             Text(viewModel.chartTitle).font(.title2)
             Spacer()
         }
+        if !manager.tropical {
+            HStack {
+#if os(macOS)
+        if #available(macOS 12.0, *) {
+            Text("Nakshatra " + viewModel.getNakshatra()).textSelection(.enabled).padding(.leading)
+        }
+        else {
+            Text("Nakshatra " + viewModel.getNakshatra()).padding(.leading)
+            }
+#else
+        if #available(iOS 15.0, *) {
+            Text("Nakshatra " + viewModel.getNakshatra()).textSelection(.enabled).padding(.leading)
+        }
+        else {
+            Text("Nakshatra " + viewModel.getNakshatra()).padding(.leading)
+            }
+#endif
+                Spacer()
+            }
+        }
         ForEach(viewModel.planetData.sorted(by: { if $0.planet == .MC && $1.planet == .Ascendant {
             return false
         } else if $0.planet == .Ascendant && $1.planet == .MC {
