@@ -55,7 +55,7 @@ struct TransitingPlanet {
 enum HouseCellType:String {
     case House, MC, ASC = "Asc"
 }
-struct HouseCell: AstroRowCell {
+struct HouseCell: AstroRowCell, Hashable {
     let degree: String
     let sign: Signs
     let house: Houses
