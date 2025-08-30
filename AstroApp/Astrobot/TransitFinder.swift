@@ -292,7 +292,7 @@ struct TransitFinder {
         let adapter = AdapterToEphemeris()
         var transitTimes = [TransitTime]()
         let natalDictionary = getNatalDictionary(transitTimeData)
-        let houseDictionary = getHouseDictionary(transitTimeData, manager: manager)
+        let houseArray = getHouseArray(transitTimeData)
         for planet in Planets.getPlanetsByOrbitalPeriod() {
             if planet == .MC || planet == .Ascendant || planet == .Vertex || !manager.bodiesToShow.contains(planet) {
                 continue
@@ -304,11 +304,11 @@ struct TransitFinder {
             TransitFinder.adapterCalls += 2
             // uncomment out to work on transits to houses code
             
-            let signChangeDegree = getHouseChangeDegree(planet, low: start_time, houseDictionary: houseDictionary)
-            if canMakeNatalAspect(planetDegree, with: signChangeDegree, aspect: .Conjunction, low: start_time, high: end_time) {
-                let time = findNatalAspect(planet, with: signChangeDegree, aspect: .Conjunction, low: start_time, high: end_time)
+            let houseChangeDegree = getHouseChangeDegree(planet, low: start_time, houseArray: houseArray)
+            if canMakeNatalAspect(planetDegree, with: houseChangeDegree, aspect: .Conjunction, low: start_time, high: end_time) {
+                let time = findNatalAspect(planet, with: houseChangeDegree, aspect: .Conjunction, low: start_time, high: end_time)
                 if time > 0 {
-                    let transitTime = TransitTime(planet: planet, planet2: planet, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil, house: getHouseNumber(signChangeDegree, houseDictionary))
+                    let transitTime = TransitTime(planet: planet, planet2: planet, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil, house: getHouseNumber(houseChangeDegree, houseArray))
                     transitTimes.append(transitTime)
                 }
                 
@@ -367,52 +367,52 @@ struct TransitFinder {
         return natalDictionary
     }
     
-    func getHouseNumber(_  degree: Double, _ houseDictionary: [HouseCell: Double]) -> Houses {
-        var house = Houses(rawValue: 1)!
-        for val in houseDictionary {
-            if val.key.numericDegree == degree {
-                return val.key.house
+    func getHouseNumber(_  degree: Double, _ houseArray: [(HouseCell, Double)]) -> Houses {
+        let house = Houses(rawValue: 1)!
+        for val in houseArray {
+            if val.0.numericDegree == degree {
+                return val.0.house
             }
         }
         return house
     }
     
-    func getHouseDictionary(_ transitTimeData: TransitTimeData, manager: BirthDataManager) -> [HouseCell: Double] {
+    func getHouseArray(_ transitTimeData: TransitTimeData) -> [(HouseCell, Double)] {
         let adapter = AdapterToEphemeris()
-        var houseDictionary = [HouseCell: Double]()
+        var houseArray = [(HouseCell, Double)]()
         if transitTimeData.location == nil {
-            return houseDictionary
+            return houseArray
         }
         
         for house in Houses.allCases {
             let val =  adapter.getHouse(transitTimeData.time, transitTimeData.location?.latitude.getLatLongAsDouble() ?? 0,  transitTimeData.location?.longitude.getLatLongAsDouble() ?? 0, Int32(house.rawValue),
-                                        manager.calculationSettings.houseSystem.utf8CString[0], transitTimeData.calculationSettings.tropical, Int32(transitTimeData.calculationSettings.siderealSystem.rawValue))
-            houseDictionary[HouseCell(degree: val.getAstroDegree(),sign: val.getAstroSign(),  house: house, numericDegree: val, type: .House)] =  val
+                                        transitTimeData.calculationSettings.houseSystem.utf8CString[0], transitTimeData.calculationSettings.tropical, Int32(transitTimeData.calculationSettings.siderealSystem.rawValue))
+            houseArray.append((HouseCell(degree: val.getAstroDegree(),sign: val.getAstroSign(),  house: house, numericDegree: val, type: .House),  val))
         }
-        return houseDictionary
+        return houseArray
     }
     
     
-    func getHouse(_ degree: Double, houseDictionary: [HouseCell : Double], retro: Bool) -> Double {
+    func getHouse(_ degree: Double, houseArray: [(HouseCell, Double)], retro: Bool) -> Double {
         
         // does not handle retrogrades yet
         var greater = false
         var i = 0
         if !retro {
-            for data in houseDictionary {
-                if degree >= data.key.numericDegree {
+            for data in houseArray {
+                if degree >= data.0.numericDegree {
                     greater = true
                 } else if greater == true {
-                  return data.key.numericDegree
+                  return data.0.numericDegree
                 }
                 i = i + 1
             }
         } else {
-            for data in houseDictionary {
-                if degree <= data.key.numericDegree {
+            for data in houseArray {
+                if degree <= data.0.numericDegree {
                     greater = true
                 } else if greater == true {
-                  return data.key.numericDegree
+                  return data.0.numericDegree
                 }
                 i = i + 1
             }
@@ -422,7 +422,7 @@ struct TransitFinder {
     }
     
     
-    func getHouseChangeDegree(_ planet: Planets, low: Double, houseDictionary: [HouseCell : Double]) -> Double {
+    func getHouseChangeDegree(_ planet: Planets, low: Double, houseArray: [(HouseCell, Double)]) -> Double {
         let adapter = AdapterToEphemeris()
         let planetDegree = adapter.getPlanetDegree(low, Int32(planet.getAstroIndex()), true, 0)
         let planetDegree2 = adapter.getPlanetDegree(low + 0.1, Int32(planet.getAstroIndex()), true, 0)
@@ -430,7 +430,7 @@ struct TransitFinder {
         if planet == .Sun || planet == .Moon {
             retro = false
         }
-        let changeDegree = getHouse(planetDegree, houseDictionary: houseDictionary, retro: retro)
+        let changeDegree = getHouse(planetDegree, houseArray: houseArray, retro: retro)
         
         return changeDegree
     }
