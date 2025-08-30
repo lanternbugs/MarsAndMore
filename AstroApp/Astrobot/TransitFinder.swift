@@ -44,7 +44,7 @@ struct TransitFinder {
         if canMakeNatalAspect(planetDegree, with: moonSignChangeDegree, aspect: .Conjunction, low: start_time, high: end_time) {
             let time = findNatalAspect(.Moon, with: moonSignChangeDegree, aspect: .Conjunction, low: start_time, high: end_time)
             if time > 0 {
-                let transitTime = TransitTime(planet: .Moon, planet2: .Moon, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: moonSignChangeDegree.getAstroSign())
+                let transitTime = TransitTime(planet: .Moon, planet2: .Moon, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: moonSignChangeDegree.getAstroSign(), house: nil)
                 transitTimes.append(transitTime)
             }
             
@@ -67,7 +67,7 @@ struct TransitFinder {
                         let time = findAspect(.Moon, with: planet, aspect: aspect, low: start_time, high: end_time)
                         if time > 0 {
                             if let transitTimeObject = adapter.convertSweDate(time) {
-                                let transitTime = TransitTime(planet: Planets.Moon, planet2: planet, aspect: aspect, time: transitTimeObject, start_time: start_time, end_time: end_time, sign: nil)
+                                let transitTime = TransitTime(planet: Planets.Moon, planet2: planet, aspect: aspect, time: transitTimeObject, start_time: start_time, end_time: end_time, sign: nil, house: nil)
                                 transitTimes.append(transitTime)
                             }
                         } else {
@@ -97,7 +97,7 @@ struct TransitFinder {
             if canMakeNatalAspect(planetDegree, with: signChangeDegree, aspect: .Conjunction, low: start_time, high: end_time) {
                 let time = findNatalAspect(planet, with: signChangeDegree, aspect: .Conjunction, low: start_time, high: end_time)
                 if time > 0 {
-                    let transitTime = TransitTime(planet: planet, planet2: planet, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: getNewSign(start: planetDegree.0, end: planetDegree.1, changeDegree: signChangeDegree))
+                    let transitTime = TransitTime(planet: planet, planet2: planet, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: getNewSign(start: planetDegree.0, end: planetDegree.1, changeDegree: signChangeDegree), house: nil)
                     transitTimes.append(transitTime)
                 }
                 
@@ -129,13 +129,13 @@ struct TransitFinder {
                             
                             let time = findAspect(planet, with: transitingPlanet, aspect: aspect, low: start_time, high: end_time)
                             if time > 0 {
-                                let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
+                                let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil, house: nil)
                                 transitTimes.append(transitTime)
                             } else {
                                 // a second check if the normally faster planet is now moving slower
                                 let time = findAspect(transitingPlanet, with: planet, aspect: aspect, low: start_time, high: end_time)
                                 if time > 0 {
-                                    let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
+                                    let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil, house: nil)
                                     transitTimes.append(transitTime)
                                 } else {
                                     //print("missed aspect with \(planet.getName()) and \(aspect.getName()) and \(transitingPlanet.getName())")
@@ -144,7 +144,7 @@ struct TransitFinder {
                         } else if canMakeAspect(planet2Degree, with: planetDegree, aspect: aspect, low: start_time, high: end_time)  {
                             let time = findAspect(transitingPlanet, with: planet, aspect: aspect, low: start_time, high: end_time)
                             if time > 0 {
-                                let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
+                                let transitTime = TransitTime(planet: planet, planet2: transitingPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil, house: nil)
                                 transitTimes.append(transitTime)
                             }
                         }
@@ -303,17 +303,16 @@ struct TransitFinder {
             planetDegree.1 = adapter.getPlanetDegree(end_time, Int32(planet.getAstroIndex()), true, 0)
             TransitFinder.adapterCalls += 2
             // uncomment out to work on transits to houses code
-            /*
+            
             let signChangeDegree = getHouseChangeDegree(planet, low: start_time, houseDictionary: houseDictionary)
             if canMakeNatalAspect(planetDegree, with: signChangeDegree, aspect: .Conjunction, low: start_time, high: end_time) {
                 let time = findNatalAspect(planet, with: signChangeDegree, aspect: .Conjunction, low: start_time, high: end_time)
                 if time > 0 {
-                    let transitTime = TransitTime(planet: planet, planet2: planet, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: getNewSign(start: planetDegree.0, end: planetDegree.1, changeDegree: signChangeDegree))
+                    let transitTime = TransitTime(planet: planet, planet2: planet, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil, house: getHouseNumber(signChangeDegree, houseDictionary))
                     transitTimes.append(transitTime)
                 }
                 
             }
-             */
             for natalPlanet  in Planets.allCases {
                 if !manager.bodiesToShow.contains(natalPlanet) {
                     continue
@@ -331,7 +330,7 @@ struct TransitFinder {
                         if canMakeNatalAspect(planetDegree, with: natalDegree, aspect: aspect, low: start_time, high: end_time) {
                             let time = findNatalAspect(planet, with: natalDegree, aspect: aspect, low: start_time, high: end_time)
                             if time > 0 {
-                                let transitTime = TransitTime(planet: planet, planet2: natalPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil)
+                                let transitTime = TransitTime(planet: planet, planet2: natalPlanet, aspect: aspect, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil, house: nil)
                                 transitTimes.append(transitTime)
                             } else {
                                // print("missed aspect with \(planet.getName()) and \(aspect.getName()) and \(natalPlanet.getName())")
@@ -366,6 +365,16 @@ struct TransitFinder {
             }
         }
         return natalDictionary
+    }
+    
+    func getHouseNumber(_  degree: Double, _ houseDictionary: [HouseCell: Double]) -> Houses {
+        var house = Houses(rawValue: 1)!
+        for val in houseDictionary {
+            if val.key.numericDegree == degree {
+                return val.key.house
+            }
+        }
+        return house
     }
     
     func getHouseDictionary(_ transitTimeData: TransitTimeData, manager: BirthDataManager) -> [HouseCell: Double] {

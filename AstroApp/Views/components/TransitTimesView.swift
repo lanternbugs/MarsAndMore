@@ -38,8 +38,8 @@ extension TransitTimesView {
     func printTransit(_ transit: TransitTime) -> some View {
         if viewModel.shouldShowTransit(transit) {
             let displayTime = viewModel.getDisplayTime(transit: transit)
-            var centerText = transit.sign != nil ? "Enters" : transit.aspect.getName()
-            var finalText = transit.sign != nil ? transit.sign!.getName() : transit.planet2.getName()
+            var centerText = transit.sign != nil || transit.house != nil ? "Enters" : transit.aspect.getName()
+            var finalText = transit.sign != nil ? transit.sign!.getName() : transit.house == nil ? transit.planet2.getName() : transit.house!.getHouseShortName()
             if shouldShowTransitModel.showTransitTimeSymbols {
                 if transit.sign != nil {
                     Text(" \(transit.planet.getAstroCharacter().0)").font(Font.custom(transit.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(centerText) ") + Text("\(transit.sign!.getAstroCharacter().0)").font(Font.custom(transit.sign!.getAstroCharacter().1, size: symbolFontSize)) + Text("  \(displayTime)")
