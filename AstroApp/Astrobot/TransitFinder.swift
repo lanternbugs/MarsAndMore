@@ -394,27 +394,34 @@ struct TransitFinder {
     
     
     func getHouse(_ degree: Double, houseArray: [(HouseCell, Double)], retro: Bool) -> Double {
-        
-        // does not handle retrogrades yet
-        var greater = false
-        var i = 0
-        if !retro {
-            for data in houseArray {
-                if degree >= data.0.numericDegree {
-                    greater = true
-                } else if greater == true {
-                  return data.0.numericDegree
-                }
-                i = i + 1
+        for i in 0...11 {
+            let lowerDegree = houseArray[i].0.numericDegree
+            var upperDegree = 0.0
+            if i == 11 // top is H0
+            {
+                upperDegree = houseArray[0].0.numericDegree
+            
+            } else {
+                upperDegree = houseArray[i + 1].0.numericDegree
             }
-        } else {
-            for data in houseArray {
-                if degree <= data.0.numericDegree {
-                    greater = true
-                } else if greater == true {
-                  return data.0.numericDegree
+            if degree > lowerDegree && degree < upperDegree {
+                if retro {
+                    return lowerDegree
+                } else {
+                    return upperDegree
                 }
-                i = i + 1
+            } else if degree > lowerDegree && upperDegree < lowerDegree {
+                if retro {
+                    return lowerDegree
+                } else {
+                    return upperDegree
+                }
+            } else if degree < lowerDegree && degree < upperDegree && upperDegree < lowerDegree {
+                if retro {
+                    return lowerDegree
+                } else {
+                    return upperDegree
+                }
             }
         }
         
