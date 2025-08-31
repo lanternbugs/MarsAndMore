@@ -41,7 +41,9 @@ extension TransitTimesView {
             var centerText = transit.sign != nil || transit.house != nil ? "Enters" : transit.aspect.getName()
             var finalText = transit.sign != nil ? transit.sign!.getName() : transit.house == nil ? transit.planet2.getName() : transit.house!.getHouseNumericName(type: .House)
             if shouldShowTransitModel.showTransitTimeSymbols {
-                if transit.sign != nil {
+                if transit.house != nil {
+                    Text(" \(transit.planet.getAstroCharacter().0)").font(Font.custom(transit.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(centerText) ") + Text("\(finalText)") + Text("  \(displayTime)")
+                } else if transit.sign != nil {
                     Text(" \(transit.planet.getAstroCharacter().0)").font(Font.custom(transit.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(centerText) ") + Text("\(transit.sign!.getAstroCharacter().0)").font(Font.custom(transit.sign!.getAstroCharacter().1, size: symbolFontSize)) + Text("  \(displayTime)")
                 } else {
                     Text(" \(transit.planet.getAstroCharacter().0)").font(Font.custom(transit.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(transit.aspect.getAstroCharacter().0)").font(Font.custom(transit.aspect.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(transit.planet2.getAstroCharacter().0)").font(Font.custom(transit.planet2.getAstroCharacter().1, size: symbolFontSize)) + Text("  \(displayTime)")
