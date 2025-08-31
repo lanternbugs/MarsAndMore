@@ -450,6 +450,9 @@ struct TransitFinder {
         if planetDegree < 5.0 && planetDegree2 > 355.0 {
             retro = true
         }
+        if planetDegree2 < 5.0 && planetDegree > 355.0 {
+            retro = false
+        }
         if planet == .Sun || planet == .Moon {
             retro = false
         }
