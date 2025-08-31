@@ -447,6 +447,9 @@ struct TransitFinder {
         let planetDegree = adapter.getPlanetDegree(low, Int32(planet.getAstroIndex()), true, 0)
         let planetDegree2 = adapter.getPlanetDegree(low + 0.1, Int32(planet.getAstroIndex()), true, 0)
         var retro = planetDegree2 < planetDegree ? true : false
+        if planetDegree < 5.0 && planetDegree2 > 355.0 {
+            retro = true
+        }
         if planet == .Sun || planet == .Moon {
             retro = false
         }
