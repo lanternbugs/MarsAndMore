@@ -303,16 +303,17 @@ struct TransitFinder {
             planetDegree.1 = adapter.getPlanetDegree(end_time, Int32(planet.getAstroIndex()), true, 0)
             TransitFinder.adapterCalls += 2
             // uncomment out to work on transits to houses code
-            
-            let houseChangeDegree = getHouseChangeDegree(planet, low: start_time, houseArray: houseArray)
-            if canMakeNatalAspect(planetDegree, with: houseChangeDegree.0, aspect: .Conjunction, low: start_time, high: end_time) {
-                let time = findNatalAspect(planet, with: houseChangeDegree.0, aspect: .Conjunction, low: start_time, high: end_time)
-                if time > 0 {
-                    let transitTime = TransitTime(planet: planet, planet2: planet, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil, house: getHouseNumber(houseChangeDegree, houseArray))
-                    transitTimes.append(transitTime)
+            if transitTimeData.location != nil {
+                let houseChangeDegree = getHouseChangeDegree(planet, low: start_time, houseArray: houseArray)
+                if canMakeNatalAspect(planetDegree, with: houseChangeDegree.0, aspect: .Conjunction, low: start_time, high: end_time) {
+                    let time = findNatalAspect(planet, with: houseChangeDegree.0, aspect: .Conjunction, low: start_time, high: end_time)
+                    if time > 0 {
+                        let transitTime = TransitTime(planet: planet, planet2: planet, aspect: .Conjunction, time: adapter.convertSweDate(time), start_time: start_time, end_time: end_time, sign: nil, house: getHouseNumber(houseChangeDegree, houseArray))
+                        transitTimes.append(transitTime)
+                    }
                 }
-                
             }
+            
             for natalPlanet  in Planets.allCases {
                 if !manager.bodiesToShow.contains(natalPlanet) {
                     continue
