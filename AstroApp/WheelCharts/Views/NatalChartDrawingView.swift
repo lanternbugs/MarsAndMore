@@ -41,11 +41,23 @@ class NatalChartDrawingView: UIView {
         } else {
             backgroundColor = NSColor.black
         }
+        let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
+            doubleTapRecognizer.numberOfTapsRequired = 2
+            addGestureRecognizer(doubleTapRecognizer)
         
     }
     
     override func draw(_ rect: CGRect) {
         drawChart()
+    }
+    
+    @objc private func doubleTap(_ sender: UITapGestureRecognizer) {
+        let image = takeScreenshot()
+        let view = ZoomedWheelChartView(frame: frame, image: image)
+        view.imageView.bounds = bounds
+        addSubview(view)
+    
+        
     }
 }
 

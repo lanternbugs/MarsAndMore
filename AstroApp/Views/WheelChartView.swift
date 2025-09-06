@@ -51,6 +51,15 @@ struct WheelChartView: View {
                                         }
 
                 }
+#if os(iOS)
+            HStack {
+                Spacer()
+                Text("Double Tap Zooms")
+                Spacer()
+            }
+ 
+#endif
+                
                 if manager.chartWheelColorType == .Light {
 #if os(macOS)
                     NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)

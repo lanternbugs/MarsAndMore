@@ -1491,6 +1491,9 @@
 		7678A8C82BCB0D4D000E92A1 /* WheelChartHouseListing.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */; };
 		7679634F2C72A4E500A6EFC1 /* WheelChartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679634E2C72A4E500A6EFC1 /* WheelChartModels.swift */; };
 		767963502C72A4E500A6EFC1 /* WheelChartModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679634E2C72A4E500A6EFC1 /* WheelChartModels.swift */; };
+		7679AA102E6CCACA00581893 /* ZoomedWheelChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679AA0F2E6CCACA00581893 /* ZoomedWheelChartView.swift */; };
+		7679AA112E6CCACA00581893 /* ZoomedWheelChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679AA0F2E6CCACA00581893 /* ZoomedWheelChartView.swift */; };
+		7679AA122E6CCACA00581893 /* ZoomedWheelChartView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679AA0F2E6CCACA00581893 /* ZoomedWheelChartView.swift */; };
 		7679FF7927AF184F007911C9 /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
 		7679FF7A27AF184F007911C9 /* AstrobotInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7027AF184F007911C9 /* AstrobotInterface.swift */; };
 		7679FF7D27AF1850007911C9 /* AdapterToEphemeris.m in Sources */ = {isa = PBXBuildFile; fileRef = 7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */; };
@@ -2293,6 +2296,7 @@
 		7677BB312B0DBED10021F047 /* TransitTimesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TransitTimesView.swift; sourceTree = "<group>"; };
 		7678A8C52BCB0D4D000E92A1 /* WheelChartHouseListing.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartHouseListing.swift; sourceTree = "<group>"; };
 		7679634E2C72A4E500A6EFC1 /* WheelChartModels.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WheelChartModels.swift; sourceTree = "<group>"; };
+		7679AA0F2E6CCACA00581893 /* ZoomedWheelChartView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ZoomedWheelChartView.swift; sourceTree = "<group>"; };
 		7679FF7027AF184F007911C9 /* AstrobotInterface.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AstrobotInterface.swift; sourceTree = "<group>"; };
 		7679FF7427AF184F007911C9 /* AdapterToEphemeris.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdapterToEphemeris.h; sourceTree = "<group>"; };
 		7679FF7527AF184F007911C9 /* AdapterToEphemeris.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdapterToEphemeris.m; sourceTree = "<group>"; };
@@ -3301,6 +3305,7 @@
 			children = (
 				76859E8B2B1A64A40007FED1 /* NatalChartDrawingView.swift */,
 				76CFDDA12B3230A60079E09E /* TransitChartDrawingView.swift */,
+				7679AA0F2E6CCACA00581893 /* ZoomedWheelChartView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -4936,6 +4941,7 @@
 				761DEE7B279B9EB200A71938 /* MarsAndMore.xcdatamodeld in Sources */,
 				761DEE81279B9EB200A71938 /* Persistence.swift in Sources */,
 				761DEE7D279B9EB200A71938 /* MarsAndMoreApp.swift in Sources */,
+				7679AA122E6CCACA00581893 /* ZoomedWheelChartView.swift in Sources */,
 				7679FF7F27AF1850007911C9 /* AstrobotInterface+Extensions.swift in Sources */,
 				76586AB52C5ED47500938CC6 /* EphemerisView.swift in Sources */,
 				7635723727B6FC7D00C2E5A6 /* ChartTab.swift in Sources */,
@@ -5061,6 +5067,7 @@
 				761DEEB8279B9EF900A71938 /* swehel.c in Sources */,
 				761DEECC279B9EF900A71938 /* swephlib.c in Sources */,
 				761DEECA279B9EF900A71938 /* swemplan.c in Sources */,
+				7679AA102E6CCACA00581893 /* ZoomedWheelChartView.swift in Sources */,
 				7679FF8027AF1850007911C9 /* AstrobotInterface+Extensions.swift in Sources */,
 				76586AB62C5ED47500938CC6 /* EphemerisView.swift in Sources */,
 				7635723827B6FC7D00C2E5A6 /* ChartTab.swift in Sources */,
@@ -5117,6 +5124,7 @@
 				768B2D842BD6D32C008184C3 /* SynastryChooserViewModel.swift in Sources */,
 				768B2D852BD6D32C008184C3 /* TransitTimesViewModel.swift in Sources */,
 				768B2D862BD6D32C008184C3 /* TransitMundaneViewModel.swift in Sources */,
+				7679AA112E6CCACA00581893 /* ZoomedWheelChartView.swift in Sources */,
 				76930BAF2B7ACF7E0033D957 /* Houses+.swift in Sources */,
 				76930BB02B7ACF7E0033D957 /* HouseSystem+.swift in Sources */,
 				76CDFD712CAF32F2008D1AC9 /* IndividualCompositeDataView.swift in Sources */,
@@ -5375,7 +5383,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 165;
+				CURRENT_PROJECT_VERSION = 175;
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -5390,7 +5398,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.60;
+				MARKETING_VERSION = 3.65;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = iphoneos;
@@ -5409,7 +5417,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CLANG_ENABLE_MODULES = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 165;
+				CURRENT_PROJECT_VERSION = 175;
 				DEVELOPMENT_TEAM = 6A3Z6XFDMK;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
@@ -5424,7 +5432,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 3.60;
+				MARKETING_VERSION = 3.65;
 				PRODUCT_BUNDLE_IDENTIFIER = mike.MarsAndMore;
 				PRODUCT_NAME = MarsAndMore;
 				SDKROOT = iphoneos;
