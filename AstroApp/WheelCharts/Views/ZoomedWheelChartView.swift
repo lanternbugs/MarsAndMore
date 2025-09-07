@@ -36,6 +36,7 @@ class ZoomedWheelChartView: UIScrollView {
 
     
     let imageView = UIImageView()
+    weak var redrawDelegate: RedrawProtocol?
 
     
     init(frame: CGRect, image: UIImage) {
@@ -79,6 +80,8 @@ class ZoomedWheelChartView: UIScrollView {
     
     @objc private func doubleTap(_ sender: UITapGestureRecognizer) {
         removeFromSuperview()
+        redrawDelegate?.redraw()
+        redrawDelegate = nil
     }
     
     func zoomIn() {

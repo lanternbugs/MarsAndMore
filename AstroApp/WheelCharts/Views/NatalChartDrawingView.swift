@@ -48,7 +48,9 @@ class NatalChartDrawingView: UIView {
     }
     
     override func draw(_ rect: CGRect) {
-        drawChart()
+        if subviews.isEmpty {
+            drawChart()
+        }
     }
     
     @objc private func doubleTap(_ sender: UITapGestureRecognizer) {
@@ -56,9 +58,21 @@ class NatalChartDrawingView: UIView {
         let view = ZoomedWheelChartView(frame: frame, image: image)
         view.imageView.bounds = bounds
         addSubview(view)
+        view.redrawDelegate = self
+        setNeedsDisplay()
     
         
     }
+}
+
+extension NatalChartDrawingView: RedrawProtocol {
+    func redraw() {
+        setNeedsDisplay()
+    }
+}
+
+protocol RedrawProtocol: NSObject {
+    func redraw()
 }
 
 #else
