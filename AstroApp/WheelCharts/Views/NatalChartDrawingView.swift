@@ -58,23 +58,11 @@ class NatalChartDrawingView: UIView {
         let view = ZoomedWheelChartView(frame: frame, image: image)
         view.imageView.bounds = bounds
         addSubview(view)
-        view.redrawDelegate = self
         setNeedsDisplay()
     
         
     }
 }
-
-extension NatalChartDrawingView: RedrawProtocol {
-    func redraw() {
-        setNeedsDisplay()
-    }
-}
-
-protocol RedrawProtocol: NSObject {
-    func redraw()
-}
-
 #else
 import Cocoa
 class NatalChartDrawingView: NSView {
