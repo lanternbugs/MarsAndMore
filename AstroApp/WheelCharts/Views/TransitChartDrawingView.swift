@@ -28,7 +28,9 @@ class TransitChartDrawingView: NatalChartDrawingView {
         } else {
             backgroundColor = NSColor.black
         }
-        drawTransitChart()
+        if subviews.isEmpty {
+            drawTransitChart()
+        }
     }
 #else
     override func draw(_ dirtyRect: NSRect) {
