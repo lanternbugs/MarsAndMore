@@ -617,7 +617,7 @@ class ChartViewModel {
                 }
             }
         }
-        
+        natalPrintingQueue = fixPiscesAriesSeperation(queue: natalPrintingQueue)
         natalPrintingQueue = fixPrintDegreeSeperation(inputQueue: natalPrintingQueue)
         natalPrintingQueue = computePrintingSizes(queue: natalPrintingQueue)
         //natalPrintingQueue = enforceMinimumSeperation(inputQueue: natalPrintingQueue)
@@ -653,7 +653,8 @@ class ChartViewModel {
                 }
             }
         }
-        
+        upperPrintingQueue = fixPiscesAriesSeperation(queue: upperPrintingQueue)
+        lowerPrintingQueue = fixPiscesAriesSeperation(queue: lowerPrintingQueue)
         upperPrintingQueue = fixPrintDegreeSeperation(inputQueue: upperPrintingQueue)
         lowerPrintingQueue = fixPrintDegreeSeperation(inputQueue: lowerPrintingQueue)
         upperPrintingQueue = computePrintingSizes(queue: upperPrintingQueue)
@@ -686,6 +687,62 @@ class ChartViewModel {
         }
         let val = natalPrintingQueue.remove(at: 0)
         return (val.0.0, val.1)
+    }
+    
+    func fixPiscesAriesSeperation(queue: [((Double, Int), PrintSize)]) -> [((Double, Int), PrintSize)]  {
+        if queue.count < 3 {
+            return queue
+        }
+        var max = -999.9
+        var i = 0
+        var greatest = (0, 0.0)
+        var least = (0, 0.0)
+        
+        for val in queue {
+            if val.0.0 > max {
+                max = val.0.0
+                greatest = (i, max)
+            }
+            i += 1
+        }
+        i = 0
+        var min = 9999.9
+        for val in queue {
+            if val.0.0 < min {
+                min = val.0.0
+                least = (i, min)
+            }
+            i += 1
+        }
+        
+        let diff =  least.1 + 360.0 - greatest.1
+        if diff < 5.0 {
+            var queue1 = queue
+            queue1[least.0].0.0 +=  5.0 - diff
+            
+            i = 0
+            var least2 = (0, 0.0)
+            var min = 9999.9
+            for val in queue {
+                if val.0.0 < min && i != least.0 {
+                    min = val.0.0
+                    least2 = (i, min)
+                }
+                i += 1
+            }
+            if least2.1 <= least.1  {
+                let diff = least.1 - least2.1 + 5.0
+                queue1[least2.0].0.0 += diff
+            } else if least2.1 - least.1 < 5.0 {
+                let diff = 5.0 - (least2.1 - least.1)
+                queue1[least2.0].0.0 += diff
+            }
+            
+            
+            return queue1
+        }
+        
+        return queue
     }
     
     func computePrintingSizes(queue: [((Double, Int), PrintSize)]) -> [((Double, Int), PrintSize)] {
