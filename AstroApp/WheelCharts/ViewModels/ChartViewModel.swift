@@ -799,7 +799,7 @@ class ChartViewModel {
             
 #if os(iOS)
             if idiom != .pad {
-                desiredSpace = 6.5
+                desiredSpace = 7.5
             }
             
 #endif
