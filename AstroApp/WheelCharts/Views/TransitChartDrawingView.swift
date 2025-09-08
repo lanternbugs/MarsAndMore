@@ -146,12 +146,14 @@ extension TransitChartDrawingView {
     func drawLowerPlanetListing(_ planetArray: [PlanetCell], _ trueDegree: Double) {
         let sortedArray = planetArray.sorted(by: {$0.numericDegree < $1.numericDegree })
         var fontSize = 12.0
+        var degreeFontSize = 12.0
         let spreadInfo = viewModel.getLowerWheelSpread()
         let spread = spreadInfo.0
         let firstSpread = spreadInfo.1
 #if os(iOS)
         if idiom != .pad {
             fontSize = 10.0
+            degreeFontSize = 9.0
         }
 #endif
         var i = 0
@@ -166,7 +168,7 @@ extension TransitChartDrawingView {
 
             printSign(viewModel.getXYFromPolar(placement - spread - 2, printDegree), planet.planet.getAstroCharacter(), trueDegree, colorChoice: colorChoice, printInfo: printInfo.1)
             
-            printText(viewModel.getXYFromPolar(placement - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, fontSize)
+            printText(viewModel.getXYFromPolar(placement - spread * firstSpread, printDegree), planet.numericDegree.getAstroDegreeOnly(), trueDegree, false, degreeFontSize)
             if planet.retrograde {
                 printSign(viewModel.getXYFromPolar(placement - spread * 3.2, printDegree), ("R", "AstroDotBasic"), trueDegree, colorChoice: colorChoice, printInfo: .small)
             }
