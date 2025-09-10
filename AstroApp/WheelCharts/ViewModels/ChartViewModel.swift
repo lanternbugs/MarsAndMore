@@ -1003,7 +1003,11 @@ extension ChartViewModel: AstrobotInterface {
         if let transitTime = model.transitTime {
             let dateFormater = DateFormatter()
             dateFormater.locale   = Locale(identifier: "en_US_POSIX")
-            dateFormater.dateFormat = "YYYY/MM/dd"
+#if os(iOS)
+            dateFormater.dateFormat = "YYYY/MM/dd\nh:mm"
+#else
+            dateFormater.dateFormat = "YYYY/MM/dd h:mm"
+#endif
             model.chartTime =  "\(dateFormater.string(from: transitTime))"
         }
         

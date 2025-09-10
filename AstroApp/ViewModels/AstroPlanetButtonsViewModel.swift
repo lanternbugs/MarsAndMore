@@ -184,7 +184,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         
         let dateFormater = DateFormatter()
         dateFormater.locale   = Locale(identifier: "en_US_POSIX")
-        dateFormater.dateFormat = "YY/MM/dd h:m"
+        dateFormater.dateFormat = "YY/MM/dd h:mm"
         let transitData = TransitTimeData(calculationSettings: manager.calculationSettings, time: manager.getSelectionTime(), transitTime: transitDate, location: manager.getSelectionLocation())
         let viewModel = getChartViewModel(name: "\(manager.getCurrentName()) + \(dateFormater.string(from: transitDate))", type: .Transit)
         viewModel.model.transitTime = transitDate
