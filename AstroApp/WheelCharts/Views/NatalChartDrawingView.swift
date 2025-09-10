@@ -101,6 +101,9 @@ extension NatalChartDrawingView {
         viewModel.setWidth(frame.width)
         viewModel.setHeight(frame.height)
         viewModel.populateData()
+        if !viewModel.model.chartTime.isEmpty {
+            writeChartTime()
+        }
 #if os(iOS)
         drawColoredArciOS(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
 #else
@@ -617,6 +620,32 @@ extension NatalChartDrawingView {
             }
             
         }
+    }
+    
+    func writeChartTime() {
+        let text = viewModel.model.chartTime
+        
+        let fontSize = 18.0
+#if os(iOS)
+        let textPoint = CGPoint(x: 2, y: 5)
+        if let font = UIFont(name: "Arial", size: fontSize) {
+            if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
+                text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.white])
+            } else {
+                text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+            }
+
+        }
+#else
+        let textPoint = CGPoint(x: 2, y: frame.size.height - 25)
+        if let font = NSFont(name: "Arial", size: fontSize) {
+            if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
+                text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font, NSAttributedString.Key.foregroundColor: UIColor.white])
+            } else {
+                text.draw(at: textPoint, withAttributes:[NSAttributedString.Key.font:font])
+            }
+        }
+#endif
     }
     
     func printText(_ coordinates: (Int, Int), _ text: String, _ degree: Double, _ extraJustify: Bool,  _ size: Double = 16.0, outerPlanet: Bool = false ) {

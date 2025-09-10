@@ -37,7 +37,13 @@ struct WheelChartView: View {
                                         }
 
                     Spacer()
-                    Text(viewModel.chartName)
+                    if manager.chartTabChartJumpedInTime {
+                        Text(viewModel.chartName + "*")
+                        
+                    } else {
+                        Text(viewModel.chartName)
+                    }
+                    
                     Spacer()
 
                     if manager.chartWheelColorType == .Light {
@@ -51,6 +57,25 @@ struct WheelChartView: View {
                                         }
 
                 }
+            if viewModel.model.transitTime != nil {
+                HStack {
+                    Button(action: {
+                        manager.chartTabChartJumpedInTime = false
+                        manager.chartTabChartJumpedInTime = true
+                        viewModel.jumpChartInTime(forward: false) }) {
+                        Text("<<").font(Font.subheadline)
+                    }.padding(.leading)
+                    Button(action: {
+                        manager.chartTabChartJumpedInTime = false
+                        manager.chartTabChartJumpedInTime = true
+                        viewModel.jumpChartInTime(forward: true)
+                    }) {
+                        Text(">>").font(Font.subheadline)
+                    }.padding(.leading)
+                    Spacer()
+                }
+                
+            }
 #if os(iOS)
             HStack {
                 Spacer()

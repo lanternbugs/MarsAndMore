@@ -17,10 +17,17 @@ import Foundation
 #if os(iOS)
 import UIKit
 var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
+#else
+import Cocoa
 #endif
 enum PrintSize { case small, regular, large}
 
 class ChartViewModel {
+#if os(iOS)
+weak var drawingView: UIView?
+#else
+weak var drawingView: NSView?
+#endif
     let model: WheelChartModel
     var secondaryLastPrintingDegree = -Int.max
     var secondaryPrintingStack = [Int]()
@@ -236,6 +243,16 @@ class ChartViewModel {
     init(model: WheelChartModel) {
         self.model = model
     }
+    
+    func resetData() {
+        planetsDictionary.removeAll()
+        secondaryPlanetsDictionary.removeAll()
+        houseDictionary.removeAll()
+        secondaryHouseDictionary.removeAll()
+        planetToDegreeMap.removeAll()
+        secondaryPlanetToDegreeMap.removeAll()
+    }
+    
     func populateData() {
         if !planetsDictionary.isEmpty {
             return
@@ -288,6 +305,8 @@ class ChartViewModel {
                 }
             }
         }
+        
+        setChartTime()
     }
     var radius: Double {
         var value = width < height ? width / 2.0 - 34.0 : height / 2.0 - 34.0
@@ -925,5 +944,68 @@ class ChartViewModel {
         spread = spread * 1.1
 #endif
         return (spread, firstSpread)
+    }
+}
+
+extension ChartViewModel: AstrobotInterface {
+    func jumpChartInTime(forward: Bool) {
+        if model.chart != .Transit {
+            return
+        } else if let time = model.transitTime, let selectedLocation = model.selectedLocation, let selectedTime = model.selectedTime {
+            let calendar = Calendar.current
+            var value = 1
+            if !forward {
+                value = -1
+            }
+            let newDate = calendar.date(byAdding: .month, value: value, to: time)
+            if let newDate = newDate {
+                secondaryPlanetData = populatePlanetsData(newDate.getAstroTime(), nil)
+                model.transitTime = newDate
+                aspectsData = populateAspectsData(selectedTime, selectedLocation, secondTime: newDate.getAstroTime())
+                resetData()
+                populateData()
+                if let subviews = drawingView?.subviews {
+                    for v in subviews {
+                        v.removeFromSuperview()
+                    }
+                }
+#if os(iOS)
+                drawingView?.setNeedsDisplay()
+#else
+                drawingView?.setNeedsDisplay(drawingView?.bounds ?? CGRectZero)
+#endif
+                
+            }
+        }
+    }
+    
+    func populateAspectsData(_ date: Double, _ location: LocationData?, secondTime: Double? = nil) -> [TransitCell] {
+        if let manager = manager, let calculationSettings = model.calculationSettings {
+            let orbSelection = secondTime != nil ? manager.transitOrbSelection : manager.orbSelection
+            let aspectsRow = getAspects(time: date, with: secondTime, and: location, type: orbSelection, calculationSettings: calculationSettings)
+            
+            if let aspects = aspectsRow.planets as? [TransitCell] {
+                 return aspects
+            }
+        }
+        return [TransitCell]()
+    }
+    
+    func populatePlanetsData(_ date: Double, _ location: LocationData?) -> [PlanetCell] {
+        let row = getPlanets(time: date, location: location, calculationSettings: model.manager.calculationSettings)
+        if let planets = row.planets as? [PlanetCell] {
+            return planets
+        }
+        return [PlanetCell]()
+    }
+    
+    func setChartTime() {
+        if let transitTime = model.transitTime {
+            let dateFormater = DateFormatter()
+            dateFormater.locale   = Locale(identifier: "en_US_POSIX")
+            dateFormater.dateFormat = "YYYY/MM/dd"
+            model.chartTime =  "\(dateFormater.string(from: transitTime))"
+        }
+        
     }
 }

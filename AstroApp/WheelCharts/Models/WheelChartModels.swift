@@ -34,7 +34,12 @@ class WheelChartModel {
     var width: Double = 2
     var height: Double = 2
     let chart: Charts
-    
+    var transitTime: Date? = nil
+    var birthTime: Date? = nil
+    var chartTime = ""
+    var selectedTime: Double? = nil
+    var selectedLocation: LocationData? = nil
+    var calculationSettings: CalculationSettings? =  nil
     var upperPrintingQueue = [((Double, Int), PrintSize)]()
     var lowerPrintingQueue = [((Double, Int), PrintSize)]()
     var natalPrintingQueue = [((Double, Int), PrintSize)]()

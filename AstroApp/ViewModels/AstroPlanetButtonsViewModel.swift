@@ -187,6 +187,10 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         dateFormater.dateFormat = "YY/MM/dd h:m"
         let transitData = TransitTimeData(calculationSettings: manager.calculationSettings, time: manager.getSelectionTime(), transitTime: transitDate, location: manager.getSelectionLocation())
         let viewModel = getChartViewModel(name: "\(manager.getCurrentName()) + \(dateFormater.string(from: transitDate))", type: .Transit)
+        viewModel.model.transitTime = transitDate
+        viewModel.model.selectedTime = manager.getSelectionTime()
+        viewModel.model.selectedLocation = manager.getSelectionLocation()
+        viewModel.model.calculationSettings = manager.calculationSettings
         viewModel.name2 = dateFormater.string(from: transitDate)
         viewModel.name1 = manager.getCurrentName()
         viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), manager.getSelectionLocation(), secondTime: transitDate.getAstroTime())

@@ -51,6 +51,9 @@ extension TransitChartDrawingView {
         viewModel.setWidth(frame.width)
         viewModel.setHeight(frame.height)
         viewModel.populateData()
+        if !viewModel.model.chartTime.isEmpty {
+            writeChartTime()
+        }
 #if os(iOS)
         drawColoredArciOS(CGPoint(x: viewModel.center.x, y: viewModel.center.y), rad: viewModel.radius)
 #else
