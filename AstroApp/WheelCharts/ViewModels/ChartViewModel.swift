@@ -948,6 +948,17 @@ weak var drawingView: NSView?
 }
 
 extension ChartViewModel: AstrobotInterface {
+    func resetDataToOriginalDate() {
+        model.transitTime = model.originalTransitTime
+        model.selectedTime = model.originalSelectedTime
+        manager?.chartTabChartJumpedInTime = false
+        model.houseData = model.originalHouseData
+        model.planetData = model.originalPlanetData
+        model.aspectsData = model.originalAspectsData
+        model.secondaryPlanetData = model.originalSecondaryPlanetData
+        resetData()
+    }
+    
     func jumpChartInTime(forward: Bool, stepTime: StepTimes) {
         if model.chart != .Transit && model.chart != .Natal {
             return

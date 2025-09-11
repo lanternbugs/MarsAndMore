@@ -83,8 +83,11 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         viewModel.model.calculationSettings = manager.calculationSettings
         viewModel.model.tab = .PlanetsTab
         viewModel.planetData = populatePlanetsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
+        viewModel.model.originalPlanetData = viewModel.planetData
         viewModel.aspectsData = populateAspectsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
+        viewModel.model.originalAspectsData = viewModel.model.aspectsData
         viewModel.houseData = populateHouseData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
+        viewModel.model.originalHouseData = viewModel.model.houseData
         viewModel.houseSystemName = manager.houseSystem.rawValue
         viewModel.tropical = manager.tropical
         
@@ -137,10 +140,13 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         viewModel.model.selectedLocation = manager.getSelectionLocation()
         viewModel.model.calculationSettings = manager.calculationSettings
         viewModel.planetData = populatePlanetsData(manager.getSelectionTime(), manager.getSelectionLocation())
+        viewModel.model.originalPlanetData = viewModel.planetData
         viewModel.houseData = populateHouseData(manager.getSelectionTime(), manager.getSelectionLocation())
+        viewModel.model.originalHouseData = viewModel.houseData
         viewModel.houseSystemName = manager.houseSystem.rawValue
         viewModel.tropical = manager.tropical
         viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), manager.getSelectionLocation())
+        viewModel.model.originalAspectsData = viewModel.aspectsData
         
         let displayRow = DisplayPlanetRow(planets: viewModel.planetData, id: data.wrappedValue.count, type: .Planets(viewModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
         data.wrappedValue.append(displayRow)
@@ -171,12 +177,16 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
             viewModel.model.calculationSettings = manager.calculationSettings
 
             viewModel.houseData = populateHouseData(manager.getSelectionTime(), location, housesOnly: false)
+            viewModel.model.originalHouseData = viewModel.houseData
             viewModel.houseSystemName = manager.houseSystem.rawValue
             viewModel.tropical = manager.tropical
             viewModel.planetData = populatePlanetsData(manager.getSelectionTime(), location)
+            viewModel.model.originalPlanetData = viewModel.planetData
             viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), location)
+            viewModel.model.originalAspectsData = viewModel.aspectsData
             let displayHouseData = viewModel.houseData
             viewModel.houseData = reduceHouses(viewModel.houseData)
+            viewModel.model.originalHouseData = viewModel.houseData
             let displayRow = DisplayPlanetRow(planets: displayHouseData, id: data.wrappedValue.count, type: .Houses(system: manager.houseSystem, viewModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
             data.wrappedValue.append(displayRow)
             return viewModel
@@ -207,13 +217,17 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         viewModel.name2 = dateFormater.string(from: transitDate)
         viewModel.name1 = manager.getCurrentName()
         viewModel.aspectsData = populateAspectsData(manager.getSelectionTime(), manager.getSelectionLocation(), secondTime: transitDate.getAstroTime())
+        viewModel.model.originalAspectsData = viewModel.aspectsData
         viewModel.personOneAspectsData = populateAspectsData(manager.getSelectionTime(), manager.getSelectionLocation())
         viewModel.personTwoAspectsData = populateAspectsData(transitDate.getAstroTime(), nil)
         viewModel.houseData = populateHouseData(manager.getSelectionTime(), manager.getSelectionLocation())
+        viewModel.model.originalHouseData = viewModel.houseData
         viewModel.houseSystemName = manager.houseSystem.rawValue
         viewModel.tropical = manager.tropical
         viewModel.planetData = populatePlanetsData(manager.getSelectionTime(), manager.getSelectionLocation())
+        viewModel.model.originalPlanetData = viewModel.planetData
         viewModel.secondaryPlanetData = populatePlanetsData(transitDate.getAstroTime(), nil)
+        viewModel.model.originalSecondaryPlanetData = viewModel.secondaryPlanetData
         
         let displayRow = DisplayPlanetRow(planets: viewModel.aspectsData, id: data.wrappedValue.count, type: .Transits(date: dateFormater.string(from: transitDate), orbs: manager.transitOrbSelection.getShortName(), transitData: transitData, chartName: manager.getCurrentName(), viewModel: viewModel), name: manager.getCurrentName(), calculationSettings: manager.calculationSettings)
         data.wrappedValue.append(displayRow)

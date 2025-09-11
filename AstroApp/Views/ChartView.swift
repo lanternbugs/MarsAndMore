@@ -85,9 +85,7 @@ struct ChartView: View {
 
 extension ChartView: AstrobotInterface {
     func showTransitsChart(viewModel: ChartViewModel, chartName: String) {
-        viewModel.model.transitTime = viewModel.model.originalTransitTime
-        manager.chartTabChartJumpedInTime = false
-        viewModel.resetData()
+        viewModel.resetDataToOriginalDate()
         roomState.wrappedValue = .NatalView(onDismiss: .Chart, viewModel: viewModel)
     }
     
@@ -102,9 +100,7 @@ extension ChartView: AstrobotInterface {
     }
     
     func showNatalChartView(viewModel: ChartViewModel) {
-        viewModel.model.selectedTime = viewModel.model.originalSelectedTime
-        manager.chartTabChartJumpedInTime = false
-        viewModel.resetData()
+        viewModel.resetDataToOriginalDate()
         roomState.wrappedValue = .NatalView(onDismiss: .Chart, viewModel: viewModel)
     }
 }

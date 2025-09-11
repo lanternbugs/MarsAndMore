@@ -61,9 +61,7 @@ struct PlanetRoom: View {
 
 extension PlanetRoom {
     func showNatalChartView(viewModel: ChartViewModel) {
-        viewModel.model.selectedTime = viewModel.model.originalSelectedTime
-        manager.planetsTabChartJumpedInTime = false
-        viewModel.resetData()
+        viewModel.resetDataToOriginalDate()
         $roomState.wrappedValue = .NatalView(onDismiss: .Planets, viewModel: viewModel)
     }
 }
