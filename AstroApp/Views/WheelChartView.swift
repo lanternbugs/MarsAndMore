@@ -30,11 +30,11 @@ struct WheelChartView: View {
                 if manager.chartDataSymbols {
                     Button(action:  { manager.chartDataSymbols = false }) {
                         Text("Text")
-                    }.padding(.leading)
+                    }.padding([.leading, .top])
                 } else {
                     Button(action:  { manager.chartDataSymbols = true }) {
                         Text("Symbols")
-                    }.padding(.leading)
+                    }.padding([.leading, .top])
                 }
                 
                 Spacer()
