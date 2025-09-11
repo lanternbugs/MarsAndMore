@@ -397,9 +397,18 @@ extension BirthDataManager {
             guard let data = data else {
                 return nil
             }
+            if data.birthTime == nil {
+                return makeDate(year: Int(data.birthDate.year), month: Int(data.birthDate.month), day: Int(data.birthDate.day), hr: 12, min: 0, sec: 0)
+            }
             return data.birthTime
         }
         return Date()
+    }
+    
+    func makeDate(year: Int, month: Int, day: Int, hr: Int, min: Int, sec: Int) -> Date {
+        var calendar = Calendar(identifier: .gregorian)
+        let components = DateComponents(year: year, month: month, day: day, hour: hr, minute: min, second: sec)
+        return calendar.date(from: components)!
     }
     
     func getSelectionLocation()->LocationData?
