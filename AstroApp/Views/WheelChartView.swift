@@ -19,7 +19,7 @@ struct WheelChartView: View {
     let viewModel: ChartViewModel
     @EnvironmentObject var manager:BirthDataManager
     @State var opaqueValue = 0.0
-    @State var stepTime: StepTimes = .oneDay
+    @AppStorage("WheelStepTime") var stepTime: StepTimes = .oneDay
     let easeDuration = 0.5
 
     var body: some View {
