@@ -1064,10 +1064,11 @@ extension ChartViewModel: AstrobotInterface {
             if let transitTime = model.transitTime {
                 let dateFormater = DateFormatter()
                 dateFormater.locale   = Locale(identifier: "en_US_POSIX")
+                dateFormater.timeZone = TimeZone(abbreviation: "UTC")
     #if os(iOS)
-                dateFormater.dateFormat = "yyyy/MM/dd\nh:mm"
+                dateFormater.dateFormat = "yyyy/MM/dd\nHH:mm ZZZ"
     #else
-                dateFormater.dateFormat = "yyyy/MM/dd h:mm"
+                dateFormater.dateFormat = "yyyy/MM/dd HH:mm ZZZ"
     #endif
                 model.chartTime =  "\(dateFormater.string(from: transitTime))"
             }
@@ -1075,10 +1076,11 @@ extension ChartViewModel: AstrobotInterface {
             if let natalTime = model.selectedTime {
                 let dateFormater = DateFormatter()
                 dateFormater.locale   = Locale(identifier: "en_US_POSIX")
+                dateFormater.timeZone = TimeZone(abbreviation: "UTC")
     #if os(iOS)
-                dateFormater.dateFormat = "yyyy/MM/dd\nh:mm"
+                dateFormater.dateFormat = "yyyy/MM/dd\nHH:mm ZZZ"
     #else
-                dateFormater.dateFormat = "yyyy/MM/dd h:mm"
+                dateFormater.dateFormat = "yyyy/MM/dd HH:mm ZZZ"
     #endif
                 model.chartTime =  "\(dateFormater.string(from: natalTime))"
             }

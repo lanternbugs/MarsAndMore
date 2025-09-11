@@ -625,8 +625,11 @@ extension NatalChartDrawingView {
     func writeChartTime() {
         let text = viewModel.model.chartTime
         
-        let fontSize = 18.0
+        var fontSize = 18.0
 #if os(iOS)
+        if idiom != .pad {
+            fontSize = 16.0
+        }
         let textPoint = CGPoint(x: 2, y: 5)
         if let font = UIFont(name: "Arial", size: fontSize) {
             if viewModel.manager?.chartWheelColorType ?? .Light == .Dark {
