@@ -91,14 +91,7 @@ struct WheelChartView: View {
                 }
                 
             }
-#if os(iOS)
-            HStack {
-                Spacer()
-                Text("Double Tap Zooms")
-                Spacer()
-            }
- 
-#endif
+
                 
                 if manager.chartWheelColorType == .Light {
 #if os(macOS)
@@ -115,7 +108,14 @@ struct WheelChartView: View {
 #endif
             }
              
-            
+#if os(iOS)
+            HStack {
+                Spacer()
+                Text("Double Tap Zooms")
+                Spacer()
+            }
+ 
+#endif
             WheelChartData(viewModel: viewModel)
         }.onAppear() {
             opaqueValue = 1.0
