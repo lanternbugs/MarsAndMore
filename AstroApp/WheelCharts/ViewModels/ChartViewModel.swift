@@ -1010,13 +1010,14 @@ extension ChartViewModel: AstrobotInterface {
                             zoom = true
                         }
                         v.removeFromSuperview()
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) { [weak self] in
                             let image = drawingView.takeScreenshot()
                             drawingView.addSubview(v)
                             v.imageView.image = image
                             if zoom {
                                 v.setZoomScale(2, animated: false)
                             }
+                            self?.callARepaint()
                             }
                         
                         break
@@ -1025,14 +1026,17 @@ extension ChartViewModel: AstrobotInterface {
             }
                 
 #endif
-            
+        callARepaint()
+    }
+    
+    func callARepaint() {
 #if os(iOS)
                 drawingView?.setNeedsDisplay()
 #else
                 drawingView?.setNeedsDisplay(drawingView?.bounds ?? CGRectZero)
 #endif
-
     }
+    
     func stepInTime(forward: Bool, stepTime: StepTimes, workingTime: Date?) -> Date? {
         if let time = workingTime {
             let calendar = Calendar.current
