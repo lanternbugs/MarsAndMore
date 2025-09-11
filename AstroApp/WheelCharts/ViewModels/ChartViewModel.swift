@@ -1102,10 +1102,13 @@ extension ChartViewModel: AstrobotInterface {
     }
     
     func populatePlanetsData(_ date: Double, _ location: LocationData?) -> [PlanetCell] {
-        let row = getPlanets(time: date, location: location, calculationSettings: model.manager.calculationSettings)
-        if let planets = row.planets as? [PlanetCell] {
-            return planets
+        if let calculationSettings = model.calculationSettings {
+            let row = getPlanets(time: date, location: location, calculationSettings: calculationSettings)
+            if let planets = row.planets as? [PlanetCell] {
+                return planets
+            }
         }
+        
         return [PlanetCell]()
     }
     
