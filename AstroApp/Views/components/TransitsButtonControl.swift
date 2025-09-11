@@ -53,6 +53,8 @@ struct TransitsButtonControl: View {
 extension TransitsButtonControl {
     func houses() {
         if let vModel = viewModel.houses() {
+            vModel.model.transitTime = vModel.model.originalTransitTime
+            vModel.resetData()
             roomState.wrappedValue = .NatalView(onDismiss: .Chart, viewModel: vModel)
         }
     }

@@ -78,6 +78,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         
         let viewModel = ChartViewModel(model: WheelChartModel(chartName: savedDate.planetsDateChoice.description, chart: .Natal, manager: manager))
         viewModel.model.selectedTime = savedDate.planetsDateChoice
+        viewModel.model.originalSelectedTime = savedDate.planetsDateChoice
         viewModel.model.selectedLocation = manager.planetsLocationData
         viewModel.model.calculationSettings = manager.calculationSettings
         viewModel.planetData = populatePlanetsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
@@ -131,6 +132,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
 
         let viewModel = getChartViewModel(name: manager.getCurrentName(), type: .Natal)
         viewModel.model.selectedTime = manager.getSelectionTimeAsDate()
+        viewModel.model.originalSelectedTime = manager.getSelectionTimeAsDate()
         viewModel.model.selectedLocation = manager.getSelectionLocation()
         viewModel.model.calculationSettings = manager.calculationSettings
         viewModel.planetData = populatePlanetsData(manager.getSelectionTime(), manager.getSelectionLocation())
@@ -163,6 +165,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         if let location = manager.getSelectionLocation() {
             let viewModel = getChartViewModel(name: manager.getCurrentName(), type: .Natal)
             viewModel.model.selectedTime = manager.getSelectionTimeAsDate()
+            viewModel.model.originalSelectedTime = manager.getSelectionTimeAsDate()
             viewModel.model.selectedLocation = manager.getSelectionLocation()
             viewModel.model.calculationSettings = manager.calculationSettings
 
@@ -195,7 +198,9 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         let transitData = TransitTimeData(calculationSettings: manager.calculationSettings, time: manager.getSelectionTime(), transitTime: transitDate, location: manager.getSelectionLocation())
         let viewModel = getChartViewModel(name: "\(manager.getCurrentName()) + \(dateFormater.string(from: transitDate))", type: .Transit)
         viewModel.model.transitTime = transitDate
+        viewModel.model.originalTransitTime = transitDate
         viewModel.model.selectedTime = manager.getSelectionTimeAsDate()
+        viewModel.model.originalSelectedTime = manager.getSelectionTimeAsDate()
         viewModel.model.selectedLocation = manager.getSelectionLocation()
         viewModel.model.calculationSettings = manager.calculationSettings
         viewModel.name2 = dateFormater.string(from: transitDate)
