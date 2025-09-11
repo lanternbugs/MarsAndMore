@@ -86,6 +86,13 @@ struct WheelChartView: View {
                             system in
                             Text(system.rawValue).tag(system)
                         }
+                    }.padding(.leading)
+                    if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) {
+                        Button(action: {
+                            reset()
+                        }) {
+                            Text("Reset").font(Font.subheadline)
+                        }.padding(.leading)
                     }
                     Spacer()
                 }
@@ -153,6 +160,15 @@ extension WheelChartView {
         }
         
         viewModel.jumpChartInTime(forward: forward, stepTime: stepTime)
+    }
+    
+    func reset() {
+        if viewModel.model.tab == .ChartTab {
+            manager.chartTabChartJumpedInTime = false
+        } else if viewModel.model.tab == .PlanetsTab {
+            manager.planetsTabChartJumpedInTime = false
+        }
+        viewModel.resetToOriginalDate()
     }
 }
 

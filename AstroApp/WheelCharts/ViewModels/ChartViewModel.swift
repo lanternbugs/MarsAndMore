@@ -948,6 +948,11 @@ weak var drawingView: NSView?
 }
 
 extension ChartViewModel: AstrobotInterface {
+    func resetToOriginalDate() {
+        resetDataToOriginalDate()
+        updateViewToData()
+    }
+    
     func resetDataToOriginalDate() {
         model.transitTime = model.originalTransitTime
         model.selectedTime = model.originalSelectedTime
@@ -985,6 +990,12 @@ extension ChartViewModel: AstrobotInterface {
                 
                 resetData()
                 populateData()
+            updateViewToData()
+                
+        }
+    }
+    
+    func updateViewToData() {
 #if os(iOS)
             if let drawingView = drawingView as? NatalChartDrawingView {
                 for v in drawingView.subviews {
@@ -1016,8 +1027,7 @@ extension ChartViewModel: AstrobotInterface {
 #else
                 drawingView?.setNeedsDisplay(drawingView?.bounds ?? CGRectZero)
 #endif
-                
-        }
+
     }
     func stepInTime(forward: Bool, stepTime: StepTimes, workingTime: Date?) -> Date? {
         if let time = workingTime {
