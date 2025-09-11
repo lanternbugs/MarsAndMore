@@ -974,11 +974,32 @@ extension ChartViewModel: AstrobotInterface {
                 
                 resetData()
                 populateData()
-                if let subviews = drawingView?.subviews {
-                    for v in subviews {
+#if os(iOS)
+            if let drawingView = drawingView as? NatalChartDrawingView {
+                for v in drawingView.subviews {
+                    if let v = v as? ZoomedWheelChartView {
+                        var zoom = false
+                        if v.zoomScale == 2 {
+                            v.setZoomScale(1, animated: false)
+                            zoom = true
+                        }
                         v.removeFromSuperview()
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.05) {
+                            let image = drawingView.takeScreenshot()
+                            drawingView.addSubview(v)
+                            v.imageView.image = image
+                            if zoom {
+                                v.setZoomScale(2, animated: false)
+                            }
+                            }
+                        
+                        break
                     }
                 }
+            }
+                
+#endif
+            
 #if os(iOS)
                 drawingView?.setNeedsDisplay()
 #else
