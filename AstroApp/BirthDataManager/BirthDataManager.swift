@@ -19,6 +19,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     var subCityInfo =  [CityInfo]()
     @Published var selectedName: Int?
     @Published var chartTabChartJumpedInTime: Bool = false
+    @Published var planetsTabChartJumpedInTime: Bool = false
     @Published var userNameSelection: String = ""
     @Published var userDateSelection: Date = Date(timeIntervalSince1970: (3600 * 72 + 2 * 315576000))
     let defaultBirthInterval: Double = 3600 * 72 + 2 * 315576000

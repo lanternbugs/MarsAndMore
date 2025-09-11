@@ -81,6 +81,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         viewModel.model.originalSelectedTime = savedDate.planetsDateChoice
         viewModel.model.selectedLocation = manager.planetsLocationData
         viewModel.model.calculationSettings = manager.calculationSettings
+        viewModel.model.tab = .PlanetsTab
         viewModel.planetData = populatePlanetsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
         viewModel.aspectsData = populateAspectsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
         viewModel.houseData = populateHouseData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)

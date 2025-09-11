@@ -54,6 +54,7 @@ extension TransitsButtonControl {
     func houses() {
         if let vModel = viewModel.houses() {
             vModel.model.transitTime = vModel.model.originalTransitTime
+            manager.chartTabChartJumpedInTime = false
             vModel.resetData()
             roomState.wrappedValue = .NatalView(onDismiss: .Chart, viewModel: vModel)
         }

@@ -25,20 +25,20 @@ struct WheelChartView: View {
     var body: some View {
         ScrollView {
             
-                HStack {
-
-                    if manager.chartDataSymbols {
-                        Button(action:  { manager.chartDataSymbols = false }) {
-                                                Text("Text")
-                        }.padding(.leading)
-                                        } else {
-                                            Button(action:  { manager.chartDataSymbols = true }) {
-                                                Text("Symbols")
-                                            }.padding(.leading)
-                                        }
-
-                    Spacer()
-                    if manager.chartTabChartJumpedInTime {
+            HStack {
+                
+                if manager.chartDataSymbols {
+                    Button(action:  { manager.chartDataSymbols = false }) {
+                        Text("Text")
+                    }.padding(.leading)
+                } else {
+                    Button(action:  { manager.chartDataSymbols = true }) {
+                        Text("Symbols")
+                    }.padding(.leading)
+                }
+                
+                Spacer()
+                if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) {
                         if viewModel.model.chart == .Transit {
                             if viewModel.model.originalTransitTime == viewModel.model.transitTime {
                                 Text(viewModel.chartName)
@@ -144,8 +144,14 @@ extension WheelChartView {
 
 extension WheelChartView {
     func stepInTime(forward: Bool) {
-        manager.chartTabChartJumpedInTime = false
-        manager.chartTabChartJumpedInTime = true
+        if viewModel.model.tab == .ChartTab {
+            manager.chartTabChartJumpedInTime = false
+            manager.chartTabChartJumpedInTime = true
+        } else if viewModel.model.tab == .PlanetsTab {
+            manager.planetsTabChartJumpedInTime = false
+            manager.planetsTabChartJumpedInTime = true
+        }
+        
         viewModel.jumpChartInTime(forward: forward, stepTime: stepTime)
     }
 }

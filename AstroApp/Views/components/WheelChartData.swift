@@ -88,7 +88,7 @@ struct WheelChartData: View {
                 }
             }
             else if viewModel.chart == .Transit {
-                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.aspectsData, houses: viewModel.secondaryHouseData, chart: viewModel.chart, title: viewModel.name2, houseSystem: manager.houseSystem), tropical: viewModel.tropical)
+                WheelChartPlanetListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.aspectsData, houses: viewModel.secondaryHouseData, chart: viewModel.chart, title: !manager.chartTabChartJumpedInTime ? viewModel.model.name2 : viewModel.model.chartTime, houseSystem: manager.houseSystem), tropical: viewModel.tropical)
                 if !viewModel.personTwoAspectsData.isEmpty {
                     WheelChartAspectsListing(viewModel: WheelChartDataViewModel(planets: viewModel.secondaryPlanetData, aspects: viewModel.personTwoAspectsData, houses: viewModel.secondaryHouseData, chart: .Natal, title: "Aspects", houseSystem: manager.houseSystem), major: true)
                     

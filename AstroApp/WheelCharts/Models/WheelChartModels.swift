@@ -42,6 +42,7 @@ class WheelChartModel {
     var originalSelectedTime: Date? = nil
     var selectedLocation: LocationData? = nil
     var calculationSettings: CalculationSettings? =  nil
+    var tab: AppTab = .ChartTab
     var upperPrintingQueue = [((Double, Int), PrintSize)]()
     var lowerPrintingQueue = [((Double, Int), PrintSize)]()
     var natalPrintingQueue = [((Double, Int), PrintSize)]()
