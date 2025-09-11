@@ -956,7 +956,11 @@ extension ChartViewModel: AstrobotInterface {
     func resetDataToOriginalDate() {
         model.transitTime = model.originalTransitTime
         model.selectedTime = model.originalSelectedTime
-        manager?.chartTabChartJumpedInTime = false
+        if model.tab == .ChartTab {
+            manager?.chartTabChartJumpedInTime = false
+        } else if model.tab == .PlanetsTab {
+            manager?.planetsTabChartJumpedInTime = false
+        }
         model.houseData = model.originalHouseData
         model.planetData = model.originalPlanetData
         model.aspectsData = model.originalAspectsData
