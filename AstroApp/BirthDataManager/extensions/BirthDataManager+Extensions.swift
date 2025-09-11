@@ -399,7 +399,7 @@ extension BirthDataManager {
             }
             return data.birthTime
         }
-        return nil
+        return Date()
     }
     
     func getSelectionLocation()->LocationData?
