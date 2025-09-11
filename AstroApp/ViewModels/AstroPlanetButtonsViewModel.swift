@@ -77,7 +77,9 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         temporaryDisableButtons()
         
         let viewModel = ChartViewModel(model: WheelChartModel(chartName: savedDate.planetsDateChoice.description, chart: .Natal, manager: manager))
-        
+        viewModel.model.selectedTime = savedDate.planetsDateChoice
+        viewModel.model.selectedLocation = manager.planetsLocationData
+        viewModel.model.calculationSettings = manager.calculationSettings
         viewModel.planetData = populatePlanetsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
         viewModel.aspectsData = populateAspectsData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
         viewModel.houseData = populateHouseData(savedDate.planetsDateChoice.getAstroTime(), manager.planetsLocationData)
@@ -128,7 +130,9 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         temporaryDisableButtons()
 
         let viewModel = getChartViewModel(name: manager.getCurrentName(), type: .Natal)
-        
+        viewModel.model.selectedTime = manager.getSelectionTimeAsDate()
+        viewModel.model.selectedLocation = manager.getSelectionLocation()
+        viewModel.model.calculationSettings = manager.calculationSettings
         viewModel.planetData = populatePlanetsData(manager.getSelectionTime(), manager.getSelectionLocation())
         viewModel.houseData = populateHouseData(manager.getSelectionTime(), manager.getSelectionLocation())
         viewModel.houseSystemName = manager.houseSystem.rawValue
@@ -158,6 +162,9 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         temporaryDisableButtons()
         if let location = manager.getSelectionLocation() {
             let viewModel = getChartViewModel(name: manager.getCurrentName(), type: .Natal)
+            viewModel.model.selectedTime = manager.getSelectionTimeAsDate()
+            viewModel.model.selectedLocation = manager.getSelectionLocation()
+            viewModel.model.calculationSettings = manager.calculationSettings
 
             viewModel.houseData = populateHouseData(manager.getSelectionTime(), location, housesOnly: false)
             viewModel.houseSystemName = manager.houseSystem.rawValue
@@ -188,7 +195,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         let transitData = TransitTimeData(calculationSettings: manager.calculationSettings, time: manager.getSelectionTime(), transitTime: transitDate, location: manager.getSelectionLocation())
         let viewModel = getChartViewModel(name: "\(manager.getCurrentName()) + \(dateFormater.string(from: transitDate))", type: .Transit)
         viewModel.model.transitTime = transitDate
-        viewModel.model.selectedTime = manager.getSelectionTime()
+        viewModel.model.selectedTime = manager.getSelectionTimeAsDate()
         viewModel.model.selectedLocation = manager.getSelectionLocation()
         viewModel.model.calculationSettings = manager.calculationSettings
         viewModel.name2 = dateFormater.string(from: transitDate)

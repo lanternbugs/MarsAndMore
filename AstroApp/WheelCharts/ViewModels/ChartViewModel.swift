@@ -948,20 +948,30 @@ weak var drawingView: NSView?
 }
 
 extension ChartViewModel: AstrobotInterface {
-    func jumpChartInTime(forward: Bool) {
-        if model.chart != .Transit {
+    func jumpChartInTime(forward: Bool, stepTime: StepTimes) {
+        if model.chart != .Transit && model.chart != .Natal {
             return
-        } else if let time = model.transitTime, let selectedLocation = model.selectedLocation, let selectedTime = model.selectedTime {
-            let calendar = Calendar.current
-            var value = 1
-            if !forward {
-                value = -1
-            }
-            let newDate = calendar.date(byAdding: .month, value: value, to: time)
-            if let newDate = newDate {
+        }
+        var workingTime: Date? = nil
+        if model.chart == .Transit {
+            workingTime = model.transitTime
+        } else if model.chart == .Natal {
+            workingTime = model.selectedTime
+        }
+        if let newDate = stepInTime(forward: forward, stepTime: stepTime, workingTime: workingTime) {
+            if model.chart == .Transit {
                 secondaryPlanetData = populatePlanetsData(newDate.getAstroTime(), nil)
                 model.transitTime = newDate
-                aspectsData = populateAspectsData(selectedTime, selectedLocation, secondTime: newDate.getAstroTime())
+                if let selectedTime = model.selectedTime {
+                    aspectsData = populateAspectsData(selectedTime.getAstroTime(), model.selectedLocation, secondTime: newDate.getAstroTime())
+                }
+            } else if model.chart == .Natal {
+                model.selectedTime = newDate
+                planetData = populatePlanetsData(newDate.getAstroTime(), model.selectedLocation)
+                houseData = populateHouseData(newDate.getAstroTime(), model.selectedLocation)
+                aspectsData = populateAspectsData(newDate.getAstroTime(), model.selectedLocation)
+            }
+                
                 resetData()
                 populateData()
                 if let subviews = drawingView?.subviews {
@@ -975,8 +985,58 @@ extension ChartViewModel: AstrobotInterface {
                 drawingView?.setNeedsDisplay(drawingView?.bounds ?? CGRectZero)
 #endif
                 
+        }
+    }
+    func stepInTime(forward: Bool, stepTime: StepTimes, workingTime: Date?) -> Date? {
+        if let time = workingTime {
+            let calendar = Calendar.current
+            var value = 1
+            switch(stepTime) {
+            case .oneMinute, .oneHour, .oneDay, .oneMonth, .oneYear:
+                value = 1
+            case .oneWeek:
+                value = 7
+            case .tenMinutes:
+                value = 10
+            case .sixMonths:
+                value = 6
+            }
+            if !forward {
+                value *= -1
+            }
+            var newDate: Date?
+            switch(stepTime) {
+            case .oneMinute, .tenMinutes:
+                newDate = calendar.date(byAdding: .minute, value: value, to: time)
+            case .oneHour:
+                newDate = calendar.date(byAdding: .hour, value: value, to: time)
+            case .oneDay, .oneWeek:
+                newDate = calendar.date(byAdding: .day, value: value, to: time)
+            case .oneMonth, .sixMonths:
+                newDate = calendar.date(byAdding: .month, value: value, to: time)
+            case .oneYear:
+                newDate = calendar.date(byAdding: .year, value: value, to: time)
+            }
+            return newDate
+        }
+        return nil
+    }
+    
+    func populateHouseData(_ date: Double, _ location: LocationData?, housesOnly: Bool = true) -> [HouseCell] {
+        if let location = location, let calculationSettings = model.calculationSettings {
+            let houseRow = getHouses(time: date, location: location, system: houseSystemName, calculationSettings:  calculationSettings)
+            if let houses = houseRow.planets as? [HouseCell] {
+                if housesOnly {
+                    return reduceHouses(houses)
+                }
+                return houses
             }
         }
+        return [HouseCell]()
+    }
+    
+    func reduceHouses(_ houseArray: [HouseCell]) -> [HouseCell] {
+        return houseArray.filter( { $0.type == HouseCellType.House })
     }
     
     func populateAspectsData(_ date: Double, _ location: LocationData?, secondTime: Double? = nil) -> [TransitCell] {
@@ -1000,16 +1060,30 @@ extension ChartViewModel: AstrobotInterface {
     }
     
     func setChartTime() {
-        if let transitTime = model.transitTime {
-            let dateFormater = DateFormatter()
-            dateFormater.locale   = Locale(identifier: "en_US_POSIX")
-#if os(iOS)
-            dateFormater.dateFormat = "YYYY/MM/dd\nh:mm"
-#else
-            dateFormater.dateFormat = "YYYY/MM/dd h:mm"
-#endif
-            model.chartTime =  "\(dateFormater.string(from: transitTime))"
+        if model.chart == .Transit {
+            if let transitTime = model.transitTime {
+                let dateFormater = DateFormatter()
+                dateFormater.locale   = Locale(identifier: "en_US_POSIX")
+    #if os(iOS)
+                dateFormater.dateFormat = "yyyy/MM/dd\nh:mm"
+    #else
+                dateFormater.dateFormat = "yyyy/MM/dd h:mm"
+    #endif
+                model.chartTime =  "\(dateFormater.string(from: transitTime))"
+            }
+        } else if model.chart == .Natal {
+            if let natalTime = model.selectedTime {
+                let dateFormater = DateFormatter()
+                dateFormater.locale   = Locale(identifier: "en_US_POSIX")
+    #if os(iOS)
+                dateFormater.dateFormat = "yyyy/MM/dd\nh:mm"
+    #else
+                dateFormater.dateFormat = "yyyy/MM/dd h:mm"
+    #endif
+                model.chartTime =  "\(dateFormater.string(from: natalTime))"
+            }
         }
+        
         
     }
 }

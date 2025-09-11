@@ -19,6 +19,7 @@ struct WheelChartView: View {
     let viewModel: ChartViewModel
     @EnvironmentObject var manager:BirthDataManager
     @State var opaqueValue = 0.0
+    @State var stepTime: StepTimes = .oneDay
     let easeDuration = 0.5
 
     var body: some View {
@@ -57,21 +58,23 @@ struct WheelChartView: View {
                                         }
 
                 }
-            if viewModel.model.transitTime != nil {
+            if viewModel.model.selectedTime != nil {
                 HStack {
                     Button(action: {
-                        manager.chartTabChartJumpedInTime = false
-                        manager.chartTabChartJumpedInTime = true
-                        viewModel.jumpChartInTime(forward: false) }) {
+                        stepInTime(forward: false) }) {
                         Text("<<").font(Font.subheadline)
                     }.padding(.leading)
                     Button(action: {
-                        manager.chartTabChartJumpedInTime = false
-                        manager.chartTabChartJumpedInTime = true
-                        viewModel.jumpChartInTime(forward: true)
+                        stepInTime(forward: true)
                     }) {
                         Text(">>").font(Font.subheadline)
                     }.padding(.leading)
+                    Picker(selection: $stepTime, label: Text("Step Time")) {
+                        ForEach(StepTimes.allCases, id: \.rawValue) {
+                            system in
+                            Text(system.rawValue).tag(system)
+                        }
+                    }
                     Spacer()
                 }
                 
@@ -124,6 +127,14 @@ extension WheelChartView {
     
 #endif
     
+    }
+}
+
+extension WheelChartView {
+    func stepInTime(forward: Bool) {
+        manager.chartTabChartJumpedInTime = false
+        manager.chartTabChartJumpedInTime = true
+        viewModel.jumpChartInTime(forward: forward, stepTime: stepTime)
     }
 }
 

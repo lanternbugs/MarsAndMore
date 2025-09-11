@@ -128,3 +128,6 @@ enum OrbType: String, CaseIterable { case NarrowOrbs = "Narrow Orbs", MediumOrbs
 
 let nakshatras = ["Ashwini", "Bharani", "Krittika", "Rohini", "Mrigashira", "Ardra", "Punarvasu", "Pushya", "Ashlesha", "Magha", "Purva Phalguni", "Uttara Phalguni", "Hasta", "Chitra", "Swati", "Vishakha", "Anuradha", "Jyeshtha", "Moola", "Purva Ashadha", "Uttara Ashadha", "Shravana", "Dhanishta", "Shatabhisha", "Purva Bhadrapada", "Uttara Bhadrapada", "Revati"]
 
+enum StepTimes: String, CaseIterable { case oneMinute = "1 Minute", tenMinutes = "10 Minutes", oneHour = "1 Hour", oneDay = "1 Day", oneWeek = "1 Week", oneMonth = "1 Month", sixMonths = "6 Months", oneYear = "1 Year"
+}
+

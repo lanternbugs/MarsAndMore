@@ -37,7 +37,7 @@ class WheelChartModel {
     var transitTime: Date? = nil
     var birthTime: Date? = nil
     var chartTime = ""
-    var selectedTime: Double? = nil
+    var selectedTime: Date? = nil
     var selectedLocation: LocationData? = nil
     var calculationSettings: CalculationSettings? =  nil
     var upperPrintingQueue = [((Double, Int), PrintSize)]()

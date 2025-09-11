@@ -389,6 +389,19 @@ extension BirthDataManager {
         return Date().getAstroTime()
     }
     
+    func getSelectionTimeAsDate() -> Date? {
+        if let index = self.selectedName {
+            let data = self.birthDates.first {
+                $0.id == index
+            }
+            guard let data = data else {
+                return nil
+            }
+            return data.birthTime
+        }
+        return nil
+    }
+    
     func getSelectionLocation()->LocationData?
     {
         if let index = self.selectedName {

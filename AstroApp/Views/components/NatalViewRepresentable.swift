@@ -26,7 +26,9 @@ struct NatalViewRepresentable: UIViewRepresentable {
             model.drawingView = view
             return view
         } else {
-            return NatalChartDrawingView(model: model)
+            let view = NatalChartDrawingView(model: model)
+            model.drawingView = view
+            return view
         }
         
     }
@@ -46,7 +48,9 @@ struct NatalViewRepresentable: NSViewRepresentable {
             model.drawingView = view
             return view
         } else {
-            return NatalChartDrawingView(model: model)
+            let view = NatalChartDrawingView(model: model)
+            model.drawingView = view
+            return view
         }
     }
     
