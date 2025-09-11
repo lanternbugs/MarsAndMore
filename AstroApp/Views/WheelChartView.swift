@@ -39,7 +39,19 @@ struct WheelChartView: View {
 
                     Spacer()
                     if manager.chartTabChartJumpedInTime {
-                        Text(viewModel.chartName + "*")
+                        if viewModel.model.chart == .Transit {
+                            if viewModel.model.originalTransitTime == viewModel.model.transitTime {
+                                Text(viewModel.chartName)
+                            } else {
+                                Text(viewModel.chartName + "*")
+                            }
+                        } else if viewModel.chart == .Natal {
+                            if viewModel.model.originalSelectedTime == viewModel.model.selectedTime {
+                                Text(viewModel.chartName)
+                            } else {
+                                Text(viewModel.chartName + "*")
+                            }
+                        }
                         
                     } else {
                         Text(viewModel.chartName)
