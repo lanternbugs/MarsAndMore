@@ -72,15 +72,6 @@ struct WheelChartView: View {
                 }
             if viewModel.model.selectedTime != nil {
                 HStack {
-                    Button(action: {
-                        stepInTime(forward: false) }) {
-                        Text("<<").font(Font.subheadline)
-                    }.padding(.leading)
-                    Button(action: {
-                        stepInTime(forward: true)
-                    }) {
-                        Text(">>").font(Font.subheadline)
-                    }.padding(.leading)
                     if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) {
                         Button(action: {
                             reset()
@@ -88,14 +79,28 @@ struct WheelChartView: View {
                             Text("Reset").font(Font.subheadline)
                         }.padding(.leading)
                     }
+                    Spacer()
+                    Button(action: {
+                        stepInTime(forward: false) }) {
+                        Text("<<").font(Font.subheadline)
+                    }.padding(.trailing)
+                    Button(action: {
+                        stepInTime(forward: true)
+                    }) {
+                        Text(">>").font(Font.subheadline)
+                    }.padding(.trailing)
+                    
                     Picker(selection: $stepTime, label: Text("Step Time")) {
                         ForEach(StepTimes.allCases, id: \.rawValue) {
                             system in
+#if os(iOS)
+                            Text(system.getShortName()).tag(system)
+#else
                             Text(system.rawValue).tag(system)
+#endif
+                            
                         }
-                    }.padding(.leading)
-                    
-                    Spacer()
+                    }.padding(.trailing)
                 }.padding(.bottom)
                 
             }
