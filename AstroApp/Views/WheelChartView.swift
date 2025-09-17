@@ -81,12 +81,6 @@ struct WheelChartView: View {
                     }) {
                         Text(">>").font(Font.subheadline)
                     }.padding(.leading)
-                    Picker(selection: $stepTime, label: Text("Step Time")) {
-                        ForEach(StepTimes.allCases, id: \.rawValue) {
-                            system in
-                            Text(system.rawValue).tag(system)
-                        }
-                    }.padding(.leading)
                     if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) {
                         Button(action: {
                             reset()
@@ -94,8 +88,15 @@ struct WheelChartView: View {
                             Text("Reset").font(Font.subheadline)
                         }.padding(.leading)
                     }
+                    Picker(selection: $stepTime, label: Text("Step Time")) {
+                        ForEach(StepTimes.allCases, id: \.rawValue) {
+                            system in
+                            Text(system.rawValue).tag(system)
+                        }
+                    }.padding(.leading)
+                    
                     Spacer()
-                }
+                }.padding(.bottom)
                 
             }
 
