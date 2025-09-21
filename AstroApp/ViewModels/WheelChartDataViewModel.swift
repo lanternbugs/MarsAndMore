@@ -38,7 +38,7 @@ class WheelChartDataViewModel {
         
     }
     func getPlanetSymbolRow(_ data: PlanetCell) -> some View {
-        var row =  Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.sign.getAstroCharacter().0)").font(Font.custom(data.sign.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.degree)")
+        var row =  Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.sign.getAstroCharacter().0)").font(Font.custom(data.sign.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.numericDegree.getAstroDegreeWithSeconds())")
         if data.retrograde {
             row = row + Text(" R").font(Font.custom("AstroDotBasic", size: symbolFontSize))
         }
@@ -46,9 +46,9 @@ class WheelChartDataViewModel {
         return row
     }
     func getPlanetRow(_ data: PlanetCell) -> String {
-        var text =  data.planet.getName().uppercased() + " " + data.sign.getName() + " " + data.degree
+        var text =  data.planet.getName().uppercased() + " " + data.sign.getName() + " " + data.numericDegree.getAstroDegreeWithSeconds()
         if data.planet == .Vertex {
-            text = data.planet.getName() + " " + data.sign.getName() + " " + data.degree
+            text = data.planet.getName() + " " + data.sign.getName() + " " + data.numericDegree.getAstroDegreeWithSeconds()
         }
         if data.retrograde {
             text = text + " " + "R"

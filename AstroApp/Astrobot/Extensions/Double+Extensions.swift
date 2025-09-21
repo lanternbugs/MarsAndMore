@@ -38,6 +38,23 @@ extension Double {
         return "\(num)° \(minute)'"
     }
     
+    func getAstroDegreeWithSeconds()->String
+    {
+        let num = Int(self) % 30
+        let difference =  self - Double(Int(self))
+        let doubleMinute = difference * 60
+
+        var minute = Int(doubleMinute)
+        let secondDifference = doubleMinute - Double(minute)
+        let doubleSecond = secondDifference * 60
+        var second = Int(doubleSecond)
+        if 10 * (doubleSecond - Double(second)) >= 5  {
+            second += 1
+        }
+        
+        return "\(num)° \(minute)' \(second)\""
+    }
+    
     func getAstroDegreeOnly()->String
     {
         let num = Int(self) % 30
