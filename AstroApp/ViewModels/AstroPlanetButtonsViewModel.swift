@@ -115,9 +115,9 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
     func getStringDate(savedDate: PlanetsDate)->String
     {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "YY/MM/dd"
+        dateFormatter.dateFormat = "yy/MM/dd"
         if savedDate.exactPlanetsTime {
-            dateFormatter.dateFormat = "YY-MM-dd HH:mm Z"
+            dateFormatter.dateFormat = "yy-MM-dd HH:mm Z"
         }
         return dateFormatter.string(from: savedDate.planetsDateChoice)
     }
@@ -205,7 +205,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         
         let dateFormater = DateFormatter()
         dateFormater.locale   = Locale(identifier: "en_US_POSIX")
-        dateFormater.dateFormat = "YY/MM/dd h:mm"
+        dateFormater.dateFormat = "yy/MM/dd h:mm"
         let transitData = TransitTimeData(calculationSettings: manager.calculationSettings, time: manager.getSelectionTime(), transitTime: transitDate, location: manager.getSelectionLocation())
         let viewModel = getChartViewModel(name: "\(manager.getCurrentName()) + \(dateFormater.string(from: transitDate))", type: .Transit)
         viewModel.model.transitTime = transitDate
