@@ -44,7 +44,7 @@ extension Double {
         let difference =  self - Double(Int(self))
         let doubleMinute = difference * 60
 
-        var minute = Int(doubleMinute)
+        let minute = Int(doubleMinute)
         let secondDifference = doubleMinute - Double(minute)
         let doubleSecond = secondDifference * 60
         var second = Int(doubleSecond)
