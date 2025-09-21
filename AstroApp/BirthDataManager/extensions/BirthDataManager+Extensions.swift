@@ -24,7 +24,8 @@ extension BirthDataManager {
         let startOfMonthDate = Calendar.current.date(from: components)!
         let stringDate = startOfMonthDate.getMonthYearDateNoTime()
         DispatchQueue.main.async { [weak self] in
-            self?.cityUtcOffset = (Double(zone.secondsFromGMT(for: date)), (String(format: "%.2f", Double(zone.secondsFromGMT(for: date) / 3600)), stringDate))
+            let stringOffset = String(format: "%.2f", Double(zone.secondsFromGMT(for: date)) / 3600.0)
+            self?.cityUtcOffset = (Double(zone.secondsFromGMT(for: date)), (stringOffset, stringDate))
         }
     }
     
