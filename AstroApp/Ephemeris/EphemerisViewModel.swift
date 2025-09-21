@@ -127,5 +127,24 @@ class EphemerisViewModel: AstrobotInterface, ObservableObject {
         }
         calculateMonthsPlanetData()
     }
+    
+    func addSpacing(_ i: Int) -> Bool {
+        if numbersOfDays == 30 {
+            if (i + 1) % 5 == 0 {
+                return true
+            }
+        } else if numbersOfDays > 30 {
+            if (i + 1 - Int(i / numbersOfDays)) % 5 == 0 {
+                return true
+            }
+        } else if numbersOfDays < 30 {
+            if (i + 1 + Int(i / numbersOfDays) * (30 - numbersOfDays)) % 5 == 0 {
+                return true
+            }
+        }
+        
+        
+        return false
+    }
 }
 
