@@ -956,7 +956,10 @@ extension ChartViewModel: AstrobotInterface {
     func resetDataToOriginalDate() {
         model.transitTime = model.originalTransitTime
         model.selectedTime = model.originalSelectedTime
-        if model.tab == .ChartTab {
+        if !personOneAspectsData.isEmpty && !personTwoAspectsData.isEmpty {
+            manager?.partnerJumpedInTime = false
+        }
+        else if model.tab == .ChartTab {
             manager?.chartTabChartJumpedInTime = false
         } else if model.tab == .PlanetsTab {
             manager?.planetsTabChartJumpedInTime = false
@@ -980,11 +983,26 @@ extension ChartViewModel: AstrobotInterface {
         }
         if let newDate = stepInTime(forward: forward, stepTime: stepTime, workingTime: workingTime) {
             if model.chart == .Transit {
-                secondaryPlanetData = populatePlanetsData(newDate.getAstroTime(), nil)
-                model.transitTime = newDate
-                if let selectedTime = model.selectedTime {
-                    aspectsData = populateAspectsData(selectedTime.getAstroTime(), model.selectedLocation, secondTime: newDate.getAstroTime())
+                if !personOneAspectsData.isEmpty && !personTwoAspectsData.isEmpty {
+                    // composite transit chart
+                    secondaryPlanetData = populatePlanetsData(newDate.getAstroTime(), nil)
+                    model.transitTime = newDate
+                    if let selectedTime = model.selectedTime {
+                        let aspectsRow = getAspectsFromPlanets(planetData, with: newDate.getAstroTime(), type: model.manager.transitOrbSelection)
+                        if let aspects = aspectsRow.planets as? [TransitCell] {
+                            aspectsData = aspects
+                        } else {
+                            aspectsData = [TransitCell]()
+                        }
+                    }
+                } else {
+                    secondaryPlanetData = populatePlanetsData(newDate.getAstroTime(), nil)
+                    model.transitTime = newDate
+                    if let selectedTime = model.selectedTime {
+                        aspectsData = populateAspectsData(selectedTime.getAstroTime(), model.selectedLocation, secondTime: newDate.getAstroTime())
+                    }
                 }
+                
             } else if model.chart == .Natal {
                 model.selectedTime = newDate
                 planetData = populatePlanetsData(newDate.getAstroTime(), model.selectedLocation)

@@ -38,7 +38,7 @@ struct WheelChartView: View {
                 }
                 
                 Spacer()
-                if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) {
+                if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (manager.partnerJumpedInTime && (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty  )) {
                         if viewModel.model.chart == .Transit {
                             if viewModel.model.originalTransitTime == viewModel.model.transitTime {
                                 Text(viewModel.chartName)
@@ -72,7 +72,7 @@ struct WheelChartView: View {
                 }
             if viewModel.model.selectedTime != nil {
                 HStack {
-                    if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) {
+                    if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty && manager.partnerJumpedInTime) {
                         Button(action: {
                             reset()
                         }) {
@@ -157,7 +157,11 @@ extension WheelChartView {
 
 extension WheelChartView {
     func stepInTime(forward: Bool) {
-        if viewModel.model.tab == .ChartTab {
+        if !viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty  {
+            manager.partnerJumpedInTime = false
+            manager.partnerJumpedInTime = true
+        }
+        else if viewModel.model.tab == .ChartTab {
             manager.chartTabChartJumpedInTime = false
             manager.chartTabChartJumpedInTime = true
         } else if viewModel.model.tab == .PlanetsTab {
@@ -169,7 +173,10 @@ extension WheelChartView {
     }
     
     func reset() {
-        if viewModel.model.tab == .ChartTab {
+        if !viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty  {
+            manager.partnerJumpedInTime = false
+        }
+        else if viewModel.model.tab == .ChartTab {
             manager.chartTabChartJumpedInTime = false
         } else if viewModel.model.tab == .PlanetsTab {
             manager.planetsTabChartJumpedInTime = false

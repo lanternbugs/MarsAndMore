@@ -70,6 +70,10 @@ class SynastryChooserViewModel: AstrobotInterface {
         dateFormater.locale   = Locale(identifier: "en_US_POSIX")
         dateFormater.dateFormat = "yy/MM/dd h:mm"
         let viewModel = ChartViewModel(model: WheelChartModel(chartName: data1.name + " + " + data2.name + " + " + dateFormater.string(from: transitDate), chart: .Transit, manager: manager))
+        viewModel.model.transitTime = transitDate
+        viewModel.model.originalTransitTime = transitDate
+        viewModel.model.originalSelectedTime = transitDate
+        viewModel.model.selectedTime = transitDate
         viewModel.name2 = dateFormater.string(from: transitDate)
         viewModel.name1 = selectedNameOne + " + " + selectedNameTwo
         guard let compositeModel = getCompositeChart(selectedNameOne: selectedNameOne, selectedNameTwo: selectedNameTwo) else {
@@ -89,6 +93,12 @@ class SynastryChooserViewModel: AstrobotInterface {
         viewModel.secondaryPlanetData = populatePlanetsData(transitDate.getAstroTime(), nil)
         viewModel.personOneAspectsData = compositeModel.aspectsData
         viewModel.personTwoAspectsData = populateAspectsData(transitDate.getAstroTime(), nil)
+        viewModel.model.calculationSettings = manager.calculationSettings
+        viewModel.model.originalHouseData = viewModel.houseData
+        viewModel.model.originalPlanetData = compositeModel.planetData
+        viewModel.model.originalAspectsData = viewModel.aspectsData
+        viewModel.model.originalSecondaryPlanetData = viewModel.secondaryPlanetData
+        manager.partnerJumpedInTime = false
         return viewModel
         
     }
