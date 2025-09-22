@@ -38,7 +38,14 @@ class WheelChartDataViewModel {
         
     }
     func getPlanetSymbolRow(_ data: PlanetCell) -> some View {
-        var row =  Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.sign.getAstroCharacter().0)").font(Font.custom(data.sign.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(data.numericDegree.getAstroDegreeWithSeconds())")
+        var numericData = data.numericDegree.getAstroDegreeWithSeconds()
+#if os(iOS)
+        if idiom != .pad {
+            numericData = data.degree
+        }
+        
+#endif
+        var row =  Text("\(data.planet.getAstroCharacter().0)").font(Font.custom(data.planet.getAstroCharacter().1, size: symbolFontSize)) + Text(" ") + Text("\(data.sign.getAstroCharacter().0)").font(Font.custom(data.sign.getAstroCharacter().1, size: symbolFontSize)) + Text(" \(numericData)")
         if data.retrograde {
             row = row + Text(" R").font(Font.custom("AstroDotBasic", size: symbolFontSize))
         }
@@ -46,9 +53,16 @@ class WheelChartDataViewModel {
         return row
     }
     func getPlanetRow(_ data: PlanetCell) -> String {
-        var text =  data.planet.getName().uppercased() + " " + data.sign.getName() + " " + data.numericDegree.getAstroDegreeWithSeconds()
+        var numericData = data.numericDegree.getAstroDegreeWithSeconds()
+#if os(iOS)
+        if idiom != .pad {
+            numericData = data.degree
+        }
+        
+#endif
+        var text =  data.planet.getName().uppercased() + " " + data.sign.getName() + " " + numericData
         if data.planet == .Vertex {
-            text = data.planet.getName() + " " + data.sign.getName() + " " + data.numericDegree.getAstroDegreeWithSeconds()
+            text = data.planet.getName() + " " + data.sign.getName() + " " + numericData
         }
         if data.retrograde {
             text = text + " " + "R"

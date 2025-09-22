@@ -72,23 +72,43 @@ struct WheelChartView: View {
                 }
             if viewModel.model.selectedTime != nil {
                 HStack {
-                    if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty && manager.partnerJumpedInTime) {
-                        Button(action: {
-                            reset()
-                        }) {
-                            Text("Reset").font(Font.subheadline)
-                        }.padding(.leading)
-                    }
-                    Spacer()
+#if os(iOS)
+                if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty && manager.partnerJumpedInTime) {
                     Button(action: {
-                        stepInTime(forward: false) }) {
-                        Text("<<").font(Font.subheadline)
-                    }.padding(.trailing)
-                    Button(action: {
-                        stepInTime(forward: true)
+                        reset()
                     }) {
-                        Text(">>").font(Font.subheadline)
-                    }.padding(.trailing)
+                        Text("Reset").font(Font.subheadline)
+                    }.padding(.leading)
+                }
+                Spacer()
+                Button(action: {
+                    stepInTime(forward: false) }) {
+                    Text("<<").font(Font.subheadline)
+                }.padding(.trailing)
+                Button(action: {
+                    stepInTime(forward: true)
+                }) {
+                    Text(">>").font(Font.subheadline)
+                }.padding(.trailing)
+#else
+                Button(action: {
+                    stepInTime(forward: false) }) {
+                    Text("<<").font(Font.subheadline)
+                }.padding(.leading)
+                Button(action: {
+                    stepInTime(forward: true)
+                }) {
+                    Text(">>").font(Font.subheadline)
+                }.padding(.leading)
+                if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty && manager.partnerJumpedInTime) {
+                    Button(action: {
+                        reset()
+                    }) {
+                        Text("Reset").font(Font.subheadline)
+                    }.padding(.leading)
+                }
+#endif
+                    
                     
                     Picker(selection: $stepTime, label: Text("Step Time")) {
                         ForEach(StepTimes.allCases, id: \.rawValue) {

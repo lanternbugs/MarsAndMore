@@ -99,6 +99,7 @@ class SynastryChooserViewModel: AstrobotInterface {
         viewModel.model.originalAspectsData = viewModel.aspectsData
         viewModel.model.originalSecondaryPlanetData = viewModel.secondaryPlanetData
         manager.partnerJumpedInTime = false
+        viewModel.model.tab = .ArtTab // something other than chart or planets. tab is not used in this case
         return viewModel
         
     }
