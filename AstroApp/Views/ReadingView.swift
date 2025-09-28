@@ -25,7 +25,7 @@ struct ReadingView: View {
                     Text("\(planet.getName()) in \(sign.getName())").padding()
                 } else  if case .About = state
                 {
-                    Text("About Mars & More - Astro Charts").padding()
+                    Text("About Astrology Charts & More").padding()
                 }
                 
                 ForEach(reading, id: \.id) { entry in
