@@ -115,10 +115,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
     func getStringDate(savedDate: PlanetsDate)->String
     {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yy/MM/dd"
-        if savedDate.exactPlanetsTime {
-            dateFormatter.dateFormat = "yy-MM-dd HH:mm Z"
-        }
+        dateFormatter.dateFormat = "yy-MM-dd HH:mm Z"
         return dateFormatter.string(from: savedDate.planetsDateChoice)
     }
     

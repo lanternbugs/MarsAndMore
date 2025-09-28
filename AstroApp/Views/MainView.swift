@@ -68,7 +68,6 @@ struct MainView: View {
 
 class PlanetsDate: ObservableObject {
     @Published var planetsDateChoice = Date();
-    @Published var exactPlanetsTime = false
 }
 
 struct MainView_Previews: PreviewProvider {

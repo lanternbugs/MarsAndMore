@@ -39,34 +39,32 @@ struct PlanetButtons: View {
                     }
                     Spacer()
                 }
-            }
+            }.padding(.bottom)
             HStack(alignment: .top) {
-                if !savedDate.exactPlanetsTime {
-                    DatePicker(
-                      "Date",
-                      selection: $savedDate.planetsDateChoice,
-                      displayedComponents: .date
-                    ).datePickerStyle(DefaultDatePickerStyle())
-                } else {
-                    DatePicker(
-                      "Date",
-                      selection: $savedDate.planetsDateChoice,
-                      displayedComponents: [.date, .hourAndMinute]
-                    ).datePickerStyle(DefaultDatePickerStyle())
-                }
+                DatePicker(
+                  "Date",
+                  selection: $savedDate.planetsDateChoice,
+                  displayedComponents: [.date, .hourAndMinute]
+                ).datePickerStyle(DefaultDatePickerStyle())
             }
             HStack {
                 Button(action: { savedDate.planetsDateChoice = Date()  }) {
                     Text("Reset to Now").font(Font.subheadline)
                 }
                 Spacer()
-                Toggle("Exact Time", isOn: $savedDate.exactPlanetsTime)
-                Spacer()
+#if os(iOS)
+                            if idiom != .pad {
+                                Button(action: { roomState.wrappedValue = .SynastryChooser }) {
+                                    Text("Partner").font(Font.headline).padding(.trailing)
+                                }
+                                Spacer()
+                            }
+#endif
                 
                 Button(action: { roomState.wrappedValue = .ChartSettings }) {
                     Text("Settings").font(Font.subheadline)
                 }
-            }
+            }.padding([.top, .bottom])
             
         }
         
