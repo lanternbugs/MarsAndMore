@@ -55,10 +55,14 @@ class NatalChartDrawingView: UIView {
     
     @objc private func doubleTap(_ sender: UITapGestureRecognizer) {
         let image = takeScreenshot()
-        let view = ZoomedWheelChartView(frame: frame, image: image)
-        view.imageView.bounds = bounds
-        addSubview(view)
-        setNeedsDisplay()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.025) { [ weak self] in
+            let view = ZoomedWheelChartView(frame: self?.frame ?? CGRectZero, image: image)
+            view.zoomed = self?.viewModel.zoomed
+            view.imageView.bounds = self?.bounds ?? CGRectZero
+            self?.addSubview(view)
+            self?.setNeedsDisplay()
+        }
+        viewModel.zoomed?.wrappedValue = true
     
         
     }

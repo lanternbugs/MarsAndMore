@@ -16,6 +16,7 @@
 
 #if os(iOS)
 import UIKit
+import SwiftUI
 extension UIView {
 
     func takeScreenshot() -> UIImage {
@@ -34,7 +35,7 @@ extension UIView {
 
 class ZoomedWheelChartView: UIScrollView {
 
-    
+    var zoomed: Binding<Bool>?
     let imageView = UIImageView()
 
     
@@ -72,17 +73,16 @@ class ZoomedWheelChartView: UIScrollView {
             let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
             doubleTapRecognizer.numberOfTapsRequired = 2
             addGestureRecognizer(doubleTapRecognizer)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
                 self?.zoomIn()
             }
     }
     
     @objc private func doubleTap(_ sender: UITapGestureRecognizer) {
-        if zoomScale == 1 {
-            setZoomScale(2, animated: true)
-        } else {
-            setZoomScale(1, animated: true)
-        }
+        zoomed?.wrappedValue = false
+        let parent = superview
+        removeFromSuperview()
+        parent?.setNeedsDisplay()
     }
     
     func zoomIn() {

@@ -14,130 +14,134 @@
 //
 
 import SwiftUI
-
-struct WheelChartView: View {
+struct WheelChartView: View  {
     let viewModel: ChartViewModel
     @EnvironmentObject var manager:BirthDataManager
     @State var opaqueValue = 0.0
+    @State var zoomed = false
     @AppStorage("WheelStepTime") var stepTime: StepTimes = .oneDay
     let easeDuration = 0.5
 
     var body: some View {
         ScrollView {
             
-            HStack {
-                
-                if manager.chartDataSymbols {
-                    Button(action:  { manager.chartDataSymbols = false }) {
-                        Text("Text")
-                    }.padding([.leading, .top])
-                } else {
-                    Button(action:  { manager.chartDataSymbols = true }) {
-                        Text("Symbols")
-                    }.padding([.leading, .top])
-                }
-                
-                Spacer()
-                if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (manager.partnerJumpedInTime && (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty  )) {
-                        if viewModel.model.chart == .Transit {
-                            if viewModel.model.originalTransitTime == viewModel.model.transitTime {
-                                Text(viewModel.chartName)
-                            } else {
-                                Text(viewModel.chartName + "*")
-                            }
-                        } else if viewModel.chart == .Natal {
-                            if viewModel.model.originalSelectedTime == viewModel.model.selectedTime {
-                                Text(viewModel.chartName)
-                            } else {
-                                Text(viewModel.chartName + "*")
-                            }
-                        }
-                        
+            if !zoomed {
+                HStack {
+                    
+                    if manager.chartDataSymbols {
+                        Button(action:  { manager.chartDataSymbols = false }) {
+                            Text("Text")
+                        }.padding([.leading, .top])
                     } else {
-                        Text(viewModel.chartName)
+                        Button(action:  { manager.chartDataSymbols = true }) {
+                            Text("Symbols")
+                        }.padding([.leading, .top])
                     }
                     
                     Spacer()
-
-                    if manager.chartWheelColorType == .Light {
-                                            Button(action:  { manager.chartWheelColorType = .Dark }) {
-                                                Text("Dark Chart")
-                                            }.padding(.top)
-                                        } else {
-                                            Button(action:  { manager.chartWheelColorType = .Light }) {
-                                                Text("Light Chart")
-                                            }.padding(.top)
-                                        }
-
-                }
-            if viewModel.model.selectedTime != nil {
-                HStack {
-#if os(iOS)
-                if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty && manager.partnerJumpedInTime) {
-                    Button(action: {
-                        reset()
-                    }) {
-                        Text("Reset").font(Font.subheadline)
-                    }.padding(.leading)
-                }
-                Spacer()
-                Button(action: {
-                    stepInTime(forward: false) }) {
-                    Text("<<").font(Font.subheadline)
-                }.padding(.trailing)
-                Button(action: {
-                    stepInTime(forward: true)
-                }) {
-                    Text(">>").font(Font.subheadline)
-                }.padding(.trailing)
-#else
-                Button(action: {
-                    stepInTime(forward: false) }) {
-                    Text("<<").font(Font.subheadline)
-                }.padding(.leading)
-                Button(action: {
-                    stepInTime(forward: true)
-                }) {
-                    Text(">>").font(Font.subheadline)
-                }.padding(.leading)
-                if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty && manager.partnerJumpedInTime) {
-                    Button(action: {
-                        reset()
-                    }) {
-                        Text("Reset").font(Font.subheadline)
-                    }.padding(.leading)
-                }
-#endif
-                    
-                    
-                    Picker(selection: $stepTime, label: Text("Step Time")) {
-                        ForEach(StepTimes.allCases, id: \.rawValue) {
-                            system in
-#if os(iOS)
-                            Text(system.getShortName()).tag(system)
-#else
-                            Text(system.rawValue).tag(system)
-#endif
+                    if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (manager.partnerJumpedInTime && (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty  )) {
+                            if viewModel.model.chart == .Transit {
+                                if viewModel.model.originalTransitTime == viewModel.model.transitTime {
+                                    Text(viewModel.chartName)
+                                } else {
+                                    Text(viewModel.chartName + "*")
+                                }
+                            } else if viewModel.chart == .Natal {
+                                if viewModel.model.originalSelectedTime == viewModel.model.selectedTime {
+                                    Text(viewModel.chartName)
+                                } else {
+                                    Text(viewModel.chartName + "*")
+                                }
+                            }
                             
+                        } else {
+                            Text(viewModel.chartName)
                         }
-                    }.padding(.trailing)
-                }.padding(.bottom)
-                
-            }
+                        
+                        Spacer()
 
+                        if manager.chartWheelColorType == .Light {
+                                                Button(action:  { manager.chartWheelColorType = .Dark
+                                                zoomed = false }) {
+                                                    Text("Dark Chart")
+                                                }.padding(.top)
+                                            } else {
+                                                Button(action:  { manager.chartWheelColorType = .Light
+                                                zoomed = false }) {
+                                                    Text("Light Chart")
+                                                }.padding(.top)
+                                            }
+
+                    }
+                if viewModel.model.selectedTime != nil {
+                    HStack {
+    #if os(iOS)
+                    if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty && manager.partnerJumpedInTime) {
+                        Button(action: {
+                            reset()
+                        }) {
+                            Text("Reset").font(Font.subheadline)
+                        }.padding(.leading)
+                    }
+                    Spacer()
+                    Button(action: {
+                        stepInTime(forward: false) }) {
+                        Text("<<").font(Font.subheadline)
+                    }.padding(.trailing)
+                    Button(action: {
+                        stepInTime(forward: true)
+                    }) {
+                        Text(">>").font(Font.subheadline)
+                    }.padding(.trailing)
+    #else
+                    Button(action: {
+                        stepInTime(forward: false) }) {
+                        Text("<<").font(Font.subheadline)
+                    }.padding(.leading)
+                    Button(action: {
+                        stepInTime(forward: true)
+                    }) {
+                        Text(">>").font(Font.subheadline)
+                    }.padding(.leading)
+                    if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty && manager.partnerJumpedInTime) {
+                        Button(action: {
+                            reset()
+                        }) {
+                            Text("Reset").font(Font.subheadline)
+                        }.padding(.leading)
+                    }
+    #endif
+                        
+                        
+                        Picker(selection: $stepTime, label: Text("Step Time")) {
+                            ForEach(StepTimes.allCases, id: \.rawValue) {
+                                system in
+    #if os(iOS)
+                                Text(system.getShortName()).tag(system)
+    #else
+                                Text(system.rawValue).tag(system)
+    #endif
+                                
+                            }
+                        }.padding(.trailing)
+                    }.padding(.bottom)
+                    
+                }
+
+            }
                 
                 if manager.chartWheelColorType == .Light {
 #if os(macOS)
                     NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #elseif os(iOS)
-                NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
+                    NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: zoomed ?  getCurrentChartHeightiOS() : getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #endif
                 } else {
                     
 #if os(macOS)
                 NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #elseif os(iOS)
-                NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
+                NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height:  zoomed ?  getCurrentChartHeightiOS() : getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #endif
             }
              
@@ -152,12 +156,21 @@ struct WheelChartView: View {
             WheelChartData(viewModel: viewModel)
         }.onAppear() {
             opaqueValue = 1.0
+            viewModel.zoomed = $zoomed
         }
     }
 }
 
 extension WheelChartView {
-    func getScreenWidth()->Double
+#if os(iOS)
+    
+    func getCurrentChartHeightiOS() -> Double {
+        UIScreen.main.bounds.size.height * 0.70
+    }
+    
+#endif
+    
+    func getScreenWidth() -> Double
     {
 #if os(macOS)
         guard let mainScreen = NSScreen.main else {

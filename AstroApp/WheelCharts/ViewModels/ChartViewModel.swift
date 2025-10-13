@@ -14,6 +14,7 @@
 //
 
 import Foundation
+import SwiftUI
 #if os(iOS)
 import UIKit
 var idiom : UIUserInterfaceIdiom { UIDevice.current.userInterfaceIdiom }
@@ -28,6 +29,7 @@ weak var drawingView: UIView?
 #else
 weak var drawingView: NSView?
 #endif
+    var zoomed: Binding<Bool>?
     let model: WheelChartModel
     var secondaryLastPrintingDegree = -Int.max
     var secondaryPrintingStack = [Int]()
