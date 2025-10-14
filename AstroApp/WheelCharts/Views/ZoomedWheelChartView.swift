@@ -73,7 +73,7 @@ class ZoomedWheelChartView: UIScrollView {
             let doubleTapRecognizer = UITapGestureRecognizer(target: self, action: #selector(doubleTap(_:)))
             doubleTapRecognizer.numberOfTapsRequired = 2
             addGestureRecognizer(doubleTapRecognizer)
-        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.01) { [weak self] in
                 self?.zoomIn()
             }
     }
