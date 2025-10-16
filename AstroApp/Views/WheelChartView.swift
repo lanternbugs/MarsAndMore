@@ -84,12 +84,6 @@ struct WheelChartView: View  {
                         }.padding(.leading)
                     }
                     Spacer()
-                        if viewModel.model.tab == .PlanetsTab {
-                            Button(action: {
-                                stepToNow() }) {
-                                Text("Now").font(Font.subheadline)
-                            }.padding(.trailing)
-                        }
                     Button(action: {
                         stepInTime(forward: false) }) {
                         Text("<<").font(Font.subheadline)
@@ -100,12 +94,7 @@ struct WheelChartView: View  {
                         Text(">>").font(Font.subheadline)
                     }.padding(.trailing)
     #else
-                        if viewModel.model.tab == .PlanetsTab {
-                            Button(action: {
-                                stepToNow() }) {
-                                Text("Now").font(Font.subheadline)
-                            }.padding(.trailing)
-                        }
+                        
                         Button(action: {
                         stepInTime(forward: false) }) {
                         Text("<<").font(Font.subheadline)
@@ -136,6 +125,13 @@ struct WheelChartView: View  {
                                 
                             }
                         }.padding(.trailing)
+                        
+                        if viewModel.model.tab == .PlanetsTab {
+                            Button(action: {
+                                stepToNow() }) {
+                                Text("Now").font(Font.subheadline)
+                            }.padding(.trailing)
+                        }
                     }.padding(.bottom)
                     
                 }
