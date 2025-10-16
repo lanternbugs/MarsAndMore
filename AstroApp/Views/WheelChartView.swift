@@ -74,46 +74,64 @@ struct WheelChartView: View  {
 
                     }
                 if viewModel.model.selectedTime != nil {
-                    HStack {
+                    
     #if os(iOS)
-                    if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty && manager.partnerJumpedInTime) {
+                    HStack {
+                        if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty && manager.partnerJumpedInTime) {
+                            Button(action: {
+                                reset()
+                            }) {
+                                Text("Reset").font(Font.subheadline)
+                            }.padding([.leading, .bottom])
+                        }
+                        Spacer()
                         Button(action: {
-                            reset()
+                            stepInTime(forward: false) }) {
+                            Text("<<").font(Font.subheadline)
+                            }.padding([.trailing, .bottom])
+                        Button(action: {
+                            stepInTime(forward: true)
                         }) {
-                            Text("Reset").font(Font.subheadline)
-                        }.padding(.leading)
-                    }
-                    Spacer()
-                    Button(action: {
-                        stepInTime(forward: false) }) {
-                        Text("<<").font(Font.subheadline)
-                    }.padding(.trailing)
-                    Button(action: {
-                        stepInTime(forward: true)
-                    }) {
-                        Text(">>").font(Font.subheadline)
-                    }.padding(.trailing)
+                            Text(">>").font(Font.subheadline)
+                        }.padding([.trailing, .bottom])
+                            Picker(selection: $stepTime, label: Text("Step Time")) {
+                                ForEach(StepTimes.allCases, id: \.rawValue) {
+                                    system in
+        #if os(iOS)
+                                    Text(system.getShortName()).tag(system)
+        #else
+                                    Text(system.rawValue).tag(system)
+        #endif
+                                    
+                                }
+                            }.padding([.trailing, .bottom])
+                            
+                            if viewModel.model.tab == .PlanetsTab {
+                                Button(action: {
+                                    stepToNow() }) {
+                                    Text("Now").font(Font.subheadline)
+                                    }.padding([.trailing, .bottom])
+                            }
+                    }.padding(viewModel.model.tab == .PlanetsTab ? .bottom : .leading)
+                    
     #else
-                        
+                    HStack {
                         Button(action: {
                         stepInTime(forward: false) }) {
                         Text("<<").font(Font.subheadline)
-                    }.padding(.leading)
+                        }.padding([.leading])
                     Button(action: {
                         stepInTime(forward: true)
                     }) {
                         Text(">>").font(Font.subheadline)
-                    }.padding(.leading)
+                    }.padding([.leading])
                     if (manager.chartTabChartJumpedInTime && viewModel.model.tab == .ChartTab) || (manager.planetsTabChartJumpedInTime && viewModel.model.tab == .PlanetsTab) || (!viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty && manager.partnerJumpedInTime) {
                         Button(action: {
                             reset()
                         }) {
                             Text("Reset").font(Font.subheadline)
-                        }.padding(.leading)
+                        }.padding([.leading])
                     }
-    #endif
-                        
-                        
                         Picker(selection: $stepTime, label: Text("Step Time")) {
                             ForEach(StepTimes.allCases, id: \.rawValue) {
                                 system in
@@ -124,15 +142,21 @@ struct WheelChartView: View  {
     #endif
                                 
                             }
-                        }.padding(.trailing)
+                        }.padding([.trailing])
                         
                         if viewModel.model.tab == .PlanetsTab {
                             Button(action: {
                                 stepToNow() }) {
                                 Text("Now").font(Font.subheadline)
-                            }.padding(.trailing)
+                                }.padding([.trailing])
                         }
-                    }.padding(.bottom)
+                    }
+                        
+    #endif
+                        
+                        
+ 
+                    
                     
                 }
 
@@ -142,14 +166,27 @@ struct WheelChartView: View  {
 #if os(macOS)
                     NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #elseif os(iOS)
-                    NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: zoomed ?  getCurrentChartHeightiOS() : getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
+                    if viewModel.model.tab == .PlanetsTab {
+                        NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: zoomed ?  getCurrentChartHeightiOS() : getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue).padding(.top)
+                    } else {
+                        NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: zoomed ?  getCurrentChartHeightiOS() : getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
+                    }
+                    
+                    
 #endif
                 } else {
                     
 #if os(macOS)
                 NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #elseif os(iOS)
-                NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height:  zoomed ?  getCurrentChartHeightiOS() : getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
+                    if viewModel.model.tab == .PlanetsTab {
+                        NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height:  zoomed ?  getCurrentChartHeightiOS() : getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue).padding(.top)
+                    } else {
+                        NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height:  zoomed ?  getCurrentChartHeightiOS() : getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
+                    }
+                        
+                        
+                        
 #endif
             }
              
