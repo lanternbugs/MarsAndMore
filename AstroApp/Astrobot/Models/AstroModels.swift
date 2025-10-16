@@ -133,21 +133,21 @@ enum StepTimes: String, CaseIterable { case oneMinute = "1 Minute", tenMinutes =
     func getShortName() -> String {
         switch(self) {
         case .oneMinute:
-            return "1 Min"
+            return "Min"
         case .tenMinutes:
             return "10 Min"
         case .oneHour:
-            return "1 Hour"
+            return "Hour"
         case .oneDay:
-            return "1 Day"
+            return "Day"
         case .oneWeek:
-            return "1 Week"
+            return "Week"
         case .oneMonth:
-            return "1 Month"
+            return "Month"
         case .sixMonths:
             return "6 Month"
         case .oneYear:
-            return "1 Year"
+            return "Year"
         }
     }
 }
