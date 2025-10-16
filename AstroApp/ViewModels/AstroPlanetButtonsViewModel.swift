@@ -69,10 +69,10 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         return [PlanetCell]()
     }
     
-    func planets(savedDate: PlanetsDate)
+    func planets(savedDate: PlanetsDate) -> ChartViewModel?
     {
         guard buttonsEnabled else {
-            return
+            return nil
         }
         temporaryDisableButtons()
         
@@ -94,6 +94,7 @@ class AstroPlanetButtonsViewModel: ObservableObject, AstrobotInterface {
         
         let displayRow = DisplayPlanetRow(planets: viewModel.planetData, id: data.wrappedValue.count, type: .Planets(viewModel: viewModel), name: getStringDate(savedDate: savedDate), calculationSettings: manager.calculationSettings)
         data.wrappedValue.append(displayRow)
+        return viewModel
     }
     
     func aspects(savedDate: PlanetsDate)

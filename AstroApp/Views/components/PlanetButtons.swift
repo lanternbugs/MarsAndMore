@@ -26,7 +26,7 @@ struct PlanetButtons: View {
             HStack(alignment: .top) {
                 Spacer()
                 Button(action: planets) {
-                    Text("Planets")
+                    Text("Chart Wheel")
                 }
                 Spacer()
                 Button(action: aspects) {
@@ -73,7 +73,10 @@ struct PlanetButtons: View {
 
 extension PlanetButtons {
     func planets() {
-        viewModel.planets(savedDate: savedDate)
+        if let vModel = viewModel.planets(savedDate: savedDate) {
+            vModel.resetDataToOriginalDate()
+            roomState.wrappedValue = .NatalView(onDismiss: .Planets, viewModel: vModel)
+        }
     }
     
     func aspects() {
