@@ -50,20 +50,20 @@ struct PlanetButtons: View {
             HStack {
                 Button(action: { savedDate.planetsDateChoice = Date()  }) {
                     Text("Reset to Now").font(Font.subheadline)
-                }
+                }.padding(.leading)
                 Spacer()
+                Button(action: { roomState.wrappedValue = .ChartSettings }) {
+                    Text("Settings").font(Font.subheadline)
+                }.padding(.trailing)
 #if os(iOS)
                             if idiom != .pad {
                                 Button(action: { roomState.wrappedValue = .SynastryChooser }) {
                                     Text("Partner").font(Font.headline).padding(.trailing)
                                 }
-                                Spacer()
+                            
                             }
 #endif
                 
-                Button(action: { roomState.wrappedValue = .ChartSettings }) {
-                    Text("Settings").font(Font.subheadline)
-                }
             }.padding([.top, .bottom])
             
         }
