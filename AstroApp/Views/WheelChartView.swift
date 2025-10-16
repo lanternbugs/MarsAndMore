@@ -166,7 +166,7 @@ struct WheelChartView: View  {
 #if os(macOS)
                     NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #elseif os(iOS)
-                    if viewModel.model.tab == .PlanetsTab && !zoomed {
+                    if viewModel.model.tab == .PlanetsTab {
                         NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: zoomed ?  getCurrentChartHeightiOS() : getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue).padding(.top)
                     } else {
                         NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height: zoomed ?  getCurrentChartHeightiOS() : getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
@@ -179,7 +179,7 @@ struct WheelChartView: View  {
 #if os(macOS)
                 NatalViewRepresentable(model: viewModel).frame(maxWidth: .infinity, idealHeight: getScreenWidth() * 0.6).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
 #elseif os(iOS)
-                    if viewModel.model.tab == .PlanetsTab && !zoomed {
+                    if viewModel.model.tab == .PlanetsTab {
                         NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height:  zoomed ?  getCurrentChartHeightiOS() : getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue).padding(.top)
                     } else {
                         NatalViewRepresentable(model: viewModel).frame(width: getScreenWidth(), height:  zoomed ?  getCurrentChartHeightiOS() : getScreenWidth()).opacity(opaqueValue).animation(.easeIn(duration: easeDuration), value: opaqueValue)
