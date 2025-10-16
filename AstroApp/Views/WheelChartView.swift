@@ -84,6 +84,12 @@ struct WheelChartView: View  {
                         }.padding(.leading)
                     }
                     Spacer()
+                        if viewModel.model.tab == .PlanetsTab {
+                            Button(action: {
+                                stepToNow() }) {
+                                Text("Now").font(Font.subheadline)
+                            }.padding(.trailing)
+                        }
                     Button(action: {
                         stepInTime(forward: false) }) {
                         Text("<<").font(Font.subheadline)
@@ -94,7 +100,13 @@ struct WheelChartView: View  {
                         Text(">>").font(Font.subheadline)
                     }.padding(.trailing)
     #else
-                    Button(action: {
+                        if viewModel.model.tab == .PlanetsTab {
+                            Button(action: {
+                                stepToNow() }) {
+                                Text("Now").font(Font.subheadline)
+                            }.padding(.trailing)
+                        }
+                        Button(action: {
                         stepInTime(forward: false) }) {
                         Text("<<").font(Font.subheadline)
                     }.padding(.leading)
@@ -189,6 +201,14 @@ extension WheelChartView {
 }
 
 extension WheelChartView {
+    func stepToNow() {
+        if viewModel.model.tab == .PlanetsTab {
+            manager.planetsTabChartJumpedInTime = false
+            manager.planetsTabChartJumpedInTime = true
+        }
+        viewModel.jumpChart(newDate: Date())
+    }
+    
     func stepInTime(forward: Bool) {
         if !viewModel.personOneAspectsData.isEmpty && !viewModel.personTwoAspectsData.isEmpty  {
             manager.partnerJumpedInTime = false
