@@ -55,6 +55,13 @@ struct PlanetRoom: View {
                     }
                 }
             }
+        }.onAppear() {
+            if !manager.savedCityCoordinates.isEmpty && manager.planetsLocationData == nil {
+                let components = manager.savedCityCoordinates.components(separatedBy: ",")
+                if components.count == 2 {
+                    manager.planetsLocationData = LocationData(latitude: components[0], longitude: components[1])
+                }
+            }
         }
     }
 }

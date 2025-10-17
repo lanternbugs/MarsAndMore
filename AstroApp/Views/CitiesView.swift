@@ -95,6 +95,7 @@ struct CitiesView: View {
                         switch(roomState.wrappedValue) {
                         case .PlanetsCity:
                             manager.planetsLocationData = LocationData(latitude: city.latitude, longitude: city.longitude)
+                            manager.savedCityCoordinates = city.latitude + "," + city.longitude
                         default:
                             manager.builder.addCity(city)
                             manager.userLocationData = nil

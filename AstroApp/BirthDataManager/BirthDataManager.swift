@@ -38,6 +38,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     @AppStorage("showMinorAspects") var showMinorAspects: Bool = false
     @AppStorage("chartWheelColorType") var chartWheelColorType:ChartWheelColorType = ChartWheelColorType.Light
     @AppStorage("chartDataSymbols") var chartDataSymbols = false
+    @AppStorage("savedcitycoordinates") var savedCityCoordinates = ""
     @Published var userLocationData: LocationData?
     @Published var planetsLocationData: LocationData?
     var bodiesToShow = Set<Planets>()

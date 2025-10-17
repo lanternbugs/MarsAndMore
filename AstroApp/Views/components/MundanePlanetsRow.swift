@@ -24,6 +24,7 @@ struct MundanePlanetsRow: View, AstrobotInterface {
             if let location = manager.planetsLocationData {
                 Button(action: {
                     manager.planetsLocationData = nil
+                    manager.savedCityCoordinates = ""
                 }) {
                     Text("Remove City")
                 }.padding(.leading)
