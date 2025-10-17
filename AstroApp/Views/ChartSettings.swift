@@ -201,6 +201,35 @@ struct ChartSettings: View {
                         
                         Spacer()
                     }
+                    HStack {
+                        Toggle("Always Show Majors in Transit Times", isOn: $manager.showMajorAspectTransitTimes).padding(.leading)
+                        Spacer()
+                    }
+                    
+                    HStack {
+                        Text("Major Aspects to Show")
+                        Spacer()
+                    }
+                    ForEach(Aspects.allCases, id: \.rawValue) {
+                        aspect in
+                        if aspect.isMajor() {
+                            HStack() {
+                                if aspectsToggleValues.count > aspect.getIndex() {
+                                    Toggle("Show", isOn: $aspectsToggleValues[aspect.getIndex()]).onChange(of: aspectsToggleValues[aspect.getIndex()]) { _ in
+                                        if manager.aspectsToShow.contains(aspect) {
+                                            manager.aspectsToShow.remove(aspect)
+                                            manager.removeAspectFromPersistentStorage(aspect: aspect)
+                                        } else {
+                                            manager.aspectsToShow.insert(aspect)
+                                            manager.addAspectToPersistentStorage(aspect: aspect)
+                                        }
+                                    }.namesStyle()
+                                        .padding([.trailing, .leading])
+                                }
+                                Text("\(aspect.getName()) \(Int(aspect.rawValue))").namesStyle().padding([.trailing, .leading])
+                            }
+                        }
+                    }
                     
                     
                 }

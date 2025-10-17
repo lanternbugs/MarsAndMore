@@ -26,6 +26,7 @@ class BirthDataManager: ObservableObject, ManagerBuilderInterface {
     let defaultBirthInterval: Double = 3600 * 72 + 2 * 315576000
     var compositeDate = Date()
     @AppStorage("showMinorAspectTransitTimes") var showMinorAspectTransitTimes: Bool = true
+    @AppStorage("showMajorAspectTransitTimes") var showMajorAspectTransitTimes: Bool = true
     @AppStorage("utcTimeChoice") var userUTCTimeSelection: Bool = false
     @AppStorage("houseSystem") var houseSystem: HouseSystem = HouseSystem.Placidus
     @AppStorage("siderealSystem") var siderealSystem: SiderealSystem = SiderealSystem.Lahiri

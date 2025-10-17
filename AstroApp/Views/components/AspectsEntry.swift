@@ -20,7 +20,7 @@ struct AspectsEntry: View {
         var display = ""
         if let transitData = data.planets as? [TransitCell] {
             for val in transitData {
-                if manager.bodiesToShow.contains(val.planet) && manager.bodiesToShow.contains(val.planet2) && val.aspect.isMajor()
+                if manager.bodiesToShow.contains(val.planet) && manager.bodiesToShow.contains(val.planet2) && val.aspect.isMajor() && manager.aspectsToShow.contains(val.aspect)
                 {
                     display += getTransitString(val: val, count: display.count)
                 }
@@ -84,7 +84,7 @@ extension AspectsEntry {
         if manager.showMinorAspects && manager.aspectsToShow.contains(aspect)  {
             return true
         }
-        if aspect.isMajor() {
+        if aspect.isMajor() && manager.aspectsToShow.contains(aspect) {
             return true
         }
         return false

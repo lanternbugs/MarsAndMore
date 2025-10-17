@@ -197,7 +197,7 @@ extension NatalChartDrawingView {
         for planet in planetArray {
             let aspects = viewModel.aspectsData.filter { $0.planet == planet.planet && manager.bodiesToShow.contains($0.planet2)}
             for aspect in aspects {
-                if !aspect.aspect.isMajor() || aspect.aspect == .Conjunction {
+                if !aspect.aspect.isMajor() || aspect.aspect == .Conjunction || !manager.aspectsToShow.contains(aspect.aspect) {
                     continue
                 }
                 if let b = viewModel.secondaryPlanetToDegreeMap.isEmpty ? viewModel.planetToDegreeMap[aspect.planet] : viewModel.secondaryPlanetToDegreeMap[aspect.planet], let c =  viewModel.planetToDegreeMap[aspect.planet2] {

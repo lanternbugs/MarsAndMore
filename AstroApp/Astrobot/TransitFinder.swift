@@ -20,7 +20,7 @@ struct TransitFinder {
     static var adapterCalls = 0
     
     func shouldShowAspect(_ aspect: Aspects, manager: BirthDataManager) -> Bool {
-        if aspect.isMajor() {
+        if aspect.isMajor() && (manager.aspectsToShow.contains(aspect) || manager.showMajorAspectTransitTimes) {
             return true
         }
         if !manager.showMinorAspects || !manager.showMinorAspectTransitTimes {
